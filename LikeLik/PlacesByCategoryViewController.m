@@ -116,7 +116,7 @@ static NSString *PlaceCategory = @"";
     
     
     self.CityImage.image = [UIImage imageNamed:self.Image];
-    self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
+    //[self.view addSubview:[InterfaceFunctions backgroundView]];
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     

@@ -146,7 +146,16 @@
 
 +(UIColor*)BackgroundColor{
     
-    return [UIColor colorWithPatternImage:[InterfaceFunctions backgroundView].image];
+    
+    UIImage *img = [UIImage imageNamed:@"640_1136 background-568h@2x"];
+    CGSize imgSize = CGSizeMake(640,1008);
+    
+    UIGraphicsBeginImageContext( imgSize );
+    [img drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return [UIColor colorWithPatternImage:newImage];
 }
 
 #pragma mark лейблы

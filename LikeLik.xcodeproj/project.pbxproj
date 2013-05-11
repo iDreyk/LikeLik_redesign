@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		55530D8C173BD2AE00E0E2DF /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55530D8B173BD2AE00E0E2DF /* catalogue.plist */; };
 		559CA018173A7137002F494F /* ExternalFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 559CA017173A7137002F494F /* ExternalFunctions.m */; };
+		9122D27B173E40660096BB24 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 9122D276173E40660096BB24 /* Moscow */; };
+		9122D27C173E40660096BB24 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 9122D277173E40660096BB24 /* Vienna */; };
+		9122D27D173E40660096BB24 /* Work PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9122D278173E40660096BB24 /* Work PNG */; };
+		9122D2A6173E407D0096BB24 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9122D29B173E407C0096BB24 /* libzbar.a */; };
+		9122D2A8173E407D0096BB24 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D29E173E407C0096BB24 /* zbar-back.png */; };
+		9122D2A9173E407D0096BB24 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 9122D29F173E407D0096BB24 /* zbar-help.html */; };
+		9122D2AA173E407D0096BB24 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2A0173E407D0096BB24 /* zbar-helpicons.png */; };
+		9122D2AB173E407D0096BB24 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2A1173E407D0096BB24 /* zbar-samples.png */; };
+		9122D2AD173E422C0096BB24 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */; };
+		9122D2B1173E566F0096BB24 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9122D2B0173E566F0096BB24 /* MapBox.framework */; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		91241959173BA85B004B6837 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */; };
@@ -40,7 +50,6 @@
 		919E888E173A5B5B00A25E07 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8747173A5B5A00A25E07 /* MBProgressHUD.m */; };
 		919E888F173A5B5B00A25E07 /* UIViewController+KNSemiModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8749173A5B5A00A25E07 /* UIViewController+KNSemiModal.m */; };
 		919E8890173A5B5B00A25E07 /* NSObject+YMOptionsAndDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E874B173A5B5A00A25E07 /* NSObject+YMOptionsAndDefaults.m */; };
-		919E89D0173A5BF300A25E07 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 919E89CF173A5BF300A25E07 /* LikeLik icon 114x114.png */; };
 		919E89D2173A5BFC00A25E07 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 919E89D1173A5BFC00A25E07 /* Default@2x.png */; };
 		919E89D4173A5C0300A25E07 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 919E89D3173A5C0300A25E07 /* Default-568h@2x.png */; };
 		919E89DC173A5E3A00A25E07 /* InterfaceFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E89DB173A5E3A00A25E07 /* InterfaceFunctions.m */; };
@@ -290,6 +299,41 @@
 		55530D8B173BD2AE00E0E2DF /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catalogue.plist; sourceTree = "<group>"; };
 		559CA016173A7137002F494F /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalFunctions.h; sourceTree = "<group>"; };
 		559CA017173A7137002F494F /* ExternalFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalFunctions.m; sourceTree = "<group>"; };
+		9122D276173E40660096BB24 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Moscow; path = "../../../../../Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/Moscow"; sourceTree = "<group>"; };
+		9122D277173E40660096BB24 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = "../../../../../Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/Vienna"; sourceTree = "<group>"; };
+		9122D278173E40660096BB24 /* Work PNG */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Work PNG"; path = "../../../../../Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/Work PNG"; sourceTree = "<group>"; };
+		9122D281173E407C0096BB24 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		9122D283173E407C0096BB24 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		9122D285173E407C0096BB24 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
+		9122D286173E407C0096BB24 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		9122D287173E407C0096BB24 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		9122D288173E407C0096BB24 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		9122D289173E407C0096BB24 /* ImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScanner.h; sourceTree = "<group>"; };
+		9122D28A173E407C0096BB24 /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
+		9122D28B173E407C0096BB24 /* Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scanner.h; sourceTree = "<group>"; };
+		9122D28C173E407C0096BB24 /* Symbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symbol.h; sourceTree = "<group>"; };
+		9122D28D173E407C0096BB24 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		9122D28E173E407C0096BB24 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		9122D28F173E407C0096BB24 /* zbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zbar.h; sourceTree = "<group>"; };
+		9122D290173E407C0096BB24 /* ZBarCameraSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarCameraSimulator.h; sourceTree = "<group>"; };
+		9122D291173E407C0096BB24 /* ZBarCaptureReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarCaptureReader.h; sourceTree = "<group>"; };
+		9122D292173E407C0096BB24 /* ZBarHelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarHelpController.h; sourceTree = "<group>"; };
+		9122D293173E407C0096BB24 /* ZBarImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarImage.h; sourceTree = "<group>"; };
+		9122D294173E407C0096BB24 /* ZBarImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarImageScanner.h; sourceTree = "<group>"; };
+		9122D295173E407C0096BB24 /* ZBarReaderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderController.h; sourceTree = "<group>"; };
+		9122D296173E407C0096BB24 /* ZBarReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderView.h; sourceTree = "<group>"; };
+		9122D297173E407C0096BB24 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
+		9122D298173E407C0096BB24 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
+		9122D299173E407C0096BB24 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
+		9122D29A173E407C0096BB24 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		9122D29B173E407C0096BB24 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
+		9122D29D173E407C0096BB24 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		9122D29E173E407C0096BB24 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
+		9122D29F173E407D0096BB24 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
+		9122D2A0173E407D0096BB24 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
+		9122D2A1173E407D0096BB24 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 114x114.png"; sourceTree = "<group>"; };
+		9122D2B0173E566F0096BB24 /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = "../../../../../Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/MapBox.framework"; sourceTree = "<group>"; };
 		91241948173A9CF8004B6837 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194A173A9DF5004B6837 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194B173A9E05004B6837 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -332,7 +376,6 @@
 		919E8749173A5B5A00A25E07 /* UIViewController+KNSemiModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KNSemiModal.m"; sourceTree = "<group>"; };
 		919E874A173A5B5A00A25E07 /* NSObject+YMOptionsAndDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YMOptionsAndDefaults.h"; sourceTree = "<group>"; };
 		919E874B173A5B5A00A25E07 /* NSObject+YMOptionsAndDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YMOptionsAndDefaults.m"; sourceTree = "<group>"; };
-		919E89CF173A5BF300A25E07 /* LikeLik icon 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 114x114.png"; sourceTree = "<group>"; };
 		919E89D1173A5BFC00A25E07 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		919E89D3173A5C0300A25E07 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		919E89DA173A5E3A00A25E07 /* InterfaceFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceFunctions.h; sourceTree = "<group>"; };
@@ -732,9 +775,9 @@
 		919E86F3173A58E700A25E07 = {
 			isa = PBXGroup;
 			children = (
+				9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */,
 				919E89D3173A5C0300A25E07 /* Default-568h@2x.png */,
 				919E89D1173A5BFC00A25E07 /* Default@2x.png */,
-				919E89CF173A5BF300A25E07 /* LikeLik icon 114x114.png */,
 				919E8705173A58E700A25E07 /* LikeLik */,
 				919E86FE173A58E700A25E07 /* Frameworks */,
 				919E86FD173A58E700A25E07 /* Products */,
@@ -1372,7 +1415,6 @@
 			files = (
 				919E870A173A58E700A25E07 /* InfoPlist.strings in Resources */,
 				91241947173A9CF8004B6837 /* Localizable.strings in Resources */,
-				919E89D0173A5BF300A25E07 /* LikeLik icon 114x114.png in Resources */,
 				919E89D2173A5BFC00A25E07 /* Default@2x.png in Resources */,
 				919E89D4173A5C0300A25E07 /* Default-568h@2x.png in Resources */,
 				919E8A46173A5E9300A25E07 /* jQueryInject.txt in Resources */,

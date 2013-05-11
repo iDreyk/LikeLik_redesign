@@ -46,7 +46,6 @@
     
     self.Email.backgroundColor = [UIColor clearColor];
     self.FeedBack.backgroundColor = [UIColor clearColor];
-    //self.view = [InterfaceFunctions BackgroundColor];
     
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textviewBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:nil];
     

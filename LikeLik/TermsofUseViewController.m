@@ -29,8 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-self.navigationItem.backBarButtonItem = [AppDelegate back_button];
-        self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
+    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.view = [InterfaceFunctions backgroundView];
     
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Terms of use", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
      
