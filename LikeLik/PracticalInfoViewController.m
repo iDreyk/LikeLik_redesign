@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.view = [InterfaceFunctions backgroundView];
     self.navigationItem.backBarButtonItem = [AppDelegate back_button];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
 
@@ -59,10 +59,10 @@
         label.frame = CGRectMake(7.0,0.0, 306.0, 412.0);
     }
     label.contentSize = CGSizeMake(320.0, textViewSize.height);
-   
+    
     [self.view addSubview:label];
     
-    self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
+
 }
 
 - (void)didReceiveMemoryWarning

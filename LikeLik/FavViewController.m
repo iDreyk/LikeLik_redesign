@@ -41,7 +41,7 @@ static NSString *PlaceCategory = @"";
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"Map", nil) forSegmentAtIndex:1];
     FavouritePlaces = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName];
    
-    self.FavTable.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg"]];
+    self.FavTable.backgroundView = [InterfaceFunctions backgroundView];
     self.FavTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     UIButton *btn = [AppDelegate search_button];

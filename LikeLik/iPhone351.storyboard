@@ -881,6 +881,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="640_1136 background-568h@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="WJO-Ur-1kQ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="460" id="2Em-nn-t7e"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xje-hS-6Ma">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -945,8 +950,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3Tq-oB-9MG" firstAttribute="top" secondItem="8mT-Ja-KWe" secondAttribute="top" constant="-44" id="13V-Yq-Rrs"/>
+                            <constraint firstItem="WJO-Ur-1kQ" firstAttribute="top" secondItem="3Tq-oB-9MG" secondAttribute="top" type="default" id="0qW-5Y-IFS"/>
                             <constraint firstItem="ye0-Sg-Cpk" firstAttribute="leading" secondItem="8mT-Ja-KWe" secondAttribute="leading" constant="10" id="69J-YA-1tK"/>
+                            <constraint firstItem="WJO-Ur-1kQ" firstAttribute="bottom" secondItem="8mT-Ja-KWe" secondAttribute="bottom" type="default" id="79I-D3-m5z"/>
                             <constraint firstAttribute="trailing" secondItem="Lbe-hg-zum" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7vb-ak-gxm"/>
                             <constraint firstItem="NNJ-Le-Omi" firstAttribute="bottom" secondItem="8mT-Ja-KWe" secondAttribute="bottom" type="default" id="9Q2-1a-Dtu"/>
                             <constraint firstItem="QoM-J9-se3" firstAttribute="trailing" secondItem="8mT-Ja-KWe" secondAttribute="trailing" type="default" id="A1B-kg-HnV"/>
@@ -958,8 +964,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="xje-hS-6Ma" firstAttribute="leading" secondItem="8mT-Ja-KWe" secondAttribute="leading" type="default" id="SCH-vr-fu9"/>
                             <constraint firstItem="xje-hS-6Ma" firstAttribute="trailing" secondItem="8mT-Ja-KWe" secondAttribute="trailing" type="default" id="Up1-uS-OZD"/>
                             <constraint firstItem="3Tq-oB-9MG" firstAttribute="leading" secondItem="8mT-Ja-KWe" secondAttribute="leading" type="default" id="YNe-l4-vwC"/>
+                            <constraint firstItem="WJO-Ur-1kQ" firstAttribute="leading" secondItem="8mT-Ja-KWe" secondAttribute="leading" type="default" id="dmY-jM-M53"/>
                             <constraint firstItem="QoM-J9-se3" firstAttribute="leading" secondItem="8mT-Ja-KWe" secondAttribute="leading" type="default" id="fhz-qs-SQG"/>
                             <constraint firstItem="NNJ-Le-Omi" firstAttribute="trailing" secondItem="8mT-Ja-KWe" secondAttribute="trailing" type="default" id="hgT-rs-hCv"/>
+                            <constraint firstItem="WJO-Ur-1kQ" firstAttribute="trailing" secondItem="8mT-Ja-KWe" secondAttribute="trailing" type="default" id="ncl-GX-cGN"/>
                             <constraint firstAttribute="bottom" secondItem="ye0-Sg-Cpk" secondAttribute="bottom" constant="45" id="tQC-K5-IhU"/>
                             <constraint firstItem="3Tq-oB-9MG" firstAttribute="trailing" secondItem="8mT-Ja-KWe" secondAttribute="trailing" type="default" id="y5P-no-4U4"/>
                         </constraints>
@@ -1965,6 +1973,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="58_82 info_flag 12@2x.png" width="58" height="82"/>
         <image name="58_82 info_flag_6@2x.png" width="58" height="82"/>
         <image name="62_62 arrow_pressed@2x.png" width="62" height="62"/>
+        <image name="640_1136 background-568h@2x.png" width="640" height="1136"/>
         <image name="Bg_gradient.png" width="640" height="108"/>
         <image name="Overlay_Long@2x.png" width="640" height="2000"/>
         <image name="separator_line.png" width="560" height="2"/>
@@ -1981,8 +1990,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="SI1-Ju-Rvv"/>
-        <segue reference="jOq-Zb-aue"/>
-        <segue reference="mIE-ck-FCQ"/>
+        <segue reference="MxA-FI-ppy"/>
+        <segue reference="uZI-6Y-Ryz"/>
         <segue reference="yCK-Wu-Xo6"/>
         <segue reference="XKw-Kc-cfl"/>
     </inferredMetricsTieBreakers>
