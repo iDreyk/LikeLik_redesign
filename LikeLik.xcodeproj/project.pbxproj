@@ -266,7 +266,9 @@
 		DB1DB6FC173E524000244292 /* ico_earth.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1DB666173E524000244292 /* ico_earth.png */; };
 		DB1DB6FD173E524000244292 /* ico_point.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1DB667173E524000244292 /* ico_point.png */; };
 		DB1DB6FE173E524000244292 /* ico_tel.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1DB668173E524000244292 /* ico_tel.png */; };
-		DB1DB6FF173E524000244292 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = DB1DB669173E524000244292 /* Icon */; };
+		DB1DB6FF173E524000244292 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = DB1DB669173E524000244292 /* Icon
+ */; };
 		DB1DB700173E524000244292 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1DB66A173E524000244292 /* info@2x.png */; };
 		DB1DB701173E524000244292 /* knuckle_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1DB66B173E524000244292 /* knuckle_1@2x.png */; };
 		DB1DB702173E524000244292 /* navigationbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1DB66C173E524000244292 /* navigationbar@2x.png */; };
@@ -302,11 +304,17 @@
 		9122D276173E40660096BB24 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Moscow; path = "../../../../../Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/Moscow"; sourceTree = "<group>"; };
 		9122D277173E40660096BB24 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = "../../../../../Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/Vienna"; sourceTree = "<group>"; };
 		9122D278173E40660096BB24 /* Work PNG */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Work PNG"; path = "../../../../../Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/Work PNG"; sourceTree = "<group>"; };
-		9122D281173E407C0096BB24 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
-		9122D283173E407C0096BB24 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		9122D281173E407C0096BB24 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
+		9122D283173E407C0096BB24 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		9122D285173E407C0096BB24 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		9122D286173E407C0096BB24 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
-		9122D287173E407C0096BB24 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		9122D287173E407C0096BB24 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		9122D288173E407C0096BB24 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		9122D289173E407C0096BB24 /* ImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScanner.h; sourceTree = "<group>"; };
 		9122D28A173E407C0096BB24 /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
@@ -325,9 +333,13 @@
 		9122D297173E407C0096BB24 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
 		9122D298173E407C0096BB24 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		9122D299173E407C0096BB24 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
-		9122D29A173E407C0096BB24 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		9122D29A173E407C0096BB24 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		9122D29B173E407C0096BB24 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
-		9122D29D173E407C0096BB24 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		9122D29D173E407C0096BB24 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		9122D29E173E407C0096BB24 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		9122D29F173E407D0096BB24 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		9122D2A0173E407D0096BB24 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
@@ -554,11 +566,17 @@
 		919E8C61173A633400A25E07 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		919E8C62173A633400A25E07 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		DB1DB5BA173E51A600244292 /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = "../../../Google Диск/LikeLik/Likelik Xcode/MapBox.framework"; sourceTree = "<group>"; };
-		DB1DB5C0173E51C900244292 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
-		DB1DB5C2173E51C900244292 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		DB1DB5C0173E51C900244292 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
+		DB1DB5C2173E51C900244292 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		DB1DB5C4173E51C900244292 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		DB1DB5C5173E51C900244292 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
-		DB1DB5C6173E51C900244292 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		DB1DB5C6173E51C900244292 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		DB1DB5C7173E51C900244292 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		DB1DB5C8173E51C900244292 /* ImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScanner.h; sourceTree = "<group>"; };
 		DB1DB5C9173E51C900244292 /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
@@ -577,9 +595,13 @@
 		DB1DB5D6173E51C900244292 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
 		DB1DB5D7173E51C900244292 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		DB1DB5D8173E51C900244292 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
-		DB1DB5D9173E51C900244292 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		DB1DB5D9173E51C900244292 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		DB1DB5DA173E51C900244292 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
-		DB1DB5DC173E51C900244292 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		DB1DB5DC173E51C900244292 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		DB1DB5DD173E51C900244292 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		DB1DB5DE173E51C900244292 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		DB1DB5DF173E51C900244292 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
@@ -709,7 +731,9 @@
 		DB1DB666173E524000244292 /* ico_earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_earth.png; sourceTree = "<group>"; };
 		DB1DB667173E524000244292 /* ico_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_point.png; sourceTree = "<group>"; };
 		DB1DB668173E524000244292 /* ico_tel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_tel.png; sourceTree = "<group>"; };
-		DB1DB669173E524000244292 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		DB1DB669173E524000244292 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		DB1DB66A173E524000244292 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
 		DB1DB66B173E524000244292 /* knuckle_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuckle_1@2x.png"; sourceTree = "<group>"; };
 		DB1DB66C173E524000244292 /* navigationbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar@2x.png"; sourceTree = "<group>"; };
@@ -764,14 +788,89 @@
 				919E871D173A5A7C00A25E07 /* MobileCoreServices.framework in Frameworks */,
 				919E8704173A58E700A25E07 /* CoreGraphics.framework in Frameworks */,
 				919E8A48173A5E9300A25E07 /* libOAuth.a in Frameworks */,
-				DB1DB5BB173E51A600244292 /* MapBox.framework in Frameworks */,
-				DB1DB5E5173E51C900244292 /* libzbar.a in Frameworks */,
+				9122D2A6173E407D0096BB24 /* libzbar.a in Frameworks */,
+				9122D2B1173E566F0096BB24 /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9122D27F173E407C0096BB24 /* ZBarSDK */ = {
+			isa = PBXGroup;
+			children = (
+				9122D280173E407C0096BB24 /* Headers */,
+				9122D29A173E407C0096BB24 /* Icon
+ */,
+				9122D29B173E407C0096BB24 /* libzbar.a */,
+				9122D29C173E407C0096BB24 /* Resources */,
+			);
+			name = ZBarSDK;
+			path = "../../../../../Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/ZBarSDK";
+			sourceTree = "<group>";
+		};
+		9122D280173E407C0096BB24 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				9122D281173E407C0096BB24 /* Icon
+ */,
+				9122D282173E407C0096BB24 /* ZBarSDK */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		9122D282173E407C0096BB24 /* ZBarSDK */ = {
+			isa = PBXGroup;
+			children = (
+				9122D283173E407C0096BB24 /* Icon
+ */,
+				9122D284173E407C0096BB24 /* zbar */,
+				9122D28F173E407C0096BB24 /* zbar.h */,
+				9122D290173E407C0096BB24 /* ZBarCameraSimulator.h */,
+				9122D291173E407C0096BB24 /* ZBarCaptureReader.h */,
+				9122D292173E407C0096BB24 /* ZBarHelpController.h */,
+				9122D293173E407C0096BB24 /* ZBarImage.h */,
+				9122D294173E407C0096BB24 /* ZBarImageScanner.h */,
+				9122D295173E407C0096BB24 /* ZBarReaderController.h */,
+				9122D296173E407C0096BB24 /* ZBarReaderView.h */,
+				9122D297173E407C0096BB24 /* ZBarReaderViewController.h */,
+				9122D298173E407C0096BB24 /* ZBarSDK.h */,
+				9122D299173E407C0096BB24 /* ZBarSymbol.h */,
+			);
+			path = ZBarSDK;
+			sourceTree = "<group>";
+		};
+		9122D284173E407C0096BB24 /* zbar */ = {
+			isa = PBXGroup;
+			children = (
+				9122D285173E407C0096BB24 /* Decoder.h */,
+				9122D286173E407C0096BB24 /* Exception.h */,
+				9122D287173E407C0096BB24 /* Icon
+ */,
+				9122D288173E407C0096BB24 /* Image.h */,
+				9122D289173E407C0096BB24 /* ImageScanner.h */,
+				9122D28A173E407C0096BB24 /* Processor.h */,
+				9122D28B173E407C0096BB24 /* Scanner.h */,
+				9122D28C173E407C0096BB24 /* Symbol.h */,
+				9122D28D173E407C0096BB24 /* Video.h */,
+				9122D28E173E407C0096BB24 /* Window.h */,
+			);
+			path = zbar;
+			sourceTree = "<group>";
+		};
+		9122D29C173E407C0096BB24 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9122D29D173E407C0096BB24 /* Icon
+ */,
+				9122D29E173E407C0096BB24 /* zbar-back.png */,
+				9122D29F173E407D0096BB24 /* zbar-help.html */,
+				9122D2A0173E407D0096BB24 /* zbar-helpicons.png */,
+				9122D2A1173E407D0096BB24 /* zbar-samples.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		919E86F3173A58E700A25E07 = {
 			isa = PBXGroup;
 			children = (
@@ -888,11 +987,11 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DB1DB5EB173E524000244292 /* Work PNG */,
-				DB1DB5BE173E51C900244292 /* ZBarSDK */,
-				DB1DB5BA173E51A600244292 /* MapBox.framework */,
-				DBE9D442173E503000683738 /* Moscow */,
-				DBE9D443173E503000683738 /* Vienna */,
+				9122D2B0173E566F0096BB24 /* MapBox.framework */,
+				9122D27F173E407C0096BB24 /* ZBarSDK */,
+				9122D276173E40660096BB24 /* Moscow */,
+				9122D277173E40660096BB24 /* Vienna */,
+				9122D278173E40660096BB24 /* Work PNG */,
 				919E8707173A58E700A25E07 /* LikeLik-Info.plist */,
 				919E8708173A58E700A25E07 /* InfoPlist.strings */,
 				919E870B173A58E700A25E07 /* main.m */,
@@ -1136,7 +1235,8 @@
 			isa = PBXGroup;
 			children = (
 				DB1DB5BF173E51C900244292 /* Headers */,
-				DB1DB5D9173E51C900244292 /* Icon */,
+				DB1DB5D9173E51C900244292 /* Icon
+ */,
 				DB1DB5DA173E51C900244292 /* libzbar.a */,
 				DB1DB5DB173E51C900244292 /* Resources */,
 			);
@@ -1147,7 +1247,8 @@
 		DB1DB5BF173E51C900244292 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				DB1DB5C0173E51C900244292 /* Icon */,
+				DB1DB5C0173E51C900244292 /* Icon
+ */,
 				DB1DB5C1173E51C900244292 /* ZBarSDK */,
 			);
 			path = Headers;
@@ -1156,7 +1257,8 @@
 		DB1DB5C1173E51C900244292 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
-				DB1DB5C2173E51C900244292 /* Icon */,
+				DB1DB5C2173E51C900244292 /* Icon
+ */,
 				DB1DB5C3173E51C900244292 /* zbar */,
 				DB1DB5CE173E51C900244292 /* zbar.h */,
 				DB1DB5CF173E51C900244292 /* ZBarCameraSimulator.h */,
@@ -1178,7 +1280,8 @@
 			children = (
 				DB1DB5C4173E51C900244292 /* Decoder.h */,
 				DB1DB5C5173E51C900244292 /* Exception.h */,
-				DB1DB5C6173E51C900244292 /* Icon */,
+				DB1DB5C6173E51C900244292 /* Icon
+ */,
 				DB1DB5C7173E51C900244292 /* Image.h */,
 				DB1DB5C8173E51C900244292 /* ImageScanner.h */,
 				DB1DB5C9173E51C900244292 /* Processor.h */,
@@ -1193,7 +1296,8 @@
 		DB1DB5DB173E51C900244292 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DB1DB5DC173E51C900244292 /* Icon */,
+				DB1DB5DC173E51C900244292 /* Icon
+ */,
 				DB1DB5DD173E51C900244292 /* zbar-back.png */,
 				DB1DB5DE173E51C900244292 /* zbar-help.html */,
 				DB1DB5DF173E51C900244292 /* zbar-helpicons.png */,
@@ -1330,7 +1434,8 @@
 				DB1DB666173E524000244292 /* ico_earth.png */,
 				DB1DB667173E524000244292 /* ico_point.png */,
 				DB1DB668173E524000244292 /* ico_tel.png */,
-				DB1DB669173E524000244292 /* Icon */,
+				DB1DB669173E524000244292 /* Icon
+ */,
 				DB1DB66A173E524000244292 /* info@2x.png */,
 				DB1DB66B173E524000244292 /* knuckle_1@2x.png */,
 				DB1DB66C173E524000244292 /* navigationbar@2x.png */,
@@ -1431,162 +1536,14 @@
 				919E8B1B173A616500A25E07 /* RegularOpenSans.ttf in Resources */,
 				919E8B1C173A616500A25E07 /* OpenSansBold.ttf in Resources */,
 				55530D8C173BD2AE00E0E2DF /* catalogue.plist in Resources */,
-				DBE9D446173E503000683738 /* Moscow in Resources */,
-				DBE9D447173E503000683738 /* Vienna in Resources */,
-				DB1DB5E7173E51C900244292 /* zbar-back.png in Resources */,
-				DB1DB5E8173E51C900244292 /* zbar-help.html in Resources */,
-				DB1DB5E9173E51C900244292 /* zbar-helpicons.png in Resources */,
-				DB1DB5EA173E51C900244292 /* zbar-samples.png in Resources */,
-				DB1DB682173E524000244292 /* 124_124 Social_Icons11@2x.png in Resources */,
-				DB1DB683173E524000244292 /* 124_124 Social_Icons22@2x.png in Resources */,
-				DB1DB684173E524000244292 /* 124_124 Social_Icons33@2x.png in Resources */,
-				DB1DB685173E524000244292 /* 124_124 Social_Icons44@2x.png in Resources */,
-				DB1DB686173E524000244292 /* 124_124 Social_Icons55@2x.png in Resources */,
-				DB1DB687173E524000244292 /* 1_44 header_12@2x.png in Resources */,
-				DB1DB688173E524000244292 /* 1_44 header_13@2x.png in Resources */,
-				DB1DB689173E524000244292 /* 1_44 header_14@2x.png in Resources */,
-				DB1DB68A173E524000244292 /* 1_44 header_15@2x.png in Resources */,
-				DB1DB68B173E524000244292 /* 1fav@2x.png in Resources */,
-				DB1DB68C173E524000244292 /* 212_100 Tabitem_place_12_2use_normal@2x.png in Resources */,
-				DB1DB68D173E524000244292 /* 212_100 Tabitem_place_12_2use_selected@2x.png in Resources */,
-				DB1DB68E173E524000244292 /* 212_100 Tabitem_place_13_2use_normal@2x.png in Resources */,
-				DB1DB68F173E524000244292 /* 212_100 Tabitem_place_13_2use_selected@2x.png in Resources */,
-				DB1DB690173E524000244292 /* 212_100 Tabitem_place_14_2use_normal@2x.png in Resources */,
-				DB1DB691173E524000244292 /* 212_100 Tabitem_place_14_2use_selected@2x.png in Resources */,
-				DB1DB692173E524000244292 /* 212_100 Tabitem_place_15_2use_normal@2x.png in Resources */,
-				DB1DB693173E524000244292 /* 212_100 Tabitem_place_15_2use_selected@2x.png in Resources */,
-				DB1DB694173E524000244292 /* 214_100 Tabitem_place_12_1fav_normal@2x.png in Resources */,
-				DB1DB695173E524000244292 /* 214_100 Tabitem_place_12_1fav_selected@2x.png in Resources */,
-				DB1DB696173E524000244292 /* 214_100 Tabitem_place_12_3share_normal@2x.png in Resources */,
-				DB1DB697173E524000244292 /* 214_100 Tabitem_place_12_3share_selected@2x.png in Resources */,
-				DB1DB698173E524000244292 /* 214_100 Tabitem_place_13_1fav_normal@2x.png in Resources */,
-				DB1DB699173E524000244292 /* 214_100 Tabitem_place_13_1fav_selected@2x.png in Resources */,
-				DB1DB69A173E524000244292 /* 214_100 Tabitem_place_13_3share_normal@2x.png in Resources */,
-				DB1DB69B173E524000244292 /* 214_100 Tabitem_place_13_3share_selected@2x.png in Resources */,
-				DB1DB69C173E524000244292 /* 214_100 Tabitem_place_14_1fav_normal@2x.png in Resources */,
-				DB1DB69D173E524000244292 /* 214_100 Tabitem_place_14_1fav_selected@2x.png in Resources */,
-				DB1DB69E173E524000244292 /* 214_100 Tabitem_place_14_3share_normal@2x.png in Resources */,
-				DB1DB69F173E524000244292 /* 214_100 Tabitem_place_14_3share_selected@2x.png in Resources */,
-				DB1DB6A0173E524000244292 /* 214_100 Tabitem_place_15_1fav_normal@2x.png in Resources */,
-				DB1DB6A1173E524000244292 /* 214_100 Tabitem_place_15_1fav_selected@2x.png in Resources */,
-				DB1DB6A2173E524000244292 /* 214_100 Tabitem_place_15_3share_normal@2x.png in Resources */,
-				DB1DB6A3173E524000244292 /* 214_100 Tabitem_place_15_3share_selected@2x.png in Resources */,
-				DB1DB6A4173E524000244292 /* 266_281 star_favourites_empty@2x.png in Resources */,
-				DB1DB6A5173E524000244292 /* 2use@2x.png in Resources */,
-				DB1DB6A6173E524000244292 /* 3share@2x.png in Resources */,
-				DB1DB6A7173E524000244292 /* 44_48 actb_12@2x.png in Resources */,
-				DB1DB6A8173E524000244292 /* 44_48 actb_13@2x.png in Resources */,
-				DB1DB6A9173E524000244292 /* 44_48 actb_14@2x.png in Resources */,
-				DB1DB6AA173E524000244292 /* 44_48 actb_15@2x.png in Resources */,
-				DB1DB6AB173E524000244292 /* 44_48 actb_1@2x.png in Resources */,
-				DB1DB6AC173E524000244292 /* 44_48 actb_2@2x.png in Resources */,
-				DB1DB6AD173E524000244292 /* 44_48 actb_3@2x.png in Resources */,
-				DB1DB6AE173E524000244292 /* 44_48 actb_4@2x.png in Resources */,
-				DB1DB6AF173E524000244292 /* 44_48 actb_5@2x.png in Resources */,
-				DB1DB6B0173E524000244292 /* 44_48 actb_6@2x.png in Resources */,
-				DB1DB6B1173E524000244292 /* 44_48 actbtaxi@2x.png in Resources */,
-				DB1DB6B2173E524000244292 /* 526_90 button_use_check_12@2x.png in Resources */,
-				DB1DB6B3173E524000244292 /* 526_90 button_use_check_12_selected@2x.png in Resources */,
-				DB1DB6B4173E524000244292 /* 526_90 button_use_check_13@2x.png in Resources */,
-				DB1DB6B5173E524000244292 /* 526_90 button_use_check_13_selected@2x.png in Resources */,
-				DB1DB6B6173E524000244292 /* 526_90 button_use_check_14@2x.png in Resources */,
-				DB1DB6B7173E524000244292 /* 526_90 button_use_check_14_selected@2x.png in Resources */,
-				DB1DB6B8173E524000244292 /* 526_90 button_use_check_15@2x.png in Resources */,
-				DB1DB6B9173E524000244292 /* 526_90 button_use_check_15_selected@2x.png in Resources */,
-				DB1DB6BA173E524000244292 /* 529_155 startscreen_logo@2x.png in Resources */,
-				DB1DB6BB173E524000244292 /* 58_82 info_flag 12@2x.png in Resources */,
-				DB1DB6BC173E524000244292 /* 58_82 info_flag 13@2x.png in Resources */,
-				DB1DB6BD173E524000244292 /* 58_82 info_flag 14@2x.png in Resources */,
-				DB1DB6BE173E524000244292 /* 58_82 info_flag 15@2x.png in Resources */,
-				DB1DB6BF173E524000244292 /* 58_82 info_flag_6@2x.png in Resources */,
-				DB1DB6C0173E524000244292 /* 592_159 Ribbon_12@2x.png in Resources */,
-				DB1DB6C1173E524000244292 /* 592_159 Ribbon_13@2x.png in Resources */,
-				DB1DB6C2173E524000244292 /* 592_159 Ribbon_14@2x.png in Resources */,
-				DB1DB6C3173E524000244292 /* 592_159 Ribbon_15@2x.png in Resources */,
-				DB1DB6C4173E524000244292 /* 60_61 button_home@2x.png in Resources */,
-				DB1DB6C5173E524000244292 /* 60_61 home@2x.png in Resources */,
-				DB1DB6C6173E524000244292 /* 60_61 map@2x.png in Resources */,
-				DB1DB6C7173E524000244292 /* 60_61 nav_info@2x.png in Resources */,
-				DB1DB6C8173E524000244292 /* 60_61 settings@2x.png in Resources */,
-				DB1DB6C9173E524000244292 /* 62_62 arrow_normal@2x.png in Resources */,
-				DB1DB6CA173E524000244292 /* 62_62 arrow_pressed@2x.png in Resources */,
-				DB1DB6CB173E524000244292 /* 63_76 MapPin_12@2x.png in Resources */,
-				DB1DB6CC173E524000244292 /* 63_76 MapPin_13@2x.png in Resources */,
-				DB1DB6CD173E524000244292 /* 63_76 MapPin_14@2x.png in Resources */,
-				DB1DB6CE173E524000244292 /* 63_76 MapPin_15@2x.png in Resources */,
-				DB1DB6CF173E524000244292 /* 63_76 MapPin_6@2x.png in Resources */,
-				DB1DB6D0173E524000244292 /* 640_108 gradient_under_title@2x.png in Resources */,
-				DB1DB6D1173E524000244292 /* 640_1136 background-568h@2x.png in Resources */,
-				DB1DB6D2173E524000244292 /* 640_1136 LaunchScreen-568h@2x.png in Resources */,
-				DB1DB6D3173E524000244292 /* 640_960 LaunchScreen@2x.png in Resources */,
-				DB1DB6D4173E524000244292 /* 74_74 Fist_for_HUD@2x.png in Resources */,
-				DB1DB6D5173E524000244292 /* 74_74 Fist_for_HUD_colored@2x.png in Resources */,
-				DB1DB6D6173E524000244292 /* 76_65 info_flag_12@2x.png in Resources */,
-				DB1DB6D7173E524000244292 /* 76_65 info_flag_13@2x.png in Resources */,
-				DB1DB6D8173E524000244292 /* 76_65 info_flag_14@2x.png in Resources */,
-				DB1DB6D9173E524000244292 /* 76_65 info_flag_15@2x.png in Resources */,
-				DB1DB6DA173E524000244292 /* 78_59 button_info@2x.png in Resources */,
-				DB1DB6DB173E524000244292 /* 80_67 button_settings_navbar@2x.png in Resources */,
-				DB1DB6DC173E524000244292 /* 80_67 icon_home_place@2x.png in Resources */,
-				DB1DB6DD173E524000244292 /* 80_67 icon_inform_bar@2x.png in Resources */,
-				DB1DB6DE173E524000244292 /* 80_67 pin_navBar@2x.png in Resources */,
-				DB1DB6DF173E524000244292 /* actb_white.png in Resources */,
-				DB1DB6E0173E524000244292 /* backbutton@2x.png in Resources */,
-				DB1DB6E1173E524000244292 /* background_with_watermark_check-568h@2x.png in Resources */,
-				DB1DB6E2173E524000244292 /* Bg_gradient.png in Resources */,
-				DB1DB6E3173E524000244292 /* bottom_button@2x.png in Resources */,
-				DB1DB6E4173E524000244292 /* bottom_button_pressed@2x.png in Resources */,
-				DB1DB6E5173E524000244292 /* button_cancel_check@2x.png in Resources */,
-				DB1DB6E6173E524000244292 /* button_cancel_check_tapped@2x.png in Resources */,
-				DB1DB6E7173E524000244292 /* button_pref@2x.png in Resources */,
-				DB1DB6E8173E524000244292 /* check_background_1-568h@2x.png in Resources */,
-				DB1DB6E9173E524000244292 /* check_background_10-568h@2x.png in Resources */,
-				DB1DB6EA173E524000244292 /* check_background_11-568h@2x.png in Resources */,
-				DB1DB6EB173E524000244292 /* check_background_2-568h@2x.png in Resources */,
-				DB1DB6EC173E524000244292 /* check_background_3-568h@2x.png in Resources */,
-				DB1DB6ED173E524000244292 /* check_background_4-568h@2x.png in Resources */,
-				DB1DB6EE173E524000244292 /* check_background_5-568h@2x.png in Resources */,
-				DB1DB6EF173E524000244292 /* check_background_6-568h@2x.png in Resources */,
-				DB1DB6F0173E524000244292 /* check_background_7-568h@2x.png in Resources */,
-				DB1DB6F1173E524000244292 /* check_background_8-568h@2x.png in Resources */,
-				DB1DB6F2173E524000244292 /* check_background_9-568h@2x.png in Resources */,
-				DB1DB6F3173E524000244292 /* done_button@2x.png in Resources */,
-				DB1DB6F4173E524000244292 /* Fist_animated_1@2x.png in Resources */,
-				DB1DB6F5173E524000244292 /* Fist_animated_2@2x.png in Resources */,
-				DB1DB6F6173E524000244292 /* Fist_animated_3@2x.png in Resources */,
-				DB1DB6F7173E524000244292 /* Fist_animated_4@2x.png in Resources */,
-				DB1DB6F8173E524000244292 /* Fist_animated_5@2x.png in Resources */,
-				DB1DB6F9173E524000244292 /* Fist_animated_6@2x.png in Resources */,
-				DB1DB6FA173E524000244292 /* Fist_animated_7@2x.png in Resources */,
-				DB1DB6FB173E524000244292 /* gradient_check@2x.png in Resources */,
-				DB1DB6FC173E524000244292 /* ico_earth.png in Resources */,
-				DB1DB6FD173E524000244292 /* ico_point.png in Resources */,
-				DB1DB6FE173E524000244292 /* ico_tel.png in Resources */,
-				DB1DB6FF173E524000244292 /* Icon in Resources */,
-				DB1DB700173E524000244292 /* info@2x.png in Resources */,
-				DB1DB701173E524000244292 /* knuckle_1@2x.png in Resources */,
-				DB1DB702173E524000244292 /* navigationbar@2x.png in Resources */,
-				DB1DB703173E524000244292 /* overlay-568h@2x.png in Resources */,
-				DB1DB704173E524000244292 /* overlay@2x.png in Resources */,
-				DB1DB705173E524000244292 /* Overlay_Long@2x.png in Resources */,
-				DB1DB706173E524000244292 /* pin@2x.png in Resources */,
-				DB1DB707173E524000244292 /* search_butt@2x.png in Resources */,
-				DB1DB708173E524000244292 /* search_butt_navBar@2x.png in Resources */,
-				DB1DB709173E524000244292 /* segmentbar_background_selected@2x.png in Resources */,
-				DB1DB70A173E524000244292 /* segmentbar_background_unselected@2x.png in Resources */,
-				DB1DB70B173E524000244292 /* segmentbar_middle_left_selected@2x.png in Resources */,
-				DB1DB70C173E524000244292 /* segmentbar_middle_right_selected@2x.png in Resources */,
-				DB1DB70D173E524000244292 /* segmentbar_middle_selected@2x.png in Resources */,
-				DB1DB70E173E524000244292 /* segmentbar_middle_unselected@2x.png in Resources */,
-				DB1DB70F173E524000244292 /* separator_line.png in Resources */,
-				DB1DB710173E524000244292 /* shadow_catalog_label.png in Resources */,
-				DB1DB711173E524000244292 /* startscreen_logo@2x.png in Resources */,
-				DB1DB712173E524000244292 /* tabicon_AllGuides@2x.png in Resources */,
-				DB1DB713173E524000244292 /* tabicon_Downloaded@2x.png in Resources */,
-				DB1DB714173E524000244292 /* tabicon_Featured@2x.png in Resources */,
-				DB1DB715173E524000244292 /* tabicon_SpecialSeries@2x.png in Resources */,
-				DB1DB716173E524000244292 /* table_grad.png in Resources */,
-				DB1DB717173E524000244292 /* table_grad_o_1.png in Resources */,
+				9122D27B173E40660096BB24 /* Moscow in Resources */,
+				9122D27C173E40660096BB24 /* Vienna in Resources */,
+				9122D27D173E40660096BB24 /* Work PNG in Resources */,
+				9122D2A8173E407D0096BB24 /* zbar-back.png in Resources */,
+				9122D2A9173E407D0096BB24 /* zbar-help.html in Resources */,
+				9122D2AA173E407D0096BB24 /* zbar-helpicons.png in Resources */,
+				9122D2AB173E407D0096BB24 /* zbar-samples.png in Resources */,
+				9122D2AD173E422C0096BB24 /* LikeLik icon 114x114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1765,8 +1722,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../../Documents\"",
-					"\"$(SRCROOT)/../../Google Диск/LikeLik/Likelik Xcode\"",
+					"\"/Volumes/Archive/Google Диск/LikeLik/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LikeLik/LikeLik-Prefix.pch";
@@ -1776,7 +1732,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
-					"\"$(SRCROOT)/../../Google Диск/LikeLik/Likelik Xcode/ZBarSDK\"",
+					"\"/Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/ZBarSDK\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
@@ -1793,8 +1749,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../../Documents\"",
-					"\"$(SRCROOT)/../../Google Диск/LikeLik/Likelik Xcode\"",
+					"\"/Volumes/Archive/Google Диск/LikeLik/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LikeLik/LikeLik-Prefix.pch";
@@ -1804,7 +1759,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
-					"\"$(SRCROOT)/../../Google Диск/LikeLik/Likelik Xcode/ZBarSDK\"",
+					"\"/Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/ZBarSDK\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
