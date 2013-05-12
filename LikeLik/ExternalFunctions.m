@@ -137,7 +137,7 @@ static CLLocation *Me;
     }
     
     [locationManager stopUpdatingLocation];
-    [locationManager nil];
+    locationManager = nil;
     
     return Me;
 }
