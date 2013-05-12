@@ -172,6 +172,7 @@ static CLLocation *Me;
         [placeDict setObject:currentPlace forKey:@"Location"];
         [placeDict setObject:category forKey:@"Category"];
         [placeDict setObject:city forKey:@"City"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"favourite"] forKey:@"Favorite"];
         
         [returnArray addObject:placeDict];
     }
@@ -416,7 +417,7 @@ static CLLocation *Me;
 //
 //  добавить в favourites
 + (BOOL) addToFavouritesPlace: (NSString *) placeName InCategory : (NSString *) category InCity : (NSString *) city{
-    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogues1.plist"];
+    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     NSMutableArray *newCatalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *catalogues = [[NSMutableArray alloc]initWithArray:[defaults objectForKey:catalogue]];
@@ -448,58 +449,13 @@ static CLLocation *Me;
 //  вывести список мест который в favourites
 + (NSArray *) getAllFavouritePlacesInCity : (NSString *) city{
     NSMutableArray *arrayOfFavouritePlaces = [[NSMutableArray alloc] init];
-    NSMutableArray *arrayofPlacesInCity = [[NSMutableArray alloc] init];
-    NSDictionary *cityPlaces = [[self cityCatalogueForCity:city] objectForKey:@"places"];
-    NSMutableDictionary *placeDictionary;
-    NSString *nameLanguage;
-    NSString *language = [self getLanguage];
-    double lat,lon;
+    NSArray *arrayofPlacesInCity;
     
-    if ([language isEqualToString:@"ru"]) {
-        nameLanguage = @"Name_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        nameLanguage = @"Name_DE";
-    }
-    else {
-        nameLanguage = @"Name_EN";
-    }
-    
-    for (int i = 0; i < [[cityPlaces objectForKey:shopping] count]; i++) {
-        placeDictionary = [[NSMutableDictionary alloc] init];
-        [placeDictionary setObject:[[cityPlaces objectForKey:shopping] objectAtIndex:i] forKey:@"placeName"];
-        [placeDictionary setObject:shopping forKey:@"category"];
-        [arrayofPlacesInCity addObject:placeDictionary];
-    }
-    for (int i = 0; i < [[cityPlaces objectForKey:entertainment] count]; i++) {
-        placeDictionary = [[NSMutableDictionary alloc] init];
-        [placeDictionary setObject:[[cityPlaces objectForKey:entertainment] objectAtIndex:i] forKey:@"placeName"];
-        [placeDictionary setObject:entertainment forKey:@"category"];
-        [arrayofPlacesInCity addObject:placeDictionary];
-    }
-    for (int i = 0; i < [[cityPlaces objectForKey:sport] count]; i++) {
-        placeDictionary = [[NSMutableDictionary alloc] init];
-        [placeDictionary setObject:[[cityPlaces objectForKey:sport] objectAtIndex:i] forKey:@"placeName"];
-        [placeDictionary setObject:sport forKey:@"category"];
-        [arrayofPlacesInCity addObject:placeDictionary];
-    }
-    for (int i = 0; i < [[cityPlaces objectForKey:restaurants] count]; i++) {
-        placeDictionary = [[NSMutableDictionary alloc] init];
-        [placeDictionary setObject:[[cityPlaces objectForKey:restaurants] objectAtIndex:i] forKey:@"placeName"];
-        [placeDictionary setObject:restaurants forKey:@"category"];
-        [arrayofPlacesInCity addObject:placeDictionary];
-    }
+    arrayofPlacesInCity = [self getAllPlacesInCity:city];
     
     for (int i = 0; i < [arrayofPlacesInCity count]; i++) {
-        if ([[[[arrayofPlacesInCity objectAtIndex:i] objectForKey:@"placeName"] objectForKey:@"favourite"] isEqualToString:@"1"]) {
-            placeDictionary = [[NSMutableDictionary alloc] init];
-            [placeDictionary setObject:[[[arrayofPlacesInCity objectAtIndex:i] objectForKey:@"placeName"] objectForKey:nameLanguage] forKey:@"placeName"];
-            [placeDictionary setObject:[[arrayofPlacesInCity objectAtIndex:i] objectForKey:@"category"] forKey:@"category"];
-            lat = [[[[arrayofPlacesInCity objectAtIndex:i] objectForKey:@"placeName"] objectForKey:@"Lat"] doubleValue];
-            lon = [[[[arrayofPlacesInCity objectAtIndex:i] objectForKey:@"placeName"] objectForKey:@"Lon"] doubleValue];
-            CLLocation *currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-            [placeDictionary setObject:currentPlace forKey:@"Coordinates"];
-            [arrayOfFavouritePlaces addObject:placeDictionary];
+        if ([[[arrayofPlacesInCity objectAtIndex:i] objectForKey:@"Favorite"] isEqualToString:@"1"]) {
+            [arrayOfFavouritePlaces addObject:[arrayofPlacesInCity objectAtIndex:i]];
         }
     }
     
@@ -507,7 +463,7 @@ static CLLocation *Me;
 }
 //  удаление места из favorites
 + (BOOL) removeFromFavoritesPlace:(NSString *)placeName InCategory:(NSString *)category InCity:(NSString *)city{
-    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogues1.plist"];
+    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     NSMutableArray *newCatalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *catalogues = [[NSMutableArray alloc] initWithArray:[defaults objectForKey:catalogue]];

@@ -212,7 +212,10 @@ CGFloat firstY=0;
     
     [self.scroll addGestureRecognizer:singleTap];
     NSArray *photos = [ExternalFunctions getImagesOfPlaceInCity:self.PlaceCityName InCategory:self.PlaceCategory WithPlaceName:self.PlaceName];
-    
+    NSLog(@"lala %@",photos);
+    NSLog(@"%@",self.PlaceCityName);
+    NSLog(@"%@",self.PlaceCategory);
+    NSLog(@"%@",self.PlaceName);
     
     if ([AppDelegate isiPhone5])
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
@@ -393,11 +396,11 @@ CGFloat firstY=0;
     
     [self.Share setTitle:@"" forState:UIControlStateNormal];
     
-    NSDictionary *dict = [ExternalFunctions placeDictionaryInCity:self.PlaceCityName InCategory:self.PlaceCategory withName:self.PlaceName];
-    _TextPlace.text = [dict objectForKey:@"about"];
-    _Teltext.text = [dict objectForKey:@"Telephone"];
-    _webtext.text = [dict objectForKey:@"web"];
-    _Placeadress.text = [dict objectForKey:@"address"];
+    _TextPlace.text = self.PlaceAbout;
+    _Teltext.text = self.PlaceTelephone;
+    _webtext.text = self.PlaceWeb;
+    //_Placeadress.text = self.PlaceAddress;
+    NSLog(@"lalal %@",_Placeadress.text);
    
     
     [_ScrollView setBackgroundColor:self.Color];
@@ -421,7 +424,7 @@ CGFloat firstY=0;
     
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
 
-    label.text = [ExternalFunctions placeInfoTextInCity:self.PlaceCityName InCategory:self.PlaceCategory WithName:self.PlaceName];
+    label.text = self.PlaceAbout;
     label.font = [AppDelegate OpenSansRegular:26];
     label.textColor = [UIColor whiteColor];
     //label.numberOfLines = 10;
@@ -449,8 +452,7 @@ CGFloat firstY=0;
 
     UIButton *address = [UIButton buttonWithType:UIButtonTypeCustom];
     [address setFrame:CGRectMake(35.0, label.frame.origin.y+label.frame.size.height, 250.0, 32.0)];
-    [address setTitle:[ExternalFunctions placeAddresTextInCity:self.PlaceCityName InCategory:self.PlaceCategory WithName:self.PlaceName] forState:UIControlStateNormal];
-    [address setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [address setTitle:self.PlaceAddress forState:UIControlStateNormal];    [address setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [address setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
     [address sizeToFit];
     CGRect frame = address.frame;
@@ -475,7 +477,7 @@ CGFloat firstY=0;
     
     UIButton *tel = [UIButton buttonWithType:UIButtonTypeCustom];
     [tel setFrame:CGRectMake(35.0,address.frame.origin.y+address.frame.size.height, 250.0, 32.0)];
-    [tel setTitle:[ExternalFunctions placeTelephoneTextInCity:self.PlaceCityName InCategory:self.PlaceCategory WithName:self.PlaceName] forState:UIControlStateNormal];
+    [tel setTitle:self.PlaceTelephone forState:UIControlStateNormal];
     [tel setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [tel setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
     [tel sizeToFit];
@@ -514,7 +516,7 @@ CGFloat firstY=0;
 
     UIButton *web = [UIButton buttonWithType:UIButtonTypeCustom];
     [web setFrame:CGRectMake(35.0,tel.frame.origin.y+tel.frame.size.height, 250.0, 32.0)];
-    [web setTitle: [ExternalFunctions placeWebSiteTextInCity:self.PlaceCityName InCategory:self.PlaceCategory WithName:self.PlaceName] forState:UIControlStateNormal];
+    [web setTitle: self.PlaceWeb forState:UIControlStateNormal];
     [web setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [web setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
     [web sizeToFit];
@@ -605,7 +607,7 @@ CGFloat firstY=0;
     [self.placeViewMap setHidden:YES];
     [self.placeViewMap addSubview:self.MapPlace];
     
-    CLLocation *placecoord = [ExternalFunctions getPlaceCoordinatesInCity:self.PlaceCityName InCategory:self.PlaceCategory WithName:self.PlaceName];
+    CLLocation *placecoord = self.PlaceLocation;
     //    nslog(@"%f %f",placecoord.coordinate.latitude,placecoord.coordinate.longitude);
     self.MapPlace.centerCoordinate =  placecoord.coordinate;
     CLLocationCoordinate2D coord = placecoord.coordinate;
@@ -1063,7 +1065,7 @@ CGFloat firstY=0;
         }
         else
         {
-            [_vkontakte postMessageToWall:[ExternalFunctions placeInfoTextInCity:self.PlaceCityName InCategory:self.PlaceCategory WithName:self.PlaceName]];
+            [_vkontakte postMessageToWall:self.PlaceAbout];
         }
         
         
@@ -1082,7 +1084,7 @@ CGFloat firstY=0;
         if (controller)
             [self presentViewController:controller animated:YES completion:^{}];//presentModalViewController: controller animated: YES];
         else {
-            [_engine sendUpdate: [ExternalFunctions placeInfoTextInCity:self.PlaceCityName InCategory:self.PlaceCategory WithName:self.PlaceName]];
+            [_engine sendUpdate: self.PlaceAbout];
         }
     }
     
@@ -1197,7 +1199,7 @@ CGFloat firstY=0;
 - (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte
 {
 //#warning охуенно было бы сделать ссылку сюда
-           [_vkontakte postMessageToWall:[ExternalFunctions placeInfoTextInCity:self.PlaceCityName InCategory:self.PlaceCategory WithName:self.PlaceName]];
+           [_vkontakte postMessageToWall:self.PlaceAbout];
     [self dismissViewControllerAnimated:YES completion:^{}];//
 }
 
@@ -1253,7 +1255,7 @@ CGFloat firstY=0;
 	// NSLog(@"Authenicated for %@", username);
     
 //#warning текст twitter
-   [_engine sendUpdate: [ExternalFunctions placeInfoTextInCity:self.PlaceCityName InCategory:self.PlaceCategory WithName:self.PlaceName]];
+   [_engine sendUpdate: self.PlaceAbout];
     
 }
 

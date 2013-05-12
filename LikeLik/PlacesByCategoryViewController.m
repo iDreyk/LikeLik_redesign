@@ -15,6 +15,9 @@
 
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
+static NSDictionary *Place;
+static NSDictionary *Place1;
+
 @interface PlacesByCategoryViewController ()
 
 @end
@@ -33,7 +36,7 @@ static NSString *PlaceCategory = @"";
 {
     [super viewDidLoad];
     NSLog(@"123");
-    CategoryPlaces = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName];
+    CategoryPlaces = [ExternalFunctions getArrayOfPlaceDictionariesInCategory:self.Category InCity:self.CityName];
     NSLog(@"%@",CategoryPlaces);
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
@@ -74,11 +77,12 @@ static NSString *PlaceCategory = @"";
     
     RMAnnotation *marker1;
     for (int i=0; i<[CategoryPlaces count]; i++) {
-        CLLocation *tmp = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Coordinates"];
+        CLLocation *tmp = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Location"];
         marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
         marker1.annotationType = @"marker";
-        marker1.title = [[CategoryPlaces objectAtIndex:i] objectForKey:@"placeName"];
-        marker1.subtitle = [[CategoryPlaces objectAtIndex:i] objectForKey:@"category"];
+        marker1.title = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Name"];
+        marker1.subtitle = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Category"];
+        marker1.userInfo = [CategoryPlaces objectAtIndex:i];
         [self.Map addAnnotation:marker1];
     }
     
@@ -155,6 +159,7 @@ static NSString *PlaceCategory = @"";
     
     PlaceName = annotation.title;
     PlaceCategory = annotation.subtitle;
+    Place = annotation.userInfo;
     [self performSegueWithIdentifier:@"MapSegue" sender:self];
 }
 
@@ -230,10 +235,10 @@ static NSString *PlaceCategory = @"";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[CategoryPlaces objectAtIndex:row] objectForKey:@"placeName"] AndColor:[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
+    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
     
-    [cell addSubview:[InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"category"]]];
-    [cell addSubview:[InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"category"]]];
+    [cell addSubview:[InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]]];
+    [cell addSubview:[InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]]];
     
     cell.backgroundView = [InterfaceFunctions CellBG];
     cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
@@ -255,21 +260,32 @@ static NSString *PlaceCategory = @"";
     if ([[segue identifier] isEqualToString:@"MapSegue"]) {
         PlaceViewController *PlaceView = [segue destinationViewController];
         PlaceView.PlaceName = PlaceName;
-        PlaceView.PlaceCategory = PlaceCategory;
-        PlaceView.Color = [InterfaceFunctions colorTextPlaceBackground:PlaceCategory];
+        PlaceView.PlaceCategory = [Place objectForKey:@"Category"];
+        PlaceView.PlaceCityName = [Place objectForKey:@"City"];
+        PlaceView.PlaceAddress = [Place objectForKey:@"Address"];
+        PlaceView.PlaceAbout = [Place objectForKey:@"About"];
+        PlaceView.PlaceTelephone = [Place objectForKey:@"Telephone"];
+        PlaceView.PlaceWeb = [Place objectForKey:@"Web"];
+        PlaceView.PlaceLocation = [Place objectForKey:@"Location"];
         PlaceView.PlaceCityName = self.CityName;
+        PlaceView.Color = [InterfaceFunctions colorTextCategory:PlaceCategory];
     }
     
     if ([[segue identifier] isEqualToString:@"CellSegue"]) {
         
         PlaceViewController *destination =[segue destinationViewController];
         NSIndexPath *indexPath = [self.PlacesTable indexPathForSelectedRow];
-        NSInteger section = [indexPath section];
         NSInteger row = [indexPath row];
-         
-        destination.PlaceName = [[[CategoryPlaces objectAtIndex:section] objectForKey:@"Places"] objectAtIndex:row];
+        Place1 = [CategoryPlaces objectAtIndex:row];
+        
+        destination.PlaceName = [Place1 objectForKey:@"Name"];
         destination.PlaceCityName = self.CityName;
-        destination.PlaceCategory = self.Category;
+        destination.PlaceCategory = [Place1 objectForKey:@"Category"];
+        destination.PlaceAddress = [Place1 objectForKey:@"Address"];
+        destination.PlaceAbout = [Place1 objectForKey:@"About"];
+        destination.PlaceWeb = [Place1 objectForKey:@"Web"];
+        destination.PlaceTelephone = [Place1 objectForKey:@"Telephone"];
+        destination.PlaceLocation = [Place1 objectForKey:@"Location"];
         destination.Color = [InterfaceFunctions colorTextPlaceBackground:self.Category];
     }
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {

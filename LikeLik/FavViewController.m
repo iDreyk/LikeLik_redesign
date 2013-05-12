@@ -15,6 +15,7 @@
 #import <MapBox/MapBox.h>
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
+static NSDictionary *Place;
 @interface FavViewController ()
 
 @end
@@ -76,11 +77,12 @@ static NSString *PlaceCategory = @"";
     
     RMAnnotation *marker1;
     for (int i=0; i<[FavouritePlaces count]; i++) {
-        CLLocation *tmp = [[FavouritePlaces objectAtIndex:i] objectForKey:@"Coordinates"];
+        CLLocation *tmp = [[FavouritePlaces objectAtIndex:i] objectForKey:@"Location"];
         marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
         marker1.annotationType = @"marker";
-        marker1.title = [[FavouritePlaces objectAtIndex:i] objectForKey:@"placeName"];
-        marker1.subtitle = [[FavouritePlaces objectAtIndex:i] objectForKey:@"category"];
+        marker1.title = [[FavouritePlaces objectAtIndex:i] objectForKey:@"Name"];
+        marker1.subtitle = [[FavouritePlaces objectAtIndex:i] objectForKey:@"Category"];
+        marker1.userInfo = [FavouritePlaces objectAtIndex:i];
         [self.Map addAnnotation:marker1];
     }
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
@@ -219,10 +221,10 @@ static NSString *PlaceCategory = @"";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[FavouritePlaces objectAtIndex:row] objectForKey:@"placeName"] AndColor:[InterfaceFunctions colorTextCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
+    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
    
-    [cell addSubview:[InterfaceFunctions goLabelCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"category"]]];
-    [cell addSubview:[InterfaceFunctions actbwithCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"category"]]];
+    [cell addSubview:[InterfaceFunctions goLabelCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Category"]]];
+    [cell addSubview:[InterfaceFunctions actbwithCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Category"]]];
     
     cell.backgroundView = [InterfaceFunctions CellBG];
     cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
@@ -242,8 +244,8 @@ static NSString *PlaceCategory = @"";
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath{
     //    nslog(@"Hello!");
-    NSString *Place = [[FavouritePlaces objectAtIndex:[indexPath row]] objectForKey:@"placeName"];
-    NSString *Category = [[FavouritePlaces objectAtIndex:[indexPath row]] objectForKey:@"category"];
+    NSString *Place = [[FavouritePlaces objectAtIndex:[indexPath row]] objectForKey:@"Name"];
+    NSString *Category = [[FavouritePlaces objectAtIndex:[indexPath row]] objectForKey:@"Category"];
     [ExternalFunctions removeFromFavoritesPlace:Place InCategory:Category InCity:self.CityName];
     FavouritePlaces = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName];
     [tableView reloadData];
@@ -257,12 +259,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"PlaceSegue"]) {
         PlaceViewController *destinaton  = [segue destinationViewController];
-        destinaton.PlaceCityName = self.CityName;
         NSIndexPath *indexpath = [self.FavTable indexPathForSelectedRow];
-        destinaton.PlaceName = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"placeName"];
-        destinaton.PlaceCategory = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"category"];
-        //   destinaton.PlaceCategory = [ExternalFunctions getAllFavouritePlacesInCity:self.Pla]
-        destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"category"]];
+        destinaton.PlaceCityName = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"City"];
+        destinaton.PlaceName = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Name"];
+        destinaton.PlaceCategory = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Category"];
+        destinaton.PlaceAbout = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"About"];
+        destinaton.PlaceWeb = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Web"];
+        destinaton.PlaceTelephone = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Telephone"];
+        destinaton.PlaceLocation = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Location"];
+        destinaton.PlaceAddress = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Address"];
+        destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Category"]];
     }
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         SearchViewController *destinaton  = [segue destinationViewController];
