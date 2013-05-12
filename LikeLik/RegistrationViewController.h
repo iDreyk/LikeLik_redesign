@@ -35,11 +35,11 @@
 @property (nonatomic,retain)MBProgressHUD *HUDerror;
 @property (nonatomic, retain)NSString *twitterName;
 @property (nonatomic,retain)id FacebookUserInfo;
+@property (nonatomic, retain) NSDictionary *VkontakteUserInfo;
 -(IBAction)switchtoPicker:(id)sender;
 
 
 -(NSString *)HUDStringLocalized:(id)JSON;
 -(NSDictionary * )POSTRequest:(NSString *)Way;
 -(void)Send:(NSString *)RegistrationWay;
--(void)press_Done;
 @end
