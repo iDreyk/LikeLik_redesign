@@ -20,7 +20,6 @@ static NSString *PlaceCategory = @"";
 @end
 
 @implementation PlacesByCategoryViewController
-@synthesize Places;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,13 +32,16 @@ static NSString *PlaceCategory = @"";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    Places = [NSArray arrayWithArray:[ExternalFunctions getPlacesOfCategory:self.District inCity:self.CityName listOrMap:@"list"]];//getPlacesOfCategory:self.District inCity:self.CityName]];
+    NSLog(@"123");
+    CategoryPlaces = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName];
+    NSLog(@"%@",CategoryPlaces);
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"Map", nil) forSegmentAtIndex:1];
     
+    #warning Андрей, сделай плз функцию
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
         url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Moscow/2" ofType:@"mbtiles"]];
@@ -68,55 +70,34 @@ static NSString *PlaceCategory = @"";
     CLLocation *coord =[ExternalFunctions getCenterCoordinatesOfCity:self.CityName];
     self.Map.centerCoordinate = coord.coordinate;
     [self.Map setAdjustTilesForRetinaDisplay:YES];
-    self.Map.showsUserLocation = YES;
+    [self.ViewForMap addSubview:self.Map];
     
-    
-    CLLocation *tmp;
-    CLLocationCoordinate2D coord1;
-    // Annotations
- //   NSLog(@"Ку-ку");
-     NSString *Title;
-     NSArray *array = [ExternalFunctions getPlacesOfCategory:self.District inCity:self.CityName listOrMap:@"map"];
-     NSArray *arraytitle = [ExternalFunctions getPlacesOfCategory:self.District inCity:self.CityName listOrMap:@"list"];
-     //    nslog(@"array = %@", array);
-     ////    nslog(@"arraytitle = %@", arraytitle);
-     for (int i = 0; i < [array count]; i++) {
-         //название района
-         //NSString *district = [[array objectAtIndex:i] objectForKey:@"District"];
-         NSArray *coordinatesArrayInOneDistrict = [[array objectAtIndex:i] objectForKey:@"Coordinates"];
-         NSInteger numberofpins = [coordinatesArrayInOneDistrict count];
-        for (int j = 0; j < numberofpins; j++) {
-             tmp = [coordinatesArrayInOneDistrict objectAtIndex:j];
-             coord1 = tmp.coordinate;
-             Title = @"Pin";
-             RMAnnotation *marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:coord1 andTitle:@"Pin"];
-             marker1.annotationType = @"marker";
-            marker1.title = [[[arraytitle objectAtIndex:i] objectForKey:@"Places"] objectAtIndex:j];
-             marker1.userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blueColor],@"foregroundColor", nil];
-             marker1.subtitle = self.District;
-             [self.Map addAnnotation:marker1];
-        }
+    RMAnnotation *marker1;
+    for (int i=0; i<[CategoryPlaces count]; i++) {
+        CLLocation *tmp = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Coordinates"];
+        marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
+        marker1.annotationType = @"marker";
+        marker1.title = [[CategoryPlaces objectAtIndex:i] objectForKey:@"placeName"];
+        marker1.subtitle = [[CategoryPlaces objectAtIndex:i] objectForKey:@"category"];
+        [self.Map addAnnotation:marker1];
     }
     
     
     
     [self.ViewForMap addSubview:self.Map];
-    _dataPlaces = @[@"",@"",@""];
-    
     self.CityImage.hidden = NO;
-    self.DistrictLabel.hidden = NO;
+    self.CategoryLabel.hidden = NO;
     self.PlacesTable.hidden =NO;
     self.GradientnderLabel.hidden = NO;
     self.ViewForMap.hidden = YES;
     self.locationButton.hidden = YES;
     
-    self.DistrictLabel.text = AMLocalizedString(self.District, nil);
-    self.DistrictLabel.textColor = [UIColor whiteColor];
-    self.DistrictLabel.font = [AppDelegate OpenSansSemiBold:60];//BoldwithSize:60];
+    self.CategoryLabel.text = AMLocalizedString(self.Category, nil);
+    self.CategoryLabel.textColor = [UIColor whiteColor];
+    self.CategoryLabel.font = [AppDelegate OpenSansSemiBold:60];
     
     
     self.CityImage.image = [UIImage imageNamed:self.Image];
-    //[self.view addSubview:[InterfaceFunctions backgroundView]];
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -145,12 +126,11 @@ static NSString *PlaceCategory = @"";
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
         NSLog(@"Взяли центер города");
         self.locationButton.enabled = NO;
-//        [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+
     }
     else{
         self.Map.centerCoordinate = self.Map.userLocation.coordinate;
         self.locationButton.enabled = YES;
-        // NSLog(@"Взяли локацию пользователя");
     }
 }
 
@@ -161,8 +141,8 @@ static NSString *PlaceCategory = @"";
         RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
                                                           tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
                                                             sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
-        // NSLog(@"Hello %@",self.District);
-        [marker replaceUIImage:[InterfaceFunctions MapPin:self.District].image];
+        // NSLog(@"Hello %@",self.Сategory);
+        [marker replaceUIImage:[InterfaceFunctions MapPin:self.Category].image];
         marker.canShowCallout = YES;
         marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         return marker;
@@ -188,7 +168,7 @@ static NSString *PlaceCategory = @"";
 
 -(IBAction) segmentedControlIndexChanged{
     self.CityImage.hidden = !self.CityImage.hidden;
-    self.DistrictLabel.hidden = !self.DistrictLabel.hidden;
+    self.CategoryLabel.hidden = !self.CategoryLabel.hidden;
     self.PlacesTable.hidden = !self.PlacesTable.hidden;
     self.ViewForMap.hidden = !self.ViewForMap.hidden;
     self.locationButton.hidden = !self.locationButton.hidden;
@@ -234,45 +214,32 @@ static NSString *PlaceCategory = @"";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [Places count];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[Places objectAtIndex:section] objectForKey:@"Places"] count];
+    return [CategoryPlaces count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = nil;//@"Cell";
+    NSInteger row = [indexPath row];
+    static NSString *CellIdentifier = nil;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    NSInteger section = [indexPath section];
-    NSInteger row = [indexPath row];
-
-    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[[Places objectAtIndex:section] objectForKey:@"Places"] objectAtIndex:row] AndColor:[InterfaceFunctions colorTextCategory:self.District] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
     
-    [cell addSubview:[InterfaceFunctions goLabelCategory:self.District]];
-    [cell addSubview:[InterfaceFunctions actbwithCategory:self.District]];
+    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[CategoryPlaces objectAtIndex:row] objectForKey:@"placeName"] AndColor:[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
     
-    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
+    [cell addSubview:[InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"category"]]];
+    [cell addSubview:[InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"category"]]];
+    
     cell.backgroundView = [InterfaceFunctions CellBG];
-    
+    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     return cell;
 }
 
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-   UIView *header =  [InterfaceFunctions HeaderwithDistrict: [[Places objectAtIndex:section] objectForKey:@"District"]];
-	return header;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	return 0;
-    //return 30;
-}
 
 #pragma mark - Table view delegate
 
@@ -300,10 +267,10 @@ static NSString *PlaceCategory = @"";
         NSInteger section = [indexPath section];
         NSInteger row = [indexPath row];
          
-        destination.PlaceName = [[[Places objectAtIndex:section] objectForKey:@"Places"] objectAtIndex:row];
+        destination.PlaceName = [[[CategoryPlaces objectAtIndex:section] objectForKey:@"Places"] objectAtIndex:row];
         destination.PlaceCityName = self.CityName;
-        destination.PlaceCategory = self.District;
-        destination.Color = [InterfaceFunctions colorTextPlaceBackground:self.District];
+        destination.PlaceCategory = self.Category;
+        destination.Color = [InterfaceFunctions colorTextPlaceBackground:self.Category];
     }
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         SearchViewController *destinaton  = [segue destinationViewController];
@@ -323,7 +290,7 @@ static NSString *PlaceCategory = @"";
     
     if (yOffset > -threshold && yOffset < 0) {
         self.CityImage.frame = CGRectMake(0,-yOffset,320.0,self.CityImage.frame.size.height);
-        self.DistrictLabel.frame = CGRectMake(self.DistrictLabel.frame.origin.x,-yOffset,self.DistrictLabel.frame.size.width,self.DistrictLabel.frame.size.height);
+        self.CategoryLabel.frame = CGRectMake(self.CategoryLabel.frame.origin.x,-yOffset,self.CategoryLabel.frame.size.width,self.CategoryLabel.frame.size.height);
         self.GradientnderLabel.frame = CGRectMake(self.GradientnderLabel.frame.origin.x,-yOffset,self.GradientnderLabel.frame.size.width,self.GradientnderLabel.frame.size.height);
 //        
         // NSLog(@"1");
@@ -332,7 +299,7 @@ static NSString *PlaceCategory = @"";
         // NSLog(@"2");
         self.CityImage.frame = CGRectMake(0,-44.0,320.0,152.0-yOffset + floorf(threshold / 2.0));
         
-        self.DistrictLabel.frame = CGRectMake(self.DistrictLabel.frame.origin.x,4-(yOffset),self.DistrictLabel.frame.size.width,self.DistrictLabel.frame.size.height);
+        self.CategoryLabel.frame = CGRectMake(self.CategoryLabel.frame.origin.x,4-(yOffset),self.CategoryLabel.frame.size.width,self.CategoryLabel.frame.size.height);
 //        
         self.GradientnderLabel.frame = CGRectMake(self.GradientnderLabel.frame.origin.x,-9-yOffset,self.GradientnderLabel.frame.size.width,self.GradientnderLabel.frame.size.height);
     } else {
@@ -340,7 +307,7 @@ static NSString *PlaceCategory = @"";
         self.CityImage.frame = CGRectMake(0, -44.0, 320, self.CityImage.frame.size.height);
         
         
-        self.DistrictLabel.frame = CGRectMake(self.DistrictLabel.frame.origin.x,4,self.DistrictLabel.frame.size.width,self.DistrictLabel.frame.size.height);
+        self.CategoryLabel.frame = CGRectMake(self.CategoryLabel.frame.origin.x,4,self.CategoryLabel.frame.size.width,self.CategoryLabel.frame.size.height);
 //        
 //        
         self.GradientnderLabel.frame = CGRectMake(self.GradientnderLabel.frame.origin.x,-9,self.GradientnderLabel.frame.size.width,self.GradientnderLabel.frame.size.height);

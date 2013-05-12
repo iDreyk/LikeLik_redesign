@@ -273,7 +273,6 @@
     return label;
 }
 
-
 #pragma mark UIImageView
 +(UIImageView *)actbwithCategory:(NSString *)Category{
     UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(293,11, 22, 23)];
@@ -441,7 +440,6 @@
     return imageview;
 }
 
-
 #pragma mark UIView
 +(UIView *)headerwithCategory:(NSString *)Category{
     
@@ -509,7 +507,6 @@
     // [backButton setImage:[UIImage imageNamed:@"80_67 icon_home_place@"]];
     return backButton;
 }
-
 +(UIBarButtonItem *)back_button_house_withbackground{
     UIImage *image = [UIImage imageNamed:@"60_61 home"];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleBordered target:self action:nil];
@@ -541,6 +538,5 @@
     NSString *name = [NSString stringWithFormat:@"check_background_%d-568h.png",flag];
     return [UIImage imageNamed:name];
 }
-
 
 @end

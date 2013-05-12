@@ -152,6 +152,9 @@ static BOOL infoViewIsOpen = NO;
         }
         
     }
+    
+
+    #warning Андрей, сделай плз функцию
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
         url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Moscow/2" ofType:@"mbtiles"]];
@@ -194,8 +197,9 @@ static BOOL infoViewIsOpen = NO;
     for (int i = 0; i<numberofpins; i++) {
         tmp = [coord objectAtIndex:i];
         coord1 = tmp.coordinate;
+#warning Сюда название достопремичательности
         Title = @"Название места";
-        RMAnnotation *marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPhoto coordinate:coord1 andTitle:@"Pin"];
+        RMAnnotation *marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPhoto coordinate:coord1 andTitle:Title];
         marker1.annotationType = @"marker";
         marker1.subtitle = [NSString stringWithFormat:@"%d",i];
         marker1.userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blueColor],@"foregroundColor", nil];
@@ -237,6 +241,7 @@ static BOOL infoViewIsOpen = NO;
     
     
     UILabel *Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
+#warning название достопремичательности
     Red_line.text =  @"Visual Tour";
     Red_line.font =[AppDelegate OpenSansSemiBold:26];
     Red_line.textColor = [UIColor whiteColor];
@@ -251,7 +256,7 @@ static BOOL infoViewIsOpen = NO;
     [Red_line sizeThatFits:size1];
 
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
-    
+#warning текст достопремичательности
     label.text = @"123213213";
     label.font = [AppDelegate OpenSansRegular:26];
     label.textColor = [UIColor whiteColor];

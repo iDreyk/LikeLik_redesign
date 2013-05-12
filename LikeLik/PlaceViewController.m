@@ -573,7 +573,7 @@ CGFloat firstY=0;
  
     
     
-    
+        #warning Андрей, сделай плз функцию
     NSURL *url;
     if ([self.PlaceCityName isEqualToString:@"Moscow"] || [self.PlaceCityName isEqualToString:@"Москва"] || [self.PlaceCityName isEqualToString:@"Moskau"]){
         url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Moscow/2" ofType:@"mbtiles"]];

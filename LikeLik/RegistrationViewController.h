@@ -18,7 +18,6 @@
         IBOutlet UIButton *_loginB;
     Vkontakte *_vkontakte;
     SA_OAuthTwitterEngine				*_engine;
-    //123
 }
 @property (retain,nonatomic) UITextField *Login;
 @property (retain,nonatomic) UITextField *Password;
@@ -29,5 +28,18 @@
 @property (weak, nonatomic) IBOutlet UISwitch *Switch;
 @property (weak, nonatomic) IBOutlet UIDatePicker *BirthDayPicker;
 @property (nonatomic,retain)NSString *Parent;
+@property (nonatomic,retain)MBProgressHUD *HUDemailcheck;
+@property (nonatomic,retain)MBProgressHUD *HUDpassword;
+@property (nonatomic,retain)MBProgressHUD *HUDdone;
+@property (nonatomic,retain)MBProgressHUD *HUDfade;
+@property (nonatomic,retain)MBProgressHUD *HUDerror;
+@property (nonatomic, retain)NSString *twitterName;
+@property (nonatomic,retain)id FacebookUserInfo;
 -(IBAction)switchtoPicker:(id)sender;
+
+
+-(NSString *)HUDStringLocalized:(id)JSON;
+-(NSDictionary * )POSTRequest:(NSString *)Way;
+-(void)Send:(NSString *)RegistrationWay;
+-(void)press_Done;
 @end

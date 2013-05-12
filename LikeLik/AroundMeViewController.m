@@ -34,11 +34,11 @@ static NSString *PlaceCategory = @"";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"Map", nil) forSegmentAtIndex:1];
+    
+    #warning Андрей, сделай плз функцию
     NSURL *url;
     if ([self.CityNameText isEqualToString:@"Moscow"] || [self.CityNameText isEqualToString:@"Москва"] || [self.CityNameText isEqualToString:@"Moskau"]){
         url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Moscow/2" ofType:@"mbtiles"]];
@@ -46,7 +46,6 @@ static NSString *PlaceCategory = @"";
     if ([self.CityNameText isEqualToString:@"Vienna"] || [self.CityNameText isEqualToString:@"Вена"] || [self.CityNameText isEqualToString:@"Wien"]){
         url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Vienna/vienna" ofType:@"mbtiles"]];
     }
-    
     
     RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
     self.Map = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
@@ -70,12 +69,12 @@ static NSString *PlaceCategory = @"";
     
     
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
-    self.TablePlaces.backgroundColor = [UIColor clearColor];
-    self.TablePlaces.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.PlacesTable.backgroundColor = [UIColor clearColor];
+    self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.CityImage.hidden = NO;
     self.CityName.hidden = NO;
-    self.TablePlaces.hidden =NO;
+    self.PlacesTable.hidden =NO;
     self.ViewforMap.hidden = YES;
     self.locationButton.hidden = YES;
     
@@ -108,54 +107,16 @@ static NSString *PlaceCategory = @"";
         [HUD show:YES];
         [HUD hide:YES afterDelay:2];
     }
-    else{
-    }
-    Rest = [ExternalFunctions getPlacesAroundMe:self.CityNameText myLocation:Me category:@"Restaurants & Cafes" listOrMap:@"list"];
-    Shopping = [ExternalFunctions getPlacesAroundMe:self.CityNameText myLocation:Me category:@"Shopping" listOrMap:@"list"];
-    Entertainment = [ExternalFunctions getPlacesAroundMe:self.CityNameText myLocation:Me category:@"Entertainment" listOrMap:@"list"];
-    Sport = [ExternalFunctions getPlacesAroundMe:self.CityNameText myLocation:Me category:@"Health & Beauty" listOrMap:@"list"];
     
-    
-    
-    NSArray  *RestMap = [ExternalFunctions getPlacesAroundMe:self.CityNameText myLocation:Me category:@"Restaurants & Cafes" listOrMap:@"map"];
-    NSArray  *ShoppingMap = [ExternalFunctions getPlacesAroundMe:self.CityNameText myLocation:Me category:@"Shopping" listOrMap:@"map"];
-    NSArray *EntertainmentMap = [ExternalFunctions getPlacesAroundMe:self.CityNameText myLocation:Me category:@"Entertainment" listOrMap:@"map"];
-    NSArray *SportMap = [ExternalFunctions getPlacesAroundMe:self.CityNameText myLocation:Me category:@"Health & Beauty" listOrMap:@"map"];
+    AroundArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityNameText];
     
     RMAnnotation *marker1;
-    for (int i=0; i<[RestMap count]; i++) {
-        CLLocation *tmp = [RestMap objectAtIndex:i];
+    for (int i=0; i<[AroundArray count]; i++) {
+        CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Coordinates"];
         marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
         marker1.annotationType = @"marker";
-        marker1.title = [Rest objectAtIndex:i];
-        marker1.subtitle = @"Restaurants & Cafes";
-        [self.Map addAnnotation:marker1];
-    }
-    
-    for (int i=0; i<[ShoppingMap count]; i++) {
-        CLLocation *tmp = [ShoppingMap objectAtIndex:i];
-        marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
-        marker1.annotationType = @"marker";
-        marker1.title = [Shopping objectAtIndex:i];
-        marker1.subtitle = @"Shopping";
-        [self.Map addAnnotation:marker1];
-    }
-    
-    for (int i=0; i<[EntertainmentMap count]; i++) {
-        CLLocation *tmp = [EntertainmentMap objectAtIndex:i];
-        marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
-        marker1.annotationType = @"marker";
-        marker1.title = [Entertainment objectAtIndex:i];
-        marker1.subtitle = @"Entertainment";
-        [self.Map addAnnotation:marker1];
-    }
-    
-    for (int i=0; i<[SportMap count]; i++) {
-        CLLocation *tmp = [SportMap objectAtIndex:i];
-        marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
-        marker1.annotationType = @"marker";
-        marker1.title = [Sport objectAtIndex:i];
-        marker1.subtitle = @"Health & Beauty";
+        marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"placeName"];
+        marker1.subtitle = [[AroundArray objectAtIndex:i] objectForKey:@"category"];
         [self.Map addAnnotation:marker1];
     }
     
@@ -168,7 +129,7 @@ static NSString *PlaceCategory = @"";
     self.CityImage.image = [UIImage imageNamed:self.Image];
     
     
-    self.TablePlaces.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     UIButton *btn = [InterfaceFunctions search_button];
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];
@@ -249,7 +210,7 @@ static NSString *PlaceCategory = @"";
 -(IBAction) segmentedControlIndexChanged{
     self.CityImage.hidden=!self.CityImage.hidden;
     self.CityName.hidden=!self.CityName.hidden;
-    self.TablePlaces.hidden=!self.TablePlaces.hidden;
+    self.PlacesTable.hidden=!self.PlacesTable.hidden;
     self.ViewforMap.hidden=!self.ViewforMap.hidden;
     self.locationButton.hidden=!self.locationButton.hidden;
 
@@ -269,13 +230,13 @@ static NSString *PlaceCategory = @"";
 {
     [super viewWillAppear:animated];
     
-    [self.TablePlaces deselectRowAtIndexPath:[self.TablePlaces indexPathForSelectedRow] animated:YES];
+    [self.PlacesTable deselectRowAtIndexPath:[self.PlacesTable indexPathForSelectedRow] animated:YES];
 }
 
 
 - (void)locationManager:(CLLocationManager *)manager  didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
 
-    [self.TablePlaces reloadData];
+    [self.PlacesTable reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -286,104 +247,35 @@ static NSString *PlaceCategory = @"";
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 4;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger number = 0;
-    switch (section) {
-        case 0:
-            number = [Rest count];
-            break;
-        case 1:
-            number = [Entertainment count];
-            break;
-        case 2:
-            number = [Shopping count];
-        default:
-            break;
-        case 3:
-            number = [Sport count];
-            break;
-    }
-    return number;
+    return [AroundArray count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 { 
-    static NSString *CellIdentifier = nil;  
+    NSInteger row = [indexPath row];
+    static NSString *CellIdentifier = nil;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[AroundArray objectAtIndex:row] objectForKey:@"placeName"] AndColor:[InterfaceFunctions colorTextCategory:[[AroundArray objectAtIndex:row] objectForKey:@"category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
+    
+    [cell addSubview:[InterfaceFunctions goLabelCategory:[[AroundArray objectAtIndex:row] objectForKey:@"category"]]];
+    [cell addSubview:[InterfaceFunctions actbwithCategory:[[AroundArray objectAtIndex:row] objectForKey:@"category"]]];
+    
     cell.backgroundView = [InterfaceFunctions CellBG];
     cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
-
-    switch ([indexPath section]) {
-        case 0:
-            [cell addSubview:[InterfaceFunctions TableLabelwithText:[Rest objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions colorTextCategory:@"Restaurants & Cafes"] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
-            [cell addSubview:[InterfaceFunctions goLabelCategory:@"Restaurants & Cafes"]];
-            [cell addSubview:[InterfaceFunctions actbwithCategory:@"Restaurants & Cafes"]];
-            break;
-        case 1:
-            
-            [cell addSubview:[InterfaceFunctions TableLabelwithText:[Entertainment objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions colorTextCategory:@"Entertainment"] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
-            [cell addSubview:[InterfaceFunctions goLabelCategory:@"Entertainment"]];
-            [cell addSubview:[InterfaceFunctions actbwithCategory:@"Entertainment"]];
-            break;
-        case 2:
-            [cell addSubview:[InterfaceFunctions TableLabelwithText:[Shopping objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions colorTextCategory:@"Shopping"] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
-            [cell addSubview:[InterfaceFunctions goLabelCategory:@"Shopping"]];
-            [cell addSubview:[InterfaceFunctions actbwithCategory:@"Shopping"]];
-            break;
-        case 3:
-            [cell addSubview:[InterfaceFunctions TableLabelwithText:[Sport objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions colorTextCategory:@"Health & Beauty"] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
-            [cell addSubview:[InterfaceFunctions goLabelCategory:@"Health & Beauty"]];
-            [cell addSubview:[InterfaceFunctions actbwithCategory:@"Health & Beauty"]];
-            break;
-        default:
-            break;
-    }
-    
-
     return cell;
 }
 
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-	
-    NSArray *categories = @[@"Restaurants & Cafes", @"Entertainment", @"Shopping", @"Health & Beauty"];
-    UIView *header = [InterfaceFunctions headerwithCategory:[categories objectAtIndex:section]];
-	return header;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	
-    
-    NSInteger number = 0;
-    switch (section) {
-        case 0:
-            number = [Rest count];
-            break;
-        case 1:
-            number = [Entertainment count];
-            break;
-        case 2:
-            number = [Shopping count];
-        default:
-            break;
-        case 3:
-            number = [Sport count];
-            break;
-    }
-    if (number == 0)
-        return 0;
-    else
-        return 0;
-}
  
 #pragma mark - Table view delegate
 
@@ -399,35 +291,13 @@ static NSString *PlaceCategory = @"";
     [HUD hide:YES];
     
     if ([[segue identifier] isEqualToString:@"CellSegue"]) {
-        PlaceViewController *destination =[segue destinationViewController];
-        NSIndexPath *indexPath = [self.TablePlaces indexPathForSelectedRow];
-        
-        destination.PlaceCityName = self.CityNameText;
-        switch ([indexPath section]) {
-            case 0:
-                destination.PlaceName  = [Rest objectAtIndex:[indexPath row]];
-                destination.PlaceCategory =  @"Restaurants & Cafes";
-                 destination.Color = [InterfaceFunctions colorTextPlaceBackground: @"Restaurants & Cafes"];
-                break;
-            case 1:
-                destination.PlaceName = [Entertainment objectAtIndex:[indexPath row]];
-                destination.PlaceCategory = @"Entertainment";
-                 destination.Color = [InterfaceFunctions colorTextPlaceBackground:@"Entertainment"];
-                break;
-            case 2:
-                destination.PlaceName = [Shopping objectAtIndex:[indexPath row]];
-                destination.PlaceCategory = @"Shopping";
-                destination.Color = [InterfaceFunctions colorTextPlaceBackground:@"Shopping"];
-                break;
-
-            case 3:
-                destination.PlaceName = [Sport objectAtIndex:[indexPath row]];
-                destination.PlaceCategory = @"Health & Beauty";
-                destination.Color = [InterfaceFunctions colorTextPlaceBackground:@"Health & Beauty"];
-            default:
-                break;
-                
-        }
+        PlaceViewController *destinaton  = [segue destinationViewController];
+        destinaton.PlaceCityName = self.CityNameText;
+        NSIndexPath *indexpath = [self.PlacesTable indexPathForSelectedRow];
+        destinaton.PlaceName = [[AroundArray objectAtIndex:[indexpath row]] objectForKey:@"placeName"];
+        destinaton.PlaceCategory = [[AroundArray objectAtIndex:[indexpath row]] objectForKey:@"category"];
+        //   destinaton.PlaceCategory = [ExternalFunctions getAllFavouritePlacesInCity:self.Pla]
+        destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[[AroundArray objectAtIndex:[indexpath row]] objectForKey:@"category"]];
     }
 
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
@@ -451,12 +321,9 @@ static NSString *PlaceCategory = @"";
     
     
     
-    CGFloat yOffset   = self.TablePlaces.contentOffset.y;
-   // CGFloat xOffset   = self.TablePlaces.contentOffset.x;
-    CGFloat threshold = self.TablePlaces.frame.size.height - self.TablePlaces.frame.size.height;
-    
-    // NSLog(@"%.4f %.4f %.4f",yOffset,xOffset,threshold);
+    CGFloat yOffset   = self.PlacesTable.contentOffset.y;
 
+    CGFloat threshold = self.PlacesTable.frame.size.height - self.PlacesTable.frame.size.height;
     if (yOffset > -threshold && yOffset < 0) {
         self.CityImage.frame = CGRectMake(0,-yOffset,320.0,self.CityImage.frame.size.height);
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-yOffset,self.CityName.frame.size.width,self.CityName.frame.size.height);
