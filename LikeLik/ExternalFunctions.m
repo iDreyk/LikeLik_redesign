@@ -10,8 +10,8 @@
 
 #import "SSZipArchive.h"
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
-#define closestPlacesCount 5
-#define regionsCount 5
+#define closestPlacesCount 8
+#define regionsCount 8
 #define closestPlaceDistance 10000000.0
 #define shopping @"Shopping"
 #define entertainment @"Entertainment"
@@ -135,6 +135,9 @@ static CLLocation *Me;
         NSDictionary *cityDict = [self cityCatalogueForCity:city];
         Me = [[CLLocation alloc] initWithLatitude:[[cityDict objectForKey:@"lat"] doubleValue] longitude:[[cityDict objectForKey:@"lon"] doubleValue]];
     }
+    
+    [locationManager stopUpdatingLocation];
+    [locationManager nil];
     
     return Me;
 }
