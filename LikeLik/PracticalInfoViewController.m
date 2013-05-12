@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     self.view = [InterfaceFunctions backgroundView];
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
 
     self.CityLabel.text = [[NSString alloc] initWithFormat:@"\n%@",self.CityName];

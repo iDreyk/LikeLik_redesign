@@ -31,7 +31,7 @@ static BOOL infoViewIsOpen = NO;
     
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:self.TaxiName AndColor:[InterfaceFunctions mainTextColor:6]];
     [super viewDidLoad];
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     
     for (UIView * view in self.view.subviews) {

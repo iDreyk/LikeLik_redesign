@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Transportation", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
 
     taxi = [ExternalFunctions getTaxiInformationInCity:self.CityName];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -105,7 +105,7 @@
     myBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
     cell.backgroundView = myBackgroundView;
     
-    cell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
    // cell.textLabel.highlightedTextColor = [AppDelegate color1withFlag:0];//SelectedCellColor:3];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad_o_1.png"]];

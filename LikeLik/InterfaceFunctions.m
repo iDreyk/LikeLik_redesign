@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 @implementation InterfaceFunctions
 
-#pragma mark кнопки
+#pragma mark UIButton
 +(UIButton *)Pref_button{
     UIImage *buttonImage = [UIImage imageNamed:@"60_61 settings"];
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -54,8 +54,6 @@
     return 0;
     
 }
-
-
 +(UIButton *)home_button{
     UIImage *buttonImage = [UIImage imageNamed:@"60_61 button_home"];
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -66,10 +64,56 @@
     
     return aButton;
 }
++(UIButton *)search_button{
+    UIImage *buttonImage = [UIImage imageNamed:@"search_butt.png"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
+    [aButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    aButton.imageEdgeInsets = UIEdgeInsetsMake(-0, 0, 0, 0);
+    
+    // Set the Target and Action for aButton
+    
+    
+    return aButton;
+}
++(UIButton *)segmentbar_map_list:(NSInteger)flag{
+    UIButton *aButton;
+    if (flag == 0) {
+        UIImage *buttonImage = [UIImage imageNamed:@"segmentbar_map_tapped.png"];
+        aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [aButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
+        [aButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+        aButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    }
+    if (flag == 1) {
+        UIImage *buttonImage = [UIImage imageNamed:@"segmentbar_list_tapped.png"];
+        aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [aButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
+        [aButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+        aButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    }
+    return aButton;
+}
++(UIButton *)done_button{
+    UIImage *buttonImage = [UIImage imageNamed:@"done_button"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [aButton.titleLabel  setFont:[AppDelegate OpenSansRegular:24]];
+    [aButton setTitle:AMLocalizedString(@"Done", nil) forState:UIControlStateNormal];
+    
+    aButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    [aButton sizeToFit];
+    //    CGRect rect = aButton.frame;
+    //
+    //
+    //    rect.size.width *=1.1;
+    //    aButton.frame = rect;
+    return aButton;
+}
 
 
-
-#pragma mark цвета
+#pragma mark UIColor
 +(UIColor *)mainTextColor:(NSInteger)flag{
     UIColor *color;
     
@@ -133,17 +177,12 @@
     }
     return color;
 }
-
 +(UIColor *)taxiColor{
     return  [UIColor colorWithRed:253.0/255.0 green:179.0/255.0 blue:66.0/255.0 alpha:1.000];
 }
-
-
-
 +(UIColor *)ShadowColor{
    return  [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
 }
-
 +(UIColor*)BackgroundColor{
     
     
@@ -158,7 +197,7 @@
     return [UIColor colorWithPatternImage:newImage];
 }
 
-#pragma mark лейблы
+#pragma mark UILabel
 +(UILabel *)NavLabelwithTitle:(NSString *)string AndColor:(UIColor *)Color{
     
     
@@ -191,7 +230,6 @@
     
     return _go;
 }
-
 +(UILabel *)LabelHUDwithString:(NSString *)String{
     UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(30.0, 0.0, 320.0, 50.0)];
     label.backgroundColor = [UIColor clearColor];
@@ -205,8 +243,6 @@
     [label setNumberOfLines:3];
     return label;
 }
-
-
 +(UILabel *)mainTextLabelwithText:(NSString *)String AndColor:(UIColor *)Color{
     UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 12.0, 280.0,21.0)];
     text.backgroundColor = [UIColor clearColor];
@@ -238,7 +274,7 @@
 }
 
 
-#pragma mark imageView
+#pragma mark UIImageView
 +(UIImageView *)actbwithCategory:(NSString *)Category{
     UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(293,11, 22, 23)];
     
@@ -350,14 +386,12 @@
     NSString *name = [NSString stringWithFormat:@"526_90 button_use_check_%d%@",Color,tag];
     return  [[UIImageView alloc] initWithImage: [UIImage imageNamed:name]];
 }
-
 +(UIImageView *)actbTaxi{
 
     UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(300,15, 9, 14)];
     _actb.image=[UIImage imageNamed:@"44_48 actbtaxi"];
     return _actb;
 }
-
 +(UIImageView *)favourite_star_empty{
     UIImageView *star = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 133, 140.5)];
     [star setCenter:CGPointMake(160.0, 108.0)];
@@ -366,8 +400,6 @@
 
     return star;
 }
-
-
 +(UIImageView *)MapPinVisualTour{
     UIImageView *Pin=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MapPin_12"]];
         Pin.image = [UIImage imageNamed:@"63_76 MapPin_6"];
@@ -376,7 +408,6 @@
     
     
 }
-
 +(UIImageView *)Info_buttonwithCategory:(NSString *)Category{
     
     UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"58_82 info_flag 12"]];
@@ -392,12 +423,10 @@
     
     return imageview;
 }
-
 +(UIImageView *)UserLocationButton:(NSString *)flag{
     NSString *string = [NSString stringWithFormat:@"62_62 arrow%@",flag];
     return [[UIImageView alloc] initWithImage:[UIImage imageNamed:string]];
 }
-
 +(UIImageView *)backgroundView{
     UIImageView *imageview = [[UIImageView alloc] initWithImage:  [UIImage imageNamed:@"640_1136 background-568h@2x"]];
     
@@ -405,8 +434,15 @@
     return  imageview;
     
 }
++(UIImageView *)standartAccessorView{
+    UIImageView *imageview= [[UIImageView alloc] initWithFrame:CGRectMake(40.0, 0.0, 260.0, 60.0)];
+    imageview.image = [UIImage imageNamed:@"actb_white.png"];
+    imageview.frame = CGRectMake(293, 123, 9, 14);
+    return imageview;
+}
 
-#pragma mark View
+
+#pragma mark UIView
 +(UIView *)headerwithCategory:(NSString *)Category{
     
     UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,30)];
@@ -449,50 +485,24 @@
     [customView addSubview:headerLabel];
     return customView;
 }
-
-#pragma mark MBHUD
-//+(MBProgressHUD *)AddFovouriteswithName:(NSString *)PlaceName andCategory:(NSString *)Category andCity:(NSString *)City{
-//   
-//    
-//    MBProgressHUD *HUD = [[MBProgressHUD alloc] init];
-//    HUD.mode = MBProgressHUDModeCustomView;
-//    HUD.margin = 10.f;
-//    HUD.yOffset = -150.f;
-//    HUD.removeFromSuperViewOnHide = YES;
-//    
-//    
-//    UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(30.0, 0.0, 320.0, 50.0)];
-//    label.backgroundColor = [UIColor clearColor];
-//    
-//    
-//    if ([ExternalFunctions addToFavouritesPlace:PlaceName InCategory:Category InCity:City]){
-//        label.text = AMLocalizedString(@"Object added to favourites", nil);
-//    }
-//    else{
-//#warning нормальный блять перевод
-//        label.text = AMLocalizedString(@"Object added to favourites", nil);
-//    }
-//    label.textColor = [UIColor whiteColor];
-//    label.font = [AppDelegate OpenSansBoldwithSize:26];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    
-//    [label setNumberOfLines:2];
-//    
-//    HUD.customView = label;
-//    HUD.mode = MBProgressHUDModeCustomView;
-//    
-//    return HUD;
-//}
-#pragma mark UIBarButton
-+(UIBarButtonItem *)back_button_house{
-    UIImage *image = [UIImage imageNamed:@"60_61 home"];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleBordered target:self action:nil];
-    [backButton setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-   // [backButton setImage:[UIImage imageNamed:@"80_67 icon_home_place@"]];
-    return backButton;
++(UIView *)SelectedCellBG{
+    UIView* myBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 150.0)];
+    myBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
+    return myBackgroundView;
+    
 }
-#pragma mark UIBarButton
-+(UIBarButtonItem *)back_button_house_withbackground{
++(UIView *)CellBG{
+    UIView* myBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 150.0)];
+    myBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad_o_1.png"]];
+    [myBackgroundView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    [myBackgroundView setContentMode:UIViewContentModeScaleToFill];
+    return myBackgroundView;
+    
+    
+}
+
+#pragma mark UIBarButtonItem
++(UIBarButtonItem *)back_button_house{
     UIImage *image = [UIImage imageNamed:@"60_61 home"];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleBordered target:self action:nil];
     [backButton setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
@@ -500,9 +510,37 @@
     return backButton;
 }
 
++(UIBarButtonItem *)back_button_house_withbackground{
+    UIImage *image = [UIImage imageNamed:@"60_61 home"];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleBordered target:self action:nil];
+    [backButton setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    // [backButton setImage:[UIImage imageNamed:@"80_67 icon_home_place@"]];
+    return backButton;
+}
++(UIBarButtonItem *)back_button{
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:AMLocalizedString(@"Back",nil) style:UIBarButtonItemStyleBordered target:nil action:nil];
+    
+    
+    [backButton setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,nil] forState:UIControlStateNormal];
+    
+    [backButton setBackgroundVerticalPositionAdjustment:-20.0f forBarMetrics:UIBarMetricsDefault];
+    [backButton setBackButtonTitlePositionAdjustment:UIOffsetMake(3.0, 0.0) forBarMetrics:UIBarMetricsDefault];
+    return backButton;
+}
+
 #pragma mark CGSize
 +(CGSize)ShadowSize{
     return CGSizeMake(0.0, 0.1);
 }
+
+#pragma mark UIImage
++(UIImage *)check_background{
+    NSInteger flag = 7;
+    NSString *name = [NSString stringWithFormat:@"check_background_%d-568h.png",flag];
+    return [UIImage imageNamed:name];
+}
+
 
 @end

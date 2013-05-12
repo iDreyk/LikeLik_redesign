@@ -115,7 +115,7 @@ static BOOL foreignversion = NO;
     self.Label.shadowOffset = CGSizeMake(0.0, -0.5);
     self.ribbonimage.image = [InterfaceFunctions Ribbon:self.PlaceCategory].image;
     self.ribbonimage.hidden = NO;
-    self.check_background.image = [AppDelegate check_background:self.color];
+    self.check_background.image = [InterfaceFunctions check_background];
     [self.activate setBackgroundImage:[InterfaceFunctions usecheckbutton:self.PlaceCategory andTag:@""].image forState:UIControlStateNormal];
     [self.activate setBackgroundImage:[InterfaceFunctions usecheckbutton:self.PlaceCategory andTag:@"_selected"].image forState:UIControlStateHighlighted];
     

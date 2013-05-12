@@ -38,7 +38,7 @@
     [super viewDidLoad];
     array = @[@"E-Mail",@"Password"];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Login", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     [self.LoginTable setBackgroundColor:[UIColor clearColor]];
     //self.LoginTable.backgroundView = [InterfaceFunctions backgroundView];
@@ -46,7 +46,7 @@
     self.LoginTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.LoginTable.backgroundColor = [UIColor clearColor];
     
-    UIButton *btn = [AppDelegate done_button];
+    UIButton *btn = [InterfaceFunctions done_button];
     [btn addTarget:self action:@selector(Done) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem.enabled = NO;

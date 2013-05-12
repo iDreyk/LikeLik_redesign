@@ -37,7 +37,7 @@ static NSArray *Array;
     //    nslog(@"Hello!");
     //    nslog(@"CityName = %@",self.CityName);
     //[TestFlight passCheckpoint:@"Fav open"];
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SearchBar setShowsCancelButton:NO];
 #warning надо переделать под новый каталог
     self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
@@ -91,8 +91,8 @@ static NSArray *Array;
     
    [cell addSubview: [InterfaceFunctions TableLabelwithText:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"placeName"] AndColor:[InterfaceFunctions colorTextCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
     
-    cell.backgroundView = [AppDelegate CellBG];
-    cell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    cell.backgroundView = [InterfaceFunctions CellBG];
+    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
 
     [cell addSubview:[InterfaceFunctions goLabelCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"category"]]];
     [cell addSubview:[InterfaceFunctions actbwithCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"category"]]];

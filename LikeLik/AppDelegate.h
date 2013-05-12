@@ -7,7 +7,6 @@
 //
 
 
-//extern NSString *localReceived;
 #import <UIKit/UIKit.h>
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{
     
@@ -21,31 +20,10 @@
 +(UIFont *)OpenSansRegular:(CGFloat)size;
 +(UIFont *)OpenSansSemiBold:(CGFloat)size;
 +(UIFont *)OpenSansBoldwithSize:(CGFloat)size;
-+(UIFont *)OpenSansLight:(CGFloat)size;
-+(UIColor *)SelectedCellColor:(NSInteger)flag;
-+(UIColor *)color1withFlag:(NSInteger)flag;
-+(NSArray *)ColorsForGradient;
 
-+(UIView *)CellBG;
-+(UIView *)SelectedCellBG;
 
-+(UILabel *)AboutLabelwithString:(NSString *)string andheight:(CGFloat)height andNumberLines:(NSInteger)Lines;
-+(UIImageView *)DistrictImage:(NSString *)image;
-+(UIScrollView *)photScrollwithArray:(NSArray *)photos;
-+(UIImageView *)BGForLabels;
-+(CALayer *)gradient:(UIView *)view;
-+(UIBarButtonItem *)back_button;
-+(UIButton *)search_button;
-
-+(UILabel *)LabelonPhoto:(NSString *)string andHeightofParentView:(CGFloat)height;
-+(UIButton *)segmentbar_map_list:(NSInteger)flag;
 +(void)segmentControlMapList;
 +(BOOL)isiPhone5;
-//+(UIImage *)ribbon:(UIColor *)color;
-+(UIImage *)check_background:(UIColor *)color;
 +(void)lang;
-+(UIImageView *)accessorView;
-
-+(UIButton *)done_button;
 
 @end

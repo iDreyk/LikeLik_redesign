@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     self.tableView.backgroundView = [InterfaceFunctions backgroundView];
     
@@ -84,19 +84,19 @@
     
     
     
-    self.VisualCell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    self.VisualCell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     self.VisualCell.textLabel.highlightedTextColor = [InterfaceFunctions mainTextColor:1];
     self.VisualCell.selectionStyle = UITableViewCellSelectionStyleBlue;
     self.VisualCell.selectedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad_o_1.png"]];
     
     
     
-    self.TransportationCell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    self.TransportationCell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     self.TransportationCell.textLabel.highlightedTextColor = [InterfaceFunctions mainTextColor:2];
     self.TransportationCell.selectionStyle = UITableViewCellSelectionStyleBlue;
     self.TransportationCell.selectedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad_o_1.png"]];
     
-    self.PracticalCell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    self.PracticalCell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     self.PracticalCell.textLabel.highlightedTextColor = [InterfaceFunctions mainTextColor:3];
     self.PracticalCell.selectionStyle = UITableViewCellSelectionStyleBlue;
     self.PracticalCell.selectedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad_o_1.png"]];

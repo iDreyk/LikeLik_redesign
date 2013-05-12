@@ -55,10 +55,10 @@
 
     
     
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UIButton *btn = [AppDelegate search_button];
+    UIButton *btn = [InterfaceFunctions search_button];
     [btn addTarget:self action:@selector(search:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
 }
@@ -108,8 +108,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.backgroundView = [AppDelegate CellBG];
-    cell.selectedBackgroundView = [AppDelegate SelectedCellBG];    
+    cell.backgroundView = [InterfaceFunctions CellBG];
+    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     cell.textLabel.backgroundColor = [UIColor clearColor];
 
     

@@ -139,7 +139,7 @@ static BOOL infoViewIsOpen = NO;
     _scroll.delegate=self;
 
     //[TestFlight passCheckpoint:@"vistour open"];
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
      
     self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
     

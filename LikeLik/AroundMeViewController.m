@@ -35,7 +35,7 @@ static NSString *PlaceCategory = @"";
 {
     [super viewDidLoad];
     
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"Map", nil) forSegmentAtIndex:1];
@@ -170,16 +170,14 @@ static NSString *PlaceCategory = @"";
     
     self.TablePlaces.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-    UIButton *btn = [AppDelegate search_button];
+    UIButton *btn = [InterfaceFunctions search_button];
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-    UIButton *titleview = [AppDelegate segmentbar_map_list:1];
+    UIButton *titleview = [InterfaceFunctions segmentbar_map_list:1];
     [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
     
     
-    
-    [AppDelegate segmentControlMapList];
     [locationManager stopUpdatingLocation];
     locationManager = nil;
 }
@@ -256,11 +254,11 @@ static NSString *PlaceCategory = @"";
     self.locationButton.hidden=!self.locationButton.hidden;
 
     if (self.CityImage.hidden) {
-        UIButton *titleview = [AppDelegate segmentbar_map_list:0];
+        UIButton *titleview = [InterfaceFunctions segmentbar_map_list:0];
         [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
     }
     else{
-        UIButton *titleview = [AppDelegate segmentbar_map_list:1];
+        UIButton *titleview = [InterfaceFunctions segmentbar_map_list:1];
         [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -321,8 +319,8 @@ static NSString *PlaceCategory = @"";
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.backgroundView = [AppDelegate CellBG];
-    cell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    cell.backgroundView = [InterfaceFunctions CellBG];
+    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
 
     switch ([indexPath section]) {
         case 0:

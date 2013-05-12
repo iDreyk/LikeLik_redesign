@@ -32,11 +32,11 @@
 
     [super viewDidLoad];
     
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Transportation", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
     //    nslog(@"TransportationViewController City Name = %@",self.CityName);
     
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     NSArray *photos = [ExternalFunctions getMetroMapInCity:self.CityName];
     _scroll.pagingEnabled = YES;
     _scroll.showsHorizontalScrollIndicator = NO;

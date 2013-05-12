@@ -31,7 +31,7 @@
     [super viewDidLoad];
 
     
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     self.SupportCell.textLabel.text = AMLocalizedString(@"Support", nil);
@@ -41,7 +41,7 @@
     self.SupportCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
    
     
-    self.SupportCell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    self.SupportCell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     self.SupportCell.textLabel.highlightedTextColor = self.SupportCell.textLabel.textColor;
     
     
@@ -52,7 +52,7 @@
     self.TermsCell.textLabel.textColor = [InterfaceFunctions mainTextColor:2];
     self.TermsCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
     
-    self.TermsCell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    self.TermsCell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     self.TermsCell.textLabel.highlightedTextColor = self.TermsCell.textLabel.textColor;
     
     
@@ -63,7 +63,7 @@
     self.AboutCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
    
     
-    self.AboutCell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    self.AboutCell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     self.AboutCell.textLabel.highlightedTextColor = self.AboutCell.textLabel.textColor;
     
     
@@ -74,7 +74,7 @@
     self.MoreLikeLikApps.textLabel.textColor = [InterfaceFunctions mainTextColor:4];
     self.MoreLikeLikApps.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
     
-    self.MoreLikeLikApps.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    self.MoreLikeLikApps.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     self.MoreLikeLikApps.textLabel.highlightedTextColor = self.TermsCell.textLabel.textColor;
     
     
@@ -85,7 +85,7 @@
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:  AMLocalizedString(@"About", @"") AndColor:[InterfaceFunctions mainTextColor:6]];
     self.tableView.backgroundView = [InterfaceFunctions backgroundView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
     
 
@@ -94,7 +94,7 @@
     // NSLog(@"clase : %@",NSStringFromClass([[self parentViewController] class]) );
    
     if (![self.Parent isEqualToString:@"Category"]) {
-    UIButton *back = [AppDelegate done_button];
+    UIButton *back = [InterfaceFunctions done_button];
         [back  addTarget:self action:@selector(Back) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:back];
     }
@@ -157,11 +157,11 @@
 {
     if (cell.isSelected == YES)
     {
-        [cell setBackgroundView:[AppDelegate SelectedCellBG]];
+        [cell setBackgroundView:[InterfaceFunctions SelectedCellBG]];
     }
     else
     {
-        [cell setBackgroundView: [AppDelegate CellBG]];
+        [cell setBackgroundView: [InterfaceFunctions CellBG]];
     }
 }
 

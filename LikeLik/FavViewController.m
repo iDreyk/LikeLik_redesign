@@ -34,7 +34,7 @@ static NSString *PlaceCategory = @"";
 {
     [super viewDidLoad];
     //    nslog(@"FavoritePlaceView CityName = %@",self.CityName);
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
@@ -44,7 +44,7 @@ static NSString *PlaceCategory = @"";
     self.FavTable.backgroundView = [InterfaceFunctions backgroundView];
     self.FavTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UIButton *btn = [AppDelegate search_button];
+    UIButton *btn = [InterfaceFunctions search_button];
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
@@ -225,8 +225,8 @@ static NSString *PlaceCategory = @"";
     [cell addSubview:[InterfaceFunctions goLabelCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"category"]]];
     [cell addSubview:[InterfaceFunctions actbwithCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"category"]]];
     
-    cell.backgroundView = [AppDelegate CellBG];
-    cell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    cell.backgroundView = [InterfaceFunctions CellBG];
+    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     return cell;
 }
 

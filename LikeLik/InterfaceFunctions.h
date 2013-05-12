@@ -9,25 +9,32 @@
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
 @interface InterfaceFunctions : NSObject
-#pragma mark кнопки
+
+#pragma mark UIButton
 +(UIButton *)Pref_button;
 +(UIButton *)Info_button;
 +(UIButton *)map_button:(NSInteger)flag;
 +(UIButton *)home_button;
-#pragma mark цвета
++(UIButton *)search_button;
++(UIButton *)segmentbar_map_list:(NSInteger)flag;
++(UIButton *)done_button;
+
+#pragma mark UIColor
 +(UIColor *)mainTextColor:(NSInteger)flag;
 +(UIColor *)colorTextCategory:(NSString *)Category;
 +(UIColor *)colorTextPlaceBackground:(NSString *)Category;
 +(UIColor *)taxiColor;
 +(UIColor *)ShadowColor;
-+(UIColor*)BackgroundColor;
-#pragma mark лейблы
++(UIColor *)BackgroundColor;
+
+#pragma mark UILabel
 +(UILabel *)NavLabelwithTitle:(NSString *)string AndColor:(UIColor *)Color;
 +(UILabel *)goLabelCategory:(NSString *)Category;
 +(UILabel *)LabelHUDwithString:(NSString *)String;
 +(UILabel *)mainTextLabelwithText:(NSString *)String AndColor:(UIColor *)Color;
 +(UILabel *)TableLabelwithText:(NSString *)String AndColor:(UIColor *)Color AndFrame:(CGRect)Frame;
-#pragma mark imageView
+
+#pragma mark UIImageView
 +(UIImageView *)actbwithCategory:(NSString *)Category;
 +(UIImageView *)actbwithColor:(NSInteger)value;
 +(UIImageView *)actbTaxi;
@@ -40,17 +47,23 @@
 +(UIImageView *)Info_buttonwithCategory:(NSString *)Category;
 +(UIImageView *)UserLocationButton:(NSString *)flag;
 +(UIImageView *)backgroundView;
-#pragma mark View
++(UIImageView *)standartAccessorView;
+
+#pragma mark UIView
 +(UIView *)headerwithCategory:(NSString *)Category;
 +(UIView *)HeaderwithDistrict:(NSString *)String;
-#pragma mark MBHUD
-//+(MBProgressHUD *)AddFovouriteswithName:(NSString *)PlaceName andCategory:(NSString *)Category andCity:(NSString *)City;
++(UIView *)SelectedCellBG;
++(UIView *)CellBG;
 
-
-#pragma mark UIBarButton
+#pragma mark UIBarButtonItem
 +(UIBarButtonItem *)back_button_house;
 +(UIBarButtonItem *)back_button_house_withbackground;
++(UIBarButtonItem *)back_button;
 
 #pragma mark CGSize
 +(CGSize)ShadowSize;
+
+#pragma mark UIImage
++(UIImage *)check_background;
+
 @end

@@ -82,8 +82,8 @@
     
     [cell addSubview:[InterfaceFunctions actbwithColor:[indexPath row]+1]];
     
-    cell.backgroundView = [AppDelegate CellBG];
-    cell.selectedBackgroundView = [AppDelegate SelectedCellBG];
+    cell.backgroundView = [InterfaceFunctions CellBG];
+    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     
     
     UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[LikeLikImage objectAtIndex:[indexPath row]]]];

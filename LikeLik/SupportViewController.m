@@ -36,7 +36,7 @@
     self.Email.font = [AppDelegate OpenSansRegular:26];
     self.FeedBack.font = [AppDelegate OpenSansRegular:26];
     
-    UIButton *btn = [AppDelegate done_button];
+    UIButton *btn = [InterfaceFunctions done_button];
     [btn addTarget:self action:@selector(Done) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.FeedBack.text = AMLocalizedString(@"Leave a feedback for us", nil);

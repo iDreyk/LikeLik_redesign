@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     //[TestFlight passCheckpoint:@"Открыл stng"];
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
@@ -55,7 +55,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
     
-    UIButton *back = [AppDelegate done_button];
+    UIButton *back = [InterfaceFunctions done_button];
     [back  addTarget:self action:@selector(Back) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:back];
 
@@ -175,7 +175,7 @@
     cell.backgroundView = myBackgroundView;
     
     
-    cell.selectedBackgroundView = [AppDelegate CellBG];
+    cell.selectedBackgroundView = [InterfaceFunctions CellBG];
 
     return cell;
 }
@@ -317,7 +317,7 @@
     
     
     
-    UIButton *back = [AppDelegate done_button];
+    UIButton *back = [InterfaceFunctions done_button];
     [back  addTarget:self action:@selector(Back) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:back];
 

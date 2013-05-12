@@ -41,14 +41,14 @@
     //[TestFlight passCheckpoint:@"Registr open"];
     array = @[@"Name",@"E-Mail",@"Password",@"Password"];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Registration", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.RegistrationTable setBackgroundColor:[UIColor clearColor]];
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
 	// Do any additional setup after loading the view.
     self.RegistrationTable.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     
-    UIButton *btn = [AppDelegate done_button];
+    UIButton *btn = [InterfaceFunctions done_button];
     [btn addTarget:self action:@selector(Done) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem.enabled = NO;

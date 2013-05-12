@@ -34,7 +34,7 @@ static NSString *PlaceCategory = @"";
 {
     [super viewDidLoad];
     Places = [NSArray arrayWithArray:[ExternalFunctions getPlacesOfCategory:self.District inCity:self.CityName listOrMap:@"list"]];//getPlacesOfCategory:self.District inCity:self.CityName]];
-    self.navigationItem.backBarButtonItem = [AppDelegate back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
@@ -120,11 +120,11 @@ static NSString *PlaceCategory = @"";
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UIButton *btn = [AppDelegate search_button];
+    UIButton *btn = [InterfaceFunctions search_button];
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-    UIButton *titleview = [AppDelegate segmentbar_map_list:1];
+    UIButton *titleview = [InterfaceFunctions segmentbar_map_list:1];
     [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -194,12 +194,12 @@ static NSString *PlaceCategory = @"";
     self.locationButton.hidden = !self.locationButton.hidden;
     self.GradientnderLabel.hidden = !self.GradientnderLabel.hidden;
     if (self.CityImage.hidden) {
-        UIButton *titleview = [AppDelegate segmentbar_map_list:0];
+        UIButton *titleview = [InterfaceFunctions segmentbar_map_list:0];
         [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
         //self.navigationItem.titleView = titleview;
     }
     else{
-        UIButton *titleview = [AppDelegate segmentbar_map_list:1];
+        UIButton *titleview = [InterfaceFunctions segmentbar_map_list:1];
         [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
         //self.navigationItem.titleView = titleview;
     }
@@ -256,8 +256,8 @@ static NSString *PlaceCategory = @"";
     [cell addSubview:[InterfaceFunctions goLabelCategory:self.District]];
     [cell addSubview:[InterfaceFunctions actbwithCategory:self.District]];
     
-    cell.selectedBackgroundView = [AppDelegate SelectedCellBG];
-    cell.backgroundView = [AppDelegate CellBG];
+    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
+    cell.backgroundView = [InterfaceFunctions CellBG];
     
     return cell;
 }
