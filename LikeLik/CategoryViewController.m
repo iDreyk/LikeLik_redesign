@@ -157,7 +157,7 @@
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
         PlacesByCategoryViewController *destination =[segue destinationViewController];
         destination.CityName = self.Label;
-        destination.District = [self.CellArray objectAtIndex:row];
+        destination.Category = [self.CellArray objectAtIndex:row];
         destination.Image = self.Image;
     }
 

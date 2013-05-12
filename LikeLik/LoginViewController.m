@@ -150,7 +150,6 @@
     
     HUDFade.delegate = self;
     
-   // NSString *name = [NSString stringWithFormat:@"%@ %@",[info objectForKey:@"first_name"],[info objectForKey:@"last_name"]];
     NSString *password = [NSString stringWithFormat:@"%@password",[info objectForKey:@"uid"]];
     NSString *uid = [NSString stringWithFormat:@"%@",[info objectForKey:@"uid"]];
     

@@ -588,7 +588,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="PlacesTable" destination="rOd-xd-e34" id="S7u-F6-Ejj"/>
                         <outlet property="SearchButton" destination="zzm-Cp-rtB" id="mU0-Rx-nyb"/>
                         <outlet property="SegmentedMapandTable" destination="KdP-xq-s9v" id="nvH-0Y-jqf"/>
-                        <outlet property="TablePlaces" destination="rOd-xd-e34" id="Bi9-18-h6r"/>
                         <outlet property="ViewforMap" destination="2Va-kC-PQQ" id="87H-Iw-276"/>
                         <outlet property="gradient_under_cityname" destination="04F-T3-mKj" id="IHT-6R-vNS"/>
                         <outlet property="locationButton" destination="xP9-xf-rsy" id="jid-tn-dgZ"/>
@@ -1027,8 +1026,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="CategoryLabel" destination="Lbe-hg-zum" id="NGl-f8-t7e"/>
                         <outlet property="CityImage" destination="3Tq-oB-9MG" id="nDh-WG-ABN"/>
-                        <outlet property="DistrictLabel" destination="Lbe-hg-zum" id="H76-RZ-rrS"/>
                         <outlet property="GradientnderLabel" destination="dJt-PV-bbN" id="cJr-g3-s0V"/>
                         <outlet property="PlacesTable" destination="NNJ-Le-Omi" id="Dmh-H4-4eY"/>
                         <outlet property="SearchBarButton" destination="4Gr-xz-oiV" id="brZ-UI-EXK"/>

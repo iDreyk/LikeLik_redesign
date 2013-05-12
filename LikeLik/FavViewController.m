@@ -48,6 +48,7 @@ static NSString *PlaceCategory = @"";
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
+    #warning Андрей, сделай плз функцию
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
         url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Moscow/2" ofType:@"mbtiles"]];
@@ -132,13 +133,13 @@ static NSString *PlaceCategory = @"";
 
 
 -(void)tapOnLabelForAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-    // NSLog(@"123");
+    
 }
 - (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
 {
     PlaceName = annotation.title;
     PlaceCategory = annotation.subtitle;
-    // NSLog(@"%@ %@",PlaceName,PlaceCategory);
+
     [self performSegueWithIdentifier:@"MapSegue" sender:self];
 }
 
@@ -170,8 +171,6 @@ static NSString *PlaceCategory = @"";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
-    
     return 1;
 }
 

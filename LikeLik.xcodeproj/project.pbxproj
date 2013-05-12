@@ -556,7 +556,7 @@
 		919E8A24173A5E9300A25E07 /* MGTwitterHTTPURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTwitterHTTPURLConnection.h; sourceTree = "<group>"; };
 		919E8A25173A5E9300A25E07 /* MGTwitterHTTPURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTwitterHTTPURLConnection.m; sourceTree = "<group>"; };
 		919E8A26173A5E9300A25E07 /* MGTwitterLibXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTwitterLibXMLParser.h; sourceTree = "<group>"; };
-		919E8A27173A5E9300A25E07 /* MGTwitterLibXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTwitterLibXMLParser.m; sourceTree = "<group>"; };
+		919E8A27173A5E9300A25E07 /* MGTwitterLibXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MGTwitterLibXMLParser.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		919E8A28173A5E9300A25E07 /* MGTwitterMessagesLibXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTwitterMessagesLibXMLParser.h; sourceTree = "<group>"; };
 		919E8A29173A5E9300A25E07 /* MGTwitterMessagesLibXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTwitterMessagesLibXMLParser.m; sourceTree = "<group>"; };
 		919E8A2A173A5E9300A25E07 /* MGTwitterMessagesParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTwitterMessagesParser.h; sourceTree = "<group>"; };
@@ -644,7 +644,7 @@
 		919E8ACB173A5F6D00A25E07 /* SubText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubText.h; sourceTree = "<group>"; };
 		919E8ACC173A5F6D00A25E07 /* SubText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubText.m; sourceTree = "<group>"; };
 		919E8ACD173A5F6D00A25E07 /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceViewController.h; sourceTree = "<group>"; };
-		919E8ACE173A5F6D00A25E07 /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceViewController.m; sourceTree = "<group>"; };
+		919E8ACE173A5F6D00A25E07 /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PlaceViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		919E8ACF173A5F6D00A25E07 /* CheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckViewController.h; sourceTree = "<group>"; };
 		919E8AD0173A5F6D00A25E07 /* CheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckViewController.m; sourceTree = "<group>"; };
 		919E8AD1173A5F6D00A25E07 /* CheckViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckViewController.xib; sourceTree = "<group>"; };
@@ -1744,7 +1744,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
-					"\"/Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/ZBarSDK\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode/ZBarSDK\"",
 					"\"$(SRCROOT)/../../Downloads/Likelik Xcode/ZBarSDK\"",
 				);
@@ -1774,7 +1773,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
-					"\"/Volumes/Archive/Google Диск/LikeLik/Likelik Xcode/ZBarSDK\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode/ZBarSDK\"",
 					"\"$(SRCROOT)/../../Downloads/Likelik Xcode/ZBarSDK\"",
 				);
