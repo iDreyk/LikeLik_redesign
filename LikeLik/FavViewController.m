@@ -261,15 +261,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         PlaceViewController *destinaton  = [segue destinationViewController];
         NSIndexPath *indexpath = [self.FavTable indexPathForSelectedRow];
         Place1 = [FavouritePlaces objectAtIndex:[indexpath row]];
-        destinaton.PlaceCityName = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"City"];
-        destinaton.PlaceName = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Name"];
-        destinaton.PlaceCategory = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Category"];
-        destinaton.PlaceAbout = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"About"];
-        destinaton.PlaceWeb = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Web"];
-        destinaton.PlaceTelephone = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Telephone"];
-        destinaton.PlaceLocation = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Location"];
-        destinaton.PlaceAddress = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Address"];
-        destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Category"]];
+        destinaton.PlaceCityName = [Place1 objectForKey:@"City"];
+        destinaton.PlaceName = [Place1 objectForKey:@"Name"];
+        destinaton.PlaceCategory = [Place1 objectForKey:@"Category"];
+        destinaton.PlaceAbout = [Place1 objectForKey:@"About"];
+        destinaton.PlaceWeb = [Place1 objectForKey:@"Web"];
+        destinaton.PlaceTelephone = [Place1 objectForKey:@"Telephone"];
+        destinaton.PlaceLocation = [Place1 objectForKey:@"Location"];
+        destinaton.PlaceAddress = [Place1 objectForKey:@"Address"];
+        destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[Place1 objectForKey:@"Category"]];
     }
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         SearchViewController *destinaton  = [segue destinationViewController];
