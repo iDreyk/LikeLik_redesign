@@ -1961,22 +1961,22 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="124_124 Social_Icons11@2x.png" width="124" height="124"/>
-        <image name="124_124 Social_Icons22@2x.png" width="124" height="124"/>
-        <image name="124_124 Social_Icons44@2x.png" width="124" height="124"/>
-        <image name="212_100 Tabitem_place_12_2use_normal@2x.png" width="212" height="100"/>
-        <image name="44_48 actb_1@2x.png" width="44" height="48"/>
-        <image name="44_48 actb_2@2x.png" width="44" height="48"/>
-        <image name="44_48 actb_3@2x.png" width="44" height="48"/>
-        <image name="44_48 actb_4@2x.png" width="44" height="48"/>
-        <image name="58_82 info_flag 12@2x.png" width="58" height="82"/>
-        <image name="58_82 info_flag_6@2x.png" width="58" height="82"/>
-        <image name="62_62 arrow_pressed@2x.png" width="62" height="62"/>
-        <image name="640_1136 background-568h@2x.png" width="640" height="1136"/>
-        <image name="Bg_gradient.png" width="640" height="108"/>
-        <image name="Overlay_Long@2x.png" width="640" height="2000"/>
-        <image name="separator_line.png" width="560" height="2"/>
-        <image name="startscreen_logo@2x.png" width="529" height="155"/>
+        <image name="124_124 Social_Icons11@2x.png" width="16" height="16"/>
+        <image name="124_124 Social_Icons22@2x.png" width="16" height="16"/>
+        <image name="124_124 Social_Icons44@2x.png" width="16" height="16"/>
+        <image name="212_100 Tabitem_place_12_2use_normal@2x.png" width="16" height="16"/>
+        <image name="44_48 actb_1@2x.png" width="16" height="16"/>
+        <image name="44_48 actb_2@2x.png" width="16" height="16"/>
+        <image name="44_48 actb_3@2x.png" width="16" height="16"/>
+        <image name="44_48 actb_4@2x.png" width="16" height="16"/>
+        <image name="58_82 info_flag 12@2x.png" width="16" height="16"/>
+        <image name="58_82 info_flag_6@2x.png" width="16" height="16"/>
+        <image name="62_62 arrow_pressed@2x.png" width="16" height="16"/>
+        <image name="640_1136 background-568h@2x.png" width="16" height="16"/>
+        <image name="Bg_gradient.png" width="16" height="16"/>
+        <image name="Overlay_Long@2x.png" width="16" height="16"/>
+        <image name="separator_line.png" width="16" height="16"/>
+        <image name="startscreen_logo@2x.png" width="16" height="16"/>
         <image name="tabicon_AllGuides.png" width="16" height="16"/>
         <image name="tabicon_Downloaded.png" width="16" height="16"/>
         <image name="tabicon_Featured.png" width="16" height="16"/>

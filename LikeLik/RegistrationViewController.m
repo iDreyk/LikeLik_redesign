@@ -48,7 +48,7 @@
 
     
     UIButton *btn = [InterfaceFunctions done_button];
-    [btn addTarget:self action:@selector(press_Done) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(Done) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
@@ -88,7 +88,7 @@
     self.HUDemailcheck = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:self.HUDemailcheck];
     self.HUDemailcheck.mode = MBProgressHUDModeCustomView;
-    self.HUDemailcheck.removeFromSuperViewOnHide = YES;
+    //self.HUDemailcheck.removeFromSuperViewOnHide = YES;
     self.HUDemailcheck.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"сheck e-mail please", nil)];
     self.HUDemailcheck.delegate = self;
     
@@ -98,7 +98,7 @@
     [self.navigationController.view addSubview:self.HUDpassword];
     self.HUDpassword.userInteractionEnabled = NO;
     self.HUDpassword.mode = MBProgressHUDModeCustomView;
-    self.HUDpassword.removeFromSuperViewOnHide = YES;
+    //self.HUDpassword.removeFromSuperViewOnHide = YES;
     self.HUDpassword.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"passwords do not match", nil)];
     self.HUDpassword.delegate = self;
     
@@ -114,14 +114,14 @@
     [self.navigationController.view addSubview:self.HUDfade];
     self.HUDfade.userInteractionEnabled = NO;
     self.HUDfade.mode = MBProgressHUDAnimationFade;
-    self.HUDfade.removeFromSuperViewOnHide = YES;
+   // self.HUDfade.removeFromSuperViewOnHide = YES;
     self.HUDfade.delegate = self;
     
     
     self.HUDerror = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:self.HUDerror];
     self.HUDerror.mode = MBProgressHUDModeCustomView;
-    self.HUDerror.removeFromSuperViewOnHide = YES;
+   // self.HUDerror.removeFromSuperViewOnHide = YES;
     self.HUDerror.delegate = self;
     
 }
@@ -151,7 +151,7 @@
     }
 }
 
--(void)Done:(NSString *)RegistrationWay{
+-(void)Done{
     [Password resignFirstResponder];
     [Login resignFirstResponder];
     [Email resignFirstResponder];
@@ -159,7 +159,7 @@
 
     if ([Password.text isEqualToString:Confirm.text]) {
         if ([self validateMail:Email.text] == YES)
-            [self Send:RegistrationWay];
+            [self Send:@"Self"];
 
         else{
             [self.HUDemailcheck show:YES];
@@ -351,7 +351,7 @@
         [Confirm resignFirstResponder];
         if ([Login.text length]>0 && [Email.text length]>0 &&[Password.text length]>0 && [Confirm.text length]>0  ) {
             self.navigationItem.rightBarButtonItem.enabled = YES;
-            [self Done:@"Self"];
+            [self Done];
         }
         else{
             self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -475,86 +475,11 @@
 
 - (void)vkontakteDidFinishGettinUserInfo:(NSDictionary *)info
 {
-     NSLog(@"%@", info);
+    // NSLog(@"%@", info);
     
-    
-    
-    MBProgressHUD *HUDFade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:HUDFade];
-    HUDFade.userInteractionEnabled = NO;
-    HUDFade.mode = MBProgressHUDAnimationFade;
-    HUDFade.removeFromSuperViewOnHide = YES;
-    
-    HUDFade.delegate = self;
-    
-    
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-    [locationManager setDelegate:self];
-    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    CLLocation *Me = [locationManager location];
-    NSLog(@"Me = %@", Me);
-    NSString *lat = [NSString stringWithFormat:@"%f",Me.coordinate.latitude];
-    NSString *lon = [NSString stringWithFormat:@"%f",Me.coordinate.longitude];
-    NSLog(@"%@ %@",lat,lon);
-    
-    NSString *name = [NSString stringWithFormat:@"%@ %@",[info objectForKey:@"first_name"],[info objectForKey:@"last_name"]];
-    NSString *password = [NSString stringWithFormat:@"%@password",[info objectForKey:@"uid"]];
-    NSString *uid = [NSString stringWithFormat:@"%@",[info objectForKey:@"uid"]];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"vkontakte_id", password ,@"Password",[info objectForKey:@"bdate"],@"Birth_date",lat,@"Latitude",lon,@"Longitude",nil];
-    NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-    [httpClient defaultValueForHeader:@"Accept"];
-    
-    
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
-                                                            path:@"/api/v1/users" parameters:params];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
-                                         initWithRequest:request];
-    [httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation,
-       id responseObject) {
-         NSString *response = [operation responseString];
-         NSLog(@"response: [%@]",response);
-         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"Registered"];
-         [[NSUserDefaults standardUserDefaults] setObject:@"VK" forKey:@"RegistrationWay"];
-                  [HUDFade hide:YES];
-         
-         MBProgressHUD *Fist = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-         [self.navigationController.view addSubview:Fist];
-         Fist.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
-         Fist.mode = MBProgressHUDModeCustomView;
-         Fist.delegate = self;
-         Fist.labelText = AMLocalizedString(@"Done", nil);
-         [Fist show:YES];
-         [Fist hide:YES afterDelay:1];
-         
-         [self.navigationController popViewControllerAnimated:YES];
-         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-         self.Parent = @"Place";
-         
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"error: %@", [operation error]);
-         [HUDFade hide:YES];
-         MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-         [self.navigationController.view addSubview:HUD];
-       //  HUD.userInteractionEnabled = NO;
+    self.VkontakteUserInfo = info;
+    [self Send:@"VK"];
 
-         HUD.mode = MBProgressHUDModeCustomView;
-         HUD.removeFromSuperViewOnHide = YES;
-         HUD.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"Something goes wrong", nil)];
-         HUD.delegate = self;
-         [HUD show:YES];
-         [HUD hide:YES afterDelay:2];
-         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-         self.Parent = @"Place";
-     }];
-    
-   
-    
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    [HUDFade show:YES];
-    [operation start];
 }
 
 - (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce
@@ -650,7 +575,9 @@
 
 #pragma mark myFunctions
 -(NSString *)HUDStringLocalized:(id)JSON{
-    NSLog(@"HUDStringLocalized: %@",JSON);
+    if ([[[JSON objectForKey:@"Error"]objectForKey:@"message"] isEqual:[NSNull null]] || [[[JSON objectForKey:@"Error"]objectForKey:@"message"] length] == 0) {
+        return AMLocalizedString(@"Something goes wrong", nil);
+    }
     return [[JSON objectForKey:@"Error"]objectForKey:@"message"];
 }
 
@@ -692,6 +619,14 @@
         NSLog(@"Facebook body = %@",params);
     }
     
+    
+    if ([Way isEqualToString:@"VK"]) {
+        NSString *name = [NSString stringWithFormat:@"%@ %@",[self.VkontakteUserInfo objectForKey:@"first_name"],[self.VkontakteUserInfo objectForKey:@"last_name"]];
+        NSString *password = [NSString stringWithFormat:@"%@password",[self.VkontakteUserInfo objectForKey:@"uid"]];
+        NSString *uid = [NSString stringWithFormat:@"%@",[self.VkontakteUserInfo objectForKey:@"uid"]];
+        params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"vkontakte_id", password ,@"Password",[self.VkontakteUserInfo objectForKey:@"bdate"],@"Birth_date",lat,@"Latitude",lon,@"Longitude",nil];
+    }
+//    NSLog(@"%@",params);
     return params;
 }
 
@@ -730,8 +665,5 @@
     [operation start];
 }
 
--(void)press_Done{
-    [self Done:@"Self"];
-}
 
 @end

@@ -25,8 +25,26 @@
 @property (weak, nonatomic) IBOutlet UIButton *Vkontakte;
 @property (weak, nonatomic) IBOutlet UIButton *Twitter;
 @property (nonatomic,retain)IBOutlet NSString *Parent;
+@property (nonatomic,retain)MBProgressHUD *HUDemailcheck;
+@property (nonatomic,retain)MBProgressHUD *HUDpassword;
+@property (nonatomic,retain)MBProgressHUD *HUDdone;
+@property (nonatomic,retain)MBProgressHUD *HUDfade;
+@property (nonatomic,retain)MBProgressHUD *HUDerror;
+@property (nonatomic, retain)NSString *twitterName;
+@property (nonatomic,retain)id FacebookUserInfo;
+@property (nonatomic, retain) NSDictionary *VkontakteUserInfo;
+
+
+
+
 -(IBAction)SocialClicked:(UIButton *)sender;
 - (IBAction)loginPressed:(id)sender;
 - (void)refreshButtonState;
 -(void)getUserInfo;
+
+
+-(NSString *)HUDStringLocalized:(id)JSON;
+-(NSDictionary * )POSTRequest:(NSString *)Way;
+-(void)Send:(NSString *)RegistrationWay;
+
 @end

@@ -16,7 +16,9 @@
 #define kOAuthConsumerKey				@"XGaxa31EoympFhxLZooQ"
 #define kOAuthConsumerSecret			@"IbUE5lud22evmrtxjtU1vKvh6VDqRMSHHFJ73rtHI"
 #define afterregister             @"l27h7RU2dzVfP12aoQssda"
-#define RemoveNull(field) ([[result objectForKey:field] isKindOfClass:[NSNull class]]) ? @"" : [result objectForKey:field];
+
+#define RemoveNull(field) ([[self.FacebookUserInfo objectForKey:field] isKindOfClass:[NSNull class]]) ? @"" : [self.FacebookUserInfo objectForKey:field];
+
 @interface LoginViewController ()
 
 @end
@@ -57,6 +59,46 @@
     _vkontakte = [Vkontakte sharedInstance];
     _vkontakte.delegate = self;
     [self refreshButtonState];
+
+    self.HUDemailcheck = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:self.HUDemailcheck];
+    self.HUDemailcheck.mode = MBProgressHUDModeCustomView;
+    //self.HUDemailcheck.removeFromSuperViewOnHide = YES;
+    self.HUDemailcheck.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"сheck e-mail please", nil)];
+    self.HUDemailcheck.delegate = self;
+    
+    
+    
+    self.HUDpassword = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:self.HUDpassword];
+    self.HUDpassword.userInteractionEnabled = NO;
+    self.HUDpassword.mode = MBProgressHUDModeCustomView;
+    //self.HUDpassword.removeFromSuperViewOnHide = YES;
+    self.HUDpassword.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"passwords do not match", nil)];
+    self.HUDpassword.delegate = self;
+    
+    
+    self.HUDdone = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:self.HUDdone];
+    self.HUDdone.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
+    self.HUDdone.mode = MBProgressHUDModeCustomView;
+    self.HUDdone.delegate = self;
+    self.HUDdone.labelText = AMLocalizedString(@"Done", nil);
+    
+    self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:self.HUDfade];
+    self.HUDfade.userInteractionEnabled = NO;
+    self.HUDfade.mode = MBProgressHUDAnimationFade;
+    // self.HUDfade.removeFromSuperViewOnHide = YES;
+    self.HUDfade.delegate = self;
+    
+    
+    self.HUDerror = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:self.HUDerror];
+    self.HUDerror.mode = MBProgressHUDModeCustomView;
+    // self.HUDerror.removeFromSuperViewOnHide = YES;
+    self.HUDerror.delegate = self;
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -138,93 +180,13 @@
 
 - (void)vkontakteDidFinishGettinUserInfo:(NSDictionary *)info
 {
-    NSLog(@"%@", info);
-    
-    
-    
-    MBProgressHUD *HUDFade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:HUDFade];
-    HUDFade.userInteractionEnabled = NO;
-    HUDFade.mode = MBProgressHUDAnimationFade;
-    HUDFade.removeFromSuperViewOnHide = YES;
-    
-    HUDFade.delegate = self;
-    
-    NSString *password = [NSString stringWithFormat:@"%@password",[info objectForKey:@"uid"]];
-    NSString *uid = [NSString stringWithFormat:@"%@",[info objectForKey:@"uid"]];
-    
-    
-    
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-    [locationManager setDelegate:self];
-    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    CLLocation *Me = [locationManager location];
-    NSLog(@"Me = %@", Me);
-    NSString *lat = [NSString stringWithFormat:@"%f",Me.coordinate.latitude];
-    NSString *lon = [NSString stringWithFormat:@"%f",Me.coordinate.longitude];
-    NSLog(@"%@ %@",lat,lon);
-    
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uid,@"vkontakte_id", password ,@"Password",lat,@"Latitude",lon,@"Longitude",nil];
-    NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-    [httpClient defaultValueForHeader:@"Accept"];
-    
-    
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
-                                                            path:@"/api/v1/users/login" parameters:params];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
-                                         initWithRequest:request];
-    [httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation,
-       id responseObject) {
-         NSString *response = [operation responseString];
-         NSLog(@"response: [%@]",response);
-         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"Registered"];
-         [[NSUserDefaults standardUserDefaults] setObject:@"VK" forKey:@"RegistrationWay"];
-         [HUDFade hide:YES];
-         
-         MBProgressHUD *Fist = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-         [self.navigationController.view addSubview:Fist];
-         Fist.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
-         Fist.mode = MBProgressHUDModeCustomView;
-         Fist.delegate = self;
-         Fist.labelText = AMLocalizedString(@"Done", nil);
-         [Fist show:YES];
-         [Fist hide:YES afterDelay:1];
-         
-         [self.navigationController popViewControllerAnimated:YES];
-         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-         self.Parent = @"Place";
-         
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"error: %@", [operation error]);
-         [HUDFade hide:YES];
-         MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-         [self.navigationController.view addSubview:HUD];
-         //  HUD.userInteractionEnabled = NO;
-         
-         HUD.mode = MBProgressHUDModeCustomView;
-         HUD.removeFromSuperViewOnHide = YES;
-         HUD.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"Something goes wrong", nil)];
-         HUD.delegate = self;
-         [HUD show:YES];
-         [HUD hide:YES afterDelay:2];
-         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-         self.Parent = @"Place";
-     }];
-    
-    
-    
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    [HUDFade show:YES];
-    [operation start];
+    self.VkontakteUserInfo = info;
+    [self Send:@"VK"];
 }
 
 - (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce
 {
-    // NSLog(@"%@", responce);
+
 }
 
 
@@ -242,92 +204,17 @@
 }
 
 -(void)Done{
-        if ([self validateMail:Email.text] == YES) {
-            
-            MBProgressHUD *HUDFade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-            [self.navigationController.view addSubview:HUDFade];
-            HUDFade.userInteractionEnabled = NO;
-            HUDFade.mode = MBProgressHUDAnimationFade;
-            HUDFade.removeFromSuperViewOnHide = YES;
-            
-            HUDFade.delegate = self;
-            
-            CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-            [locationManager setDelegate:self];
-            [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-            CLLocation *Me = [locationManager location];
-            NSLog(@"Me = %@", Me);
-            NSString *lat = [NSString stringWithFormat:@"%f",Me.coordinate.latitude];
-            NSString *lon = [NSString stringWithFormat:@"%f",Me.coordinate.longitude];
-            NSLog(@"%@ %@",lat,lon);
-            
-
-            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:  Email.text,@"Email", Password.text ,@"Password",lat,@"Latitude",lon,@"Longitude",nil];
-            
-            
-            NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
-            AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-            [httpClient defaultValueForHeader:@"Accept"];
-            
-            
-            NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
-                                                                    path:@"/api/v1/users/login" parameters:params];
-            AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
-                                                 initWithRequest:request];
-            [httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-            [operation setCompletionBlockWithSuccess:
-             ^(AFHTTPRequestOperation *operation,
-               id responseObject) {
-                 NSString *response = [operation responseString];
-                 NSLog(@"response: [%@]",response);
-                 [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"Registered"];
-                 [[NSUserDefaults standardUserDefaults] setObject:@"SELF" forKey:@"RegistrationWay"];
-                 [HUDFade hide:YES];
-                 
-                 MBProgressHUD *Fist = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-                 [self.navigationController.view addSubview:Fist];
-                 Fist.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
-                 Fist.mode = MBProgressHUDModeCustomView;
-                 Fist.delegate = self;
-                 Fist.labelText = AMLocalizedString(@"Done", nil);
-                 [Fist show:YES];
-                 [Fist hide:YES afterDelay:1];
-                 
-                 [self.navigationController popViewControllerAnimated:YES];
-                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-                 
-             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                 NSLog(@"error: %@", [operation error]);
-                 [HUDFade hide:YES];
-                 MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-                 [self.navigationController.view addSubview:HUD];
-                 
-                 HUD.mode = MBProgressHUDModeCustomView;
-                 HUD.removeFromSuperViewOnHide = YES;
-                 HUD.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"Something goes wrong", nil)];
-                 HUD.delegate = self;
-                 [HUD show:YES];
-                 [HUD hide:YES afterDelay:2];
-                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-                 
-             }];
-            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-            [HUDFade show:YES];
-            [operation start];
-        }
+    [Email resignFirstResponder];
+    [Password resignFirstResponder];
+    if ([self validateMail:Email.text] == YES) {
+        if ([self validateMail:Email.text] == YES)
+            [self Send:@"Self"];
+        
         else{
-            MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-            [self.navigationController.view addSubview:HUD];
-            HUD.userInteractionEnabled = NO;
-            
-            HUD.mode = MBProgressHUDModeCustomView;
-            
-            HUD.removeFromSuperViewOnHide = YES;
-            HUD.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"сheck e-mail please", nil)];
-            HUD.delegate = self;
-            [HUD show:YES];
-            [HUD hide:YES afterDelay:2];
+            [self.HUDemailcheck show:YES];
+            [self.HUDemailcheck hide:YES afterDelay:2];
         }
+    }
 }
 
 - (BOOL)validateMail : (NSString *)string
@@ -398,9 +285,8 @@
         Password.secureTextEntry = YES;
         [cell.contentView addSubview:Password];
         Password.text = @"";
-        Password.returnKeyType = UIReturnKeyNext;
+        Password.returnKeyType = UIReturnKeyDone;
     }
-//
     cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
     cell.textLabel.text = AMLocalizedString([array objectAtIndex:[indexPath row]], nil);
     cell.textLabel.backgroundColor = [UIColor clearColor];
@@ -475,88 +361,8 @@
     [SCFacebook getUserFQL:FQL_USER_STANDARD callBack:^(BOOL success, id result) {
         if (success) {
             loadingView.hidden = YES;
-            
-            
-            NSLog(@"success 123");
-            loadingView.hidden = YES;
-            MBProgressHUD *HUDFade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-            [self.navigationController.view addSubview:HUDFade];
-            HUDFade.userInteractionEnabled = NO;
-            HUDFade.mode = MBProgressHUDAnimationFade;
-            HUDFade.removeFromSuperViewOnHide = YES;
-            
-            HUDFade.delegate = self;
-            
-       //     NSString *name = RemoveNull(@"name");
-            NSString *remnull= RemoveNull(@"uid");
-            NSString *uid = [[NSString  alloc] initWithFormat:@"%@",remnull];
-            NSString *password = [NSString stringWithFormat:@"%@password",uid];
-       //     NSString *Bday = RemoveNull(@"birthday_date")
-            
-            
-            CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-            [locationManager setDelegate:self];
-            [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-            CLLocation *Me = [locationManager location];
-            NSLog(@"Me = %@", Me);
-            NSString *lat = [NSString stringWithFormat:@"%f",Me.coordinate.latitude];
-            NSString *lon = [NSString stringWithFormat:@"%f",Me.coordinate.longitude];
-            NSLog(@"%@ %@",lat,lon);
-            
-            
-            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:  uid,@"facebook_id", password ,@"Password",lat,@"Latitude",lon,@"Longitude",nil];
-            
-            NSLog(@"%@",params);
-            
-            NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
-            AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-            [httpClient defaultValueForHeader:@"Accept"];
-            
-            
-            NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
-                                                                    path:@"/api/v1/users/login" parameters:params];
-            AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
-                                                 initWithRequest:request];
-            [httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-            [operation setCompletionBlockWithSuccess:
-             ^(AFHTTPRequestOperation *operation,
-               id responseObject) {
-                 NSString *response = [operation responseString];
-                 NSLog(@"response: [%@]",response);
-                 [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"Registered"];
-                 [[NSUserDefaults standardUserDefaults] setObject:@"FB" forKey:@"RegistrationWay"];
-                 [HUDFade hide:YES];
-                 
-                 MBProgressHUD *Fist = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-                 [self.navigationController.view addSubview:Fist];
-                 Fist.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
-                 Fist.mode = MBProgressHUDModeCustomView;
-                 Fist.delegate = self;
-                 Fist.labelText = AMLocalizedString(@"Done", nil);
-                 [Fist show:YES];
-                 [Fist hide:YES afterDelay:1];
-                 
-                 [self.navigationController popViewControllerAnimated:YES];
-                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-                 
-             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                 NSLog(@"error: %@", [operation error]);
-                 [HUDFade hide:YES];
-                 MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-                 [self.navigationController.view addSubview:HUD];
-                 
-                 HUD.mode = MBProgressHUDModeCustomView;
-                 HUD.removeFromSuperViewOnHide = YES;
-                 HUD.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"Something goes wrong", nil)];
-                 HUD.delegate = self;
-                 [HUD show:YES];
-                 [HUD hide:YES afterDelay:2];
-                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-                 
-             }];
-            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-            [HUDFade show:YES];
-            [operation start];
+            self.FacebookUserInfo = result;
+            [self Send:@"FB"];
             
         }
         else{
@@ -643,83 +449,8 @@
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username {
     
     
-    MBProgressHUD *HUDFade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:HUDFade];
-    HUDFade.userInteractionEnabled = NO;
-    HUDFade.mode = MBProgressHUDAnimationFade;
-    HUDFade.removeFromSuperViewOnHide = YES;
-    
-    HUDFade.delegate = self;
-    
- //   NSString *name = [NSString stringWithFormat:@"%@",username];
-    NSString *tmp = [[[[[[NSUserDefaults standardUserDefaults] objectForKey: @"authData"] componentsSeparatedByString:@"user_id="]objectAtIndex:1] componentsSeparatedByString:@"&"]objectAtIndex:0];
-    NSString *uid = [NSString stringWithFormat:@"%@",tmp];
-    NSString *password = [NSString stringWithFormat:@"%@password",uid];
-    
-    
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-    [locationManager setDelegate:self];
-    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    CLLocation *Me = [locationManager location];
-    NSLog(@"Me = %@", Me);
-    NSString *lat = [NSString stringWithFormat:@"%f",Me.coordinate.latitude];
-    NSString *lon = [NSString stringWithFormat:@"%f",Me.coordinate.longitude];
-    NSLog(@"%@ %@",lat,lon);
-    
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:  uid,@"twitter_id", password ,@"Password",lat,@"Latitude",lon,@"Longitude",nil];
-    NSLog(@"params = %@",params);
-    NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-    [httpClient defaultValueForHeader:@"Accept"];
-    
-    
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
-                                                            path:@"/api/v1/users/login" parameters:params];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
-                                         initWithRequest:request];
-    [httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation,
-       id responseObject) {
-         NSString *response = [operation responseString];
-         NSLog(@"response: [%@]",response);
-         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"Registered"];
-         [[NSUserDefaults standardUserDefaults] setObject:@"TW" forKey:@"RegistrationWay"];
-         [HUDFade hide:YES];
-         
-         MBProgressHUD *Fist = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-         [self.navigationController.view addSubview:Fist];
-         Fist.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
-         Fist.mode = MBProgressHUDModeCustomView;
-         Fist.delegate = self;
-         Fist.labelText = AMLocalizedString(@"Done", nil);
-         [Fist show:YES];
-         [Fist hide:YES afterDelay:1];
-         self.Parent = @"Place";
-         self.navigationController.navigationBar.hidden = YES;
-         [self.navigationController popViewControllerAnimated:YES];
-         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-         
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"error: %@", [operation error]);
-         [HUDFade hide:YES];
-         MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-         [self.navigationController.view addSubview:HUD];
-         //  HUD.userInteractionEnabled = NO;
-         //#warning код ошибки разбирать
-         HUD.mode = MBProgressHUDModeCustomView;
-         HUD.removeFromSuperViewOnHide = YES;
-         HUD.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"Something goes wrong", nil)];
-         HUD.delegate = self;
-         [HUD show:YES];
-         [HUD hide:YES afterDelay:2];
-         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-         self.Parent = @"Place";
-     }];
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    [HUDFade show:YES];
-    [operation start];
+    self.twitterName = username;
+    [self Send:@"TW"];
     
 }
 
@@ -740,6 +471,95 @@
 
 - (void) requestFailed: (NSString *) requestIdentifier withError: (NSError *) error {
 	// NSLog(@"Request %@ failed with error: %@", requestIdentifier, error);
+}
+#pragma mark myFunctions
+-(NSString *)HUDStringLocalized:(id)JSON{
+    NSLog(@"HUDStringLocalized: %@",JSON);
+    if ([[[JSON objectForKey:@"Error"]objectForKey:@"message"] isEqual:[NSNull null]] || [[[JSON objectForKey:@"Error"]objectForKey:@"message"] length] == 0) {
+        return AMLocalizedString(@"Something goes wrong", nil);
+    }
+    return [[JSON objectForKey:@"Error"] objectForKey:@"message"];
+}
+
+
+-(NSDictionary * )POSTRequest:(NSString *)Way{
+    NSDictionary *params;
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    [locationManager setDelegate:self];
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    CLLocation *Me = [locationManager location];
+    NSLog(@"Me = %@", Me);
+    NSString *lat = [NSString stringWithFormat:@"%f",Me.coordinate.latitude];
+    NSString *lon = [NSString stringWithFormat:@"%f",Me.coordinate.longitude];
+    NSLog(@"%@ %@",lat,lon);
+    
+    if ([Way isEqualToString:@"Self"]) {
+        params = [NSDictionary dictionaryWithObjectsAndKeys:  Email.text,@"Email", Password.text ,@"Password",lat,@"Latitude",lon,@"Longitude",nil];
+        NSLog(@"Self = %@",params);
+    }
+    
+    if ([Way isEqualToString:@"TW"]) {
+        NSString *name = [NSString stringWithFormat:@"%@",self.twitterName];
+        NSString *tmp = [[[[[[NSUserDefaults standardUserDefaults] objectForKey: @"authData"] componentsSeparatedByString:@"user_id="]objectAtIndex:1] componentsSeparatedByString:@"&"]objectAtIndex:0];
+        NSString *uid = [NSString stringWithFormat:@"%@",tmp];
+        NSString *password = [NSString stringWithFormat:@"%@password",uid];
+        params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"twitter_id", password ,@"Password",nil];
+        NSLog(@"Way = %@",params);
+    }
+    
+    
+    if ([Way isEqualToString:@"FB"]) {
+        
+        NSString *remnull= RemoveNull(@"uid");
+        NSString *uid = [[NSString  alloc] initWithFormat:@"%@",remnull];
+        NSString *password = [NSString stringWithFormat:@"%@password",uid];
+        params = [NSDictionary dictionaryWithObjectsAndKeys:  uid,@"facebook_id", password ,@"Password",lat,@"Latitude",lon,@"Longitude",nil];
+        NSLog(@"Fb = %@",params);
+        
+    }
+    if ([Way isEqualToString:@"VK"]) {
+        NSString *password = [NSString stringWithFormat:@"%@password",[self.VkontakteUserInfo objectForKey:@"uid"]];
+        NSString *uid = [NSString stringWithFormat:@"%@",[self.VkontakteUserInfo objectForKey:@"uid"]];
+        params = [NSDictionary dictionaryWithObjectsAndKeys: uid,@"vkontakte_id", password ,@"Password",lat,@"Latitude",lon,@"Longitude",nil];
+        NSLog(@"VK = %@",params);
+    }
+
+    return params;
+}
+
+-(void)Send:(NSString *)RegistrationWay{
+    NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    [httpClient defaultValueForHeader:@"Accept"];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"/api/v1/users/login" parameters:[self POSTRequest:RegistrationWay]];
+    
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"Registered"];
+        [[NSUserDefaults standardUserDefaults] setObject:RegistrationWay forKey:@"RegistrationWay"];
+        [self.HUDfade hide:YES];
+        
+        [self.HUDdone show:YES];
+        [self.HUDdone hide:YES afterDelay:1];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSString *answer = [self HUDStringLocalized:JSON];
+        [self.HUDfade hide:YES];
+        
+        self.HUDerror.customView = [InterfaceFunctions LabelHUDwithString:answer];
+        
+        [self.HUDerror show:YES];
+        [self.HUDerror hide:YES afterDelay:2];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        
+    }];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    [self.HUDfade show:YES];
+    [operation start];
 }
 
  
