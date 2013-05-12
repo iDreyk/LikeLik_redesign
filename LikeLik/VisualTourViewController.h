@@ -10,8 +10,6 @@
 #import <MapBox/MapBox.h>
 
 @interface VisualTourViewController : UIViewController <RMMapViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>{
-    NSString *cataloguesPath;
-    NSMutableArray *catalogues;
     
 }
 @property (nonatomic,retain)IBOutlet UIPageControl *pageControl;

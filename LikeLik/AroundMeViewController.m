@@ -352,6 +352,7 @@ static NSDictionary *Place1;
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
         
         self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
+      
     } else {
         // NSLog(@"3");
         self.CityImage.frame = CGRectMake(0, -44.0, 320, self.CityImage.frame.size.height);

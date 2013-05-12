@@ -88,13 +88,12 @@ static NSDictionary *Place;
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
     [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [self.Map addSubview:self.locationButton];
 }
 
 -(IBAction)showLocation:(id)sender{
     [self.Map setCenterCoordinate:self.Map.userLocation.coordinate];
 }
-
 
 -(void)viewDidAppear:(BOOL)animated{
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
