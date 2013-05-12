@@ -16,6 +16,7 @@
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
+static NSDictionary *Place1;
 @interface FavViewController ()
 
 @end
@@ -140,7 +141,7 @@ static NSDictionary *Place;
 {
     PlaceName = annotation.title;
     PlaceCategory = annotation.subtitle;
-
+    Place = annotation.userInfo;
     [self performSegueWithIdentifier:@"MapSegue" sender:self];
 }
 
@@ -259,6 +260,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([[segue identifier] isEqualToString:@"PlaceSegue"]) {
         PlaceViewController *destinaton  = [segue destinationViewController];
         NSIndexPath *indexpath = [self.FavTable indexPathForSelectedRow];
+        Place1 = [FavouritePlaces objectAtIndex:[indexpath row]];
         destinaton.PlaceCityName = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"City"];
         destinaton.PlaceName = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Name"];
         destinaton.PlaceCategory = [[FavouritePlaces objectAtIndex:[indexpath row]] objectForKey:@"Category"];
@@ -278,7 +280,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         // NSLog(@"123");
         PlaceViewController *PlaceView = [segue destinationViewController];
         PlaceView.PlaceName = PlaceName;
-        PlaceView.PlaceCategory = PlaceCategory;
+        PlaceView.PlaceCategory = [Place objectForKey:@"Category"];
+        PlaceView.PlaceCityName = [Place objectForKey:@"City"];
+        PlaceView.PlaceAddress = [Place objectForKey:@"Address"];
+        PlaceView.PlaceAbout = [Place objectForKey:@"About"];
+        PlaceView.PlaceTelephone = [Place objectForKey:@"Telephone"];
+        PlaceView.PlaceWeb = [Place objectForKey:@"Web"];
+        PlaceView.PlaceLocation = [Place objectForKey:@"Location"];
         PlaceView.PlaceCityName = self.CityName;
         PlaceView.Color = [InterfaceFunctions colorTextPlaceBackground:PlaceCategory];
     }
