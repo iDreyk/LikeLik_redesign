@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-@interface SplashViewController : UIViewController<CLLocationManagerDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate>{
+@interface SplashViewController : UIViewController<CLLocationManagerDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate,MBProgressHUDDelegate>{
     CLLocationManager *locationManagerRegion;
     CLLocationManager *locationManager;
     UILocalNotification *localNotification;
@@ -28,6 +28,6 @@
 @property(nonatomic, retain) CLLocationManager *locationManagerRegion;
 @property(nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic,retain)IBOutlet UIAlertView *message;
-
+@property (nonatomic,retain)MBProgressHUD *HUDfade;
 
 @end

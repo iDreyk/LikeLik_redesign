@@ -257,7 +257,7 @@ static CLLocation *Me;
     
     // Perform the request on a new thread so we don't block the UI
     dispatch_queue_t downloadQueue = dispatch_queue_create("Download queue", NULL);
-    dispatch_async(downloadQueue, ^{
+    dispatch_sync(downloadQueue, ^{
         
         NSError* err = nil;
         NSHTTPURLResponse* rsp = nil;
@@ -265,6 +265,7 @@ static CLLocation *Me;
         // Perform the request synchronously on this thread
         NSLog(@"Start download");
         NSData *rspData = [NSURLConnection sendSynchronousRequest:request returningResponse:&rsp error:&err];
+        NSLog(@"%d",[rspData length]);
         NSLog(@"Downloaded");
         // Once a response is received, handle it on the main thread in case we do any UI updates
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -955,6 +956,8 @@ static CLLocation *Me;
         cityLanguage = @"city_EN";
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"0" forKey:@"Download"];
+    NSLog(@"%@",[defaults objectForKey:@"Download"]);
     NSMutableArray *catalogues = [defaults objectForKey:catalogue];
     
     for (int i = 0; i < [catalogues count]; i++) {
