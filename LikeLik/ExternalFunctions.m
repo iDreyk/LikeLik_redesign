@@ -128,15 +128,16 @@ static CLLocation *Me;
 
 
 + (void) getReady {
+//    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
+//    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"catalogue" ofType:@"plist"] toPath:cataloguesPath error:nil];
+//    
+//    NSString *cataloguesPath1 = [[self docDir]stringByAppendingPathComponent:@"Moscow"];
+//    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Moscow" ofType:@""] toPath:cataloguesPath1 error:nil];
+//    
+//    NSString *cataloguesPath2 = [[self docDir]stringByAppendingPathComponent:@"Vienna"];
+//    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Vienna" ofType:@""] toPath:cataloguesPath2 error:nil];
+    
     NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
-    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"catalogue" ofType:@"plist"] toPath:cataloguesPath error:nil];
-    
-    NSString *cataloguesPath1 = [[self docDir]stringByAppendingPathComponent:@"Moscow"];
-    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Moscow" ofType:@""] toPath:cataloguesPath1 error:nil];
-    
-    NSString *cataloguesPath2 = [[self docDir]stringByAppendingPathComponent:@"Vienna"];
-    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Vienna" ofType:@""] toPath:cataloguesPath2 error:nil];
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *catalogueArray = [[NSArray alloc]initWithContentsOfFile:cataloguesPath];
     [defaults setObject:catalogueArray forKey:catalogue];
@@ -248,8 +249,7 @@ static CLLocation *Me;
 //  скачать каталог города
 + (void) downloadCatalogue:(NSString *)catalogueOfCity {
     // Create a URL Request and set the URL
-    NSString *catalogueName = [[self cityCatalogueForCity:catalogueOfCity] objectForKey:@"Name_EN"];
-    NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://maimobile.somee.com/test/%@.zip",catalogueName]];
+    NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://likelik.net/docs/Archive.zip"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     // Display the network activity indicator
@@ -277,7 +277,7 @@ static CLLocation *Me;
             } else {
                 // Cache the file in the cache directory
                 NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-                NSString* path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Moscow.zip"];
+                NSString* path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Archive.zip"];
                 NSString *crapPath = [[self docDir]stringByAppendingPathComponent:@"__MACOSX"];
                 
                 [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
@@ -285,7 +285,7 @@ static CLLocation *Me;
                 
                 NSString *cataloguesPath = [self docDir];
                 
-                [[NSFileManager defaultManager] removeItemAtPath:cataloguesPath error:nil];
+                //[[NSFileManager defaultManager] removeItemAtPath:cataloguesPath error:nil];
                 [self unzipFileAt:path ToDestination:cataloguesPath];
                 
                 [[NSFileManager defaultManager] removeItemAtPath:path error:nil];

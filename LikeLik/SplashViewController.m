@@ -40,36 +40,36 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 
-    if (haveAlreadyReceivedCoordinates) {
-        Me = newLocation;
-        NSLog(@"%@",Me);
-//#warning надо переделать под новый каталог
-        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
-        
-//        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
-//        NSLog(@"%@",Place);
-//        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
-//        [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
-//        [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
-//        [localNotification setAlertBody:[NSString stringWithFormat:@"%@",[Place objectForKey:@"Place"]]];
-//        [localNotification setHasAction: YES];
-//        [localNotification setApplicationIconBadgeNumber:1];
-//        [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
-//        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+//    if (haveAlreadyReceivedCoordinates) {
+//        Me = newLocation;
+//        NSLog(@"%@",Me);
+////#warning надо переделать под новый каталог
+//        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
 //        
-        
-        
-        
-        for (int i = 0; i<[Region count]; i++) {
-            [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
-        }
-        [locationManager stopUpdatingLocation];
-        locationManager = nil;
-     //   NSLog(@"%@",Region);
-    }
-    else{
-        haveAlreadyReceivedCoordinates = YES;
-    }
+////        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
+////        NSLog(@"%@",Place);
+////        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
+////        [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
+////        [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
+////        [localNotification setAlertBody:[NSString stringWithFormat:@"%@",[Place objectForKey:@"Place"]]];
+////        [localNotification setHasAction: YES];
+////        [localNotification setApplicationIconBadgeNumber:1];
+////        [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
+////        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+////        
+//        
+//        
+//        
+//        for (int i = 0; i<[Region count]; i++) {
+//            [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
+//        }
+//        [locationManager stopUpdatingLocation];
+//        locationManager = nil;
+//     //   NSLog(@"%@",Region);
+//    }
+//    else{
+//        haveAlreadyReceivedCoordinates = YES;
+//    }
     
 
     //
@@ -159,6 +159,12 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         Fistframe.origin.y-=270.0;
 
     }
+    
+    if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
+        [ExternalFunctions downloadCatalogue:@"test"];
+        [defaults setObject:@"1" forKey:@"Download"];
+    }
+    
     [UIView animateWithDuration:1.2 animations:^{
         self.Shade.frame = Shadeframe;
         self.fist.frame = Fistframe;
