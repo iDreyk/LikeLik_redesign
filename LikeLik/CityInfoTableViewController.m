@@ -44,7 +44,7 @@
     
     
     self.VisualCell.textLabel.text = AMLocalizedString(@"Visual Tour", nil);
-    self.VisualCell.textLabel.font = [AppDelegate OpenSansRegular:26];
+    self.VisualCell.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.VisualCell.textLabel.backgroundColor   = [UIColor clearColor];
     self.VisualCell.textLabel.textColor = [InterfaceFunctions mainTextColor:1];
     self.VisualCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
@@ -52,7 +52,7 @@
     
     
     self.TransportationCell.textLabel.text = AMLocalizedString(@"Transportation", nil);
-    self.TransportationCell.textLabel.font = [AppDelegate OpenSansRegular:26];
+    self.TransportationCell.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.TransportationCell.textLabel.backgroundColor   = [UIColor clearColor];
     self.TransportationCell.textLabel.textColor =[InterfaceFunctions mainTextColor:2];
     self.TransportationCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
@@ -62,7 +62,7 @@
     
     
     self.PracticalCell.textLabel.text = AMLocalizedString(@"Practical Info", nil);
-    self.PracticalCell.textLabel.font = [AppDelegate OpenSansRegular:26];
+    self.PracticalCell.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.PracticalCell.textLabel.backgroundColor   = [UIColor clearColor];
     self.PracticalCell.textLabel.textColor = [InterfaceFunctions mainTextColor:3];
     self.PracticalCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];

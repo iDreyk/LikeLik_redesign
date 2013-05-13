@@ -208,7 +208,7 @@
         self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
     }
     else if (yOffset < 0) {
-        self.CityImage.frame = CGRectMake(0,-92.0,320.0,152.0-yOffset + floorf(threshold / 2.0));
+        self.CityImage.frame = CGRectMake(0,-44.0,320.0,152.0-yOffset + floorf(threshold / 2.0));
         
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
         

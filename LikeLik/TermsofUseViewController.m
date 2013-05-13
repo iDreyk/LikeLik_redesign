@@ -54,12 +54,12 @@
     
     
     
-    self.Title.font = [AppDelegate OpenSansSemiBold:30];
+    self.Title.font = [AppDelegate OpenSansSemiBold:32];
     self.Title.text = AMLocalizedString(@"Terms of use", nil);
     
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 300.0)];
     label.text = [NSString stringWithFormat:@"\n%@", [ExternalFunctions getAboutText]];
-    label.font = [AppDelegate OpenSansRegular:26];
+    label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor blackColor];
     label.backgroundColor =  [UIColor clearColor];
     label.editable = NO;
@@ -72,7 +72,7 @@
         label.frame = CGRectMake(7.0, 0.0, 306.0, 412.0);
     }
     label.contentSize = CGSizeMake(320.0, textViewSize.height);
-    self.Title.font = [AppDelegate OpenSansSemiBold:30];
+    self.Title.font = [AppDelegate OpenSansSemiBold:32];
     [self.view addSubview:label];
     
 	// Do any additional setup after loading the view.

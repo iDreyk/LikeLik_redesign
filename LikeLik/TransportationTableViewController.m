@@ -99,7 +99,7 @@
     }
     [cell addSubview:_actb];
 
-    cell.textLabel.font = [AppDelegate OpenSansRegular:26];
+    cell.textLabel.font = [AppDelegate OpenSansRegular:28];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     UIView* myBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     myBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];

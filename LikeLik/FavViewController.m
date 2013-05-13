@@ -186,7 +186,7 @@ static NSDictionary *Place1;
         label.textAlignment = NSTextAlignmentCenter;
         [label sizeToFit];
         [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
-        [label setFont:[AppDelegate OpenSansRegular:30]];
+        [label setFont:[AppDelegate OpenSansRegular:32]];
         [label setBackgroundColor:[UIColor clearColor]];
         
         
@@ -196,7 +196,7 @@ static NSDictionary *Place1;
         sublabel.textAlignment = NSTextAlignmentCenter;
         [sublabel sizeToFit];
         [sublabel setFrame:CGRectMake((320.0-sublabel.frame.size.width)/2, label.frame.origin.y + label.frame.size.height + 40.0, sublabel.frame.size.width, sublabel.frame.size.height)];
-        [sublabel setFont:[AppDelegate OpenSansRegular:30]];
+        [sublabel setFont:[AppDelegate OpenSansRegular:32]];
         [sublabel setBackgroundColor:[UIColor clearColor]];
         
         

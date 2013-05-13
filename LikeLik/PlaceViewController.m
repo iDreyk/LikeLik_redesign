@@ -34,6 +34,7 @@ static BOOL infoViewIsOpen = NO;
 static UIAlertView *alertView = nil;
 CGFloat firstX=0;
 CGFloat firstY=0;
+CGFloat alpha = 0.5;
 //static UIActivityIndicatorView *activity = nil;
 
 @interface PlaceViewController ()
@@ -105,8 +106,6 @@ CGFloat firstY=0;
                  
                  if ([AppDelegate isiPhone5]){
                      [self.PlaceView setFrame:CGRectMake(0.0, 496.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-                     
-                     
                  }
                  else{
                      [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
@@ -114,7 +113,6 @@ CGFloat firstY=0;
                  }
              }
                             completion:NULL];
-            
             infoViewIsOpen = NO;
             [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
             _labelonPhoto.hidden = NO;
@@ -207,8 +205,6 @@ CGFloat firstY=0;
     _ScrollView.contentSize = CGSizeMake(320.0, 400.0);
     
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:self.PlaceName AndColor:[InterfaceFunctions mainTextColor:6]];
-   // [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
-    
     
     [self.scroll addGestureRecognizer:singleTap];
     NSArray *photos = self.Photos;//[ExternalFunctions getImagesOfPlaceInCity:self.PlaceCityName InCategory:self.PlaceCategory WithPlaceName:self.PlaceName];
@@ -298,7 +294,7 @@ CGFloat firstY=0;
     
     
 	_TextPlace.backgroundColor =  [UIColor clearColor];
-	_TextPlace.font = [AppDelegate OpenSansRegular:26];
+	_TextPlace.font = [AppDelegate OpenSansRegular:28];
 	_TextPlace.textColor = [UIColor whiteColor];
     _TextPlace.scrollEnabled = YES;
     _TextPlace.editable = NO;
@@ -308,7 +304,7 @@ CGFloat firstY=0;
 //    
     [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_normal"].image forState:UIControlStateNormal];
     [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_selected"].image forState:UIControlStateHighlighted];
-    
+    [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_normal"].image forState:UIControlStateDisabled];
 //
 //    
     [self.GOUSE setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"2use_normal"].image forState:UIControlStateNormal];
@@ -318,11 +314,8 @@ CGFloat firstY=0;
     [self.Share setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"3share_normal"].image forState:UIControlStateNormal];
     [self.Share setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"3share_selected"].image forState:UIControlStateHighlighted];
     
-    
-    UIImageView *fav = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1fav.png"]];
-    fav.frame = CGRectMake(45.0, 10.0, fav.frame.size.width, fav.frame.size.height);
-    [fav setCenter:CGPointMake(53, fav.center.y)];
-    [self.Favorites addSubview:fav];
+    self.favImage = [InterfaceFunctions favouritestarPlaceView];
+    [self.Favorites addSubview:self.favImage];
     
     
     Use = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2use.png"]];
@@ -349,7 +342,7 @@ CGFloat firstY=0;
     
     UIImageView *share = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"3share.png"]];
     share.frame = CGRectMake(45.0, 10.0, share.frame.size.width, share.frame.size.height);
-    [share setCenter:CGPointMake(54, fav.center.y)];
+    [share setCenter:CGPointMake(54, self.favImage.center.y)];
     [self.Share addSubview:share];
     
     self.favText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
@@ -365,10 +358,21 @@ CGFloat firstY=0;
     
     if ([ExternalFunctions isFavorite:self.PlaceName InCity:self.PlaceCityName InCategory:self.PlaceCategory]) {
         self.Favorites.enabled = NO;
-        [self.favText setText:@""];//:AMLocalizedString(@"Favorited", nil)];
         
-  //      self.favText.numberOfLines = 0;
-//        [self.favText sizeToFit];
+        self.favImage.alpha = alpha;
+
+        [self.favText removeFromSuperview];
+        self.favText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+        self.favText.numberOfLines = 0;
+        [self.favText setText:AMLocalizedString(@"Favorited", nil)];
+        self.favText.font = [AppDelegate OpenSansBoldwithSize:18];
+        self.favText.textColor  = [UIColor whiteColor];
+        self.favText.backgroundColor = [UIColor clearColor];
+        [self.favText setCenter:CGPointMake(self.Favorites.center.x, self.Favorites.center.y)];
+        [self.favText sizeToFit];
+        [self.favText setFrame:CGRectMake((107.0-self.favText.frame.size.width)/2, 50-20.0, self.favText.frame.size.width, self.favText.frame.size.height)];
+        [self.Favorites addSubview:self.favText];
+        self.favText.alpha = alpha;
     }
     
     UILabel *UseText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];//[[UITextView //stringWithFormat:AMLocalizedString(@"Favorites", nil)]];
@@ -408,7 +412,7 @@ CGFloat firstY=0;
     
     UILabel *Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
     Red_line.text = self.PlaceName;
-    Red_line.font =[AppDelegate OpenSansSemiBold:26];
+    Red_line.font =[AppDelegate OpenSansSemiBold:28];
     Red_line.textColor = [UIColor whiteColor];
     Red_line.numberOfLines = 10;
     Red_line.backgroundColor =  [UIColor clearColor];
@@ -426,7 +430,7 @@ CGFloat firstY=0;
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
 
     label.text = self.PlaceAbout;
-    label.font = [AppDelegate OpenSansRegular:26];
+    label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor whiteColor];
     //label.numberOfLines = 10;
     label.backgroundColor =  [UIColor clearColor];
@@ -459,7 +463,7 @@ CGFloat firstY=0;
     CGRect frame = address.frame;
     frame.size.height*=2;
     address.frame = frame;
-    [address.titleLabel setFont:[AppDelegate OpenSansRegular:26]];//[UIFont boldSystemFontOfSize:20]];
+    [address.titleLabel setFont:[AppDelegate OpenSansRegular:28]];//[UIFont boldSystemFontOfSize:20]];
     [address addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
 
     UIImageView *Point =  [[UIImageView alloc] initWithFrame:CGRectMake(14.0, label.frame.origin.y+label.frame.size.height+10, 14.0, 16.0)];
@@ -486,7 +490,7 @@ CGFloat firstY=0;
     frame.size.height*=2;
     tel.frame = frame;
    // [tel setBackgroundColor:[UIColor blackColor]];
-    [tel.titleLabel setFont:[AppDelegate OpenSansRegular:26]];//[UIFont boldSystemFontOfSize:20]];
+    [tel.titleLabel setFont:[AppDelegate OpenSansRegular:28]];//[UIFont boldSystemFontOfSize:20]];
     [tel addTarget:self action:@selector(launchPhoneWithNumber:) forControlEvents:UIControlEventTouchUpInside];
  
     
@@ -526,7 +530,7 @@ CGFloat firstY=0;
     web.frame = frame;
     //[web setBackgroundColor:[UIColor blackColor]];
     
-    [web.titleLabel setFont:[AppDelegate OpenSansRegular:26]];
+    [web.titleLabel setFont:[AppDelegate OpenSansRegular:28]];
     [web addTarget:self action:@selector(webPressed:) forControlEvents:UIControlEventTouchUpInside];
  
     size1 =web.frame.size;
@@ -694,11 +698,35 @@ CGFloat firstY=0;
 }
 
 -(void)afterreg{
-    // NSLog(@"Hello after reg");
+     NSLog(@"Hello after reg");
     self.labelonPhoto.hidden = NO;
     self.background.hidden = NO;
     self.navigationController.navigationBar.hidden = YES;
-    [self.view setFrame:CGRectMake(0.0, -44.0, self.view.frame.size.width, self.view.frame.size.height+44.0)];    
+    [self.view setFrame:CGRectMake(0.0, -44.0, self.view.frame.size.width, self.view.frame.size.height+44.0)];
+    UIButton *tmp = [[UIButton alloc] init];
+    tmp.tag = 1;
+    [UIView animateWithDuration:1.0 animations:^{
+        if ([AppDelegate isiPhone5])
+            [self.PlaceView setFrame:CGRectMake(0.0, 496.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
+        else
+            [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
+    }];
+    infoViewIsOpen = !infoViewIsOpen;
+    [self presentSemiViewController:VC withOptions:@{
+     KNSemiModalOptionKeys.pushParentBack    : @(YES),
+     KNSemiModalOptionKeys.animationDuration : @(0.5),
+     KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+     }];
+    
+    VC.view.backgroundColor = [UIColor clearColor];
+    VC.PlaceName = self.PlaceName;
+    VC.PlaceCategory = self.PlaceCategory;
+    VC.PlaceCity = self.PlaceCityName;
+    VC.color = self.Color;
+    _labelonPhoto.hidden = NO;
+    _background.hidden = NO;
+
+    
 }
 
 -(void)gesture:(UIGestureRecognizer *)gestureRecognizer{
@@ -832,7 +860,7 @@ CGFloat firstY=0;
         for( UIView * subView in [theView subviews])
             [self setNewFontToTextViews:subView] ;
     else if([theView isKindOfClass:[UITextView class]])
-        [(UITextView*)theView setFont:[AppDelegate OpenSansRegular:26]];
+        [(UITextView*)theView setFont:[AppDelegate OpenSansRegular:28]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -1021,9 +1049,22 @@ CGFloat firstY=0;
 
         [HUD show:YES];
         [HUD hide:YES afterDelay:2];
-        self.Favorites.enabled = NO;
-        [self.favText setText:@""];//AMLocalizedString(@"Favorited", nil)];
-      //  [self.favText sizeToFit];
+            self.Favorites.enabled = NO;
+            
+            self.favImage.alpha = alpha;
+            
+            [self.favText removeFromSuperview];
+            self.favText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+            self.favText.numberOfLines = 0;
+            [self.favText setText:AMLocalizedString(@"Favorited", nil)];
+            self.favText.font = [AppDelegate OpenSansBoldwithSize:18];
+            self.favText.textColor  = [UIColor whiteColor];
+            self.favText.backgroundColor = [UIColor clearColor];
+            [self.favText setCenter:CGPointMake(self.Favorites.center.x, self.Favorites.center.y)];
+            [self.favText sizeToFit];
+            [self.favText setFrame:CGRectMake((107.0-self.favText.frame.size.width)/2, 50-20.0, self.favText.frame.size.width, self.favText.frame.size.height)];
+            [self.Favorites addSubview:self.favText];
+        self.favText.alpha = alpha;
     }
 }
 

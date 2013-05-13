@@ -34,7 +34,7 @@
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
 
     self.CityLabel.text = [[NSString alloc] initWithFormat:@"\n%@",self.CityName];
-    self.CityLabel.font = [AppDelegate OpenSansSemiBold:30];
+    self.CityLabel.font = [AppDelegate OpenSansSemiBold:32];
     cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogues1.plist"];
     catalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
 
@@ -46,7 +46,7 @@
     
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 300.0)];
     label.text = [[NSString alloc] initWithFormat:@"\n%@",[ExternalFunctions getPracticalInfoForCity:self.CityName]];
-    label.font = [AppDelegate OpenSansRegular:26];
+    label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor blackColor];
     label.backgroundColor =  [UIColor clearColor];
     label.editable = NO;

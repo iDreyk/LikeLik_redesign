@@ -32,9 +32,9 @@
     self.FeedBack.returnKeyType = UIReturnKeyDone;
     self.Email.delegate = self;
     
-    self.Contactinformation.font = [AppDelegate OpenSansSemiBold:30];
-    self.Email.font = [AppDelegate OpenSansRegular:26];
-    self.FeedBack.font = [AppDelegate OpenSansRegular:26];
+    self.Contactinformation.font = [AppDelegate OpenSansSemiBold:32];
+    self.Email.font = [AppDelegate OpenSansRegular:28];
+    self.FeedBack.font = [AppDelegate OpenSansRegular:28];
     
     UIButton *btn = [InterfaceFunctions done_button];
     [btn addTarget:self action:@selector(Done) forControlEvents:UIControlEventTouchUpInside];

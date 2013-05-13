@@ -35,7 +35,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     self.SupportCell.textLabel.text = AMLocalizedString(@"Support", nil);
-    self.SupportCell.textLabel.font = [AppDelegate OpenSansRegular:26];
+    self.SupportCell.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.SupportCell.textLabel.backgroundColor   = [UIColor clearColor];
     self.SupportCell.textLabel.textColor = [InterfaceFunctions mainTextColor:3];
     self.SupportCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
@@ -47,7 +47,7 @@
     
     
     self.TermsCell.textLabel.text = AMLocalizedString(@"Terms of use", nil);
-    self.TermsCell.textLabel.font = [AppDelegate OpenSansRegular:26];
+    self.TermsCell.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.TermsCell.textLabel.backgroundColor   = [UIColor clearColor];
     self.TermsCell.textLabel.textColor = [InterfaceFunctions mainTextColor:2];
     self.TermsCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
@@ -57,7 +57,7 @@
     
     
     self.AboutCell.textLabel.text = AMLocalizedString(@"About", nil);
-    self.AboutCell.textLabel.font = [AppDelegate OpenSansRegular:26];
+    self.AboutCell.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.AboutCell.textLabel.backgroundColor   = [UIColor clearColor];
     self.AboutCell.textLabel.textColor = [InterfaceFunctions mainTextColor:1];//[UIColor colorWithRed:207.0/255.0       green:17.0/255.0 blue:17.0/255.0 alpha:1];
     self.AboutCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
@@ -69,7 +69,7 @@
     
     
     self.MoreLikeLikApps.textLabel.text = AMLocalizedString(@"More LikeLik Apps", nil);
-    self.MoreLikeLikApps.textLabel.font = [AppDelegate OpenSansRegular:26];
+    self.MoreLikeLikApps.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.MoreLikeLikApps.textLabel.backgroundColor   = [UIColor clearColor];
     self.MoreLikeLikApps.textLabel.textColor = [InterfaceFunctions mainTextColor:4];
     self.MoreLikeLikApps.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
