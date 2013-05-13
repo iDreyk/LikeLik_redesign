@@ -57,6 +57,9 @@
 @property (nonatomic,retain) NSString *PlaceWeb;
 @property (nonatomic,retain) NSString *PlaceTelephone;
 @property (nonatomic,retain) CLLocation *PlaceLocation;
+
+
+
 @property (nonatomic, retain) UIColor *Color;
 @property (weak, nonatomic) IBOutlet UILabel *gradientunderLabel;
 @property (weak, nonatomic) IBOutlet UIView *ViewWithContent;
@@ -66,7 +69,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *infobutton;
 @property (nonatomic,retain)IBOutlet UIAlertView *message;
 @property (weak, nonatomic) IBOutlet UIButton *info_button;
+
 @property (nonatomic, retain)IBOutlet UILabel *favText;
+@property (nonatomic, retain)IBOutlet UIImageView *favImage;
+
 @property (nonatomic,retain) IBOutlet UIView *placeViewMap;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 -(IBAction)showLocation:(id)sender;

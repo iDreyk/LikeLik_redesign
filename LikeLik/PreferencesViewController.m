@@ -188,7 +188,7 @@
 
 	UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	headerLabel.backgroundColor = [UIColor clearColor];
-	headerLabel.font = [AppDelegate OpenSansBoldwithSize:26];
+	headerLabel.font = [AppDelegate OpenSansBoldwithSize:28];
 	headerLabel.frame = CGRectMake(10,0,310,30);
 	headerLabel.textColor = [UIColor whiteColor];
     customView.backgroundColor = [InterfaceFunctions mainTextColor:section+1];

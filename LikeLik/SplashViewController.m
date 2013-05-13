@@ -159,6 +159,8 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         Fistframe.origin.y-=270.0;
 
     }
+    
+    
     [UIView animateWithDuration:1.2 animations:^{
         self.Shade.frame = Shadeframe;
         self.fist.frame = Fistframe;

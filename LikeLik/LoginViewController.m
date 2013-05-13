@@ -54,7 +54,7 @@
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
     [self.SNetworkLabel setText: AMLocalizedString(@"You can go with the social network", nil)];
-    [self.SNetworkLabel setFont:[AppDelegate OpenSansRegular:26]];
+    [self.SNetworkLabel setFont:[AppDelegate OpenSansRegular:28]];
  
     _vkontakte = [Vkontakte sharedInstance];
     _vkontakte.delegate = self;

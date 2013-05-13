@@ -69,19 +69,19 @@ static BOOL foreignversion = NO;
     [self.activate setTitle:AMLocalizedString(@"Use check", nil) forState:UIControlStateNormal];
     [self.cancel setTitle:AMLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
     self.ExclusiveOffer.hidden = NO;
-    self.ExclusiveOffer.font = [AppDelegate OpenSansSemiBold:30];
+    self.ExclusiveOffer.font = [AppDelegate OpenSansSemiBold:32];
     self.ExclusiveOffer.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
     self.ExclusiveOffer.text = AMLocalizedString(@"The exclusive LikeLik check offer includes", nil);
     
     
     //    self.forEnglish.hidden = NO;
-    //    self.forEnglish.font = [AppDelegate OpenSansSemiBold:26];
+    //    self.forEnglish.font = [AppDelegate OpenSansSemiBold:28];
     //    self.forEnglish.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
     //    //self.forEnglish.text = @"Display text in English";
     
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @1};
     [self.foreignLanguage setAttributedTitle:[[NSAttributedString alloc] initWithString:AMLocalizedString(@"Display text in the local language", nil) attributes:underlineAttribute] forState:UIControlStateNormal];
-    self.foreignLanguage.titleLabel.font = [AppDelegate OpenSansRegular:26];
+    self.foreignLanguage.titleLabel.font = [AppDelegate OpenSansRegular:28];
     self.foreignLanguage.titleLabel.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
     self.foreignLanguage.hidden =NO;
     
@@ -91,7 +91,7 @@ static BOOL foreignversion = NO;
      
     
     label1 = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 252.0, 159.0)];
-    label1.font = [AppDelegate OpenSansRegular:26];
+    label1.font = [AppDelegate OpenSansRegular:28];
     label1.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
     label1.backgroundColor =  [UIColor clearColor];
     label1.editable = NO;

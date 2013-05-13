@@ -59,10 +59,10 @@ static BOOL infoViewIsOpen = NO;
     self.WebLabel.text = self.Web;
     
     
-    self.TelLabel.font = [AppDelegate OpenSansRegular:26];
-    self.WebLabel.font = [AppDelegate OpenSansRegular:26];
-    self.Taxilabel.font = [AppDelegate OpenSansSemiBold:30];
-    self.TaxiText.font = [AppDelegate OpenSansRegular:26];
+    self.TelLabel.font = [AppDelegate OpenSansRegular:28];
+    self.WebLabel.font = [AppDelegate OpenSansRegular:28];
+    self.Taxilabel.font = [AppDelegate OpenSansSemiBold:32];
+    self.TaxiText.font = [AppDelegate OpenSansRegular:28];
     
     self.TelLabel.textColor = [UIColor whiteColor];
     self.WebLabel.textColor = [UIColor whiteColor];
@@ -108,7 +108,7 @@ static BOOL infoViewIsOpen = NO;
     
     UILabel *Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
     Red_line.text =  self.TaxiName;
-    Red_line.font =[AppDelegate OpenSansSemiBold:26];
+    Red_line.font =[AppDelegate OpenSansSemiBold:28];
     Red_line.textColor = [UIColor whiteColor];
     Red_line.numberOfLines = 10;
     Red_line.backgroundColor =  [UIColor clearColor];
@@ -122,7 +122,7 @@ static BOOL infoViewIsOpen = NO;
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
     
     label.text = self.TaxiAbout;
-    label.font = [AppDelegate OpenSansRegular:26];
+    label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor whiteColor];
     //label.numberOfLines = 10;
     label.backgroundColor =  [UIColor clearColor];
@@ -148,7 +148,7 @@ static BOOL infoViewIsOpen = NO;
     [tel setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [tel setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
     [tel sizeToFit];
-    [tel.titleLabel setFont:[AppDelegate OpenSansRegular:26]];
+    [tel.titleLabel setFont:[AppDelegate OpenSansRegular:28]];
     [tel addTarget:self action:@selector(launchPhoneWithNumber:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImageView *_actb1 = [[UIImageView alloc] initWithFrame:CGRectMake(250,16, 9, 14)];
@@ -183,7 +183,7 @@ static BOOL infoViewIsOpen = NO;
     [web setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
     [web sizeToFit];
     
-    [web.titleLabel setFont:[AppDelegate OpenSansRegular:26]];//[UIFont boldSystemFontOfSize:20]];
+    [web.titleLabel setFont:[AppDelegate OpenSansRegular:28]];//[UIFont boldSystemFontOfSize:20]];
     [web addTarget:self action:@selector(webPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(250,16, 9, 14)];
     _actb.image=[UIImage imageNamed:@"actb_white"];

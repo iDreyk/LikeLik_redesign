@@ -243,7 +243,7 @@ static BOOL infoViewIsOpen = NO;
     UILabel *Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
 #warning название достопремичательности
     Red_line.text =  @"Visual Tour";
-    Red_line.font =[AppDelegate OpenSansSemiBold:26];
+    Red_line.font =[AppDelegate OpenSansSemiBold:28];
     Red_line.textColor = [UIColor whiteColor];
     Red_line.numberOfLines = 10;
     Red_line.backgroundColor =  [UIColor clearColor];
@@ -258,7 +258,7 @@ static BOOL infoViewIsOpen = NO;
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
 #warning текст достопремичательности
     label.text = @"123213213";
-    label.font = [AppDelegate OpenSansRegular:26];
+    label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor whiteColor];
  
     label.backgroundColor =  [UIColor clearColor];

@@ -201,7 +201,7 @@
 +(UILabel *)NavLabelwithTitle:(NSString *)string AndColor:(UIColor *)Color{
     
     
-    UIFont* font = [AppDelegate OpenSansSemiBold:30];
+    UIFont* font = [AppDelegate OpenSansSemiBold:32];
     CGSize maximumLabelSize = CGSizeMake(296,9999);
     CGSize expectedLabelSize = [string sizeWithFont:font constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByCharWrapping];
     CGRect frame = CGRectMake(0, 0, expectedLabelSize.width, expectedLabelSize.height);
@@ -221,7 +221,7 @@
     
 
     UILabel *_go = [[UILabel alloc] initWithFrame:CGRectMake(275, 15, 30, 14)];
-    _go.font = [AppDelegate OpenSansRegular:26];
+    _go.font = [AppDelegate OpenSansRegular:28];
     _go.textColor = [self colorTextPlaceBackground:Category];
     _go.text = @"Go!";
     _go.backgroundColor = [UIColor clearColor];
@@ -236,7 +236,7 @@
     
     label.text = String;
     label.textColor = [UIColor whiteColor];
-    label.font = [AppDelegate OpenSansBoldwithSize:26];
+    label.font = [AppDelegate OpenSansBoldwithSize:28];
     label.textAlignment = NSTextAlignmentCenter;
     label.shadowColor = [InterfaceFunctions ShadowColor];
     label.shadowOffset = [InterfaceFunctions ShadowSize];
@@ -246,7 +246,7 @@
 +(UILabel *)mainTextLabelwithText:(NSString *)String AndColor:(UIColor *)Color{
     UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 12.0, 280.0,21.0)];
     text.backgroundColor = [UIColor clearColor];
-    text.font = [AppDelegate OpenSansRegular:26];
+    text.font = [AppDelegate OpenSansRegular:28];
     text.text = String;
     text.textColor = Color;
     text.shadowColor = [InterfaceFunctions ShadowColor];
@@ -261,7 +261,7 @@
         [label setFrame:CGRectMake(14.0, 0.0, 290, 15.0)];
 
     
-    label.font = [AppDelegate OpenSansRegular:26];
+    label.font = [AppDelegate OpenSansRegular:28];
     label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
     label.shadowOffset = CGSizeMake(0.0, -0.1);
     label.backgroundColor = [UIColor clearColor];
@@ -440,6 +440,13 @@
     return imageview;
 }
 
++(UIImageView *)favouritestarPlaceView{
+    UIImageView *fav = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1fav.png"]];
+    fav.frame = CGRectMake(45.0, 10.0, fav.frame.size.width, fav.frame.size.height);
+    [fav setCenter:CGPointMake(53, fav.center.y)];
+    return fav;
+}
+
 #pragma mark UIView
 +(UIView *)headerwithCategory:(NSString *)Category{
     
@@ -460,7 +467,7 @@
 	
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:customView.frame];
 	headerLabel.backgroundColor = [UIColor clearColor];
-	headerLabel.font = [AppDelegate OpenSansBoldwithSize:26];
+	headerLabel.font = [AppDelegate OpenSansBoldwithSize:28];
 	headerLabel.frame = CGRectMake(10,0,310,30);
 	headerLabel.textColor = [UIColor whiteColor];
     
@@ -475,7 +482,7 @@
 	
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:customView.frame];
-	headerLabel.font = [AppDelegate OpenSansBoldwithSize:26];
+	headerLabel.font = [AppDelegate OpenSansBoldwithSize:28];
 	headerLabel.frame = CGRectMake(10,0,310,30);
 	headerLabel.textColor = [UIColor whiteColor];
     headerLabel.backgroundColor = [UIColor clearColor];
@@ -529,7 +536,7 @@
 
 #pragma mark CGSize
 +(CGSize)ShadowSize{
-    return CGSizeMake(0.0, 0.1);
+    return CGSizeMake(0.0, 0.0);
 }
 
 #pragma mark UIImage

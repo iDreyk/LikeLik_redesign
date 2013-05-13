@@ -48,7 +48,7 @@
 +(UIImageView *)UserLocationButton:(NSString *)flag;
 +(UIImageView *)backgroundView;
 +(UIImageView *)standartAccessorView;
-
++(UIImageView *)favouritestarPlaceView;
 #pragma mark UIView
 +(UIView *)headerwithCategory:(NSString *)Category;
 +(UIView *)HeaderwithDistrict:(NSString *)String;

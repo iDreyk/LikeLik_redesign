@@ -39,7 +39,7 @@ static NSArray *Array;
     //[TestFlight passCheckpoint:@"Fav open"];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SearchBar setShowsCancelButton:NO];
-#warning надо переделать под новый каталог
+#warning надо переделать под новый каталог  и проверить работу
     self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Search", nil)  AndColor:[InterfaceFunctions mainTextColor:6]];
     
