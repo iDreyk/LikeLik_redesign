@@ -726,7 +726,7 @@ CGFloat alpha = 0.5;
     _labelonPhoto.hidden = NO;
     _background.hidden = NO;
 
-    
+    //
 }
 
 -(void)gesture:(UIGestureRecognizer *)gestureRecognizer{
