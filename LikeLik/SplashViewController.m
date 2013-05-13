@@ -165,7 +165,6 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         [defaults setObject:@"1" forKey:@"Download"];
     }
     
-    
     [UIView animateWithDuration:1.2 animations:^{
         self.Shade.frame = Shadeframe;
         self.fist.frame = Fistframe;
