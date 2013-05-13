@@ -133,7 +133,6 @@
 		552A71E5173FE5CC00061E97 /* ico_earth.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A712B173FE5CB00061E97 /* ico_earth.png */; };
 		552A71E6173FE5CC00061E97 /* ico_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A712C173FE5CB00061E97 /* ico_point.png */; };
 		552A71E7173FE5CC00061E97 /* ico_tel.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A712D173FE5CB00061E97 /* ico_tel.png */; };
-		552A71E8173FE5CC00061E97 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 552A712E173FE5CB00061E97 /* Icon */; };
 		552A71E9173FE5CC00061E97 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A712F173FE5CB00061E97 /* info@2x.png */; };
 		552A71EA173FE5CC00061E97 /* knuckle_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7130173FE5CB00061E97 /* knuckle_1@2x.png */; };
 		552A71EB173FE5CC00061E97 /* navigationbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7131173FE5CB00061E97 /* navigationbar@2x.png */; };
@@ -1519,7 +1518,6 @@
 				552A71E5173FE5CC00061E97 /* ico_earth.png in Resources */,
 				552A71E6173FE5CC00061E97 /* ico_point.png in Resources */,
 				552A71E7173FE5CC00061E97 /* ico_tel.png in Resources */,
-				552A71E8173FE5CC00061E97 /* Icon in Resources */,
 				552A71E9173FE5CC00061E97 /* info@2x.png in Resources */,
 				552A71EA173FE5CC00061E97 /* knuckle_1@2x.png in Resources */,
 				552A71EB173FE5CC00061E97 /* navigationbar@2x.png in Resources */,
