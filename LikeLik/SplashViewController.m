@@ -43,7 +43,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     if (haveAlreadyReceivedCoordinates) {
         Me = newLocation;
         NSLog(@"%@",Me);
-#warning надо переделать под новый каталог        
+//#warning надо переделать под новый каталог
         NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
         
 //        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
@@ -81,7 +81,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
-#warning надо переделать под новый каталог
+//#warning надо переделать под новый каталог
     NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:region]];
     localNotification = [[UILocalNotification alloc] init];
     [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];

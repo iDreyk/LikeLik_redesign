@@ -575,14 +575,15 @@ CGFloat firstY=0;
  
     
     
-        #warning Андрей, сделай плз функцию
+    //#warning Андрей, сделай плз функцию
     NSURL *url;
     if ([self.PlaceCityName isEqualToString:@"Moscow"] || [self.PlaceCityName isEqualToString:@"Москва"] || [self.PlaceCityName isEqualToString:@"Moskau"]){
-        url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Moscow/2" ofType:@"mbtiles"]];
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
     }
     if ([self.PlaceCityName isEqualToString:@"Vienna"] || [self.PlaceCityName isEqualToString:@"Вена"] || [self.PlaceCityName isEqualToString:@"Wien"]){
-        url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Vienna/vienna" ofType:@"mbtiles"]];
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
     }
+
     
     RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
     self.MapPlace.showsUserLocation = YES;

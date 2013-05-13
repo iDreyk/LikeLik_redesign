@@ -1126,9 +1126,7 @@ static CLLocation *Me;
             [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
             [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
         }
-    }
-    
-    NSLog(@"%@",tmp2);
+    }    
 
     if (presise == 1) {
         return tmp1;

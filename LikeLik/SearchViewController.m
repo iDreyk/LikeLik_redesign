@@ -39,7 +39,7 @@ static NSArray *Array;
     //[TestFlight passCheckpoint:@"Fav open"];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SearchBar setShowsCancelButton:NO];
-#warning надо переделать под новый каталог
+//#warning надо переделать под новый каталог
     self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Search", nil)  AndColor:[InterfaceFunctions mainTextColor:6]];
     
@@ -157,7 +157,7 @@ static NSArray *Array;
     if (searchBar.text.length>0){//.text.length>0) {
         NSString *strSearchText =searchBar.text;
             NSLog(@"strSearchText = %@",strSearchText);
-#warning надо переделать под новый каталог
+//#warning надо переделать под новый каталог
          tmp = [ExternalFunctions getAllPlacesInCity:self.CityName];
 //#warning backspace неправильно работает
         NSMutableArray *ar = [NSMutableArray array];
@@ -172,7 +172,7 @@ static NSArray *Array;
     }
     else{
         NSLog(@"Hello");
-#warning надо переделать под новый каталог
+//#warning надо переделать под новый каталог
         self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
         NSLog(@"tmp = %@", tmp);
         [self.SearchTable reloadData];
