@@ -89,13 +89,13 @@ static NSArray *Array;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-   [cell addSubview: [InterfaceFunctions TableLabelwithText:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"placeName"] AndColor:[InterfaceFunctions colorTextCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
+   [cell addSubview: [InterfaceFunctions TableLabelwithText:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
     
     cell.backgroundView = [InterfaceFunctions CellBG];
     cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
 
-    [cell addSubview:[InterfaceFunctions goLabelCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"category"]]];
-    [cell addSubview:[InterfaceFunctions actbwithCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"category"]]];
+    [cell addSubview:[InterfaceFunctions goLabelCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Сategory"]]];
+    [cell addSubview:[InterfaceFunctions actbwithCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Сategory"]]];
 
     
     return cell;
@@ -121,10 +121,10 @@ static NSArray *Array;
     NSInteger row = [indexPath row];
     if ([[segue identifier] isEqualToString:@"CellSegue"]) {
         PlaceViewController *destinaton  = [segue destinationViewController];
-        destinaton.PlaceName = [[self.PlacesArray objectAtIndex:row] objectForKey:@"placeName"];
+        destinaton.PlaceName = [[self.PlacesArray objectAtIndex:row] objectForKey:@"Name"];
         destinaton.PlaceCityName = self.CityName;
-        destinaton.PlaceCategory =  [[self.PlacesArray objectAtIndex:row] objectForKey:@"category"];
-        destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[[self.PlacesArray objectAtIndex:row] objectForKey:@"category"]];
+        destinaton.PlaceCategory =  [[self.PlacesArray objectAtIndex:row] objectForKey:@"Сategory"];
+        destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[[self.PlacesArray objectAtIndex:row] objectForKey:@"Сategory"]];
     }
 }
 
@@ -162,7 +162,7 @@ static NSArray *Array;
 //#warning backspace неправильно работает
         NSMutableArray *ar = [NSMutableArray array];
         for (int i=0;i<[tmp count];i++) {
-            NSString *strData = [[tmp objectAtIndex:i] objectForKey:@"placeName"];
+            NSString *strData = [[tmp objectAtIndex:i] objectForKey:@"Name"];
       //          NSLog(@"strData = %@ strSearchText = %@",strData, strSearchText);
              if ([[strData lowercaseString] rangeOfString:[strSearchText lowercaseString]].length>0) 
                 [ar addObject:[tmp objectAtIndex:i]];

@@ -49,7 +49,7 @@
 
 + (CLLocation *) getMyLocationOrTheLocationOfCityCenter : (NSString *)city;
 
-
++ (NSString *) getIphoneString;
 
 
 

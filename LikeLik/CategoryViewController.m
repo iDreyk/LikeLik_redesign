@@ -45,7 +45,7 @@
     self.CityName.text = self.Label;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
-    self.CityImage.image =  [UIImage imageNamed:self.Image];
+    self.CityImage.image =  [UIImage imageWithContentsOfFile:self.Image];
     
     
     

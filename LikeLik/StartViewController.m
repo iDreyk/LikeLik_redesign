@@ -136,7 +136,7 @@
     cell.CityLabel.font = [AppDelegate OpenSansSemiBold:60];
     cell.CityLabel.text  = _CityLabels[row];
     cell.CityLabel.textColor = [UIColor whiteColor];
-    cell.BackCityImage.image = [UIImage imageNamed:_backCityImages[row]];
+    cell.BackCityImage.image = [UIImage imageWithContentsOfFile:_backCityImages[row]];
     [cell addSubview:[InterfaceFunctions standartAccessorView]];
     
 //    if ([indexPath row]+1 == [_CityLabels count] ) {

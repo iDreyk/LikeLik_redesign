@@ -114,6 +114,14 @@ static CLLocation *Me;
         return [[NSString alloc] initWithFormat:@"%@_EN",string];
 }
 
++ (NSString *) getIphoneString{
+    if(IS_IPHONE_5 == 1){
+        return @"5";
+    }
+    else
+        return @"4";
+}
+
 
 
 
@@ -122,6 +130,13 @@ static CLLocation *Me;
 + (void) getReady {
     NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"catalogue" ofType:@"plist"] toPath:cataloguesPath error:nil];
+    
+    NSString *cataloguesPath1 = [[self docDir]stringByAppendingPathComponent:@"Moscow"];
+    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Moscow" ofType:@""] toPath:cataloguesPath1 error:nil];
+    
+    NSString *cataloguesPath2 = [[self docDir]stringByAppendingPathComponent:@"Vienna"];
+    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Vienna" ofType:@""] toPath:cataloguesPath2 error:nil];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *catalogueArray = [[NSArray alloc]initWithContentsOfFile:cataloguesPath];
     [defaults setObject:catalogueArray forKey:catalogue];
@@ -147,6 +162,8 @@ static CLLocation *Me;
     NSMutableDictionary *placeDict;
     NSArray *tempArrayOfPlacesIncategory = [[cityDict objectForKey:@"places"] objectForKey:category];
     NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    NSString *version = [self getIphoneString];
     double lat,lon;
     
     int placesCount = [tempArrayOfPlacesIncategory count];
@@ -159,6 +176,10 @@ static CLLocation *Me;
         CLLocation *currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
         CLLocation *location = [self getMyLocationOrTheLocationOfCityCenter:city];
         
+        for (int j = 0; j < [[[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] objectForKey:version] count]; j++) {
+            [photos addObject:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],city,[[[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] objectForKey:version] objectAtIndex:j]]];
+        }
+        
         double distance = [location distanceFromLocation:currentPlace];
         [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"Name"]] forKey:@"Name"];
         [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"About"]] forKey:@"About"];
@@ -166,11 +187,11 @@ static CLLocation *Me;
         [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"time"]] forKey:@"Time"];
         [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"metro"]] forKey:@"Metro"];
         [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Telephone"] forKey:@"Telephone"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] forKey:@"Photo"];
         [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"web"] forKey:@"Web"];
         [placeDict setObject:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
         [placeDict setObject:currentPlace forKey:@"Location"];
         [placeDict setObject:category forKey:@"Category"];
+        [placeDict setObject:photos forKey:@"Photo"];        
         [placeDict setObject:city forKey:@"City"];
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"favourite"] forKey:@"Favorite"];
         
@@ -321,7 +342,7 @@ static CLLocation *Me;
         [taxiDict setObject:[[taxisArray objectAtIndex:i] objectForKey:@"web"] forKey:@"web"];
         newArray = [[NSMutableArray alloc] init];
         for (int j = 0; j < [[[taxisArray objectAtIndex:i] objectForKey:@"photo"] count]; j++) {
-            [newArray addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[self cityCatalogueForCity:city] objectForKey:@"city_EN"],[[[taxisArray objectAtIndex:i] objectForKey:@"photo"] objectAtIndex:j]]];
+            [newArray addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[self cityCatalogueForCity:city] objectForKey:@"city_EN"],[[[taxisArray objectAtIndex:i] objectForKey:@"photo"] objectAtIndex:j]]];
         }
         
         [taxiDict setObject:newArray forKey:@"photo"];
@@ -405,7 +426,7 @@ static CLLocation *Me;
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < [[[cityDictionary objectForKey:@"transport"] objectForKey:@"metro"] count]; i++) {
-        [array addObject:[[NSString alloc]initWithFormat:@"%@/%@",[cityDictionary objectForKey:@"city_EN"],[[[cityDictionary objectForKey:@"transport"] objectForKey:@"metro"] objectAtIndex:i]]];
+        [array addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[cityDictionary objectForKey:@"city_EN"],[[[cityDictionary objectForKey:@"transport"] objectForKey:@"metro"] objectAtIndex:i]]];
     }
     
     return array;
@@ -654,13 +675,13 @@ static CLLocation *Me;
 + (NSString *) smallPictureOfCity : (NSString *) city{
     NSDictionary *City = [self cityCatalogueForCity:city];
     
-    return [[NSString alloc]initWithFormat:@"%@/%@",[City objectForKey:@"city_EN"],[[City objectForKey:@"photos"] objectForKey:@"small"]];
+    return [[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[City objectForKey:@"city_EN"],[[City objectForKey:@"photos"] objectForKey:@"small"]];
 }
 //  широкая заставка города
 + (NSString *) larkePictureOfCity : (NSString *) city{
     NSDictionary *City = [self cityCatalogueForCity:city];
     
-    return [[NSString alloc]initWithFormat:@"%@/%@",[City objectForKey:@"city_EN"],[[City objectForKey:@"photos"] objectForKey:@"large"]];
+    return [[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[City objectForKey:@"city_EN"],[[City objectForKey:@"photos"] objectForKey:@"large"]];
 }
 
 //
@@ -730,7 +751,7 @@ static CLLocation *Me;
         photos = [[[self selectedPalceInCity:city category:category withName:place]objectForKey:@"Photo"] objectForKey:@"4"];
     
     for (int i = 0; i < [photos count]; i++) {
-        photoPath = [[NSString alloc]initWithFormat:@"%@/%@",[[self cityCatalogueForCity:city] objectForKey:@"city_EN"],[photos objectAtIndex:i]];
+        photoPath = [[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[self cityCatalogueForCity:city] objectForKey:@"city_EN"],[photos objectAtIndex:i]];
         [imageArray addObject:photoPath];
     }
     
@@ -755,7 +776,7 @@ static CLLocation *Me;
         cityPictresArray = [[cityDictionary objectForKey:@"photos"] objectForKey:@"4"];
     
     for (int i = 0; i < [cityPictresArray count]; i++) {
-        [returnArray addObject:[[NSString alloc] initWithFormat:@"%@/%@",[[self cityCatalogueForCity:city] objectForKey:@"city_EN"],[cityPictresArray objectAtIndex:i]]];
+        [returnArray addObject:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],[[self cityCatalogueForCity:city] objectForKey:@"city_EN"],[cityPictresArray objectAtIndex:i]]];
     }
     
     return returnArray;
@@ -1040,7 +1061,7 @@ static CLLocation *Me;
     for (int i = 0; i < [catalogues count]; i++) {
         if ([[[catalogues objectAtIndex:i]objectForKey:@"special"] isEqualToString:@"1"]) {
             [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
+            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
         }
     }
 
@@ -1071,7 +1092,7 @@ static CLLocation *Me;
     
     for (int i = 0; i < [catalogues count]; i++) {
         [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-        [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
+        [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
     }
     
     if (presise == 1) {
@@ -1086,6 +1107,7 @@ static CLLocation *Me;
     NSMutableArray *tmp2 = [[NSMutableArray alloc]init];
     NSString *cityLanguage;
     NSString *language = [self getLanguage];
+    
     
     if ([language isEqualToString:@"ru"]) {
         cityLanguage = @"city_RU";
@@ -1102,9 +1124,11 @@ static CLLocation *Me;
     for (int i = 0; i < [catalogues count]; i++) {
         if ([[[catalogues objectAtIndex:i]objectForKey:@"downloaded"] isEqualToString:@"1"]) {
             [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
+            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
         }
     }
+    
+    NSLog(@"%@",tmp2);
 
     if (presise == 1) {
         return tmp1;
@@ -1136,7 +1160,7 @@ static CLLocation *Me;
     for (int i = 0; i < [catalogues count]; i++) {
         if ([[[catalogues objectAtIndex:i]objectForKey:@"country"] isEqualToString:country]) {
             [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
+            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
         }
     }
     

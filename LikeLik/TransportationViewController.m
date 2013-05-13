@@ -47,9 +47,9 @@
         CGFloat xOrigin = i * self.view.frame.size.width;
         _awesomeview = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
         _awesomeview.backgroundColor = [UIColor whiteColor];
-        _awesomeview.image = [UIImage imageNamed:[photos objectAtIndex:i]];
-        if ([UIImage imageNamed:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height == 640.0) {
-            _awesomeview.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageNamed:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height/4);
+        _awesomeview.image = [UIImage imageWithContentsOfFile:[photos objectAtIndex:i]];
+        if ([UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height == 640.0) {
+            _awesomeview.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height/4);
             
         }
     }

@@ -269,9 +269,9 @@ CGFloat firstY=0;
         CGFloat xOrigin = i * self.view.frame.size.width;
         UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
         awesomeView.backgroundColor = [UIColor colorWithRed:0.5/i green:0.5 blue:0.5 alpha:1];
-        awesomeView.image = [UIImage imageNamed:[photos objectAtIndex:i]];
-        if ([UIImage imageNamed:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height == 640.0) {
-            awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageNamed:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height/4);
+        awesomeView.image = [UIImage imageWithContentsOfFile:[photos objectAtIndex:i]];
+        if ([UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height == 640.0) {
+            awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height/4);
         }
         [_scroll addSubview:awesomeView];
     }
