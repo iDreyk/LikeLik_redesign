@@ -168,8 +168,6 @@
 		552A7208173FE5CC00061E97 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 552A7167173FE5CB00061E97 /* zbar-help.html */; };
 		552A7209173FE5CC00061E97 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7168173FE5CB00061E97 /* zbar-helpicons.png */; };
 		552A720A173FE5CC00061E97 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7169173FE5CB00061E97 /* zbar-samples.png */; };
-		552A720D173FE5DD00061E97 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 552A720B173FE5DD00061E97 /* Moscow */; };
-		552A720E173FE5DD00061E97 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 552A720C173FE5DD00061E97 /* Vienna */; };
 		55530D8C173BD2AE00E0E2DF /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55530D8B173BD2AE00E0E2DF /* catalogue.plist */; };
 		559CA018173A7137002F494F /* ExternalFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 559CA017173A7137002F494F /* ExternalFunctions.m */; };
 		9122D2AD173E422C0096BB24 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */; };
@@ -473,8 +471,6 @@
 		552A7167173FE5CB00061E97 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		552A7168173FE5CB00061E97 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		552A7169173FE5CB00061E97 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
-		552A720B173FE5DD00061E97 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Moscow; path = "../../../Documents/Likelik Xcode/Moscow"; sourceTree = "<group>"; };
-		552A720C173FE5DD00061E97 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = "../../../Documents/Likelik Xcode/Vienna"; sourceTree = "<group>"; };
 		55530D8B173BD2AE00E0E2DF /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catalogue.plist; sourceTree = "<group>"; };
 		559CA016173A7137002F494F /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalFunctions.h; sourceTree = "<group>"; };
 		559CA017173A7137002F494F /* ExternalFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalFunctions.m; sourceTree = "<group>"; };
@@ -1078,8 +1074,6 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				552A720B173FE5DD00061E97 /* Moscow */,
-				552A720C173FE5DD00061E97 /* Vienna */,
 				552A70AF173FE5CB00061E97 /* MapBox.framework */,
 				552A70B0173FE5CB00061E97 /* Work PNG */,
 				552A7147173FE5CB00061E97 /* ZBarSDK */,
@@ -1553,8 +1547,6 @@
 				552A7208173FE5CC00061E97 /* zbar-help.html in Resources */,
 				552A7209173FE5CC00061E97 /* zbar-helpicons.png in Resources */,
 				552A720A173FE5CC00061E97 /* zbar-samples.png in Resources */,
-				552A720D173FE5DD00061E97 /* Moscow in Resources */,
-				552A720E173FE5DD00061E97 /* Vienna in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
