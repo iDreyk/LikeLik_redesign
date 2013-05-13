@@ -177,7 +177,7 @@ static CLLocation *Me;
         CLLocation *location = [self getMyLocationOrTheLocationOfCityCenter:city];
         
         for (int j = 0; j < [[[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] objectForKey:version] count]; j++) {
-            [photos addObject:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],city,[[[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] objectForKey:version] objectAtIndex:j]]];
+            [photos addObject:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],[cityDict objectForKey:@"city_EN"],[[[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] objectForKey:version] objectAtIndex:j]]];
         }
         
         double distance = [location distanceFromLocation:currentPlace];
@@ -923,107 +923,6 @@ static CLLocation *Me;
 //
 //Around_menu_2
 //
-+ (NSArray *) getPlacesAroundMe : (NSString *) cityName myLocation : (CLLocation *) Me category : (NSString *) category listOrMap : (NSString *) listormap{
-    NSDictionary *cityDictionary = [self cityCatalogueForCity:cityName];
-    NSDictionary *selectedCityPlaces = [cityDictionary objectForKey:@"places"];
-    NSMutableDictionary *tempPlace = [[NSMutableDictionary alloc]init];
-    NSMutableArray *selectedCityAllPlaces = [[NSMutableArray alloc]init];
-    CLLocation *currentPlace;
-    NSString *language = [self getLanguage];
-    NSString *placeName;
-    NSArray *sortedPlaces;
-    NSMutableArray *returnArray = [[NSMutableArray alloc]init];
-    CLLocationDegrees Lat;
-    CLLocationDegrees Lon;
-    CLLocation *coordinate;
-    double lat, lon;
-    
-    if ([language isEqualToString:@"ru"]) {
-        placeName = @"Name_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        placeName = @"Name_DE";
-    }
-    else
-        placeName = @"Name_EN";
-
-    for (int i = 0; i<[[selectedCityPlaces objectForKey:shopping] count]; i++) {
-        tempPlace = [[NSMutableDictionary alloc] init];
-        lat = [[[[selectedCityPlaces objectForKey:shopping] objectAtIndex:i] objectForKey:@"Lat"] doubleValue];
-        lon = [[[[selectedCityPlaces objectForKey:shopping] objectAtIndex:i] objectForKey:@"Lon"] doubleValue];
-        currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-        double distance = [Me distanceFromLocation:currentPlace];
-        
-        
-        [tempPlace setValue:[[[selectedCityPlaces objectForKey:shopping] objectAtIndex:i] objectForKey:placeName] forKey:@"placeName"];
-        [tempPlace setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
-        [tempPlace setValue:shopping forKey:@"Category"];
-        [tempPlace setValue:[NSNumber numberWithDouble:lat] forKey:@"Lat"];
-        [tempPlace setValue:[NSNumber numberWithDouble:lon] forKey:@"Lon"];
-        [selectedCityAllPlaces addObject:tempPlace];
-    }
-    for (int i = 0; i<[[selectedCityPlaces objectForKey:entertainment] count]; i++) {
-        tempPlace = [[NSMutableDictionary alloc] init];
-        lat = [[[[selectedCityPlaces objectForKey:entertainment] objectAtIndex:i] objectForKey:@"Lat"] doubleValue];
-        lon = [[[[selectedCityPlaces objectForKey:entertainment] objectAtIndex:i] objectForKey:@"Lon"] doubleValue];
-        currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-        double distance = [Me distanceFromLocation:currentPlace];
-        
-        
-        [tempPlace setValue:[[[selectedCityPlaces objectForKey:entertainment]objectAtIndex:i] objectForKey:placeName] forKey:@"placeName"];
-        [tempPlace setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
-        [tempPlace setValue:entertainment forKey:@"Category"];
-        [tempPlace setValue:[NSNumber numberWithDouble:lat] forKey:@"Lat"];
-        [tempPlace setValue:[NSNumber numberWithDouble:lon] forKey:@"Lon"];
-        [selectedCityAllPlaces addObject:tempPlace];
-    }
-    for (int i = 0; i<[[selectedCityPlaces objectForKey:sport] count]; i++) {
-        tempPlace = [[NSMutableDictionary alloc] init];
-        lat = [[[[selectedCityPlaces objectForKey:sport] objectAtIndex:i] objectForKey:@"Lat"] doubleValue];
-        lon = [[[[selectedCityPlaces objectForKey:sport] objectAtIndex:i] objectForKey:@"Lon"] doubleValue];
-        currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-        double distance = [Me distanceFromLocation:currentPlace];
-        
-        
-        [tempPlace setValue:[[[selectedCityPlaces objectForKey:sport]objectAtIndex:i] objectForKey:placeName] forKey:@"placeName"];
-        [tempPlace setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
-        [tempPlace setValue:sport forKey:@"Category"];
-        [tempPlace setValue:[NSNumber numberWithDouble:lat] forKey:@"Lat"];
-        [tempPlace setValue:[NSNumber numberWithDouble:lon] forKey:@"Lon"];
-        [selectedCityAllPlaces addObject:tempPlace];
-    }
-    for (int i = 0; i<[[selectedCityPlaces objectForKey:restaurants] count]; i++) {
-        tempPlace = [[NSMutableDictionary alloc] init];
-        lat = [[[[selectedCityPlaces objectForKey:restaurants] objectAtIndex:i] objectForKey:@"Lat"] doubleValue];
-        lon = [[[[selectedCityPlaces objectForKey:restaurants] objectAtIndex:i] objectForKey:@"Lon"] doubleValue];
-        currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-        double distance = [Me distanceFromLocation:currentPlace];
-        
-        
-        [tempPlace setValue:[[[selectedCityPlaces objectForKey:restaurants]objectAtIndex:i] objectForKey:placeName] forKey:@"placeName"];
-        [tempPlace setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
-        [tempPlace setValue:restaurants forKey:@"Category"];
-        [tempPlace setValue:[NSNumber numberWithDouble:lat] forKey:@"Lat"];
-        [tempPlace setValue:[NSNumber numberWithDouble:lon] forKey:@"Lon"];
-        [selectedCityAllPlaces addObject:tempPlace];
-    }
-    
-    sortedPlaces = [self arrayOfDictionatySort:selectedCityAllPlaces];
-    
-    for (int i = 0; i<closestPlacesCount; i++) {
-        if ([[[sortedPlaces objectAtIndex:i] objectForKey:@"Category"] isEqualToString:category] && [listormap isEqualToString:@"list"]) {
-            [returnArray addObject:[[sortedPlaces objectAtIndex:i]objectForKey:@"placeName"]];
-        }
-        else if ([[[sortedPlaces objectAtIndex:i] objectForKey:@"Category"] isEqualToString:category] && [listormap isEqualToString:@"map"]){
-            Lat = [[[sortedPlaces objectAtIndex:i] objectForKey:@"Lat"] doubleValue];
-            Lon = [[[sortedPlaces objectAtIndex:i] objectForKey:@"Lon"] doubleValue];
-            coordinate = [[CLLocation alloc] initWithLatitude:Lat longitude:Lon];
-            [returnArray addObject:coordinate];
-        }
-   }
-
-    return returnArray;
-}
 //  new function
 + (NSArray *) getPlacesAroundMyLocationInCity : (NSString *) city{
     

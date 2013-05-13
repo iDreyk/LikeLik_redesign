@@ -57,7 +57,9 @@
 @property (nonatomic,retain) NSString *PlaceWeb;
 @property (nonatomic,retain) NSString *PlaceTelephone;
 @property (nonatomic,retain) CLLocation *PlaceLocation;
+@property (nonatomic,retain) NSArray *Photos;
 @property (nonatomic, retain) UIColor *Color;
+
 @property (weak, nonatomic) IBOutlet UILabel *gradientunderLabel;
 @property (weak, nonatomic) IBOutlet UIView *ViewWithContent;
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;

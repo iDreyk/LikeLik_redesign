@@ -158,8 +158,6 @@
 //
 //Around_menu_2
 //
-//#warning функция неверная
-+ (NSArray *) getPlacesAroundMe : (NSString *) cityName myLocation : (CLLocation *) Me category : (NSString *) category listOrMap : (NSString *) listormap;
 //  new function
 + (NSArray *) getPlacesAroundMyLocationInCity : (NSString *) city;
 

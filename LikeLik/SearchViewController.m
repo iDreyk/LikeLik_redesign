@@ -14,6 +14,7 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 static NSArray *Array;
+static NSDictionary *Place;
 @interface SearchViewController ()
 
 @end
@@ -121,10 +122,18 @@ static NSArray *Array;
     NSInteger row = [indexPath row];
     if ([[segue identifier] isEqualToString:@"CellSegue"]) {
         PlaceViewController *destinaton  = [segue destinationViewController];
-        destinaton.PlaceName = [[self.PlacesArray objectAtIndex:row] objectForKey:@"Name"];
+        Place = [self.PlacesArray objectAtIndex:row];
+        destinaton.PlaceName = [Place objectForKey:@"Name"];
         destinaton.PlaceCityName = self.CityName;
-        destinaton.PlaceCategory =  [[self.PlacesArray objectAtIndex:row] objectForKey:@"Сategory"];
+        destinaton.PlaceCategory =  [Place objectForKey:@"Сategory"];
         destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[[self.PlacesArray objectAtIndex:row] objectForKey:@"Сategory"]];
+        destinaton.PlaceAbout = [Place objectForKey:@"About"];
+        destinaton.PlaceAddress = [Place objectForKey:@"Address"];
+        destinaton.PlaceWeb = [Place objectForKey:@"Web"];
+        destinaton.PlaceTelephone = [Place objectForKey:@"Telephone"];
+        destinaton.PlaceLocation = [Place objectForKey:@"Location"];
+        destinaton.Photos = [Place objectForKey:@"Photo"];
+        
     }
 }
 

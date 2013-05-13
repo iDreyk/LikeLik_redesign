@@ -270,6 +270,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         destinaton.PlaceLocation = [Place1 objectForKey:@"Location"];
         destinaton.PlaceAddress = [Place1 objectForKey:@"Address"];
         destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[Place1 objectForKey:@"Category"]];
+        destinaton.Photos = [Place1 objectForKey:@"Photo"];
     }
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         SearchViewController *destinaton  = [segue destinationViewController];
@@ -289,6 +290,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         PlaceView.PlaceLocation = [Place objectForKey:@"Location"];
         PlaceView.PlaceCityName = self.CityName;
         PlaceView.Color = [InterfaceFunctions colorTextPlaceBackground:PlaceCategory];
+        PlaceView.Photos = [Place objectForKey:@"Photo"];
     }
 }
 

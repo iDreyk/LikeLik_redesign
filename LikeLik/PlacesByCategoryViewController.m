@@ -268,6 +268,7 @@ static NSDictionary *Place1;
         PlaceView.PlaceLocation = [Place objectForKey:@"Location"];
         PlaceView.PlaceCityName = self.CityName;
         PlaceView.Color = [InterfaceFunctions colorTextCategory:PlaceCategory];
+        PlaceView.Photos = [Place objectForKey:@"Photo"];
     }
     
     if ([[segue identifier] isEqualToString:@"CellSegue"]) {
@@ -286,6 +287,7 @@ static NSDictionary *Place1;
         destination.PlaceTelephone = [Place1 objectForKey:@"Telephone"];
         destination.PlaceLocation = [Place1 objectForKey:@"Location"];
         destination.Color = [InterfaceFunctions colorTextPlaceBackground:self.Category];
+        destination.Photos = [Place1 objectForKey:@"Photo"];
     }
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         SearchViewController *destinaton  = [segue destinationViewController];

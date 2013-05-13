@@ -308,6 +308,7 @@ static NSDictionary *Place1;
         destinaton.PlaceTelephone = [Place1 objectForKey:@"Telephone"];
         destinaton.PlaceWeb = [Place1 objectForKey:@"Web"];
         destinaton.PlaceLocation = [Place1 objectForKey:@"Location"];
+        destinaton.Photos = [Place1 objectForKey:@"Photo"];
     }
 
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
@@ -327,6 +328,7 @@ static NSDictionary *Place1;
         PlaceView.PlaceWeb = [Place objectForKey:@"Web"];
         PlaceView.PlaceLocation = [Place objectForKey:@"Location"];
         PlaceView.Color = [InterfaceFunctions colorTextCategory:PlaceCategory];
+        PlaceView.Photos = [Place objectForKey:@"Photo"];
     }
 }
 

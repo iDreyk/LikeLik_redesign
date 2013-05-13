@@ -211,11 +211,12 @@ CGFloat firstY=0;
     
     
     [self.scroll addGestureRecognizer:singleTap];
-    NSArray *photos = [ExternalFunctions getImagesOfPlaceInCity:self.PlaceCityName InCategory:self.PlaceCategory WithPlaceName:self.PlaceName];
+    NSArray *photos = self.Photos;//[ExternalFunctions getImagesOfPlaceInCity:self.PlaceCityName InCategory:self.PlaceCategory WithPlaceName:self.PlaceName];
     NSLog(@"lala %@",photos);
     NSLog(@"%@",self.PlaceCityName);
     NSLog(@"%@",self.PlaceCategory);
     NSLog(@"%@",self.PlaceName);
+    NSLog(@"%@",self.Photos);
     
     if ([AppDelegate isiPhone5])
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
