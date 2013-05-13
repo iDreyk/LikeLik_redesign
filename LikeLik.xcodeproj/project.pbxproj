@@ -157,12 +157,22 @@
 		552A71FE173FE5CC00061E97 /* tabicon_SpecialSeries@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7144173FE5CB00061E97 /* tabicon_SpecialSeries@2x.png */; };
 		552A71FF173FE5CC00061E97 /* table_grad.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7145173FE5CB00061E97 /* table_grad.png */; };
 		552A7200173FE5CC00061E97 /* table_grad_o_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7146173FE5CB00061E97 /* table_grad_o_1.png */; };
-		552A7201173FE5CC00061E97 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 552A7149173FE5CB00061E97 /* Icon */; };
-		552A7202173FE5CC00061E97 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 552A714B173FE5CB00061E97 /* Icon */; };
-		552A7203173FE5CC00061E97 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 552A714F173FE5CB00061E97 /* Icon */; };
-		552A7204173FE5CC00061E97 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 552A7162173FE5CB00061E97 /* Icon */; };
+		552A7201173FE5CC00061E97 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = 552A7149173FE5CB00061E97 /* Icon
+ */; };
+		552A7202173FE5CC00061E97 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = 552A714B173FE5CB00061E97 /* Icon
+ */; };
+		552A7203173FE5CC00061E97 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = 552A714F173FE5CB00061E97 /* Icon
+ */; };
+		552A7204173FE5CC00061E97 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = 552A7162173FE5CB00061E97 /* Icon
+ */; };
 		552A7205173FE5CC00061E97 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 552A7163173FE5CB00061E97 /* libzbar.a */; };
-		552A7206173FE5CC00061E97 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 552A7165173FE5CB00061E97 /* Icon */; };
+		552A7206173FE5CC00061E97 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = 552A7165173FE5CB00061E97 /* Icon
+ */; };
 		552A7207173FE5CC00061E97 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7166173FE5CB00061E97 /* zbar-back.png */; };
 		552A7208173FE5CC00061E97 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 552A7167173FE5CB00061E97 /* zbar-help.html */; };
 		552A7209173FE5CC00061E97 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7168173FE5CB00061E97 /* zbar-helpicons.png */; };
@@ -415,7 +425,9 @@
 		552A712B173FE5CB00061E97 /* ico_earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_earth.png; sourceTree = "<group>"; };
 		552A712C173FE5CB00061E97 /* ico_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_point.png; sourceTree = "<group>"; };
 		552A712D173FE5CB00061E97 /* ico_tel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_tel.png; sourceTree = "<group>"; };
-		552A712E173FE5CB00061E97 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		552A712E173FE5CB00061E97 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		552A712F173FE5CB00061E97 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
 		552A7130173FE5CB00061E97 /* knuckle_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuckle_1@2x.png"; sourceTree = "<group>"; };
 		552A7131173FE5CB00061E97 /* navigationbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar@2x.png"; sourceTree = "<group>"; };
@@ -440,11 +452,17 @@
 		552A7144173FE5CB00061E97 /* tabicon_SpecialSeries@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabicon_SpecialSeries@2x.png"; sourceTree = "<group>"; };
 		552A7145173FE5CB00061E97 /* table_grad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad.png; sourceTree = "<group>"; };
 		552A7146173FE5CB00061E97 /* table_grad_o_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad_o_1.png; sourceTree = "<group>"; };
-		552A7149173FE5CB00061E97 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
-		552A714B173FE5CB00061E97 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		552A7149173FE5CB00061E97 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
+		552A714B173FE5CB00061E97 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		552A714D173FE5CB00061E97 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		552A714E173FE5CB00061E97 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
-		552A714F173FE5CB00061E97 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		552A714F173FE5CB00061E97 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		552A7150173FE5CB00061E97 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		552A7151173FE5CB00061E97 /* ImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScanner.h; sourceTree = "<group>"; };
 		552A7152173FE5CB00061E97 /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
@@ -463,9 +481,13 @@
 		552A715F173FE5CB00061E97 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
 		552A7160173FE5CB00061E97 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		552A7161173FE5CB00061E97 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
-		552A7162173FE5CB00061E97 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		552A7162173FE5CB00061E97 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		552A7163173FE5CB00061E97 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
-		552A7165173FE5CB00061E97 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		552A7165173FE5CB00061E97 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		552A7166173FE5CB00061E97 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		552A7167173FE5CB00061E97 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		552A7168173FE5CB00061E97 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
@@ -857,7 +879,8 @@
 				552A712B173FE5CB00061E97 /* ico_earth.png */,
 				552A712C173FE5CB00061E97 /* ico_point.png */,
 				552A712D173FE5CB00061E97 /* ico_tel.png */,
-				552A712E173FE5CB00061E97 /* Icon */,
+				552A712E173FE5CB00061E97 /* Icon
+ */,
 				552A712F173FE5CB00061E97 /* info@2x.png */,
 				552A7130173FE5CB00061E97 /* knuckle_1@2x.png */,
 				552A7131173FE5CB00061E97 /* navigationbar@2x.png */,
@@ -891,7 +914,8 @@
 			isa = PBXGroup;
 			children = (
 				552A7148173FE5CB00061E97 /* Headers */,
-				552A7162173FE5CB00061E97 /* Icon */,
+				552A7162173FE5CB00061E97 /* Icon
+ */,
 				552A7163173FE5CB00061E97 /* libzbar.a */,
 				552A7164173FE5CB00061E97 /* Resources */,
 			);
@@ -902,7 +926,8 @@
 		552A7148173FE5CB00061E97 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				552A7149173FE5CB00061E97 /* Icon */,
+				552A7149173FE5CB00061E97 /* Icon
+ */,
 				552A714A173FE5CB00061E97 /* ZBarSDK */,
 			);
 			path = Headers;
@@ -911,7 +936,8 @@
 		552A714A173FE5CB00061E97 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
-				552A714B173FE5CB00061E97 /* Icon */,
+				552A714B173FE5CB00061E97 /* Icon
+ */,
 				552A714C173FE5CB00061E97 /* zbar */,
 				552A7157173FE5CB00061E97 /* zbar.h */,
 				552A7158173FE5CB00061E97 /* ZBarCameraSimulator.h */,
@@ -933,7 +959,8 @@
 			children = (
 				552A714D173FE5CB00061E97 /* Decoder.h */,
 				552A714E173FE5CB00061E97 /* Exception.h */,
-				552A714F173FE5CB00061E97 /* Icon */,
+				552A714F173FE5CB00061E97 /* Icon
+ */,
 				552A7150173FE5CB00061E97 /* Image.h */,
 				552A7151173FE5CB00061E97 /* ImageScanner.h */,
 				552A7152173FE5CB00061E97 /* Processor.h */,
@@ -948,7 +975,8 @@
 		552A7164173FE5CB00061E97 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				552A7165173FE5CB00061E97 /* Icon */,
+				552A7165173FE5CB00061E97 /* Icon
+ */,
 				552A7166173FE5CB00061E97 /* zbar-back.png */,
 				552A7167173FE5CB00061E97 /* zbar-help.html */,
 				552A7168173FE5CB00061E97 /* zbar-helpicons.png */,
@@ -1536,11 +1564,16 @@
 				552A71FE173FE5CC00061E97 /* tabicon_SpecialSeries@2x.png in Resources */,
 				552A71FF173FE5CC00061E97 /* table_grad.png in Resources */,
 				552A7200173FE5CC00061E97 /* table_grad_o_1.png in Resources */,
-				552A7201173FE5CC00061E97 /* Icon in Resources */,
-				552A7202173FE5CC00061E97 /* Icon in Resources */,
-				552A7203173FE5CC00061E97 /* Icon in Resources */,
-				552A7204173FE5CC00061E97 /* Icon in Resources */,
-				552A7206173FE5CC00061E97 /* Icon in Resources */,
+				552A7201173FE5CC00061E97 /* Icon
+ in Resources */,
+				552A7202173FE5CC00061E97 /* Icon
+ in Resources */,
+				552A7203173FE5CC00061E97 /* Icon
+ in Resources */,
+				552A7204173FE5CC00061E97 /* Icon
+ in Resources */,
+				552A7206173FE5CC00061E97 /* Icon
+ in Resources */,
 				552A7207173FE5CC00061E97 /* zbar-back.png in Resources */,
 				552A7208173FE5CC00061E97 /* zbar-help.html in Resources */,
 				552A7209173FE5CC00061E97 /* zbar-helpicons.png in Resources */,
