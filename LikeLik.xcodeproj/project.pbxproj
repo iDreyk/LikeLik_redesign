@@ -157,22 +157,7 @@
 		552A71FE173FE5CC00061E97 /* tabicon_SpecialSeries@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7144173FE5CB00061E97 /* tabicon_SpecialSeries@2x.png */; };
 		552A71FF173FE5CC00061E97 /* table_grad.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7145173FE5CB00061E97 /* table_grad.png */; };
 		552A7200173FE5CC00061E97 /* table_grad_o_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7146173FE5CB00061E97 /* table_grad_o_1.png */; };
-		552A7201173FE5CC00061E97 /* Icon
- in Resources */ = {isa = PBXBuildFile; fileRef = 552A7149173FE5CB00061E97 /* Icon
- */; };
-		552A7202173FE5CC00061E97 /* Icon
- in Resources */ = {isa = PBXBuildFile; fileRef = 552A714B173FE5CB00061E97 /* Icon
- */; };
-		552A7203173FE5CC00061E97 /* Icon
- in Resources */ = {isa = PBXBuildFile; fileRef = 552A714F173FE5CB00061E97 /* Icon
- */; };
-		552A7204173FE5CC00061E97 /* Icon
- in Resources */ = {isa = PBXBuildFile; fileRef = 552A7162173FE5CB00061E97 /* Icon
- */; };
 		552A7205173FE5CC00061E97 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 552A7163173FE5CB00061E97 /* libzbar.a */; };
-		552A7206173FE5CC00061E97 /* Icon
- in Resources */ = {isa = PBXBuildFile; fileRef = 552A7165173FE5CB00061E97 /* Icon
- */; };
 		552A7207173FE5CC00061E97 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7166173FE5CB00061E97 /* zbar-back.png */; };
 		552A7208173FE5CC00061E97 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 552A7167173FE5CB00061E97 /* zbar-help.html */; };
 		552A7209173FE5CC00061E97 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 552A7168173FE5CB00061E97 /* zbar-helpicons.png */; };
@@ -1564,16 +1549,6 @@
 				552A71FE173FE5CC00061E97 /* tabicon_SpecialSeries@2x.png in Resources */,
 				552A71FF173FE5CC00061E97 /* table_grad.png in Resources */,
 				552A7200173FE5CC00061E97 /* table_grad_o_1.png in Resources */,
-				552A7201173FE5CC00061E97 /* Icon
- in Resources */,
-				552A7202173FE5CC00061E97 /* Icon
- in Resources */,
-				552A7203173FE5CC00061E97 /* Icon
- in Resources */,
-				552A7204173FE5CC00061E97 /* Icon
- in Resources */,
-				552A7206173FE5CC00061E97 /* Icon
- in Resources */,
 				552A7207173FE5CC00061E97 /* zbar-back.png in Resources */,
 				552A7208173FE5CC00061E97 /* zbar-help.html in Resources */,
 				552A7209173FE5CC00061E97 /* zbar-helpicons.png in Resources */,
