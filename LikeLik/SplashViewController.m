@@ -159,7 +159,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         Fistframe.origin.y-=270.0;
 
     }
-    
+    // скачивание
     if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
         [ExternalFunctions downloadCatalogue:@"test"];
         [defaults setObject:@"1" forKey:@"Download"];
