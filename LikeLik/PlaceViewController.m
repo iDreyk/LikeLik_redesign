@@ -696,7 +696,7 @@ CGFloat alpha = 0.5;
 }
 
 -(void)afterreg{
-    // NSLog(@"Hello after reg");
+     NSLog(@"Hello after reg");
     self.labelonPhoto.hidden = NO;
     self.background.hidden = NO;
     self.navigationController.navigationBar.hidden = YES;
