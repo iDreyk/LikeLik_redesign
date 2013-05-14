@@ -182,18 +182,18 @@ static CLLocation *Me;
         }
         
         double distance = [location distanceFromLocation:currentPlace];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"Name"]] forKey:@"Name"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"About"]] forKey:@"About"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"address"]] forKey:@"Address"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"time"]] forKey:@"Time"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"metro"]] forKey:@"Metro"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Telephone"] forKey:@"Telephone"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"web"] forKey:@"Web"];
-        [placeDict setObject:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
-        [placeDict setObject:currentPlace forKey:@"Location"];
-        [placeDict setObject:category forKey:@"Category"];
-        [placeDict setObject:photos forKey:@"Photo"];        
-        [placeDict setObject:city forKey:@"City"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"Name"]] forKey:@"Name"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"About"]] forKey:@"About"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"address"]] forKey:@"Address"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"time"]] forKey:@"Time"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"metro"]] forKey:@"Metro"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Telephone"] forKey:@"Telephone"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"web"] forKey:@"Web"];
+        [placeDict setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
+        [placeDict setValue:currentPlace forKey:@"Location"];
+        [placeDict setValue:category forKey:@"Category"];
+        [placeDict setValue:photos forKey:@"Photo"];        
+        [placeDict setValue:city forKey:@"City"];
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"favourite"] forKey:@"Favorite"];
         
         [returnArray addObject:placeDict];
