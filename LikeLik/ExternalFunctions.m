@@ -176,7 +176,7 @@ static CLLocation *Me;
         lon = [[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Lon"] doubleValue];
         CLLocation *currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
         CLLocation *location = [self getMyLocationOrTheLocationOfCityCenter:city];
-        
+        photos = [[NSMutableArray alloc] init];
         for (int j = 0; j < [[[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] objectForKey:version] count]; j++) {
             [photos addObject:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],[cityDict objectForKey:@"city_EN"],[[[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] objectForKey:version] objectAtIndex:j]]];
         }
