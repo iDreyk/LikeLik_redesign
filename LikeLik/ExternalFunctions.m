@@ -136,11 +136,12 @@ static CLLocation *Me;
 //    
 //    NSString *cataloguesPath2 = [[self docDir]stringByAppendingPathComponent:@"Vienna"];
 //    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Vienna" ofType:@""] toPath:cataloguesPath2 error:nil];
-    
+    NSLog(@"getting ready");
     NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *catalogueArray = [[NSArray alloc]initWithContentsOfFile:cataloguesPath];
     [defaults setObject:catalogueArray forKey:catalogue];
+    NSLog(@"cat = %@",[defaults objectForKey:catalogue]);
 }
 
 + (CLLocation *) getMyLocationOrTheLocationOfCityCenter : (NSString *) city{
@@ -248,6 +249,7 @@ static CLLocation *Me;
 }
 //  скачать каталог города
 + (void) downloadCatalogue:(NSString *)catalogueOfCity {
+    NSLog(@"in download");
     // Create a URL Request and set the URL
     NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://likelik.net/docs/Archive.zip"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];

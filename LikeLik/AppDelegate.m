@@ -137,7 +137,7 @@ NSInteger wasinactive = NO;
     
     [AppDelegate segmentControlMapList];
     [AppDelegate lang];
-    [ExternalFunctions getReady];
+    //[ExternalFunctions getReady];
     
     CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
     
