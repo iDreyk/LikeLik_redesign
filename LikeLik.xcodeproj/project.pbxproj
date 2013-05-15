@@ -1728,7 +1728,7 @@
 		919E871A173A58E700A25E07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Roman Dimaksyan (3LQ837UD57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Application Developer (RX3537WRY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1752,7 +1752,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6A4EDAB6-7F9B-4A2E-A7CD-9178F889A6A7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1760,7 +1760,7 @@
 		919E871B173A58E700A25E07 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Roman Dimaksyan (3LQ837UD57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Application Developer (RX3537WRY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1784,7 +1784,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6A4EDAB6-7F9B-4A2E-A7CD-9178F889A6A7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
