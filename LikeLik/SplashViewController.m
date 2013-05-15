@@ -40,12 +40,12 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 #warning regions
-//    if (haveAlreadyReceivedCoordinates) {
-//        Me = newLocation;
-//        NSLog(@"%@",Me);
-////#warning надо переделать под новый каталог
+    if (haveAlreadyReceivedCoordinates) {
+        Me = newLocation;
+        NSLog(@"%@",Me);
+//#warning надо переделать под новый каталог
 //        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
-//        
+//
 ////        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
 ////        NSLog(@"%@",Place);
 ////        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
@@ -63,14 +63,14 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 //        for (int i = 0; i<[Region count]; i++) {
 //            [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
 //        }
-//        [locationManager stopUpdatingLocation];
-//        locationManager = nil;
-//     //   NSLog(@"%@",Region);
-//    }
-//    else{
-//        haveAlreadyReceivedCoordinates = YES;
-//    }
-    
+        [locationManager stopUpdatingLocation];
+        locationManager = nil;
+     //   NSLog(@"%@",Region);
+    }
+    else{
+        haveAlreadyReceivedCoordinates = YES;
+    }
+
 
     //
 
@@ -125,7 +125,8 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     self.HUDfade.mode = MBProgressHUDAnimationFade;
     self.HUDfade.removeFromSuperViewOnHide = YES;
     self.HUDfade.delegate = self;
-     [self.HUDfade show:YES];
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
+        [self.HUDfade show:YES];
     
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    
@@ -173,12 +174,13 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         Fistframe.origin.y-=270.0;
 
     }
-    [self.HUDfade show:YES];
+    
     
     // скачивание
     if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
         [ExternalFunctions downloadCatalogue:@"test"];
         [defaults setObject:@"1" forKey:@"Download"];
+        [self.HUDfade show:YES];
     }
     
     [UIView animateWithDuration:1.2 animations:^{

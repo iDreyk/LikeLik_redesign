@@ -115,7 +115,8 @@
     
     
     NSString *text = AMLocalizedString([self.CellArray objectAtIndex:[indexPath row]], nil);
-    
+    NSLog(@"%@ ",text);
+    NSLog(@"%@",AMLocalizedString(@"Culture", nil));
 
     if ([indexPath row]<6) {
         [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions mainTextColor:[indexPath row]+1]]];

@@ -16,7 +16,7 @@
 #define shopping @"Shopping"
 #define entertainment @"Entertainment"
 #define sport @"Health & Beauty"
-#define restaurants @"Restaurants & Cafes"
+#define restaurants @"Restaurants"
 #define catalogue @"Catalogues"
 
 #define range 10

@@ -575,6 +575,7 @@
 
 #pragma mark myFunctions
 -(NSString *)HUDStringLocalized:(id)JSON{
+    NSLog(@"HUDStringLocalized: %@",JSON);
     if ([[[JSON objectForKey:@"Error"]objectForKey:@"message"] isEqual:[NSNull null]] || [[[JSON objectForKey:@"Error"]objectForKey:@"message"] length] == 0) {
         return AMLocalizedString(@"Something goes wrong", nil);
     }

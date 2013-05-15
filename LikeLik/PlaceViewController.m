@@ -611,6 +611,8 @@ CGFloat alpha = 0.5;
     [self.MapPlace setAdjustTilesForRetinaDisplay:YES];
     self.MapPlace.showsUserLocation = YES;
     [self.placeViewMap setHidden:YES];
+    
+
     [self.placeViewMap addSubview:self.MapPlace];
     
     CLLocation *placecoord = self.PlaceLocation;
@@ -1143,9 +1145,6 @@ CGFloat alpha = 0.5;
                     loadingView.hidden = YES;
                     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
                     [self.navigationController.view addSubview:HUD];
-                    
-                    // The sample image is based on the work by http://www.pixelpressicons.com, http://creativecommons.org/licenses/by/2.5/ca/
-                    // Make the customViews 37 by 37 pixels for best results (those are the bounds of the build-in progress indicators)
                     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
                     
                     // Set custom view mode
@@ -1182,20 +1181,8 @@ CGFloat alpha = 0.5;
 
 -(IBAction)ShowMap:(id)sender{
     self.placeViewMap.hidden = !self.placeViewMap.hidden;
-//    self.locationButton.hidden = !self.locationButton.hidden;
-//    if (self.locationButton.hidden == YES){
-//        [_scroll setScrollEnabled:YES];
-//        [_ScrollView setScrollEnabled:YES];
-//        [pageControl setEnabled:YES];
-//        NSLog(@"scroll enabled");
-//    }
-//    else{
-//        [_scroll setScrollEnabled:NO];
-//        [_ScrollView setScrollEnabled:NO];
-//        [pageControl setEnabled:NO];
-//        NSLog(@"scroll disabled");
-//    }
-        if (self.MapPlace.hidden){
+    NSLog(@"%d",_MapPlace.hidden);
+    if (self.placeViewMap.hidden){
         UIButton *btn = [InterfaceFunctions map_button:1];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
