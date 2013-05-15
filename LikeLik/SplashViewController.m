@@ -181,6 +181,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
         [ExternalFunctions downloadCatalogue:@"test"];
         [defaults setObject:@"1" forKey:@"Download"];
+        //  запуск с нуля
         [ExternalFunctions getReady];
     }
     
