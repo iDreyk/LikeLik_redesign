@@ -39,6 +39,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 #warning regions
     if (haveAlreadyReceivedCoordinates) {
         Me = newLocation;
@@ -177,6 +178,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     
     
     // скачивание
+    NSLog(@"Downloaded = %@",[defaults objectForKey:@"Download"]);
     if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
         [ExternalFunctions downloadCatalogue:@"test"];
         [defaults setObject:@"1" forKey:@"Download"];

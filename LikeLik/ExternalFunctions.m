@@ -136,11 +136,12 @@ static CLLocation *Me;
 //    
 //    NSString *cataloguesPath2 = [[self docDir]stringByAppendingPathComponent:@"Vienna"];
 //    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Vienna" ofType:@""] toPath:cataloguesPath2 error:nil];
-    
+    NSLog(@"getting ready");
     NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *catalogueArray = [[NSArray alloc]initWithContentsOfFile:cataloguesPath];
     [defaults setObject:catalogueArray forKey:catalogue];
+    NSLog(@"cat = %@",[defaults objectForKey:catalogue]);
 }
 
 + (CLLocation *) getMyLocationOrTheLocationOfCityCenter : (NSString *) city{
@@ -176,24 +177,24 @@ static CLLocation *Me;
         lon = [[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Lon"] doubleValue];
         CLLocation *currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
         CLLocation *location = [self getMyLocationOrTheLocationOfCityCenter:city];
-        
+        photos = [[NSMutableArray alloc] init];
         for (int j = 0; j < [[[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] objectForKey:version] count]; j++) {
             [photos addObject:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],[cityDict objectForKey:@"city_EN"],[[[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] objectForKey:version] objectAtIndex:j]]];
         }
         
         double distance = [location distanceFromLocation:currentPlace];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"Name"]] forKey:@"Name"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"About"]] forKey:@"About"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"address"]] forKey:@"Address"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"time"]] forKey:@"Time"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"metro"]] forKey:@"Metro"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Telephone"] forKey:@"Telephone"];
-        [placeDict setObject:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"web"] forKey:@"Web"];
-        [placeDict setObject:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
-        [placeDict setObject:currentPlace forKey:@"Location"];
-        [placeDict setObject:category forKey:@"Category"];
-        [placeDict setObject:photos forKey:@"Photo"];        
-        [placeDict setObject:city forKey:@"City"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"Name"]] forKey:@"Name"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"About"]] forKey:@"About"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"address"]] forKey:@"Address"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"time"]] forKey:@"Time"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"metro"]] forKey:@"Metro"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Telephone"] forKey:@"Telephone"];
+        [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"web"] forKey:@"Web"];
+        [placeDict setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
+        [placeDict setValue:currentPlace forKey:@"Location"];
+        [placeDict setValue:category forKey:@"Category"];
+        [placeDict setValue:photos forKey:@"Photo"];        
+        [placeDict setValue:city forKey:@"City"];
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"favourite"] forKey:@"Favorite"];
         
         [returnArray addObject:placeDict];
@@ -248,6 +249,7 @@ static CLLocation *Me;
 }
 //  скачать каталог города
 + (void) downloadCatalogue:(NSString *)catalogueOfCity {
+    NSLog(@"in download");
     // Create a URL Request and set the URL
     NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://likelik.net/docs/Archive.zip"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
