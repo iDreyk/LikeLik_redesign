@@ -183,7 +183,9 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         [ExternalFunctions downloadCatalogue:@"test"];
         [defaults setObject:@"1" forKey:@"Download"];
         [self.HUDfade show:YES];
-    }
+        //  запуск с нуля
+        [ExternalFunctions getReady];
+}
     
     [UIView animateWithDuration:1.2 animations:^{
         self.Shade.frame = Shadeframe;
@@ -197,7 +199,6 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
                          [self.HUDfade hide:YES];
                          [self performSegueWithIdentifier:@"fistSegue" sender:self];
                      }];
-    
     
 }
 
