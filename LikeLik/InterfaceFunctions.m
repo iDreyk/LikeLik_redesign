@@ -257,7 +257,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:Frame];
     
     if (Frame.size.width == 0.0)
-        [label setFrame:CGRectMake(14.0, 0.0, 290, 15.0)];
+        [label setFrame:CGRectMake(14.0, 0.0, 260, 15.0)];
 
     
     label.font = [AppDelegate OpenSansRegular:28];
