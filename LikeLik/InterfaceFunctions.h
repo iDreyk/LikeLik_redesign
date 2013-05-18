@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MBProgressHUD.h"
 @interface InterfaceFunctions : NSObject
 
 #pragma mark UIButton

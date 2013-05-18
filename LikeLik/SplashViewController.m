@@ -33,13 +33,11 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     return self;
 }
 
-
-
 -(void)startTracking{
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+ //   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 #warning regions
     if (haveAlreadyReceivedCoordinates) {
         Me = newLocation;

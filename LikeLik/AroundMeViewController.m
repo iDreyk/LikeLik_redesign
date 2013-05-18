@@ -73,6 +73,7 @@ static NSDictionary *Place1;
     
     
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
+    
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     

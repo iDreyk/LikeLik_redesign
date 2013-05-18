@@ -184,16 +184,10 @@
    return  [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
 }
 +(UIColor*)BackgroundColor{
-    
-    
-    UIImage *img = [UIImage imageNamed:@"640_1136 background-568h@2x.png"];
-    CGSize imgSize = CGSizeMake(640,1008);
-    
-    UIGraphicsBeginImageContext( imgSize );
-    [img drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return [UIColor colorWithPatternImage:newImage];
+
+
+    UIImage *img = [InterfaceFunctions backgroundView].image;
+    return [UIColor colorWithPatternImage:img];
 }
 
 #pragma mark UILabel
@@ -426,8 +420,9 @@
     return [[UIImageView alloc] initWithImage:[UIImage imageNamed:string]];
 }
 +(UIImageView *)backgroundView{
-    UIImageView *imageview = [[UIImageView alloc] initWithImage:  [UIImage imageNamed:@"640_1136 background-568h@2x"]];
     
+    UIImageView *imageview = [[UIImageView alloc] initWithImage:  [UIImage imageNamed:@"640_1136 background-568h@2x"]];
+    imageview.frame = CGRectMake(0.0, 0.0, 320.0, 548);
     [imageview setContentMode:UIViewContentModeScaleAspectFill];
     return  imageview;
     

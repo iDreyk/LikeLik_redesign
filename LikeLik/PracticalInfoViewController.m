@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view = [InterfaceFunctions backgroundView];
+    //self.view = [InterfaceFunctions backgroundView];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
 
@@ -58,6 +58,11 @@
     }
     label.contentSize = CGSizeMake(320.0, textViewSize.height);
     
+    UIImageView *imageview = [[UIImageView alloc] initWithImage:  [UIImage imageNamed:@"640_1136 background-568h@2x"]];
+    imageview.frame = CGRectMake(0.0, 0.0, 320.0, 548.0);
+    NSLog(@"%@ %@",self.view,imageview);
+    [imageview setContentMode:UIViewContentModeScaleAspectFill];
+    [self.view addSubview:imageview];
     [self.view addSubview:label];
     
 

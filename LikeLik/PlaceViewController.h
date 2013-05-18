@@ -12,7 +12,6 @@
 #import "UIViewController+KNSemiModal.h"
 #import "Vkontakte.h"
 #import "SA_OAuthTwitterController.h"
-
 @class CheckViewController;
 
 @interface PlaceViewController : UIViewController<RMMapViewDelegate, UIActionSheetDelegate,UIGestureRecognizerDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate,VkontakteDelegate,SA_OAuthTwitterControllerDelegate,MBProgressHUDDelegate,UIAlertViewDelegate,MFMailComposeViewControllerDelegate> {
@@ -60,13 +59,9 @@
 @property (nonatomic,retain) NSArray *Photos;
 @property (nonatomic, retain) UIColor *Color;
 
-@property (weak, nonatomic) IBOutlet UILabel *gradientunderLabel;
-@property (weak, nonatomic) IBOutlet UIView *ViewWithContent;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
-@property (retain, nonatomic) IBOutlet UILabel *Text;
 @property (nonatomic,retain)IBOutlet UIPageControl *pageControl;
-@property (weak, nonatomic) IBOutlet UILabel *infobutton;
-@property (nonatomic,retain)IBOutlet UIAlertView *message;
 @property (weak, nonatomic) IBOutlet UIButton *info_button;
 
 @property (nonatomic, retain)IBOutlet UILabel *favText;
@@ -80,6 +75,10 @@
 -(IBAction)infotap:(id)sender;
 - (IBAction)tapDetected:(UIGestureRecognizer *)sender;
 -(IBAction)ShowMap:(id)sender;
--(IBAction)showQR:(id)sender;
+
+
+-(UILabel *)UseTextwithCenter:(CGPoint)Center;
+-(UILabel *)ShareTextwithCenter:(CGPoint)Center;
+
 
 @end

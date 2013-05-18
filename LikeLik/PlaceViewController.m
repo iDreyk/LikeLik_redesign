@@ -28,14 +28,11 @@
 #define afternotification             @"l27h7RU2dzVfPoQssda"
 #define afterregister             @"l27h7RU2dzVfP12aoQssda"
 #define backgroundg @"l27h7RU2123123132dzVfPoQssda"
-//static NSInteger prevPhoto;
 static BOOL infoViewIsOpen = NO;
-//static BOOL MapIsOpen = NO;
 static UIAlertView *alertView = nil;
 CGFloat firstX=0;
 CGFloat firstY=0;
 CGFloat alpha = 0.5;
-//static UIActivityIndicatorView *activity = nil;
 
 @interface PlaceViewController ()
 
@@ -43,7 +40,7 @@ CGFloat alpha = 0.5;
 
 @implementation PlaceViewController
 @synthesize Use,pageControl;
-@synthesize message;
+
 
 -(IBAction)clickPageControl:(id)sender
 {
@@ -52,11 +49,9 @@ CGFloat alpha = 0.5;
     frame.origin.x=frame.size.width=page;
     frame.origin.y=0;
     [_scroll scrollRectToVisible:frame animated:YES];
-    // NSLog(@"Hello");
 }
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     int page = scrollView.contentOffset.x/scrollView.frame.size.width;
     pageControl.currentPage=page;
     
@@ -143,6 +138,7 @@ CGFloat alpha = 0.5;
         }
     }
 }
+
 - (void)viewDidLoad{
     [super viewDidLoad];
 
@@ -167,8 +163,7 @@ CGFloat alpha = 0.5;
     
     [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     self.navigationController.navigationBar.hidden = YES;
-   // [self hideStuff];
-    
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(semiModalDismissed:)
@@ -179,11 +174,6 @@ CGFloat alpha = 0.5;
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(aftercall:)
                                                  name: afterCall
-                                               object: nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(afternot)
-                                                 name: afternotification
                                                object: nil];
     
     [[NSNotificationCenter defaultCenter] addObserver: self
@@ -208,54 +198,18 @@ CGFloat alpha = 0.5;
     
     [self.scroll addGestureRecognizer:singleTap];
     NSArray *photos = self.Photos;
-    NSLog(@"%@",self.PlaceCityName);
-    NSLog(@"%@",self.PlaceCategory);
-    NSLog(@"%@",self.PlaceName);
-    NSLog(@"%@",self.Photos);
     
     if ([AppDelegate isiPhone5])
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
     else
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
-    self.LabelOnScroll.text = self.PlaceName;
-    self.LabelOnScroll.textColor = [UIColor whiteColor];
-    self.LabelOnScroll.font = [AppDelegate OpenSansSemiBold:60];
     
     
     
-    if ([AppDelegate isiPhone5]) {
-        self.labelonPhoto = [[UILabel alloc] initWithFrame:CGRectMake(15.0, 0.0, 290.0, 0.0)];
-        _labelonPhoto.text = self.LabelOnScroll.text;
-        _labelonPhoto.textColor = [UIColor whiteColor];
-        _labelonPhoto.font = [AppDelegate OpenSansSemiBold:60];
-        _labelonPhoto.numberOfLines =0;
-        _labelonPhoto.backgroundColor = [UIColor clearColor];
-        
-        [_labelonPhoto sizeToFit];
-        _background = [[UIImageView alloc] initWithFrame:CGRectMake(0, _labelonPhoto.frame.origin.y, 320.0, _labelonPhoto.frame.size.height)];
-        _background.image = [UIImage imageNamed:@"Bg_gradient.png"];
-        [self.view addSubview:_background];
-        [self.view addSubview:_labelonPhoto];
-        
-        self.LabelOnScroll.hidden = YES;
-    }
-    else{
-        self.labelonPhoto = [[UILabel alloc] initWithFrame:CGRectMake(15.0, 0.0, 290.0, 0.0)];
-        _labelonPhoto.text = self.LabelOnScroll.text;
-        _labelonPhoto.textColor = [UIColor whiteColor];
-        _labelonPhoto.font = [AppDelegate OpenSansSemiBold:60];
-        _labelonPhoto.numberOfLines =0;
-        _labelonPhoto.backgroundColor = [UIColor clearColor];
-        
-        [_labelonPhoto sizeToFit];
-        _background = [[UIImageView alloc] initWithFrame:CGRectMake(0, _labelonPhoto.frame.origin.y, 320.0, _labelonPhoto.frame.size.height)];
-        _background.image = [UIImage imageNamed:@"Bg_gradient.png"];
-        [self.view addSubview:_background];
-        [self.view addSubview:_labelonPhoto];
-        self.LabelOnScroll.hidden = YES;
-    }
     
-    self.view.backgroundColor =  [UIColor redColor];
+    
+    
+    self.view.backgroundColor = [UIColor redColor];
     _scroll.pagingEnabled = YES;
     _scroll.showsHorizontalScrollIndicator = NO;
     _scroll.showsVerticalScrollIndicator = NO;
@@ -300,16 +254,10 @@ CGFloat alpha = 0.5;
     _infoScroll.contentSize = CGSizeMake(320.0, 512.0);
     
 
-//    
     [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_normal"].image forState:UIControlStateNormal];
     [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_selected"].image forState:UIControlStateHighlighted];
-//    [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_normal"].image forState:UIControlStateDisabled];
-//
-//    
     [self.GOUSE setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"2use_normal"].image forState:UIControlStateNormal];
     [self.GOUSE setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"2use_selected"].image forState:UIControlStateHighlighted];
-    
-//
     [self.Share setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"3share_normal"].image forState:UIControlStateNormal];
     [self.Share setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"3share_selected"].image forState:UIControlStateHighlighted];
     
@@ -327,10 +275,11 @@ CGFloat alpha = 0.5;
         NSString *image = [[NSString alloc] initWithFormat:@"Fist_animated_%d.png",i];
         [animation addObject:[UIImage imageNamed:image]];
     }
-    //[Use setCenter:CGPointMake(53, Use.center.y)];
+    
     Use.animationImages = animation;
     Use.animationDuration = 1.0;
     [Use startAnimating];
+    
     if ([ExternalFunctions isCheckUsedInPlace:self.PlaceName InCategory:self.PlaceCategory InCity:self.PlaceCityName]){
         self.GOUSE.enabled = NO;
         [Use stopAnimating];
@@ -357,9 +306,7 @@ CGFloat alpha = 0.5;
     
     if ([ExternalFunctions isFavorite:self.PlaceName InCity:self.PlaceCityName InCategory:self.PlaceCategory]) {
         self.Favorites.enabled = NO;
-        
         self.favImage.alpha = alpha;
-
         [self.favText removeFromSuperview];
         self.favText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
         self.favText.numberOfLines = 0;
@@ -374,7 +321,7 @@ CGFloat alpha = 0.5;
         self.favText.alpha = alpha;
     }
     
-    UILabel *UseText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];//[[UITextView //stringWithFormat:AMLocalizedString(@"Favorites", nil)]];
+    UILabel *UseText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
     UseText.numberOfLines = 0;
     [UseText setText:AMLocalizedString(@"Use", nil)];
     UseText.font = [AppDelegate OpenSansBoldwithSize:18];
@@ -635,8 +582,6 @@ CGFloat alpha = 0.5;
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
     [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
- //   [self.MapPlace addSubiew:self.locationButton];
-    
 }
 
 
@@ -660,8 +605,8 @@ CGFloat alpha = 0.5;
     [self.MapPlace setCenterCoordinate:self.MapPlace.userLocation.coordinate];
 }
 
-- (void)refreshButtonState
-{
+- (void)refreshButtonState{
+
     if (![_vkontakte isAuthorized])
     {
         [_loginB setTitle:@"Login"
@@ -677,11 +622,7 @@ CGFloat alpha = 0.5;
     }
 }
 
-
-
 - (void)oneFingerSwipeUp:(UITapGestureRecognizer *)recognizer {
-    // Insert your own code to handle swipe left
-    // NSLog(@"%@",recognizer);
     if (infoViewIsOpen == NO) {
         [self tapDetected:recognizer];
     }
@@ -691,10 +632,6 @@ CGFloat alpha = 0.5;
     if (infoViewIsOpen == YES) {
         [self tapDetected:recognizer];
     }
-}
-
--(void)afternot{
-    
 }
 
 -(void)afterreg{
@@ -711,22 +648,23 @@ CGFloat alpha = 0.5;
         else
             [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
     }];
-    infoViewIsOpen = !infoViewIsOpen;
-    [self presentSemiViewController:VC withOptions:@{
-     KNSemiModalOptionKeys.pushParentBack    : @(YES),
-     KNSemiModalOptionKeys.animationDuration : @(0.5),
-     KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
-     }];
-    
-    VC.view.backgroundColor = [UIColor clearColor];
-    VC.PlaceName = self.PlaceName;
-    VC.PlaceCategory = self.PlaceCategory;
-    VC.PlaceCity = self.PlaceCityName;
-    VC.color = self.Color;
-    _labelonPhoto.hidden = NO;
-    _background.hidden = NO;
-
-    //
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"])
+    {
+        infoViewIsOpen = !infoViewIsOpen;
+        [self presentSemiViewController:VC withOptions:@{
+         KNSemiModalOptionKeys.pushParentBack    : @(YES),
+         KNSemiModalOptionKeys.animationDuration : @(0.5),
+         KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+         }];
+        
+        VC.view.backgroundColor = [UIColor clearColor];
+        VC.PlaceName = self.PlaceName;
+        VC.PlaceCategory = self.PlaceCategory;
+        VC.PlaceCity = self.PlaceCityName;
+        VC.color = self.Color;
+        _labelonPhoto.hidden = NO;
+        _background.hidden = NO;
+    }
 }
 
 -(void)gesture:(UIGestureRecognizer *)gestureRecognizer{
@@ -759,9 +697,6 @@ CGFloat alpha = 0.5;
     return YES;
 }
 
-
-
-
 -(void)webPressed:(UIButton *)sender{
     
     [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
@@ -782,19 +717,14 @@ CGFloat alpha = 0.5;
                                                     otherButtonTitles: url, nil];
     
     [actionSheet showFromRect:CGRectMake(0.0, 0.0, 320.0, 300.) inView:[[self navigationController] navigationBar] animated:YES];
-    
     actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
     
     
 }
 
--(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
-{
-    
+-(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation{
     if ([annotation.annotationType isEqualToString:@"marker"]) {
-        //    nslog(@"Marker %@",annotation.title);
- 
-                RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
+        RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
                                                           tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
                                                             sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
 
@@ -807,11 +737,8 @@ CGFloat alpha = 0.5;
     return nil;
 }
 
-- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
-{
-    [self ShowMap:map];//t:nil];
-//    PlaceName = annotation.title;
-//    [self performSegueWithIdentifier:@"MapSegue" sender:self];
+- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
+    [self ShowMap:map];
 }
 
 -(void)aftercall:(NSNotification *)notification{
@@ -842,8 +769,6 @@ CGFloat alpha = 0.5;
     
 
     }
-//    [[NSNotificationCenter defaultCenter] observationInfo];
-
 }
 
 - (void)semiModalDismissed:(NSNotification *) notification {
@@ -867,9 +792,7 @@ CGFloat alpha = 0.5;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-  //  NSLog(@"viewWillDisapper");
     infoViewIsOpen = NO;
-
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -879,37 +802,21 @@ CGFloat alpha = 0.5;
     }
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    //    nslog(@"viewWillAppear");
-}
-
-
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)viewDidAppear:(BOOL)animated{
             [self tapDetected:nil];
     if ([self.fromNotification isEqualToString:@"YES"]){
-
-        
         UIButton *btn = [InterfaceFunctions home_button];
         [btn addTarget:self action:@selector(testmethod) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
         self.ScrollView.backgroundColor = [InterfaceFunctions colorTextCategory:self.PlaceCategory];        
     }
-    
-    else{
-        
-    //    [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
-      //  self.navigationController.navigationBar.hidden = YES;
-    }
 }
 
 -(void)testmethod{
-
     SplashViewController *view1 = [[UIStoryboard storyboardWithName:@"iPhone5" bundle:nil] instantiateViewControllerWithIdentifier:@"Splash"];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view1];
     [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
@@ -917,6 +824,7 @@ CGFloat alpha = 0.5;
     navController.navigationBarHidden = YES;
     [self.navigationController pushViewController:view1 animated:YES];
 }
+
 -(IBAction)infotap:(id)sender{
     [self tapDetected:nil];
     
@@ -944,8 +852,6 @@ CGFloat alpha = 0.5;
             [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, 20.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
             self.navigationController.navigationBar.hidden = NO;
             _labelonPhoto.hidden = YES;
-            _background.hidden = YES;
-            _infobutton.hidden = YES;
         }
         else{
             [UIView transitionWithView:self.PlaceView
@@ -970,19 +876,12 @@ CGFloat alpha = 0.5;
             [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
             self.navigationController.navigationBar.hidden = YES;
             _labelonPhoto.hidden = NO;
-            _background.hidden = NO;
-            _infobutton.hidden = NO;
         }
 }
 
  
 -(IBAction)buttonPressed:(UIButton*)sender{
-
-    
- //   //    nslog(@"Button Tab = %d",sender.tag);
-    
     if (sender.tag == 2) {
-
         [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
         self.navigationController.navigationBar.hidden = YES;
         
@@ -1071,14 +970,8 @@ CGFloat alpha = 0.5;
     }
 }
 
-    
-
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    //NSLog(@"%@",[actionSheet buttonTitleAtIndex:buttonIndex]);
-    
-    
     if ([actionSheet.title isEqualToString:AMLocalizedString(@"Call", nil)]) {
-        
         if (buttonIndex == 0){
             
             
@@ -1137,7 +1030,6 @@ CGFloat alpha = 0.5;
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:AMLocalizedString(@"Share on facebook", nil)]) {
         loadingView.hidden = NO;
-//#warning текстика со ссылочкой!
         [SCFacebook loginCallBack:^(BOOL success, id result) {
             loadingView.hidden = YES;
             if (success) {
@@ -1164,33 +1056,21 @@ CGFloat alpha = 0.5;
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:AMLocalizedString(@"Send Email", nil)]) {
         [self openMail:self];
     }
-    
-    //[TestFlight passCheckpoint:[actionSheet buttonTitleAtIndex:buttonIndex]];
 }
 
-
-- (void) finish
-{ 
-   
+- (void) finish{ 
     [alertView dismissWithClickedButtonIndex:0 animated:YES];
      self.Favorites.enabled = YES;
 }
 
--(IBAction)showQR:(id)sender{
-    
-}
-
 -(IBAction)ShowMap:(id)sender{
     self.placeViewMap.hidden = !self.placeViewMap.hidden;
-    NSLog(@"123123312123 %d",_MapPlace.hidden);
     if (self.placeViewMap.hidden){
-
         UIButton *btn = [InterfaceFunctions map_button:1];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     }
     else{
-
         UIButton *btn = [InterfaceFunctions map_button:0];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
@@ -1198,73 +1078,43 @@ CGFloat alpha = 0.5;
 }
 
 - (void)viewDidUnload {
-    [self setGradientunderLabel:nil];
-    [self setViewWithContent:nil];
+
     [self setScrollView:nil];
     [self setTextPlace:nil];
-    [self setText:nil];
     [super viewDidUnload];
 }
 
 
 #pragma mark - VkontakteDelegate
 
-- (void)vkontakteDidFailedWithError:(NSError *)error
-{
+- (void)vkontakteDidFailedWithError:(NSError *)error{
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (void)showVkontakteAuthController:(UIViewController *)controller
-{
+- (void)showVkontakteAuthController:(UIViewController *)controller{
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         controller.modalPresentationStyle = UIModalPresentationFormSheet;
     }
-    
     [self presentViewController:controller animated:YES completion:^{}];
 }
 
-- (void)vkontakteAuthControllerDidCancelled
-{
+- (void)vkontakteAuthControllerDidCancelled{
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte
-{
-//#warning охуенно было бы сделать ссылку сюда
-           [_vkontakte postMessageToWall:self.PlaceAbout];
+- (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte{
+    [_vkontakte postMessageToWall:self.PlaceAbout];
     [self dismissViewControllerAnimated:YES completion:^{}];//
 }
 
-- (void)vkontakteDidFinishLogOut:(Vkontakte *)vkontakte
-{
-   // [self refreshButtonState];
-}
-
-- (void)vkontakteDidFinishGettinUserInfo:(NSDictionary *)info
-{
-    // NSLog(@"%@", info);
-    
-    
-}
-
-- (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce
-{
-
-    // NSLog(@"%@", responce);
+- (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce{
     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:HUD];
-    
-    // The sample image is based on the work by http://www.pixelpressicons.com, http://creativecommons.org/licenses/by/2.5/ca/
-    // Make the customViews 37 by 37 pixels for best results (those are the bounds of the build-in progress indicators)
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
-    
-    // Set custom view mode
     HUD.mode = MBProgressHUDModeCustomView;
-    
     HUD.delegate = self;
     HUD.labelText = AMLocalizedString(@"Done", nil);
-    
     [HUD show:YES];
     [HUD hide:YES afterDelay:1];
     
@@ -1282,14 +1132,9 @@ CGFloat alpha = 0.5;
 	return [[NSUserDefaults standardUserDefaults] objectForKey: @"authData"];
 }
 
-//=============================================================================================================================
 #pragma mark SA_OAuthTwitterControllerDelegate
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username {
-	// NSLog(@"Authenicated for %@", username);
-    
-//#warning текст twitter
-   [_engine sendUpdate: self.PlaceAbout];
-    
+	[_engine sendUpdate: self.PlaceAbout];
 }
 
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller {
@@ -1300,35 +1145,25 @@ CGFloat alpha = 0.5;
 	// NSLog(@"Authentication Canceled.");
 }
 
-//=============================================================================================================================
 #pragma mark TwitterEngineDelegate
 - (void) requestSucceeded: (NSString *) requestIdentifier {
-	// NSLog(@"Request %@ succeeded", requestIdentifier);
-    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:HUD];
-    
-
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
-    
-    // Set custom view mode
     HUD.mode = MBProgressHUDModeCustomView;
-    
     HUD.delegate = self;
     HUD.labelText = AMLocalizedString(@"Done", nil);
-    
     [HUD show:YES];
     [HUD hide:YES afterDelay:1];
     
 }
 
 - (void) requestFailed: (NSString *) requestIdentifier withError: (NSError *) error {
-	// NSLog(@"Request %@ failed with error: %@", requestIdentifier, error);
 }
-
 
 -(IBAction)showRegistrationMessage:(id)sender{
 
-    message = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Registration", nil)
+  UIAlertView  *message = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Registration", nil)
                                      message:AMLocalizedString(@"To use all the features of the world LikeLik, please register", nil)
                                     delegate:nil
                            cancelButtonTitle:AMLocalizedString(@"Cancel", nil)
@@ -1337,42 +1172,24 @@ CGFloat alpha = 0.5;
     [message show];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{//dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated{
-    if (buttonIndex == 1) {
-        // NSLog(@"Whant to Register");
-        //[TestFlight passCheckpoint:@"Whant to Register"];
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1)
         [self performSegueWithIdentifier:@"RegisterSegue" sender:self];
-    }
-    if (buttonIndex == 2) {
-        NSLog(@"Login");
+    if (buttonIndex == 2)
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
-    }
-    if (buttonIndex == 0){
-        //[TestFlight passCheckpoint:@"Cancel Register"];
-    }
+    
 }
 
-- (IBAction)openMail:(id)sender
-{
-    if ([MFMailComposeViewController canSendMail])
-    {
+- (IBAction)openMail:(id)sender{
+    if ([MFMailComposeViewController canSendMail]){
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
         mailer.mailComposeDelegate = self;
-//#warning Тема
         [mailer setSubject:AMLocalizedString(@"Email Subject", nil)];
-//#warning Адресаты
-        //NSArray *toRecipients = [NSArray arrayWithObjects:@"fisrtMail@example.com", @"secondMail@example.com", nil];
-        //[mailer setToRecipients:toRecipients];
- //       UIImage *myImage = [UIImage imageNamed:@"mobiletuts-logo.png"];
-   //     NSData *imageData = UIImagePNGRepresentation(myImage);
-        //[mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"mobiletutsImage"];
-//#warning Текст
         NSString *emailBody = AMLocalizedString(@"Email Text", nil);
         [mailer setMessageBody:emailBody isHTML:NO];
         [self presentViewController:mailer animated:YES completion:^{}];
     }
-    else
-    {
+    else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
                                                         message:@"Your device doesn't support the composer sheet"
                                                        delegate:nil
@@ -1382,11 +1199,7 @@ CGFloat alpha = 0.5;
     }
 }
 
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
-{
-
-    
-
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error{
     switch (result)
     {
         case MFMailComposeResultCancelled:
@@ -1410,30 +1223,24 @@ CGFloat alpha = 0.5;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        if ([AppDelegate isiPhone5])
+            [self.PlaceView setFrame:CGRectMake(0.0, 496.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
+        else
+            [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
+    }];
+    infoViewIsOpen = !infoViewIsOpen;
+    
     if ([[segue identifier] isEqualToString:@"RegisterSegue"]) {
-        
-        [UIView animateWithDuration:1.0 animations:^{
-            if ([AppDelegate isiPhone5])
-                [self.PlaceView setFrame:CGRectMake(0.0, 496.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-            else
-                [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-        }];
-        infoViewIsOpen = !infoViewIsOpen;
-        
+
         RegistrationViewController  *destination = [segue destinationViewController];
         [segue destinationViewController];
         destination.Parent = @"Place";
     }
     
     if ([[segue identifier] isEqualToString:@"LoginSegue"]) {
-        
-        [UIView animateWithDuration:1.0 animations:^{
-            if ([AppDelegate isiPhone5])
-                [self.PlaceView setFrame:CGRectMake(0.0, 496.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-            else
-                [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-        }];
-        infoViewIsOpen = !infoViewIsOpen;
         
         LoginViewController  *destination = [segue destinationViewController];
         [segue destinationViewController];
