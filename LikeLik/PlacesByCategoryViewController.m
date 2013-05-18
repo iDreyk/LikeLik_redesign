@@ -63,8 +63,6 @@ static NSDictionary *Place1;
     else
         self.Map.frame = CGRectMake(0.0, 0.0, 320.0, 416.0);
     
-    
-    
     self.Map.minZoom = 13;
     self.Map.zoom = 13;
     //self.Map.maxzoom = 17;
@@ -80,12 +78,10 @@ static NSDictionary *Place1;
         marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
         marker1.annotationType = @"marker";
         marker1.title = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Name"];
-        marker1.subtitle = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Category"];
+       marker1.subtitle = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Category"];
         marker1.userInfo = [CategoryPlaces objectAtIndex:i];
         [self.Map addAnnotation:marker1];
     }
-    
-    
     
     [self.ViewForMap addSubview:self.Map];
     self.CityImage.hidden = NO;

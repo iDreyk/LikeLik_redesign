@@ -80,7 +80,8 @@
 "Call" = "Anrufen";
 "Web" = "Web";
 "Email Text" = "Email Text";
-"Email Subject" = "Email Subject";
+"Email Subject" = "Ich empfehle";
+"Send Email" = "Per E-Mail";
 "Favorited" = "Ist schon in Favoriten";
 "Something goes wrong" = "Etwas ist Schief gelaufen :(\nBitte, versuchen Sie es später!";
 "Restaurants" = "Restaurants";
@@ -90,3 +91,5 @@
 "Leisure" = "Leisure";
 "Beauty" = "Beauty";
 "Hotels" = "Hotels";
+"You are next to" = "Sie sind neben";
+

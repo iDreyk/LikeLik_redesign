@@ -17,7 +17,7 @@
     #import "LocalizationSystem.h"
     #import "AFHTTPRequestOperation.h"
     #import "AFHTTPClient.h"
-     #import "PaperFoldView.h"
+
     UIView *loadingView;
 
 #endif

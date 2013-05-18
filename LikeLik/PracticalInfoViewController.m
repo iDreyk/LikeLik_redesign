@@ -41,8 +41,6 @@
     _InfoScroll.showsHorizontalScrollIndicator = NO;
     UIView *awesomeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 512.0)];
     awesomeView.backgroundColor = [UIColor colorWithRed:0.5/2 green:0.5 blue:0.5 alpha:1];
-
-    
     
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 300.0)];
     label.text = [[NSString alloc] initWithFormat:@"\n%@",[ExternalFunctions getPracticalInfoForCity:self.CityName]];

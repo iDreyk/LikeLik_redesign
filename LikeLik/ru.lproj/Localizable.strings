@@ -36,8 +36,8 @@
 "Shopping" = "Шоппинг";
 "Entertainment" = "Развлечение";
 "Health & Beauty" = "Красота и Здоровье";
-"Visual Tour" = "Визуальный Тур";
-"Practical Info" = "Практическая информация";
+"Visual Tour" = "Достопремичательности";
+"Practical Info" = "Полезная информация информация";
 "City info" = "Информация о городе";
 "Transportation" = "Транспорт";
 "Metro" = "Метро";
@@ -82,6 +82,15 @@
 "Call" = "Позвонить";
 "Web" = "Сайт";
 "Email Text" = "Email Text";
-"Email Subject" = "Email Subject";
+"Email Subject" = "Рекомендую";
+"Send Email" = "Отправить по почте";
 "Favorited" = "В Избранном";
 "Something goes wrong" = "Что-то пошло не так :(\nПопробуйте позже!";
+"Restaurants" = "Рестораны";
+"Night life" = "Ночная жизнь";
+"Shopping" = "Шоппинг";
+"Culture" = "Культура";
+"Leisure" = "Досуг";
+"Beauty" = "Красота";
+"Hotels" = "Гостиницы";
+"You are next to" = "Вы рядом с";

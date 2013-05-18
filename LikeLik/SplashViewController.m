@@ -44,15 +44,17 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     if (haveAlreadyReceivedCoordinates) {
         Me = newLocation;
         NSLog(@"%@",Me);
-//#warning надо переделать под новый каталог
+
+#warning надо переделать под новый каталог
 //        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
 //
 ////        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
 ////        NSLog(@"%@",Place);
 ////        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
 ////        [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
+        
 ////        [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
-////        [localNotification setAlertBody:[NSString stringWithFormat:@"%@",[Place objectForKey:@"Place"]]];
+////        [localNotification setAlertBody:[NSString stringWithFormat:@"%@ %@", AMLocalizedString(@"You are next to", nil),[Place objectForKey:@"Place"]]];
 ////        [localNotification setHasAction: YES];
 ////        [localNotification setApplicationIconBadgeNumber:1];
 ////        [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
