@@ -207,8 +207,7 @@ CGFloat alpha = 0.5;
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:self.PlaceName AndColor:[InterfaceFunctions mainTextColor:6]];
     
     [self.scroll addGestureRecognizer:singleTap];
-    NSArray *photos = self.Photos;//[ExternalFunctions getImagesOfPlaceInCity:self.PlaceCityName InCategory:self.PlaceCategory WithPlaceName:self.PlaceName];
-    NSLog(@"lala %@",photos);
+    NSArray *photos = self.Photos;
     NSLog(@"%@",self.PlaceCityName);
     NSLog(@"%@",self.PlaceCategory);
     NSLog(@"%@",self.PlaceName);
@@ -404,8 +403,6 @@ CGFloat alpha = 0.5;
     _TextPlace.text = self.PlaceAbout;
     _Teltext.text = self.PlaceTelephone;
     _webtext.text = self.PlaceWeb;
-    //_Placeadress.text = self.PlaceAddress;
-    NSLog(@"lalal %@",_Placeadress.text);
    
     
     [_ScrollView setBackgroundColor:self.Color];

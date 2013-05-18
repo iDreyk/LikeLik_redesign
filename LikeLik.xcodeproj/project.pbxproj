@@ -170,6 +170,8 @@
 		55CDB03C17413D9000AF1096 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF9C17413D9000AF1096 /* zbar-helpicons.png */; };
 		55CDB03D17413D9000AF1096 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF9D17413D9000AF1096 /* zbar-samples.png */; };
 		55CDB04117413DD100AF1096 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CDB04017413DD100AF1096 /* MapBox.framework */; };
+		55E2A79B17477AF900E9D3E4 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 55E2A79917477AF900E9D3E4 /* Moscow */; };
+		55E2A79C17477AF900E9D3E4 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 55E2A79A17477AF900E9D3E4 /* Vienna */; };
 		9122D2AD173E422C0096BB24 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		91241959173BA85B004B6837 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -474,6 +476,8 @@
 		55CDAF9C17413D9000AF1096 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		55CDAF9D17413D9000AF1096 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
 		55CDB04017413DD100AF1096 /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = "../../../Documents/Likelik Xcode/MapBox.framework"; sourceTree = "<group>"; };
+		55E2A79917477AF900E9D3E4 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Moscow; sourceTree = "<group>"; };
+		55E2A79A17477AF900E9D3E4 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Vienna; sourceTree = "<group>"; };
 		9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 114x114.png"; sourceTree = "<group>"; };
 		91241948173A9CF8004B6837 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194A173A9DF5004B6837 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1279,6 +1283,8 @@
 		919E8AB8173A5ED700A25E07 /* Andrew */ = {
 			isa = PBXGroup;
 			children = (
+				55E2A79917477AF900E9D3E4 /* Moscow */,
+				55E2A79A17477AF900E9D3E4 /* Vienna */,
 				55530D8B173BD2AE00E0E2DF /* catalogue.plist */,
 				559CA016173A7137002F494F /* ExternalFunctions.h */,
 				559CA017173A7137002F494F /* ExternalFunctions.m */,
@@ -1547,6 +1553,8 @@
 				55CDB03B17413D9000AF1096 /* zbar-help.html in Resources */,
 				55CDB03C17413D9000AF1096 /* zbar-helpicons.png in Resources */,
 				55CDB03D17413D9000AF1096 /* zbar-samples.png in Resources */,
+				55E2A79B17477AF900E9D3E4 /* Moscow in Resources */,
+				55E2A79C17477AF900E9D3E4 /* Vienna in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

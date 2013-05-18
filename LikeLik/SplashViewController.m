@@ -59,14 +59,15 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 //        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 //        
         
-        
+        NSLog(@"regions \n %@",Region);
+
         
         for (int i = 0; i<[Region count]; i++) {
             [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
         }
         [locationManager stopUpdatingLocation];
         locationManager = nil;
-     //   NSLog(@"%@",Region);
+        NSLog(@"all regions \n %@",[locationManagerRegion monitoredRegions]);
     }
     else{
         haveAlreadyReceivedCoordinates = YES;
@@ -176,11 +177,11 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     }
     [self.HUDfade show:YES];
     
-    // скачивание
-    if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
-        [ExternalFunctions downloadCatalogue:@"test"];
-        [defaults setObject:@"1" forKey:@"Download"];
-    }
+//    // скачивание
+//    if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
+//        [ExternalFunctions downloadCatalogue:@"test"];
+//        [defaults setObject:@"1" forKey:@"Download"];
+//    }
     
     [UIView animateWithDuration:1.2 animations:^{
         self.Shade.frame = Shadeframe;
