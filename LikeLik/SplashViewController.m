@@ -46,7 +46,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         NSLog(@"%@",Me);
 
 #warning надо переделать под новый каталог
-//        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
+        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
 //
 ////        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
 ////        NSLog(@"%@",Place);
@@ -179,7 +179,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         Fistframe.origin.y-=270.0;
 
     }
-    
+    [self.HUDfade show:YES];
     
 //    // скачивание
 //    if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
