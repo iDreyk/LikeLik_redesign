@@ -134,7 +134,6 @@
 		55CDB01817413D9000AF1096 /* ico_earth.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF5F17413D9000AF1096 /* ico_earth.png */; };
 		55CDB01917413D9000AF1096 /* ico_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF6017413D9000AF1096 /* ico_point.png */; };
 		55CDB01A17413D9000AF1096 /* ico_tel.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF6117413D9000AF1096 /* ico_tel.png */; };
-		55CDB01B17413D9000AF1096 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF6217413D9000AF1096 /* Icon */; };
 		55CDB01C17413D9000AF1096 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF6317413D9000AF1096 /* info@2x.png */; };
 		55CDB01D17413D9000AF1096 /* knuckle_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF6417413D9000AF1096 /* knuckle_1@2x.png */; };
 		55CDB01E17413D9000AF1096 /* navigationbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF6517413D9000AF1096 /* navigationbar@2x.png */; };
@@ -159,12 +158,7 @@
 		55CDB03117413D9000AF1096 /* tabicon_SpecialSeries@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF7817413D9000AF1096 /* tabicon_SpecialSeries@2x.png */; };
 		55CDB03217413D9000AF1096 /* table_grad.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF7917413D9000AF1096 /* table_grad.png */; };
 		55CDB03317413D9000AF1096 /* table_grad_o_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF7A17413D9000AF1096 /* table_grad_o_1.png */; };
-		55CDB03417413D9000AF1096 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF7D17413D9000AF1096 /* Icon */; };
-		55CDB03517413D9000AF1096 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF7F17413D9000AF1096 /* Icon */; };
-		55CDB03617413D9000AF1096 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF8317413D9000AF1096 /* Icon */; };
-		55CDB03717413D9000AF1096 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF9617413D9000AF1096 /* Icon */; };
 		55CDB03817413D9000AF1096 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CDAF9717413D9000AF1096 /* libzbar.a */; };
-		55CDB03917413D9000AF1096 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF9917413D9000AF1096 /* Icon */; };
 		55CDB03A17413D9000AF1096 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF9A17413D9000AF1096 /* zbar-back.png */; };
 		55CDB03B17413D9000AF1096 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF9B17413D9000AF1096 /* zbar-help.html */; };
 		55CDB03C17413D9000AF1096 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CDAF9C17413D9000AF1096 /* zbar-helpicons.png */; };
@@ -420,7 +414,9 @@
 		55CDAF5F17413D9000AF1096 /* ico_earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_earth.png; sourceTree = "<group>"; };
 		55CDAF6017413D9000AF1096 /* ico_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_point.png; sourceTree = "<group>"; };
 		55CDAF6117413D9000AF1096 /* ico_tel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_tel.png; sourceTree = "<group>"; };
-		55CDAF6217413D9000AF1096 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		55CDAF6217413D9000AF1096 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		55CDAF6317413D9000AF1096 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
 		55CDAF6417413D9000AF1096 /* knuckle_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuckle_1@2x.png"; sourceTree = "<group>"; };
 		55CDAF6517413D9000AF1096 /* navigationbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar@2x.png"; sourceTree = "<group>"; };
@@ -445,11 +441,17 @@
 		55CDAF7817413D9000AF1096 /* tabicon_SpecialSeries@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabicon_SpecialSeries@2x.png"; sourceTree = "<group>"; };
 		55CDAF7917413D9000AF1096 /* table_grad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad.png; sourceTree = "<group>"; };
 		55CDAF7A17413D9000AF1096 /* table_grad_o_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad_o_1.png; sourceTree = "<group>"; };
-		55CDAF7D17413D9000AF1096 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
-		55CDAF7F17413D9000AF1096 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		55CDAF7D17413D9000AF1096 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
+		55CDAF7F17413D9000AF1096 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		55CDAF8117413D9000AF1096 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		55CDAF8217413D9000AF1096 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
-		55CDAF8317413D9000AF1096 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		55CDAF8317413D9000AF1096 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		55CDAF8417413D9000AF1096 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		55CDAF8517413D9000AF1096 /* ImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScanner.h; sourceTree = "<group>"; };
 		55CDAF8617413D9000AF1096 /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
@@ -468,9 +470,13 @@
 		55CDAF9317413D9000AF1096 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
 		55CDAF9417413D9000AF1096 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		55CDAF9517413D9000AF1096 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
-		55CDAF9617413D9000AF1096 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		55CDAF9617413D9000AF1096 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		55CDAF9717413D9000AF1096 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
-		55CDAF9917413D9000AF1096 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		55CDAF9917413D9000AF1096 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		55CDAF9A17413D9000AF1096 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		55CDAF9B17413D9000AF1096 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		55CDAF9C17413D9000AF1096 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
@@ -862,7 +868,8 @@
 				55CDAF5F17413D9000AF1096 /* ico_earth.png */,
 				55CDAF6017413D9000AF1096 /* ico_point.png */,
 				55CDAF6117413D9000AF1096 /* ico_tel.png */,
-				55CDAF6217413D9000AF1096 /* Icon */,
+				55CDAF6217413D9000AF1096 /* Icon
+ */,
 				55CDAF6317413D9000AF1096 /* info@2x.png */,
 				55CDAF6417413D9000AF1096 /* knuckle_1@2x.png */,
 				55CDAF6517413D9000AF1096 /* navigationbar@2x.png */,
@@ -896,7 +903,8 @@
 			isa = PBXGroup;
 			children = (
 				55CDAF7C17413D9000AF1096 /* Headers */,
-				55CDAF9617413D9000AF1096 /* Icon */,
+				55CDAF9617413D9000AF1096 /* Icon
+ */,
 				55CDAF9717413D9000AF1096 /* libzbar.a */,
 				55CDAF9817413D9000AF1096 /* Resources */,
 			);
@@ -907,7 +915,8 @@
 		55CDAF7C17413D9000AF1096 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				55CDAF7D17413D9000AF1096 /* Icon */,
+				55CDAF7D17413D9000AF1096 /* Icon
+ */,
 				55CDAF7E17413D9000AF1096 /* ZBarSDK */,
 			);
 			path = Headers;
@@ -916,7 +925,8 @@
 		55CDAF7E17413D9000AF1096 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
-				55CDAF7F17413D9000AF1096 /* Icon */,
+				55CDAF7F17413D9000AF1096 /* Icon
+ */,
 				55CDAF8017413D9000AF1096 /* zbar */,
 				55CDAF8B17413D9000AF1096 /* zbar.h */,
 				55CDAF8C17413D9000AF1096 /* ZBarCameraSimulator.h */,
@@ -938,7 +948,8 @@
 			children = (
 				55CDAF8117413D9000AF1096 /* Decoder.h */,
 				55CDAF8217413D9000AF1096 /* Exception.h */,
-				55CDAF8317413D9000AF1096 /* Icon */,
+				55CDAF8317413D9000AF1096 /* Icon
+ */,
 				55CDAF8417413D9000AF1096 /* Image.h */,
 				55CDAF8517413D9000AF1096 /* ImageScanner.h */,
 				55CDAF8617413D9000AF1096 /* Processor.h */,
@@ -953,7 +964,8 @@
 		55CDAF9817413D9000AF1096 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				55CDAF9917413D9000AF1096 /* Icon */,
+				55CDAF9917413D9000AF1096 /* Icon
+ */,
 				55CDAF9A17413D9000AF1096 /* zbar-back.png */,
 				55CDAF9B17413D9000AF1096 /* zbar-help.html */,
 				55CDAF9C17413D9000AF1096 /* zbar-helpicons.png */,
@@ -1519,7 +1531,6 @@
 				55CDB01817413D9000AF1096 /* ico_earth.png in Resources */,
 				55CDB01917413D9000AF1096 /* ico_point.png in Resources */,
 				55CDB01A17413D9000AF1096 /* ico_tel.png in Resources */,
-				55CDB01B17413D9000AF1096 /* Icon in Resources */,
 				55CDB01C17413D9000AF1096 /* info@2x.png in Resources */,
 				55CDB01D17413D9000AF1096 /* knuckle_1@2x.png in Resources */,
 				55CDB01E17413D9000AF1096 /* navigationbar@2x.png in Resources */,
@@ -1544,11 +1555,6 @@
 				55CDB03117413D9000AF1096 /* tabicon_SpecialSeries@2x.png in Resources */,
 				55CDB03217413D9000AF1096 /* table_grad.png in Resources */,
 				55CDB03317413D9000AF1096 /* table_grad_o_1.png in Resources */,
-				55CDB03417413D9000AF1096 /* Icon in Resources */,
-				55CDB03517413D9000AF1096 /* Icon in Resources */,
-				55CDB03617413D9000AF1096 /* Icon in Resources */,
-				55CDB03717413D9000AF1096 /* Icon in Resources */,
-				55CDB03917413D9000AF1096 /* Icon in Resources */,
 				55CDB03A17413D9000AF1096 /* zbar-back.png in Resources */,
 				55CDB03B17413D9000AF1096 /* zbar-help.html in Resources */,
 				55CDB03C17413D9000AF1096 /* zbar-helpicons.png in Resources */,
@@ -1730,7 +1736,7 @@
 		919E871A173A58E700A25E07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Roman Dimaksyan (3LQ837UD57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Application Developer (RX3537WRY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1754,7 +1760,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6A4EDAB6-7F9B-4A2E-A7CD-9178F889A6A7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1762,7 +1768,7 @@
 		919E871B173A58E700A25E07 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Roman Dimaksyan (3LQ837UD57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Application Developer (RX3537WRY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1786,7 +1792,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6A4EDAB6-7F9B-4A2E-A7CD-9178F889A6A7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

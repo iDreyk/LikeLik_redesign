@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    self.view = [InterfaceFunctions backgroundView];
+    //self.view = [InterfaceFunctions backgroundView];
     
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Terms of use", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
      
@@ -73,6 +73,13 @@
     }
     label.contentSize = CGSizeMake(320.0, textViewSize.height);
     self.Title.font = [AppDelegate OpenSansSemiBold:32];
+    [self.view addSubview:label];
+    
+    UIImageView *imageview = [[UIImageView alloc] initWithImage:  [UIImage imageNamed:@"640_1136 background-568h@2x"]];
+    imageview.frame = CGRectMake(0.0, 0.0, 320.0, 548.0);
+   // NSLog(@"%@ %@",self.view,imageview);
+    [imageview setContentMode:UIViewContentModeScaleAspectFill];
+    [self.view addSubview:imageview];
     [self.view addSubview:label];
     
 	// Do any additional setup after loading the view.

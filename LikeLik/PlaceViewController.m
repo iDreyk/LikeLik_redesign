@@ -303,7 +303,7 @@ CGFloat alpha = 0.5;
 //    
     [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_normal"].image forState:UIControlStateNormal];
     [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_selected"].image forState:UIControlStateHighlighted];
-    [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_normal"].image forState:UIControlStateDisabled];
+//    [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_normal"].image forState:UIControlStateDisabled];
 //
 //    
     [self.GOUSE setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"2use_normal"].image forState:UIControlStateNormal];
@@ -431,7 +431,8 @@ CGFloat alpha = 0.5;
     label.textColor = [UIColor whiteColor];
     //label.numberOfLines = 10;
     label.backgroundColor =  [UIColor clearColor];
-    label.editable = NO;    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 500.0) lineBreakMode:NSLineBreakByTruncatingTail];
+    label.editable = NO;
+    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 500.0) lineBreakMode:NSLineBreakByTruncatingTail];
     label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
     if ([AppDelegate isiPhone5]) {
         label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+35);
@@ -608,6 +609,8 @@ CGFloat alpha = 0.5;
     [self.MapPlace setAdjustTilesForRetinaDisplay:YES];
     self.MapPlace.showsUserLocation = YES;
     [self.placeViewMap setHidden:YES];
+    
+
     [self.placeViewMap addSubview:self.MapPlace];
     
     CLLocation *placecoord = self.PlaceLocation;
@@ -622,7 +625,7 @@ CGFloat alpha = 0.5;
         marker1.annotationType = @"marker";
         
         marker1.title = self.PlaceName;
-        marker1.subtitle = self.PlaceCategory;
+       marker1.subtitle = self.PlaceCategory;
         marker1.userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blueColor],@"foregroundColor", nil];
         
         [self.MapPlace addAnnotation:marker1];
@@ -835,6 +838,9 @@ CGFloat alpha = 0.5;
         _background.hidden = NO;
         _labelonPhoto.hidden = NO;
         [self ShowMap:self];
+    
+    
+
     }
 //    [[NSNotificationCenter defaultCenter] observationInfo];
 
@@ -1140,9 +1146,6 @@ CGFloat alpha = 0.5;
                     loadingView.hidden = YES;
                     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
                     [self.navigationController.view addSubview:HUD];
-                    
-                    // The sample image is based on the work by http://www.pixelpressicons.com, http://creativecommons.org/licenses/by/2.5/ca/
-                    // Make the customViews 37 by 37 pixels for best results (those are the bounds of the build-in progress indicators)
                     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
                     
                     // Set custom view mode
@@ -1179,25 +1182,15 @@ CGFloat alpha = 0.5;
 
 -(IBAction)ShowMap:(id)sender{
     self.placeViewMap.hidden = !self.placeViewMap.hidden;
-//    self.locationButton.hidden = !self.locationButton.hidden;
-//    if (self.locationButton.hidden == YES){
-//        [_scroll setScrollEnabled:YES];
-//        [_ScrollView setScrollEnabled:YES];
-//        [pageControl setEnabled:YES];
-//        NSLog(@"scroll enabled");
-//    }
-//    else{
-//        [_scroll setScrollEnabled:NO];
-//        [_ScrollView setScrollEnabled:NO];
-//        [pageControl setEnabled:NO];
-//        NSLog(@"scroll disabled");
-//    }
-        if (self.MapPlace.hidden){
+    NSLog(@"123123312123 %d",_MapPlace.hidden);
+    if (self.placeViewMap.hidden){
+
         UIButton *btn = [InterfaceFunctions map_button:1];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     }
     else{
+
         UIButton *btn = [InterfaceFunctions map_button:0];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
@@ -1391,6 +1384,9 @@ CGFloat alpha = 0.5;
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
+
+    
+
     switch (result)
     {
         case MFMailComposeResultCancelled:
@@ -1410,7 +1406,7 @@ CGFloat alpha = 0.5;
             break;
     }
     // Remove the mail view
-    [self dismissViewControllerAnimated:YES completion:^{}];//dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{    [self aftercall:nil];}];//dismissModalViewControllerAnimated:YES];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

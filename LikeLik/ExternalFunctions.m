@@ -16,7 +16,7 @@
 #define shopping @"Shopping"
 #define entertainment @"Entertainment"
 #define sport @"Health & Beauty"
-#define restaurants @"Restaurants & Cafes"
+#define restaurants @"Restaurants"
 #define catalogue @"Catalogues"
 
 #define range 10
@@ -141,6 +141,7 @@ static CLLocation *Me;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *catalogueArray = [[NSArray alloc]initWithContentsOfFile:cataloguesPath];
     [defaults setObject:catalogueArray forKey:catalogue];
+    NSLog(@"cat = %@",[defaults objectForKey:catalogue]);
 }
 
 + (CLLocation *) getMyLocationOrTheLocationOfCityCenter : (NSString *) city{
@@ -248,6 +249,7 @@ static CLLocation *Me;
 }
 //  скачать каталог города
 + (void) downloadCatalogue:(NSString *)catalogueOfCity {
+    NSLog(@"in download");
     // Create a URL Request and set the URL
     NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://likelik.net/docs/Archive.zip"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];

@@ -201,7 +201,7 @@ static BOOL infoViewIsOpen = NO;
         Title = @"Название места";
         RMAnnotation *marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPhoto coordinate:coord1 andTitle:Title];
         marker1.annotationType = @"marker";
-        marker1.subtitle = [NSString stringWithFormat:@"%d",i];
+       marker1.subtitle = [NSString stringWithFormat:@"%d",i];
         marker1.userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blueColor],@"foregroundColor", nil];
         [self.MapPhoto addAnnotation:marker1];
     }

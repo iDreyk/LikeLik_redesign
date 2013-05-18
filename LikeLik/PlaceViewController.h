@@ -74,6 +74,7 @@
 
 @property (nonatomic,retain) IBOutlet UIView *placeViewMap;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
+
 -(IBAction)showLocation:(id)sender;
 -(IBAction)openMail:(id)sender;
 -(IBAction)infotap:(id)sender;

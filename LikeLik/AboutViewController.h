@@ -14,5 +14,5 @@
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *infoScroll;
 @property (weak, nonatomic) IBOutlet UILabel *Title;
-
+@property (nonatomic,retain)IBOutlet UITextView *text;
 @end

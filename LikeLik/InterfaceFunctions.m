@@ -147,7 +147,7 @@
 }
 +(UIColor *)colorTextCategory:(NSString *)Category{
     UIColor *color;
-    if ([Category isEqualToString:@"Restaurants & Cafes"]) {
+    if ([Category isEqualToString:@"Restaurants"]) {
         color = [UIColor colorWithRed:231.0/255.0 green:20.0/255.0 blue:58.0/255.0 alpha:1.0];
     }
     if ([Category isEqualToString:@"Entertainment"]) {
@@ -163,7 +163,7 @@
 }
 +(UIColor *)colorTextPlaceBackground:(NSString *)Category{
     UIColor *color;
-    if ([Category isEqualToString:@"Restaurants & Cafes"]) {
+    if ([Category isEqualToString:@"Restaurants"]) {
         color = [UIColor colorWithRed:207.0/255.0 green:17.0/255.0 blue:17.0/255.0 alpha:1.0];
     }
     if ([Category isEqualToString:@"Entertainment"]) {
@@ -186,14 +186,13 @@
 +(UIColor*)BackgroundColor{
     
     
-    UIImage *img = [UIImage imageNamed:@"640_1136 background-568h@2x"];
+    UIImage *img = [UIImage imageNamed:@"640_1136 background-568h@2x.png"];
     CGSize imgSize = CGSizeMake(640,1008);
     
     UIGraphicsBeginImageContext( imgSize );
     [img drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
     return [UIColor colorWithPatternImage:newImage];
 }
 
@@ -258,7 +257,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:Frame];
     
     if (Frame.size.width == 0.0)
-        [label setFrame:CGRectMake(14.0, 0.0, 290, 15.0)];
+        [label setFrame:CGRectMake(14.0, 0.0, 260, 15.0)];
 
     
     label.font = [AppDelegate OpenSansRegular:28];
@@ -277,7 +276,7 @@
 +(UIImageView *)actbwithCategory:(NSString *)Category{
     UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(293,11, 22, 23)];
     
-    if ([Category isEqualToString:@"Restaurants & Cafes"])
+    if ([Category isEqualToString:@"Restaurants"])
         _actb.image=[UIImage imageNamed:@"44_48 actb_12"];
     if ([Category isEqualToString:@"Entertainment"])
         _actb.image=[UIImage imageNamed:@"44_48 actb_13"];
@@ -299,7 +298,7 @@
     UIImageView *Pin=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MapPin_12"]];
     
 
-    if ([Category isEqualToString:@"Restaurants & Cafes"]) {
+    if ([Category isEqualToString:@"Restaurants"]) {
         Pin.image = [UIImage imageNamed:@"63_76 MapPin_12"];
     }
     if ([Category isEqualToString:@"Entertainment"]) {
@@ -320,7 +319,7 @@
 +(UIImageView *)TabitemwithCategory:(NSString *)Category andtag:(NSString *)tag{
     
     NSInteger Color = 12;
-    if ([Category isEqualToString:@"Restaurants & Cafes"]) {
+    if ([Category isEqualToString:@"Restaurants"]) {
         Color =12;
     }
     
@@ -349,7 +348,7 @@
 }
 +(UIImageView *)Ribbon:(NSString *)Category{
     UIImageView *ribbon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"592_159 Ribbon_12"]];
-    if ([Category isEqualToString:@"Restaurants & Cafes"]) {
+    if ([Category isEqualToString:@"Restaurants"]) {
         ribbon.image = [UIImage imageNamed:@"592_159 Ribbon_12"];
     }
     
@@ -368,7 +367,7 @@
 +(UIImageView *)usecheckbutton:(NSString *)Category andTag:(NSString *)tag{
     NSInteger Color;
     
-    if ([Category isEqualToString:@"Restaurants & Cafes"]) {
+    if ([Category isEqualToString:@"Restaurants"]) {
         Color =12;
     }
     
@@ -411,7 +410,7 @@
     
     UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"58_82 info_flag 12"]];
     
-    if ([Category isEqualToString:@"Restaurants & Cafes"])
+    if ([Category isEqualToString:@"Restaurants"])
         imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"58_82 info_flag 12"]];
     if ([Category isEqualToString:@"Entertainment"])
         imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"58_82 info_flag 13"]];
@@ -453,7 +452,7 @@
     UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,30)];
     UIImageView *imageview = [[UIImageView alloc] initWithFrame:customView.frame];
     
-    if ([Category isEqualToString:@"Restaurants & Cafes"])
+    if ([Category isEqualToString:@"Restaurants"])
         imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"1_44 header_12"]];
     if ([Category isEqualToString:@"Entertainment"])
         imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"1_44 header_13"]];

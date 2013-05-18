@@ -41,22 +41,25 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 #warning regions
-    if (haveAlreadyReceivedCoordinates && [[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
+    if (haveAlreadyReceivedCoordinates) {
         Me = newLocation;
         NSLog(@"%@",Me);
-//#warning надо переделать под новый каталог
-        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
+
+#warning надо переделать под новый каталог
+//        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
+//
+////        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
+////        NSLog(@"%@",Place);
+////        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
+////        [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
         
-//        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
-//        NSLog(@"%@",Place);
-//        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
-//        [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
-//        [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
-//        [localNotification setAlertBody:[NSString stringWithFormat:@"%@",[Place objectForKey:@"Place"]]];
-//        [localNotification setHasAction: YES];
-//        [localNotification setApplicationIconBadgeNumber:1];
-//        [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
-//        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+////        [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
+////        [localNotification setAlertBody:[NSString stringWithFormat:@"%@ %@", AMLocalizedString(@"You are next to", nil),[Place objectForKey:@"Place"]]];
+////        [localNotification setHasAction: YES];
+////        [localNotification setApplicationIconBadgeNumber:1];
+////        [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
+////        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+////        
 //        
         
         NSLog(@"regions \n %@",Region);
@@ -72,7 +75,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     else{
         haveAlreadyReceivedCoordinates = YES;
     }
-    
+
 
     //
 
@@ -127,7 +130,8 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     self.HUDfade.mode = MBProgressHUDAnimationFade;
     self.HUDfade.removeFromSuperViewOnHide = YES;
     self.HUDfade.delegate = self;
-     [self.HUDfade show:YES];
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
+        [self.HUDfade show:YES];
     
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    
@@ -175,7 +179,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         Fistframe.origin.y-=270.0;
 
     }
-    [self.HUDfade show:YES];
+    
     
 //    // скачивание
 //    if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
@@ -195,7 +199,6 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
                          [self.HUDfade hide:YES];
                          [self performSegueWithIdentifier:@"fistSegue" sender:self];
                      }];
-    
     
 }
 

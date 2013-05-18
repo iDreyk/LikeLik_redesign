@@ -87,11 +87,11 @@
      UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(293,11, 22, 24)];
     switch (section) {
         case 0:
-            [cell addSubview:[InterfaceFunctions TableLabelwithText:AMLocalizedString(@"Transportation", nil) AndColor:[InterfaceFunctions mainTextColor:1] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
+            [cell addSubview:[InterfaceFunctions TableLabelwithText:AMLocalizedString(@"Transportation", nil) AndColor:[InterfaceFunctions mainTextColor:1] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
             [cell addSubview:[InterfaceFunctions actbwithColor:1]];
             break;
         case 1:
-            [cell addSubview:[InterfaceFunctions TableLabelwithText:[[taxi objectAtIndex:row] objectForKey:@"name"] AndColor:[InterfaceFunctions taxiColor] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
+            [cell addSubview:[InterfaceFunctions TableLabelwithText:[[taxi objectAtIndex:row] objectForKey:@"name"] AndColor:[InterfaceFunctions taxiColor] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
             [cell addSubview:[InterfaceFunctions actbTaxi]];
             break;
         default:
