@@ -39,7 +39,7 @@
 {
     [super viewDidLoad];
     array = @[@"Name",@"E-Mail",@"Password",@"Password"];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Registration", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Registration", nil) AndColor:[InterfaceFunctions NavBarColor]];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.RegistrationTable setBackgroundColor:[UIColor clearColor]];
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
@@ -575,6 +575,7 @@
 
 #pragma mark myFunctions
 -(NSString *)HUDStringLocalized:(id)JSON{
+    NSLog(@"HUDStringLocalized: %@",JSON);
     if ([[[JSON objectForKey:@"Error"]objectForKey:@"message"] isEqual:[NSNull null]] || [[[JSON objectForKey:@"Error"]objectForKey:@"message"] length] == 0) {
         return AMLocalizedString(@"Something goes wrong", nil);
     }

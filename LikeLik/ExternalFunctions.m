@@ -16,7 +16,7 @@
 #define shopping @"Shopping"
 #define entertainment @"Entertainment"
 #define sport @"Health & Beauty"
-#define restaurants @"Restaurants & Cafes"
+#define restaurants @"Restaurants"
 #define catalogue @"Catalogues"
 
 #define range 10
@@ -128,16 +128,16 @@ static CLLocation *Me;
 
 
 + (void) getReady {
-//    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
-//    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"catalogue" ofType:@"plist"] toPath:cataloguesPath error:nil];
-//    
-//    NSString *cataloguesPath1 = [[self docDir]stringByAppendingPathComponent:@"Moscow"];
-//    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Moscow" ofType:@""] toPath:cataloguesPath1 error:nil];
-//    
-//    NSString *cataloguesPath2 = [[self docDir]stringByAppendingPathComponent:@"Vienna"];
-//    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Vienna" ofType:@""] toPath:cataloguesPath2 error:nil];
-    NSLog(@"getting ready");
     NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
+    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"catalogue" ofType:@"plist"] toPath:cataloguesPath error:nil];
+    
+    NSString *cataloguesPath1 = [[self docDir]stringByAppendingPathComponent:@"Moscow"];
+    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Moscow" ofType:@""] toPath:cataloguesPath1 error:nil];
+    
+    NSString *cataloguesPath2 = [[self docDir]stringByAppendingPathComponent:@"Vienna"];
+    [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Vienna" ofType:@""] toPath:cataloguesPath2 error:nil];
+
+//    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *catalogueArray = [[NSArray alloc]initWithContentsOfFile:cataloguesPath];
     [defaults setObject:catalogueArray forKey:catalogue];
@@ -958,8 +958,7 @@ static CLLocation *Me;
         cityLanguage = @"city_EN";
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@"0" forKey:@"Download"];
-    NSLog(@"%@",[defaults objectForKey:@"Download"]);
+//    [defaults setObject:@"0" forKey:@"Download"];
     NSMutableArray *catalogues = [defaults objectForKey:catalogue];
     
     for (int i = 0; i < [catalogues count]; i++) {

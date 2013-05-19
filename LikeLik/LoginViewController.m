@@ -39,7 +39,7 @@
 {
     [super viewDidLoad];
     array = @[@"E-Mail",@"Password"];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Login", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Login", nil) AndColor:[InterfaceFunctions NavBarColor]];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     [self.LoginTable setBackgroundColor:[UIColor clearColor]];

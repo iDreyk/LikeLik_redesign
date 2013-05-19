@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.titleView=[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Support", nil)  AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView=[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Support", nil)  AndColor:[InterfaceFunctions NavBarColor]];
     self.Email.returnKeyType = UIReturnKeyNext;
     self.FeedBack.returnKeyType = UIReturnKeyDone;
     self.Email.delegate = self;
@@ -54,11 +54,20 @@
 
 
 -(void)Done{
+  //  NSDictionary *params;
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    [locationManager setDelegate:self];
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    CLLocation *Me = [locationManager location];
+    NSLog(@"Me = %@", Me);
+    NSString *lat = [NSString stringWithFormat:@"%f",Me.coordinate.latitude];
+    NSString *lon = [NSString stringWithFormat:@"%f",Me.coordinate.longitude];
+    NSLog(@"%@ %@",lat,lon);
     
     
     
     if (([self.Email.text length] > 0 || [self.FeedBack.text length] > 0) && (![self.FeedBack.text isEqualToString:AMLocalizedString(@"Leave a feedback for us", nil)] || [self.Email.text length]>0)) {
-        NSDictionary *JsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys: self.Email.text,@"name",self.FeedBack.text,@"note",nil];
+        NSDictionary *JsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys: self.Email.text,@"name",self.FeedBack.text,@"note",lat,@"Latitude",lon,@"Longitude",nil];
         NSLog(@"%@",JsonDictionary);
     
     NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];

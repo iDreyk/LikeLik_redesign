@@ -74,10 +74,6 @@ static BOOL foreignversion = NO;
     self.ExclusiveOffer.text = AMLocalizedString(@"The exclusive LikeLik check offer includes", nil);
     
     
-    //    self.forEnglish.hidden = NO;
-    //    self.forEnglish.font = [AppDelegate OpenSansSemiBold:28];
-    //    self.forEnglish.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
-    //    //self.forEnglish.text = @"Display text in English";
     
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @1};
     [self.foreignLanguage setAttributedTitle:[[NSAttributedString alloc] initWithString:AMLocalizedString(@"Display text in the local language", nil) attributes:underlineAttribute] forState:UIControlStateNormal];
@@ -90,7 +86,7 @@ static BOOL foreignversion = NO;
     
      
     
-    label1 = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 252.0, 159.0)];
+    label1 = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 252.0, 300.0)];
     label1.font = [AppDelegate OpenSansRegular:28];
     label1.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
     label1.backgroundColor =  [UIColor clearColor];
@@ -125,9 +121,7 @@ static BOOL foreignversion = NO;
     label1.text = [dictforCheck objectForKey:@"main"];
     CGSize textViewSize = [label1.text sizeWithFont:label1.font constrainedToSize:CGSizeMake(label1.frame.size.width, 500.0) lineBreakMode:NSLineBreakByWordWrapping];
     label1.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
-    
-    label1.frame = CGRectMake(0.0,label1.frame.origin.y, 252.0, textViewSize.height+50.0);
-    
+    label1.frame = CGRectMake(0.0,label1.frame.origin.y, 252.0, textViewSize.height+30);
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -189,7 +183,7 @@ static BOOL foreignversion = NO;
     CGSize textViewSize = [label1.text sizeWithFont:label1.font constrainedToSize:CGSizeMake(label1.frame.size.width, 500.0) lineBreakMode:NSLineBreakByWordWrapping];
     label1.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
     
-    label1.frame = CGRectMake(0.0,label1.frame.origin.y, 252.0, textViewSize.height);
+    label1.frame = CGRectMake(0.0,label1.frame.origin.y, 252.0, textViewSize.height+30);
  
     foreignversion = !foreignversion;
     

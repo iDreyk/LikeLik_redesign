@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SupportViewController : UIViewController <UITextFieldDelegate,MBProgressHUDDelegate>
+@interface SupportViewController : UIViewController <UITextFieldDelegate,MBProgressHUDDelegate,CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *Email;
 @property (weak, nonatomic) IBOutlet UITextView *FeedBack;
 @property (weak, nonatomic) IBOutlet UILabel *Contactinformation;

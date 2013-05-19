@@ -33,45 +33,47 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     return self;
 }
 
-
-
 -(void)startTracking{
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+ //   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 #warning regions
-//    if (haveAlreadyReceivedCoordinates && [[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
-//        Me = newLocation;
-//        NSLog(@"%@",Me);
-////#warning надо переделать под новый каталог
-//        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
-//        
+    if (haveAlreadyReceivedCoordinates) {
+        Me = newLocation;
+        NSLog(@"%@",Me);
+
+#warning надо переделать под новый каталог
+        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
+//
 ////        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
 ////        NSLog(@"%@",Place);
 ////        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
 ////        [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
+        
 ////        [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
-////        [localNotification setAlertBody:[NSString stringWithFormat:@"%@",[Place objectForKey:@"Place"]]];
+////        [localNotification setAlertBody:[NSString stringWithFormat:@"%@ %@", AMLocalizedString(@"You are next to", nil),[Place objectForKey:@"Place"]]];
 ////        [localNotification setHasAction: YES];
 ////        [localNotification setApplicationIconBadgeNumber:1];
 ////        [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
 ////        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 ////        
 //        
-//        
-//        
-//        for (int i = 0; i<[Region count]; i++) {
-//            [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
-//        }
-//        [locationManager stopUpdatingLocation];
-//        locationManager = nil;
-//     //   NSLog(@"%@",Region);
-//    }
-//    else{
-//        haveAlreadyReceivedCoordinates = YES;
-//    }
-    
+        
+        NSLog(@"regions \n %@",Region);
+
+        
+        for (int i = 0; i<[Region count]; i++) {
+            [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
+        }
+        [locationManager stopUpdatingLocation];
+        locationManager = nil;
+        NSLog(@"all regions \n %@",[locationManagerRegion monitoredRegions]);
+    }
+    else{
+        haveAlreadyReceivedCoordinates = YES;
+    }
+
 
     //
 
@@ -126,7 +128,8 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     self.HUDfade.mode = MBProgressHUDAnimationFade;
     self.HUDfade.removeFromSuperViewOnHide = YES;
     self.HUDfade.delegate = self;
-     [self.HUDfade show:YES];
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
+        [self.HUDfade show:YES];
     
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    
@@ -197,7 +200,6 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
                          [self.HUDfade hide:YES];
                          [self performSegueWithIdentifier:@"fistSegue" sender:self];
                      }];
-    
     
 }
 

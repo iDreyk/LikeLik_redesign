@@ -237,7 +237,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6U-Sl-4kN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3199" y="975"/>
+            <point key="canvasLocation" x="-2953" y="989"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Vy-3x-Y4a">
@@ -1079,7 +1079,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstAttribute="height" constant="41" id="QY6-7A-f2C"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="58_82 info_flag_6@2x.png">
+                                <state key="normal" image="58_82 info_flag_1@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1712,21 +1712,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <view key="view" contentMode="scaleToFill" id="gVt-jO-Haw">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fF7-VT-UUb"/>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="fF7-VT-UUb" firstAttribute="trailing" secondItem="gVt-jO-Haw" secondAttribute="trailing" type="default" id="8m0-Ju-Pvn"/>
-                            <constraint firstItem="fF7-VT-UUb" firstAttribute="leading" secondItem="gVt-jO-Haw" secondAttribute="leading" type="default" id="Cez-ym-YC7"/>
-                            <constraint firstItem="fF7-VT-UUb" firstAttribute="top" secondItem="gVt-jO-Haw" secondAttribute="top" type="default" id="FwK-tJ-5Xf"/>
-                            <constraint firstItem="fF7-VT-UUb" firstAttribute="bottom" secondItem="gVt-jO-Haw" secondAttribute="bottom" type="default" id="LQT-X5-9Nm"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DR6-9M-flu"/>
-                    <connections>
-                        <outlet property="infoScroll" destination="fF7-VT-UUb" id="Gsf-19-ZQ2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9bW-ne-ASe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1739,21 +1727,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <view key="view" contentMode="scaleToFill" id="Xi7-eH-SiH">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gO4-N5-LQJ"/>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gO4-N5-LQJ" firstAttribute="trailing" secondItem="Xi7-eH-SiH" secondAttribute="trailing" type="default" id="98Z-GY-5T4"/>
-                            <constraint firstItem="gO4-N5-LQJ" firstAttribute="bottom" secondItem="Xi7-eH-SiH" secondAttribute="bottom" type="default" id="LhU-0t-gLl"/>
-                            <constraint firstItem="gO4-N5-LQJ" firstAttribute="top" secondItem="Xi7-eH-SiH" secondAttribute="top" type="default" id="dIn-ft-iHf"/>
-                            <constraint firstItem="gO4-N5-LQJ" firstAttribute="leading" secondItem="Xi7-eH-SiH" secondAttribute="leading" type="default" id="sJq-Xk-EWM"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="n5q-TD-ANc"/>
-                    <connections>
-                        <outlet property="InfoScroll" destination="gO4-N5-LQJ" id="Xuu-vh-gFd"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8a7-Mh-dVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1913,7 +1889,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="44_48 actb_3@2x.png" width="44" height="48"/>
         <image name="44_48 actb_4@2x.png" width="44" height="48"/>
         <image name="58_82 info_flag 12@2x.png" width="58" height="82"/>
-        <image name="58_82 info_flag_6@2x.png" width="58" height="82"/>
+        <image name="58_82 info_flag_1@2x.png" width="58" height="82"/>
         <image name="62_62 arrow_pressed@2x.png" width="62" height="62"/>
         <image name="640_1136 background-568h@2x.png" width="640" height="1136"/>
         <image name="Bg_gradient.png" width="640" height="108"/>

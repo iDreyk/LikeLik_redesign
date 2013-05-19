@@ -39,7 +39,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //    nslog(@"CityInfoTableViewController City Name = %@",_cityName);
 
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"City info", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"City info", nil) AndColor:[InterfaceFunctions NavBarColor]];
 
     
     

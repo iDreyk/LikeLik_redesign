@@ -37,7 +37,7 @@
     [self setSelectedIndex:1];
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", nil) AndColor:[InterfaceFunctions NavBarColor]];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
     [[self.viewControllers objectAtIndex:0] setTitle:AMLocalizedString(@"Featured", nil)];
     
@@ -79,7 +79,7 @@
     
     [[self.viewControllers objectAtIndex:3] setTitle:AMLocalizedString(@"Special Series", nil)];
     
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", nil) AndColor:[InterfaceFunctions NavBarColor]];
     
 }
 

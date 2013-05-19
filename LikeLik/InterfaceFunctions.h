@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MBProgressHUD.h"
 @interface InterfaceFunctions : NSObject
 
 #pragma mark UIButton
@@ -20,6 +19,7 @@
 +(UIButton *)done_button;
 
 #pragma mark UIColor
++(UIColor *)NavBarColor;
 +(UIColor *)mainTextColor:(NSInteger)flag;
 +(UIColor *)colorTextCategory:(NSString *)Category;
 +(UIColor *)colorTextPlaceBackground:(NSString *)Category;

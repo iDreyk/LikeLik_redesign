@@ -29,9 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view = [InterfaceFunctions backgroundView];
+    //self.view = [InterfaceFunctions backgroundView];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions NavBarColor]];
 
     self.CityLabel.text = [[NSString alloc] initWithFormat:@"\n%@",self.CityName];
     self.CityLabel.font = [AppDelegate OpenSansSemiBold:32];
@@ -41,8 +41,6 @@
     _InfoScroll.showsHorizontalScrollIndicator = NO;
     UIView *awesomeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 512.0)];
     awesomeView.backgroundColor = [UIColor colorWithRed:0.5/2 green:0.5 blue:0.5 alpha:1];
-
-    
     
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 300.0)];
     label.text = [[NSString alloc] initWithFormat:@"\n%@",[ExternalFunctions getPracticalInfoForCity:self.CityName]];
@@ -60,6 +58,11 @@
     }
     label.contentSize = CGSizeMake(320.0, textViewSize.height);
     
+    UIImageView *imageview = [[UIImageView alloc] initWithImage:  [UIImage imageNamed:@"640_1136 background-568h@2x"]];
+    imageview.frame = CGRectMake(0.0, 0.0, 320.0, 548.0);
+    NSLog(@"%@ %@",self.view,imageview);
+    [imageview setContentMode:UIViewContentModeScaleAspectFill];
+    [self.view addSubview:imageview];
     [self.view addSubview:label];
     
 
