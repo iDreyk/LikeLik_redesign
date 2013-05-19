@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5514D1831748FA7100C0C2E6 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 5514D1811748FA7100C0C2E6 /* Moscow */; };
-		5514D1841748FA7100C0C2E6 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 5514D1821748FA7100C0C2E6 /* Vienna */; };
 		5514D26A1748FB1B00C0C2E6 /* 124_124 Social_Icons11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5514D1861748FB1A00C0C2E6 /* 124_124 Social_Icons11@2x.png */; };
 		5514D26B1748FB1B00C0C2E6 /* 124_124 Social_Icons22@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5514D1871748FB1A00C0C2E6 /* 124_124 Social_Icons22@2x.png */; };
 		5514D26C1748FB1B00C0C2E6 /* 124_124 Social_Icons33@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5514D1881748FB1A00C0C2E6 /* 124_124 Social_Icons33@2x.png */; };
@@ -250,6 +248,323 @@
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		91241959173BA85B004B6837 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */; };
+		917CC9821748FCB300A138FD /* Adventure_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8E61748FCB300A138FD /* Adventure_1_4S.jpg */; };
+		917CC9831748FCB300A138FD /* Adventure_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8E71748FCB300A138FD /* Adventure_1_5.jpg */; };
+		917CC9841748FCB300A138FD /* Adventure_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8E81748FCB300A138FD /* Adventure_2_4S.jpg */; };
+		917CC9851748FCB300A138FD /* Adventure_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8E91748FCB300A138FD /* Adventure_2_5.jpg */; };
+		917CC9861748FCB300A138FD /* Adventure_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8EA1748FCB300A138FD /* Adventure_3_4S.jpg */; };
+		917CC9871748FCB300A138FD /* Adventure_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8EB1748FCB300A138FD /* Adventure_3_5.jpg */; };
+		917CC9881748FCB300A138FD /* Adventure_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8EC1748FCB300A138FD /* Adventure_4_4S.jpg */; };
+		917CC9891748FCB300A138FD /* Adventure_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8ED1748FCB300A138FD /* Adventure_4_5.jpg */; };
+		917CC98A1748FCB300A138FD /* Adventure_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8EE1748FCB300A138FD /* Adventure_5_4S.jpg */; };
+		917CC98B1748FCB300A138FD /* Adventure_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8EF1748FCB300A138FD /* Adventure_5_5.jpg */; };
+		917CC98C1748FCB300A138FD /* Adventure_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8F01748FCB300A138FD /* Adventure_6_4S.jpg */; };
+		917CC98D1748FCB300A138FD /* Adventure_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8F11748FCB300A138FD /* Adventure_6_5.jpg */; };
+		917CC98E1748FCB300A138FD /* Adventure_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8F21748FCB300A138FD /* Adventure_7_4S.jpg */; };
+		917CC98F1748FCB300A138FD /* Adventure_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8F31748FCB300A138FD /* Adventure_7_5.jpg */; };
+		917CC9901748FCB300A138FD /* Anne_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8F41748FCB300A138FD /* Anne_1_4S.jpg */; };
+		917CC9911748FCB300A138FD /* Anne_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8F51748FCB300A138FD /* Anne_1_5.jpg */; };
+		917CC9921748FCB300A138FD /* Anne_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8F61748FCB300A138FD /* Anne_2_4S.jpg */; };
+		917CC9931748FCB300A138FD /* Anne_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8F71748FCB300A138FD /* Anne_2_5.jpg */; };
+		917CC9941748FCB300A138FD /* Anne_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8F81748FCB300A138FD /* Anne_3_4S.jpg */; };
+		917CC9951748FCB300A138FD /* Anne_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8F91748FCB300A138FD /* Anne_3_5.jpg */; };
+		917CC9961748FCB300A138FD /* Anne_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8FA1748FCB300A138FD /* Anne_4_4S.jpg */; };
+		917CC9971748FCB300A138FD /* Anne_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8FB1748FCB300A138FD /* Anne_4_5.jpg */; };
+		917CC9981748FCB300A138FD /* Anne_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8FC1748FCB300A138FD /* Anne_5_4S.jpg */; };
+		917CC9991748FCB300A138FD /* Anne_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8FD1748FCB300A138FD /* Anne_5_5.jpg */; };
+		917CC99A1748FCB300A138FD /* Anne_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8FE1748FCB300A138FD /* Anne_6_4S.jpg */; };
+		917CC99B1748FCB300A138FD /* Anne_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC8FF1748FCB300A138FD /* Anne_6_5.jpg */; };
+		917CC99C1748FCB300A138FD /* Anne_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9001748FCB300A138FD /* Anne_7_4S.jpg */; };
+		917CC99D1748FCB300A138FD /* Anne_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9011748FCB300A138FD /* Anne_7_5.jpg */; };
+		917CC99E1748FCB300A138FD /* Aquarium_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9021748FCB300A138FD /* Aquarium_1_4S.jpg */; };
+		917CC99F1748FCB300A138FD /* Aquarium_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9031748FCB300A138FD /* Aquarium_1_5.jpg */; };
+		917CC9A01748FCB300A138FD /* Aquarium_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9041748FCB300A138FD /* Aquarium_2_4S.jpg */; };
+		917CC9A11748FCB300A138FD /* Aquarium_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9051748FCB300A138FD /* Aquarium_2_5.jpg */; };
+		917CC9A21748FCB300A138FD /* Aquarium_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9061748FCB300A138FD /* Aquarium_3_4S.jpg */; };
+		917CC9A31748FCB300A138FD /* Aquarium_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9071748FCB300A138FD /* Aquarium_3_5.jpg */; };
+		917CC9A41748FCB300A138FD /* Aquarium_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9081748FCB300A138FD /* Aquarium_4_4S.jpg */; };
+		917CC9A51748FCB300A138FD /* Aquarium_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9091748FCB300A138FD /* Aquarium_4_5.jpg */; };
+		917CC9A61748FCB300A138FD /* Aquarium_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC90A1748FCB300A138FD /* Aquarium_5_4S.jpg */; };
+		917CC9A71748FCB300A138FD /* Aquarium_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC90B1748FCB300A138FD /* Aquarium_5_5.jpg */; };
+		917CC9A81748FCB300A138FD /* Aquarium_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC90C1748FCB300A138FD /* Aquarium_6_4S.jpg */; };
+		917CC9A91748FCB300A138FD /* Aquarium_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC90D1748FCB300A138FD /* Aquarium_6_5.jpg */; };
+		917CC9AA1748FCB300A138FD /* Aquarium_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC90E1748FCB300A138FD /* Aquarium_7_4S.jpg */; };
+		917CC9AB1748FCB300A138FD /* Aquarium_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC90F1748FCB300A138FD /* Aquarium_7_5.jpg */; };
+		917CC9AC1748FCB300A138FD /* Belveder_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9101748FCB300A138FD /* Belveder_2_4S.jpg */; };
+		917CC9AD1748FCB300A138FD /* Belveder_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9111748FCB300A138FD /* Belveder_2_5.jpg */; };
+		917CC9AE1748FCB300A138FD /* Belveder_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9121748FCB300A138FD /* Belveder_4S.jpg */; };
+		917CC9AF1748FCB300A138FD /* Belveder_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9131748FCB300A138FD /* Belveder_5.jpg */; };
+		917CC9B01748FCB300A138FD /* Burgtheatre_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9141748FCB300A138FD /* Burgtheatre_4S.jpg */; };
+		917CC9B11748FCB300A138FD /* Burgtheatre_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9151748FCB300A138FD /* Burgtheatre_5.jpg */; };
+		917CC9B21748FCB300A138FD /* Cementary_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9161748FCB300A138FD /* Cementary_4S.jpg */; };
+		917CC9B31748FCB300A138FD /* Cementary_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9171748FCB300A138FD /* Cementary_5.jpg */; };
+		917CC9B41748FCB300A138FD /* City_Hall_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9181748FCB300A138FD /* City_Hall_4S.jpg */; };
+		917CC9B51748FCB300A138FD /* City_Hall_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9191748FCB300A138FD /* City_Hall_5.jpg */; };
+		917CC9B61748FCB300A138FD /* Ferstel_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC91A1748FCB300A138FD /* Ferstel_4S.jpg */; };
+		917CC9B71748FCB300A138FD /* Ferstel_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC91B1748FCB300A138FD /* Ferstel_5.jpg */; };
+		917CC9B81748FCB300A138FD /* Freseur_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC91C1748FCB300A138FD /* Freseur_1_4S.jpg */; };
+		917CC9B91748FCB300A138FD /* Freseur_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC91D1748FCB300A138FD /* Freseur_1_5.jpg */; };
+		917CC9BA1748FCB300A138FD /* Freseur_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC91E1748FCB300A138FD /* Freseur_2_4S.jpg */; };
+		917CC9BB1748FCB300A138FD /* Freseur_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC91F1748FCB300A138FD /* Freseur_2_5.jpg */; };
+		917CC9BC1748FCB300A138FD /* Freseur_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9201748FCB300A138FD /* Freseur_3_4S.jpg */; };
+		917CC9BD1748FCB300A138FD /* Freseur_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9211748FCB300A138FD /* Freseur_3_5.jpg */; };
+		917CC9BE1748FCB300A138FD /* Freseur_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9221748FCB300A138FD /* Freseur_4_4S.jpg */; };
+		917CC9BF1748FCB300A138FD /* Freseur_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9231748FCB300A138FD /* Freseur_4_5.jpg */; };
+		917CC9C01748FCB300A138FD /* Freseur_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9241748FCB300A138FD /* Freseur_5_4S.jpg */; };
+		917CC9C11748FCB300A138FD /* Freseur_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9251748FCB300A138FD /* Freseur_5_5.jpg */; };
+		917CC9C21748FCB300A138FD /* Freseur_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9261748FCB300A138FD /* Freseur_6_4S.jpg */; };
+		917CC9C31748FCB300A138FD /* Freseur_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9271748FCB300A138FD /* Freseur_6_5.jpg */; };
+		917CC9C41748FCB300A138FD /* Freseur_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9281748FCB300A138FD /* Freseur_7_4S.jpg */; };
+		917CC9C51748FCB300A138FD /* Freseur_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9291748FCB300A138FD /* Freseur_7_5.jpg */; };
+		917CC9C61748FCB300A138FD /* Geschenk_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC92A1748FCB300A138FD /* Geschenk_1_4S.jpg */; };
+		917CC9C71748FCB300A138FD /* Geschenk_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC92B1748FCB300A138FD /* Geschenk_1_5.jpg */; };
+		917CC9C81748FCB300A138FD /* Geschenk_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC92C1748FCB300A138FD /* Geschenk_2_4S.jpg */; };
+		917CC9C91748FCB300A138FD /* Geschenk_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC92D1748FCB300A138FD /* Geschenk_2_5.jpg */; };
+		917CC9CA1748FCB300A138FD /* Geschenk_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC92E1748FCB300A138FD /* Geschenk_3_4S.jpg */; };
+		917CC9CB1748FCB300A138FD /* Geschenk_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC92F1748FCB300A138FD /* Geschenk_3_5.jpg */; };
+		917CC9CC1748FCB300A138FD /* Geschenk_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9301748FCB300A138FD /* Geschenk_4_4S.jpg */; };
+		917CC9CD1748FCB300A138FD /* Geschenk_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9311748FCB300A138FD /* Geschenk_4_5.jpg */; };
+		917CC9CE1748FCB300A138FD /* Geschenk_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9321748FCB300A138FD /* Geschenk_5_4S.jpg */; };
+		917CC9CF1748FCB300A138FD /* Geschenk_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9331748FCB300A138FD /* Geschenk_5_5.jpg */; };
+		917CC9D01748FCB300A138FD /* Geschenk_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9341748FCB300A138FD /* Geschenk_6_4S.jpg */; };
+		917CC9D11748FCB300A138FD /* Geschenk_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9351748FCB300A138FD /* Geschenk_6_5.jpg */; };
+		917CC9D21748FCB300A138FD /* Geschenk_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9361748FCB300A138FD /* Geschenk_7_4S.jpg */; };
+		917CC9D31748FCB300A138FD /* Geschenk_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9371748FCB300A138FD /* Geschenk_7_5.jpg */; };
+		917CC9D41748FCB300A138FD /* Goethe_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9381748FCB300A138FD /* Goethe_4S.jpg */; };
+		917CC9D51748FCB300A138FD /* Goethe_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9391748FCB300A138FD /* Goethe_5.jpg */; };
+		917CC9D61748FCB300A138FD /* Innere_stadt_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC93A1748FCB300A138FD /* Innere_stadt_4S.jpg */; };
+		917CC9D71748FCB300A138FD /* Innere_stadt_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC93B1748FCB300A138FD /* Innere_stadt_5.jpg */; };
+		917CC9D81748FCB300A138FD /* Landstrasse_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC93C1748FCB300A138FD /* Landstrasse_4S.jpg */; };
+		917CC9D91748FCB300A138FD /* Landstrasse_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC93D1748FCB300A138FD /* Landstrasse_5.jpg */; };
+		917CC9DA1748FCB300A138FD /* Leidenschaft_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC93E1748FCB300A138FD /* Leidenschaft_1_4S.jpg */; };
+		917CC9DB1748FCB300A138FD /* Leidenschaft_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC93F1748FCB300A138FD /* Leidenschaft_1_5.jpg */; };
+		917CC9DC1748FCB300A138FD /* Leidenschaft_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9401748FCB300A138FD /* Leidenschaft_2_4S.jpg */; };
+		917CC9DD1748FCB300A138FD /* Leidenschaft_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9411748FCB300A138FD /* Leidenschaft_2_5.jpg */; };
+		917CC9DE1748FCB300A138FD /* Leidenschaft_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9421748FCB300A138FD /* Leidenschaft_3_4S.jpg */; };
+		917CC9DF1748FCB300A138FD /* Leidenschaft_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9431748FCB300A138FD /* Leidenschaft_3_5.jpg */; };
+		917CC9E01748FCB300A138FD /* Leidenschaft_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9441748FCB300A138FD /* Leidenschaft_4_4S.jpg */; };
+		917CC9E11748FCB300A138FD /* Leidenschaft_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9451748FCB300A138FD /* Leidenschaft_4_5.jpg */; };
+		917CC9E21748FCB300A138FD /* Leidenschaft_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9461748FCB300A138FD /* Leidenschaft_5_4S.jpg */; };
+		917CC9E31748FCB300A138FD /* Leidenschaft_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9471748FCB300A138FD /* Leidenschaft_5_5.jpg */; };
+		917CC9E41748FCB300A138FD /* Leidenschaft_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9481748FCB300A138FD /* Leidenschaft_6_4S.jpg */; };
+		917CC9E51748FCB300A138FD /* Leidenschaft_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9491748FCB300A138FD /* Leidenschaft_6_5.jpg */; };
+		917CC9E61748FCB300A138FD /* Leopoldstadt_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC94A1748FCB300A138FD /* Leopoldstadt_4S.jpg */; };
+		917CC9E71748FCB300A138FD /* Leopoldstadt_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC94B1748FCB300A138FD /* Leopoldstadt_5.jpg */; };
+		917CC9E81748FCB300A138FD /* Minoriten_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC94C1748FCB300A138FD /* Minoriten_4S.jpg */; };
+		917CC9E91748FCB300A138FD /* Minoriten_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC94D1748FCB300A138FD /* Minoriten_5.jpg */; };
+		917CC9EA1748FCB300A138FD /* Mona_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC94E1748FCB300A138FD /* Mona_1_4S.jpg */; };
+		917CC9EB1748FCB300A138FD /* Mona_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC94F1748FCB300A138FD /* Mona_1_5.jpg */; };
+		917CC9EC1748FCB300A138FD /* Mona_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9501748FCB300A138FD /* Mona_2_4S.jpg */; };
+		917CC9ED1748FCB300A138FD /* Mona_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9511748FCB300A138FD /* Mona_2_5.jpg */; };
+		917CC9EE1748FCB300A138FD /* Mona_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9521748FCB300A138FD /* Mona_3_4S.jpg */; };
+		917CC9EF1748FCB300A138FD /* Mona_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9531748FCB300A138FD /* Mona_3_5.jpg */; };
+		917CC9F01748FCB300A138FD /* Mona_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9541748FCB300A138FD /* Mona_4_4S.jpg */; };
+		917CC9F11748FCB300A138FD /* Mona_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9551748FCB300A138FD /* Mona_4_5.jpg */; };
+		917CC9F21748FCB300A138FD /* Mona_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9561748FCB300A138FD /* Mona_5_4S.jpg */; };
+		917CC9F31748FCB300A138FD /* Mona_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9571748FCB300A138FD /* Mona_5_5.jpg */; };
+		917CC9F41748FCB300A138FD /* Mona_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9581748FCB300A138FD /* Mona_6_4S.jpg */; };
+		917CC9F51748FCB300A138FD /* Mona_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9591748FCB300A138FD /* Mona_6_5.jpg */; };
+		917CC9F61748FCB300A138FD /* Mona_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC95A1748FCB300A138FD /* Mona_7_4S.jpg */; };
+		917CC9F71748FCB300A138FD /* Mona_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC95B1748FCB300A138FD /* Mona_7_5.jpg */; };
+		917CC9F81748FCB300A138FD /* Natural_History_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC95C1748FCB300A138FD /* Natural_History_4S.jpg */; };
+		917CC9F91748FCB300A138FD /* Natural_History_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC95D1748FCB300A138FD /* Natural_History_5.jpg */; };
+		917CC9FA1748FCB300A138FD /* Old_town_view_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC95E1748FCB300A138FD /* Old_town_view_4S.jpg */; };
+		917CC9FB1748FCB300A138FD /* Old_town_view_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC95F1748FCB300A138FD /* Old_town_view_5.jpg */; };
+		917CC9FC1748FCB300A138FD /* Parliament_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9601748FCB300A138FD /* Parliament_4S.jpg */; };
+		917CC9FD1748FCB300A138FD /* Parliament_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9611748FCB300A138FD /* Parliament_5.jpg */; };
+		917CC9FE1748FCB300A138FD /* Prater_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9621748FCB300A138FD /* Prater_4S.jpg */; };
+		917CC9FF1748FCB300A138FD /* Prater_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9631748FCB300A138FD /* Prater_5.jpg */; };
+		917CCA001748FCB300A138FD /* Rupertkirche_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9641748FCB300A138FD /* Rupertkirche_4S.jpg */; };
+		917CCA011748FCB300A138FD /* Rupertkirche_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9651748FCB300A138FD /* Rupertkirche_5.jpg */; };
+		917CCA021748FCB300A138FD /* Statue_Bethoven_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9661748FCB300A138FD /* Statue_Bethoven_4S.jpg */; };
+		917CCA031748FCB300A138FD /* Statue_Bethoven_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9671748FCB300A138FD /* Statue_Bethoven_5.jpg */; };
+		917CCA041748FCB300A138FD /* Statue_Straus_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9681748FCB300A138FD /* Statue_Straus_4S.jpg */; };
+		917CCA051748FCB300A138FD /* Statue_Straus_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9691748FCB300A138FD /* Statue_Straus_5.jpg */; };
+		917CCA061748FCB300A138FD /* taxi3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC96A1748FCB300A138FD /* taxi3.jpeg */; };
+		917CCA071748FCB300A138FD /* taxi4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC96B1748FCB300A138FD /* taxi4.jpeg */; };
+		917CCA081748FCB300A138FD /* vena_metro.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC96C1748FCB300A138FD /* vena_metro.jpg */; };
+		917CCA091748FCB300A138FD /* vena_metro4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC96D1748FCB300A138FD /* vena_metro4.jpg */; };
+		917CCA0A1748FCB300A138FD /* vena_metro5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC96E1748FCB300A138FD /* vena_metro5.jpg */; };
+		917CCA0B1748FCB300A138FD /* vienna.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = 917CC96F1748FCB300A138FD /* vienna.mbtiles */; };
+		917CCA0C1748FCB300A138FD /* vienna.png in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9701748FCB300A138FD /* vienna.png */; };
+		917CCA0D1748FCB300A138FD /* vienna_small_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9711748FCB300A138FD /* vienna_small_pic.png */; };
+		917CCA0E1748FCB300A138FD /* Wieden_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9721748FCB300A138FD /* Wieden_4S.jpg */; };
+		917CCA0F1748FCB300A138FD /* Wieden_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9731748FCB300A138FD /* Wieden_5.jpg */; };
+		917CCA101748FCB300A138FD /* Zehnte_Etage_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9741748FCB300A138FD /* Zehnte_Etage_1_4S.jpg */; };
+		917CCA111748FCB300A138FD /* Zehnte_Etage_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9751748FCB300A138FD /* Zehnte_Etage_1_5.jpg */; };
+		917CCA121748FCB300A138FD /* Zehnte_Etage_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9761748FCB300A138FD /* Zehnte_Etage_2_4S.jpg */; };
+		917CCA131748FCB300A138FD /* Zehnte_Etage_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9771748FCB300A138FD /* Zehnte_Etage_2_5.jpg */; };
+		917CCA141748FCB300A138FD /* Zehnte_Etage_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9781748FCB300A138FD /* Zehnte_Etage_3_4S.jpg */; };
+		917CCA151748FCB300A138FD /* Zehnte_Etage_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9791748FCB300A138FD /* Zehnte_Etage_3_5.jpg */; };
+		917CCA161748FCB300A138FD /* Zehnte_Etage_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC97A1748FCB300A138FD /* Zehnte_Etage_4_4S.jpg */; };
+		917CCA171748FCB300A138FD /* Zehnte_Etage_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC97B1748FCB300A138FD /* Zehnte_Etage_4_5.jpg */; };
+		917CCA181748FCB300A138FD /* Zehnte_Etage_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC97C1748FCB300A138FD /* Zehnte_Etage_5_4S.jpg */; };
+		917CCA191748FCB300A138FD /* Zehnte_Etage_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC97D1748FCB300A138FD /* Zehnte_Etage_5_5.jpg */; };
+		917CCA1A1748FCB300A138FD /* Zehnte_Etage_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC97E1748FCB300A138FD /* Zehnte_Etage_6_4S.jpg */; };
+		917CCA1B1748FCB300A138FD /* Zehnte_Etage_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC97F1748FCB300A138FD /* Zehnte_Etage_6_5.jpg */; };
+		917CCA1C1748FCB300A138FD /* Zehnte_Etage_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9801748FCB300A138FD /* Zehnte_Etage_7_4S.jpg */; };
+		917CCA1D1748FCB300A138FD /* Zehnte_Etage_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CC9811748FCB300A138FD /* Zehnte_Etage_7_5.jpg */; };
+		917CCAC01748FCCB00A138FD /* 1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA1F1748FCCB00A138FD /* 1_5.jpg */; };
+		917CCAC11748FCCB00A138FD /* 2.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA201748FCCB00A138FD /* 2.mbtiles */; };
+		917CCAC21748FCCB00A138FD /* 2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA211748FCCB00A138FD /* 2_5.jpg */; };
+		917CCAC31748FCCB00A138FD /* 3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA221748FCCB00A138FD /* 3_5.jpg */; };
+		917CCAC41748FCCB00A138FD /* 4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA231748FCCB00A138FD /* 4_5.jpg */; };
+		917CCAC51748FCCB00A138FD /* 5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA241748FCCB00A138FD /* 5_5.jpg */; };
+		917CCAC61748FCCB00A138FD /* 6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA251748FCCB00A138FD /* 6_5.jpg */; };
+		917CCAC71748FCCB00A138FD /* 7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA261748FCCB00A138FD /* 7_5.jpg */; };
+		917CCAC81748FCCB00A138FD /* Apartmentos_4S_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA271748FCCB00A138FD /* Apartmentos_4S_1.jpg */; };
+		917CCAC91748FCCB00A138FD /* Apartmentos_4S_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA281748FCCB00A138FD /* Apartmentos_4S_2.jpg */; };
+		917CCACA1748FCCB00A138FD /* Apartmentos_4S_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA291748FCCB00A138FD /* Apartmentos_4S_3.jpg */; };
+		917CCACB1748FCCB00A138FD /* Apartmentos_4S_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA2A1748FCCB00A138FD /* Apartmentos_4S_4.jpg */; };
+		917CCACC1748FCCB00A138FD /* Apartmentos_4S_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA2B1748FCCB00A138FD /* Apartmentos_4S_5.jpg */; };
+		917CCACD1748FCCB00A138FD /* Apartmentos_4S_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA2C1748FCCB00A138FD /* Apartmentos_4S_6.jpg */; };
+		917CCACE1748FCCB00A138FD /* Apartmentos_4S_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA2D1748FCCB00A138FD /* Apartmentos_4S_7.jpg */; };
+		917CCACF1748FCCB00A138FD /* Apartmentos_5_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA2E1748FCCB00A138FD /* Apartmentos_5_1.jpg */; };
+		917CCAD01748FCCB00A138FD /* Apartmentos_5_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA2F1748FCCB00A138FD /* Apartmentos_5_2.jpg */; };
+		917CCAD11748FCCB00A138FD /* Apartmentos_5_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA301748FCCB00A138FD /* Apartmentos_5_3.jpg */; };
+		917CCAD21748FCCB00A138FD /* Apartmentos_5_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA311748FCCB00A138FD /* Apartmentos_5_4.jpg */; };
+		917CCAD31748FCCB00A138FD /* Apartmentos_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA321748FCCB00A138FD /* Apartmentos_5_5.jpg */; };
+		917CCAD41748FCCB00A138FD /* Apartmentos_5_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA331748FCCB00A138FD /* Apartmentos_5_6.jpg */; };
+		917CCAD51748FCCB00A138FD /* Apartmentos_5_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA341748FCCB00A138FD /* Apartmentos_5_7.jpg */; };
+		917CCAD61748FCCB00A138FD /* Arbat-district-4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA351748FCCB00A138FD /* Arbat-district-4S.jpg */; };
+		917CCAD71748FCCB00A138FD /* Arbat-district-5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA361748FCCB00A138FD /* Arbat-district-5.jpg */; };
+		917CCAD81748FCCB00A138FD /* BacRoom_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA371748FCCB00A138FD /* BacRoom_1_4S.jpg */; };
+		917CCAD91748FCCB00A138FD /* BacRoom_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA381748FCCB00A138FD /* BacRoom_1_5.jpg */; };
+		917CCADA1748FCCB00A138FD /* BacRoom_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA391748FCCB00A138FD /* BacRoom_2_4S.jpg */; };
+		917CCADB1748FCCB00A138FD /* BacRoom_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA3A1748FCCB00A138FD /* BacRoom_2_5.jpg */; };
+		917CCADC1748FCCB00A138FD /* BacRoom_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA3B1748FCCB00A138FD /* BacRoom_3_4S.jpg */; };
+		917CCADD1748FCCB00A138FD /* BacRoom_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA3C1748FCCB00A138FD /* BacRoom_3_5.jpg */; };
+		917CCADE1748FCCB00A138FD /* BacRoom_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA3D1748FCCB00A138FD /* BacRoom_4_4S.jpg */; };
+		917CCADF1748FCCB00A138FD /* BacRoom_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA3E1748FCCB00A138FD /* BacRoom_4_5.jpg */; };
+		917CCAE01748FCCB00A138FD /* BacRoom_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA3F1748FCCB00A138FD /* BacRoom_5_4S.jpg */; };
+		917CCAE11748FCCB00A138FD /* BacRoom_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA401748FCCB00A138FD /* BacRoom_5_5.jpg */; };
+		917CCAE21748FCCB00A138FD /* BacRoom_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA411748FCCB00A138FD /* BacRoom_6_4S.jpg */; };
+		917CCAE31748FCCB00A138FD /* BacRoom_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA421748FCCB00A138FD /* BacRoom_6_5.jpg */; };
+		917CCAE41748FCCB00A138FD /* BacRoom_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA431748FCCB00A138FD /* BacRoom_7_4S.jpg */; };
+		917CCAE51748FCCB00A138FD /* BacRoom_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA441748FCCB00A138FD /* BacRoom_7_5.jpg */; };
+		917CCAE61748FCCB00A138FD /* Church_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA451748FCCB00A138FD /* Church_2_4S.jpg */; };
+		917CCAE71748FCCB00A138FD /* Church_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA461748FCCB00A138FD /* Church_2_5.jpg */; };
+		917CCAE81748FCCB00A138FD /* Church_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA471748FCCB00A138FD /* Church_4S.jpg */; };
+		917CCAE91748FCCB00A138FD /* Church_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA481748FCCB00A138FD /* Church_5.jpg */; };
+		917CCAEA1748FCCB00A138FD /* Filevskyi-park-district-4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA491748FCCB00A138FD /* Filevskyi-park-district-4S.jpg */; };
+		917CCAEB1748FCCB00A138FD /* Filevskyi-park-district-5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA4A1748FCCB00A138FD /* Filevskyi-park-district-5.jpg */; };
+		917CCAEC1748FCCB00A138FD /* G&M_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA4B1748FCCB00A138FD /* G&M_1_4S.jpg */; };
+		917CCAED1748FCCB00A138FD /* G&M_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA4C1748FCCB00A138FD /* G&M_1_5.jpg */; };
+		917CCAEE1748FCCB00A138FD /* G&M_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA4D1748FCCB00A138FD /* G&M_2_4S.jpg */; };
+		917CCAEF1748FCCB00A138FD /* G&M_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA4E1748FCCB00A138FD /* G&M_2_5.jpg */; };
+		917CCAF01748FCCB00A138FD /* G&M_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA4F1748FCCB00A138FD /* G&M_3_4S.jpg */; };
+		917CCAF11748FCCB00A138FD /* G&M_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA501748FCCB00A138FD /* G&M_3_5.jpg */; };
+		917CCAF21748FCCB00A138FD /* G&M_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA511748FCCB00A138FD /* G&M_4_4S.jpg */; };
+		917CCAF31748FCCB00A138FD /* G&M_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA521748FCCB00A138FD /* G&M_4_5.jpg */; };
+		917CCAF41748FCCB00A138FD /* G&M_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA531748FCCB00A138FD /* G&M_5_4S.jpg */; };
+		917CCAF51748FCCB00A138FD /* G&M_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA541748FCCB00A138FD /* G&M_5_5.jpg */; };
+		917CCAF61748FCCB00A138FD /* G&M_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA551748FCCB00A138FD /* G&M_6_4S.jpg */; };
+		917CCAF71748FCCB00A138FD /* G&M_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA561748FCCB00A138FD /* G&M_6_5.jpg */; };
+		917CCAF81748FCCB00A138FD /* G&M_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA571748FCCB00A138FD /* G&M_7_4S.jpg */; };
+		917CCAF91748FCCB00A138FD /* G&M_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA581748FCCB00A138FD /* G&M_7_5.jpg */; };
+		917CCAFA1748FCCB00A138FD /* Hamovniki-district-4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA591748FCCB00A138FD /* Hamovniki-district-4S.jpg */; };
+		917CCAFB1748FCCB00A138FD /* Hamovniki-district-5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA5A1748FCCB00A138FD /* Hamovniki-district-5.jpg */; };
+		917CCAFC1748FCCB00A138FD /* Historical_museum_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA5B1748FCCB00A138FD /* Historical_museum_4S.jpg */; };
+		917CCAFD1748FCCB00A138FD /* Historical_museum_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA5C1748FCCB00A138FD /* Historical_museum_5.jpg */; };
+		917CCAFE1748FCCB00A138FD /* Hotel_Ukraina_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA5D1748FCCB00A138FD /* Hotel_Ukraina_4S.jpg */; };
+		917CCAFF1748FCCB00A138FD /* Hotel_Ukraina_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA5E1748FCCB00A138FD /* Hotel_Ukraina_5.jpg */; };
+		917CCB001748FCCB00A138FD /* Hram_Hrista_Spasitelja_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA5F1748FCCB00A138FD /* Hram_Hrista_Spasitelja_4S.jpg */; };
+		917CCB011748FCCB00A138FD /* Hram_Hrista_Spasitelja_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA601748FCCB00A138FD /* Hram_Hrista_Spasitelja_5.jpg */; };
+		917CCB021748FCCB00A138FD /* Izmailovo_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA611748FCCB00A138FD /* Izmailovo_4S.jpg */; };
+		917CCB031748FCCB00A138FD /* Izmailovo_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA621748FCCB00A138FD /* Izmailovo_5.jpg */; };
+		917CCB041748FCCB00A138FD /* Kolomenskoe_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA631748FCCB00A138FD /* Kolomenskoe_5.jpg */; };
+		917CCB051748FCCB00A138FD /* Kolomenskoje_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA641748FCCB00A138FD /* Kolomenskoje_4S.jpg */; };
+		917CCB061748FCCB00A138FD /* Matisel_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA651748FCCB00A138FD /* Matisel_1_4S.jpg */; };
+		917CCB071748FCCB00A138FD /* Matisel_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA661748FCCB00A138FD /* Matisel_1_5.jpg */; };
+		917CCB081748FCCB00A138FD /* Matisel_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA671748FCCB00A138FD /* Matisel_2_4S.jpg */; };
+		917CCB091748FCCB00A138FD /* Matisel_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA681748FCCB00A138FD /* Matisel_2_5.jpg */; };
+		917CCB0A1748FCCB00A138FD /* Matisel_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA691748FCCB00A138FD /* Matisel_3_4S.jpg */; };
+		917CCB0B1748FCCB00A138FD /* Matisel_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA6A1748FCCB00A138FD /* Matisel_3_5.jpg */; };
+		917CCB0C1748FCCB00A138FD /* Matisel_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA6B1748FCCB00A138FD /* Matisel_4_4S.jpg */; };
+		917CCB0D1748FCCB00A138FD /* Matisel_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA6C1748FCCB00A138FD /* Matisel_4_5.jpg */; };
+		917CCB0E1748FCCB00A138FD /* Matisel_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA6D1748FCCB00A138FD /* Matisel_5_4S.jpg */; };
+		917CCB0F1748FCCB00A138FD /* Matisel_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA6E1748FCCB00A138FD /* Matisel_5_5.jpg */; };
+		917CCB101748FCCB00A138FD /* Matisel_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA6F1748FCCB00A138FD /* Matisel_6_4S.jpg */; };
+		917CCB111748FCCB00A138FD /* Matisel_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA701748FCCB00A138FD /* Matisel_6_5.jpg */; };
+		917CCB121748FCCB00A138FD /* Matisel_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA711748FCCB00A138FD /* Matisel_7_4S.jpg */; };
+		917CCB131748FCCB00A138FD /* Matisel_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA721748FCCB00A138FD /* Matisel_7_5.jpg */; };
+		917CCB141748FCCB00A138FD /* Monkey_park_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA731748FCCB00A138FD /* Monkey_park_1_4S.jpg */; };
+		917CCB151748FCCB00A138FD /* Monkey_park_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA741748FCCB00A138FD /* Monkey_park_1_5.jpg */; };
+		917CCB161748FCCB00A138FD /* Monkey_park_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA751748FCCB00A138FD /* Monkey_park_2_4S.jpg */; };
+		917CCB171748FCCB00A138FD /* Monkey_park_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA761748FCCB00A138FD /* Monkey_park_2_5.jpg */; };
+		917CCB181748FCCB00A138FD /* Monkey_park_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA771748FCCB00A138FD /* Monkey_park_3_4S.jpg */; };
+		917CCB191748FCCB00A138FD /* Monkey_park_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA781748FCCB00A138FD /* Monkey_park_3_5.jpg */; };
+		917CCB1A1748FCCB00A138FD /* Monkey_park_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA791748FCCB00A138FD /* Monkey_park_4_4S.jpg */; };
+		917CCB1B1748FCCB00A138FD /* Monkey_park_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA7A1748FCCB00A138FD /* Monkey_park_4_5.jpg */; };
+		917CCB1C1748FCCB00A138FD /* Monkey_park_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA7B1748FCCB00A138FD /* Monkey_park_5_4S.jpg */; };
+		917CCB1D1748FCCB00A138FD /* Monkey_park_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA7C1748FCCB00A138FD /* Monkey_park_5_5.jpg */; };
+		917CCB1E1748FCCB00A138FD /* Monkey_park_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA7D1748FCCB00A138FD /* Monkey_park_6_4S.jpg */; };
+		917CCB1F1748FCCB00A138FD /* Monkey_park_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA7E1748FCCB00A138FD /* Monkey_park_6_5.jpg */; };
+		917CCB201748FCCB00A138FD /* Monkey_park_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA7F1748FCCB00A138FD /* Monkey_park_7_4S.jpg */; };
+		917CCB211748FCCB00A138FD /* Monkey_park_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA801748FCCB00A138FD /* Monkey_park_7_5.jpg */; };
+		917CCB221748FCCB00A138FD /* mosc_metro4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA811748FCCB00A138FD /* mosc_metro4.jpg */; };
+		917CCB231748FCCB00A138FD /* mosc_metro5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA821748FCCB00A138FD /* mosc_metro5.jpg */; };
+		917CCB241748FCCB00A138FD /* Moscow.png in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA831748FCCB00A138FD /* Moscow.png */; };
+		917CCB251748FCCB00A138FD /* Moscow_city_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA841748FCCB00A138FD /* Moscow_city_4S.jpg */; };
+		917CCB261748FCCB00A138FD /* Moscow_city_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA851748FCCB00A138FD /* Moscow_city_5.jpg */; };
+		917CCB271748FCCB00A138FD /* moscow_small_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA861748FCCB00A138FD /* moscow_small_pic.png */; };
+		917CCB281748FCCB00A138FD /* Novodevichyi_monastyr_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA871748FCCB00A138FD /* Novodevichyi_monastyr_4S.jpg */; };
+		917CCB291748FCCB00A138FD /* Novodevichyi_monastyr_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA881748FCCB00A138FD /* Novodevichyi_monastyr_5.jpg */; };
+		917CCB2A1748FCCB00A138FD /* Petr_Velikyi_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA891748FCCB00A138FD /* Petr_Velikyi_4S.jpg */; };
+		917CCB2B1748FCCB00A138FD /* Petr_Velikyi_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA8A1748FCCB00A138FD /* Petr_Velikyi_5.jpg */; };
+		917CCB2C1748FCCB00A138FD /* Presnenskyi_district_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA8B1748FCCB00A138FD /* Presnenskyi_district_4S.jpg */; };
+		917CCB2D1748FCCB00A138FD /* Presnenskyi_district_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA8C1748FCCB00A138FD /* Presnenskyi_district_5.jpg */; };
+		917CCB2E1748FCCB00A138FD /* Rus_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA8D1748FCCB00A138FD /* Rus_1_4S.jpg */; };
+		917CCB2F1748FCCB00A138FD /* Rus_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA8E1748FCCB00A138FD /* Rus_1_5.jpg */; };
+		917CCB301748FCCB00A138FD /* Rus_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA8F1748FCCB00A138FD /* Rus_2_4S.jpg */; };
+		917CCB311748FCCB00A138FD /* Rus_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA901748FCCB00A138FD /* Rus_2_5.jpg */; };
+		917CCB321748FCCB00A138FD /* Rus_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA911748FCCB00A138FD /* Rus_3_4S.jpg */; };
+		917CCB331748FCCB00A138FD /* Rus_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA921748FCCB00A138FD /* Rus_3_5.jpg */; };
+		917CCB341748FCCB00A138FD /* Rus_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA931748FCCB00A138FD /* Rus_4_4S.jpg */; };
+		917CCB351748FCCB00A138FD /* Rus_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA941748FCCB00A138FD /* Rus_4_5.jpg */; };
+		917CCB361748FCCB00A138FD /* Rus_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA951748FCCB00A138FD /* Rus_5_4S.jpg */; };
+		917CCB371748FCCB00A138FD /* Rus_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA961748FCCB00A138FD /* Rus_5_5.jpg */; };
+		917CCB381748FCCB00A138FD /* Rus_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA971748FCCB00A138FD /* Rus_6_4S.jpg */; };
+		917CCB391748FCCB00A138FD /* Rus_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA981748FCCB00A138FD /* Rus_6_5.jpg */; };
+		917CCB3A1748FCCB00A138FD /* Rus_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA991748FCCB00A138FD /* Rus_7_4S.jpg */; };
+		917CCB3B1748FCCB00A138FD /* Rus_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA9A1748FCCB00A138FD /* Rus_7_5.jpg */; };
+		917CCB3C1748FCCB00A138FD /* shema_2003-12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA9B1748FCCB00A138FD /* shema_2003-12.jpg */; };
+		917CCB3D1748FCCB00A138FD /* Sibir_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA9C1748FCCB00A138FD /* Sibir_1_4S.jpg */; };
+		917CCB3E1748FCCB00A138FD /* Sibir_1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA9D1748FCCB00A138FD /* Sibir_1_5.jpg */; };
+		917CCB3F1748FCCB00A138FD /* Sibir_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA9E1748FCCB00A138FD /* Sibir_2_4S.jpg */; };
+		917CCB401748FCCB00A138FD /* Sibir_2_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCA9F1748FCCB00A138FD /* Sibir_2_5.jpg */; };
+		917CCB411748FCCB00A138FD /* Sibir_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAA01748FCCB00A138FD /* Sibir_3_4S.jpg */; };
+		917CCB421748FCCB00A138FD /* Sibir_3_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAA11748FCCB00A138FD /* Sibir_3_5.jpg */; };
+		917CCB431748FCCB00A138FD /* Sibir_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAA21748FCCB00A138FD /* Sibir_4_4S.jpg */; };
+		917CCB441748FCCB00A138FD /* Sibir_4_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAA31748FCCB00A138FD /* Sibir_4_5.jpg */; };
+		917CCB451748FCCB00A138FD /* Sibir_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAA41748FCCB00A138FD /* Sibir_5_4S.jpg */; };
+		917CCB461748FCCB00A138FD /* Sibir_5_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAA51748FCCB00A138FD /* Sibir_5_5.jpg */; };
+		917CCB471748FCCB00A138FD /* Sibir_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAA61748FCCB00A138FD /* Sibir_6_4S.jpg */; };
+		917CCB481748FCCB00A138FD /* Sibir_6_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAA71748FCCB00A138FD /* Sibir_6_5.jpg */; };
+		917CCB491748FCCB00A138FD /* Sibir_7_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAA81748FCCB00A138FD /* Sibir_7_5.jpg */; };
+		917CCB4A1748FCCB00A138FD /* Sobor_Vasijia_Blagennogo_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAA91748FCCB00A138FD /* Sobor_Vasijia_Blagennogo_4S.jpg */; };
+		917CCB4B1748FCCB00A138FD /* Sobor_Vasilija_Blagennogo_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAAA1748FCCB00A138FD /* Sobor_Vasilija_Blagennogo_5.jpg */; };
+		917CCB4C1748FCCB00A138FD /* Strogino_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAAB1748FCCB00A138FD /* Strogino_4S.jpg */; };
+		917CCB4D1748FCCB00A138FD /* Strogino_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAAC1748FCCB00A138FD /* Strogino_5.jpg */; };
+		917CCB4E1748FCCB00A138FD /* taxi1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAAD1748FCCB00A138FD /* taxi1.jpeg */; };
+		917CCB4F1748FCCB00A138FD /* taxi2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAAE1748FCCB00A138FD /* taxi2.jpeg */; };
+		917CCB501748FCCB00A138FD /* Tcar_colocol_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAAF1748FCCB00A138FD /* Tcar_colocol_5.jpg */; };
+		917CCB511748FCCB00A138FD /* Triol_1_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAB01748FCCB00A138FD /* Triol_1_4S.jpg */; };
+		917CCB521748FCCB00A138FD /* Triol_2_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAB11748FCCB00A138FD /* Triol_2_4S.jpg */; };
+		917CCB531748FCCB00A138FD /* Triol_3_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAB21748FCCB00A138FD /* Triol_3_4S.jpg */; };
+		917CCB541748FCCB00A138FD /* Triol_4_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAB31748FCCB00A138FD /* Triol_4_4S.jpg */; };
+		917CCB551748FCCB00A138FD /* Triol_5_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAB41748FCCB00A138FD /* Triol_5_4S.jpg */; };
+		917CCB561748FCCB00A138FD /* Triol_6_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAB51748FCCB00A138FD /* Triol_6_4S.jpg */; };
+		917CCB571748FCCB00A138FD /* Triol_7_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAB61748FCCB00A138FD /* Triol_7_4S.jpg */; };
+		917CCB581748FCCB00A138FD /* Tsar_colocol_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAB71748FCCB00A138FD /* Tsar_colocol_4S.jpg */; };
+		917CCB591748FCCB00A138FD /* Tverskoy_district_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAB81748FCCB00A138FD /* Tverskoy_district_4S.jpg */; };
+		917CCB5A1748FCCB00A138FD /* Tverskoy_district_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCAB91748FCCB00A138FD /* Tverskoy_district_5.jpg */; };
+		917CCB5B1748FCCB00A138FD /* VDNH_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCABA1748FCCB00A138FD /* VDNH_4S.jpg */; };
+		917CCB5C1748FCCB00A138FD /* VDNH_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCABB1748FCCB00A138FD /* VDNH_5.jpg */; };
+		917CCB5D1748FCCB00A138FD /* View_Kremlin_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCABC1748FCCB00A138FD /* View_Kremlin_4S.jpg */; };
+		917CCB5E1748FCCB00A138FD /* view_Kremlin_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCABD1748FCCB00A138FD /* view_Kremlin_5.jpg */; };
+		917CCB5F1748FCCB00A138FD /* Yakimanka_district_4S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCABE1748FCCB00A138FD /* Yakimanka_district_4S.jpg */; };
+		917CCB601748FCCB00A138FD /* Yakimanka_district_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 917CCABF1748FCCB00A138FD /* Yakimanka_district_5.jpg */; };
 		919E8700173A58E700A25E07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E86FF173A58E700A25E07 /* UIKit.framework */; };
 		919E8702173A58E700A25E07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8701173A58E700A25E07 /* Foundation.framework */; };
 		919E8704173A58E700A25E07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8703173A58E700A25E07 /* CoreGraphics.framework */; };
@@ -647,6 +962,323 @@
 		9124194B173A9E05004B6837 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124195A173BD4D5004B6837 /* PlacesByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesByCategoryViewController.h; sourceTree = "<group>"; };
 		9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesByCategoryViewController.m; sourceTree = "<group>"; };
+		917CC8E61748FCB300A138FD /* Adventure_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_1_4S.jpg; sourceTree = "<group>"; };
+		917CC8E71748FCB300A138FD /* Adventure_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_1_5.jpg; sourceTree = "<group>"; };
+		917CC8E81748FCB300A138FD /* Adventure_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_2_4S.jpg; sourceTree = "<group>"; };
+		917CC8E91748FCB300A138FD /* Adventure_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_2_5.jpg; sourceTree = "<group>"; };
+		917CC8EA1748FCB300A138FD /* Adventure_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_3_4S.jpg; sourceTree = "<group>"; };
+		917CC8EB1748FCB300A138FD /* Adventure_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_3_5.jpg; sourceTree = "<group>"; };
+		917CC8EC1748FCB300A138FD /* Adventure_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_4_4S.jpg; sourceTree = "<group>"; };
+		917CC8ED1748FCB300A138FD /* Adventure_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_4_5.jpg; sourceTree = "<group>"; };
+		917CC8EE1748FCB300A138FD /* Adventure_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_5_4S.jpg; sourceTree = "<group>"; };
+		917CC8EF1748FCB300A138FD /* Adventure_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_5_5.jpg; sourceTree = "<group>"; };
+		917CC8F01748FCB300A138FD /* Adventure_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_6_4S.jpg; sourceTree = "<group>"; };
+		917CC8F11748FCB300A138FD /* Adventure_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_6_5.jpg; sourceTree = "<group>"; };
+		917CC8F21748FCB300A138FD /* Adventure_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_7_4S.jpg; sourceTree = "<group>"; };
+		917CC8F31748FCB300A138FD /* Adventure_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adventure_7_5.jpg; sourceTree = "<group>"; };
+		917CC8F41748FCB300A138FD /* Anne_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_1_4S.jpg; sourceTree = "<group>"; };
+		917CC8F51748FCB300A138FD /* Anne_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_1_5.jpg; sourceTree = "<group>"; };
+		917CC8F61748FCB300A138FD /* Anne_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_2_4S.jpg; sourceTree = "<group>"; };
+		917CC8F71748FCB300A138FD /* Anne_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_2_5.jpg; sourceTree = "<group>"; };
+		917CC8F81748FCB300A138FD /* Anne_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_3_4S.jpg; sourceTree = "<group>"; };
+		917CC8F91748FCB300A138FD /* Anne_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_3_5.jpg; sourceTree = "<group>"; };
+		917CC8FA1748FCB300A138FD /* Anne_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_4_4S.jpg; sourceTree = "<group>"; };
+		917CC8FB1748FCB300A138FD /* Anne_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_4_5.jpg; sourceTree = "<group>"; };
+		917CC8FC1748FCB300A138FD /* Anne_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_5_4S.jpg; sourceTree = "<group>"; };
+		917CC8FD1748FCB300A138FD /* Anne_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_5_5.jpg; sourceTree = "<group>"; };
+		917CC8FE1748FCB300A138FD /* Anne_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_6_4S.jpg; sourceTree = "<group>"; };
+		917CC8FF1748FCB300A138FD /* Anne_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_6_5.jpg; sourceTree = "<group>"; };
+		917CC9001748FCB300A138FD /* Anne_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_7_4S.jpg; sourceTree = "<group>"; };
+		917CC9011748FCB300A138FD /* Anne_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anne_7_5.jpg; sourceTree = "<group>"; };
+		917CC9021748FCB300A138FD /* Aquarium_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_1_4S.jpg; sourceTree = "<group>"; };
+		917CC9031748FCB300A138FD /* Aquarium_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_1_5.jpg; sourceTree = "<group>"; };
+		917CC9041748FCB300A138FD /* Aquarium_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_2_4S.jpg; sourceTree = "<group>"; };
+		917CC9051748FCB300A138FD /* Aquarium_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_2_5.jpg; sourceTree = "<group>"; };
+		917CC9061748FCB300A138FD /* Aquarium_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_3_4S.jpg; sourceTree = "<group>"; };
+		917CC9071748FCB300A138FD /* Aquarium_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_3_5.jpg; sourceTree = "<group>"; };
+		917CC9081748FCB300A138FD /* Aquarium_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_4_4S.jpg; sourceTree = "<group>"; };
+		917CC9091748FCB300A138FD /* Aquarium_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_4_5.jpg; sourceTree = "<group>"; };
+		917CC90A1748FCB300A138FD /* Aquarium_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_5_4S.jpg; sourceTree = "<group>"; };
+		917CC90B1748FCB300A138FD /* Aquarium_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_5_5.jpg; sourceTree = "<group>"; };
+		917CC90C1748FCB300A138FD /* Aquarium_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_6_4S.jpg; sourceTree = "<group>"; };
+		917CC90D1748FCB300A138FD /* Aquarium_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_6_5.jpg; sourceTree = "<group>"; };
+		917CC90E1748FCB300A138FD /* Aquarium_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_7_4S.jpg; sourceTree = "<group>"; };
+		917CC90F1748FCB300A138FD /* Aquarium_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aquarium_7_5.jpg; sourceTree = "<group>"; };
+		917CC9101748FCB300A138FD /* Belveder_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Belveder_2_4S.jpg; sourceTree = "<group>"; };
+		917CC9111748FCB300A138FD /* Belveder_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Belveder_2_5.jpg; sourceTree = "<group>"; };
+		917CC9121748FCB300A138FD /* Belveder_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Belveder_4S.jpg; sourceTree = "<group>"; };
+		917CC9131748FCB300A138FD /* Belveder_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Belveder_5.jpg; sourceTree = "<group>"; };
+		917CC9141748FCB300A138FD /* Burgtheatre_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Burgtheatre_4S.jpg; sourceTree = "<group>"; };
+		917CC9151748FCB300A138FD /* Burgtheatre_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Burgtheatre_5.jpg; sourceTree = "<group>"; };
+		917CC9161748FCB300A138FD /* Cementary_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cementary_4S.jpg; sourceTree = "<group>"; };
+		917CC9171748FCB300A138FD /* Cementary_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cementary_5.jpg; sourceTree = "<group>"; };
+		917CC9181748FCB300A138FD /* City_Hall_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = City_Hall_4S.jpg; sourceTree = "<group>"; };
+		917CC9191748FCB300A138FD /* City_Hall_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = City_Hall_5.jpg; sourceTree = "<group>"; };
+		917CC91A1748FCB300A138FD /* Ferstel_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ferstel_4S.jpg; sourceTree = "<group>"; };
+		917CC91B1748FCB300A138FD /* Ferstel_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ferstel_5.jpg; sourceTree = "<group>"; };
+		917CC91C1748FCB300A138FD /* Freseur_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_1_4S.jpg; sourceTree = "<group>"; };
+		917CC91D1748FCB300A138FD /* Freseur_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_1_5.jpg; sourceTree = "<group>"; };
+		917CC91E1748FCB300A138FD /* Freseur_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_2_4S.jpg; sourceTree = "<group>"; };
+		917CC91F1748FCB300A138FD /* Freseur_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_2_5.jpg; sourceTree = "<group>"; };
+		917CC9201748FCB300A138FD /* Freseur_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_3_4S.jpg; sourceTree = "<group>"; };
+		917CC9211748FCB300A138FD /* Freseur_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_3_5.jpg; sourceTree = "<group>"; };
+		917CC9221748FCB300A138FD /* Freseur_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_4_4S.jpg; sourceTree = "<group>"; };
+		917CC9231748FCB300A138FD /* Freseur_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_4_5.jpg; sourceTree = "<group>"; };
+		917CC9241748FCB300A138FD /* Freseur_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_5_4S.jpg; sourceTree = "<group>"; };
+		917CC9251748FCB300A138FD /* Freseur_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_5_5.jpg; sourceTree = "<group>"; };
+		917CC9261748FCB300A138FD /* Freseur_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_6_4S.jpg; sourceTree = "<group>"; };
+		917CC9271748FCB300A138FD /* Freseur_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_6_5.jpg; sourceTree = "<group>"; };
+		917CC9281748FCB300A138FD /* Freseur_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_7_4S.jpg; sourceTree = "<group>"; };
+		917CC9291748FCB300A138FD /* Freseur_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Freseur_7_5.jpg; sourceTree = "<group>"; };
+		917CC92A1748FCB300A138FD /* Geschenk_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_1_4S.jpg; sourceTree = "<group>"; };
+		917CC92B1748FCB300A138FD /* Geschenk_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_1_5.jpg; sourceTree = "<group>"; };
+		917CC92C1748FCB300A138FD /* Geschenk_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_2_4S.jpg; sourceTree = "<group>"; };
+		917CC92D1748FCB300A138FD /* Geschenk_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_2_5.jpg; sourceTree = "<group>"; };
+		917CC92E1748FCB300A138FD /* Geschenk_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_3_4S.jpg; sourceTree = "<group>"; };
+		917CC92F1748FCB300A138FD /* Geschenk_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_3_5.jpg; sourceTree = "<group>"; };
+		917CC9301748FCB300A138FD /* Geschenk_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_4_4S.jpg; sourceTree = "<group>"; };
+		917CC9311748FCB300A138FD /* Geschenk_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_4_5.jpg; sourceTree = "<group>"; };
+		917CC9321748FCB300A138FD /* Geschenk_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_5_4S.jpg; sourceTree = "<group>"; };
+		917CC9331748FCB300A138FD /* Geschenk_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_5_5.jpg; sourceTree = "<group>"; };
+		917CC9341748FCB300A138FD /* Geschenk_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_6_4S.jpg; sourceTree = "<group>"; };
+		917CC9351748FCB300A138FD /* Geschenk_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_6_5.jpg; sourceTree = "<group>"; };
+		917CC9361748FCB300A138FD /* Geschenk_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_7_4S.jpg; sourceTree = "<group>"; };
+		917CC9371748FCB300A138FD /* Geschenk_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Geschenk_7_5.jpg; sourceTree = "<group>"; };
+		917CC9381748FCB300A138FD /* Goethe_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Goethe_4S.jpg; sourceTree = "<group>"; };
+		917CC9391748FCB300A138FD /* Goethe_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Goethe_5.jpg; sourceTree = "<group>"; };
+		917CC93A1748FCB300A138FD /* Innere_stadt_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Innere_stadt_4S.jpg; sourceTree = "<group>"; };
+		917CC93B1748FCB300A138FD /* Innere_stadt_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Innere_stadt_5.jpg; sourceTree = "<group>"; };
+		917CC93C1748FCB300A138FD /* Landstrasse_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landstrasse_4S.jpg; sourceTree = "<group>"; };
+		917CC93D1748FCB300A138FD /* Landstrasse_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landstrasse_5.jpg; sourceTree = "<group>"; };
+		917CC93E1748FCB300A138FD /* Leidenschaft_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_1_4S.jpg; sourceTree = "<group>"; };
+		917CC93F1748FCB300A138FD /* Leidenschaft_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_1_5.jpg; sourceTree = "<group>"; };
+		917CC9401748FCB300A138FD /* Leidenschaft_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_2_4S.jpg; sourceTree = "<group>"; };
+		917CC9411748FCB300A138FD /* Leidenschaft_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_2_5.jpg; sourceTree = "<group>"; };
+		917CC9421748FCB300A138FD /* Leidenschaft_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_3_4S.jpg; sourceTree = "<group>"; };
+		917CC9431748FCB300A138FD /* Leidenschaft_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_3_5.jpg; sourceTree = "<group>"; };
+		917CC9441748FCB300A138FD /* Leidenschaft_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_4_4S.jpg; sourceTree = "<group>"; };
+		917CC9451748FCB300A138FD /* Leidenschaft_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_4_5.jpg; sourceTree = "<group>"; };
+		917CC9461748FCB300A138FD /* Leidenschaft_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_5_4S.jpg; sourceTree = "<group>"; };
+		917CC9471748FCB300A138FD /* Leidenschaft_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_5_5.jpg; sourceTree = "<group>"; };
+		917CC9481748FCB300A138FD /* Leidenschaft_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_6_4S.jpg; sourceTree = "<group>"; };
+		917CC9491748FCB300A138FD /* Leidenschaft_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leidenschaft_6_5.jpg; sourceTree = "<group>"; };
+		917CC94A1748FCB300A138FD /* Leopoldstadt_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leopoldstadt_4S.jpg; sourceTree = "<group>"; };
+		917CC94B1748FCB300A138FD /* Leopoldstadt_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Leopoldstadt_5.jpg; sourceTree = "<group>"; };
+		917CC94C1748FCB300A138FD /* Minoriten_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Minoriten_4S.jpg; sourceTree = "<group>"; };
+		917CC94D1748FCB300A138FD /* Minoriten_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Minoriten_5.jpg; sourceTree = "<group>"; };
+		917CC94E1748FCB300A138FD /* Mona_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_1_4S.jpg; sourceTree = "<group>"; };
+		917CC94F1748FCB300A138FD /* Mona_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_1_5.jpg; sourceTree = "<group>"; };
+		917CC9501748FCB300A138FD /* Mona_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_2_4S.jpg; sourceTree = "<group>"; };
+		917CC9511748FCB300A138FD /* Mona_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_2_5.jpg; sourceTree = "<group>"; };
+		917CC9521748FCB300A138FD /* Mona_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_3_4S.jpg; sourceTree = "<group>"; };
+		917CC9531748FCB300A138FD /* Mona_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_3_5.jpg; sourceTree = "<group>"; };
+		917CC9541748FCB300A138FD /* Mona_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_4_4S.jpg; sourceTree = "<group>"; };
+		917CC9551748FCB300A138FD /* Mona_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_4_5.jpg; sourceTree = "<group>"; };
+		917CC9561748FCB300A138FD /* Mona_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_5_4S.jpg; sourceTree = "<group>"; };
+		917CC9571748FCB300A138FD /* Mona_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_5_5.jpg; sourceTree = "<group>"; };
+		917CC9581748FCB300A138FD /* Mona_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_6_4S.jpg; sourceTree = "<group>"; };
+		917CC9591748FCB300A138FD /* Mona_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_6_5.jpg; sourceTree = "<group>"; };
+		917CC95A1748FCB300A138FD /* Mona_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_7_4S.jpg; sourceTree = "<group>"; };
+		917CC95B1748FCB300A138FD /* Mona_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mona_7_5.jpg; sourceTree = "<group>"; };
+		917CC95C1748FCB300A138FD /* Natural_History_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Natural_History_4S.jpg; sourceTree = "<group>"; };
+		917CC95D1748FCB300A138FD /* Natural_History_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Natural_History_5.jpg; sourceTree = "<group>"; };
+		917CC95E1748FCB300A138FD /* Old_town_view_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Old_town_view_4S.jpg; sourceTree = "<group>"; };
+		917CC95F1748FCB300A138FD /* Old_town_view_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Old_town_view_5.jpg; sourceTree = "<group>"; };
+		917CC9601748FCB300A138FD /* Parliament_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Parliament_4S.jpg; sourceTree = "<group>"; };
+		917CC9611748FCB300A138FD /* Parliament_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Parliament_5.jpg; sourceTree = "<group>"; };
+		917CC9621748FCB300A138FD /* Prater_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Prater_4S.jpg; sourceTree = "<group>"; };
+		917CC9631748FCB300A138FD /* Prater_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Prater_5.jpg; sourceTree = "<group>"; };
+		917CC9641748FCB300A138FD /* Rupertkirche_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rupertkirche_4S.jpg; sourceTree = "<group>"; };
+		917CC9651748FCB300A138FD /* Rupertkirche_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rupertkirche_5.jpg; sourceTree = "<group>"; };
+		917CC9661748FCB300A138FD /* Statue_Bethoven_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Statue_Bethoven_4S.jpg; sourceTree = "<group>"; };
+		917CC9671748FCB300A138FD /* Statue_Bethoven_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Statue_Bethoven_5.jpg; sourceTree = "<group>"; };
+		917CC9681748FCB300A138FD /* Statue_Straus_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Statue_Straus_4S.jpg; sourceTree = "<group>"; };
+		917CC9691748FCB300A138FD /* Statue_Straus_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Statue_Straus_5.jpg; sourceTree = "<group>"; };
+		917CC96A1748FCB300A138FD /* taxi3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taxi3.jpeg; sourceTree = "<group>"; };
+		917CC96B1748FCB300A138FD /* taxi4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taxi4.jpeg; sourceTree = "<group>"; };
+		917CC96C1748FCB300A138FD /* vena_metro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vena_metro.jpg; sourceTree = "<group>"; };
+		917CC96D1748FCB300A138FD /* vena_metro4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vena_metro4.jpg; sourceTree = "<group>"; };
+		917CC96E1748FCB300A138FD /* vena_metro5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vena_metro5.jpg; sourceTree = "<group>"; };
+		917CC96F1748FCB300A138FD /* vienna.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; path = vienna.mbtiles; sourceTree = "<group>"; };
+		917CC9701748FCB300A138FD /* vienna.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vienna.png; sourceTree = "<group>"; };
+		917CC9711748FCB300A138FD /* vienna_small_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vienna_small_pic.png; sourceTree = "<group>"; };
+		917CC9721748FCB300A138FD /* Wieden_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Wieden_4S.jpg; sourceTree = "<group>"; };
+		917CC9731748FCB300A138FD /* Wieden_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Wieden_5.jpg; sourceTree = "<group>"; };
+		917CC9741748FCB300A138FD /* Zehnte_Etage_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_1_4S.jpg; sourceTree = "<group>"; };
+		917CC9751748FCB300A138FD /* Zehnte_Etage_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_1_5.jpg; sourceTree = "<group>"; };
+		917CC9761748FCB300A138FD /* Zehnte_Etage_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_2_4S.jpg; sourceTree = "<group>"; };
+		917CC9771748FCB300A138FD /* Zehnte_Etage_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_2_5.jpg; sourceTree = "<group>"; };
+		917CC9781748FCB300A138FD /* Zehnte_Etage_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_3_4S.jpg; sourceTree = "<group>"; };
+		917CC9791748FCB300A138FD /* Zehnte_Etage_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_3_5.jpg; sourceTree = "<group>"; };
+		917CC97A1748FCB300A138FD /* Zehnte_Etage_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_4_4S.jpg; sourceTree = "<group>"; };
+		917CC97B1748FCB300A138FD /* Zehnte_Etage_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_4_5.jpg; sourceTree = "<group>"; };
+		917CC97C1748FCB300A138FD /* Zehnte_Etage_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_5_4S.jpg; sourceTree = "<group>"; };
+		917CC97D1748FCB300A138FD /* Zehnte_Etage_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_5_5.jpg; sourceTree = "<group>"; };
+		917CC97E1748FCB300A138FD /* Zehnte_Etage_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_6_4S.jpg; sourceTree = "<group>"; };
+		917CC97F1748FCB300A138FD /* Zehnte_Etage_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_6_5.jpg; sourceTree = "<group>"; };
+		917CC9801748FCB300A138FD /* Zehnte_Etage_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_7_4S.jpg; sourceTree = "<group>"; };
+		917CC9811748FCB300A138FD /* Zehnte_Etage_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zehnte_Etage_7_5.jpg; sourceTree = "<group>"; };
+		917CCA1F1748FCCB00A138FD /* 1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1_5.jpg; sourceTree = "<group>"; };
+		917CCA201748FCCB00A138FD /* 2.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2.mbtiles; sourceTree = "<group>"; };
+		917CCA211748FCCB00A138FD /* 2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2_5.jpg; sourceTree = "<group>"; };
+		917CCA221748FCCB00A138FD /* 3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3_5.jpg; sourceTree = "<group>"; };
+		917CCA231748FCCB00A138FD /* 4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4_5.jpg; sourceTree = "<group>"; };
+		917CCA241748FCCB00A138FD /* 5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5_5.jpg; sourceTree = "<group>"; };
+		917CCA251748FCCB00A138FD /* 6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6_5.jpg; sourceTree = "<group>"; };
+		917CCA261748FCCB00A138FD /* 7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7_5.jpg; sourceTree = "<group>"; };
+		917CCA271748FCCB00A138FD /* Apartmentos_4S_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_4S_1.jpg; sourceTree = "<group>"; };
+		917CCA281748FCCB00A138FD /* Apartmentos_4S_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_4S_2.jpg; sourceTree = "<group>"; };
+		917CCA291748FCCB00A138FD /* Apartmentos_4S_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_4S_3.jpg; sourceTree = "<group>"; };
+		917CCA2A1748FCCB00A138FD /* Apartmentos_4S_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_4S_4.jpg; sourceTree = "<group>"; };
+		917CCA2B1748FCCB00A138FD /* Apartmentos_4S_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_4S_5.jpg; sourceTree = "<group>"; };
+		917CCA2C1748FCCB00A138FD /* Apartmentos_4S_6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_4S_6.jpg; sourceTree = "<group>"; };
+		917CCA2D1748FCCB00A138FD /* Apartmentos_4S_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_4S_7.jpg; sourceTree = "<group>"; };
+		917CCA2E1748FCCB00A138FD /* Apartmentos_5_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_5_1.jpg; sourceTree = "<group>"; };
+		917CCA2F1748FCCB00A138FD /* Apartmentos_5_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_5_2.jpg; sourceTree = "<group>"; };
+		917CCA301748FCCB00A138FD /* Apartmentos_5_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_5_3.jpg; sourceTree = "<group>"; };
+		917CCA311748FCCB00A138FD /* Apartmentos_5_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_5_4.jpg; sourceTree = "<group>"; };
+		917CCA321748FCCB00A138FD /* Apartmentos_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_5_5.jpg; sourceTree = "<group>"; };
+		917CCA331748FCCB00A138FD /* Apartmentos_5_6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_5_6.jpg; sourceTree = "<group>"; };
+		917CCA341748FCCB00A138FD /* Apartmentos_5_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Apartmentos_5_7.jpg; sourceTree = "<group>"; };
+		917CCA351748FCCB00A138FD /* Arbat-district-4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Arbat-district-4S.jpg"; sourceTree = "<group>"; };
+		917CCA361748FCCB00A138FD /* Arbat-district-5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Arbat-district-5.jpg"; sourceTree = "<group>"; };
+		917CCA371748FCCB00A138FD /* BacRoom_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_1_4S.jpg; sourceTree = "<group>"; };
+		917CCA381748FCCB00A138FD /* BacRoom_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_1_5.jpg; sourceTree = "<group>"; };
+		917CCA391748FCCB00A138FD /* BacRoom_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_2_4S.jpg; sourceTree = "<group>"; };
+		917CCA3A1748FCCB00A138FD /* BacRoom_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_2_5.jpg; sourceTree = "<group>"; };
+		917CCA3B1748FCCB00A138FD /* BacRoom_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_3_4S.jpg; sourceTree = "<group>"; };
+		917CCA3C1748FCCB00A138FD /* BacRoom_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_3_5.jpg; sourceTree = "<group>"; };
+		917CCA3D1748FCCB00A138FD /* BacRoom_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_4_4S.jpg; sourceTree = "<group>"; };
+		917CCA3E1748FCCB00A138FD /* BacRoom_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_4_5.jpg; sourceTree = "<group>"; };
+		917CCA3F1748FCCB00A138FD /* BacRoom_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_5_4S.jpg; sourceTree = "<group>"; };
+		917CCA401748FCCB00A138FD /* BacRoom_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_5_5.jpg; sourceTree = "<group>"; };
+		917CCA411748FCCB00A138FD /* BacRoom_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_6_4S.jpg; sourceTree = "<group>"; };
+		917CCA421748FCCB00A138FD /* BacRoom_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_6_5.jpg; sourceTree = "<group>"; };
+		917CCA431748FCCB00A138FD /* BacRoom_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_7_4S.jpg; sourceTree = "<group>"; };
+		917CCA441748FCCB00A138FD /* BacRoom_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BacRoom_7_5.jpg; sourceTree = "<group>"; };
+		917CCA451748FCCB00A138FD /* Church_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Church_2_4S.jpg; sourceTree = "<group>"; };
+		917CCA461748FCCB00A138FD /* Church_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Church_2_5.jpg; sourceTree = "<group>"; };
+		917CCA471748FCCB00A138FD /* Church_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Church_4S.jpg; sourceTree = "<group>"; };
+		917CCA481748FCCB00A138FD /* Church_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Church_5.jpg; sourceTree = "<group>"; };
+		917CCA491748FCCB00A138FD /* Filevskyi-park-district-4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Filevskyi-park-district-4S.jpg"; sourceTree = "<group>"; };
+		917CCA4A1748FCCB00A138FD /* Filevskyi-park-district-5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Filevskyi-park-district-5.jpg"; sourceTree = "<group>"; };
+		917CCA4B1748FCCB00A138FD /* G&M_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_1_4S.jpg"; sourceTree = "<group>"; };
+		917CCA4C1748FCCB00A138FD /* G&M_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_1_5.jpg"; sourceTree = "<group>"; };
+		917CCA4D1748FCCB00A138FD /* G&M_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_2_4S.jpg"; sourceTree = "<group>"; };
+		917CCA4E1748FCCB00A138FD /* G&M_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_2_5.jpg"; sourceTree = "<group>"; };
+		917CCA4F1748FCCB00A138FD /* G&M_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_3_4S.jpg"; sourceTree = "<group>"; };
+		917CCA501748FCCB00A138FD /* G&M_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_3_5.jpg"; sourceTree = "<group>"; };
+		917CCA511748FCCB00A138FD /* G&M_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_4_4S.jpg"; sourceTree = "<group>"; };
+		917CCA521748FCCB00A138FD /* G&M_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_4_5.jpg"; sourceTree = "<group>"; };
+		917CCA531748FCCB00A138FD /* G&M_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_5_4S.jpg"; sourceTree = "<group>"; };
+		917CCA541748FCCB00A138FD /* G&M_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_5_5.jpg"; sourceTree = "<group>"; };
+		917CCA551748FCCB00A138FD /* G&M_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_6_4S.jpg"; sourceTree = "<group>"; };
+		917CCA561748FCCB00A138FD /* G&M_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_6_5.jpg"; sourceTree = "<group>"; };
+		917CCA571748FCCB00A138FD /* G&M_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_7_4S.jpg"; sourceTree = "<group>"; };
+		917CCA581748FCCB00A138FD /* G&M_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G&M_7_5.jpg"; sourceTree = "<group>"; };
+		917CCA591748FCCB00A138FD /* Hamovniki-district-4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Hamovniki-district-4S.jpg"; sourceTree = "<group>"; };
+		917CCA5A1748FCCB00A138FD /* Hamovniki-district-5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Hamovniki-district-5.jpg"; sourceTree = "<group>"; };
+		917CCA5B1748FCCB00A138FD /* Historical_museum_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Historical_museum_4S.jpg; sourceTree = "<group>"; };
+		917CCA5C1748FCCB00A138FD /* Historical_museum_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Historical_museum_5.jpg; sourceTree = "<group>"; };
+		917CCA5D1748FCCB00A138FD /* Hotel_Ukraina_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Hotel_Ukraina_4S.jpg; sourceTree = "<group>"; };
+		917CCA5E1748FCCB00A138FD /* Hotel_Ukraina_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Hotel_Ukraina_5.jpg; sourceTree = "<group>"; };
+		917CCA5F1748FCCB00A138FD /* Hram_Hrista_Spasitelja_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Hram_Hrista_Spasitelja_4S.jpg; sourceTree = "<group>"; };
+		917CCA601748FCCB00A138FD /* Hram_Hrista_Spasitelja_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Hram_Hrista_Spasitelja_5.jpg; sourceTree = "<group>"; };
+		917CCA611748FCCB00A138FD /* Izmailovo_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Izmailovo_4S.jpg; sourceTree = "<group>"; };
+		917CCA621748FCCB00A138FD /* Izmailovo_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Izmailovo_5.jpg; sourceTree = "<group>"; };
+		917CCA631748FCCB00A138FD /* Kolomenskoe_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Kolomenskoe_5.jpg; sourceTree = "<group>"; };
+		917CCA641748FCCB00A138FD /* Kolomenskoje_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Kolomenskoje_4S.jpg; sourceTree = "<group>"; };
+		917CCA651748FCCB00A138FD /* Matisel_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_1_4S.jpg; sourceTree = "<group>"; };
+		917CCA661748FCCB00A138FD /* Matisel_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_1_5.jpg; sourceTree = "<group>"; };
+		917CCA671748FCCB00A138FD /* Matisel_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_2_4S.jpg; sourceTree = "<group>"; };
+		917CCA681748FCCB00A138FD /* Matisel_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_2_5.jpg; sourceTree = "<group>"; };
+		917CCA691748FCCB00A138FD /* Matisel_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_3_4S.jpg; sourceTree = "<group>"; };
+		917CCA6A1748FCCB00A138FD /* Matisel_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_3_5.jpg; sourceTree = "<group>"; };
+		917CCA6B1748FCCB00A138FD /* Matisel_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_4_4S.jpg; sourceTree = "<group>"; };
+		917CCA6C1748FCCB00A138FD /* Matisel_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_4_5.jpg; sourceTree = "<group>"; };
+		917CCA6D1748FCCB00A138FD /* Matisel_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_5_4S.jpg; sourceTree = "<group>"; };
+		917CCA6E1748FCCB00A138FD /* Matisel_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_5_5.jpg; sourceTree = "<group>"; };
+		917CCA6F1748FCCB00A138FD /* Matisel_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_6_4S.jpg; sourceTree = "<group>"; };
+		917CCA701748FCCB00A138FD /* Matisel_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_6_5.jpg; sourceTree = "<group>"; };
+		917CCA711748FCCB00A138FD /* Matisel_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_7_4S.jpg; sourceTree = "<group>"; };
+		917CCA721748FCCB00A138FD /* Matisel_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matisel_7_5.jpg; sourceTree = "<group>"; };
+		917CCA731748FCCB00A138FD /* Monkey_park_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_1_4S.jpg; sourceTree = "<group>"; };
+		917CCA741748FCCB00A138FD /* Monkey_park_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_1_5.jpg; sourceTree = "<group>"; };
+		917CCA751748FCCB00A138FD /* Monkey_park_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_2_4S.jpg; sourceTree = "<group>"; };
+		917CCA761748FCCB00A138FD /* Monkey_park_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_2_5.jpg; sourceTree = "<group>"; };
+		917CCA771748FCCB00A138FD /* Monkey_park_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_3_4S.jpg; sourceTree = "<group>"; };
+		917CCA781748FCCB00A138FD /* Monkey_park_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_3_5.jpg; sourceTree = "<group>"; };
+		917CCA791748FCCB00A138FD /* Monkey_park_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_4_4S.jpg; sourceTree = "<group>"; };
+		917CCA7A1748FCCB00A138FD /* Monkey_park_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_4_5.jpg; sourceTree = "<group>"; };
+		917CCA7B1748FCCB00A138FD /* Monkey_park_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_5_4S.jpg; sourceTree = "<group>"; };
+		917CCA7C1748FCCB00A138FD /* Monkey_park_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_5_5.jpg; sourceTree = "<group>"; };
+		917CCA7D1748FCCB00A138FD /* Monkey_park_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_6_4S.jpg; sourceTree = "<group>"; };
+		917CCA7E1748FCCB00A138FD /* Monkey_park_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_6_5.jpg; sourceTree = "<group>"; };
+		917CCA7F1748FCCB00A138FD /* Monkey_park_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_7_4S.jpg; sourceTree = "<group>"; };
+		917CCA801748FCCB00A138FD /* Monkey_park_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monkey_park_7_5.jpg; sourceTree = "<group>"; };
+		917CCA811748FCCB00A138FD /* mosc_metro4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mosc_metro4.jpg; sourceTree = "<group>"; };
+		917CCA821748FCCB00A138FD /* mosc_metro5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mosc_metro5.jpg; sourceTree = "<group>"; };
+		917CCA831748FCCB00A138FD /* Moscow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moscow.png; sourceTree = "<group>"; };
+		917CCA841748FCCB00A138FD /* Moscow_city_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Moscow_city_4S.jpg; sourceTree = "<group>"; };
+		917CCA851748FCCB00A138FD /* Moscow_city_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Moscow_city_5.jpg; sourceTree = "<group>"; };
+		917CCA861748FCCB00A138FD /* moscow_small_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moscow_small_pic.png; sourceTree = "<group>"; };
+		917CCA871748FCCB00A138FD /* Novodevichyi_monastyr_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Novodevichyi_monastyr_4S.jpg; sourceTree = "<group>"; };
+		917CCA881748FCCB00A138FD /* Novodevichyi_monastyr_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Novodevichyi_monastyr_5.jpg; sourceTree = "<group>"; };
+		917CCA891748FCCB00A138FD /* Petr_Velikyi_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Petr_Velikyi_4S.jpg; sourceTree = "<group>"; };
+		917CCA8A1748FCCB00A138FD /* Petr_Velikyi_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Petr_Velikyi_5.jpg; sourceTree = "<group>"; };
+		917CCA8B1748FCCB00A138FD /* Presnenskyi_district_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Presnenskyi_district_4S.jpg; sourceTree = "<group>"; };
+		917CCA8C1748FCCB00A138FD /* Presnenskyi_district_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Presnenskyi_district_5.jpg; sourceTree = "<group>"; };
+		917CCA8D1748FCCB00A138FD /* Rus_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_1_4S.jpg; sourceTree = "<group>"; };
+		917CCA8E1748FCCB00A138FD /* Rus_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_1_5.jpg; sourceTree = "<group>"; };
+		917CCA8F1748FCCB00A138FD /* Rus_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_2_4S.jpg; sourceTree = "<group>"; };
+		917CCA901748FCCB00A138FD /* Rus_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_2_5.jpg; sourceTree = "<group>"; };
+		917CCA911748FCCB00A138FD /* Rus_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_3_4S.jpg; sourceTree = "<group>"; };
+		917CCA921748FCCB00A138FD /* Rus_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_3_5.jpg; sourceTree = "<group>"; };
+		917CCA931748FCCB00A138FD /* Rus_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_4_4S.jpg; sourceTree = "<group>"; };
+		917CCA941748FCCB00A138FD /* Rus_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_4_5.jpg; sourceTree = "<group>"; };
+		917CCA951748FCCB00A138FD /* Rus_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_5_4S.jpg; sourceTree = "<group>"; };
+		917CCA961748FCCB00A138FD /* Rus_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_5_5.jpg; sourceTree = "<group>"; };
+		917CCA971748FCCB00A138FD /* Rus_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_6_4S.jpg; sourceTree = "<group>"; };
+		917CCA981748FCCB00A138FD /* Rus_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_6_5.jpg; sourceTree = "<group>"; };
+		917CCA991748FCCB00A138FD /* Rus_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_7_4S.jpg; sourceTree = "<group>"; };
+		917CCA9A1748FCCB00A138FD /* Rus_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rus_7_5.jpg; sourceTree = "<group>"; };
+		917CCA9B1748FCCB00A138FD /* shema_2003-12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "shema_2003-12.jpg"; sourceTree = "<group>"; };
+		917CCA9C1748FCCB00A138FD /* Sibir_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_1_4S.jpg; sourceTree = "<group>"; };
+		917CCA9D1748FCCB00A138FD /* Sibir_1_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_1_5.jpg; sourceTree = "<group>"; };
+		917CCA9E1748FCCB00A138FD /* Sibir_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_2_4S.jpg; sourceTree = "<group>"; };
+		917CCA9F1748FCCB00A138FD /* Sibir_2_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_2_5.jpg; sourceTree = "<group>"; };
+		917CCAA01748FCCB00A138FD /* Sibir_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_3_4S.jpg; sourceTree = "<group>"; };
+		917CCAA11748FCCB00A138FD /* Sibir_3_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_3_5.jpg; sourceTree = "<group>"; };
+		917CCAA21748FCCB00A138FD /* Sibir_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_4_4S.jpg; sourceTree = "<group>"; };
+		917CCAA31748FCCB00A138FD /* Sibir_4_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_4_5.jpg; sourceTree = "<group>"; };
+		917CCAA41748FCCB00A138FD /* Sibir_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_5_4S.jpg; sourceTree = "<group>"; };
+		917CCAA51748FCCB00A138FD /* Sibir_5_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_5_5.jpg; sourceTree = "<group>"; };
+		917CCAA61748FCCB00A138FD /* Sibir_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_6_4S.jpg; sourceTree = "<group>"; };
+		917CCAA71748FCCB00A138FD /* Sibir_6_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_6_5.jpg; sourceTree = "<group>"; };
+		917CCAA81748FCCB00A138FD /* Sibir_7_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sibir_7_5.jpg; sourceTree = "<group>"; };
+		917CCAA91748FCCB00A138FD /* Sobor_Vasijia_Blagennogo_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sobor_Vasijia_Blagennogo_4S.jpg; sourceTree = "<group>"; };
+		917CCAAA1748FCCB00A138FD /* Sobor_Vasilija_Blagennogo_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sobor_Vasilija_Blagennogo_5.jpg; sourceTree = "<group>"; };
+		917CCAAB1748FCCB00A138FD /* Strogino_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Strogino_4S.jpg; sourceTree = "<group>"; };
+		917CCAAC1748FCCB00A138FD /* Strogino_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Strogino_5.jpg; sourceTree = "<group>"; };
+		917CCAAD1748FCCB00A138FD /* taxi1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taxi1.jpeg; sourceTree = "<group>"; };
+		917CCAAE1748FCCB00A138FD /* taxi2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taxi2.jpeg; sourceTree = "<group>"; };
+		917CCAAF1748FCCB00A138FD /* Tcar_colocol_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tcar_colocol_5.jpg; sourceTree = "<group>"; };
+		917CCAB01748FCCB00A138FD /* Triol_1_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Triol_1_4S.jpg; sourceTree = "<group>"; };
+		917CCAB11748FCCB00A138FD /* Triol_2_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Triol_2_4S.jpg; sourceTree = "<group>"; };
+		917CCAB21748FCCB00A138FD /* Triol_3_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Triol_3_4S.jpg; sourceTree = "<group>"; };
+		917CCAB31748FCCB00A138FD /* Triol_4_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Triol_4_4S.jpg; sourceTree = "<group>"; };
+		917CCAB41748FCCB00A138FD /* Triol_5_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Triol_5_4S.jpg; sourceTree = "<group>"; };
+		917CCAB51748FCCB00A138FD /* Triol_6_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Triol_6_4S.jpg; sourceTree = "<group>"; };
+		917CCAB61748FCCB00A138FD /* Triol_7_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Triol_7_4S.jpg; sourceTree = "<group>"; };
+		917CCAB71748FCCB00A138FD /* Tsar_colocol_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tsar_colocol_4S.jpg; sourceTree = "<group>"; };
+		917CCAB81748FCCB00A138FD /* Tverskoy_district_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tverskoy_district_4S.jpg; sourceTree = "<group>"; };
+		917CCAB91748FCCB00A138FD /* Tverskoy_district_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tverskoy_district_5.jpg; sourceTree = "<group>"; };
+		917CCABA1748FCCB00A138FD /* VDNH_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = VDNH_4S.jpg; sourceTree = "<group>"; };
+		917CCABB1748FCCB00A138FD /* VDNH_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = VDNH_5.jpg; sourceTree = "<group>"; };
+		917CCABC1748FCCB00A138FD /* View_Kremlin_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = View_Kremlin_4S.jpg; sourceTree = "<group>"; };
+		917CCABD1748FCCB00A138FD /* view_Kremlin_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = view_Kremlin_5.jpg; sourceTree = "<group>"; };
+		917CCABE1748FCCB00A138FD /* Yakimanka_district_4S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yakimanka_district_4S.jpg; sourceTree = "<group>"; };
+		917CCABF1748FCCB00A138FD /* Yakimanka_district_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yakimanka_district_5.jpg; sourceTree = "<group>"; };
 		919E86FC173A58E700A25E07 /* LikeLik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LikeLik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		919E86FF173A58E700A25E07 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		919E8701173A58E700A25E07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1130,7 +1762,7 @@
 				5514D2691748FB1B00C0C2E6 /* table_grad_o_1.png */,
 			);
 			name = "Work PNG";
-			path = "../../../Downloads/Work PNG";
+			path = "../../../Documents/Likelik Xcode/Work PNG";
 			sourceTree = "<group>";
 		};
 		55CDAF7B17413D9000AF1096 /* ZBarSDK */ = {
@@ -1206,6 +1838,339 @@
 				55CDAF9D17413D9000AF1096 /* zbar-samples.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		917CC8E51748FCB300A138FD /* Vienna */ = {
+			isa = PBXGroup;
+			children = (
+				917CC8E61748FCB300A138FD /* Adventure_1_4S.jpg */,
+				917CC8E71748FCB300A138FD /* Adventure_1_5.jpg */,
+				917CC8E81748FCB300A138FD /* Adventure_2_4S.jpg */,
+				917CC8E91748FCB300A138FD /* Adventure_2_5.jpg */,
+				917CC8EA1748FCB300A138FD /* Adventure_3_4S.jpg */,
+				917CC8EB1748FCB300A138FD /* Adventure_3_5.jpg */,
+				917CC8EC1748FCB300A138FD /* Adventure_4_4S.jpg */,
+				917CC8ED1748FCB300A138FD /* Adventure_4_5.jpg */,
+				917CC8EE1748FCB300A138FD /* Adventure_5_4S.jpg */,
+				917CC8EF1748FCB300A138FD /* Adventure_5_5.jpg */,
+				917CC8F01748FCB300A138FD /* Adventure_6_4S.jpg */,
+				917CC8F11748FCB300A138FD /* Adventure_6_5.jpg */,
+				917CC8F21748FCB300A138FD /* Adventure_7_4S.jpg */,
+				917CC8F31748FCB300A138FD /* Adventure_7_5.jpg */,
+				917CC8F41748FCB300A138FD /* Anne_1_4S.jpg */,
+				917CC8F51748FCB300A138FD /* Anne_1_5.jpg */,
+				917CC8F61748FCB300A138FD /* Anne_2_4S.jpg */,
+				917CC8F71748FCB300A138FD /* Anne_2_5.jpg */,
+				917CC8F81748FCB300A138FD /* Anne_3_4S.jpg */,
+				917CC8F91748FCB300A138FD /* Anne_3_5.jpg */,
+				917CC8FA1748FCB300A138FD /* Anne_4_4S.jpg */,
+				917CC8FB1748FCB300A138FD /* Anne_4_5.jpg */,
+				917CC8FC1748FCB300A138FD /* Anne_5_4S.jpg */,
+				917CC8FD1748FCB300A138FD /* Anne_5_5.jpg */,
+				917CC8FE1748FCB300A138FD /* Anne_6_4S.jpg */,
+				917CC8FF1748FCB300A138FD /* Anne_6_5.jpg */,
+				917CC9001748FCB300A138FD /* Anne_7_4S.jpg */,
+				917CC9011748FCB300A138FD /* Anne_7_5.jpg */,
+				917CC9021748FCB300A138FD /* Aquarium_1_4S.jpg */,
+				917CC9031748FCB300A138FD /* Aquarium_1_5.jpg */,
+				917CC9041748FCB300A138FD /* Aquarium_2_4S.jpg */,
+				917CC9051748FCB300A138FD /* Aquarium_2_5.jpg */,
+				917CC9061748FCB300A138FD /* Aquarium_3_4S.jpg */,
+				917CC9071748FCB300A138FD /* Aquarium_3_5.jpg */,
+				917CC9081748FCB300A138FD /* Aquarium_4_4S.jpg */,
+				917CC9091748FCB300A138FD /* Aquarium_4_5.jpg */,
+				917CC90A1748FCB300A138FD /* Aquarium_5_4S.jpg */,
+				917CC90B1748FCB300A138FD /* Aquarium_5_5.jpg */,
+				917CC90C1748FCB300A138FD /* Aquarium_6_4S.jpg */,
+				917CC90D1748FCB300A138FD /* Aquarium_6_5.jpg */,
+				917CC90E1748FCB300A138FD /* Aquarium_7_4S.jpg */,
+				917CC90F1748FCB300A138FD /* Aquarium_7_5.jpg */,
+				917CC9101748FCB300A138FD /* Belveder_2_4S.jpg */,
+				917CC9111748FCB300A138FD /* Belveder_2_5.jpg */,
+				917CC9121748FCB300A138FD /* Belveder_4S.jpg */,
+				917CC9131748FCB300A138FD /* Belveder_5.jpg */,
+				917CC9141748FCB300A138FD /* Burgtheatre_4S.jpg */,
+				917CC9151748FCB300A138FD /* Burgtheatre_5.jpg */,
+				917CC9161748FCB300A138FD /* Cementary_4S.jpg */,
+				917CC9171748FCB300A138FD /* Cementary_5.jpg */,
+				917CC9181748FCB300A138FD /* City_Hall_4S.jpg */,
+				917CC9191748FCB300A138FD /* City_Hall_5.jpg */,
+				917CC91A1748FCB300A138FD /* Ferstel_4S.jpg */,
+				917CC91B1748FCB300A138FD /* Ferstel_5.jpg */,
+				917CC91C1748FCB300A138FD /* Freseur_1_4S.jpg */,
+				917CC91D1748FCB300A138FD /* Freseur_1_5.jpg */,
+				917CC91E1748FCB300A138FD /* Freseur_2_4S.jpg */,
+				917CC91F1748FCB300A138FD /* Freseur_2_5.jpg */,
+				917CC9201748FCB300A138FD /* Freseur_3_4S.jpg */,
+				917CC9211748FCB300A138FD /* Freseur_3_5.jpg */,
+				917CC9221748FCB300A138FD /* Freseur_4_4S.jpg */,
+				917CC9231748FCB300A138FD /* Freseur_4_5.jpg */,
+				917CC9241748FCB300A138FD /* Freseur_5_4S.jpg */,
+				917CC9251748FCB300A138FD /* Freseur_5_5.jpg */,
+				917CC9261748FCB300A138FD /* Freseur_6_4S.jpg */,
+				917CC9271748FCB300A138FD /* Freseur_6_5.jpg */,
+				917CC9281748FCB300A138FD /* Freseur_7_4S.jpg */,
+				917CC9291748FCB300A138FD /* Freseur_7_5.jpg */,
+				917CC92A1748FCB300A138FD /* Geschenk_1_4S.jpg */,
+				917CC92B1748FCB300A138FD /* Geschenk_1_5.jpg */,
+				917CC92C1748FCB300A138FD /* Geschenk_2_4S.jpg */,
+				917CC92D1748FCB300A138FD /* Geschenk_2_5.jpg */,
+				917CC92E1748FCB300A138FD /* Geschenk_3_4S.jpg */,
+				917CC92F1748FCB300A138FD /* Geschenk_3_5.jpg */,
+				917CC9301748FCB300A138FD /* Geschenk_4_4S.jpg */,
+				917CC9311748FCB300A138FD /* Geschenk_4_5.jpg */,
+				917CC9321748FCB300A138FD /* Geschenk_5_4S.jpg */,
+				917CC9331748FCB300A138FD /* Geschenk_5_5.jpg */,
+				917CC9341748FCB300A138FD /* Geschenk_6_4S.jpg */,
+				917CC9351748FCB300A138FD /* Geschenk_6_5.jpg */,
+				917CC9361748FCB300A138FD /* Geschenk_7_4S.jpg */,
+				917CC9371748FCB300A138FD /* Geschenk_7_5.jpg */,
+				917CC9381748FCB300A138FD /* Goethe_4S.jpg */,
+				917CC9391748FCB300A138FD /* Goethe_5.jpg */,
+				917CC93A1748FCB300A138FD /* Innere_stadt_4S.jpg */,
+				917CC93B1748FCB300A138FD /* Innere_stadt_5.jpg */,
+				917CC93C1748FCB300A138FD /* Landstrasse_4S.jpg */,
+				917CC93D1748FCB300A138FD /* Landstrasse_5.jpg */,
+				917CC93E1748FCB300A138FD /* Leidenschaft_1_4S.jpg */,
+				917CC93F1748FCB300A138FD /* Leidenschaft_1_5.jpg */,
+				917CC9401748FCB300A138FD /* Leidenschaft_2_4S.jpg */,
+				917CC9411748FCB300A138FD /* Leidenschaft_2_5.jpg */,
+				917CC9421748FCB300A138FD /* Leidenschaft_3_4S.jpg */,
+				917CC9431748FCB300A138FD /* Leidenschaft_3_5.jpg */,
+				917CC9441748FCB300A138FD /* Leidenschaft_4_4S.jpg */,
+				917CC9451748FCB300A138FD /* Leidenschaft_4_5.jpg */,
+				917CC9461748FCB300A138FD /* Leidenschaft_5_4S.jpg */,
+				917CC9471748FCB300A138FD /* Leidenschaft_5_5.jpg */,
+				917CC9481748FCB300A138FD /* Leidenschaft_6_4S.jpg */,
+				917CC9491748FCB300A138FD /* Leidenschaft_6_5.jpg */,
+				917CC94A1748FCB300A138FD /* Leopoldstadt_4S.jpg */,
+				917CC94B1748FCB300A138FD /* Leopoldstadt_5.jpg */,
+				917CC94C1748FCB300A138FD /* Minoriten_4S.jpg */,
+				917CC94D1748FCB300A138FD /* Minoriten_5.jpg */,
+				917CC94E1748FCB300A138FD /* Mona_1_4S.jpg */,
+				917CC94F1748FCB300A138FD /* Mona_1_5.jpg */,
+				917CC9501748FCB300A138FD /* Mona_2_4S.jpg */,
+				917CC9511748FCB300A138FD /* Mona_2_5.jpg */,
+				917CC9521748FCB300A138FD /* Mona_3_4S.jpg */,
+				917CC9531748FCB300A138FD /* Mona_3_5.jpg */,
+				917CC9541748FCB300A138FD /* Mona_4_4S.jpg */,
+				917CC9551748FCB300A138FD /* Mona_4_5.jpg */,
+				917CC9561748FCB300A138FD /* Mona_5_4S.jpg */,
+				917CC9571748FCB300A138FD /* Mona_5_5.jpg */,
+				917CC9581748FCB300A138FD /* Mona_6_4S.jpg */,
+				917CC9591748FCB300A138FD /* Mona_6_5.jpg */,
+				917CC95A1748FCB300A138FD /* Mona_7_4S.jpg */,
+				917CC95B1748FCB300A138FD /* Mona_7_5.jpg */,
+				917CC95C1748FCB300A138FD /* Natural_History_4S.jpg */,
+				917CC95D1748FCB300A138FD /* Natural_History_5.jpg */,
+				917CC95E1748FCB300A138FD /* Old_town_view_4S.jpg */,
+				917CC95F1748FCB300A138FD /* Old_town_view_5.jpg */,
+				917CC9601748FCB300A138FD /* Parliament_4S.jpg */,
+				917CC9611748FCB300A138FD /* Parliament_5.jpg */,
+				917CC9621748FCB300A138FD /* Prater_4S.jpg */,
+				917CC9631748FCB300A138FD /* Prater_5.jpg */,
+				917CC9641748FCB300A138FD /* Rupertkirche_4S.jpg */,
+				917CC9651748FCB300A138FD /* Rupertkirche_5.jpg */,
+				917CC9661748FCB300A138FD /* Statue_Bethoven_4S.jpg */,
+				917CC9671748FCB300A138FD /* Statue_Bethoven_5.jpg */,
+				917CC9681748FCB300A138FD /* Statue_Straus_4S.jpg */,
+				917CC9691748FCB300A138FD /* Statue_Straus_5.jpg */,
+				917CC96A1748FCB300A138FD /* taxi3.jpeg */,
+				917CC96B1748FCB300A138FD /* taxi4.jpeg */,
+				917CC96C1748FCB300A138FD /* vena_metro.jpg */,
+				917CC96D1748FCB300A138FD /* vena_metro4.jpg */,
+				917CC96E1748FCB300A138FD /* vena_metro5.jpg */,
+				917CC96F1748FCB300A138FD /* vienna.mbtiles */,
+				917CC9701748FCB300A138FD /* vienna.png */,
+				917CC9711748FCB300A138FD /* vienna_small_pic.png */,
+				917CC9721748FCB300A138FD /* Wieden_4S.jpg */,
+				917CC9731748FCB300A138FD /* Wieden_5.jpg */,
+				917CC9741748FCB300A138FD /* Zehnte_Etage_1_4S.jpg */,
+				917CC9751748FCB300A138FD /* Zehnte_Etage_1_5.jpg */,
+				917CC9761748FCB300A138FD /* Zehnte_Etage_2_4S.jpg */,
+				917CC9771748FCB300A138FD /* Zehnte_Etage_2_5.jpg */,
+				917CC9781748FCB300A138FD /* Zehnte_Etage_3_4S.jpg */,
+				917CC9791748FCB300A138FD /* Zehnte_Etage_3_5.jpg */,
+				917CC97A1748FCB300A138FD /* Zehnte_Etage_4_4S.jpg */,
+				917CC97B1748FCB300A138FD /* Zehnte_Etage_4_5.jpg */,
+				917CC97C1748FCB300A138FD /* Zehnte_Etage_5_4S.jpg */,
+				917CC97D1748FCB300A138FD /* Zehnte_Etage_5_5.jpg */,
+				917CC97E1748FCB300A138FD /* Zehnte_Etage_6_4S.jpg */,
+				917CC97F1748FCB300A138FD /* Zehnte_Etage_6_5.jpg */,
+				917CC9801748FCB300A138FD /* Zehnte_Etage_7_4S.jpg */,
+				917CC9811748FCB300A138FD /* Zehnte_Etage_7_5.jpg */,
+			);
+			name = Vienna;
+			path = ../../../Documents/Vienna;
+			sourceTree = "<group>";
+		};
+		917CCA1E1748FCCB00A138FD /* Moscow */ = {
+			isa = PBXGroup;
+			children = (
+				917CCA1F1748FCCB00A138FD /* 1_5.jpg */,
+				917CCA201748FCCB00A138FD /* 2.mbtiles */,
+				917CCA211748FCCB00A138FD /* 2_5.jpg */,
+				917CCA221748FCCB00A138FD /* 3_5.jpg */,
+				917CCA231748FCCB00A138FD /* 4_5.jpg */,
+				917CCA241748FCCB00A138FD /* 5_5.jpg */,
+				917CCA251748FCCB00A138FD /* 6_5.jpg */,
+				917CCA261748FCCB00A138FD /* 7_5.jpg */,
+				917CCA271748FCCB00A138FD /* Apartmentos_4S_1.jpg */,
+				917CCA281748FCCB00A138FD /* Apartmentos_4S_2.jpg */,
+				917CCA291748FCCB00A138FD /* Apartmentos_4S_3.jpg */,
+				917CCA2A1748FCCB00A138FD /* Apartmentos_4S_4.jpg */,
+				917CCA2B1748FCCB00A138FD /* Apartmentos_4S_5.jpg */,
+				917CCA2C1748FCCB00A138FD /* Apartmentos_4S_6.jpg */,
+				917CCA2D1748FCCB00A138FD /* Apartmentos_4S_7.jpg */,
+				917CCA2E1748FCCB00A138FD /* Apartmentos_5_1.jpg */,
+				917CCA2F1748FCCB00A138FD /* Apartmentos_5_2.jpg */,
+				917CCA301748FCCB00A138FD /* Apartmentos_5_3.jpg */,
+				917CCA311748FCCB00A138FD /* Apartmentos_5_4.jpg */,
+				917CCA321748FCCB00A138FD /* Apartmentos_5_5.jpg */,
+				917CCA331748FCCB00A138FD /* Apartmentos_5_6.jpg */,
+				917CCA341748FCCB00A138FD /* Apartmentos_5_7.jpg */,
+				917CCA351748FCCB00A138FD /* Arbat-district-4S.jpg */,
+				917CCA361748FCCB00A138FD /* Arbat-district-5.jpg */,
+				917CCA371748FCCB00A138FD /* BacRoom_1_4S.jpg */,
+				917CCA381748FCCB00A138FD /* BacRoom_1_5.jpg */,
+				917CCA391748FCCB00A138FD /* BacRoom_2_4S.jpg */,
+				917CCA3A1748FCCB00A138FD /* BacRoom_2_5.jpg */,
+				917CCA3B1748FCCB00A138FD /* BacRoom_3_4S.jpg */,
+				917CCA3C1748FCCB00A138FD /* BacRoom_3_5.jpg */,
+				917CCA3D1748FCCB00A138FD /* BacRoom_4_4S.jpg */,
+				917CCA3E1748FCCB00A138FD /* BacRoom_4_5.jpg */,
+				917CCA3F1748FCCB00A138FD /* BacRoom_5_4S.jpg */,
+				917CCA401748FCCB00A138FD /* BacRoom_5_5.jpg */,
+				917CCA411748FCCB00A138FD /* BacRoom_6_4S.jpg */,
+				917CCA421748FCCB00A138FD /* BacRoom_6_5.jpg */,
+				917CCA431748FCCB00A138FD /* BacRoom_7_4S.jpg */,
+				917CCA441748FCCB00A138FD /* BacRoom_7_5.jpg */,
+				917CCA451748FCCB00A138FD /* Church_2_4S.jpg */,
+				917CCA461748FCCB00A138FD /* Church_2_5.jpg */,
+				917CCA471748FCCB00A138FD /* Church_4S.jpg */,
+				917CCA481748FCCB00A138FD /* Church_5.jpg */,
+				917CCA491748FCCB00A138FD /* Filevskyi-park-district-4S.jpg */,
+				917CCA4A1748FCCB00A138FD /* Filevskyi-park-district-5.jpg */,
+				917CCA4B1748FCCB00A138FD /* G&M_1_4S.jpg */,
+				917CCA4C1748FCCB00A138FD /* G&M_1_5.jpg */,
+				917CCA4D1748FCCB00A138FD /* G&M_2_4S.jpg */,
+				917CCA4E1748FCCB00A138FD /* G&M_2_5.jpg */,
+				917CCA4F1748FCCB00A138FD /* G&M_3_4S.jpg */,
+				917CCA501748FCCB00A138FD /* G&M_3_5.jpg */,
+				917CCA511748FCCB00A138FD /* G&M_4_4S.jpg */,
+				917CCA521748FCCB00A138FD /* G&M_4_5.jpg */,
+				917CCA531748FCCB00A138FD /* G&M_5_4S.jpg */,
+				917CCA541748FCCB00A138FD /* G&M_5_5.jpg */,
+				917CCA551748FCCB00A138FD /* G&M_6_4S.jpg */,
+				917CCA561748FCCB00A138FD /* G&M_6_5.jpg */,
+				917CCA571748FCCB00A138FD /* G&M_7_4S.jpg */,
+				917CCA581748FCCB00A138FD /* G&M_7_5.jpg */,
+				917CCA591748FCCB00A138FD /* Hamovniki-district-4S.jpg */,
+				917CCA5A1748FCCB00A138FD /* Hamovniki-district-5.jpg */,
+				917CCA5B1748FCCB00A138FD /* Historical_museum_4S.jpg */,
+				917CCA5C1748FCCB00A138FD /* Historical_museum_5.jpg */,
+				917CCA5D1748FCCB00A138FD /* Hotel_Ukraina_4S.jpg */,
+				917CCA5E1748FCCB00A138FD /* Hotel_Ukraina_5.jpg */,
+				917CCA5F1748FCCB00A138FD /* Hram_Hrista_Spasitelja_4S.jpg */,
+				917CCA601748FCCB00A138FD /* Hram_Hrista_Spasitelja_5.jpg */,
+				917CCA611748FCCB00A138FD /* Izmailovo_4S.jpg */,
+				917CCA621748FCCB00A138FD /* Izmailovo_5.jpg */,
+				917CCA631748FCCB00A138FD /* Kolomenskoe_5.jpg */,
+				917CCA641748FCCB00A138FD /* Kolomenskoje_4S.jpg */,
+				917CCA651748FCCB00A138FD /* Matisel_1_4S.jpg */,
+				917CCA661748FCCB00A138FD /* Matisel_1_5.jpg */,
+				917CCA671748FCCB00A138FD /* Matisel_2_4S.jpg */,
+				917CCA681748FCCB00A138FD /* Matisel_2_5.jpg */,
+				917CCA691748FCCB00A138FD /* Matisel_3_4S.jpg */,
+				917CCA6A1748FCCB00A138FD /* Matisel_3_5.jpg */,
+				917CCA6B1748FCCB00A138FD /* Matisel_4_4S.jpg */,
+				917CCA6C1748FCCB00A138FD /* Matisel_4_5.jpg */,
+				917CCA6D1748FCCB00A138FD /* Matisel_5_4S.jpg */,
+				917CCA6E1748FCCB00A138FD /* Matisel_5_5.jpg */,
+				917CCA6F1748FCCB00A138FD /* Matisel_6_4S.jpg */,
+				917CCA701748FCCB00A138FD /* Matisel_6_5.jpg */,
+				917CCA711748FCCB00A138FD /* Matisel_7_4S.jpg */,
+				917CCA721748FCCB00A138FD /* Matisel_7_5.jpg */,
+				917CCA731748FCCB00A138FD /* Monkey_park_1_4S.jpg */,
+				917CCA741748FCCB00A138FD /* Monkey_park_1_5.jpg */,
+				917CCA751748FCCB00A138FD /* Monkey_park_2_4S.jpg */,
+				917CCA761748FCCB00A138FD /* Monkey_park_2_5.jpg */,
+				917CCA771748FCCB00A138FD /* Monkey_park_3_4S.jpg */,
+				917CCA781748FCCB00A138FD /* Monkey_park_3_5.jpg */,
+				917CCA791748FCCB00A138FD /* Monkey_park_4_4S.jpg */,
+				917CCA7A1748FCCB00A138FD /* Monkey_park_4_5.jpg */,
+				917CCA7B1748FCCB00A138FD /* Monkey_park_5_4S.jpg */,
+				917CCA7C1748FCCB00A138FD /* Monkey_park_5_5.jpg */,
+				917CCA7D1748FCCB00A138FD /* Monkey_park_6_4S.jpg */,
+				917CCA7E1748FCCB00A138FD /* Monkey_park_6_5.jpg */,
+				917CCA7F1748FCCB00A138FD /* Monkey_park_7_4S.jpg */,
+				917CCA801748FCCB00A138FD /* Monkey_park_7_5.jpg */,
+				917CCA811748FCCB00A138FD /* mosc_metro4.jpg */,
+				917CCA821748FCCB00A138FD /* mosc_metro5.jpg */,
+				917CCA831748FCCB00A138FD /* Moscow.png */,
+				917CCA841748FCCB00A138FD /* Moscow_city_4S.jpg */,
+				917CCA851748FCCB00A138FD /* Moscow_city_5.jpg */,
+				917CCA861748FCCB00A138FD /* moscow_small_pic.png */,
+				917CCA871748FCCB00A138FD /* Novodevichyi_monastyr_4S.jpg */,
+				917CCA881748FCCB00A138FD /* Novodevichyi_monastyr_5.jpg */,
+				917CCA891748FCCB00A138FD /* Petr_Velikyi_4S.jpg */,
+				917CCA8A1748FCCB00A138FD /* Petr_Velikyi_5.jpg */,
+				917CCA8B1748FCCB00A138FD /* Presnenskyi_district_4S.jpg */,
+				917CCA8C1748FCCB00A138FD /* Presnenskyi_district_5.jpg */,
+				917CCA8D1748FCCB00A138FD /* Rus_1_4S.jpg */,
+				917CCA8E1748FCCB00A138FD /* Rus_1_5.jpg */,
+				917CCA8F1748FCCB00A138FD /* Rus_2_4S.jpg */,
+				917CCA901748FCCB00A138FD /* Rus_2_5.jpg */,
+				917CCA911748FCCB00A138FD /* Rus_3_4S.jpg */,
+				917CCA921748FCCB00A138FD /* Rus_3_5.jpg */,
+				917CCA931748FCCB00A138FD /* Rus_4_4S.jpg */,
+				917CCA941748FCCB00A138FD /* Rus_4_5.jpg */,
+				917CCA951748FCCB00A138FD /* Rus_5_4S.jpg */,
+				917CCA961748FCCB00A138FD /* Rus_5_5.jpg */,
+				917CCA971748FCCB00A138FD /* Rus_6_4S.jpg */,
+				917CCA981748FCCB00A138FD /* Rus_6_5.jpg */,
+				917CCA991748FCCB00A138FD /* Rus_7_4S.jpg */,
+				917CCA9A1748FCCB00A138FD /* Rus_7_5.jpg */,
+				917CCA9B1748FCCB00A138FD /* shema_2003-12.jpg */,
+				917CCA9C1748FCCB00A138FD /* Sibir_1_4S.jpg */,
+				917CCA9D1748FCCB00A138FD /* Sibir_1_5.jpg */,
+				917CCA9E1748FCCB00A138FD /* Sibir_2_4S.jpg */,
+				917CCA9F1748FCCB00A138FD /* Sibir_2_5.jpg */,
+				917CCAA01748FCCB00A138FD /* Sibir_3_4S.jpg */,
+				917CCAA11748FCCB00A138FD /* Sibir_3_5.jpg */,
+				917CCAA21748FCCB00A138FD /* Sibir_4_4S.jpg */,
+				917CCAA31748FCCB00A138FD /* Sibir_4_5.jpg */,
+				917CCAA41748FCCB00A138FD /* Sibir_5_4S.jpg */,
+				917CCAA51748FCCB00A138FD /* Sibir_5_5.jpg */,
+				917CCAA61748FCCB00A138FD /* Sibir_6_4S.jpg */,
+				917CCAA71748FCCB00A138FD /* Sibir_6_5.jpg */,
+				917CCAA81748FCCB00A138FD /* Sibir_7_5.jpg */,
+				917CCAA91748FCCB00A138FD /* Sobor_Vasijia_Blagennogo_4S.jpg */,
+				917CCAAA1748FCCB00A138FD /* Sobor_Vasilija_Blagennogo_5.jpg */,
+				917CCAAB1748FCCB00A138FD /* Strogino_4S.jpg */,
+				917CCAAC1748FCCB00A138FD /* Strogino_5.jpg */,
+				917CCAAD1748FCCB00A138FD /* taxi1.jpeg */,
+				917CCAAE1748FCCB00A138FD /* taxi2.jpeg */,
+				917CCAAF1748FCCB00A138FD /* Tcar_colocol_5.jpg */,
+				917CCAB01748FCCB00A138FD /* Triol_1_4S.jpg */,
+				917CCAB11748FCCB00A138FD /* Triol_2_4S.jpg */,
+				917CCAB21748FCCB00A138FD /* Triol_3_4S.jpg */,
+				917CCAB31748FCCB00A138FD /* Triol_4_4S.jpg */,
+				917CCAB41748FCCB00A138FD /* Triol_5_4S.jpg */,
+				917CCAB51748FCCB00A138FD /* Triol_6_4S.jpg */,
+				917CCAB61748FCCB00A138FD /* Triol_7_4S.jpg */,
+				917CCAB71748FCCB00A138FD /* Tsar_colocol_4S.jpg */,
+				917CCAB81748FCCB00A138FD /* Tverskoy_district_4S.jpg */,
+				917CCAB91748FCCB00A138FD /* Tverskoy_district_5.jpg */,
+				917CCABA1748FCCB00A138FD /* VDNH_4S.jpg */,
+				917CCABB1748FCCB00A138FD /* VDNH_5.jpg */,
+				917CCABC1748FCCB00A138FD /* View_Kremlin_4S.jpg */,
+				917CCABD1748FCCB00A138FD /* view_Kremlin_5.jpg */,
+				917CCABE1748FCCB00A138FD /* Yakimanka_district_4S.jpg */,
+				917CCABF1748FCCB00A138FD /* Yakimanka_district_5.jpg */,
+			);
+			name = Moscow;
+			path = ../../../Documents/Moscow;
 			sourceTree = "<group>";
 		};
 		919E86F3173A58E700A25E07 = {
@@ -1324,6 +2289,8 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				917CCA1E1748FCCB00A138FD /* Moscow */,
+				917CC8E51748FCB300A138FD /* Vienna */,
 				5514D1851748FB1A00C0C2E6 /* Work PNG */,
 				55CDB04017413DD100AF1096 /* MapBox.framework */,
 				55CDAF7B17413D9000AF1096 /* ZBarSDK */,
@@ -1646,8 +2613,6 @@
 				55CDB03C17413D9000AF1096 /* zbar-helpicons.png in Resources */,
 				55CDB03D17413D9000AF1096 /* zbar-samples.png in Resources */,
 				9113464D1747A57C00F9E28E /* appData.plist in Resources */,
-				5514D1831748FA7100C0C2E6 /* Moscow in Resources */,
-				5514D1841748FA7100C0C2E6 /* Vienna in Resources */,
 				5514D26A1748FB1B00C0C2E6 /* 124_124 Social_Icons11@2x.png in Resources */,
 				5514D26B1748FB1B00C0C2E6 /* 124_124 Social_Icons22@2x.png in Resources */,
 				5514D26C1748FB1B00C0C2E6 /* 124_124 Social_Icons33@2x.png in Resources */,
@@ -1876,6 +2841,323 @@
 				5514D34B1748FB1C00C0C2E6 /* tabicon_SpecialSeries@2x.png in Resources */,
 				5514D34C1748FB1C00C0C2E6 /* table_grad.png in Resources */,
 				5514D34D1748FB1C00C0C2E6 /* table_grad_o_1.png in Resources */,
+				917CC9821748FCB300A138FD /* Adventure_1_4S.jpg in Resources */,
+				917CC9831748FCB300A138FD /* Adventure_1_5.jpg in Resources */,
+				917CC9841748FCB300A138FD /* Adventure_2_4S.jpg in Resources */,
+				917CC9851748FCB300A138FD /* Adventure_2_5.jpg in Resources */,
+				917CC9861748FCB300A138FD /* Adventure_3_4S.jpg in Resources */,
+				917CC9871748FCB300A138FD /* Adventure_3_5.jpg in Resources */,
+				917CC9881748FCB300A138FD /* Adventure_4_4S.jpg in Resources */,
+				917CC9891748FCB300A138FD /* Adventure_4_5.jpg in Resources */,
+				917CC98A1748FCB300A138FD /* Adventure_5_4S.jpg in Resources */,
+				917CC98B1748FCB300A138FD /* Adventure_5_5.jpg in Resources */,
+				917CC98C1748FCB300A138FD /* Adventure_6_4S.jpg in Resources */,
+				917CC98D1748FCB300A138FD /* Adventure_6_5.jpg in Resources */,
+				917CC98E1748FCB300A138FD /* Adventure_7_4S.jpg in Resources */,
+				917CC98F1748FCB300A138FD /* Adventure_7_5.jpg in Resources */,
+				917CC9901748FCB300A138FD /* Anne_1_4S.jpg in Resources */,
+				917CC9911748FCB300A138FD /* Anne_1_5.jpg in Resources */,
+				917CC9921748FCB300A138FD /* Anne_2_4S.jpg in Resources */,
+				917CC9931748FCB300A138FD /* Anne_2_5.jpg in Resources */,
+				917CC9941748FCB300A138FD /* Anne_3_4S.jpg in Resources */,
+				917CC9951748FCB300A138FD /* Anne_3_5.jpg in Resources */,
+				917CC9961748FCB300A138FD /* Anne_4_4S.jpg in Resources */,
+				917CC9971748FCB300A138FD /* Anne_4_5.jpg in Resources */,
+				917CC9981748FCB300A138FD /* Anne_5_4S.jpg in Resources */,
+				917CC9991748FCB300A138FD /* Anne_5_5.jpg in Resources */,
+				917CC99A1748FCB300A138FD /* Anne_6_4S.jpg in Resources */,
+				917CC99B1748FCB300A138FD /* Anne_6_5.jpg in Resources */,
+				917CC99C1748FCB300A138FD /* Anne_7_4S.jpg in Resources */,
+				917CC99D1748FCB300A138FD /* Anne_7_5.jpg in Resources */,
+				917CC99E1748FCB300A138FD /* Aquarium_1_4S.jpg in Resources */,
+				917CC99F1748FCB300A138FD /* Aquarium_1_5.jpg in Resources */,
+				917CC9A01748FCB300A138FD /* Aquarium_2_4S.jpg in Resources */,
+				917CC9A11748FCB300A138FD /* Aquarium_2_5.jpg in Resources */,
+				917CC9A21748FCB300A138FD /* Aquarium_3_4S.jpg in Resources */,
+				917CC9A31748FCB300A138FD /* Aquarium_3_5.jpg in Resources */,
+				917CC9A41748FCB300A138FD /* Aquarium_4_4S.jpg in Resources */,
+				917CC9A51748FCB300A138FD /* Aquarium_4_5.jpg in Resources */,
+				917CC9A61748FCB300A138FD /* Aquarium_5_4S.jpg in Resources */,
+				917CC9A71748FCB300A138FD /* Aquarium_5_5.jpg in Resources */,
+				917CC9A81748FCB300A138FD /* Aquarium_6_4S.jpg in Resources */,
+				917CC9A91748FCB300A138FD /* Aquarium_6_5.jpg in Resources */,
+				917CC9AA1748FCB300A138FD /* Aquarium_7_4S.jpg in Resources */,
+				917CC9AB1748FCB300A138FD /* Aquarium_7_5.jpg in Resources */,
+				917CC9AC1748FCB300A138FD /* Belveder_2_4S.jpg in Resources */,
+				917CC9AD1748FCB300A138FD /* Belveder_2_5.jpg in Resources */,
+				917CC9AE1748FCB300A138FD /* Belveder_4S.jpg in Resources */,
+				917CC9AF1748FCB300A138FD /* Belveder_5.jpg in Resources */,
+				917CC9B01748FCB300A138FD /* Burgtheatre_4S.jpg in Resources */,
+				917CC9B11748FCB300A138FD /* Burgtheatre_5.jpg in Resources */,
+				917CC9B21748FCB300A138FD /* Cementary_4S.jpg in Resources */,
+				917CC9B31748FCB300A138FD /* Cementary_5.jpg in Resources */,
+				917CC9B41748FCB300A138FD /* City_Hall_4S.jpg in Resources */,
+				917CC9B51748FCB300A138FD /* City_Hall_5.jpg in Resources */,
+				917CC9B61748FCB300A138FD /* Ferstel_4S.jpg in Resources */,
+				917CC9B71748FCB300A138FD /* Ferstel_5.jpg in Resources */,
+				917CC9B81748FCB300A138FD /* Freseur_1_4S.jpg in Resources */,
+				917CC9B91748FCB300A138FD /* Freseur_1_5.jpg in Resources */,
+				917CC9BA1748FCB300A138FD /* Freseur_2_4S.jpg in Resources */,
+				917CC9BB1748FCB300A138FD /* Freseur_2_5.jpg in Resources */,
+				917CC9BC1748FCB300A138FD /* Freseur_3_4S.jpg in Resources */,
+				917CC9BD1748FCB300A138FD /* Freseur_3_5.jpg in Resources */,
+				917CC9BE1748FCB300A138FD /* Freseur_4_4S.jpg in Resources */,
+				917CC9BF1748FCB300A138FD /* Freseur_4_5.jpg in Resources */,
+				917CC9C01748FCB300A138FD /* Freseur_5_4S.jpg in Resources */,
+				917CC9C11748FCB300A138FD /* Freseur_5_5.jpg in Resources */,
+				917CC9C21748FCB300A138FD /* Freseur_6_4S.jpg in Resources */,
+				917CC9C31748FCB300A138FD /* Freseur_6_5.jpg in Resources */,
+				917CC9C41748FCB300A138FD /* Freseur_7_4S.jpg in Resources */,
+				917CC9C51748FCB300A138FD /* Freseur_7_5.jpg in Resources */,
+				917CC9C61748FCB300A138FD /* Geschenk_1_4S.jpg in Resources */,
+				917CC9C71748FCB300A138FD /* Geschenk_1_5.jpg in Resources */,
+				917CC9C81748FCB300A138FD /* Geschenk_2_4S.jpg in Resources */,
+				917CC9C91748FCB300A138FD /* Geschenk_2_5.jpg in Resources */,
+				917CC9CA1748FCB300A138FD /* Geschenk_3_4S.jpg in Resources */,
+				917CC9CB1748FCB300A138FD /* Geschenk_3_5.jpg in Resources */,
+				917CC9CC1748FCB300A138FD /* Geschenk_4_4S.jpg in Resources */,
+				917CC9CD1748FCB300A138FD /* Geschenk_4_5.jpg in Resources */,
+				917CC9CE1748FCB300A138FD /* Geschenk_5_4S.jpg in Resources */,
+				917CC9CF1748FCB300A138FD /* Geschenk_5_5.jpg in Resources */,
+				917CC9D01748FCB300A138FD /* Geschenk_6_4S.jpg in Resources */,
+				917CC9D11748FCB300A138FD /* Geschenk_6_5.jpg in Resources */,
+				917CC9D21748FCB300A138FD /* Geschenk_7_4S.jpg in Resources */,
+				917CC9D31748FCB300A138FD /* Geschenk_7_5.jpg in Resources */,
+				917CC9D41748FCB300A138FD /* Goethe_4S.jpg in Resources */,
+				917CC9D51748FCB300A138FD /* Goethe_5.jpg in Resources */,
+				917CC9D61748FCB300A138FD /* Innere_stadt_4S.jpg in Resources */,
+				917CC9D71748FCB300A138FD /* Innere_stadt_5.jpg in Resources */,
+				917CC9D81748FCB300A138FD /* Landstrasse_4S.jpg in Resources */,
+				917CC9D91748FCB300A138FD /* Landstrasse_5.jpg in Resources */,
+				917CC9DA1748FCB300A138FD /* Leidenschaft_1_4S.jpg in Resources */,
+				917CC9DB1748FCB300A138FD /* Leidenschaft_1_5.jpg in Resources */,
+				917CC9DC1748FCB300A138FD /* Leidenschaft_2_4S.jpg in Resources */,
+				917CC9DD1748FCB300A138FD /* Leidenschaft_2_5.jpg in Resources */,
+				917CC9DE1748FCB300A138FD /* Leidenschaft_3_4S.jpg in Resources */,
+				917CC9DF1748FCB300A138FD /* Leidenschaft_3_5.jpg in Resources */,
+				917CC9E01748FCB300A138FD /* Leidenschaft_4_4S.jpg in Resources */,
+				917CC9E11748FCB300A138FD /* Leidenschaft_4_5.jpg in Resources */,
+				917CC9E21748FCB300A138FD /* Leidenschaft_5_4S.jpg in Resources */,
+				917CC9E31748FCB300A138FD /* Leidenschaft_5_5.jpg in Resources */,
+				917CC9E41748FCB300A138FD /* Leidenschaft_6_4S.jpg in Resources */,
+				917CC9E51748FCB300A138FD /* Leidenschaft_6_5.jpg in Resources */,
+				917CC9E61748FCB300A138FD /* Leopoldstadt_4S.jpg in Resources */,
+				917CC9E71748FCB300A138FD /* Leopoldstadt_5.jpg in Resources */,
+				917CC9E81748FCB300A138FD /* Minoriten_4S.jpg in Resources */,
+				917CC9E91748FCB300A138FD /* Minoriten_5.jpg in Resources */,
+				917CC9EA1748FCB300A138FD /* Mona_1_4S.jpg in Resources */,
+				917CC9EB1748FCB300A138FD /* Mona_1_5.jpg in Resources */,
+				917CC9EC1748FCB300A138FD /* Mona_2_4S.jpg in Resources */,
+				917CC9ED1748FCB300A138FD /* Mona_2_5.jpg in Resources */,
+				917CC9EE1748FCB300A138FD /* Mona_3_4S.jpg in Resources */,
+				917CC9EF1748FCB300A138FD /* Mona_3_5.jpg in Resources */,
+				917CC9F01748FCB300A138FD /* Mona_4_4S.jpg in Resources */,
+				917CC9F11748FCB300A138FD /* Mona_4_5.jpg in Resources */,
+				917CC9F21748FCB300A138FD /* Mona_5_4S.jpg in Resources */,
+				917CC9F31748FCB300A138FD /* Mona_5_5.jpg in Resources */,
+				917CC9F41748FCB300A138FD /* Mona_6_4S.jpg in Resources */,
+				917CC9F51748FCB300A138FD /* Mona_6_5.jpg in Resources */,
+				917CC9F61748FCB300A138FD /* Mona_7_4S.jpg in Resources */,
+				917CC9F71748FCB300A138FD /* Mona_7_5.jpg in Resources */,
+				917CC9F81748FCB300A138FD /* Natural_History_4S.jpg in Resources */,
+				917CC9F91748FCB300A138FD /* Natural_History_5.jpg in Resources */,
+				917CC9FA1748FCB300A138FD /* Old_town_view_4S.jpg in Resources */,
+				917CC9FB1748FCB300A138FD /* Old_town_view_5.jpg in Resources */,
+				917CC9FC1748FCB300A138FD /* Parliament_4S.jpg in Resources */,
+				917CC9FD1748FCB300A138FD /* Parliament_5.jpg in Resources */,
+				917CC9FE1748FCB300A138FD /* Prater_4S.jpg in Resources */,
+				917CC9FF1748FCB300A138FD /* Prater_5.jpg in Resources */,
+				917CCA001748FCB300A138FD /* Rupertkirche_4S.jpg in Resources */,
+				917CCA011748FCB300A138FD /* Rupertkirche_5.jpg in Resources */,
+				917CCA021748FCB300A138FD /* Statue_Bethoven_4S.jpg in Resources */,
+				917CCA031748FCB300A138FD /* Statue_Bethoven_5.jpg in Resources */,
+				917CCA041748FCB300A138FD /* Statue_Straus_4S.jpg in Resources */,
+				917CCA051748FCB300A138FD /* Statue_Straus_5.jpg in Resources */,
+				917CCA061748FCB300A138FD /* taxi3.jpeg in Resources */,
+				917CCA071748FCB300A138FD /* taxi4.jpeg in Resources */,
+				917CCA081748FCB300A138FD /* vena_metro.jpg in Resources */,
+				917CCA091748FCB300A138FD /* vena_metro4.jpg in Resources */,
+				917CCA0A1748FCB300A138FD /* vena_metro5.jpg in Resources */,
+				917CCA0B1748FCB300A138FD /* vienna.mbtiles in Resources */,
+				917CCA0C1748FCB300A138FD /* vienna.png in Resources */,
+				917CCA0D1748FCB300A138FD /* vienna_small_pic.png in Resources */,
+				917CCA0E1748FCB300A138FD /* Wieden_4S.jpg in Resources */,
+				917CCA0F1748FCB300A138FD /* Wieden_5.jpg in Resources */,
+				917CCA101748FCB300A138FD /* Zehnte_Etage_1_4S.jpg in Resources */,
+				917CCA111748FCB300A138FD /* Zehnte_Etage_1_5.jpg in Resources */,
+				917CCA121748FCB300A138FD /* Zehnte_Etage_2_4S.jpg in Resources */,
+				917CCA131748FCB300A138FD /* Zehnte_Etage_2_5.jpg in Resources */,
+				917CCA141748FCB300A138FD /* Zehnte_Etage_3_4S.jpg in Resources */,
+				917CCA151748FCB300A138FD /* Zehnte_Etage_3_5.jpg in Resources */,
+				917CCA161748FCB300A138FD /* Zehnte_Etage_4_4S.jpg in Resources */,
+				917CCA171748FCB300A138FD /* Zehnte_Etage_4_5.jpg in Resources */,
+				917CCA181748FCB300A138FD /* Zehnte_Etage_5_4S.jpg in Resources */,
+				917CCA191748FCB300A138FD /* Zehnte_Etage_5_5.jpg in Resources */,
+				917CCA1A1748FCB300A138FD /* Zehnte_Etage_6_4S.jpg in Resources */,
+				917CCA1B1748FCB300A138FD /* Zehnte_Etage_6_5.jpg in Resources */,
+				917CCA1C1748FCB300A138FD /* Zehnte_Etage_7_4S.jpg in Resources */,
+				917CCA1D1748FCB300A138FD /* Zehnte_Etage_7_5.jpg in Resources */,
+				917CCAC01748FCCB00A138FD /* 1_5.jpg in Resources */,
+				917CCAC11748FCCB00A138FD /* 2.mbtiles in Resources */,
+				917CCAC21748FCCB00A138FD /* 2_5.jpg in Resources */,
+				917CCAC31748FCCB00A138FD /* 3_5.jpg in Resources */,
+				917CCAC41748FCCB00A138FD /* 4_5.jpg in Resources */,
+				917CCAC51748FCCB00A138FD /* 5_5.jpg in Resources */,
+				917CCAC61748FCCB00A138FD /* 6_5.jpg in Resources */,
+				917CCAC71748FCCB00A138FD /* 7_5.jpg in Resources */,
+				917CCAC81748FCCB00A138FD /* Apartmentos_4S_1.jpg in Resources */,
+				917CCAC91748FCCB00A138FD /* Apartmentos_4S_2.jpg in Resources */,
+				917CCACA1748FCCB00A138FD /* Apartmentos_4S_3.jpg in Resources */,
+				917CCACB1748FCCB00A138FD /* Apartmentos_4S_4.jpg in Resources */,
+				917CCACC1748FCCB00A138FD /* Apartmentos_4S_5.jpg in Resources */,
+				917CCACD1748FCCB00A138FD /* Apartmentos_4S_6.jpg in Resources */,
+				917CCACE1748FCCB00A138FD /* Apartmentos_4S_7.jpg in Resources */,
+				917CCACF1748FCCB00A138FD /* Apartmentos_5_1.jpg in Resources */,
+				917CCAD01748FCCB00A138FD /* Apartmentos_5_2.jpg in Resources */,
+				917CCAD11748FCCB00A138FD /* Apartmentos_5_3.jpg in Resources */,
+				917CCAD21748FCCB00A138FD /* Apartmentos_5_4.jpg in Resources */,
+				917CCAD31748FCCB00A138FD /* Apartmentos_5_5.jpg in Resources */,
+				917CCAD41748FCCB00A138FD /* Apartmentos_5_6.jpg in Resources */,
+				917CCAD51748FCCB00A138FD /* Apartmentos_5_7.jpg in Resources */,
+				917CCAD61748FCCB00A138FD /* Arbat-district-4S.jpg in Resources */,
+				917CCAD71748FCCB00A138FD /* Arbat-district-5.jpg in Resources */,
+				917CCAD81748FCCB00A138FD /* BacRoom_1_4S.jpg in Resources */,
+				917CCAD91748FCCB00A138FD /* BacRoom_1_5.jpg in Resources */,
+				917CCADA1748FCCB00A138FD /* BacRoom_2_4S.jpg in Resources */,
+				917CCADB1748FCCB00A138FD /* BacRoom_2_5.jpg in Resources */,
+				917CCADC1748FCCB00A138FD /* BacRoom_3_4S.jpg in Resources */,
+				917CCADD1748FCCB00A138FD /* BacRoom_3_5.jpg in Resources */,
+				917CCADE1748FCCB00A138FD /* BacRoom_4_4S.jpg in Resources */,
+				917CCADF1748FCCB00A138FD /* BacRoom_4_5.jpg in Resources */,
+				917CCAE01748FCCB00A138FD /* BacRoom_5_4S.jpg in Resources */,
+				917CCAE11748FCCB00A138FD /* BacRoom_5_5.jpg in Resources */,
+				917CCAE21748FCCB00A138FD /* BacRoom_6_4S.jpg in Resources */,
+				917CCAE31748FCCB00A138FD /* BacRoom_6_5.jpg in Resources */,
+				917CCAE41748FCCB00A138FD /* BacRoom_7_4S.jpg in Resources */,
+				917CCAE51748FCCB00A138FD /* BacRoom_7_5.jpg in Resources */,
+				917CCAE61748FCCB00A138FD /* Church_2_4S.jpg in Resources */,
+				917CCAE71748FCCB00A138FD /* Church_2_5.jpg in Resources */,
+				917CCAE81748FCCB00A138FD /* Church_4S.jpg in Resources */,
+				917CCAE91748FCCB00A138FD /* Church_5.jpg in Resources */,
+				917CCAEA1748FCCB00A138FD /* Filevskyi-park-district-4S.jpg in Resources */,
+				917CCAEB1748FCCB00A138FD /* Filevskyi-park-district-5.jpg in Resources */,
+				917CCAEC1748FCCB00A138FD /* G&M_1_4S.jpg in Resources */,
+				917CCAED1748FCCB00A138FD /* G&M_1_5.jpg in Resources */,
+				917CCAEE1748FCCB00A138FD /* G&M_2_4S.jpg in Resources */,
+				917CCAEF1748FCCB00A138FD /* G&M_2_5.jpg in Resources */,
+				917CCAF01748FCCB00A138FD /* G&M_3_4S.jpg in Resources */,
+				917CCAF11748FCCB00A138FD /* G&M_3_5.jpg in Resources */,
+				917CCAF21748FCCB00A138FD /* G&M_4_4S.jpg in Resources */,
+				917CCAF31748FCCB00A138FD /* G&M_4_5.jpg in Resources */,
+				917CCAF41748FCCB00A138FD /* G&M_5_4S.jpg in Resources */,
+				917CCAF51748FCCB00A138FD /* G&M_5_5.jpg in Resources */,
+				917CCAF61748FCCB00A138FD /* G&M_6_4S.jpg in Resources */,
+				917CCAF71748FCCB00A138FD /* G&M_6_5.jpg in Resources */,
+				917CCAF81748FCCB00A138FD /* G&M_7_4S.jpg in Resources */,
+				917CCAF91748FCCB00A138FD /* G&M_7_5.jpg in Resources */,
+				917CCAFA1748FCCB00A138FD /* Hamovniki-district-4S.jpg in Resources */,
+				917CCAFB1748FCCB00A138FD /* Hamovniki-district-5.jpg in Resources */,
+				917CCAFC1748FCCB00A138FD /* Historical_museum_4S.jpg in Resources */,
+				917CCAFD1748FCCB00A138FD /* Historical_museum_5.jpg in Resources */,
+				917CCAFE1748FCCB00A138FD /* Hotel_Ukraina_4S.jpg in Resources */,
+				917CCAFF1748FCCB00A138FD /* Hotel_Ukraina_5.jpg in Resources */,
+				917CCB001748FCCB00A138FD /* Hram_Hrista_Spasitelja_4S.jpg in Resources */,
+				917CCB011748FCCB00A138FD /* Hram_Hrista_Spasitelja_5.jpg in Resources */,
+				917CCB021748FCCB00A138FD /* Izmailovo_4S.jpg in Resources */,
+				917CCB031748FCCB00A138FD /* Izmailovo_5.jpg in Resources */,
+				917CCB041748FCCB00A138FD /* Kolomenskoe_5.jpg in Resources */,
+				917CCB051748FCCB00A138FD /* Kolomenskoje_4S.jpg in Resources */,
+				917CCB061748FCCB00A138FD /* Matisel_1_4S.jpg in Resources */,
+				917CCB071748FCCB00A138FD /* Matisel_1_5.jpg in Resources */,
+				917CCB081748FCCB00A138FD /* Matisel_2_4S.jpg in Resources */,
+				917CCB091748FCCB00A138FD /* Matisel_2_5.jpg in Resources */,
+				917CCB0A1748FCCB00A138FD /* Matisel_3_4S.jpg in Resources */,
+				917CCB0B1748FCCB00A138FD /* Matisel_3_5.jpg in Resources */,
+				917CCB0C1748FCCB00A138FD /* Matisel_4_4S.jpg in Resources */,
+				917CCB0D1748FCCB00A138FD /* Matisel_4_5.jpg in Resources */,
+				917CCB0E1748FCCB00A138FD /* Matisel_5_4S.jpg in Resources */,
+				917CCB0F1748FCCB00A138FD /* Matisel_5_5.jpg in Resources */,
+				917CCB101748FCCB00A138FD /* Matisel_6_4S.jpg in Resources */,
+				917CCB111748FCCB00A138FD /* Matisel_6_5.jpg in Resources */,
+				917CCB121748FCCB00A138FD /* Matisel_7_4S.jpg in Resources */,
+				917CCB131748FCCB00A138FD /* Matisel_7_5.jpg in Resources */,
+				917CCB141748FCCB00A138FD /* Monkey_park_1_4S.jpg in Resources */,
+				917CCB151748FCCB00A138FD /* Monkey_park_1_5.jpg in Resources */,
+				917CCB161748FCCB00A138FD /* Monkey_park_2_4S.jpg in Resources */,
+				917CCB171748FCCB00A138FD /* Monkey_park_2_5.jpg in Resources */,
+				917CCB181748FCCB00A138FD /* Monkey_park_3_4S.jpg in Resources */,
+				917CCB191748FCCB00A138FD /* Monkey_park_3_5.jpg in Resources */,
+				917CCB1A1748FCCB00A138FD /* Monkey_park_4_4S.jpg in Resources */,
+				917CCB1B1748FCCB00A138FD /* Monkey_park_4_5.jpg in Resources */,
+				917CCB1C1748FCCB00A138FD /* Monkey_park_5_4S.jpg in Resources */,
+				917CCB1D1748FCCB00A138FD /* Monkey_park_5_5.jpg in Resources */,
+				917CCB1E1748FCCB00A138FD /* Monkey_park_6_4S.jpg in Resources */,
+				917CCB1F1748FCCB00A138FD /* Monkey_park_6_5.jpg in Resources */,
+				917CCB201748FCCB00A138FD /* Monkey_park_7_4S.jpg in Resources */,
+				917CCB211748FCCB00A138FD /* Monkey_park_7_5.jpg in Resources */,
+				917CCB221748FCCB00A138FD /* mosc_metro4.jpg in Resources */,
+				917CCB231748FCCB00A138FD /* mosc_metro5.jpg in Resources */,
+				917CCB241748FCCB00A138FD /* Moscow.png in Resources */,
+				917CCB251748FCCB00A138FD /* Moscow_city_4S.jpg in Resources */,
+				917CCB261748FCCB00A138FD /* Moscow_city_5.jpg in Resources */,
+				917CCB271748FCCB00A138FD /* moscow_small_pic.png in Resources */,
+				917CCB281748FCCB00A138FD /* Novodevichyi_monastyr_4S.jpg in Resources */,
+				917CCB291748FCCB00A138FD /* Novodevichyi_monastyr_5.jpg in Resources */,
+				917CCB2A1748FCCB00A138FD /* Petr_Velikyi_4S.jpg in Resources */,
+				917CCB2B1748FCCB00A138FD /* Petr_Velikyi_5.jpg in Resources */,
+				917CCB2C1748FCCB00A138FD /* Presnenskyi_district_4S.jpg in Resources */,
+				917CCB2D1748FCCB00A138FD /* Presnenskyi_district_5.jpg in Resources */,
+				917CCB2E1748FCCB00A138FD /* Rus_1_4S.jpg in Resources */,
+				917CCB2F1748FCCB00A138FD /* Rus_1_5.jpg in Resources */,
+				917CCB301748FCCB00A138FD /* Rus_2_4S.jpg in Resources */,
+				917CCB311748FCCB00A138FD /* Rus_2_5.jpg in Resources */,
+				917CCB321748FCCB00A138FD /* Rus_3_4S.jpg in Resources */,
+				917CCB331748FCCB00A138FD /* Rus_3_5.jpg in Resources */,
+				917CCB341748FCCB00A138FD /* Rus_4_4S.jpg in Resources */,
+				917CCB351748FCCB00A138FD /* Rus_4_5.jpg in Resources */,
+				917CCB361748FCCB00A138FD /* Rus_5_4S.jpg in Resources */,
+				917CCB371748FCCB00A138FD /* Rus_5_5.jpg in Resources */,
+				917CCB381748FCCB00A138FD /* Rus_6_4S.jpg in Resources */,
+				917CCB391748FCCB00A138FD /* Rus_6_5.jpg in Resources */,
+				917CCB3A1748FCCB00A138FD /* Rus_7_4S.jpg in Resources */,
+				917CCB3B1748FCCB00A138FD /* Rus_7_5.jpg in Resources */,
+				917CCB3C1748FCCB00A138FD /* shema_2003-12.jpg in Resources */,
+				917CCB3D1748FCCB00A138FD /* Sibir_1_4S.jpg in Resources */,
+				917CCB3E1748FCCB00A138FD /* Sibir_1_5.jpg in Resources */,
+				917CCB3F1748FCCB00A138FD /* Sibir_2_4S.jpg in Resources */,
+				917CCB401748FCCB00A138FD /* Sibir_2_5.jpg in Resources */,
+				917CCB411748FCCB00A138FD /* Sibir_3_4S.jpg in Resources */,
+				917CCB421748FCCB00A138FD /* Sibir_3_5.jpg in Resources */,
+				917CCB431748FCCB00A138FD /* Sibir_4_4S.jpg in Resources */,
+				917CCB441748FCCB00A138FD /* Sibir_4_5.jpg in Resources */,
+				917CCB451748FCCB00A138FD /* Sibir_5_4S.jpg in Resources */,
+				917CCB461748FCCB00A138FD /* Sibir_5_5.jpg in Resources */,
+				917CCB471748FCCB00A138FD /* Sibir_6_4S.jpg in Resources */,
+				917CCB481748FCCB00A138FD /* Sibir_6_5.jpg in Resources */,
+				917CCB491748FCCB00A138FD /* Sibir_7_5.jpg in Resources */,
+				917CCB4A1748FCCB00A138FD /* Sobor_Vasijia_Blagennogo_4S.jpg in Resources */,
+				917CCB4B1748FCCB00A138FD /* Sobor_Vasilija_Blagennogo_5.jpg in Resources */,
+				917CCB4C1748FCCB00A138FD /* Strogino_4S.jpg in Resources */,
+				917CCB4D1748FCCB00A138FD /* Strogino_5.jpg in Resources */,
+				917CCB4E1748FCCB00A138FD /* taxi1.jpeg in Resources */,
+				917CCB4F1748FCCB00A138FD /* taxi2.jpeg in Resources */,
+				917CCB501748FCCB00A138FD /* Tcar_colocol_5.jpg in Resources */,
+				917CCB511748FCCB00A138FD /* Triol_1_4S.jpg in Resources */,
+				917CCB521748FCCB00A138FD /* Triol_2_4S.jpg in Resources */,
+				917CCB531748FCCB00A138FD /* Triol_3_4S.jpg in Resources */,
+				917CCB541748FCCB00A138FD /* Triol_4_4S.jpg in Resources */,
+				917CCB551748FCCB00A138FD /* Triol_5_4S.jpg in Resources */,
+				917CCB561748FCCB00A138FD /* Triol_6_4S.jpg in Resources */,
+				917CCB571748FCCB00A138FD /* Triol_7_4S.jpg in Resources */,
+				917CCB581748FCCB00A138FD /* Tsar_colocol_4S.jpg in Resources */,
+				917CCB591748FCCB00A138FD /* Tverskoy_district_4S.jpg in Resources */,
+				917CCB5A1748FCCB00A138FD /* Tverskoy_district_5.jpg in Resources */,
+				917CCB5B1748FCCB00A138FD /* VDNH_4S.jpg in Resources */,
+				917CCB5C1748FCCB00A138FD /* VDNH_5.jpg in Resources */,
+				917CCB5D1748FCCB00A138FD /* View_Kremlin_4S.jpg in Resources */,
+				917CCB5E1748FCCB00A138FD /* view_Kremlin_5.jpg in Resources */,
+				917CCB5F1748FCCB00A138FD /* Yakimanka_district_4S.jpg in Resources */,
+				917CCB601748FCCB00A138FD /* Yakimanka_district_5.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
