@@ -34,7 +34,7 @@
     
     self.TableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.TableView.backgroundView = [InterfaceFunctions backgroundView];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"More LikeLik Apps", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"More LikeLik Apps", nil) AndColor:[InterfaceFunctions NavBarColor]];
     // Do any additional setup after loading the view.
 }
 

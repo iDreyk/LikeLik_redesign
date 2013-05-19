@@ -42,7 +42,7 @@ static NSDictionary *Place;
     [self.SearchBar setShowsCancelButton:NO];
 //#warning надо переделать под новый каталог
     self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Search", nil)  AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Search", nil)  AndColor:[InterfaceFunctions NavBarColor]];
     
     
     self.SearchTable.separatorStyle = UITableViewCellSelectionStyleNone;

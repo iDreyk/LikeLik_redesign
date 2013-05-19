@@ -137,11 +137,9 @@ static BOOL infoViewIsOpen = NO;
 
     [super viewDidLoad];
     _scroll.delegate=self;
-
-    //[TestFlight passCheckpoint:@"vistour open"];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
      
-    self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions NavBarColor]];
     
     
     for (UIView * view in self.view.subviews) {
@@ -154,7 +152,7 @@ static BOOL infoViewIsOpen = NO;
     }
     
 
-    //#warning Андрей, сделай плз функцию
+    #warning Андрей, сделай плз функцию
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -275,7 +273,7 @@ static BOOL infoViewIsOpen = NO;
     }
     [label setScrollEnabled:NO];
     
-    [_infoScroll setBackgroundColor:[InterfaceFunctions mainTextColor:6]];
+    [_infoScroll setBackgroundColor:[InterfaceFunctions mainTextColor:1]];
     
     [_infoScroll addSubview:Red_line];
     

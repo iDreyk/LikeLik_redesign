@@ -194,7 +194,7 @@ CGFloat alpha = 0.5;
     self.ScrollView.backgroundColor = self.Color;
     _ScrollView.contentSize = CGSizeMake(320.0, 400.0);
     
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:self.PlaceName AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:self.PlaceName AndColor:[InterfaceFunctions NavBarColor]];
     
     [self.scroll addGestureRecognizer:singleTap];
     NSArray *photos = self.Photos;

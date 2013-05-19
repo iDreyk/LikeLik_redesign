@@ -39,7 +39,7 @@
 {
     [super viewDidLoad];
     array = @[@"Name",@"E-Mail",@"Password",@"Password"];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Registration", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Registration", nil) AndColor:[InterfaceFunctions NavBarColor]];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.RegistrationTable setBackgroundColor:[UIColor clearColor]];
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];

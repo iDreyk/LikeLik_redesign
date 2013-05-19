@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.titleView=[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Support", nil)  AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView=[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Support", nil)  AndColor:[InterfaceFunctions NavBarColor]];
     self.Email.returnKeyType = UIReturnKeyNext;
     self.FeedBack.returnKeyType = UIReturnKeyDone;
     self.Email.delegate = self;

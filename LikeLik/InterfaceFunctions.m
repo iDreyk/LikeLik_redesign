@@ -104,40 +104,47 @@
     
     aButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
     [aButton sizeToFit];
-    //    CGRect rect = aButton.frame;
-    //
-    //
-    //    rect.size.width *=1.1;
-    //    aButton.frame = rect;
     return aButton;
 }
 
 
 #pragma mark UIColor
++(UIColor *)NavBarColor{
+  return [UIColor colorWithRed:168.0/255.0 green:77.0/255.0 blue:190.0/255.0 alpha:1];
+}
+
 +(UIColor *)mainTextColor:(NSInteger)flag{
     UIColor *color;
     
 
     switch (flag) {
         case 1:
-            color = [UIColor colorWithRed:0.0/255.0 green:102.0/255.0 blue:255.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:87.0/255.0 green:77.0/255.0 blue:170.0/255.0 alpha:1];
             break;
         case 2:
-            color = [UIColor colorWithRed:246.0/255.0 green:9.0/255.0 blue:98.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:202.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1];
             break;
         case 3:
-            color = [UIColor colorWithRed:0.0/255.0 green:174.0/255.0 blue:217.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:0.0/255.0 green:102.0/255.0 blue:255.0/255.0 alpha:1];
             break;
         case 4:
-            color = [UIColor colorWithRed:221.0/255.0 green:10.0/255.0 blue:178.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:166.0/255.0 green:101.0/255.0 blue:205.0/255.0 alpha:1];
             break;
         case 5:
-            color = [UIColor colorWithRed:0.0/255.0 green:170.0/255.0 blue:134.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:30.0/255.0 green:200.0/255.0 blue:15.0/255.0 alpha:1];
             break;
         case 6:
-            color = [UIColor colorWithRed:155.0/255.0 green:38.0/255.0 blue:182.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:255.0/255.0 green:100.0/255.0 blue:0/255.0 alpha:1];
             break;
-            
+        case 7:
+            color = [UIColor colorWithRed:217.0/255.0 green:101.0/255.0 blue:151.0/255.0 alpha:1];
+            break;
+        case 8:
+            color = [UIColor colorWithRed:0.0/255.0 green:174.0/255.0 blue:217.0/255.0 alpha:1];
+            break;
+        case 9:
+            color = [UIColor colorWithRed:87.0/255.0 green:77.0/255.0 blue:170.0/255.0 alpha:1];
+            break;
         default:
             break;
     }
@@ -148,32 +155,50 @@
 +(UIColor *)colorTextCategory:(NSString *)Category{
     UIColor *color;
     if ([Category isEqualToString:@"Restaurants"]) {
-        color = [UIColor colorWithRed:231.0/255.0 green:20.0/255.0 blue:58.0/255.0 alpha:1.0];
+        color = [UIColor colorWithRed:202.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1];
     }
-    if ([Category isEqualToString:@"Entertainment"]) {
-        color = [UIColor colorWithRed:5.0/255.0 green:227.0/255.0 blue:5.0/255.0 alpha:1.0];
+    if ([Category isEqualToString:@"NightLife"]) {
+        color = [UIColor colorWithRed:0.0/255.0 green:102.0/255.0 blue:255.0/255.0 alpha:1];
     }
     if ([Category isEqualToString:@"Shopping"]) {
-        color = [UIColor colorWithRed:255.0/255.0 green:0.0/255.0 blue:255.0/255.0 alpha:1.0];
+        color = [UIColor colorWithRed:166.0/255.0 green:101.0/255.0 blue:205.0/255.0 alpha:1];
     }
-    if ([Category isEqualToString:@"Health & Beauty"]) {
-        color = [UIColor colorWithRed:6.0/255.0 green:194.0/255.0 blue:244.0/255.0 alpha:1.0];
+    if ([Category isEqualToString:@"Culture"]) {
+        color = [UIColor colorWithRed:30.0/255.0 green:200.0/255.0 blue:15.0/255.0 alpha:1];
+    }
+    if ([Category isEqualToString:@"Leisure"]) {
+        color = [UIColor colorWithRed:255.0/255.0 green:100.0/255.0 blue:0/255.0 alpha:1];
+    }
+    if ([Category isEqualToString:@"Beauty"]) {
+        color = [UIColor colorWithRed:217.0/255.0 green:101.0/255.0 blue:151.0/255.0 alpha:1];
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        color = [UIColor colorWithRed:0.0/255.0 green:174.0/255.0 blue:217.0/255.0 alpha:1];
     }
     return color;
 }
 +(UIColor *)colorTextPlaceBackground:(NSString *)Category{
     UIColor *color;
     if ([Category isEqualToString:@"Restaurants"]) {
-        color = [UIColor colorWithRed:207.0/255.0 green:17.0/255.0 blue:17.0/255.0 alpha:1.0];
+        color = [UIColor colorWithRed:202.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1];
     }
-    if ([Category isEqualToString:@"Entertainment"]) {
-        color = [UIColor colorWithRed:10.0/255.0 green:200.0/255.0 blue:10.0/255.0 alpha:1.0];
+    if ([Category isEqualToString:@"NightLife"]) {
+        color = [UIColor colorWithRed:0.0/255.0 green:102.0/255.0 blue:255.0/255.0 alpha:1];
     }
     if ([Category isEqualToString:@"Shopping"]) {
-        color = [UIColor colorWithRed:255.0/255.0 green:0.0/255.0 blue:255.0/255.0 alpha:1.0];
+        color = [UIColor colorWithRed:166.0/255.0 green:101.0/255.0 blue:205.0/255.0 alpha:1];
     }
-    if ([Category isEqualToString:@"Health & Beauty"]) {
-        color = [UIColor colorWithRed:6.0/255.0 green:194.0/255.0 blue:244.0/255.0 alpha:1.0];
+    if ([Category isEqualToString:@"Culture"]) {
+        color = [UIColor colorWithRed:30.0/255.0 green:200.0/255.0 blue:15.0/255.0 alpha:1];
+    }
+    if ([Category isEqualToString:@"Leisure"]) {
+        color = [UIColor colorWithRed:255.0/255.0 green:100.0/255.0 blue:0/255.0 alpha:1];
+    }
+    if ([Category isEqualToString:@"Beauty"]) {
+        color = [UIColor colorWithRed:217.0/255.0 green:101.0/255.0 blue:151.0/255.0 alpha:1];
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        color = [UIColor colorWithRed:0.0/255.0 green:174.0/255.0 blue:217.0/255.0 alpha:1];
     }
     return color;
 }
@@ -192,8 +217,6 @@
 
 #pragma mark UILabel
 +(UILabel *)NavLabelwithTitle:(NSString *)string AndColor:(UIColor *)Color{
-    
-    
     UIFont* font = [AppDelegate OpenSansSemiBold:32];
     CGSize maximumLabelSize = CGSizeMake(296,9999);
     CGSize expectedLabelSize = [string sizeWithFont:font constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByCharWrapping];
@@ -210,8 +233,6 @@
     
 }
 +(UILabel *)goLabelCategory:(NSString *)Category{
-    
-    
 
     UILabel *_go = [[UILabel alloc] initWithFrame:CGRectMake(275, 15, 30, 14)];
     _go.font = [AppDelegate OpenSansRegular:28];
@@ -224,9 +245,9 @@
     return _go;
 }
 +(UILabel *)LabelHUDwithString:(NSString *)String{
+    
     UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(30.0, 0.0, 320.0, 50.0)];
     label.backgroundColor = [UIColor clearColor];
-    
     label.text = String;
     label.textColor = [UIColor whiteColor];
     label.font = [AppDelegate OpenSansBoldwithSize:28];
@@ -269,16 +290,29 @@
 #pragma mark UIImageView
 +(UIImageView *)actbwithCategory:(NSString *)Category{
     UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(293,11, 22, 23)];
+    _actb.image=[UIImage imageNamed:@"44_48 actb_1@2x"];
     
-    if ([Category isEqualToString:@"Restaurants"])
-        _actb.image=[UIImage imageNamed:@"44_48 actb_12"];
-    if ([Category isEqualToString:@"Entertainment"])
-        _actb.image=[UIImage imageNamed:@"44_48 actb_13"];
-    if ([Category isEqualToString:@"Shopping"])
-        _actb.image=[UIImage imageNamed:@"44_48 actb_14"];
-    if ([Category isEqualToString:@"Health & Beauty"])
-        _actb.image=[UIImage imageNamed:@"44_48 actb_15"];
-        
+    if ([Category isEqualToString:@"Restaurants"]) {
+        _actb.image=[UIImage imageNamed:@"44_48 actb_2"];
+    }
+    if ([Category isEqualToString:@"NightLife"]) {
+        _actb.image=[UIImage imageNamed:@"44_48 actb_3"];
+    }
+    if ([Category isEqualToString:@"Shopping"]) {
+        _actb.image=[UIImage imageNamed:@"44_48 actb_4"];
+    }
+    if ([Category isEqualToString:@"Culture"]) {
+        _actb.image=[UIImage imageNamed:@"44_48 actb_5"];
+    }
+    if ([Category isEqualToString:@"Leisure"]) {
+        _actb.image=[UIImage imageNamed:@"44_48 actb_6"];
+    }
+    if ([Category isEqualToString:@"Beauty"]) {
+        _actb.image=[UIImage imageNamed:@"44_48 actb_7"];
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        _actb.image=[UIImage imageNamed:@"44_48 actb_8"];
+    }
         return _actb;
 }
 +(UIImageView *)actbwithColor:(NSInteger)value{
@@ -293,17 +327,25 @@
     
 
     if ([Category isEqualToString:@"Restaurants"]) {
-        Pin.image = [UIImage imageNamed:@"63_76 MapPin_12"];
+        Pin.image = [UIImage imageNamed:@"63_76 MapPin_1"];
     }
-    if ([Category isEqualToString:@"Entertainment"]) {
-        Pin.image = [UIImage imageNamed:@"63_76 MapPin_13"];
+    if ([Category isEqualToString:@"NightLife"]) {
+        Pin.image=[UIImage imageNamed:@"63_76 MapPin_2"];
     }
     if ([Category isEqualToString:@"Shopping"]) {
-        Pin.image = [UIImage imageNamed:@"63_76 MapPin_14"];
+        Pin.image=[UIImage imageNamed:@"63_76 MapPin_3"];
     }
-   
-    if ([Category isEqualToString:@"Health & Beauty"]) {
-        Pin.image = [UIImage imageNamed:@"63_76 MapPin_15"];
+    if ([Category isEqualToString:@"Culture"]) {
+        Pin.image=[UIImage imageNamed:@"63_76 MapPin_4"];
+    }
+    if ([Category isEqualToString:@"Leisure"]) {
+        Pin.image=[UIImage imageNamed:@"63_76 MapPin_5"];
+    }
+    if ([Category isEqualToString:@"Beauty"]) {
+        Pin.image=[UIImage imageNamed:@"63_76 MapPin_6"];
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        Pin.image=[UIImage imageNamed:@"63_76 MapPin_7"];
     }
     return Pin;
 
@@ -314,18 +356,25 @@
     
     NSInteger Color = 12;
     if ([Category isEqualToString:@"Restaurants"]) {
-        Color =12;
+        Color = 2;
     }
-    
-    if ([Category isEqualToString:@"Entertainment"]) {
-        Color =13;
+    if ([Category isEqualToString:@"NightLife"]) {
+        Color = 3;
     }
     if ([Category isEqualToString:@"Shopping"]) {
-        Color =14;
+        Color = 4;
     }
-    
-    if ([Category isEqualToString:@"Health & Beauty"]) {
-        Color =15;
+    if ([Category isEqualToString:@"Culture"]) {
+        Color = 5;
+    }
+    if ([Category isEqualToString:@"Leisure"]) {
+        Color = 6;
+    }
+    if ([Category isEqualToString:@"Beauty"]) {
+        Color = 7;
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        Color = 8;
     }
     NSString *name;
     if ([tag isEqualToString:@"1fav_normal"] ||[tag isEqualToString:@"3share_normal"] || [tag isEqualToString:@"1fav_selected"] ||[tag isEqualToString:@"3share_selected"]) {
@@ -343,38 +392,54 @@
 +(UIImageView *)Ribbon:(NSString *)Category{
     UIImageView *ribbon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"592_159 Ribbon_12"]];
     if ([Category isEqualToString:@"Restaurants"]) {
-        ribbon.image = [UIImage imageNamed:@"592_159 Ribbon_12"];
+        ribbon.image = [UIImage imageNamed:@"592_159 Ribbon_1"];
     }
-    
-    if ([Category isEqualToString:@"Entertainment"]) {
-        ribbon.image = [UIImage imageNamed:@"592_159 Ribbon_13"];
+    if ([Category isEqualToString:@"NightLife"]) {
+        ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_2"];
     }
     if ([Category isEqualToString:@"Shopping"]) {
-        ribbon.image = [UIImage imageNamed:@"592_159 Ribbon_14"];
+        ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_3"];
     }
-    
-    if ([Category isEqualToString:@"Health & Beauty"]) {
-        ribbon.image = [UIImage imageNamed:@"592_159 Ribbon_15"];
+    if ([Category isEqualToString:@"Culture"]) {
+        ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_4"];
     }
+    if ([Category isEqualToString:@"Leisure"]) {
+        ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_5"];
+    }
+    if ([Category isEqualToString:@"Beauty"]) {
+        ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_6"];
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_7"];
+    }
+
     return ribbon;
 }
 +(UIImageView *)usecheckbutton:(NSString *)Category andTag:(NSString *)tag{
     NSInteger Color;
     
     if ([Category isEqualToString:@"Restaurants"]) {
-        Color =12;
+        Color = 2;
     }
-    
-    if ([Category isEqualToString:@"Entertainment"]) {
-        Color =13;
+    if ([Category isEqualToString:@"NightLife"]) {
+        Color = 3;
     }
     if ([Category isEqualToString:@"Shopping"]) {
-        Color =14;
+        Color = 4;
     }
-    
-    if ([Category isEqualToString:@"Health & Beauty"]) {
-        Color =15;
+    if ([Category isEqualToString:@"Culture"]) {
+        Color = 5;
     }
+    if ([Category isEqualToString:@"Leisure"]) {
+        Color = 6;
+    }
+    if ([Category isEqualToString:@"Beauty"]) {
+        Color = 7;
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        Color = 8;
+    }
+
     NSString *name = [NSString stringWithFormat:@"526_90 button_use_check_%d%@",Color,tag];
     return  [[UIImageView alloc] initWithImage: [UIImage imageNamed:name]];
 }
@@ -394,7 +459,7 @@
 }
 +(UIImageView *)MapPinVisualTour{
     UIImageView *Pin=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MapPin_12"]];
-        Pin.image = [UIImage imageNamed:@"63_76 MapPin_6"];
+    Pin.image = [UIImage imageNamed:@"63_76 MapPin_1"];
     return Pin;
     
     
@@ -402,17 +467,29 @@
 }
 +(UIImageView *)Info_buttonwithCategory:(NSString *)Category{
     
-    UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"58_82 info_flag 12"]];
+    UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"58_82 info_flag_12"]];
     
-    if ([Category isEqualToString:@"Restaurants"])
-        imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"58_82 info_flag 12"]];
-    if ([Category isEqualToString:@"Entertainment"])
-        imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"58_82 info_flag 13"]];
-    if ([Category isEqualToString:@"Shopping"])
-        imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"58_82 info_flag 14"]];
-    if ([Category isEqualToString:@"Health & Beauty"])
-        imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"58_82 info_flag 15"]];
-    
+    if ([Category isEqualToString:@"Restaurants"]) {
+        imageview.image = [UIImage imageNamed:@"58_82 info_flag_1"];
+    }
+    if ([Category isEqualToString:@"NightLife"]) {
+        imageview.image=[UIImage imageNamed:@"58_82 info_flag_2"];
+    }
+    if ([Category isEqualToString:@"Shopping"]) {
+        imageview.image=[UIImage imageNamed:@"58_82 info_flag_3"];
+    }
+    if ([Category isEqualToString:@"Culture"]) {
+        imageview.image=[UIImage imageNamed:@"58_82 info_flag_4"];
+    }
+    if ([Category isEqualToString:@"Leisure"]) {
+        imageview.image=[UIImage imageNamed:@"58_82 info_flag_5"];
+    }
+    if ([Category isEqualToString:@"Beauty"]) {
+        imageview.image=[UIImage imageNamed:@"58_82 info_flag_6"];
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        imageview.image=[UIImage imageNamed:@"58_82 info_flag_7"];
+    }
     return imageview;
 }
 +(UIImageView *)UserLocationButton:(NSString *)flag{
@@ -420,7 +497,6 @@
     return [[UIImageView alloc] initWithImage:[UIImage imageNamed:string]];
 }
 +(UIImageView *)backgroundView{
-    
     UIImageView *imageview = [[UIImageView alloc] initWithImage:  [UIImage imageNamed:@"640_1136 background-568h@2x"]];
     imageview.frame = CGRectMake(0.0, 0.0, 320.0, 548);
     [imageview setContentMode:UIViewContentModeScaleAspectFill];
@@ -453,7 +529,7 @@
         imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"1_44 header_13"]];
     if ([Category isEqualToString:@"Shopping"])
         imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"1_44 header_14"]];
-    if ([Category isEqualToString:@"Health & Beauty"])
+    if ([Category isEqualToString:@"Beauty"])
         imageview.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"1_44 header_15"]];
     
     imageview.contentMode = UIViewContentModeScaleToFill;

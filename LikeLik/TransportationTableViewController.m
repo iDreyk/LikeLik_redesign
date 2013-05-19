@@ -30,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Transportation", nil) AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Transportation", nil) AndColor:[InterfaceFunctions NavBarColor]];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
 
     taxi = [ExternalFunctions getTaxiInformationInCity:self.CityName];

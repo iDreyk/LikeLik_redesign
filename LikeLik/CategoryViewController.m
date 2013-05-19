@@ -40,7 +40,7 @@
 
     self.Table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions NavBarColor]];
 
     self.CityName.text = self.Label;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
@@ -118,15 +118,13 @@
     NSLog(@"%@ ",text);
     NSLog(@"%@",AMLocalizedString(@"Culture", nil));
 
-    if ([indexPath row]<6) {
+    if ([indexPath row]<8) {
         [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions mainTextColor:[indexPath row]+1]]];
         [cell addSubview:[InterfaceFunctions actbwithColor:[indexPath row]+1]];
-        
     }
     else{
-        [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions mainTextColor:6]]];
-        [cell addSubview:[InterfaceFunctions actbwithColor:6]];
-        
+        [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions mainTextColor:1]]];
+        [cell addSubview:[InterfaceFunctions actbwithColor:1]];
     }
     return cell;
 }

@@ -1055,7 +1055,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstAttribute="width" constant="29" id="xKJ-L0-eBw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="58_82 info_flag_6@2x.png">
+                                <state key="normal" image="58_82 info_flag_1@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1972,7 +1972,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="44_48 actb_3@2x.png" width="44" height="48"/>
         <image name="44_48 actb_4@2x.png" width="44" height="48"/>
         <image name="58_82 info_flag 12@2x.png" width="58" height="82"/>
-        <image name="58_82 info_flag_6@2x.png" width="58" height="82"/>
+        <image name="58_82 info_flag_1@2x.png" width="58" height="82"/>
         <image name="62_62 arrow_pressed@2x.png" width="62" height="62"/>
         <image name="640_1136 background-568h@2x.png" width="640" height="1136"/>
         <image name="Bg_gradient.png" width="640" height="108"/>
@@ -1984,6 +1984,276 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="tabicon_Featured.png" width="16" height="16"/>
         <image name="tabicon_SpecialSeries.png" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="AboutTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="AboutCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="MoreLikeLikApps" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="SupportCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="TermsCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="Title" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="AroundMeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AroundMeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentedControlIndexChanged"/>
+                <relationship kind="action" name="showLocation:"/>
+                <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="CityNameText" candidateClass="NSString"/>
+                <relationship kind="outlet" name="Image" candidateClass="NSString"/>
+                <relationship kind="outlet" name="Map" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="PlacesTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="SearchButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="SegmentedMapandTable" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="ViewforMap" candidateClass="UIView"/>
+                <relationship kind="outlet" name="gradient_under_cityname" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="CategoryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CategoryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="CellArray" candidateClass="NSArray"/>
+                <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="GradientUnderLabel" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Image" candidateClass="NSString"/>
+                <relationship kind="outlet" name="Label" candidateClass="NSString"/>
+                <relationship kind="outlet" name="SearchButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="SegueArray" candidateClass="NSArray"/>
+                <relationship kind="outlet" name="Table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="FavViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentedControlIndexChanged"/>
+                <relationship kind="action" name="showLocation:"/>
+                <relationship kind="outlet" name="CityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="FavTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="Map" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="SegmentedMapandTable" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="ViewforMap" candidateClass="UIView"/>
+                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="SocialClicked:" candidateClass="UIButton"/>
+                <relationship kind="action" name="loginPressed:"/>
+                <relationship kind="outlet" name="FaceBook" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="LoginTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="Parent" candidateClass="NSString"/>
+                <relationship kind="outlet" name="SNetworkLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="Twitter" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="Vkontakte" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="MyLikeLikeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyLikeLikeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="TableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PlaceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ShowMap:"/>
+                <relationship kind="action" name="infotap:"/>
+                <relationship kind="action" name="openMail:"/>
+                <relationship kind="action" name="showLocation:"/>
+                <relationship kind="action" name="tapDetected:" candidateClass="UIGestureRecognizer"/>
+                <relationship kind="outlet" name="Favorites" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="GOUSE" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="InfoPlaceTable" candidateClass="UIView"/>
+                <relationship kind="outlet" name="LabelOnScroll" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="MapPlace" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="PlacePinimage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="PlaceView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="Placeadress" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="PlaceonMap" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="ScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="Separator" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Separator1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Separator3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Share" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="TelPinimage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Teltext" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="TextPlace" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="WebPinimage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="favImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="favText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="info_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="labelonPhoto" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="placeViewMap" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="webtext" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PlacesByCategoryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesByCategoryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentedControlIndexChanged"/>
+                <relationship kind="action" name="showLocation:"/>
+                <relationship kind="outlet" name="CategoryLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="GradientnderLabel" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Map" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="PlacesTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="SearchBarButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="SegmentedMapandTable" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="ViewForMap" candidateClass="UIView"/>
+                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="PracticalInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PracticalInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="CityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="InfoScroll" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="PreferencesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreferencesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="PreferencesTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RMMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="RegistrationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="switchtoPicker:"/>
+                <relationship kind="outlet" name="BirthDayPicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="RegistrationTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="SurpriseText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="Switch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SearchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="SearchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="SearchTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SplashViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="Firsttitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="LeftButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="RightButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="Shade" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="alertLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fist" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="localNotification" candidateClass="UILocalNotification"/>
+                <relationship kind="outlet" name="maintitle" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="message" candidateClass="UIAlertView"/>
+                <relationship kind="outlet" name="subtitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="StartTabBarViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartTabBarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="search:"/>
+                <relationship kind="outlet" name="NavBar" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="SearchBarButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="StartTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="BackCityImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="CityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="accesor" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="StartViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartViewController.h"/>
+        </class>
+        <class className="SupportViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SupportViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="Contactinformation" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="Email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="FeedBack" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="TaxiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaxiViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="LabelonScroll" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="TaxiCard" candidateClass="UIView"/>
+                <relationship kind="outlet" name="TaxiInfo" candidateClass="UIView"/>
+                <relationship kind="outlet" name="TaxiText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="Taxilabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="TelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="WebLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="TermsofUseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TermsofUseViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="InfoScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="Title" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TransportationTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TransportationTableViewController.h"/>
+        </class>
+        <class className="TransportationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TransportationViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="UILocalNotification" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UILocalNotification.h"/>
+        </class>
+        <class className="VisualTourViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VisualTourViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showLocation:"/>
+                <relationship kind="action" name="tapDetected:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="PhotoCard" candidateClass="UIView"/>
+                <relationship kind="outlet" name="PlaceonMap" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="info_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="visualMap" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

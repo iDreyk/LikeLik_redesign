@@ -82,7 +82,7 @@
     
     
     
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:  AMLocalizedString(@"About", @"") AndColor:[InterfaceFunctions mainTextColor:6]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:  AMLocalizedString(@"About", @"") AndColor:[InterfaceFunctions NavBarColor]];
     self.tableView.backgroundView = [InterfaceFunctions backgroundView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];

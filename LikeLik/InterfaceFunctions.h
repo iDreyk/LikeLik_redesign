@@ -19,6 +19,7 @@
 +(UIButton *)done_button;
 
 #pragma mark UIColor
++(UIColor *)NavBarColor;
 +(UIColor *)mainTextColor:(NSInteger)flag;
 +(UIColor *)colorTextCategory:(NSString *)Category;
 +(UIColor *)colorTextPlaceBackground:(NSString *)Category;
