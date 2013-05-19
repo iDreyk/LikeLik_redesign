@@ -327,25 +327,25 @@
     
 
     if ([Category isEqualToString:@"Restaurants"]) {
-        Pin.image = [UIImage imageNamed:@"63_76 MapPin_1"];
+        Pin.image = [UIImage imageNamed:@"63_76 MapPin_2"];
     }
     if ([Category isEqualToString:@"NightLife"]) {
-        Pin.image=[UIImage imageNamed:@"63_76 MapPin_2"];
-    }
-    if ([Category isEqualToString:@"Shopping"]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_3"];
     }
-    if ([Category isEqualToString:@"Culture"]) {
+    if ([Category isEqualToString:@"Shopping"]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_4"];
     }
-    if ([Category isEqualToString:@"Leisure"]) {
+    if ([Category isEqualToString:@"Culture"]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_5"];
     }
-    if ([Category isEqualToString:@"Beauty"]) {
+    if ([Category isEqualToString:@"Leisure"]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_6"];
     }
-    if ([Category isEqualToString:@"Hotels"]) {
+    if ([Category isEqualToString:@"Beauty"]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_7"];
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        Pin.image=[UIImage imageNamed:@"63_76 MapPin_8"];
     }
     return Pin;
 
@@ -392,25 +392,25 @@
 +(UIImageView *)Ribbon:(NSString *)Category{
     UIImageView *ribbon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"592_159 Ribbon_12"]];
     if ([Category isEqualToString:@"Restaurants"]) {
-        ribbon.image = [UIImage imageNamed:@"592_159 Ribbon_1"];
+        ribbon.image = [UIImage imageNamed:@"592_159 Ribbon_2"];
     }
     if ([Category isEqualToString:@"NightLife"]) {
-        ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_2"];
-    }
-    if ([Category isEqualToString:@"Shopping"]) {
         ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_3"];
     }
-    if ([Category isEqualToString:@"Culture"]) {
+    if ([Category isEqualToString:@"Shopping"]) {
         ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_4"];
     }
-    if ([Category isEqualToString:@"Leisure"]) {
+    if ([Category isEqualToString:@"Culture"]) {
         ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_5"];
     }
-    if ([Category isEqualToString:@"Beauty"]) {
+    if ([Category isEqualToString:@"Leisure"]) {
         ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_6"];
     }
-    if ([Category isEqualToString:@"Hotels"]) {
+    if ([Category isEqualToString:@"Beauty"]) {
         ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_7"];
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_8"];
     }
 
     return ribbon;
@@ -470,25 +470,25 @@
     UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"58_82 info_flag_12"]];
     
     if ([Category isEqualToString:@"Restaurants"]) {
-        imageview.image = [UIImage imageNamed:@"58_82 info_flag_1"];
+        imageview.image = [UIImage imageNamed:@"58_82 info_flag_2"];
     }
     if ([Category isEqualToString:@"NightLife"]) {
-        imageview.image=[UIImage imageNamed:@"58_82 info_flag_2"];
-    }
-    if ([Category isEqualToString:@"Shopping"]) {
         imageview.image=[UIImage imageNamed:@"58_82 info_flag_3"];
     }
-    if ([Category isEqualToString:@"Culture"]) {
+    if ([Category isEqualToString:@"Shopping"]) {
         imageview.image=[UIImage imageNamed:@"58_82 info_flag_4"];
     }
-    if ([Category isEqualToString:@"Leisure"]) {
+    if ([Category isEqualToString:@"Culture"]) {
         imageview.image=[UIImage imageNamed:@"58_82 info_flag_5"];
     }
-    if ([Category isEqualToString:@"Beauty"]) {
+    if ([Category isEqualToString:@"Leisure"]) {
         imageview.image=[UIImage imageNamed:@"58_82 info_flag_6"];
     }
-    if ([Category isEqualToString:@"Hotels"]) {
+    if ([Category isEqualToString:@"Beauty"]) {
         imageview.image=[UIImage imageNamed:@"58_82 info_flag_7"];
+    }
+    if ([Category isEqualToString:@"Hotels"]) {
+        imageview.image=[UIImage imageNamed:@"58_82 info_flag_8"];
     }
     return imageview;
 }
