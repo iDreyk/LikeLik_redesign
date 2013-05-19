@@ -2068,7 +2068,6 @@
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode/ZBarSDK\"",
-					"\"$(SRCROOT)/../../Downloads/Likelik Xcode/ZBarSDK\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
@@ -2100,7 +2099,6 @@
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode/ZBarSDK\"",
-					"\"$(SRCROOT)/../../Downloads/Likelik Xcode/ZBarSDK\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
