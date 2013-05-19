@@ -179,14 +179,14 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     }
     [self.HUDfade show:YES];
     
-    //  скачивание
-    NSLog(@"Downloaded = %@",[defaults objectForKey:@"Download"]);
-    if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
-        [ExternalFunctions downloadCatalogue:@"test"];
-        [defaults setObject:@"1" forKey:@"Download"];
-        //  запуск с нуля
-        [ExternalFunctions getReady];
-    }
+//    //  скачивание
+//    NSLog(@"Downloaded = %@",[defaults objectForKey:@"Download"]);
+//    if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
+//        [ExternalFunctions downloadCatalogue:@"test"];
+//        [defaults setObject:@"1" forKey:@"Download"];
+//        //  запуск с нуля
+//        [ExternalFunctions getReady];
+//    }
     
     [UIView animateWithDuration:1.2 animations:^{
         self.Shade.frame = Shadeframe;
