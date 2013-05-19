@@ -176,7 +176,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     }
     [self.HUDfade show:YES];
     
-    // скачивание
+    //  скачивание
     NSLog(@"Downloaded = %@",[defaults objectForKey:@"Download"]);
     if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
         [ExternalFunctions downloadCatalogue:@"test"];
