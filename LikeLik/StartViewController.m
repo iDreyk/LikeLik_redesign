@@ -242,7 +242,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
-    
+    [operation setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{}];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully downloaded file to %@", path);
         [self DownloadSucceeded:filename];
