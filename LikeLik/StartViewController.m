@@ -15,6 +15,9 @@
 
 #import "CategoryViewController.h"
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
+#define likelikurl @"http://likelik.net/docs/"
+#define catalogue @"Catalogues"
+
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
@@ -53,7 +56,7 @@
                                              selector: @selector(pref_dismiss)
                                                  name: dismiss
                                                object: nil];
-    
+
 }
 
 -(void)pref_dismiss{
@@ -61,9 +64,6 @@
     [self viewDidAppear:YES];
 }
 
--(NSString *)docDir{
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
-}
 
 -(void)viewDidAppear:(BOOL)animated{
     NSLog(@"123");
@@ -154,7 +154,6 @@
     NSInteger tabIndex = self.tabBarController.selectedIndex;
     if(tabIndex != 1)
         [self ShowAlertView];
-    
 }
 
 
@@ -166,15 +165,29 @@
 {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     NSInteger row = [indexPath row];
-    
-    
-    //    nslog(@"%d",self.tabBarController.selectedIndex);
+    NSLog(@"перешёл на экран");
     CategoryViewController *destination =
     [segue destinationViewController];
     
     destination.Label = _CityLabels[row];
     destination.Image = _backCityImages[row];
     //[TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
+    
+    if (![ExternalFunctions isDownloaded:_CityLabels[row]]) {
+      
+        if ([_CityLabels[row] isEqualToString:@"Moscow"] ||
+            [_CityLabels[row] isEqualToString:@"Moskau"] ||
+            [_CityLabels[row] isEqualToString:@"Москва"]) {
+            [self AFdownload:@"Moscow"];
+        }
+        else if ([_CityLabels[row] isEqualToString:@"Вена"] ||
+                 [_CityLabels[row] isEqualToString:@"Vienna"] ||
+                 [_CityLabels[row] isEqualToString:@"Wien"]) {
+            [self AFdownload:@"Vienna"];
+        }
+    }
+
+    
 }
 
 -(void)ShowAlertView{
@@ -197,6 +210,113 @@
             NSLog(@"Purchased");
         NSLog(@"Отказался от покупки");
     }
+}
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+- (void) AFdownload : (NSString *) filename{
+    self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:self.HUDfade];
+    self.HUDfade.userInteractionEnabled = YES;
+    self.HUDfade.mode = MBProgressHUDAnimationFade;
+    self.HUDfade.removeFromSuperViewOnHide = YES;
+    self.HUDfade.delegate = self;
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
+        [self.HUDfade show:YES];
+
+    
+    NSString *url = [[NSString alloc] initWithFormat:@"%@%@.zip",likelikurl,filename];
+    NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",filename];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
+    operation.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Successfully downloaded file to %@", path);
+        [self DownloadSucceeded:filename];
+        NSLog(@"всё сделано");
+        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x.png"]];
+        [self.HUDfade hide:YES];
+        self.HUDfade.userInteractionEnabled = NO;
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        NSLog(@"Error occured");
+        [self DownloadError:error.description];
+        [self.HUDfade hide:YES];
+        self.HUDfade.userInteractionEnabled = NO;
+        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error.png"]];
+    }];
+    
+    [operation start];
+    
+    //Setup Upload block to return progress of file upload
+    [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToRead) { float progress = totalBytesWritten / (float)totalBytesExpectedToRead;
+        NSLog(@"Download Percentage: %f %%", progress*100);
+        int result = (int)floorf(progress*100);
+        
+        self.HUDfade.labelText = [NSString stringWithFormat:@"%d %%",result];
+    }];
+    
+}
+
+- (void) DownloadSucceeded:(NSString *)fileName {
+    NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",fileName];
+    NSString *newCataloguePath = [[NSString alloc]initWithFormat:@"%@/%@/catalogue.plist",[ExternalFunctions docDir],fileName];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path1 = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
+    [[NSFileManager defaultManager] removeItemAtPath:path1 error:nil];
+    [ExternalFunctions unzipFileAt:path ToDestination:[paths objectAtIndex:0]];
+    NSString *crapPath = [[ExternalFunctions docDir]stringByAppendingPathComponent:@"__MACOSX"];
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:crapPath error:nil];
+    
+    NSString *cataloguesPath = [[ExternalFunctions docDir]stringByAppendingPathComponent:@"catalogue.plist"];
+    
+    NSMutableArray *catalogueArray = [[NSMutableArray alloc] initWithContentsOfFile:cataloguesPath];
+    NSArray *newCatalogues = [[NSArray alloc] initWithContentsOfFile:newCataloguePath];
+    NSDictionary *temp;
+    
+    for (int i = 0; i < [newCatalogues count]; i++) {
+        if ([[[newCatalogues objectAtIndex:i] objectForKey:@"city_EN"] isEqualToString:fileName]) {
+            temp = [newCatalogues objectAtIndex:i];
+        }
+    }
+    for (int i = 0; i < [catalogueArray count]; i++) {
+        if ([[[catalogueArray objectAtIndex:i] objectForKey:@"city_EN"] isEqualToString:fileName]) {
+            [catalogueArray removeObjectAtIndex:i];
+        }
+    }
+    
+    [catalogueArray addObject:temp];
+    
+    [[NSFileManager defaultManager] removeItemAtPath:cataloguesPath error:nil];
+    
+    [catalogueArray writeToFile:cataloguesPath atomically:YES];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:catalogueArray forKey:catalogue];
+    
+    [ExternalFunctions addCityToDownloaded:fileName];
+}
+
+- (NSString *) DownloadError:(NSString *)error{
+    NSLog(@"error = %@",error);
+    return error;
 }
 
 @end

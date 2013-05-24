@@ -38,12 +38,12 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
  //   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-#warning regions
+//#warning regions
     if (haveAlreadyReceivedCoordinates) {
         Me = newLocation;
         NSLog(@"%@",Me);
 
-#warning надо переделать под новый каталог
+//#warning надо переделать под новый каталог
         NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
 //
 ////        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
@@ -122,14 +122,15 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     
     
     
-    self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:self.HUDfade];
-    self.HUDfade.userInteractionEnabled = NO;
-    self.HUDfade.mode = MBProgressHUDAnimationFade;
-    self.HUDfade.removeFromSuperViewOnHide = YES;
-    self.HUDfade.delegate = self;
-    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
-        [self.HUDfade show:YES];
+//    self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+//    [self.navigationController.view addSubview:self.HUDfade];
+//    self.HUDfade.userInteractionEnabled = NO;
+//    self.HUDfade.mode = MBProgressHUDAnimationFade;
+//    self.HUDfade.removeFromSuperViewOnHide = YES;
+//    self.HUDfade.delegate = self;
+//    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
+//        [self.HUDfade show:YES];
+    
     
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    

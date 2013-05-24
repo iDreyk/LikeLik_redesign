@@ -308,144 +308,15 @@ In extremen Fällen, wenn es eine echte Lebensgefahr für Patienten besteht, ist
 
 </string>
 		<key>downloaded</key>
-		<string>1</string>
+		<string>0</string>
 		<key>special</key>
 		<string>0</string>
 		<key>photos</key>
 		<dict>
 			<key>large</key>
 			<string>Moscow.png</string>
-			<key>coordinates</key>
-			<array>
-				<dict>
-					<key>Lat</key>
-					<string>55.752018</string>
-					<key>Lon</key>
-					<string>37.541914</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.747985</string>
-					<key>Lon</key>
-					<string>37.561054</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.736679</string>
-					<key>Lon</key>
-					<string>37.618668</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.751994</string>
-					<key>Lon</key>
-					<string>37.617702</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.75348</string>
-					<key>Lon</key>
-					<string>37.622509</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.755231</string>
-					<key>Lon</key>
-					<string>37.617102</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.744362</string>
-					<key>Lon</key>
-					<string>37.605257</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.787192</string>
-					<key>Lon</key>
-					<string>37.773743</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.748758</string>
-					<key>Lon</key>
-					<string>37.616844</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.749531</string>
-					<key>Lon</key>
-					<string>37.589722</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.752357</string>
-					<key>Lon</key>
-					<string>37.622981</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.717055</string>
-					<key>Lon</key>
-					<string>37.554016</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.787964</string>
-					<key>Lon</key>
-					<string>37.392998</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.820959</string>
-					<key>Lon</key>
-					<string>37.641521</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>55.672019</string>
-					<key>Lon</key>
-					<string>37.664738</string>
-				</dict>
-			</array>
-			<key>4</key>
-			<array>
-				<string>Moscow_city_4S.jpg</string>
-				<string>Hotel_Ukraina_4S.jpg</string>
-				<string>Church_2_4S.jpg</string>
-				<string>View_Kremlin_4S.jpg</string>
-				<string>Church_4S.jpg</string>
-				<string>Historical_museum_4S.jpg</string>
-				<string>Hram_Hrista_Spasitelja_4S.jpg</string>
-				<string>Izmailovo_4S.jpg</string>
-				<string>Tsar_colocol_4S.jpg</string>
-				<string>Petr_Velikyi_4S.jpg</string>
-				<string>Sobor_Vasijia_Blagennogo_4S.jpg</string>
-				<string>Novodevichyi_monastyr_4S.jpg</string>
-				<string>Strogino_4S.jpg</string>
-				<string>VDNH_4S.jpg</string>
-				<string>Kolomenskoje_4S.jpg</string>
-			</array>
 			<key>small</key>
 			<string>moscow.png</string>
-			<key>5</key>
-			<array>
-				<string>Moscow_city_5.jpg</string>
-				<string>Hotel_Ukraina_5.jpg</string>
-				<string>Church_2_5.jpg</string>
-				<string>view_Kremlin_5.jpg</string>
-				<string>Church_5.jpg</string>
-				<string>Historical_museum_5.jpg</string>
-				<string>Hram_Hrista_Spasitelja_5.jpg</string>
-				<string>Izmailovo_5.jpg</string>
-				<string>Tcar_colocol_5.jpg</string>
-				<string>Petr_Velikyi_5.jpg</string>
-				<string>Sobor_Vasilija_Blagennogo_5.jpg</string>
-				<string>Novodevichyi_monastyr_5.jpg</string>
-				<string>Strogino_5.jpg</string>
-				<string>VDNH_5.jpg</string>
-				<string>Kolomenskoe_5.jpg</string>
-			</array>
 		</dict>
 		<key>places</key>
 		<dict>
@@ -1791,144 +1662,15 @@ The city is served by an extensive transit network, which includes four internat
 		<key>About_DE</key>
 		<string></string>
 		<key>downloaded</key>
-		<string>1</string>
+		<string>0</string>
 		<key>special</key>
 		<string>0</string>
 		<key>photos</key>
 		<dict>
 			<key>large</key>
 			<string>vienna.png</string>
-			<key>coordinates</key>
-			<array>
-				<dict>
-					<key>Lat</key>
-					<string>48.203025</string>
-					<key>Lon</key>
-					<string>16.366067</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.210004</string>
-					<key>Lon</key>
-					<string>16.367011</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.147763</string>
-					<key>Lon</key>
-					<string>16.437607</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.19081</string>
-					<key>Lon</key>
-					<string>16.379843</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.208431</string>
-					<key>Lon</key>
-					<string>16.356239</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.20763</string>
-					<key>Lon</key>
-					<string>16.359286</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.211862</string>
-					<key>Lon</key>
-					<string>16.362076</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.212778</string>
-					<key>Lon</key>
-					<string>16.364822</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.205342</string>
-					<key>Lon</key>
-					<string>16.360402</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.213235</string>
-					<key>Lon</key>
-					<string>16.365852</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.19081</string>
-					<key>Lon</key>
-					<string>16.379843</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.183142</string>
-					<key>Lon</key>
-					<string>16.311779</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.208431</string>
-					<key>Lon</key>
-					<string>16.354351</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.207401</string>
-					<key>Lon</key>
-					<string>16.406193</string>
-				</dict>
-				<dict>
-					<key>Lat</key>
-					<string>48.210718</string>
-					<key>Lon</key>
-					<string>16.374264</string>
-				</dict>
-			</array>
-			<key>4</key>
-			<array>
-				<string>Goethe_4S.jpg</string>
-				<string>Old_town_view_4S.jpg</string>
-				<string>Cementary_4S.jpg</string>
-				<string>Belveder_2_4S.jpg</string>
-				<string>City_Hall_4S.jpg</string>
-				<string>Parliament_4S.jpg</string>
-				<string>Burgtheatre_4S.jpg</string>
-				<string>Minoriten_4S.jpg</string>
-				<string>Natural_History_4S.jpg</string>
-				<string>Ferstel_4S.jpg</string>
-				<string>Belveder_4S.jpg</string>
-				<string>Statue_Straus_4S.jpg</string>
-				<string>Statue_Bethoven_4S.jpg</string>
-				<string>Prater_4S.jpg</string>
-				<string>Rupertkirche_4S.jpg</string>
-			</array>
 			<key>small</key>
 			<string>vienna_small_pic.png</string>
-			<key>5</key>
-			<array>
-				<string>Goethe_5.jpg</string>
-				<string>Old_town_view_5.jpg</string>
-				<string>Cementary_5.jpg</string>
-				<string>Belveder_2_5.jpg</string>
-				<string>City_Hall_5.jpg</string>
-				<string>Parliament_5.jpg</string>
-				<string>Burgtheatre_5.jpg</string>
-				<string>Minoriten_5.jpg</string>
-				<string>Natural_History_5.jpg</string>
-				<string>Ferstel_5.jpg</string>
-				<string>Belveder_5.jpg</string>
-				<string>Statue_Straus_5.jpg</string>
-				<string>Statue_Bethoven_5.jpg</string>
-				<string>Prater_5.jpg</string>
-				<string>Rupertkirche_5.jpg</string>
-			</array>
 		</dict>
 		<key>places</key>
 		<dict>
