@@ -225,7 +225,7 @@
 - (void) AFdownload : (NSString *) filename{
     self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:self.HUDfade];
-    self.HUDfade.userInteractionEnabled = YES;
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     self.HUDfade.mode = MBProgressHUDAnimationFade;
     self.HUDfade.removeFromSuperViewOnHide = YES;
     self.HUDfade.delegate = self;
@@ -249,14 +249,14 @@
         NSLog(@"всё сделано");
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x.png"]];
         [self.HUDfade hide:YES];
-        self.HUDfade.userInteractionEnabled = NO;
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
         NSLog(@"Error occured");
         [self DownloadError:error.description];
         [self.HUDfade hide:YES];
-        self.HUDfade.userInteractionEnabled = NO;
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error.png"]];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }];
