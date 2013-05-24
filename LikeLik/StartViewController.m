@@ -231,7 +231,7 @@
     self.HUDfade.delegate = self;
     if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
         [self.HUDfade show:YES];
-
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     NSString *url = [[NSString alloc] initWithFormat:@"%@%@.zip",likelikurl,filename];
     NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",filename];
@@ -250,7 +250,7 @@
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x.png"]];
         [self.HUDfade hide:YES];
         self.HUDfade.userInteractionEnabled = NO;
-        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
         NSLog(@"Error occured");
@@ -258,6 +258,7 @@
         [self.HUDfade hide:YES];
         self.HUDfade.userInteractionEnabled = NO;
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error.png"]];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }];
     
     [operation start];
