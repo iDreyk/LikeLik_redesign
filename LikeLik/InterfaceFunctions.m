@@ -110,7 +110,7 @@
 
 #pragma mark UIColor
 +(UIColor *)corporateIdentity{
-  return [UIColor colorWithRed:168.0/255.0 green:77.0/255.0 blue:190.0/255.0 alpha:1];
+  return [UIColor colorWithRed:169.0/255.0 green:79.0/255.0 blue:190.0/255.0 alpha:1];
 }
 
 +(UIColor *)mainTextColor:(NSInteger)flag{
@@ -119,32 +119,34 @@
 
     switch (flag) {
         case 1:
-            color = [UIColor colorWithRed:87.0/255.0 green:77.0/255.0 blue:170.0/255.0 alpha:1];
+            color = [self corporateIdentity];
             break;
         case 2:
-            color = [UIColor colorWithRed:202.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:184.0/255.0 green:6.0/255.0 blue:6.0/255.0 alpha:1];
             break;
         case 3:
             color = [UIColor colorWithRed:0.0/255.0 green:102.0/255.0 blue:255.0/255.0 alpha:1];
             break;
         case 4:
-            color = [UIColor colorWithRed:166.0/255.0 green:101.0/255.0 blue:205.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:207.0/255.0 green:16.0/255.0 blue:207.0/255.0 alpha:1];
             break;
         case 5:
-            color = [UIColor colorWithRed:30.0/255.0 green:200.0/255.0 blue:15.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:30.0/255.0 green:187.0/255.0 blue:22.0/255.0 alpha:1];
             break;
         case 6:
             color = [UIColor colorWithRed:255.0/255.0 green:100.0/255.0 blue:0/255.0 alpha:1];
             break;
         case 7:
-            color = [UIColor colorWithRed:217.0/255.0 green:101.0/255.0 blue:151.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:255.0/255.0 green:51.0/255.0 blue:153.0/255.0 alpha:1];
             break;
         case 8:
             color = [UIColor colorWithRed:0.0/255.0 green:174.0/255.0 blue:217.0/255.0 alpha:1];
             break;
         case 9:
-            color = [UIColor colorWithRed:87.0/255.0 green:77.0/255.0 blue:170.0/255.0 alpha:1];
+            color = [self corporateIdentity];
             break;
+        case 10:
+            color = [self corporateIdentity];
         default:
             break;
     }
@@ -155,52 +157,30 @@
 +(UIColor *)colorTextCategory:(NSString *)Category{
     UIColor *color;
     if ([Category isEqualToString:@"Restaurants"]) {
-        color = [UIColor colorWithRed:202.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1];
+        color = [self mainTextColor:2];
     }
     if ([Category isEqualToString:@"NightLife"]) {
-        color = [UIColor colorWithRed:0.0/255.0 green:102.0/255.0 blue:255.0/255.0 alpha:1];
+        color = [self mainTextColor:3];
     }
     if ([Category isEqualToString:@"Shopping"]) {
-        color = [UIColor colorWithRed:166.0/255.0 green:101.0/255.0 blue:205.0/255.0 alpha:1];
+        color = [self mainTextColor:4];
     }
     if ([Category isEqualToString:@"Culture"]) {
-        color = [UIColor colorWithRed:30.0/255.0 green:200.0/255.0 blue:15.0/255.0 alpha:1];
+        color = [self mainTextColor:5];
     }
     if ([Category isEqualToString:@"Leisure"]) {
-        color = [UIColor colorWithRed:255.0/255.0 green:100.0/255.0 blue:0/255.0 alpha:1];
+        color = [self mainTextColor:6];
     }
     if ([Category isEqualToString:@"Beauty"]) {
-        color = [UIColor colorWithRed:217.0/255.0 green:101.0/255.0 blue:151.0/255.0 alpha:1];
+        color = [self mainTextColor:7];
     }
     if ([Category isEqualToString:@"Hotels"]) {
-        color = [UIColor colorWithRed:0.0/255.0 green:174.0/255.0 blue:217.0/255.0 alpha:1];
+        color = [self mainTextColor:8];
     }
     return color;
 }
 +(UIColor *)colorTextPlaceBackground:(NSString *)Category{
-    UIColor *color;
-    if ([Category isEqualToString:@"Restaurants"]) {
-        color = [UIColor colorWithRed:202.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1];
-    }
-    if ([Category isEqualToString:@"NightLife"]) {
-        color = [UIColor colorWithRed:0.0/255.0 green:130.0/255.0 blue:235.0/255.0 alpha:1];
-    }
-    if ([Category isEqualToString:@"Shopping"]) {
-        color = [UIColor colorWithRed:166.0/255.0 green:101.0/255.0 blue:205.0/255.0 alpha:1];
-    }
-    if ([Category isEqualToString:@"Culture"]) {
-        color = [UIColor colorWithRed:30.0/255.0 green:200.0/255.0 blue:15.0/255.0 alpha:1];
-    }
-    if ([Category isEqualToString:@"Leisure"]) {
-        color = [UIColor colorWithRed:255.0/255.0 green:100.0/255.0 blue:0/255.0 alpha:1];
-    }
-    if ([Category isEqualToString:@"Beauty"]) {
-        color = [UIColor colorWithRed:217.0/255.0 green:158.0/255.0 blue:215.0/255.0 alpha:1];
-    }
-    if ([Category isEqualToString:@"Hotels"]) {
-        color = [UIColor colorWithRed:0.0/255.0 green:174.0/255.0 blue:217.0/255.0 alpha:1];
-    }
-    return color;
+    return [self colorTextCategory:Category];
 }
 +(UIColor *)taxiColor{
     return  [UIColor colorWithRed:253.0/255.0 green:179.0/255.0 blue:66.0/255.0 alpha:1.000];
@@ -313,7 +293,7 @@
     if ([Category isEqualToString:@"Hotels"]) {
         _actb.image=[UIImage imageNamed:@"44_48 actb_8"];
     }
-        return _actb;
+    return _actb;
 }
 +(UIImageView *)actbwithColor:(NSInteger)value{
     UIImageView *_actb = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"44_48 actb_12"]];

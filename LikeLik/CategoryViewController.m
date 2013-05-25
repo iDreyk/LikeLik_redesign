@@ -47,14 +47,10 @@
     self.CityName.textColor = [UIColor whiteColor];
     self.CityImage.image =  [UIImage imageWithContentsOfFile:self.Image];
     
-    
-    
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty", @"Hotels",@"Favorites", @"Visual Tour", @"Transportation",@"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"FavoritesSegue",@"VisualtourSegue",@"TransportationSegue",@"PracticalinfoSegue"];
 
-    
-    
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -64,7 +60,6 @@
 }
 
 -(void)search:(id)sender{
-
     [self performSegueWithIdentifier:@"SearchSegue" sender:self];
 }
 
@@ -75,14 +70,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self.Table deselectRowAtIndexPath:[self.Table indexPathForSelectedRow] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -102,7 +95,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = nil;//@"Cell";
+    static NSString *CellIdentifier = nil;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -111,13 +104,9 @@
     cell.backgroundView = [InterfaceFunctions CellBG];
     cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     cell.textLabel.backgroundColor = [UIColor clearColor];
-
     
     
     NSString *text = AMLocalizedString([self.CellArray objectAtIndex:[indexPath row]], nil);
-    NSLog(@"%@ ",text);
-    NSLog(@"%@",AMLocalizedString(@"Culture", nil));
-
     if ([indexPath row]<8 && [indexPath row]!=0) {
         [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions mainTextColor:[indexPath row]+1]]];
         [cell addSubview:[InterfaceFunctions actbwithColor:[indexPath row]+1]];
@@ -191,11 +180,9 @@
     }
 }
 
-
 - (void)viewDidUnload {
     [super viewDidUnload];
 }
-
 
 - (void)updateOffsets {
     
@@ -224,4 +211,5 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [self updateOffsets];
 }
+
 @end

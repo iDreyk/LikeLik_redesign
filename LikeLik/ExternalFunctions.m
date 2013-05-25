@@ -692,10 +692,10 @@ static CLLocation *Me;
         secondaryDisplayTextString = @"Display text in local language";
     }
     
-    [returnDictionary setObject:[placeDictionary objectForKey:checkLanguageFromSystem] forKey:@"main"];
-    [returnDictionary setObject:[placeDictionary objectForKey:checkLanguageFromCountry] forKey:@"secondary"];
-    [returnDictionary setObject:mainDisplayTextString forKey:@"mainDisplayButton"];
-    [returnDictionary setObject:secondaryDisplayTextString forKey:@"secondaryDisplayButton"];
+    [returnDictionary setValue:[placeDictionary objectForKey:checkLanguageFromSystem] forKey:@"main"];
+    [returnDictionary setValue:[placeDictionary objectForKey:checkLanguageFromCountry] forKey:@"secondary"];
+    [returnDictionary setValue:mainDisplayTextString forKey:@"mainDisplayButton"];
+    [returnDictionary setValue:secondaryDisplayTextString forKey:@"secondaryDisplayButton"];
     
     return returnDictionary;
 }
