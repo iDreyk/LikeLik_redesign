@@ -221,6 +221,7 @@
 		9120105117510BCE00DAAF3D /* tabicon_SpecialSeries@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91200F6817510BCE00DAAF3D /* tabicon_SpecialSeries@2x.png */; };
 		9120105217510BCE00DAAF3D /* table_grad.png in Resources */ = {isa = PBXBuildFile; fileRef = 91200F6917510BCE00DAAF3D /* table_grad.png */; };
 		9120105317510BCE00DAAF3D /* table_grad_o_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 91200F6A17510BCE00DAAF3D /* table_grad_o_1.png */; };
+		912010551751125300DAAF3D /* MapBox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 912010541751125200DAAF3D /* MapBox.bundle */; };
 		9122D2AD173E422C0096BB24 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		91241959173BA85B004B6837 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -593,6 +594,7 @@
 		91200F6817510BCE00DAAF3D /* tabicon_SpecialSeries@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabicon_SpecialSeries@2x.png"; sourceTree = "<group>"; };
 		91200F6917510BCE00DAAF3D /* table_grad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad.png; sourceTree = "<group>"; };
 		91200F6A17510BCE00DAAF3D /* table_grad_o_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad_o_1.png; sourceTree = "<group>"; };
+		912010541751125200DAAF3D /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MapBox.bundle; sourceTree = "<group>"; };
 		9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 114x114.png"; sourceTree = "<group>"; };
 		91241948173A9CF8004B6837 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194A173A9DF5004B6837 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1253,6 +1255,7 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				912010541751125200DAAF3D /* MapBox.bundle */,
 				91200E8117510BCE00DAAF3D /* Work PNG */,
 				55CDB04017413DD100AF1096 /* MapBox.framework */,
 				55CDAF7B17413D9000AF1096 /* ZBarSDK */,
@@ -1785,6 +1788,7 @@
 				9120105117510BCE00DAAF3D /* tabicon_SpecialSeries@2x.png in Resources */,
 				9120105217510BCE00DAAF3D /* table_grad.png in Resources */,
 				9120105317510BCE00DAAF3D /* table_grad_o_1.png in Resources */,
+				912010551751125300DAAF3D /* MapBox.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
