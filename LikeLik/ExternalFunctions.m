@@ -7,8 +7,8 @@
 //
 
 #import "ExternalFunctions.h"
-
 #import "SSZipArchive.h"
+
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
 #define closestPlacesCount 8
 #define regionsCount 8
@@ -18,6 +18,7 @@
 #define sport @"Health & Beauty"
 #define restaurants @"Restaurants"
 #define catalogue @"Catalogues"
+#define likelikurl @"http://likelik.net/docs/"
 
 #define range 10
 #define rest @"Restaurants"
@@ -33,6 +34,59 @@
 
 
 static CLLocation *Me;
+
++ (void) DownloadController : (NSString *) catalogueName{
+    
+    [self AFdownload : catalogueName];
+    
+}
+
++ (void) AFdownload : (NSString *) filename{
+    NSString *url = [[NSString alloc] initWithFormat:@"%@%@",likelikurl,filename];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:filename];
+    operation.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Successfully downloaded file to %@", path);
+        [self DownloadSucceeded:filename];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        NSLog(@"Error occured");
+        [self DownloadError:error.description];
+    }];
+    
+    [operation start];
+    
+    //Setup Upload block to return progress of file upload
+    [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToRead) { float progress = totalBytesWritten / (float)totalBytesExpectedToRead;
+        NSLog(@"Download Percentage: %f %%", progress*100);
+    }];
+    
+}
+
++ (void) DownloadSucceeded:(NSString *)fileName {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+    [self unzipFileAt:path ToDestination:[paths objectAtIndex:0]];
+    NSString *crapPath = [[self docDir]stringByAppendingPathComponent:@"__MACOSX"];
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:crapPath error:nil];
+}
+
++ (NSString *) DownloadError:(NSString *)error{
+    NSLog(@"error = %@",error);
+    return error;
+}
+
+
+
+
+
 
 + (NSString *)docDir{
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
@@ -133,7 +187,6 @@ static CLLocation *Me;
     NSString *cataloguesPath2 = [[self docDir]stringByAppendingPathComponent:@"Vienna"];
     [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"Vienna" ofType:@""] toPath:cataloguesPath2 error:nil];
 
-//    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *catalogueArray = [[NSArray alloc]initWithContentsOfFile:cataloguesPath];
     [defaults setObject:catalogueArray forKey:catalogue];
@@ -242,11 +295,30 @@ static CLLocation *Me;
     else
         return NO;
 }
+//  добавить в скаченные
++ (void) addCityToDownloaded : (NSString *) city {
+    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
+    NSMutableArray *newCatalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *catalogues = [[NSMutableArray alloc]initWithArray:[defaults objectForKey:catalogue]];
+    
+    for (int i = 0; i<[catalogues count]; i++) {
+        if ([[[catalogues objectAtIndex:i]objectForKey:@"city_RU"]isEqualToString:city] || [[[catalogues objectAtIndex:i]objectForKey:@"city_DE"]isEqualToString:city] || [[[catalogues objectAtIndex:i]objectForKey:@"city_EN"]isEqualToString:city]) {
+            
+            [[newCatalogues objectAtIndex:i] setValue:@"1" forKeyPath:@"downloaded"];
+            
+            [newCatalogues writeToFile:cataloguesPath atomically:YES];
+            
+            [defaults setObject:newCatalogues forKey:catalogue];
+
+        }
+    }
+}
 //  скачать каталог города
 + (void) downloadCatalogue:(NSString *)catalogueOfCity {
     NSLog(@"in download");
     // Create a URL Request and set the URL
-    NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://likelik.net/docs/Archive.zip"]];
+    NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://likelik.net/docs/Archivetest.zip"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     // Display the network activity indicator

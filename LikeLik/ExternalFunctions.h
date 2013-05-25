@@ -11,6 +11,17 @@
 
 @interface ExternalFunctions : NSObject<CLLocationManagerDelegate>
 
++ (void) DownloadController : (NSString *) catalogueName;
+
++ (void) AFdownload : (NSString *) filename;
+
++ (void) DownloadSucceeded : (NSString *) fileName;
+
++ (NSString *) DownloadError : (NSString *) error;
+
++ (void) addCityToDownloaded : (NSString *) city;
+
+
 
 
 + (NSString *) getLocalizedString : (NSString *) string;

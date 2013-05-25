@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StartViewController : UITableViewController<UIAlertViewDelegate>{
+@interface StartViewController : UITableViewController<UIAlertViewDelegate,MBProgressHUDDelegate>{
   }
 
 @property (nonatomic, strong) NSArray *backCityImages;
 @property (nonatomic, strong) NSArray *CityLabels;
 @property (nonatomic, strong) NSArray *accesors;
 @property (nonatomic, retain) NSString *City;
+@property (nonatomic,retain)MBProgressHUD *HUDfade;
 
 
 @end
