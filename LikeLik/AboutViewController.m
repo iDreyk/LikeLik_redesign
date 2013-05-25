@@ -32,7 +32,7 @@
     
   //  self.view = [InterfaceFunctions backgroundView];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"About", nil) AndColor:[InterfaceFunctions NavBarColor]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"About", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     _infoScroll.showsHorizontalScrollIndicator = YES;
 
     UITextView *label = [[UITextView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 300.0)];

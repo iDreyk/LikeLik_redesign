@@ -29,7 +29,7 @@ static BOOL infoViewIsOpen = NO;
 - (void)viewDidLoad
 {
     
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:self.TaxiName AndColor:[InterfaceFunctions NavBarColor]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:self.TaxiName AndColor:[InterfaceFunctions corporateIdentity]];
     [super viewDidLoad];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     

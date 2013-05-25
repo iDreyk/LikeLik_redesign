@@ -1079,7 +1079,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstAttribute="height" constant="41" id="QY6-7A-f2C"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="58_82 info_flag_1@2x.png">
+                                <state key="normal" image="58_82 info_flag_ corporateIdentity@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1596,7 +1596,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="44_48 actb_1@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-fM-ZRG">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="44_48 actb_corporateIdentity@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-fM-ZRG">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="P8w-Sw-hGY"/>
                                                         <constraint firstAttribute="width" constant="22" id="ytx-Ne-YVT"/>
@@ -1620,7 +1620,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="44_48 actb_2@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="tvb-zV-nKs">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="44_48 actb_corporateIdentity@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="tvb-zV-nKs">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="22" id="4u9-d7-wq1"/>
                                                         <constraint firstAttribute="height" constant="24" id="UxX-Xc-YdE"/>
@@ -1644,7 +1644,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="44_48 actb_3@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Eab-eM-p82">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="44_48 actb_corporateIdentity@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Eab-eM-p82">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="GAI-ep-ba0"/>
                                                         <constraint firstAttribute="width" constant="22" id="InZ-iB-MGP"/>
@@ -1668,7 +1668,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="44_48 actb_4@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="dE2-s4-u3O">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="44_48 actb_corporateIdentity@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="dE2-s4-u3O">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="Gat-qI-IjN"/>
                                                         <constraint firstAttribute="width" constant="22" id="kMQ-lM-ZIp"/>
@@ -1884,12 +1884,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="124_124 Social_Icons11@2x.png" width="124" height="124"/>
         <image name="124_124 Social_Icons22@2x.png" width="124" height="124"/>
         <image name="124_124 Social_Icons44@2x.png" width="124" height="124"/>
-        <image name="44_48 actb_1@2x.png" width="44" height="48"/>
-        <image name="44_48 actb_2@2x.png" width="44" height="48"/>
-        <image name="44_48 actb_3@2x.png" width="44" height="48"/>
-        <image name="44_48 actb_4@2x.png" width="44" height="48"/>
+        <image name="44_48 actb_corporateIdentity@2x.png" width="44" height="48"/>
         <image name="58_82 info_flag 12@2x.png" width="58" height="82"/>
-        <image name="58_82 info_flag_1@2x.png" width="58" height="82"/>
+        <image name="58_82 info_flag_ corporateIdentity@2x.png" width="58" height="82"/>
         <image name="62_62 arrow_pressed@2x.png" width="62" height="62"/>
         <image name="640_1136 background-568h@2x.png" width="640" height="1136"/>
         <image name="Bg_gradient.png" width="640" height="108"/>

@@ -95,8 +95,6 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
-    
-    
 }
 -(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
    
@@ -122,15 +120,15 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     
     
     
-    self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:self.HUDfade];
-    self.HUDfade.userInteractionEnabled = NO;
-    self.HUDfade.mode = MBProgressHUDAnimationFade;
-    self.HUDfade.removeFromSuperViewOnHide = YES;
-    self.HUDfade.delegate = self;
-    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
-        [self.HUDfade show:YES];
-    
+//    self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+//    [self.navigationController.view addSubview:self.HUDfade];
+//    self.HUDfade.userInteractionEnabled = NO;
+//    self.HUDfade.mode = MBProgressHUDAnimationFade;
+//    self.HUDfade.removeFromSuperViewOnHide = YES;
+//    self.HUDfade.delegate = self;
+//    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
+//        [self.HUDfade show:YES];
+//    
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    
 //    if ([[defaults objectForKey:@"Language"] length] == 0) {
@@ -177,7 +175,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         Fistframe.origin.y-=270.0;
 
     }
-    [self.HUDfade show:YES];
+   // [self.HUDfade show:YES];
     
 //    //  скачивание
 //    NSLog(@"Downloaded = %@",[defaults objectForKey:@"Download"]);
@@ -197,7 +195,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
                          self.subtitle.hidden = NO;
                          self.Firsttitle.alpha = 1;
                          self.subtitle.alpha = 1;
-                         [self.HUDfade hide:YES];
+                    //     [self.HUDfade hide:YES];
                          [self performSegueWithIdentifier:@"fistSegue" sender:self];
                      }];
     

@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *Vkontakte;
 @property (weak, nonatomic) IBOutlet UIButton *Twitter;
 @property (nonatomic,retain)IBOutlet NSString *Parent;
+@property (nonatomic,retain) NSString *lang;
 @property (nonatomic,retain)MBProgressHUD *HUDemailcheck;
 @property (nonatomic,retain)MBProgressHUD *HUDpassword;
 @property (nonatomic,retain)MBProgressHUD *HUDdone;

@@ -37,7 +37,7 @@
     self.SupportCell.textLabel.text = AMLocalizedString(@"Support", nil);
     self.SupportCell.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.SupportCell.textLabel.backgroundColor   = [UIColor clearColor];
-    self.SupportCell.textLabel.textColor = [InterfaceFunctions mainTextColor:3];
+    self.SupportCell.textLabel.textColor = [InterfaceFunctions corporateIdentity];
     self.SupportCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
    
     
@@ -49,7 +49,7 @@
     self.TermsCell.textLabel.text = AMLocalizedString(@"Terms of use", nil);
     self.TermsCell.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.TermsCell.textLabel.backgroundColor   = [UIColor clearColor];
-    self.TermsCell.textLabel.textColor = [InterfaceFunctions mainTextColor:2];
+    self.TermsCell.textLabel.textColor = [InterfaceFunctions corporateIdentity];
     self.TermsCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
     
     self.TermsCell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
@@ -59,7 +59,7 @@
     self.AboutCell.textLabel.text = AMLocalizedString(@"About", nil);
     self.AboutCell.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.AboutCell.textLabel.backgroundColor   = [UIColor clearColor];
-    self.AboutCell.textLabel.textColor = [InterfaceFunctions mainTextColor:1];//[UIColor colorWithRed:207.0/255.0       green:17.0/255.0 blue:17.0/255.0 alpha:1];
+    self.AboutCell.textLabel.textColor = [InterfaceFunctions corporateIdentity];//[UIColor colorWithRed:207.0/255.0       green:17.0/255.0 blue:17.0/255.0 alpha:1];
     self.AboutCell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
    
     
@@ -71,7 +71,7 @@
     self.MoreLikeLikApps.textLabel.text = AMLocalizedString(@"More LikeLik Apps", nil);
     self.MoreLikeLikApps.textLabel.font = [AppDelegate OpenSansRegular:28];
     self.MoreLikeLikApps.textLabel.backgroundColor   = [UIColor clearColor];
-    self.MoreLikeLikApps.textLabel.textColor = [InterfaceFunctions mainTextColor:4];
+    self.MoreLikeLikApps.textLabel.textColor = [InterfaceFunctions corporateIdentity];
     self.MoreLikeLikApps.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
     
     self.MoreLikeLikApps.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
@@ -82,7 +82,7 @@
     
     
     
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:  AMLocalizedString(@"About", @"") AndColor:[InterfaceFunctions NavBarColor]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:  AMLocalizedString(@"About", @"") AndColor:[InterfaceFunctions corporateIdentity]];
     self.tableView.backgroundView = [InterfaceFunctions backgroundView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];

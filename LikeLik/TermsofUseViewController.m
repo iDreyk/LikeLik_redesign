@@ -32,7 +32,7 @@
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     //self.view = [InterfaceFunctions backgroundView];
     
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Terms of use", nil) AndColor:[InterfaceFunctions NavBarColor]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Terms of use", nil) AndColor:[InterfaceFunctions corporateIdentity]];
      
     
     

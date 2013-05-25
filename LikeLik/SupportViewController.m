@@ -27,7 +27,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.titleView=[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Support", nil)  AndColor:[InterfaceFunctions NavBarColor]];
+    
+    self.lang = [[NSString alloc] init];
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"]);
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"Русский"])
+        self.lang = @"ru";
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"English"])
+        self.lang = @"en";
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"Deutsch"])
+        self.lang = @"de";
+
+    
+    self.navigationItem.titleView=[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Support", nil)  AndColor:[InterfaceFunctions corporateIdentity]];
     self.Email.returnKeyType = UIReturnKeyNext;
     self.FeedBack.returnKeyType = UIReturnKeyDone;
     self.Email.delegate = self;
@@ -67,16 +78,18 @@
     
     
     if (([self.Email.text length] > 0 || [self.FeedBack.text length] > 0) && (![self.FeedBack.text isEqualToString:AMLocalizedString(@"Leave a feedback for us", nil)] || [self.Email.text length]>0)) {
-        NSDictionary *JsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys: self.Email.text,@"name",self.FeedBack.text,@"note",lat,@"Latitude",lon,@"Longitude",nil];
+        NSDictionary *JsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys: self.Email.text,@"name",self.FeedBack.text,@"note",lat,@"lat",lon,@"lon",nil];
         NSLog(@"%@",JsonDictionary);
     
     NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-    [httpClient defaultValueForHeader:@"Accept"];
+     [httpClient defaultValueForHeader:@"Accept"];
     
     
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
-                                                            path:@"/api/v1/support/LeaveComment" parameters:JsonDictionary];
+        NSString *params = [NSString stringWithFormat:@"/api/v1/support/LeaveComment?lang=%@",_lang];
+        NSLog(@"%@",params);
+        NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:params parameters:JsonDictionary];
+        
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
                                          initWithRequest:request];

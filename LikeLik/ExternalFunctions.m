@@ -123,10 +123,6 @@ static CLLocation *Me;
 }
 
 
-
-
-
-
 + (void) getReady {
     NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"catalogue" ofType:@"plist"] toPath:cataloguesPath error:nil];
@@ -141,7 +137,6 @@ static CLLocation *Me;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *catalogueArray = [[NSArray alloc]initWithContentsOfFile:cataloguesPath];
     [defaults setObject:catalogueArray forKey:catalogue];
-    NSLog(@"cat = %@",[defaults objectForKey:catalogue]);
 }
 
 + (CLLocation *) getMyLocationOrTheLocationOfCityCenter : (NSString *) city{

@@ -19,7 +19,7 @@
 +(UIButton *)done_button;
 
 #pragma mark UIColor
-+(UIColor *)NavBarColor;
++(UIColor *)corporateIdentity;
 +(UIColor *)mainTextColor:(NSInteger)flag;
 +(UIColor *)colorTextCategory:(NSString *)Category;
 +(UIColor *)colorTextPlaceBackground:(NSString *)Category;
@@ -38,6 +38,7 @@
 +(UIImageView *)actbwithCategory:(NSString *)Category;
 +(UIImageView *)actbwithColor:(NSInteger)value;
 +(UIImageView *)actbTaxi;
++(UIImageView *)corporateIdentity_actb;
 +(UIImageView *)MapPin:(NSString *)Category;
 +(UIImageView *)TabitemwithCategory:(NSString *)Category andtag:(NSString *)tag;
 +(UIImageView *)Ribbon:(NSString *)Category;

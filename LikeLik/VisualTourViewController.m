@@ -139,7 +139,7 @@ static BOOL infoViewIsOpen = NO;
     _scroll.delegate=self;
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
      
-    self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions NavBarColor]];
+    self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     
     
     for (UIView * view in self.view.subviews) {
@@ -273,7 +273,7 @@ static BOOL infoViewIsOpen = NO;
     }
     [label setScrollEnabled:NO];
     
-    [_infoScroll setBackgroundColor:[InterfaceFunctions mainTextColor:1]];
+    [_infoScroll setBackgroundColor:[InterfaceFunctions corporateIdentity]];
     
     [_infoScroll addSubview:Red_line];
     

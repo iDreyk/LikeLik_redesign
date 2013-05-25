@@ -42,7 +42,7 @@ static NSDictionary *Place;
     [self.SearchBar setShowsCancelButton:NO];
 //#warning надо переделать под новый каталог
     self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Search", nil)  AndColor:[InterfaceFunctions NavBarColor]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Search", nil)  AndColor:[InterfaceFunctions corporateIdentity]];
     
     
     self.SearchTable.separatorStyle = UITableViewCellSelectionStyleNone;
@@ -95,10 +95,9 @@ static NSDictionary *Place;
     cell.backgroundView = [InterfaceFunctions CellBG];
     cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
 
-    [cell addSubview:[InterfaceFunctions goLabelCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Сategory"]]];
-    [cell addSubview:[InterfaceFunctions actbwithCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Сategory"]]];
+    [cell addSubview:[InterfaceFunctions goLabelCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Category"]]];
+    [cell addSubview:[InterfaceFunctions actbwithCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Category"]]];
 
-    
     return cell;
 }
 
@@ -125,8 +124,8 @@ static NSDictionary *Place;
         Place = [self.PlacesArray objectAtIndex:row];
         destinaton.PlaceName = [Place objectForKey:@"Name"];
         destinaton.PlaceCityName = self.CityName;
-        destinaton.PlaceCategory =  [Place objectForKey:@"Сategory"];
-        destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[[self.PlacesArray objectAtIndex:row] objectForKey:@"Сategory"]];
+        destinaton.PlaceCategory =  [Place objectForKey:@"Category"];
+        destinaton.Color = [InterfaceFunctions colorTextPlaceBackground:[[self.PlacesArray objectAtIndex:row] objectForKey:@"Category"]];
         destinaton.PlaceAbout = [Place objectForKey:@"About"];
         destinaton.PlaceAddress = [Place objectForKey:@"Address"];
         destinaton.PlaceWeb = [Place objectForKey:@"Web"];

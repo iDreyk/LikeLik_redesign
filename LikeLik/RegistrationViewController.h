@@ -19,6 +19,7 @@
     Vkontakte *_vkontakte;
     SA_OAuthTwitterEngine				*_engine;
 }
+@property (nonatomic,retain)NSString *lang;
 @property (retain,nonatomic) UITextField *Login;
 @property (retain,nonatomic) UITextField *Password;
 @property (retain,nonatomic) UITextField *Email;

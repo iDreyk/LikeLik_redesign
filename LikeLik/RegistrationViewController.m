@@ -38,8 +38,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     array = @[@"Name",@"E-Mail",@"Password",@"Password"];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Registration", nil) AndColor:[InterfaceFunctions NavBarColor]];
+    self.lang = [[NSString alloc] init];
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"]);
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"Русский"])
+        self.lang = @"ru";
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"English"])
+        self.lang = @"en";
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"Deutsch"])
+        self.lang = @"de";
+
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Registration", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.RegistrationTable setBackgroundColor:[UIColor clearColor]];
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
@@ -605,7 +615,7 @@
         NSString *tmp = [[[[[[NSUserDefaults standardUserDefaults] objectForKey: @"authData"] componentsSeparatedByString:@"user_id="]objectAtIndex:1] componentsSeparatedByString:@"&"]objectAtIndex:0];
         NSString *uid = [NSString stringWithFormat:@"%@",tmp];
         NSString *password = [NSString stringWithFormat:@"%@password",uid];
-        params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"twitter_id", password ,@"Password",nil];
+        params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"twitter_id", password ,@"Password",lat,@"lat",lon,@"lon",nil];
     }
     
     
@@ -616,7 +626,7 @@
         NSString *password = [NSString stringWithFormat:@"%@password",uid];
         NSString *Bday = RemoveNull(@"birthday_date")
         
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"facebook_id", password ,@"Password", Bday,@"birth_date",lat,@"Latitude",lon,@"Longitude",nil];
+        params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"facebook_id", password ,@"Password", Bday,@"birth_date",lat,@"lat",lon,@"lon",nil];
         NSLog(@"Facebook body = %@",params);
     }
     
@@ -625,7 +635,7 @@
         NSString *name = [NSString stringWithFormat:@"%@ %@",[self.VkontakteUserInfo objectForKey:@"first_name"],[self.VkontakteUserInfo objectForKey:@"last_name"]];
         NSString *password = [NSString stringWithFormat:@"%@password",[self.VkontakteUserInfo objectForKey:@"uid"]];
         NSString *uid = [NSString stringWithFormat:@"%@",[self.VkontakteUserInfo objectForKey:@"uid"]];
-        params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"vkontakte_id", password ,@"Password",[self.VkontakteUserInfo objectForKey:@"bdate"],@"Birth_date",lat,@"Latitude",lon,@"Longitude",nil];
+        params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"vkontakte_id", password ,@"Password",[self.VkontakteUserInfo objectForKey:@"bdate"],@"Birth_date",lat,@"lat",lon,@"lon",nil];
     }
 //    NSLog(@"%@",params);
     return params;
@@ -635,7 +645,9 @@
     NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     [httpClient defaultValueForHeader:@"Accept"];
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"/api/v1/users" parameters:[self POSTRequest:RegistrationWay]];
+    NSString *params = [NSString stringWithFormat:@"/api/v1/users?lang=%@",_lang];
+    NSLog(@"%@",params);
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:params parameters:[self POSTRequest:RegistrationWay]];
     
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {

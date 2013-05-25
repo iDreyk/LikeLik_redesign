@@ -37,7 +37,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
      
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Settings", nil) AndColor:[InterfaceFunctions NavBarColor]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Settings", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     
 
     RegisterAndLogin = @[AMLocalizedString(@"Registration", nil),AMLocalizedString(@"Login", nil)];
@@ -139,13 +139,13 @@
     switch ([indexPath section]) {
         case 0:
             NSLog(@"123");
-        [cell addSubview:[InterfaceFunctions TableLabelwithText:[RegisterAndLogin objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions mainTextColor:[indexPath section]+1] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
+        [cell addSubview:[InterfaceFunctions TableLabelwithText:[RegisterAndLogin objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions corporateIdentity] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
             break;
         case 1:
-        [cell addSubview:[InterfaceFunctions TableLabelwithText:[Language objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions mainTextColor:[indexPath section]+1] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
+        [cell addSubview:[InterfaceFunctions TableLabelwithText:[Language objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions corporateIdentity] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
             break;
         case 2:
-        [cell addSubview:[InterfaceFunctions TableLabelwithText: [NSString stringWithFormat:@"Display %@",[Measures objectAtIndex:[indexPath row]]] AndColor:[InterfaceFunctions mainTextColor:[indexPath section]+1] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
+        [cell addSubview:[InterfaceFunctions TableLabelwithText: [NSString stringWithFormat:@"Display %@",[Measures objectAtIndex:[indexPath row]]] AndColor:[InterfaceFunctions corporateIdentity] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
             break;
         default:
             break;
@@ -191,7 +191,7 @@
 	headerLabel.font = [AppDelegate OpenSansBoldwithSize:28];
 	headerLabel.frame = CGRectMake(10,0,310,30);
 	headerLabel.textColor = [UIColor whiteColor];
-    customView.backgroundColor = [InterfaceFunctions mainTextColor:section+1];
+    customView.backgroundColor = [InterfaceFunctions corporateIdentity];
 	if(section == 0) {
         headerLabel.text =  AMLocalizedString(@"Register and login", nil);
 	}
@@ -252,7 +252,6 @@
             }
             if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Deutsch"]){
                 LocalizationSetLanguage(@"de");
-                //[TestFlight passCheckpoint:@"SetDe"];
             }
             
 
@@ -295,25 +294,12 @@
     if ([indexPath section] == 1 || [indexPath section] == 2) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
-//    if ([indexPath section] == 2) {
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//    }
-    
-//
-//    if (cell.accessoryType == UITableViewCellAccessoryNone) {
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//    }
-//    
-//    else if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-//    }
-//
-    
+
     [defaults synchronize];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.tableView reloadData];
     
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Settings", nil) AndColor:[InterfaceFunctions NavBarColor]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Settings", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     
     
     

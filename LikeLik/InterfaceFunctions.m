@@ -109,7 +109,7 @@
 
 
 #pragma mark UIColor
-+(UIColor *)NavBarColor{
++(UIColor *)corporateIdentity{
   return [UIColor colorWithRed:168.0/255.0 green:77.0/255.0 blue:190.0/255.0 alpha:1];
 }
 
@@ -183,7 +183,7 @@
         color = [UIColor colorWithRed:202.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1];
     }
     if ([Category isEqualToString:@"NightLife"]) {
-        color = [UIColor colorWithRed:0.0/255.0 green:102.0/255.0 blue:255.0/255.0 alpha:1];
+        color = [UIColor colorWithRed:0.0/255.0 green:130.0/255.0 blue:235.0/255.0 alpha:1];
     }
     if ([Category isEqualToString:@"Shopping"]) {
         color = [UIColor colorWithRed:166.0/255.0 green:101.0/255.0 blue:205.0/255.0 alpha:1];
@@ -195,7 +195,7 @@
         color = [UIColor colorWithRed:255.0/255.0 green:100.0/255.0 blue:0/255.0 alpha:1];
     }
     if ([Category isEqualToString:@"Beauty"]) {
-        color = [UIColor colorWithRed:217.0/255.0 green:101.0/255.0 blue:151.0/255.0 alpha:1];
+        color = [UIColor colorWithRed:217.0/255.0 green:158.0/255.0 blue:215.0/255.0 alpha:1];
     }
     if ([Category isEqualToString:@"Hotels"]) {
         color = [UIColor colorWithRed:0.0/255.0 green:174.0/255.0 blue:217.0/255.0 alpha:1];
@@ -449,6 +449,12 @@
     _actb.image=[UIImage imageNamed:@"44_48 actbtaxi"];
     return _actb;
 }
+
++(UIImageView *)corporateIdentity_actb{
+    UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(293,11, 22, 23)];
+    _actb.image=[UIImage imageNamed:@"44_48 actb_corporateIdentity@2x"];
+    return _actb;
+}
 +(UIImageView *)favourite_star_empty{
     UIImageView *star = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 133, 140.5)];
     [star setCenter:CGPointMake(160.0, 108.0)];
@@ -459,7 +465,7 @@
 }
 +(UIImageView *)MapPinVisualTour{
     UIImageView *Pin=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MapPin_12"]];
-    Pin.image = [UIImage imageNamed:@"63_76 MapPin_1"];
+    Pin.image = [UIImage imageNamed:@"63_76 MapPin_corporateIdentity"];
     return Pin;
     
     

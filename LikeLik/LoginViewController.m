@@ -38,8 +38,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.lang = [[NSString alloc] init];
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"]);
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"Русский"]) {
+        self.lang = @"ru";
+    }
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"English"]) {
+        self.lang = @"en";
+    }
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"Deutsch"]) {
+        self.lang = @"de";
+    }
     array = @[@"E-Mail",@"Password"];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Login", nil) AndColor:[InterfaceFunctions NavBarColor]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Login", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     [self.LoginTable setBackgroundColor:[UIColor clearColor]];
@@ -503,7 +514,7 @@
         NSString *tmp = [[[[[[NSUserDefaults standardUserDefaults] objectForKey: @"authData"] componentsSeparatedByString:@"user_id="]objectAtIndex:1] componentsSeparatedByString:@"&"]objectAtIndex:0];
         NSString *uid = [NSString stringWithFormat:@"%@",tmp];
         NSString *password = [NSString stringWithFormat:@"%@password",uid];
-        params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"twitter_id", password ,@"Password",nil];
+        params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"twitter_id", password ,@"Password",lat,@"Latitude",lon,@"Longitude",nil];
         NSLog(@"Way = %@",params);
     }
     
@@ -531,7 +542,8 @@
     NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     [httpClient defaultValueForHeader:@"Accept"];
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"/api/v1/users/login" parameters:[self POSTRequest:RegistrationWay]];
+    NSString *params = [NSString stringWithFormat:@"/api/v1/users/login?lang=%@",_lang];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:params parameters:[self POSTRequest:RegistrationWay]];
     
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
