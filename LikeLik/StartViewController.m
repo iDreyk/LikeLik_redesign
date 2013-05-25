@@ -259,6 +259,7 @@
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error.png"]];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self.navigationController popViewControllerAnimated:YES];
     }];
     
     [operation start];

@@ -76,9 +76,4 @@
 - (IBAction)tapDetected:(UIGestureRecognizer *)sender;
 -(IBAction)ShowMap:(id)sender;
 
-
--(UILabel *)UseTextwithCenter:(CGPoint)Center;
--(UILabel *)ShareTextwithCenter:(CGPoint)Center;
-
-
 @end

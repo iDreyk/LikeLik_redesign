@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StartViewController : UITableViewController<UIAlertViewDelegate>{
+@interface StartViewController : UITableViewController<UIAlertViewDelegate,MBProgressHUDDelegate>{
   }
 
 @property (nonatomic, strong) NSArray *backCityImages;
