@@ -587,8 +587,10 @@ CGFloat alpha = 0.5;
 
 -(void)backgroundgo{
   //  NSLog(@"backgroundgo");
+    NSLog(@"Hello!");
     if (infoViewIsOpen == YES) {
         [self tapDetected:nil];
+        self.placeViewMap.hidden = YES;
     }
 }
 
@@ -1100,7 +1102,18 @@ CGFloat alpha = 0.5;
 }
 
 - (void)vkontakteAuthControllerDidCancelled{
-    [self dismissViewControllerAnimated:YES completion:^{}];
+    //[self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+//    self.navigationController.navigationBar.hidden = YES;
+//    if ([ExternalFunctions isCheckUsedInPlace:self.PlaceName InCategory:self.PlaceCategory InCity:self.PlaceCityName]){
+//        self.GOUSE.enabled = NO;
+//        [Use stopAnimating];
+//    }
+    [self dismissViewControllerAnimated:YES completion:^{[self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+        self.navigationController.navigationBar.hidden = YES;
+        [self tapDetected:nil];
+    }];
+    
+    NSLog(@"123");
 }
 
 - (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte{
@@ -1142,6 +1155,9 @@ CGFloat alpha = 0.5;
 }
 
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller {
+    [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+    self.navigationController.navigationBar.hidden = YES;
+    [self tapDetected:nil];
 	// NSLog(@"Authentication Canceled.");
 }
 
@@ -1223,7 +1239,6 @@ CGFloat alpha = 0.5;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
     
     [UIView animateWithDuration:1.0 animations:^{
         if ([AppDelegate isiPhone5])

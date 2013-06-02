@@ -254,11 +254,6 @@ NSInteger wasinactive = NO;
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     wasinactive = NO;
-    //  NSLog(@"applicationDidBecomeActive");
-    //    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:afterCall
-    //                                                        object:self];
-    //
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [[NSNotificationCenter defaultCenter] postNotificationName:afterFB
                                                         object:self];

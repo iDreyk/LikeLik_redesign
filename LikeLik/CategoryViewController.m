@@ -109,7 +109,7 @@
     NSString *text = AMLocalizedString([self.CellArray objectAtIndex:[indexPath row]], nil);
     if ([indexPath row]<8 && [indexPath row]!=0) {
         [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions mainTextColor:[indexPath row]+1]]];
-        [cell addSubview:[InterfaceFunctions actbwithColor:[indexPath row]+1]];
+        [cell addSubview:[InterfaceFunctions actbwithColor:[indexPath row]]];//actbwithColor:[indexPath row]+1]];
     }
     else{
         [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions corporateIdentity]]];

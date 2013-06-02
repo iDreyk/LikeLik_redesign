@@ -60,14 +60,15 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 ////        
 //        
         
-        NSLog(@"regions \n %@",Region);
+//        NSLog(@"regions \n %@",Region);
 
         
         for (int i = 0; i<[Region count]; i++) {
             [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
+//            NSLog(@"Start monitoring for region %d: %@",i,[Region objectAtIndex:i]);
         }
         [locationManager stopUpdatingLocation];
-        locationManager = nil;
+       // locationManager = nil;
         NSLog(@"all regions \n %@",[locationManagerRegion monitoredRegions]);
     }
     else{
@@ -106,6 +107,11 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     [super viewDidLoad];
     locationManager = [[CLLocationManager alloc] init];
     [locationManager setDelegate:self];
+    
+    
+    locationManagerRegion = [[CLLocationManager alloc] init];
+    [locationManagerRegion setDelegate:self];
+    
     [locationManager startUpdatingLocation];
     
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];

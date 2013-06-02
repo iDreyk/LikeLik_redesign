@@ -296,10 +296,9 @@
     return _actb;
 }
 +(UIImageView *)actbwithColor:(NSInteger)value{
-    UIImageView *_actb = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"44_48 actb_12"]];
-    NSString *imagename = [NSString stringWithFormat:@"44_48 actb_%d",value];
-    [_actb setFrame:CGRectMake(293, 11, _actb.frame.size.width, _actb.frame.size.height)];
-    [_actb setImage:[UIImage imageNamed:imagename]];
+    UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(293,11, 22, 23)];
+    NSString *string = [NSString stringWithFormat:@"44_48 actb_%d@2x",value+1];
+    _actb.image=[UIImage imageNamed:string];//[NSString]]//[UIImage imageNamed:[NSString stringwithFormat:@"44_48 actb_%d@2x"]];
     return _actb;
 }
 +(UIImageView *)MapPin:(NSString *)Category{
