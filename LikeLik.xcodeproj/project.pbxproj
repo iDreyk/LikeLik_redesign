@@ -226,8 +226,6 @@
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		91241959173BA85B004B6837 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */; };
-		917CCDDE1749145900A138FD /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 917CCDDD1749145900A138FD /* Moscow */; };
-		917CCDE01749146200A138FD /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 917CCDDF1749146200A138FD /* Vienna */; };
 		919E8700173A58E700A25E07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E86FF173A58E700A25E07 /* UIKit.framework */; };
 		919E8702173A58E700A25E07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8701173A58E700A25E07 /* Foundation.framework */; };
 		919E8704173A58E700A25E07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8703173A58E700A25E07 /* CoreGraphics.framework */; };
@@ -601,8 +599,6 @@
 		9124194B173A9E05004B6837 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124195A173BD4D5004B6837 /* PlacesByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesByCategoryViewController.h; sourceTree = "<group>"; };
 		9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesByCategoryViewController.m; sourceTree = "<group>"; };
-		917CCDDD1749145900A138FD /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Moscow; path = ../../../Documents/Moscow; sourceTree = "<group>"; };
-		917CCDDF1749146200A138FD /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = ../../../Documents/Vienna; sourceTree = "<group>"; };
 		919E86FC173A58E700A25E07 /* LikeLik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LikeLik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		919E86FF173A58E700A25E07 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		919E8701173A58E700A25E07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1461,8 +1457,6 @@
 		919E8AB8173A5ED700A25E07 /* Andrew */ = {
 			isa = PBXGroup;
 			children = (
-				917CCDDF1749146200A138FD /* Vienna */,
-				917CCDDD1749145900A138FD /* Moscow */,
 				9113464C1747A57C00F9E28E /* appData.plist */,
 				55530D8B173BD2AE00E0E2DF /* catalogue.plist */,
 				559CA016173A7137002F494F /* ExternalFunctions.h */,
@@ -1581,8 +1575,6 @@
 				55CDB03C17413D9000AF1096 /* zbar-helpicons.png in Resources */,
 				55CDB03D17413D9000AF1096 /* zbar-samples.png in Resources */,
 				9113464D1747A57C00F9E28E /* appData.plist in Resources */,
-				917CCDDE1749145900A138FD /* Moscow in Resources */,
-				917CCDE01749146200A138FD /* Vienna in Resources */,
 				91200F6B17510BCE00DAAF3D /* 124_124 Social_Icons11@2x.png in Resources */,
 				91200F6C17510BCE00DAAF3D /* 124_124 Social_Icons22@2x.png in Resources */,
 				91200F6D17510BCE00DAAF3D /* 124_124 Social_Icons33@2x.png in Resources */,
@@ -1964,7 +1956,8 @@
 		919E871A173A58E700A25E07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Application Developer (RX3537WRY8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1976,6 +1969,7 @@
 				GCC_PREFIX_HEADER = "LikeLik/LikeLik-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"/usr/include/libxml2\"";
 				INFOPLIST_FILE = "LikeLik/LikeLik-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
@@ -1987,7 +1981,9 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E28EFF06-96B2-4B58-9AF4-DCAEDF257991";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1995,7 +1991,8 @@
 		919E871B173A58E700A25E07 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Application Developer (RX3537WRY8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2007,6 +2004,7 @@
 				GCC_PREFIX_HEADER = "LikeLik/LikeLik-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"/usr/include/libxml2\"";
 				INFOPLIST_FILE = "LikeLik/LikeLik-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
@@ -2018,7 +2016,9 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E28EFF06-96B2-4B58-9AF4-DCAEDF257991";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
