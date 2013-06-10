@@ -76,14 +76,14 @@ CGFloat alpha = 0.5;
 
 -(void)move:(id)sender {
     [self.PlaceView bringSubviewToFront:[(UIPanGestureRecognizer*)sender view]];
-    CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.PlaceView];
+  //  CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.PlaceView];
     
     if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
         firstX = [[sender view] center].x;
         firstY = [[sender view] center].y;
     }
     
-    translatedPoint = CGPointMake(firstX, firstY+translatedPoint.y);
+   // translatedPoint = CGPointMake(firstX, firstY+translatedPoint.y);
     
     
     if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
@@ -525,7 +525,7 @@ CGFloat alpha = 0.5;
  
     
     
-    //#warning Андрей, сделай плз функцию
+    #warning Андрей, сделай плз функцию и еще мне нужно знать, какие minZoom и MaxZoom выставлять
     NSURL *url;
     if ([self.PlaceCityName isEqualToString:@"Moscow"] || [self.PlaceCityName isEqualToString:@"Москва"] || [self.PlaceCityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -1006,6 +1006,7 @@ CGFloat alpha = 0.5;
         }
         else
         {
+#warning  текст шаринга
             [_vkontakte postMessageToWall:self.PlaceAbout];
         }
         
@@ -1025,6 +1026,7 @@ CGFloat alpha = 0.5;
         if (controller)
             [self presentViewController:controller animated:YES completion:^{}];//presentModalViewController: controller animated: YES];
         else {
+#warning текст шаринга
             [_engine sendUpdate: self.PlaceAbout];
         }
     }
@@ -1035,7 +1037,7 @@ CGFloat alpha = 0.5;
         [SCFacebook loginCallBack:^(BOOL success, id result) {
             loadingView.hidden = YES;
             if (success) {
-                
+#warning ссылка шаринга
                 [SCFacebook feedPostWithLinkPath:@"http://www.likelik.com" caption:@"Best Service!" callBack:^(BOOL success, id result) {
                     loadingView.hidden = YES;
                     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
@@ -1117,6 +1119,7 @@ CGFloat alpha = 0.5;
 }
 
 - (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte{
+#warning текст шаринга
     [_vkontakte postMessageToWall:self.PlaceAbout];
     [self dismissViewControllerAnimated:YES completion:^{}];//
 }
@@ -1147,6 +1150,7 @@ CGFloat alpha = 0.5;
 
 #pragma mark SA_OAuthTwitterControllerDelegate
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username {
+#warning текст шаринга
 	[_engine sendUpdate: self.PlaceAbout];
 }
 
@@ -1201,6 +1205,7 @@ CGFloat alpha = 0.5;
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
         mailer.mailComposeDelegate = self;
         [mailer setSubject:AMLocalizedString(@"Email Subject", nil)];
+#warning поправить текст
         NSString *emailBody = AMLocalizedString(@"Email Text", nil);
         [mailer setMessageBody:emailBody isHTML:NO];
         [self presentViewController:mailer animated:YES completion:^{}];

@@ -26,7 +26,7 @@ NSInteger wasinactive = NO;
 #define backgroundg @"l27h7RU2123123132dzVfPoQssda"
 @implementation AppDelegate
 
-
+#warning воронка пользования
 @synthesize alertLabel;
 +(UIFont *)OpenSansRegular:(CGFloat)size{
     UIFont* font = [UIFont fontWithName:@"OpenSans" size:size/2];

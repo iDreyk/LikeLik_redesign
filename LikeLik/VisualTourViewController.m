@@ -152,7 +152,7 @@ static BOOL infoViewIsOpen = NO;
     }
     
 
-    #warning Андрей, сделай плз функцию
+    #warning Андрей, сделай плз функцию и еще мне нужно знать, какие minZoom и MaxZoom выставлять
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
