@@ -60,7 +60,6 @@ static NSDictionary *Place1;
         self.Map.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
     else
         self.Map.frame = CGRectMake(0.0, 0.0, 320.0, 416.0);
-    
     self.Map.minZoom = 13;
     self.Map.zoom = 13;
     //self.Map.maxzoom = 17;
