@@ -1961,8 +1961,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"/Volumes/Archive/Google Диск/LikeLik/Likelik Xcode\"",
-					"\"$(SRCROOT)/../../Downloads/Likelik Xcode\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1996,8 +1994,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"/Volumes/Archive/Google Диск/LikeLik/Likelik Xcode\"",
-					"\"$(SRCROOT)/../../Downloads/Likelik Xcode\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
