@@ -23,7 +23,7 @@
 @interface RegistrationViewController ()
 
 @end
-
+//чтобы запушить
 @implementation RegistrationViewController
 @synthesize Login,Password,Email,Confirm,Switch,BirthDayPicker;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

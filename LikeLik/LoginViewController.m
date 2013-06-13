@@ -22,7 +22,7 @@
 @interface LoginViewController ()
 
 @end
-
+//чтобы запущить
 @implementation LoginViewController
 @synthesize Password,Email;
 @synthesize Parent;

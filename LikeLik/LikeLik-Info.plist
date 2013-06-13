@@ -56,8 +56,6 @@
 		<string>OpenSansRegular.ttf</string>
 		<string>OpenSansSemibold.ttf</string>
 	</array>
-	<key>UIBackGroundModes</key>
-	<string>location</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

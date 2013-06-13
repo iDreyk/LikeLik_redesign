@@ -16,7 +16,7 @@
 @interface PreferencesViewController ()
 
 @end
-
+//чтобы запущить
 @implementation PreferencesViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
