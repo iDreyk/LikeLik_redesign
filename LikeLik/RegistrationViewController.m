@@ -629,7 +629,7 @@
         params = [NSDictionary dictionaryWithObjectsAndKeys: name ,@"name", uid,@"facebook_id", password ,@"Password", Bday,@"birth_date",lat,@"lat",lon,@"lon",nil];
         NSLog(@"Facebook body = %@",params);
     }
-    
+
     
     if ([Way isEqualToString:@"VK"]) {
         NSString *name = [NSString stringWithFormat:@"%@ %@",[self.VkontakteUserInfo objectForKey:@"first_name"],[self.VkontakteUserInfo objectForKey:@"last_name"]];
