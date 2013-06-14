@@ -528,6 +528,7 @@
         NSLog(@"Fb = %@",params);
         
     }
+    
     if ([Way isEqualToString:@"VK"]) {
         NSString *password = [NSString stringWithFormat:@"%@password",[self.VkontakteUserInfo objectForKey:@"uid"]];
         NSString *uid = [NSString stringWithFormat:@"%@",[self.VkontakteUserInfo objectForKey:@"uid"]];

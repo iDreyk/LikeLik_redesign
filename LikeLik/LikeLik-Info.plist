@@ -56,10 +56,6 @@
 		<string>OpenSansRegular.ttf</string>
 		<string>OpenSansSemibold.ttf</string>
 	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>iPhone5</string>
 	<key>UIPrerenderedIcon</key>
