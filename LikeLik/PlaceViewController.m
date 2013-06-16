@@ -750,7 +750,6 @@ CGFloat alpha = 0.5;
         _labelonPhoto.hidden = NO;
         _background.hidden = NO;
     }
-    //    nslog(@"%f",self.navigationController.navigationBar.frame.origin.y);
     [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     self.navigationController.navigationBar.hidden = YES;
     if ([AppDelegate isiPhone5]){
