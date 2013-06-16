@@ -43,7 +43,7 @@
     RegisterAndLogin = @[AMLocalizedString(@"Registration", nil),AMLocalizedString(@"Login", nil)];
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"])
         RegisterAndLogin = @[];
-    Language = @[@"English",@"Русский",@"Deutsch"];
+    Language = @[@"English",@"Русский",@"Deutsch",@"Japanese"];
     Measures = @[@"Miles",@"Kilometers"];
 //    [self.navigationController.navigationBar setBounds:CGRectMake(0.0, 0.0, 320.0, 70.0)];
 //    [self.navigationController.navigationBar setFrame:CGRectMake(0.0, 0.0, 320.0, 70.0)];
@@ -253,7 +253,9 @@
             if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Deutsch"]){
                 LocalizationSetLanguage(@"de");
             }
-            
+            if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Japanese"]){
+                LocalizationSetLanguage(@"ja");
+            }
 
         }
         
@@ -277,7 +279,8 @@
                 LocalizationSetLanguage(@"en");
             if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Deutsch"])
                 LocalizationSetLanguage(@"de");
-            
+            if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Japanese"])
+                LocalizationSetLanguage(@"ja");
 
         }
         
@@ -313,7 +316,7 @@
         RegisterAndLogin = @[];
 
     
-    Language = @[@"English",@"Русский",@"Deutsch"];
+    Language = @[@"English",@"Русский",@"Deutsch",@"Japanese"];
     Measures = @[@"Miles",@"Kilometers"];
 }
 
