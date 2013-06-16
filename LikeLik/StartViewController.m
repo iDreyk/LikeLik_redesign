@@ -8,14 +8,19 @@
 
 #import "StartViewController.h"
 #import "StartTableCell.h"
-
+#import "AFNetworking.h"
+#import "AFHTTPClient.h"
 #import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "AFNetworking.h"
+#import "Reachability.h"
+#import "AFDownloadRequestOperation.h"
 
 #import "CategoryViewController.h"
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
 #define likelikurl @"http://likelik.net/docs/"
+#define likelikurlcellnetwork @"http://likelik.net/cell/"
 #define catalogue @"Catalogues"
 
 
@@ -40,10 +45,10 @@
 {
     [super viewDidLoad];
     
-
+    
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-   
-
+    
+    
     _CityLabels = [ExternalFunctions getDownloadedCities:1];
     _backCityImages = [ExternalFunctions getDownloadedCities:0];
     
@@ -56,11 +61,11 @@
                                              selector: @selector(pref_dismiss)
                                                  name: dismiss
                                                object: nil];
-
+    
 }
 
 -(void)pref_dismiss{
-
+    
     [self viewDidAppear:YES];
 }
 
@@ -68,10 +73,10 @@
 -(void)viewDidAppear:(BOOL)animated{
   //  NSLog(@"123");
     NSInteger tabindex = self.tabBarController.selectedIndex;
-//    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
+    //    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
     
     if (tabindex == 0) { //выбраны featured
- 
+        
         _CityLabels = [ExternalFunctions getFeaturedCities:1];
         _backCityImages = [ExternalFunctions getFeaturedCities:0];
     }
@@ -81,7 +86,7 @@
        // NSLog(@"Hello");
         _CityLabels = [ExternalFunctions getDownloadedCities:1];
         _backCityImages = [ExternalFunctions getDownloadedCities:0];
-
+        
     }
     
     if (tabindex == 2) { //выбраны все гайды
@@ -91,7 +96,7 @@
     }
     
     if (tabindex == 3) {//Специальная серия
-    
+        
         _CityLabels = [ExternalFunctions getSpecialCities:1];
         _backCityImages = [ExternalFunctions getSpecialCities:0];
     }
@@ -132,17 +137,17 @@
     else
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-
+    
     cell.CityLabel.font = [AppDelegate OpenSansSemiBold:60];
     cell.CityLabel.text  = _CityLabels[row];
     cell.CityLabel.textColor = [UIColor whiteColor];
     cell.BackCityImage.image = [UIImage imageWithContentsOfFile:_backCityImages[row]];
     [cell addSubview:[InterfaceFunctions standartAccessorView]];
     
-//    if ([indexPath row]+1 == [_CityLabels count] ) {
-//        [cell.layer setShadowOpacity:24.4];
-//        [cell.layer setShadowRadius:5];
-//    }
+    //    if ([indexPath row]+1 == [_CityLabels count] ) {
+    //        [cell.layer setShadowOpacity:24.4];
+    //        [cell.layer setShadowRadius:5];
+    //    }
     
     return cell;
 }
@@ -152,8 +157,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger tabIndex = self.tabBarController.selectedIndex;
-    if(tabIndex != 1)
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if(tabIndex != 1 && ![ExternalFunctions isDownloaded:_CityLabels[[indexPath row]]]){
+        [defaults setValue:[NSNumber numberWithInt:[indexPath row]] forKey:@"row"];
         [self ShowAlertView];
+    }
 }
 
 
@@ -173,30 +181,17 @@
     destination.Image = _backCityImages[row];
     //[TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
     
-    if (![ExternalFunctions isDownloaded:_CityLabels[row]]) {
-      
-        if ([_CityLabels[row] isEqualToString:@"Moscow"] ||
-            [_CityLabels[row] isEqualToString:@"Moskau"] ||
-            [_CityLabels[row] isEqualToString:@"Москва"]) {
-            [self AFdownload:@"Moscow"];
-        }
-        else if ([_CityLabels[row] isEqualToString:@"Вена"] ||
-                 [_CityLabels[row] isEqualToString:@"Vienna"] ||
-                 [_CityLabels[row] isEqualToString:@"Wien"]) {
-            [self AFdownload:@"Vienna"];
-        }
-    }
-
+    
     
 }
 
 -(void)ShowAlertView{
-//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Покупка"
-//                                                          message:@"Вы собираетесь приобрести каталог LikeLik стоимость 299р."
-//                                                         delegate:self
-//                                                cancelButtonTitle:@"Спасибо, не хочу"
-//                                                otherButtonTitles:@"Ok",nil];
-      //  [message show];
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Покупка"
+                                                      message:@"Вы собираетесь скачать каталог LikeLik объёмом 100Мбайт"
+                                                     delegate:self
+                                            cancelButtonTitle:@"Спасибо, не хочу"
+                                            otherButtonTitles:@"Ok",nil];
+    [message show];
     
 }
 
@@ -207,8 +202,51 @@
         //[TestFlight passCheckpoint:@"buying"];
     }
     else{
-            NSLog(@"Purchased");
+        NSLog(@"Purchased");
         NSLog(@"Отказался от покупки");
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSInteger row = [[defaults objectForKey:@"row"] integerValue];
+        Reachability *reach = [Reachability reachabilityWithHostname:@"google.com"];
+        
+        if ([reach isReachable]) {
+            if ([reach isReachableViaWiFi]) {
+                // On WiFi
+                if ([_CityLabels[row] isEqualToString:@"Moscow"] ||
+                    [_CityLabels[row] isEqualToString:@"Moskau"] ||
+                    [_CityLabels[row] isEqualToString:@"Москва"]) {
+                    [self AFdownload:@"Moscow" fromURL:likelikurl];
+                }
+                else if ([_CityLabels[row] isEqualToString:@"Вена"] ||
+                         [_CityLabels[row] isEqualToString:@"Vienna"] ||
+                         [_CityLabels[row] isEqualToString:@"Wien"]) {
+                    [self AFdownload:@"Vienna" fromURL:likelikurl];
+                }
+                
+                NSLog(@"Downloading via Wi-Fi");
+            }
+            
+            else if (![ExternalFunctions isDownloaded:_CityLabels[row]]) {
+                // On Cell
+                
+                if ([_CityLabels[row] isEqualToString:@"Moscow"] ||
+                    [_CityLabels[row] isEqualToString:@"Moskau"] ||
+                    [_CityLabels[row] isEqualToString:@"Москва"]) {
+                    [self AFdownload:@"Moscow" fromURL:likelikurlcellnetwork];
+                }
+                else if ([_CityLabels[row] isEqualToString:@"Вена"] ||
+                         [_CityLabels[row] isEqualToString:@"Vienna"] ||
+                         [_CityLabels[row] isEqualToString:@"Wien"]) {
+                    [self AFdownload:@"Vienna" fromURL:likelikurlcellnetwork];
+                }
+                
+                NSLog(@"Downloading via cell network");
+            }
+            
+        } else {
+            // Isn't reachable
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 
@@ -222,7 +260,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-- (void) AFdownload : (NSString *) filename{
+- (void) AFdownload : (NSString *) filename fromURL : (NSString *) likelikUrl{
+    
+    
     self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:self.HUDfade];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -233,16 +273,21 @@
         [self.HUDfade show:YES];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSString *url = [[NSString alloc] initWithFormat:@"%@%@.zip",likelikurl,filename];
+    NSString *url = [[NSString alloc] initWithFormat:@"%@%@.zip",likelikUrl,filename];
     NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",filename];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
-    operation.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
-    [operation setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{}];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    //AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    AFDownloadRequestOperation *operation = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:path shouldResume:YES];
+    
+    //operation.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
+    [operation setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
+        NSError *error;
+        [self DownloadError:error];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully downloaded file to %@", path);
         [self DownloadSucceeded:filename];
@@ -251,10 +296,11 @@
         [self.HUDfade hide:YES];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        //[[NSFileManager defaultManager] removeItemAtPath:path error:nil];
         NSLog(@"Error occured");
-        [self DownloadError:error.description];
+        [self DownloadError:error];
         [self.HUDfade hide:YES];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error.png"]];
@@ -263,14 +309,39 @@
     }];
     
     [operation start];
+    double CurrentTime1 = CACurrentMediaTime();
     
     //Setup Upload block to return progress of file upload
-    [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToRead) { float progress = totalBytesWritten / (float)totalBytesExpectedToRead;
-        NSLog(@"Download Percentage: %f %%", progress*100);
+    [operation setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+        int i = 0;
+        float downloadedBytesThisTime;
+        double currentTime;
+        if (i == 0) {
+            currentTime = CurrentTime1;
+            i++;
+            downloadedBytesThisTime = 0.0;
+        }
+        
+        downloadedBytesThisTime = downloadedBytesThisTime + bytesRead;
+        double currentTime2 = CACurrentMediaTime();
+        
+        float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
+        
+        //        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
+        //        NSLog(@"Operation%i: totalBytesRead: %lld", 1, totalBytesRead);
+        //        NSLog(@"Operation%i: totalBytesExpected: %lld", 1, totalBytesExpected);
+        //        NSLog(@"Operation%i: totalBytesReadForFile: %lld", 1, totalBytesReadForFile);
+        //        NSLog(@"Operation%i: totalBytesExpectedToReadForFile: %lld", 1, totalBytesExpectedToReadForFile);
         int result = (int)floorf(progress*100);
+        double speed = ((totalBytesRead / (currentTime2 - currentTime))/1024);
+        NSLog(@"Operation: progress: \t %f",progress*100);
+        NSLog(@"BytesRead: %lld \t Speed: %f",totalBytesExpectedToReadForFile,speed);
         
         self.HUDfade.labelText = [NSString stringWithFormat:@"%d %%",result];
+        
     }];
+    
+    
     
 }
 
@@ -316,8 +387,9 @@
     [ExternalFunctions addCityToDownloaded:fileName];
 }
 
-- (NSString *) DownloadError:(NSString *)error{
-    NSLog(@"error = %@",error);
+- (NSError *) DownloadError:(NSError *) error{
+    NSLog(@"error = %d",error.code);
+    NSLog(@"error description = %@",error.description);
     return error;
 }
 

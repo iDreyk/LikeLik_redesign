@@ -25,7 +25,7 @@ static BOOL infoViewIsOpen = NO;
 @synthesize label;
 -(IBAction)clickPageControl:(RMAnnotation *)sender
 {
-
+    
     int page=self.pageControl.currentPage;
     CGRect frame=_scroll.frame;
     frame.origin.x=frame.size.width=page;
@@ -94,7 +94,7 @@ static BOOL infoViewIsOpen = NO;
         
         if (velocityY>0 && infoViewIsOpen == YES) {
             // NSLog(@"Вниз");
-           
+            
             [UIView animateWithDuration:0.6 animations:^{
                 if ([AppDelegate isiPhone5]){
                     [self.PhotoCard setFrame:CGRectMake(0.0, 506.0, self.PhotoCard.frame.size.width, self.PhotoCard.frame.size.height)];
@@ -108,8 +108,8 @@ static BOOL infoViewIsOpen = NO;
             }];
             
             infoViewIsOpen = NO;
-//            [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
- 
+            //            [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+            
         }
         
         if (velocityY<0 && infoViewIsOpen == NO) {
@@ -125,11 +125,11 @@ static BOOL infoViewIsOpen = NO;
                     [self.PhotoCard setFrame:CGRectMake(0.0, 170.0, self.PhotoCard.frame.size.width, self.PhotoCard.frame.size.height)];
                 }
             }];
-       
+            
             infoViewIsOpen = YES;
-//            [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, 20.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
-//            self.navigationController.navigationBar.hidden = NO;
-
+            //            [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, 20.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+            //            self.navigationController.navigationBar.hidden = NO;
+            
         }
     }
 }
@@ -142,11 +142,11 @@ static BOOL infoViewIsOpen = NO;
     [panRecognizer setMaximumNumberOfTouches:1];
     [[self view] addGestureRecognizer:panRecognizer];
     
-
+    
     [super viewDidLoad];
     _scroll.delegate=self;
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-     
+    
     self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     
     
@@ -159,8 +159,8 @@ static BOOL infoViewIsOpen = NO;
         
     }
     
-
-    #warning Андрей, сделай плз функцию и еще мне нужно знать, какие minZoom и MaxZoom выставлять
+    
+#warning Андрей, сделай плз функцию и еще мне нужно знать, какие minZoom и MaxZoom выставлять
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -185,7 +185,7 @@ static BOOL infoViewIsOpen = NO;
     
     self.MapPhoto.minZoom = 13;
     self.MapPhoto.zoom = 13;
-
+    
     
     CLLocation *coord2 =[ExternalFunctions getCenterCoordinatesOfCity:self.CityName];
     self.MapPhoto.centerCoordinate = coord2.coordinate;
@@ -193,35 +193,35 @@ static BOOL infoViewIsOpen = NO;
     self.MapPhoto.showsUserLocation = YES;
     
     
-    NSArray *coord = [ExternalFunctions getVisualTourImagesCoordinatesFromCity:self.CityName];
-    CLLocation *tmp = [coord objectAtIndex:0];
+    NSArray *coord = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
+    CLLocation *tmp = [[coord objectAtIndex:0] objectForKey:@"Location"];
     CLLocationCoordinate2D coord1 = tmp.coordinate;
     // Annotations
-
+    
     NSString *Title;
     NSInteger numberofpins = [coord count];
     for (int i = 0; i<numberofpins; i++) {
-        tmp = [coord objectAtIndex:i];
+        tmp = [[coord objectAtIndex:i] objectForKey:@"Location"];
         coord1 = tmp.coordinate;
 #warning Сюда название достопремичательности на карту (Аналогично Red_title)
         Title = @"Название места";
         RMAnnotation *marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPhoto coordinate:coord1 andTitle:Title];
         marker1.annotationType = @"marker";
-       marker1.subtitle = [NSString stringWithFormat:@"%d",i];
+        marker1.subtitle = [NSString stringWithFormat:@"%d",i];
         marker1.userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blueColor],@"foregroundColor", nil];
         [self.MapPhoto addAnnotation:marker1];
     }
-
+    
     
     [self.visualMap setHidden:YES];
     [self.view addSubview:self.MapPhoto];
-
-     photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
+    
+    photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
     
     
     self.pageControl.numberOfPages=[photos count];
     self.pageControl.currentPage=0;
-
+    
     
     _scroll.pagingEnabled = YES;
     _scroll.showsHorizontalScrollIndicator = NO;
@@ -232,15 +232,15 @@ static BOOL infoViewIsOpen = NO;
         CGFloat xOrigin = i * self.view.frame.size.width;
         UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
         awesomeView.backgroundColor = [UIColor colorWithRed:0.5/i green:0.5 blue:0.5 alpha:1];
-        awesomeView.image = [UIImage imageWithContentsOfFile:[photos objectAtIndex:i]];
-        if ([UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height == 640.0) {
-            awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height/4);
+        awesomeView.image = [UIImage imageWithContentsOfFile:[[photos objectAtIndex:i] objectForKey:@"Picture"]];
+        if ([UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:i] objectForKey:@"Picture"]]].size.height == 640.0) {
+            awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:i] objectForKey:@"Picture"]]].size.height/4);
         }
         
         [_scroll addSubview:awesomeView];
     }
     _scroll.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, 400.0);
-//#warning visual tour подготовить материалы
+    //#warning visual tour подготовить материалы
     UIButton *btn = [InterfaceFunctions map_button:1];
     [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
@@ -254,7 +254,7 @@ static BOOL infoViewIsOpen = NO;
     Red_line.numberOfLines = 10;
     Red_line.backgroundColor =  [UIColor clearColor];
     Red_line.numberOfLines = 0;
-
+    
     [Red_line sizeToFit];
     CGSize size1 =Red_line.frame.size;
     size1.width=292.0;
@@ -266,7 +266,7 @@ static BOOL infoViewIsOpen = NO;
     label.text = @"123213213";
     label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor whiteColor];
- 
+    
     label.backgroundColor =  [UIColor clearColor];
     label.editable = NO;
     
@@ -296,7 +296,7 @@ static BOOL infoViewIsOpen = NO;
 
 -(IBAction)showLocation:(id)sender{
     
-   // NSLog(@"asd");
+    // NSLog(@"asd");
     [self.MapPhoto setCenterCoordinate:self.MapPhoto.userLocation.coordinate];
 }
 
@@ -316,11 +316,12 @@ static BOOL infoViewIsOpen = NO;
         marker.canShowCallout = YES;
         marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 20.0, 30.0)];
-        UIImage *image = [UIImage imageWithContentsOfFile:[[ExternalFunctions getVisualTourImagesFromCity:self.CityName] objectAtIndex:[annotation.subtitle intValue]]];
+        UIImage *image = [UIImage imageWithContentsOfFile:[[[ExternalFunctions getVisualTourImagesFromCity:self.CityName] objectAtIndex:[annotation.subtitle intValue]] objectForKey:@"Picture"]];
+        
         [imageview setImage:image];
         marker.leftCalloutAccessoryView = imageview;
-//showLabel];
-       
+        //showLabel];
+        
         return marker;
         
     }
@@ -332,7 +333,7 @@ static BOOL infoViewIsOpen = NO;
     [self ShowMap:self];
     [map deselectAnnotation:annotation animated:YES];
     [self MapPageControl:annotation];
-
+    
 }
 
 
@@ -354,7 +355,7 @@ static BOOL infoViewIsOpen = NO;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-
+    
 }
 
 -(IBAction)ShowMap:(id)sender{
@@ -374,7 +375,7 @@ static BOOL infoViewIsOpen = NO;
 
 - (IBAction)tapDetected:(UIGestureRecognizer *)sender {
     
-//    NSLog(@"333");
+    //    NSLog(@"333");
     if (infoViewIsOpen == NO) {
         [UIView animateWithDuration:0.6 animations:^{
             CGRect Frame = self.PhotoCard.frame;
