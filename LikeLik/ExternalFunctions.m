@@ -655,7 +655,7 @@ static CLLocation *Me;
 //  проверка на совпадение
 + (BOOL) isTheRightQRCodeOfPlace: (NSString *) placeName InCategory : (NSString *) category InCity : (NSString *) city WithCode : (NSString *) code {
     NSMutableDictionary *placeDictionary = [[NSMutableDictionary alloc]initWithDictionary:[self selectedPalceInCity:city category:category withName:placeName]];
-    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogues1.plist"];
+    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     NSMutableArray *newCatalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *catalogues = [defaults objectForKey:catalogue];

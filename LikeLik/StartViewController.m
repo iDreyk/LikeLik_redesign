@@ -279,31 +279,36 @@
     NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    //AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
     AFDownloadRequestOperation *operation = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:path shouldResume:YES];
     
-    //operation.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
     [operation setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
-        NSError *error;
-        [self DownloadError:error];
         [self.navigationController popViewControllerAnimated:YES];
     }];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Successfully downloaded file to %@", path);
+        
         [self DownloadSucceeded:filename];
-        NSLog(@"всё сделано");
-        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x.png"]];
-        [self.HUDfade hide:YES];
+        
+        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x"]];
+        self.HUDfade.mode = MBProgressHUDModeCustomView;
+        self.HUDfade.labelText = @"Operation successful";
+        [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
+                                onTarget:self withObject:nil animated:YES];
+        
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //[[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-        NSLog(@"Error occured");
+        
+        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross2@2x"]];
+        self.HUDfade.mode = MBProgressHUDModeCustomView;
+        self.HUDfade.labelText = @"Operation Error";
+        [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
+                                onTarget:self withObject:nil animated:YES];
+        
         [self DownloadError:error];
-        [self.HUDfade hide:YES];
+        
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error.png"]];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [self.navigationController popViewControllerAnimated:YES];
     }];
@@ -314,31 +319,23 @@
     //Setup Upload block to return progress of file upload
     [operation setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
         int i = 0;
-        float downloadedBytesThisTime;
         double currentTime;
         if (i == 0) {
             currentTime = CurrentTime1;
             i++;
-            downloadedBytesThisTime = 0.0;
         }
         
-        downloadedBytesThisTime = downloadedBytesThisTime + bytesRead;
         double currentTime2 = CACurrentMediaTime();
         
         float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
         
-        //        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
-        //        NSLog(@"Operation%i: totalBytesRead: %lld", 1, totalBytesRead);
-        //        NSLog(@"Operation%i: totalBytesExpected: %lld", 1, totalBytesExpected);
-        //        NSLog(@"Operation%i: totalBytesReadForFile: %lld", 1, totalBytesReadForFile);
-        //        NSLog(@"Operation%i: totalBytesExpectedToReadForFile: %lld", 1, totalBytesExpectedToReadForFile);
         int result = (int)floorf(progress*100);
-        double speed = ((totalBytesRead / (currentTime2 - currentTime))/1024);
+        double speed = (bytesRead / (currentTime2 - currentTime))/1024*1000;
         NSLog(@"Operation: progress: \t %f",progress*100);
-        NSLog(@"BytesRead: %lld \t Speed: %f",totalBytesExpectedToReadForFile,speed);
+        NSLog(@"BytesRead: %d \t Time gone: %f",bytesRead,speed);
         
         self.HUDfade.labelText = [NSString stringWithFormat:@"%d %%",result];
-        
+        currentTime = currentTime2;
     }];
     
     
@@ -393,4 +390,7 @@
     return error;
 }
 
+- (void)waitForTwoSeconds {
+    sleep(3);
+}
 @end

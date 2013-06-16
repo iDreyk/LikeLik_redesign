@@ -49,9 +49,11 @@ static BOOL infoViewIsOpen = NO;
     if (infoViewIsOpen == YES) {
         [self tapDetected:nil];
     }
+    
+    
 #warning Смена описаний
-    Red_line.text = [NSString stringWithFormat:@"Название %d",self.pageControl.currentPage];
-    label.text = [NSString stringWithFormat:@"Описание %d",self.pageControl.currentPage];
+    Red_line.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"Name"];
+    label.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"About"];
     
 }
 
@@ -61,8 +63,8 @@ static BOOL infoViewIsOpen = NO;
     self.pageControl.currentPage=page;
     NSLog(@"Page = %d",self.pageControl.currentPage);
 #warning Смена описаний
-    Red_line.text = [NSString stringWithFormat:@"Название %d",self.pageControl.currentPage];
-    label.text = [NSString stringWithFormat:@"Описание %d",self.pageControl.currentPage];
+    Red_line.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"Name"];
+    label.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"About"];
 //    NSLog(@"123");
     
 }
@@ -203,8 +205,8 @@ static BOOL infoViewIsOpen = NO;
     for (int i = 0; i<numberofpins; i++) {
         tmp = [[coord objectAtIndex:i] objectForKey:@"Location"];
         coord1 = tmp.coordinate;
-#warning Сюда название достопремичательности на карту (Аналогично Red_title)
-        Title = @"Название места";
+//#warning Сюда название достопремичательности на карту (Аналогично Red_title)
+        Title = [[coord objectAtIndex:0] objectForKey:@"Name"];
         RMAnnotation *marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPhoto coordinate:coord1 andTitle:Title];
         marker1.annotationType = @"marker";
         marker1.subtitle = [NSString stringWithFormat:@"%d",i];
@@ -248,7 +250,7 @@ static BOOL infoViewIsOpen = NO;
     
     Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
 #warning название достопремичательности первой
-    Red_line.text =  @"Visual Tour";
+    Red_line.text =  [[coord objectAtIndex:0] objectForKey:@"Name"];
     Red_line.font =[AppDelegate OpenSansSemiBold:28];
     Red_line.textColor = [UIColor whiteColor];
     Red_line.numberOfLines = 10;
@@ -263,7 +265,7 @@ static BOOL infoViewIsOpen = NO;
 
     label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
 #warning текст достопремичательности первой
-    label.text = @"123213213";
+    label.text = [[coord objectAtIndex:0] objectForKey:@"About"];
     label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor whiteColor];
     
