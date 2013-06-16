@@ -175,7 +175,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">592_159 Ribbon_1@2x.png</string>
+							<string key="NSResourceName">592_159 Ribbon_2@2x.png</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="903240594">
@@ -557,7 +557,7 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="526_90 button_use_check_12_selected@2x.png">{526, 90}</string>
 			<string key="526_90 button_use_check_2@2x.png">{526, 90}</string>
-			<string key="592_159 Ribbon_1@2x.png">{16, 16}</string>
+			<string key="592_159 Ribbon_2@2x.png">{592, 159}</string>
 			<string key="background_with_watermark_check-568h@2x.png">{276, 438}</string>
 			<string key="button_cancel_check_tapped@2x.png">{526, 90}</string>
 			<string key="check_background_1-568h@2x.png">{640, 1136}</string>

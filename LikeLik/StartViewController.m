@@ -71,7 +71,7 @@
 
 
 -(void)viewDidAppear:(BOOL)animated{
-    NSLog(@"123");
+  //  NSLog(@"123");
     NSInteger tabindex = self.tabBarController.selectedIndex;
     //    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
     
@@ -83,7 +83,7 @@
     
     
     if (tabindex == 1) { //выбраны downloaded
-        NSLog(@"Hello");
+       // NSLog(@"Hello");
         _CityLabels = [ExternalFunctions getDownloadedCities:1];
         _backCityImages = [ExternalFunctions getDownloadedCities:0];
         
@@ -100,8 +100,8 @@
         _CityLabels = [ExternalFunctions getSpecialCities:1];
         _backCityImages = [ExternalFunctions getSpecialCities:0];
     }
-    NSLog(@"StartView Appear");
-    
+  //  NSLog(@"StartView Appear");
+
     [self.tableView reloadData];
 }
 
@@ -173,7 +173,7 @@
 {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     NSInteger row = [indexPath row];
-    NSLog(@"перешёл на экран");
+  //  NSLog(@"перешёл на экран");
     CategoryViewController *destination =
     [segue destinationViewController];
     

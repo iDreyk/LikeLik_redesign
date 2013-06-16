@@ -85,7 +85,7 @@ static NSDictionary *Place1;
     [locationManager setDelegate:self];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     Me = [locationManager location];
-    NSLog(@"Around Me = %@", Me);
+  //  NSLog(@"Around Me = %@", Me);
     
     
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
@@ -190,7 +190,7 @@ static NSDictionary *Place1;
 }
 
 -(void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-    NSLog(@"123");
+  //  NSLog(@"123");
     //[map selectAll:map];
 //    [map selectAnnotation:annotation animated:YES];
 }
@@ -268,7 +268,7 @@ static NSDictionary *Place1;
     }
     
     
-    NSLog(@"Around Me = %@",[[AroundArray objectAtIndex:row] objectForKey:@"Category"]);
+   // NSLog(@"Around Me = %@",[[AroundArray objectAtIndex:row] objectForKey:@"Category"]);
     
     [cell addSubview:[InterfaceFunctions TableLabelwithText:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
     

@@ -45,22 +45,21 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 
 //#warning надо переделать под новый каталог
         NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
-//
-////        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
-////        NSLog(@"%@",Place);
-////        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
-////        [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
         
-////        [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
-////        [localNotification setAlertBody:[NSString stringWithFormat:@"%@ %@", AMLocalizedString(@"You are next to", nil),[Place objectForKey:@"Place"]]];
-////        [localNotification setHasAction: YES];
-////        [localNotification setApplicationIconBadgeNumber:1];
-////        [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
-////        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-////        
+        
+        
+
+//        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
+//        NSLog(@"%@",Place);
+//        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
+//        [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
 //        
-        
-//        NSLog(@"regions \n %@",Region);
+//        [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
+//        [localNotification setAlertBody:[NSString stringWithFormat:@"%@ %@", AMLocalizedString(@"You are next to", nil),[Place objectForKey:@"Place"]]];
+//        [localNotification setHasAction: YES];
+//        [localNotification setApplicationIconBadgeNumber:1];
+//        [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
+//        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 
         
         for (int i = 0; i<[Region count]; i++) {
