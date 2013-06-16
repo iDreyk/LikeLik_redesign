@@ -37,46 +37,63 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
- //   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//#warning regions
+    //   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //#warning regions
     if (haveAlreadyReceivedCoordinates) {
         Me = newLocation;
         NSLog(@"%@",Me);
-
-//#warning надо переделать под новый каталог
+        
+        //#warning надо переделать под новый каталог
         NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
         
         
         
-
-//        NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
-//        NSLog(@"%@",Place);
+        
+//                NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
 //        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
 //        [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
 //        
 //        [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
-//        [localNotification setAlertBody:[NSString stringWithFormat:@"%@ %@", AMLocalizedString(@"You are next to", nil),[Place objectForKey:@"Place"]]];
+//        [localNotification setAlertBody:[NSString stringWithFormat:@"%@ %@", AMLocalizedString(@"You are next to", nil),[Place objectForKey:@"Name"]]];
 //        [localNotification setHasAction: YES];
 //        [localNotification setApplicationIconBadgeNumber:1];
-//        [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
+//        
+//        
+//        CLLocation *loc = [Place objectForKey:@"Location"];
+//        NSString *lat = [NSString stringWithFormat:@"%f",loc.coordinate.latitude];
+//        NSString *lon = [NSString stringWithFormat:@"%f",loc.coordinate.longitude];
+//        NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+//        [dictionary setObject:[Place objectForKey:@"Name"] forKey:@"Place"];
+//        [dictionary setObject:[Place objectForKey:@"Category"] forKey:@"Category"];
+//        [dictionary setObject:[Place objectForKey:@"City"] forKey:@"City"];
+//        [dictionary setObject:[Place objectForKey:@"Address"] forKey:@"Address"];
+//        [dictionary setObject:[Place objectForKey:@"About"] forKey:@"About"];
+//        [dictionary setObject:[Place objectForKey:@"Telephone"] forKey:@"Telephone"];
+//        [dictionary setObject:[Place objectForKey:@"Web"] forKey:@"Web"];
+//        [dictionary setObject:lat forKey:@"lat"];
+//        [dictionary setObject:lon forKey:@"lon"];
+//        [dictionary setObject:[Place objectForKey:@"Photo"] forKey:@"Photo"];
+//        
+//        [localNotification setUserInfo:dictionary];
 //        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-
+//        NSLog(@"%@",Region);
+      for (int i = 0; i<[Region count]; i++) {
         
-        for (int i = 0; i<[Region count]; i++) {
-            [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
-//            NSLog(@"Start monitoring for region %d: %@",i,[Region objectAtIndex:i]);
+        
+            [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:2]];
+            NSLog(@"Start monitoring for region %d: %d",i,[[locationManagerRegion monitoredRegions] count]);
         }
         [locationManager stopUpdatingLocation];
-       // locationManager = nil;
+        // locationManager = nil;
         NSLog(@"all regions \n %@",[locationManagerRegion monitoredRegions]);
     }
     else{
         haveAlreadyReceivedCoordinates = YES;
     }
-
-
+    
+    
     //
-
+    
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     
@@ -84,20 +101,38 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
-//#warning надо переделать под новый каталог
+    //#warning надо переделать под новый каталог
     NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:region]];
-    localNotification = [[UILocalNotification alloc] init];
+    localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
     [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
+    
     [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
-    [localNotification setAlertBody:[NSString stringWithFormat:@"%@",region.identifier]];
+    [localNotification setAlertBody:[NSString stringWithFormat:@"%@ %@", AMLocalizedString(@"You are next to", nil),[Place objectForKey:@"Name"]]];
     [localNotification setHasAction: YES];
     [localNotification setApplicationIconBadgeNumber:1];
-    [localNotification setUserInfo:[NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:Place]]];
+    
+    
+    CLLocation *loc = [Place objectForKey:@"Location"];
+    NSString *lat = [NSString stringWithFormat:@"%f",loc.coordinate.latitude];
+    NSString *lon = [NSString stringWithFormat:@"%f",loc.coordinate.longitude];
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    [dictionary setObject:[Place objectForKey:@"Name"] forKey:@"Place"];
+    [dictionary setObject:[Place objectForKey:@"Category"] forKey:@"Category"];
+    [dictionary setObject:[Place objectForKey:@"City"] forKey:@"City"];
+    [dictionary setObject:[Place objectForKey:@"Address"] forKey:@"Address"];
+    [dictionary setObject:[Place objectForKey:@"About"] forKey:@"About"];
+    [dictionary setObject:[Place objectForKey:@"Telephone"] forKey:@"Telephone"];
+    [dictionary setObject:[Place objectForKey:@"Web"] forKey:@"Web"];
+    [dictionary setObject:lat forKey:@"lat"];
+    [dictionary setObject:lon forKey:@"lon"];
+    [dictionary setObject:[Place objectForKey:@"Photo"] forKey:@"Photo"];
+    
+    [localNotification setUserInfo:dictionary];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
 }
 -(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
-   
+    
 }
 
 - (void)viewDidLoad
@@ -125,50 +160,50 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     
     
     
-//    self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-//    [self.navigationController.view addSubview:self.HUDfade];
-//    self.HUDfade.userInteractionEnabled = NO;
-//    self.HUDfade.mode = MBProgressHUDAnimationFade;
-//    self.HUDfade.removeFromSuperViewOnHide = YES;
-//    self.HUDfade.delegate = self;
-//    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
-//        [self.HUDfade show:YES];
-//    
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    
-//    if ([[defaults objectForKey:@"Language"] length] == 0) {
-//        [defaults setObject:@"English" forKey:@"Language"];
-//    }
-//    
-//    
-//    if ([[defaults objectForKey:@"Measure"] length] == 0) {
-//        [defaults setObject:@"Miles" forKey:@"Measure"];
-//    }
-//    [defaults synchronize];
-//    
+    //    self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    //    [self.navigationController.view addSubview:self.HUDfade];
+    //    self.HUDfade.userInteractionEnabled = NO;
+    //    self.HUDfade.mode = MBProgressHUDAnimationFade;
+    //    self.HUDfade.removeFromSuperViewOnHide = YES;
+    //    self.HUDfade.delegate = self;
+    //    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
+    //        [self.HUDfade show:YES];
+    //
+    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //
+    //    if ([[defaults objectForKey:@"Language"] length] == 0) {
+    //        [defaults setObject:@"English" forKey:@"Language"];
+    //    }
+    //
+    //
+    //    if ([[defaults objectForKey:@"Measure"] length] == 0) {
+    //        [defaults setObject:@"Miles" forKey:@"Measure"];
+    //    }
+    //    [defaults synchronize];
+    //
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
- 
+    
     
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     if ([[defaults objectForKey:@"Language"] length] == 0) {
-         [defaults setObject:@"English" forKey:@"Language"];
+        [defaults setObject:@"English" forKey:@"Language"];
     }
-
+    
     
     if ([[defaults objectForKey:@"Measure"] length] == 0) {
         [defaults setObject:@"Miles" forKey:@"Measure"];
     }
     [defaults synchronize];
-        
+    
     CGRect Shadeframe = self.Shade.frame;
     CGRect Fistframe = self.fist.frame;
-
+    
     if ([AppDelegate isiPhone5]) {
         
         Shadeframe.origin.y-=340.0;
@@ -178,18 +213,18 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         
         Shadeframe.origin.y-=270.0;
         Fistframe.origin.y-=270.0;
-
+        
     }
-   // [self.HUDfade show:YES];
+    // [self.HUDfade show:YES];
     
-//    //  скачивание
-//    NSLog(@"Downloaded = %@",[defaults objectForKey:@"Download"]);
-//    if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
-//        [ExternalFunctions downloadCatalogue:@"test"];
-//        [defaults setObject:@"1" forKey:@"Download"];
-//        //  запуск с нуля
-//        [ExternalFunctions getReady];
-//    }
+    //    //  скачивание
+    //    NSLog(@"Downloaded = %@",[defaults objectForKey:@"Download"]);
+    //    if (![[defaults objectForKey:@"Download"] isEqualToString:@"1"]) {
+    //        [ExternalFunctions downloadCatalogue:@"test"];
+    //        [defaults setObject:@"1" forKey:@"Download"];
+    //        //  запуск с нуля
+    //        [ExternalFunctions getReady];
+    //    }
     
     [UIView animateWithDuration:1.2 animations:^{
         self.Shade.frame = Shadeframe;
@@ -200,19 +235,19 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
                          self.subtitle.hidden = NO;
                          self.Firsttitle.alpha = 1;
                          self.subtitle.alpha = 1;
-                    //     [self.HUDfade hide:YES];
+                         //     [self.HUDfade hide:YES];
                          [self performSegueWithIdentifier:@"fistSegue" sender:self];
                      }];
     
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
-  //  [locationManagerRegion stopUpdatingLocation];
+    //  [locationManagerRegion stopUpdatingLocation];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-
+    
 }
 
 

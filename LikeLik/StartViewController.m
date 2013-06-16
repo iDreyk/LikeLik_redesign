@@ -203,7 +203,7 @@
     }
     else{
         NSLog(@"Purchased");
-        NSLog(@"Отказался от покупки");
+        NSLog(@"Согласился на покупку");
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSInteger row = [[defaults objectForKey:@"row"] integerValue];
@@ -323,7 +323,7 @@
         }
         
         downloadedBytesThisTime = downloadedBytesThisTime + bytesRead;
-        double currentTime2 = CACurrentMediaTime();
+      //  double currentTime2 = CACurrentMediaTime();
         
         float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
         
@@ -333,9 +333,9 @@
         //        NSLog(@"Operation%i: totalBytesReadForFile: %lld", 1, totalBytesReadForFile);
         //        NSLog(@"Operation%i: totalBytesExpectedToReadForFile: %lld", 1, totalBytesExpectedToReadForFile);
         int result = (int)floorf(progress*100);
-        double speed = ((totalBytesRead / (currentTime2 - currentTime))/1024);
-        NSLog(@"Operation: progress: \t %f",progress*100);
-        NSLog(@"BytesRead: %lld \t Speed: %f",totalBytesExpectedToReadForFile,speed);
+     //   double speed = ((totalBytesRead / (currentTime2 - currentTime))/1024);
+       // NSLog(@"Operation: progress: \t %f",progress*100);
+      //  NSLog(@"BytesRead: %lld \t Speed: %f",totalBytesExpectedToReadForFile,speed);
         
         self.HUDfade.labelText = [NSString stringWithFormat:@"%d %%",result];
         

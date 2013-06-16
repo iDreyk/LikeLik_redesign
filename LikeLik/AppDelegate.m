@@ -206,12 +206,32 @@ NSInteger wasinactive = NO;
             myStoryBoardInitialViewController = [[UIStoryboard storyboardWithName:@"iPhone351" bundle:nil] instantiateInitialViewController];
         }
         view.navigationController.navigationBarHidden = NO;
-        view.PlaceCategory = [notification.userInfo objectForKey:@"Category"];
-        view.PlaceName = [notification.userInfo objectForKey:@"Place"];
-        view.PlaceCityName = [notification.userInfo objectForKey:@"City"];
-        view.Color = [InterfaceFunctions colorTextCategory:@"Category"];
-        view.fromNotification = @"YES";
+//        view.PlaceCategory = [notification.userInfo objectForKey:@"Category"];
+//        view.PlaceName = [notification.userInfo objectForKey:@"Place"];
+//        view.PlaceCityName = [notification.userInfo objectForKey:@"City"];
+//        view. = [notification.userInfo objectForKey:@"Photos"];
+//        view.Color = [InterfaceFunctions colorTextCategory:@"Category"];
+//
         
+
+        CLLocation *loc = [[CLLocation alloc] initWithLatitude:[[notification.userInfo objectForKey:@"lat"] doubleValue] longitude:[[notification.userInfo objectForKey:@"lon"] doubleValue]];
+        view.PlaceName = [notification.userInfo objectForKey:@"Place"];
+        view.PlaceCategory = [notification.userInfo objectForKey:@"Category"];
+        view.PlaceCityName = [notification.userInfo objectForKey:@"City"];
+        view.PlaceAddress = [notification.userInfo objectForKey:@"Address"];
+        view.PlaceAbout = [notification.userInfo objectForKey:@"About"];
+        view.PlaceTelephone = [notification.userInfo objectForKey:@"Telephone"];
+        view.PlaceWeb = [notification.userInfo objectForKey:@"Web"];
+        view.PlaceLocation = loc;
+        view.Color = [InterfaceFunctions colorTextCategory:[notification.userInfo objectForKey:@"Category"]];
+        view.Photos = [notification.userInfo objectForKey:@"Photo"];
+        view.fromNotification = @"YES";
+      
+        
+        
+        
+        
+        NSLog(@"userinfo = %@",notification.userInfo);
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view];
         [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
         [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];

@@ -170,7 +170,7 @@ CGFloat alpha = 0.5;
                                                  name:kSemiModalDidHideNotification
                                                object:nil];
     
-    
+    if ([self.fromNotification isEqualToString:@"NO"])
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(aftercall:)
                                                  name: afterCall
@@ -587,7 +587,7 @@ CGFloat alpha = 0.5;
 
 -(void)backgroundgo{
   //  NSLog(@"backgroundgo");
-    NSLog(@"Hello!");
+   // NSLog(@"Hello!");
     if (infoViewIsOpen == YES) {
         [self tapDetected:nil];
         self.placeViewMap.hidden = YES;
@@ -799,6 +799,7 @@ CGFloat alpha = 0.5;
 -(void)viewDidDisappear:(BOOL)animated{
     if ([self.fromNotification isEqualToString:@"YES"]) {
         NSLog(@"disappear");
+        NSLog(@"Ку-ку");
         self.navigationController.navigationBar.hidden = NO;
     }
 }

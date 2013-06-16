@@ -63,7 +63,7 @@ static BOOL infoViewIsOpen = NO;
 #warning Смена описаний
     Red_line.text = [NSString stringWithFormat:@"Название %d",self.pageControl.currentPage];
     label.text = [NSString stringWithFormat:@"Описание %d",self.pageControl.currentPage];
-//    NSLog(@"123");
+//    NSLog(@"123");    
     
 }
 
