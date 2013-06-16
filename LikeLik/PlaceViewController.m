@@ -1113,8 +1113,8 @@ CGFloat alpha = 0.5;
         self.navigationController.navigationBar.hidden = YES;
         [self tapDetected:nil];
     }];
-    
-    NSLog(@"123");
+   
+   // NSLog(@"123");
 }
 
 - (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte{

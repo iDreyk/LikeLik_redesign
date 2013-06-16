@@ -179,7 +179,7 @@ static NSDictionary *Place;
         [self.SearchTable reloadData];
     }
     else{
-        NSLog(@"Hello");
+    //    NSLog(@"Hello");
 //#warning надо переделать под новый каталог
         self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
         NSLog(@"tmp = %@", tmp);

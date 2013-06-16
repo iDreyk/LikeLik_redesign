@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapBox/MapBox.h>
-
+#import "SubText.h"
 @interface VisualTourViewController : UIViewController <RMMapViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>{
     
 }
@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *infoScroll;
 @property (nonatomic,retain)IBOutlet UIView *visualMap;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
+@property (nonatomic,retain)IBOutlet UILabel *Red_line;
+@property (nonatomic, retain)IBOutlet SubText *label;
 -(IBAction)showLocation:(id)sender;
 - (IBAction)tapDetected:(UIButton *)sender;
 @end

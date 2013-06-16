@@ -240,12 +240,6 @@ NSInteger wasinactive = NO;
     
 }
 
-
-
-
-
-
-
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     wasinactive = YES;
@@ -257,9 +251,7 @@ NSInteger wasinactive = NO;
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [[NSNotificationCenter defaultCenter] postNotificationName:afterFB
                                                         object:self];
-    
 }
-
 
 #pragma mark - SCFacebook Handle
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
