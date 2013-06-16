@@ -217,12 +217,22 @@
 		5563141B176B509A0056EF96 /* table_grad_o_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5563134E176B509A0056EF96 /* table_grad_o_1.png */; };
 		559CA018173A7137002F494F /* ExternalFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 559CA017173A7137002F494F /* ExternalFunctions.m */; };
 		9113464D1747A57C00F9E28E /* appData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9113464C1747A57C00F9E28E /* appData.plist */; };
-		911D1AF2176B1D380006EC10 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AD1176B1D380006EC10 /* Icon */; };
-		911D1AF3176B1D380006EC10 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AD3176B1D380006EC10 /* Icon */; };
-		911D1AF4176B1D380006EC10 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AD7176B1D380006EC10 /* Icon */; };
-		911D1AF5176B1D380006EC10 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AEA176B1D380006EC10 /* Icon */; };
+		911D1AF2176B1D380006EC10 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AD1176B1D380006EC10 /* Icon
+ */; };
+		911D1AF3176B1D380006EC10 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AD3176B1D380006EC10 /* Icon
+ */; };
+		911D1AF4176B1D380006EC10 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AD7176B1D380006EC10 /* Icon
+ */; };
+		911D1AF5176B1D380006EC10 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AEA176B1D380006EC10 /* Icon
+ */; };
 		911D1AF6176B1D380006EC10 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 911D1AEB176B1D380006EC10 /* libzbar.a */; };
-		911D1AF7176B1D380006EC10 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AED176B1D380006EC10 /* Icon */; };
+		911D1AF7176B1D380006EC10 /* Icon
+ in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AED176B1D380006EC10 /* Icon
+ */; };
 		911D1AF8176B1D380006EC10 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AEE176B1D380006EC10 /* zbar-back.png */; };
 		911D1AF9176B1D380006EC10 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AEF176B1D380006EC10 /* zbar-help.html */; };
 		911D1AFA176B1D380006EC10 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AF0176B1D380006EC10 /* zbar-helpicons.png */; };
@@ -771,11 +781,17 @@
 		559CA016173A7137002F494F /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalFunctions.h; sourceTree = "<group>"; };
 		559CA017173A7137002F494F /* ExternalFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalFunctions.m; sourceTree = "<group>"; };
 		9113464C1747A57C00F9E28E /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = appData.plist; sourceTree = "<group>"; };
-		911D1AD1176B1D380006EC10 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
-		911D1AD3176B1D380006EC10 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		911D1AD1176B1D380006EC10 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
+		911D1AD3176B1D380006EC10 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		911D1AD5176B1D380006EC10 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		911D1AD6176B1D380006EC10 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
-		911D1AD7176B1D380006EC10 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		911D1AD7176B1D380006EC10 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		911D1AD8176B1D380006EC10 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		911D1AD9176B1D380006EC10 /* ImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScanner.h; sourceTree = "<group>"; };
 		911D1ADA176B1D380006EC10 /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
@@ -794,9 +810,13 @@
 		911D1AE7176B1D380006EC10 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
 		911D1AE8176B1D380006EC10 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		911D1AE9176B1D380006EC10 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
-		911D1AEA176B1D380006EC10 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		911D1AEA176B1D380006EC10 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		911D1AEB176B1D380006EC10 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
-		911D1AED176B1D380006EC10 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		911D1AED176B1D380006EC10 /* Icon
+ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
+"; sourceTree = "<group>"; };
 		911D1AEE176B1D380006EC10 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		911D1AEF176B1D380006EC10 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		911D1AF0176B1D380006EC10 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
@@ -1480,7 +1500,8 @@
 			isa = PBXGroup;
 			children = (
 				911D1AD0176B1D380006EC10 /* Headers */,
-				911D1AEA176B1D380006EC10 /* Icon */,
+				911D1AEA176B1D380006EC10 /* Icon
+ */,
 				911D1AEB176B1D380006EC10 /* libzbar.a */,
 				911D1AEC176B1D380006EC10 /* Resources */,
 			);
@@ -1491,7 +1512,8 @@
 		911D1AD0176B1D380006EC10 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				911D1AD1176B1D380006EC10 /* Icon */,
+				911D1AD1176B1D380006EC10 /* Icon
+ */,
 				911D1AD2176B1D380006EC10 /* ZBarSDK */,
 			);
 			path = Headers;
@@ -1500,7 +1522,8 @@
 		911D1AD2176B1D380006EC10 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
-				911D1AD3176B1D380006EC10 /* Icon */,
+				911D1AD3176B1D380006EC10 /* Icon
+ */,
 				911D1AD4176B1D380006EC10 /* zbar */,
 				911D1ADF176B1D380006EC10 /* zbar.h */,
 				911D1AE0176B1D380006EC10 /* ZBarCameraSimulator.h */,
@@ -1522,7 +1545,8 @@
 			children = (
 				911D1AD5176B1D380006EC10 /* Decoder.h */,
 				911D1AD6176B1D380006EC10 /* Exception.h */,
-				911D1AD7176B1D380006EC10 /* Icon */,
+				911D1AD7176B1D380006EC10 /* Icon
+ */,
 				911D1AD8176B1D380006EC10 /* Image.h */,
 				911D1AD9176B1D380006EC10 /* ImageScanner.h */,
 				911D1ADA176B1D380006EC10 /* Processor.h */,
@@ -1537,7 +1561,8 @@
 		911D1AEC176B1D380006EC10 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				911D1AED176B1D380006EC10 /* Icon */,
+				911D1AED176B1D380006EC10 /* Icon
+ */,
 				911D1AEE176B1D380006EC10 /* zbar-back.png */,
 				911D1AEF176B1D380006EC10 /* zbar-help.html */,
 				911D1AF0176B1D380006EC10 /* zbar-helpicons.png */,
@@ -1662,6 +1687,7 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				91B87ACB176B4E7C00443046 /* Work PNG */,
 				911D1AFC176B1D410006EC10 /* MapBox.framework */,
 				55631281176B50980056EF96 /* Work PNG */,
 				911D1ACF176B1D380006EC10 /* ZBarSDK */,
@@ -2198,11 +2224,16 @@
 				55530D8C173BD2AE00E0E2DF /* catalogue.plist in Resources */,
 				9122D2AD173E422C0096BB24 /* LikeLik icon 114x114.png in Resources */,
 				9113464D1747A57C00F9E28E /* appData.plist in Resources */,
-				911D1AF2176B1D380006EC10 /* Icon in Resources */,
-				911D1AF3176B1D380006EC10 /* Icon in Resources */,
-				911D1AF4176B1D380006EC10 /* Icon in Resources */,
-				911D1AF5176B1D380006EC10 /* Icon in Resources */,
-				911D1AF7176B1D380006EC10 /* Icon in Resources */,
+				911D1AF2176B1D380006EC10 /* Icon
+ in Resources */,
+				911D1AF3176B1D380006EC10 /* Icon
+ in Resources */,
+				911D1AF4176B1D380006EC10 /* Icon
+ in Resources */,
+				911D1AF5176B1D380006EC10 /* Icon
+ in Resources */,
+				911D1AF7176B1D380006EC10 /* Icon
+ in Resources */,
 				911D1AF8176B1D380006EC10 /* zbar-back.png in Resources */,
 				911D1AF9176B1D380006EC10 /* zbar-help.html in Resources */,
 				911D1AFA176B1D380006EC10 /* zbar-helpicons.png in Resources */,
