@@ -21,10 +21,13 @@
 		911D1AFA176B1D380006EC10 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AF0176B1D380006EC10 /* zbar-helpicons.png */; };
 		911D1AFB176B1D380006EC10 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 911D1AF1176B1D380006EC10 /* zbar-samples.png */; };
 		911D1AFD176B1D410006EC10 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911D1AFC176B1D410006EC10 /* MapBox.framework */; };
-		9122D2AD173E422C0096BB24 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		91241959173BA85B004B6837 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */; };
+		918F70AE176D9973000FE810 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 918F70AC176D9973000FE810 /* Moscow */; };
+		918F70AF176D9973000FE810 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 918F70AD176D9973000FE810 /* Vienna */; };
+		918F70B1176DA433000FE810 /* LikeLik icon 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */; };
+		918F70B2176DA43B000FE810 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */; };
 		919E8700173A58E700A25E07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E86FF173A58E700A25E07 /* UIKit.framework */; };
 		919E8702173A58E700A25E07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8701173A58E700A25E07 /* Foundation.framework */; };
 		919E8704173A58E700A25E07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8703173A58E700A25E07 /* CoreGraphics.framework */; };
@@ -347,8 +350,6 @@
 
 /* Begin PBXFileReference section */
 		55530D8B173BD2AE00E0E2DF /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catalogue.plist; sourceTree = "<group>"; };
-		5592C863174FC58C001E7127 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Moscow; sourceTree = "<group>"; };
-		5592C864174FC58C001E7127 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Vienna; sourceTree = "<group>"; };
 		559CA016173A7137002F494F /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalFunctions.h; sourceTree = "<group>"; };
 		559CA017173A7137002F494F /* ExternalFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalFunctions.m; sourceTree = "<group>"; };
 		9113464C1747A57C00F9E28E /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = appData.plist; sourceTree = "<group>"; };
@@ -389,6 +390,9 @@
 		9124194B173A9E05004B6837 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124195A173BD4D5004B6837 /* PlacesByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesByCategoryViewController.h; sourceTree = "<group>"; };
 		9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesByCategoryViewController.m; sourceTree = "<group>"; };
+		918F70AC176D9973000FE810 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Moscow; path = ../../../.Trash/Moscow; sourceTree = "<group>"; };
+		918F70AD176D9973000FE810 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = ../../../.Trash/Vienna; sourceTree = "<group>"; };
+		918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 57x57.png"; sourceTree = "<group>"; };
 		919E86FC173A58E700A25E07 /* LikeLik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LikeLik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		919E86FF173A58E700A25E07 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		919E8701173A58E700A25E07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -916,6 +920,7 @@
 		919E86F3173A58E700A25E07 = {
 			isa = PBXGroup;
 			children = (
+				918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */,
 				9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */,
 				919E89D3173A5C0300A25E07 /* Default-568h@2x.png */,
 				919E89D1173A5BFC00A25E07 /* Default@2x.png */,
@@ -1234,12 +1239,12 @@
 		919E8AB8173A5ED700A25E07 /* Andrew */ = {
 			isa = PBXGroup;
 			children = (
+				918F70AC176D9973000FE810 /* Moscow */,
+				918F70AD176D9973000FE810 /* Vienna */,
 				9113464C1747A57C00F9E28E /* appData.plist */,
 				55530D8B173BD2AE00E0E2DF /* catalogue.plist */,
 				559CA016173A7137002F494F /* ExternalFunctions.h */,
 				559CA017173A7137002F494F /* ExternalFunctions.m */,
-				5592C863174FC58C001E7127 /* Moscow */,
-				5592C864174FC58C001E7127 /* Vienna */,
 				919E8C59173A633400A25E07 /* minizip */,
 				919E8C52173A62D400A25E07 /* SSZipArchive.h */,
 				919E8C53173A62D400A25E07 /* SSZipArchive.m */,
@@ -1558,7 +1563,6 @@
 				919E8B1B173A616500A25E07 /* RegularOpenSans.ttf in Resources */,
 				919E8B1C173A616500A25E07 /* OpenSansBold.ttf in Resources */,
 				55530D8C173BD2AE00E0E2DF /* catalogue.plist in Resources */,
-				9122D2AD173E422C0096BB24 /* LikeLik icon 114x114.png in Resources */,
 				9113464D1747A57C00F9E28E /* appData.plist in Resources */,
 				911D1AF2176B1D380006EC10 /* Icon in Resources */,
 				911D1AF3176B1D380006EC10 /* Icon in Resources */,
@@ -1774,6 +1778,10 @@
 				91B87C63176B4E7D00443046 /* tabicon_SpecialSeries@2x.png in Resources */,
 				91B87C64176B4E7D00443046 /* table_grad.png in Resources */,
 				91B87C65176B4E7D00443046 /* table_grad_o_1.png in Resources */,
+				918F70AE176D9973000FE810 /* Moscow in Resources */,
+				918F70AF176D9973000FE810 /* Vienna in Resources */,
+				918F70B1176DA433000FE810 /* LikeLik icon 57x57.png in Resources */,
+				918F70B2176DA43B000FE810 /* LikeLik icon 114x114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
