@@ -931,8 +931,6 @@ static CLLocation *Me;
         [returnArray addObject:dict];
     }
     
-    NSLog(@"%@",returnArray);
-    
     return returnArray;
 }
 //  координаты картинок
