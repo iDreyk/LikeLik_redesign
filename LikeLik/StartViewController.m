@@ -203,7 +203,7 @@
     }
     else{
         NSLog(@"Purchased");
-        NSLog(@"Отказался от покупки");
+        NSLog(@"Согласился на покупку");
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSInteger row = [[defaults objectForKey:@"row"] integerValue];

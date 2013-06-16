@@ -378,7 +378,7 @@ static CLLocation *Me;
 }
 //  скачать каталог города
 + (void) downloadCatalogue:(NSString *)catalogueOfCity {
-    NSLog(@"in download");
+  //  NSLog(@"in download");
     // Create a URL Request and set the URL
     NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://likelik.net/docs/Archivetest.zip"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -396,7 +396,7 @@ static CLLocation *Me;
         // Perform the request synchronously on this thread
         NSLog(@"Start download");
         NSData *rspData = [NSURLConnection sendSynchronousRequest:request returningResponse:&rsp error:&err];
-        NSLog(@"%d",[rspData length]);
+    //    NSLog(@"%d",[rspData length]);
         NSLog(@"Downloaded");
         // Once a response is received, handle it on the main thread in case we do any UI updates
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -432,7 +432,7 @@ static CLLocation *Me;
 
 + (void) unzipFileAt:(NSString *)filePath ToDestination:(NSString *)fileDestination{
     // Unzipping
-    NSLog(@"Unzipping");
+   // NSLog(@"Unzipping");
     NSString *zipPath = filePath;
     NSString *destinationPath = fileDestination;
     [SSZipArchive unzipFileAtPath:zipPath toDestination:destinationPath];
@@ -763,7 +763,7 @@ static CLLocation *Me;
 }
 //  обнуление использованных чеков
 + (void) makeAllChecksUnused{
-    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogues1.plist"];
+    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     NSMutableArray *newCatalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *catalogues = [defaults objectForKey:catalogue];
