@@ -710,7 +710,7 @@ CGFloat alpha = 0.5;
         [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
     infoViewIsOpen = !infoViewIsOpen;
     
-    NSString *url = [NSString stringWithFormat:@"http://%@",sender.titleLabel.text];
+    NSString *url = [NSString stringWithFormat:@"%@",sender.titleLabel.text];
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:AMLocalizedString(@"Web", nil)
                                                              delegate:self

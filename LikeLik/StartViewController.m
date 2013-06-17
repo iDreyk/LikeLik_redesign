@@ -202,7 +202,7 @@
         //[TestFlight passCheckpoint:@"buying"];
     }
     else{
-        NSLog(@"Purchased");
+       // NSLog(@"Purchased");
         NSLog(@"Согласился на покупку");
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -225,7 +225,6 @@
                 
                 NSLog(@"Downloading via Wi-Fi");
             }
-            
             else if (![ExternalFunctions isDownloaded:_CityLabels[row]]) {
                 // On Cell
                 
@@ -330,9 +329,9 @@
         float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
         
         int result = (int)floorf(progress*100);
-        double speed = (bytesRead / (currentTime2 - currentTime))/1024*1000;
-        NSLog(@"Operation: progress: \t %f",progress*100);
-        NSLog(@"BytesRead: %d \t Time gone: %f",bytesRead,speed);
+      //  double speed = (bytesRead / (currentTime2 - currentTime))/1024*1000;
+        //NSLog(@"Operation: progress: \t %f",progress*100);
+        //NSLog(@"BytesRead: %d \t Time gone: %f",bytesRead,speed);
         
         self.HUDfade.labelText = [NSString stringWithFormat:@"%d %%",result];
         currentTime = currentTime2;
@@ -370,9 +369,9 @@
             [catalogueArray removeObjectAtIndex:i];
         }
     }
-    
+#warning один раз тут вылетело, но приложение было свернуто [catalogueArray addObject:temp];
     [catalogueArray addObject:temp];
-    
+
     [[NSFileManager defaultManager] removeItemAtPath:cataloguesPath error:nil];
     
     [catalogueArray writeToFile:cataloguesPath atomically:YES];
