@@ -347,14 +347,23 @@
         
         double currentTime2 = CACurrentMediaTime();
         
-        float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
+//        float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
+//        
+//        int result = (int)floorf(progress*100);
+        double speed = (totalBytesRead / (currentTime2 - currentTime));
+        double bytes_left = totalBytesExpected - totalBytesRead;
+        double time_left = bytes_left / speed;
         
-        int result = (int)floorf(progress*100);
-        double speed = (bytesRead / (currentTime2 - currentTime))/1024*1000;
-        NSLog(@"Operation: progress: \t %f",progress*100);
-        NSLog(@"BytesRead: %d \t Time gone: %f",bytesRead,speed);
+        int secs = time_left;
+        int h = secs / 3600;
+        int m = secs / 60 % 60;
+        int s = secs % 60;
         
-        self.HUDfade.labelText = [NSString stringWithFormat:@"%d %%",result];
+        NSString *text = [NSString stringWithFormat:@"%02d:%02d:%02d", h, m, s];
+        
+        NSLog(@"Time left: %@ \n Speed: %f",text,speed);
+        
+        self.HUDfade.labelText = [NSString stringWithFormat:@"%@ \t %@",AMLocalizedString(@"Time left", nil),text];
         currentTime = currentTime2;
     }];
     
