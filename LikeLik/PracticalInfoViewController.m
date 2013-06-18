@@ -35,7 +35,7 @@
 
     self.CityLabel.text = [[NSString alloc] initWithFormat:@"\n%@",self.CityName];
     self.CityLabel.font = [AppDelegate OpenSansSemiBold:32];
-    cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogues1.plist"];
+    cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     catalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
 
     _InfoScroll.showsHorizontalScrollIndicator = NO;

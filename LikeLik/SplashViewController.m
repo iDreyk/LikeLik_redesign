@@ -42,6 +42,9 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
     if (haveAlreadyReceivedCoordinates) {
         Me = newLocation;
         NSLog(@"%@",Me);
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:Me];
+        [defaults setObject:data forKey:@"location"];
         
         //#warning надо переделать под новый каталог
         NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
@@ -81,11 +84,11 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         
         
             [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:2]];
-            NSLog(@"Start monitoring for region %d: %d",i,[[locationManagerRegion monitoredRegions] count]);
+            //NSLog(@"Start monitoring for region %d: %d",i,[[locationManagerRegion monitoredRegions] count]);
         }
         [locationManager stopUpdatingLocation];
         // locationManager = nil;
-        NSLog(@"all regions \n %@",[locationManagerRegion monitoredRegions]);
+        //NSLog(@"all regions \n %@",[locationManagerRegion monitoredRegions]);
     }
     else{
         haveAlreadyReceivedCoordinates = YES;
