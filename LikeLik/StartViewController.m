@@ -360,10 +360,7 @@
         
         NSString *text = [NSString stringWithFormat:@"%02d:%02d:%02d", h, m, s];
         
-        int result = (int)floorf(progress*100);
-      //  double speed = (bytesRead / (currentTime2 - currentTime))/1024*1000;
-        //NSLog(@"Operation: progress: \t %f",progress*100);
-        //NSLog(@"BytesRead: %d \t Time gone: %f",bytesRead,speed);
+        NSLog(@"Time left: %@ \n Speed: %f",text,speed);
         
         self.HUDfade.labelText = [NSString stringWithFormat:@"%@ \t %@",AMLocalizedString(@"Time left", nil),text];
         currentTime = currentTime2;

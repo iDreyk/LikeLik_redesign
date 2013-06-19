@@ -84,7 +84,7 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
         
         
             [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:2]];
-       //     NSLog(@"Start monitoring for region %d: %d",i,[[locationManagerRegion monitoredRegions] count]);
+            //NSLog(@"Start monitoring for region %d: %d",i,[[locationManagerRegion monitoredRegions] count]);
         }
         [locationManager stopUpdatingLocation];
         // locationManager = nil;
