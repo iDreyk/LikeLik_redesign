@@ -21,10 +21,10 @@
 
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
 #define dismiss                 @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
-#define likelikurlwifi_4        @"http://likelik.net/docs/4/"
-#define likelikurlwifi_5        @"http://likelik.net/docs/5/"
-#define likelikurlcell_4        @"http://likelik.net/cell/4/"
-#define likelikurlcell_5        @"http://likelik.net/cell/5/"
+#define likelikurlwifi_4        @"http://likelik.net/ios/docs/4/"
+#define likelikurlwifi_5        @"http://likelik.net/ios/docs/5/"
+#define likelikurlcell_4        @"http://likelik.net/ios/cell/4/"
+#define likelikurlcell_5        @"http://likelik.net/ios/cell/5/"
 #define catalogue @"Catalogues"
 
 
@@ -306,7 +306,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     }];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
+        self.HUDfade.labelText = AMLocalizedString(@"Data processing", nil);
         [self DownloadSucceeded:filename];
         
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x"]];
@@ -338,11 +338,11 @@
     
     //Setup Upload block to return progress of file upload
     [operation setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
-        int i = 0;
+        BOOL i = YES;
         double currentTime;
-        if (i == 0) {
+        if (i) {
             currentTime = CurrentTime1;
-            i++;
+            i = NO;
         }
         
         double currentTime2 = CACurrentMediaTime();
