@@ -24,7 +24,8 @@
 @synthesize alertLabel;
 @synthesize message;
 @synthesize localNotification;
-static BOOL haveAlreadyReceivedCoordinates = NO;
+
+static NSInteger i=0;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,65 +38,24 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    //   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //#warning regions
-    if (haveAlreadyReceivedCoordinates) {
+    
+    if (i==0) {
         Me = newLocation;
-        NSLog(@"%@",Me);
+      //  NSLog(@"%@",Me);
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:Me];
         [defaults setObject:data forKey:@"location"];
         
-        //#warning надо переделать под новый каталог
         NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
         
-        
-        
-        
-//                NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:[Region objectAtIndex:2]]];
-//        localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
-//        [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
-//        
-//        [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
-//        [localNotification setAlertBody:[NSString stringWithFormat:@"%@ %@", AMLocalizedString(@"You are next to", nil),[Place objectForKey:@"Name"]]];
-//        [localNotification setHasAction: YES];
-//        [localNotification setApplicationIconBadgeNumber:1];
-//        
-//        
-//        CLLocation *loc = [Place objectForKey:@"Location"];
-//        NSString *lat = [NSString stringWithFormat:@"%f",loc.coordinate.latitude];
-//        NSString *lon = [NSString stringWithFormat:@"%f",loc.coordinate.longitude];
-//        NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-//        [dictionary setObject:[Place objectForKey:@"Name"] forKey:@"Place"];
-//        [dictionary setObject:[Place objectForKey:@"Category"] forKey:@"Category"];
-//        [dictionary setObject:[Place objectForKey:@"City"] forKey:@"City"];
-//        [dictionary setObject:[Place objectForKey:@"Address"] forKey:@"Address"];
-//        [dictionary setObject:[Place objectForKey:@"About"] forKey:@"About"];
-//        [dictionary setObject:[Place objectForKey:@"Telephone"] forKey:@"Telephone"];
-//        [dictionary setObject:[Place objectForKey:@"Web"] forKey:@"Web"];
-//        [dictionary setObject:lat forKey:@"lat"];
-//        [dictionary setObject:lon forKey:@"lon"];
-//        [dictionary setObject:[Place objectForKey:@"Photo"] forKey:@"Photo"];
-//        
-//        [localNotification setUserInfo:dictionary];
-//        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-//        NSLog(@"%@",Region);
+    i++;
+        NSLog(@"Зашел в счетчик");
       for (int i = 0; i<[Region count]; i++) {
-        
-        
-            [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:2]];
-            //NSLog(@"Start monitoring for region %d: %d",i,[[locationManagerRegion monitoredRegions] count]);
-        }
+        [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:2]];
+    }
         [locationManager stopUpdatingLocation];
-        // locationManager = nil;
-        //NSLog(@"all regions \n %@",[locationManagerRegion monitoredRegions]);
     }
-    else{
-        haveAlreadyReceivedCoordinates = YES;
-    }
-    
-    
-    //
+  //  NSLog(@"%@",[locationManager monitoredRegions]);
     
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -104,7 +64,6 @@ static BOOL haveAlreadyReceivedCoordinates = NO;
 
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
-    //#warning надо переделать под новый каталог
     NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:region]];
     localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
     [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
