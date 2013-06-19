@@ -354,11 +354,11 @@
         double time_left = bytes_left / speed;
         
         int secs = time_left;
-        int h = secs / 3600;
+        //int h = secs / 3600;
         int m = secs / 60 % 60;
         int s = secs % 60;
         
-        NSString *text = [NSString stringWithFormat:@"%02d:%02d:%02d", h, m, s];
+        NSString *text = [NSString stringWithFormat:@"%02d:%02d", m, s];
         
         NSLog(@"Time left: %@ \n Speed: %f",text,speed);
         

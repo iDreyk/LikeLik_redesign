@@ -38,6 +38,11 @@
 {
     [super viewDidLoad];
     
+    _locationManager = [[CLLocationManager alloc] init];
+    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [_locationManager startUpdatingLocation];
+    CLLocation *Me = [_locationManager location];
+    
     self.Table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
@@ -62,15 +67,16 @@
     
     NSString *city = [[ExternalFunctions cityCatalogueForCity:self.CityName.text] objectForKey:@"city_EN"];
     if ([ExternalFunctions isDownloaded:city]) {
-        CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-        [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-        CLLocation *Me = [locationManager location];
+    
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
         
         CLLocation *oldLocation = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         
+        NSLog(@"Изменение расстояния: %f",[Me distanceFromLocation:oldLocation]);
+        
         if ([Me distanceFromLocation:oldLocation] > 100 || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL) {
             NSLog(@"in if");
+            [_locationManager stopUpdatingLocation];
             [[NSUserDefaults standardUserDefaults] setObject:Me forKey:@"location"];
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(queue, ^ {
