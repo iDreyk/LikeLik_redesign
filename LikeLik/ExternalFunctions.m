@@ -236,7 +236,7 @@ static CLLocation *Me;
 
 
 + (void) getReady {
-    
+    NSLog(@"get Ready");
     NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"catalogue" ofType:@"plist"] toPath:cataloguesPath error:nil];
     
