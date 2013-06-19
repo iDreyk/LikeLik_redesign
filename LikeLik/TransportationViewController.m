@@ -83,7 +83,7 @@
 
 - (NSArray *) cityTransportation : (NSString *)cityName{
     NSMutableArray *photos = [[NSMutableArray alloc]init];
-    cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogues1.plist"];
+    cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     catalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
     
     NSArray *languageArray = [NSLocale preferredLanguages];

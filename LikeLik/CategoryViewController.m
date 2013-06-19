@@ -37,7 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.Table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
@@ -57,6 +57,37 @@
     UIButton *btn = [InterfaceFunctions search_button];
     [btn addTarget:self action:@selector(search:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    NSString *city = [[ExternalFunctions cityCatalogueForCity:self.CityName.text] objectForKey:@"city_EN"];
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    CLLocation *Me = [locationManager location];
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
+    
+    CLLocation *oldLocation = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if ([Me distanceFromLocation:oldLocation] > 100 || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL) {
+        NSLog(@"in if");
+        [[NSUserDefaults standardUserDefaults] setObject:Me forKey:@"location"];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^ {
+            
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text]]; // set value
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
+            [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",city]];
+            
+            NSLog(@"Finished work in background");
+            
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                NSLog(@"Back on main thread");
+            });
+        });
+    }
+    
+    
 }
 
 -(void)search:(id)sender{

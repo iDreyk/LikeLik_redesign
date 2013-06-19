@@ -249,6 +249,7 @@ static CLLocation *Me;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *catalogueArray = [[NSArray alloc]initWithContentsOfFile:cataloguesPath];
     [defaults setObject:catalogueArray forKey:catalogue];
+    
 }
 
 + (CLLocation *) getMyLocationOrTheLocationOfCityCenter : (NSString *) city{
@@ -1077,10 +1078,20 @@ static CLLocation *Me;
 //
 //  new function
 + (NSArray *) getPlacesAroundMyLocationInCity : (NSString *) city{
+    city = [[self cityCatalogueForCity:city] objectForKey:@"city_EN"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [defaults objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]];
+    NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
-    NSArray *arrayOfPlaces = [self arrayOfDictionatySort:[self getAllPlacesInCity:city]];
-    
-    return arrayOfPlaces;
+    if (arr == NULL){
+        NSLog(@"defaults пустые берём сами");
+        return [self arrayOfDictionatySort:[self getAllPlacesInCity:city]];
+    }
+    else
+    {
+        NSLog(@"defaults не пустые берём оттуда");
+        return arr;
+    }
 }
 
 

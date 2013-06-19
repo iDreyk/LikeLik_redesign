@@ -18,9 +18,13 @@
 #import "AFDownloadRequestOperation.h"
 
 #import "CategoryViewController.h"
-#define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
-#define likelikurl @"http://likelik.net/docs/"
-#define likelikurlcellnetwork @"http://likelik.net/cell/"
+
+#define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
+#define dismiss                 @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
+#define likelikurlwifi_4        @"http://likelik.net/docs/4/"
+#define likelikurlwifi_5        @"http://likelik.net/docs/5/"
+#define likelikurlcell_4        @"http://likelik.net/cell/4/"
+#define likelikurlcell_5        @"http://likelik.net/cell/5/"
 #define catalogue @"Catalogues"
 
 
@@ -215,12 +219,20 @@
                 if ([_CityLabels[row] isEqualToString:@"Moscow"] ||
                     [_CityLabels[row] isEqualToString:@"Moskau"] ||
                     [_CityLabels[row] isEqualToString:@"Москва"]) {
-                    [self AFdownload:@"Moscow" fromURL:likelikurl];
+                    
+                    if(IS_IPHONE_5 == 1)
+                        [self AFdownload:@"Moscow" fromURL:likelikurlwifi_5];
+                    else
+                        [self AFdownload:@"Moscow" fromURL:likelikurlwifi_4];
                 }
                 else if ([_CityLabels[row] isEqualToString:@"Вена"] ||
                          [_CityLabels[row] isEqualToString:@"Vienna"] ||
                          [_CityLabels[row] isEqualToString:@"Wien"]) {
-                    [self AFdownload:@"Vienna" fromURL:likelikurl];
+                    
+                    if(IS_IPHONE_5 == 1)
+                        [self AFdownload:@"Vienna" fromURL:likelikurlwifi_5];
+                    else
+                        [self AFdownload:@"Vienna" fromURL:likelikurlwifi_4];
                 }
                 
                 NSLog(@"Downloading via Wi-Fi");
@@ -231,12 +243,20 @@
                 if ([_CityLabels[row] isEqualToString:@"Moscow"] ||
                     [_CityLabels[row] isEqualToString:@"Moskau"] ||
                     [_CityLabels[row] isEqualToString:@"Москва"]) {
-                    [self AFdownload:@"Moscow" fromURL:likelikurlcellnetwork];
+                    
+                    if(IS_IPHONE_5 == 1)
+                        [self AFdownload:@"Moscow" fromURL:likelikurlcell_5];
+                    else
+                        [self AFdownload:@"Moscow" fromURL:likelikurlcell_4];
                 }
                 else if ([_CityLabels[row] isEqualToString:@"Вена"] ||
                          [_CityLabels[row] isEqualToString:@"Vienna"] ||
                          [_CityLabels[row] isEqualToString:@"Wien"]) {
-                    [self AFdownload:@"Vienna" fromURL:likelikurlcellnetwork];
+                    
+                    if(IS_IPHONE_5 == 1)
+                        [self AFdownload:@"Vienna" fromURL:likelikurlcell_5];
+                    else
+                        [self AFdownload:@"Vienna" fromURL:likelikurlcell_4];
                 }
                 
                 NSLog(@"Downloading via cell network");
@@ -326,14 +346,26 @@
         
         double currentTime2 = CACurrentMediaTime();
         
-        float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
+//        float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
+//        
+//        int result = (int)floorf(progress*100);
+        double speed = (totalBytesRead / (currentTime2 - currentTime));
+        double bytes_left = totalBytesExpected - totalBytesRead;
+        double time_left = bytes_left / speed;
+        
+        int secs = time_left;
+        int h = secs / 3600;
+        int m = secs / 60 % 60;
+        int s = secs % 60;
+        
+        NSString *text = [NSString stringWithFormat:@"%02d:%02d:%02d", h, m, s];
         
         int result = (int)floorf(progress*100);
       //  double speed = (bytesRead / (currentTime2 - currentTime))/1024*1000;
         //NSLog(@"Operation: progress: \t %f",progress*100);
         //NSLog(@"BytesRead: %d \t Time gone: %f",bytesRead,speed);
         
-        self.HUDfade.labelText = [NSString stringWithFormat:@"%d %%",result];
+        self.HUDfade.labelText = [NSString stringWithFormat:@"%@ \t %@",AMLocalizedString(@"Time left", nil),text];
         currentTime = currentTime2;
     }];
     
