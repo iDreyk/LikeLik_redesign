@@ -305,6 +305,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     }];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.HUDfade.mode = MBProgressHUDAnimationFade;
         self.HUDfade.labelText = AMLocalizedString(@"Data processing", nil);
         [self DownloadSucceeded:filename];
         
