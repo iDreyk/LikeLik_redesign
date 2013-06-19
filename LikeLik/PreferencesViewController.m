@@ -138,7 +138,7 @@
     
     switch ([indexPath section]) {
         case 0:
-            NSLog(@"123");
+      //      NSLog(@"123");
         [cell addSubview:[InterfaceFunctions TableLabelwithText:[RegisterAndLogin objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions corporateIdentity] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
             break;
         case 1:
