@@ -322,7 +322,7 @@
         
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross2@2x"]];
         self.HUDfade.mode = MBProgressHUDModeCustomView;
-        self.HUDfade.labelText = @"Operation Error";
+        self.HUDfade.labelText = AMLocalizedString(@"Download error", nil);
         [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
                                 onTarget:self withObject:nil animated:YES];
         
