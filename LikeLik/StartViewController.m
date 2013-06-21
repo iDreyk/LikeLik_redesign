@@ -305,8 +305,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     }];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.HUDfade.mode = MBProgressHUDAnimationFade;
-        self.HUDfade.labelText = AMLocalizedString(@"Data processing", nil);
+        
         [self DownloadSucceeded:filename];
         
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x"]];
@@ -360,10 +359,13 @@
         int s = secs % 60;
         
         NSString *text = [NSString stringWithFormat:@"%02d:%02d", m, s];
+        if (m == 0 && s==0) {
+            NSLog(@"Time left: %@ \n Speed: %f",text,speed);
+            self.HUDfade.labelText = AMLocalizedString(@"Data processing", nil);
+        }
+        else
+            self.HUDfade.labelText = [NSString stringWithFormat:@"%@ \t %@",AMLocalizedString(@"Time left", nil),text];
         
-        NSLog(@"Time left: %@ \n Speed: %f",text,speed);
-        
-        self.HUDfade.labelText = [NSString stringWithFormat:@"%@ \t %@",AMLocalizedString(@"Time left", nil),text];
         currentTime = currentTime2;
     }];
     
