@@ -1083,8 +1083,9 @@ static CLLocation *Me;
     NSData *data = [defaults objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]];
     NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
-    if (arr == NULL){
+    if (arr == NULL || [[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]){
         NSLog(@"defaults пустые берём сами");
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0] forKey:@"langChanged"];
         return [self arrayOfDictionatySort:[self getAllPlacesInCity:city]];
     }
     else

@@ -68,7 +68,7 @@
             number = 1;
             break;
         case 1:
-            number = [taxi count];
+            number = 0;//[taxi count];
         default:
             break;
     }

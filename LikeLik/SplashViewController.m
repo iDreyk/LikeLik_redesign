@@ -25,7 +25,7 @@
 @synthesize message;
 @synthesize localNotification;
 
-static NSInteger i=0;
+static NSInteger j=0;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,7 +39,7 @@ static NSInteger i=0;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     
-    if (i==0) {
+    if (j==0) {
         Me = newLocation;
       //  NSLog(@"%@",Me);
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -48,14 +48,14 @@ static NSInteger i=0;
         
         NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
         
-    i++;
+    j++;
         NSLog(@"Зашел в счетчик");
       for (int i = 0; i<[Region count]; i++) {
-        [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:2]];
+        [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
     }
         [locationManager stopUpdatingLocation];
     }
-  //  NSLog(@"%@",[locationManager monitoredRegions]);
+  NSLog(@"%d",[[locationManager monitoredRegions] count]);
     
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -65,7 +65,7 @@ static NSInteger i=0;
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
     NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:region]];
-    localNotification = [[UILocalNotification alloc] init]; //Create the localNotification object
+    localNotification = [[UILocalNotification alloc] init];
     [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
     
     [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];

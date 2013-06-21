@@ -74,10 +74,14 @@
         
         NSLog(@"Изменение расстояния: %f",[Me distanceFromLocation:oldLocation]);
         
-        if ([Me distanceFromLocation:oldLocation] > 100 || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL) {
+        if ([Me distanceFromLocation:oldLocation] > 100
+            || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL
+            || [[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]) {
             NSLog(@"in if");
+
             [_locationManager stopUpdatingLocation];
-            [[NSUserDefaults standardUserDefaults] setObject:Me forKey:@"location"];
+            NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
+            [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(queue, ^ {
                 
