@@ -88,7 +88,7 @@
     switch (section) {
         case 0:
             [cell addSubview:[InterfaceFunctions TableLabelwithText:AMLocalizedString(@"Transportation", nil) AndColor:[InterfaceFunctions mainTextColor:1] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
-            [cell addSubview:[InterfaceFunctions actbwithColor:1]];
+            [cell addSubview:[InterfaceFunctions corporateIdentity_actb]];//actbwithColor:6]];
             break;
         case 1:
             [cell addSubview:[InterfaceFunctions TableLabelwithText:[[taxi objectAtIndex:row] objectForKey:@"name"] AndColor:[InterfaceFunctions taxiColor] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
@@ -166,7 +166,6 @@
         destination.Photo = [[taxi objectAtIndex:[indexPath row]] objectForKey:@"photo"];
     }
     if ([[segue identifier] isEqualToString:@"ScrollSegue"]) {
-        
         TransportationViewController *destination = [segue destinationViewController];
         [segue destinationViewController];
         destination.CityName = self.CityName;

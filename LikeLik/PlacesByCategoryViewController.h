@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *PlacesTable;
 
 @property (nonatomic,retain) NSString *Image;
-@property (weak, nonatomic) IBOutlet UIImageView *CityImage;
+@property (retain, nonatomic) IBOutlet UIImageView *CityImage;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *SegmentedMapandTable;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SearchBarButton;

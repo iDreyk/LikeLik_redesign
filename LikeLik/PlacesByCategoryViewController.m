@@ -35,9 +35,10 @@ static NSDictionary *Place1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"123");
+  //  NSLog(@"123");
     CategoryPlaces = [ExternalFunctions getArrayOfPlaceDictionariesInCategory:self.Category InCity:self.CityName];
-
+ //   NSLog(@"%@ %d",CategoryPlaces, [CategoryPlaces count]);
+   
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     
@@ -121,6 +122,16 @@ static NSDictionary *Place1;
 
 
 -(void)viewDidAppear:(BOOL)animated{
+    
+//    if ([CategoryPlaces count] == 1) {
+//        NSLog(@"hello");`
+//        //self.CityImage.contentMode = UIViewContentModeScaleToFill;
+//        self.CityImage.frame = CGRectMake(0, 0.0, 320, 76.0);
+//        
+//        
+//    }
+    
+    
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
         NSLog(@"Взяли центер города");
@@ -310,7 +321,11 @@ static NSDictionary *Place1;
         
     } else if (yOffset < 0) {
         // NSLog(@"2");
-        self.CityImage.frame = CGRectMake(0,-44.0,320.0,152.0-yOffset + floorf(threshold / 2.0));
+        
+//        if ([CategoryPlaces count] == 1)
+//            self.CityImage.frame = CGRectMake(0,-44.0,320.0,76.0-yOffset + floorf(threshold / 2.0));
+//        else
+            self.CityImage.frame = CGRectMake(0,-44.0,320.0,152.0-yOffset + floorf(threshold / 2.0));
         
         self.CategoryLabel.frame = CGRectMake(self.CategoryLabel.frame.origin.x,4-(yOffset),self.CategoryLabel.frame.size.width,self.CategoryLabel.frame.size.height);
 //        
