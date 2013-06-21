@@ -239,6 +239,8 @@
 
     if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
         if ([indexPath section] == 1){
+            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1] forKey:@"langChanged"];
+            
             for (int i=0; i<[Language count]; i++)
                 [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:1]].accessoryType = UITableViewCellAccessoryNone;
             [defaults setObject:[Language objectAtIndex:[indexPath row]] forKey:@"Language"];
@@ -270,6 +272,8 @@
     else{
         
         if ([indexPath section] == 1){
+            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1] forKey:@"langChanged"];
+            NSLog(@"lngChanged - %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"]);
             for (int i=0; i<[Language count]; i++)
                 [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:1]].accessoryType = UITableViewCellAccessoryNone;
             [defaults setObject:[Language objectAtIndex:[indexPath row]] forKey:@"Language"];

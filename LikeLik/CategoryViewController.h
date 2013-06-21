@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SearchButton;
 @property (nonatomic,retain)IBOutlet NSArray *CellArray;
 @property (nonatomic,retain)IBOutlet NSArray *SegueArray;
+@property (nonatomic, retain) CLLocationManager *locationManager;
 -(void)search:(id)sender;
 - (void)updateOffsets;
 

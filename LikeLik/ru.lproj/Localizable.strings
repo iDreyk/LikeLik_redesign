@@ -36,7 +36,7 @@
 "Shopping" = "Шоппинг";
 "Entertainment" = "Развлечение";
 "Health & Beauty" = "Красота и Здоровье";
-"Visual Tour" = "Достопремичательности";
+"Visual Tour" = "Достопримечательности";
 "Practical Info" = "Полезная информация";
 "City info" = "Информация о городе";
 "Transportation" = "Транспорт";
@@ -96,3 +96,5 @@
 "You are next to" = "Вы рядом с";
 "Time left" = "Осталось";
 "Data processing" = "Обработка данных";
+"Download Error" = "Ошибка загрузки";
+"Guide downloaded" = "Путеводитель скачался!";
