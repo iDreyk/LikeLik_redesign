@@ -20,8 +20,7 @@
 		553C9C09176E2F1600B46A10 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 553C9C08176E2F1600B46A10 /* Reachability.m */; };
 		553C9C0C176E2F3E00B46A10 /* catalogue.plist in Sources */ = {isa = PBXBuildFile; fileRef = 553C9C0B176E2F3E00B46A10 /* catalogue.plist */; };
 		553C9C0E176E30ED00B46A10 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553C9C0D176E30ED00B46A10 /* MapBox.framework */; };
-		55480A8017721912006D7149 /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 55480A7F17721912006D7149 /* AFDownloadRequestOperation.m */; };
-		55764E811770830500F006D9 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 91102735176DB8980023F2C7 /* Moscow */; };
+		55764E811770830500F006D9 /* cities in Resources */ = {isa = PBXBuildFile; fileRef = 91102735176DB8980023F2C7 /* cities */; };
 		55764E821770830800F006D9 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 91102736176DB8980023F2C7 /* Vienna */; };
 		55764F511770849700F006D9 /* 124_124 Social_Icons11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55764E841770849600F006D9 /* 124_124 Social_Icons11@2x.png */; };
 		55764F521770849700F006D9 /* 124_124 Social_Icons22@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55764E851770849600F006D9 /* 124_124 Social_Icons22@2x.png */; };
@@ -235,9 +234,9 @@
 		911D1AFA176B1D380006EC10 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		911D1AFB176B1D380006EC10 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
-		91241959173BA85B004B6837 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */; };
 		9145EAB71771ED1B000138D6 /* MapBox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9145EAB61771ED1B000138D6 /* MapBox.bundle */; };
+		9145EABC17745DD5000138D6 /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9145EABB17745DD5000138D6 /* AFDownloadRequestOperation.m */; };
 		918F70B1176DA433000FE810 /* LikeLik icon 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */; };
 		918F70B2176DA43B000FE810 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */; };
 		919E8700173A58E700A25E07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E86FF173A58E700A25E07 /* UIKit.framework */; };
@@ -398,12 +397,10 @@
 		553C9BF8176E2E9000B46A10 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		553C9BF9176E2E9000B46A10 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		553C9BFA176E2E9000B46A10 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
-		553C9C07176E2F1600B46A10 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "../../../Dropbox/LikeLik sources/Reachability.h"; sourceTree = "<group>"; };
-		553C9C08176E2F1600B46A10 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "../../../Dropbox/LikeLik sources/Reachability.m"; sourceTree = "<group>"; };
-		553C9C0A176E2F3E00B46A10 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadRequestOperation.h; path = "../../../Dropbox/LikeLik sources/AFDownloadRequestOperation.h"; sourceTree = "<group>"; };
-		553C9C0B176E2F3E00B46A10 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = catalogue.plist; path = ../../../Yandex.Disk.localized/LikeLik/cities/catalogue.plist; sourceTree = "<group>"; };
-		553C9C0D176E30ED00B46A10 /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = "../../../Dropbox/LikeLik sources/MapBox.framework"; sourceTree = "<group>"; };
-		55480A7F17721912006D7149 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFDownloadRequestOperation.m; path = "../../../Dropbox/LikeLik sources/AFDownloadRequestOperation.m"; sourceTree = "<group>"; };
+		553C9C07176E2F1600B46A10 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		553C9C08176E2F1600B46A10 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		553C9C0B176E2F3E00B46A10 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catalogue.plist; sourceTree = "<group>"; };
+		553C9C0D176E30ED00B46A10 /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = "../../../../../Volumes/Data-1/LikeLik sources/MapBox.framework"; sourceTree = "<group>"; };
 		55764E841770849600F006D9 /* 124_124 Social_Icons11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "124_124 Social_Icons11@2x.png"; sourceTree = "<group>"; };
 		55764E851770849600F006D9 /* 124_124 Social_Icons22@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "124_124 Social_Icons22@2x.png"; sourceTree = "<group>"; };
 		55764E861770849600F006D9 /* 124_124 Social_Icons33@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "124_124 Social_Icons33@2x.png"; sourceTree = "<group>"; };
@@ -608,19 +605,21 @@
 		55764F4E1770849700F006D9 /* tabicon_SpecialSeries@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabicon_SpecialSeries@2x.png"; sourceTree = "<group>"; };
 		55764F4F1770849700F006D9 /* table_grad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad.png; sourceTree = "<group>"; };
 		55764F501770849700F006D9 /* table_grad_o_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad_o_1.png; sourceTree = "<group>"; };
-		559CA016173A7137002F494F /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalFunctions.h; sourceTree = "<group>"; };
-		559CA017173A7137002F494F /* ExternalFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalFunctions.m; sourceTree = "<group>"; };
+		559CA016173A7137002F494F /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExternalFunctions.h; path = ../../../Users/vladimirmalov/Desktop/LikeLik/LikeLik/ExternalFunctions.h; sourceTree = "<group>"; };
+		559CA017173A7137002F494F /* ExternalFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExternalFunctions.m; path = ../../../Users/vladimirmalov/Desktop/LikeLik/LikeLik/ExternalFunctions.m; sourceTree = "<group>"; };
 		91102734176DB8440023F2C7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		91102735176DB8980023F2C7 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Moscow; path = "../../../Dropbox/LikeLik sources/Moscow"; sourceTree = "<group>"; };
-		91102736176DB8980023F2C7 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = "../../../Dropbox/LikeLik sources/Vienna"; sourceTree = "<group>"; };
-		9113464C1747A57C00F9E28E /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = appData.plist; path = "../../../Dropbox/LikeLik sources/appData.plist"; sourceTree = "<group>"; };
+		91102735176DB8980023F2C7 /* cities */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cities; path = ../cities; sourceTree = "<group>"; };
+		91102736176DB8980023F2C7 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = ../cities/Vienna; sourceTree = "<group>"; };
+		9113464C1747A57C00F9E28E /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = appData.plist; sourceTree = "<group>"; };
 		9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 114x114.png"; sourceTree = "<group>"; };
 		91241948173A9CF8004B6837 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194A173A9DF5004B6837 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194B173A9E05004B6837 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124195A173BD4D5004B6837 /* PlacesByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesByCategoryViewController.h; sourceTree = "<group>"; };
 		9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesByCategoryViewController.m; sourceTree = "<group>"; };
-		9145EAB61771ED1B000138D6 /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MapBox.bundle; path = "../../../Dropbox/LikeLik sources/MapBox.framework/resources/MapBox.bundle"; sourceTree = "<group>"; };
+		9145EAB61771ED1B000138D6 /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MapBox.bundle; path = "../../../../../Volumes/Data-1/LikeLik sources/MapBox.framework/Versions/A/Resources/MapBox.bundle"; sourceTree = "<group>"; };
+		9145EABA17745DD4000138D6 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
+		9145EABB17745DD5000138D6 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
 		918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 57x57.png"; sourceTree = "<group>"; };
 		918F70B6176DAC44000FE810 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
 		918F70B7176DAC44000FE810 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
@@ -827,8 +826,8 @@
 		919E8B16173A616500A25E07 /* OpenSansSemibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansSemibold.ttf; sourceTree = "<group>"; };
 		919E8B17173A616500A25E07 /* RegularOpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RegularOpenSans.ttf; sourceTree = "<group>"; };
 		919E8B18173A616500A25E07 /* OpenSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansBold.ttf; sourceTree = "<group>"; };
-		919E8C52173A62D400A25E07 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
-		919E8C53173A62D400A25E07 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		919E8C52173A62D400A25E07 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSZipArchive.h; path = ../../../Users/vladimirmalov/Desktop/LikeLik/LikeLik/SSZipArchive.h; sourceTree = "<group>"; };
+		919E8C53173A62D400A25E07 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSZipArchive.m; path = ../../../Users/vladimirmalov/Desktop/LikeLik/LikeLik/SSZipArchive.m; sourceTree = "<group>"; };
 		919E8C5A173A633400A25E07 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		919E8C5B173A633400A25E07 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		919E8C5C173A633400A25E07 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -885,7 +884,7 @@
 				553C9BA5176E2B4600B46A10 /* Icon@2x.png */,
 			);
 			name = Images;
-			path = "../../../Dropbox/LikeLik sources/Images";
+			path = "../../../../../Volumes/Data-1/LikeLik sources/Images";
 			sourceTree = "<group>";
 		};
 		553C9BD8176E2E9000B46A10 /* ZBarSDK */ = {
@@ -896,7 +895,7 @@
 				553C9BF5176E2E9000B46A10 /* Resources */,
 			);
 			name = ZBarSDK;
-			path = "../../../Dropbox/LikeLik sources/ZBarSDK";
+			path = "../../../../../Volumes/Data-1/LikeLik sources/ZBarSDK";
 			sourceTree = "<group>";
 		};
 		553C9BD9176E2E9000B46A10 /* Headers */ = {
@@ -1170,7 +1169,7 @@
 				55764F501770849700F006D9 /* table_grad_o_1.png */,
 			);
 			name = "Work PNG";
-			path = "../../../Dropbox/LikeLik sources/Work PNG";
+			path = "../../../../../Volumes/Data-1/LikeLik sources/Work PNG";
 			sourceTree = "<group>";
 		};
 		919E86F3173A58E700A25E07 = {
@@ -1499,21 +1498,22 @@
 		919E8AB8173A5ED700A25E07 /* Andrew */ = {
 			isa = PBXGroup;
 			children = (
-				91102735176DB8980023F2C7 /* Moscow */,
+				9145EABA17745DD4000138D6 /* AFDownloadRequestOperation.h */,
+				9145EABB17745DD5000138D6 /* AFDownloadRequestOperation.m */,
+				91102735176DB8980023F2C7 /* cities */,
 				91102736176DB8980023F2C7 /* Vienna */,
 				9113464C1747A57C00F9E28E /* appData.plist */,
 				559CA016173A7137002F494F /* ExternalFunctions.h */,
 				559CA017173A7137002F494F /* ExternalFunctions.m */,
 				553C9C07176E2F1600B46A10 /* Reachability.h */,
 				553C9C08176E2F1600B46A10 /* Reachability.m */,
-				553C9C0A176E2F3E00B46A10 /* AFDownloadRequestOperation.h */,
-				55480A7F17721912006D7149 /* AFDownloadRequestOperation.m */,
 				553C9C0B176E2F3E00B46A10 /* catalogue.plist */,
 				919E8C59173A633400A25E07 /* minizip */,
 				919E8C52173A62D400A25E07 /* SSZipArchive.h */,
 				919E8C53173A62D400A25E07 /* SSZipArchive.m */,
 			);
 			name = Andrew;
+			path = "../../../../../Volumes/Data-1/LikeLik sources";
 			sourceTree = "<group>";
 		};
 		919E8C48173A61B200A25E07 /* Source FONTS */ = {
@@ -1540,7 +1540,8 @@
 				919E8C61173A633400A25E07 /* zip.c */,
 				919E8C62173A633400A25E07 /* zip.h */,
 			);
-			path = minizip;
+			name = minizip;
+			path = ../../../Users/vladimirmalov/Desktop/LikeLik/LikeLik/minizip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1630,7 +1631,7 @@
 				553C9C02176E2E9000B46A10 /* zbar-help.html in Resources */,
 				553C9C03176E2E9000B46A10 /* zbar-helpicons.png in Resources */,
 				553C9C04176E2E9000B46A10 /* zbar-samples.png in Resources */,
-				55764E811770830500F006D9 /* Moscow in Resources */,
+				55764E811770830500F006D9 /* cities in Resources */,
 				55764E821770830800F006D9 /* Vienna in Resources */,
 				55764F511770849700F006D9 /* 124_124 Social_Icons11@2x.png in Resources */,
 				55764F521770849700F006D9 /* 124_124 Social_Icons22@2x.png in Resources */,
@@ -1924,11 +1925,10 @@
 				919E8C65173A633400A25E07 /* unzip.c in Sources */,
 				919E8C66173A633400A25E07 /* zip.c in Sources */,
 				559CA018173A7137002F494F /* ExternalFunctions.m in Sources */,
-				91241959173BA85B004B6837 /* (null) in Sources */,
 				9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */,
 				553C9C09176E2F1600B46A10 /* Reachability.m in Sources */,
 				553C9C0C176E2F3E00B46A10 /* catalogue.plist in Sources */,
-				55480A8017721912006D7149 /* AFDownloadRequestOperation.m in Sources */,
+				9145EABC17745DD5000138D6 /* AFDownloadRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
