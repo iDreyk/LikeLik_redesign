@@ -166,7 +166,7 @@
         destination.Photo = [[taxi objectAtIndex:[indexPath row]] objectForKey:@"photo"];
     }
     if ([[segue identifier] isEqualToString:@"ScrollSegue"]) {
-        //    nslog(@"Check this");
+        
         TransportationViewController *destination = [segue destinationViewController];
         [segue destinationViewController];
         destination.CityName = self.CityName;

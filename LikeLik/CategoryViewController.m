@@ -74,9 +74,10 @@
         
         NSLog(@"Изменение расстояния: %f",[Me distanceFromLocation:oldLocation]);
         
+        NSArray *catalogues = [[NSUserDefaults standardUserDefaults] objectForKey:@"Catalogues"];
+        
         if ([Me distanceFromLocation:oldLocation] > 100
-            || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL
-            || [[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]) {
+            || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL) {
             NSLog(@"in if");
 
             [_locationManager stopUpdatingLocation];
@@ -85,13 +86,35 @@
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(queue, ^ {
                 
-                
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text]];
                 NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
                 [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",city]];
                 
                 NSLog(@"Finished work in background");
+                
+                
+                dispatch_async(dispatch_get_main_queue(), ^ {
+                    NSLog(@"Back on main thread");
+                });
+            });
+        }
+        else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]) {
+            [_locationManager stopUpdatingLocation];
+            NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
+            [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(queue, ^ {
+                
+                for (int i = 0; i < [catalogues count]; i++) {
+                    NSString *cityName = [[catalogues objectAtIndex:i] objectForKey:@"city_EN"];
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:cityName]];
+                    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
+                    [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",cityName]];
+                    
+                    NSLog(@"Finished work in background");
+                }
                 
                 dispatch_async(dispatch_get_main_queue(), ^ {
                     NSLog(@"Back on main thread");
