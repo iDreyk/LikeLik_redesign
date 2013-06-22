@@ -115,7 +115,7 @@
                     
                     NSLog(@"Finished work in background");
                 }
-                
+                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0] forKey:@"langChanged"];
                 dispatch_async(dispatch_get_main_queue(), ^ {
                     NSLog(@"Back on main thread");
                 });

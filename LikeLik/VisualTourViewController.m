@@ -250,7 +250,7 @@ static BOOL infoViewIsOpen = NO;
     
     Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
 #warning название достопремичательности первой
-    Red_line.text =  @"Красная площадь";//[[coord objectAtIndex:0] objectForKey:@"Name"];
+    Red_line.text =  [[coord objectAtIndex:0] objectForKey:@"Name"];
     Red_line.font =[AppDelegate OpenSansSemiBold:28];
     Red_line.textColor = [UIColor whiteColor];
     Red_line.numberOfLines = 10;
@@ -265,7 +265,7 @@ static BOOL infoViewIsOpen = NO;
 
     label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
 #warning текст достопремичательности первой
-    label.text = @"Красная площадь - центральная площадь Москвы. Образовалась в конце XV в. Первоначально — торговая площадь; с XVI в. на Красной площади происходили торжественные церемонии. В 1534 сооружено Лобное место. В 1555—61 воздвигнут Василия Блаженного храм.  В конце XIX в. сооружены Исторический музей, новые Верхние торговые ряды. В 1924—30 построен мавзолей В. И. Ленина. На Красной площади происходят парады и празднества. На месте, где соединяются Красная и Манежная площади находится Нулевой Километр. От неё ведётся отсчёт расстояния по всем идущим от Москвы шоссе.";//[[coord objectAtIndex:0] objectForKey:@"About"];
+    label.text =  [[coord objectAtIndex:0] objectForKey:@"About"];
     label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor whiteColor];
     
@@ -281,7 +281,7 @@ static BOOL infoViewIsOpen = NO;
     else{
         label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+50);
     }
-    [label setScrollEnabled:NO];
+    [label setScrollEnabled:YES];
     
     [_infoScroll setBackgroundColor:[InterfaceFunctions corporateIdentity]];
     
@@ -290,7 +290,7 @@ static BOOL infoViewIsOpen = NO;
     [_infoScroll addSubview:label];
     
     CGSize size = _infoScroll.frame.size;
-    size.height = self.Red_line.frame.size.height+self.label.frame.size.height+20;//earth.frame.size.height+earth.frame.origin.y + 32.0;
+    size.height = self.Red_line.frame.size.height+self.label.frame.size.height;//+20;//earth.frame.size.height+earth.frame.origin.y + 32.0;
     _infoScroll.contentSize = size;
     
     [self.locationButton setHidden:YES];

@@ -360,12 +360,12 @@
         
         NSString *text = [NSString stringWithFormat:@"%02d:%02d", m, s];
         if (m == 0 && s==0) {
-            NSLog(@"Time left: %@ \n Speed: %f",text,speed);
+            
             self.HUDfade.labelText = AMLocalizedString(@"Data processing", nil);
         }
         else
             self.HUDfade.labelText = [NSString stringWithFormat:@"%@ \t %@",AMLocalizedString(@"Time left", nil),text];
-        
+        NSLog(@"Time left: %@ \n Speed: %f",text,speed);
         currentTime = currentTime2;
     }];
     
