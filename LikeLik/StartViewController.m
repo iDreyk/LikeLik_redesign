@@ -278,20 +278,11 @@
 
 
 
-- (void)tableView:(UITableView *)tableView
-commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-forRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    [ExternalFunctions deleteCityCatalogue:[_CityLabels objectAtIndex:[indexPath row]]];
     _backCityImages = nil;
     _CityLabels = nil;
     [tableView reloadData];
-//    //    nslog(@"Hello!");
-//    NSString *Place = [[FavouritePlaces objectAtIndex:[indexPath row]] objectForKey:@"Name"];
-//    NSString *Category = [[FavouritePlaces objectAtIndex:[indexPath row]] objectForKey:@"Category"];
-//    [ExternalFunctions removeFromFavoritesPlace:Place InCategory:Category InCity:self.CityName];
-//    FavouritePlaces = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName];
-//    [tableView reloadData];
-    
-    
 }
 
 

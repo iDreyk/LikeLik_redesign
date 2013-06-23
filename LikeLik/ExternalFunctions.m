@@ -264,7 +264,29 @@ static CLLocation *Me;
     return [self arrayOfDictionatySort:arrayOfPlaces];
 }
 
-
+//  удаление каталога
++ (void) deleteCityCatalogue : (NSString *) city{
+    NSString *cityName = [self getInternationalCityNameByLocalizedCityName:city];
+    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
+    NSMutableArray *newCatalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *catalogues = [[NSMutableArray alloc]initWithArray:[defaults objectForKey:catalogue]];
+    
+    for (int i = 0; i<[catalogues count]; i++) {
+        if ([[[catalogues objectAtIndex:i]objectForKey:@"city_RU"]isEqualToString:city] || [[[catalogues objectAtIndex:i]objectForKey:@"city_DE"]isEqualToString:city] || [[[catalogues objectAtIndex:i]objectForKey:@"city_EN"]isEqualToString:city]) {
+            
+            [[newCatalogues objectAtIndex:i] setValue:@"0" forKeyPath:@"downloaded"];
+            
+            [newCatalogues writeToFile:cataloguesPath atomically:YES];
+            
+            [defaults setObject:newCatalogues forKey:catalogue];
+            
+        }
+    }
+    
+    [[NSFileManager defaultManager] removeItemAtPath:[[self docDir]stringByAppendingPathComponent:cityName] error:nil];
+    [self getReady];
+}
 
 
 //
@@ -721,7 +743,7 @@ static CLLocation *Me;
     for (int i = 0; i < [catalogues count]; i++) {
         if ([[[catalogues objectAtIndex:i]objectForKey:@"special"] isEqualToString:@"1"]) {
             [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
+            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
         }
     }
     
@@ -744,7 +766,7 @@ static CLLocation *Me;
     
     for (int i = 0; i < [catalogues count]; i++) {
         [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-        [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
+        [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
     }
     
     if (presise == 1) {
@@ -767,7 +789,7 @@ static CLLocation *Me;
     for (int i = 0; i < [catalogues count]; i++) {
         if ([[[catalogues objectAtIndex:i]objectForKey:@"downloaded"] isEqualToString:@"1"]) {
             [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
+            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
         }
     }
     
@@ -793,7 +815,7 @@ static CLLocation *Me;
     for (int i = 0; i < [catalogues count]; i++) {
         if ([[[catalogues objectAtIndex:i]objectForKey:@"country"] isEqualToString:country]) {
             [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[catalogues objectAtIndex:i] objectForKey:@"city_EN"],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
+            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"large"]]];
         }
     }
     

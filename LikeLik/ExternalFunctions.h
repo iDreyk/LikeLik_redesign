@@ -21,7 +21,8 @@
 
 + (void) addCityToDownloaded : (NSString *) city;
 
-
+//  удаление каталога
++ (void) deleteCityCatalogue : (NSString *) city;
 
 
 + (NSString *) getLocalizedString : (NSString *) string;
