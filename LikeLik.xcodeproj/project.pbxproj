@@ -778,7 +778,7 @@
 		919E8AB9173A5F6D00A25E07 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		919E8ABA173A5F6D00A25E07 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		919E8ABB173A5F6D00A25E07 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
-		919E8ABC173A5F6D00A25E07 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartViewController.m; path = /Users/andrey/Desktop/LikeLik/LikeLik/StartViewController.m; sourceTree = "<absolute>"; };
+		919E8ABC173A5F6D00A25E07 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		919E8ABD173A5F6D00A25E07 /* StartTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTabBarViewController.h; sourceTree = "<group>"; };
 		919E8ABE173A5F6D00A25E07 /* StartTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartTabBarViewController.m; sourceTree = "<group>"; };
 		919E8ABF173A5F6D00A25E07 /* StartTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTableCell.h; sourceTree = "<group>"; };
