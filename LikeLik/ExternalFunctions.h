@@ -42,15 +42,6 @@
 
 + (NSDictionary *) placeDictionaryInCity : (NSString *) city InCategory : (NSString *) category withName : (NSString *) placeName;
 
-+ (NSString *) placeInfoTextInCity: (NSString *) city InCategory : (NSString *) category WithName : (NSString *) placeName;
-
-+ (NSString *) placeTelephoneTextInCity: (NSString *) city InCategory : (NSString *) category WithName : (NSString *) placeName;
-
-+ (NSString *) placeWebSiteTextInCity: (NSString *) city InCategory : (NSString *) category WithName : (NSString *) placeName;
-
-+ (NSString *) placeAddresTextInCity: (NSString *) city InCategory : (NSString *) category WithName : (NSString *) placeName;
-
-+ (NSArray *) getImagesOfPlaceInCity:(NSString *)city InCategory:(NSString *) category WithPlaceName:(NSString *)place;
 
 + (NSArray *) getAllPlacesInCity:(NSString *) city;
 
@@ -72,8 +63,6 @@
 //
 //  проверка на скаченность
 + (BOOL) isDownloaded : (NSString *) city;
-
-+ (void) downloadCatalogue : (NSString *) catalogueOfCity;
 
 + (void) unzipFileAt : (NSString *) filePath ToDestination : (NSString *) fileDestination;
 
@@ -126,8 +115,7 @@
 + (BOOL) isCheckUsedInPlace: (NSString *) placeName InCategory : (NSString *) category InCity : (NSString *) city;
 //  данные чека LikeLik
 + (NSDictionary *) getCheckDictionariesOfPlace : (NSString *) placeName InCategory : (NSString *) category InCity : (NSString *) city;
-//  обнуление использованных чеков
-+ (void) makeAllChecksUnused;
+
 
 //
 //  "плашки" города
@@ -137,10 +125,6 @@
 //  широкая заставка города
 + (NSString *) larkePictureOfCity : (NSString *) city;
 
-//
-//  Coordinate Functions
-//
-+ (CLLocation *) getPlaceCoordinatesInCity:(NSString *) city InCategory : (NSString *) categiry WithName : (NSString *) placeName;
 
 
 
@@ -149,22 +133,6 @@
 //
 //  картинки
 + (NSArray *) getVisualTourImagesFromCity : (NSString *) city;
-//  координаты
-+ (NSArray *) getVisualTourImagesCoordinatesFromCity : (NSString *) city;
-
-
-//
-//  Category
-//
-+ (NSArray *) getDistrictsOfCategory : (NSString *) category inCity : (NSString *) city;
-
-+ (NSArray *) getPlacesOfCategory : (NSString *) category inCity : (NSString *) city listOrMap : (NSString *) listormap;
-
-//
-//Explore by dist
-//
-+ (NSArray *) getDistrictsOfCity: (NSString *) city;
-
 
 //
 //Around_menu_2

@@ -36,54 +36,6 @@
 
 static CLLocation *Me;
 
-+ (void) DownloadController : (NSString *) catalogueName{
-    
-    [self AFdownload : catalogueName];
-    
-}
-
-+ (void) AFdownload : (NSString *) filename{
-    NSString *url = [[NSString alloc] initWithFormat:@"%@%@",likelikurl,filename];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:filename];
-    operation.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Successfully downloaded file to %@", path);
-        [self DownloadSucceeded:filename];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-        NSLog(@"Error occured");
-        [self DownloadError:error.description];
-    }];
-    
-    [operation start];
-    
-    //Setup Upload block to return progress of file upload
-    [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToRead) { float progress = totalBytesWritten / (float)totalBytesExpectedToRead;
-        NSLog(@"Download Percentage: %f %%", progress*100);
-    }];
-    
-}
-
-+ (void) DownloadSucceeded:(NSString *)fileName {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
-    [self unzipFileAt:path ToDestination:[paths objectAtIndex:0]];
-    NSString *crapPath = [[self docDir]stringByAppendingPathComponent:@"__MACOSX"];
-    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:crapPath error:nil];
-}
-
-+ (NSString *) DownloadError:(NSString *)error{
-    NSLog(@"error = %@",error);
-    return error;
-}
-
 + (NSString *) getInternationalCityNameByLocalizedCityName:(NSString *)cityName {
     NSDictionary *city = [self cityCatalogueForCity:cityName];
     return [city objectForKey:@"city_EN"];
@@ -143,15 +95,9 @@ static CLLocation *Me;
     }
 }
 
-
-
-
 + (NSString *)docDir{
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
 }
-
-
-
 
 + (NSArray *)arrayOfDictionatySort : (NSMutableArray *) placesArray {
     
@@ -164,17 +110,9 @@ static CLLocation *Me;
 + (NSString *)getAboutText {
     NSString *cataloguesPath = [[NSBundle mainBundle]pathForResource:@"appData" ofType:@"plist"];
     NSMutableDictionary *catalogues = [[NSMutableDictionary alloc]initWithContentsOfFile:cataloguesPath];
-    NSString *language = [self getLanguage];
     NSString *aboutLanguage;
     
-    if ([language isEqualToString:@"ru"]) {
-        aboutLanguage = @"About_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        aboutLanguage = @"About_DE";
-    }
-    else
-        aboutLanguage = @"About_EN";
+    aboutLanguage = [self getLocalizedString:@"About"];
     
     return [catalogues objectForKey:aboutLanguage];
 }
@@ -182,35 +120,19 @@ static CLLocation *Me;
 + (NSString *)getTermsOfUseText {
     NSString *cataloguesPath = [[NSBundle mainBundle]pathForResource:@"appData" ofType:@"plist"];
     NSMutableDictionary *catalogues = [[NSMutableDictionary alloc]initWithContentsOfFile:cataloguesPath];
-    NSString *language = [self getLanguage];
     NSString *termsOfUseLanguage;
     
-    if ([language isEqualToString:@"ru"]) {
-        termsOfUseLanguage = @"termsofuse_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        termsOfUseLanguage = @"termsofuse_DE";
-    }
-    else
-        termsOfUseLanguage = @"termofuse_EN";
+    termsOfUseLanguage = [self getLocalizedString:@"termsofuse"];
     
     return [catalogues objectForKey:termsOfUseLanguage];
 }
 
 + (NSString *)getPracticalInfoForCity:(NSString *) city{
     NSDictionary *cityCatalogue = [self cityCatalogueForCity:city];
-    NSString *language = [self getLanguage];
     NSString *practicalInfoLanguage;
     
-    if ([language isEqualToString:@"ru"]) {
-        practicalInfoLanguage = @"About_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        practicalInfoLanguage = @"About_DE";
-    }
-    else
-        practicalInfoLanguage = @"About_EN";
-    
+    practicalInfoLanguage = [self getLocalizedString:@"About"];
+ 
     return [cityCatalogue objectForKey:practicalInfoLanguage];
 }
 
@@ -377,59 +299,6 @@ static CLLocation *Me;
         }
     }
 }
-//  скачать каталог города
-+ (void) downloadCatalogue:(NSString *)catalogueOfCity {
-  //  NSLog(@"in download");
-    // Create a URL Request and set the URL
-    NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://likelik.net/docs/Archivetest.zip"]];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-    // Display the network activity indicator
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
-    // Perform the request on a new thread so we don't block the UI
-    dispatch_queue_t downloadQueue = dispatch_queue_create("Download queue", NULL);
-    dispatch_sync(downloadQueue, ^{
-        
-        NSError* err = nil;
-        NSHTTPURLResponse* rsp = nil;
-        
-        // Perform the request synchronously on this thread
-        NSLog(@"Start download");
-        NSData *rspData = [NSURLConnection sendSynchronousRequest:request returningResponse:&rsp error:&err];
-    //    NSLog(@"%d",[rspData length]);
-        NSLog(@"Downloaded");
-        // Once a response is received, handle it on the main thread in case we do any UI updates
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Hide the network activity indicator
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            
-            if (rspData == nil || (err != nil && [err code] != noErr)) {
-                // If there was a no data received, or an error...
-                NSLog(@"ОШИБКА!!!");
-            } else {
-                // Cache the file in the cache directory
-                NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-                NSString* path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Archive.zip"];
-                NSString *crapPath = [[self docDir]stringByAppendingPathComponent:@"__MACOSX"];
-                
-                [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-                [rspData writeToFile:path atomically:YES];
-                
-                NSString *cataloguesPath = [self docDir];
-                
-                //[[NSFileManager defaultManager] removeItemAtPath:cataloguesPath error:nil];
-                [self unzipFileAt:path ToDestination:cataloguesPath];
-                
-                [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-                [[NSFileManager defaultManager] removeItemAtPath:crapPath error:nil];
-                // Do whatever else you want with the data...
-                
-                
-            }
-        });
-    });
-}
 
 + (void) unzipFileAt:(NSString *)filePath ToDestination:(NSString *)fileDestination{
     // Unzipping
@@ -447,25 +316,14 @@ static CLLocation *Me;
 + (NSArray *) getTaxiInformationInCity:(NSString *)city {
     NSDictionary *cityCatalogue = [self cityCatalogueForCity:city];
     NSArray *taxisArray = [[cityCatalogue objectForKey:@"transport"] objectForKey:@"taxi"];
-    NSString *language = [self getLanguage];
     NSString *nameLang;
     NSString *aboutLang;
     NSMutableDictionary *taxiDict;
     NSMutableArray *arrayOfTaxiDicts = [[NSMutableArray alloc] init];
     NSMutableArray *newArray;
     
-    if ([language isEqualToString:@"ru"]) {
-        nameLang = @"Name_RU";
-        aboutLang = @"About_RU";
-    }
-    else if ([language isEqualToString:@"de"]) {
-        nameLang = @"Name_DE";
-        aboutLang = @"About_DE";
-    }
-    else {
-        nameLang = @"Name_EN";
-        aboutLang = @"About_EN";
-    }
+    nameLang = [self getLocalizedString:@"Name"];
+    aboutLang = [self getLocalizedString:@"About"];
     
     for (int i = 0; i < [taxisArray count]; i++) {
         taxiDict  = [[NSMutableDictionary alloc] init];
@@ -762,44 +620,6 @@ static CLLocation *Me;
     
     return returnDictionary;
 }
-//  обнуление использованных чеков
-+ (void) makeAllChecksUnused{
-    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
-    NSMutableArray *newCatalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *catalogues = [defaults objectForKey:catalogue];
-    
-    for (int i = 0; i < [catalogues count]; i++) {
-        for (int j = 0; j < [[[[catalogues objectAtIndex:i] objectForKey:@"places"] objectForKey:shopping] count]; j++) {
-            [[[[[newCatalogues objectAtIndex:i] objectForKey:@"places"] objectForKey:shopping] objectAtIndex:j] setObject:@"0" forKey:@"CheckUsed"];
-        }
-        for (int j = 0; j < [[[[catalogues objectAtIndex:i] objectForKey:@"places"] objectForKey:entertainment] count]; j++) {
-            [[[[[newCatalogues objectAtIndex:i] objectForKey:@"places"] objectForKey:entertainment] objectAtIndex:j] setObject:@"0" forKey:@"CheckUsed"];
-        }
-        for (int j = 0; j < [[[[catalogues objectAtIndex:i] objectForKey:@"places"] objectForKey:sport] count]; j++) {
-            [[[[[newCatalogues objectAtIndex:i] objectForKey:@"places"] objectForKey:sport] objectAtIndex:j] setObject:@"0" forKey:@"CheckUsed"];
-        }
-        for (int j = 0; j < [[[[catalogues objectAtIndex:i] objectForKey:@"places"] objectForKey:restaurants] count]; j++) {
-            [[[[[newCatalogues objectAtIndex:i] objectForKey:@"places"] objectForKey:restaurants] objectAtIndex:j] setObject:@"0" forKey:@"CheckUsed"];
-        }
-    }
-    
-    [newCatalogues writeToFile:cataloguesPath atomically:YES];
-    [defaults setObject:newCatalogues forKey:catalogue];
-}
-
-//
-//  CLLocation functions
-//
-+ (CLLocation *) getPlaceCoordinatesInCity:(NSString *) city InCategory : (NSString *) category WithName : (NSString *) placeName{
-    NSDictionary *place = [self selectedPalceInCity:city category:category withName:placeName];
-    CLLocation *coordinate;
-    
-    coordinate = [[CLLocation alloc] initWithLatitude:[[place objectForKey:@"Lat"] doubleValue] longitude:[[place objectForKey:@"Lon"] doubleValue]];
-    
-    return coordinate;
-}
-
 
 //
 //  "плашки" города
@@ -816,82 +636,6 @@ static CLLocation *Me;
     
     return [[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[City objectForKey:@"city_EN"],[[City objectForKey:@"photos"] objectForKey:@"large"]];
 }
-
-//
-//  Place
-//
-//  всё вместе о месте
-+ (NSDictionary *) placeDictionaryInCity:(NSString *)city InCategory:(NSString *)category withName:(NSString *)placeName{
-    NSDictionary *placeDictionary = [self selectedPalceInCity:city category:category withName:placeName];
-    NSMutableDictionary *returnDictionary = [[NSMutableDictionary alloc] init];
-    NSString *language = [self getLanguage];
-    NSString *infoLang;
-    
-    if ([language isEqualToString:@"ru"]) {
-        infoLang = @"About_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        infoLang = @"About_DE";
-    }
-    else
-        infoLang = @"About_EN";
-    
-    [returnDictionary setObject:[placeDictionary objectForKey:infoLang] forKey:@"about"];
-    [returnDictionary setObject:[placeDictionary objectForKey:@"address"] forKey:@"address"];
-    [returnDictionary setObject:[placeDictionary objectForKey:@"web"] forKey:@"web"];
-    [returnDictionary setObject:[placeDictionary objectForKey:@"Telephone"] forKey:@"Telephone"];
-    
-    return returnDictionary;
-}
-// Информация о месте
-+ (NSString *) placeInfoTextInCity:(NSString *)city InCategory:(NSString *)category WithName:(NSString *)placeName{
-    NSString *language = [self getLanguage];
-    NSString *aboutLanguage;
-    
-    if ([language isEqualToString:@"ru"]) {
-        aboutLanguage = @"About_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        aboutLanguage = @"About_DE";
-    }
-    else
-        aboutLanguage = @"About_EN";
-    
-    return [[self selectedPalceInCity:city category:category withName:placeName] objectForKey:aboutLanguage];
-}
-// Телефон места
-+ (NSString *) placeTelephoneTextInCity:(NSString *)city InCategory:(NSString *)category WithName:(NSString *)placeName{
-    return [[self selectedPalceInCity:city category:category withName:placeName] objectForKey:@"Telephone"];
-}
-// Сайт места
-+ (NSString *) placeWebSiteTextInCity:(NSString *)city InCategory:(NSString *)category WithName:(NSString *)placeName{
-    return [[self selectedPalceInCity:city category:category withName:placeName] objectForKey:@"web"];
-}
-// Адрес места
-+ (NSString *) placeAddresTextInCity:(NSString *)city InCategory:(NSString *)category WithName:(NSString *)placeName{
-    return [[self selectedPalceInCity:city category:category withName:placeName] objectForKey:@"address"];
-}
-// Картинки места
-+ (NSArray *) getImagesOfPlaceInCity:(NSString *)city InCategory:(NSString *) category WithPlaceName:(NSString *)place{
-    NSMutableArray *imageArray = [[NSMutableArray alloc]init];
-    NSString *photoPath;
-    NSArray *photos;
-    
-    if(IS_IPHONE_5 == 1){
-        photos = [[[self selectedPalceInCity:city category:category withName:place]objectForKey:@"Photo"] objectForKey:@"5"];
-    }
-    else
-        photos = [[[self selectedPalceInCity:city category:category withName:place]objectForKey:@"Photo"] objectForKey:@"4"];
-    
-    for (int i = 0; i < [photos count]; i++) {
-        photoPath = [[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[[self cityCatalogueForCity:city] objectForKey:@"city_EN"],[photos objectAtIndex:i]];
-        [imageArray addObject:photoPath];
-    }
-    
-    return imageArray;
-}
-
-
 
 //
 //  Vis_tour
@@ -934,150 +678,13 @@ static CLLocation *Me;
     
     return returnArray;
 }
-//  координаты картинок
-+ (NSArray *) getVisualTourImagesCoordinatesFromCity:(NSString *)city{
-    NSDictionary *cityDictionary = [self cityCatalogueForCity:city];
-    NSArray *cityPictresCoordinatesArray;
-    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-    CLLocation *pictureCoordinate;
-    double lon, lat;
-    
-    cityPictresCoordinatesArray = [[cityDictionary objectForKey:@"photos"] objectForKey:@"coordinates"];
-    
-    for (int i = 0; i < [cityPictresCoordinatesArray count]; i++) {
-        lon = [[[cityPictresCoordinatesArray objectAtIndex:i] objectForKey:@"Lon"] doubleValue];
-        lat = [[[cityPictresCoordinatesArray objectAtIndex:i] objectForKey:@"Lat"] doubleValue];
-        
-        pictureCoordinate = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-        [returnArray addObject:pictureCoordinate];
-    }
-    
-    return returnArray;
-}
 
-//
-//  Category
-//
-
-//
-+ (NSArray *) getDistrictsOfCategory:(NSString *)category inCity:(NSString *)city{
-    NSArray *placesArray = [[[self cityCatalogueForCity:city] objectForKey:@"places"] objectForKey:category];
-    NSString *language = [self getLanguage];
-    NSString *districtLanguage;
-    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-    
-    if ([language isEqualToString:@"ru"]) {
-        districtLanguage = @"District_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        districtLanguage = @"District_DE";
-    }
-    else
-        districtLanguage = @"District_EN";
-    
-    for (int i = 0; i < [placesArray count]; i++) {
-        if (![self isInArray:returnArray :[[placesArray objectAtIndex:i] objectForKey:districtLanguage]]) {
-            [returnArray addObject:[[placesArray objectAtIndex:i] objectForKey:districtLanguage]];
-        }
-    }
-    
-    return returnArray;
-}
-//
-+ (NSArray *) getPlacesOfCategory:(NSString *)category inCity:(NSString *)city listOrMap : (NSString *) listormap{
-    NSArray *placesArrayInCategory = [[[self cityCatalogueForCity:city] objectForKey:@"places"] objectForKey:category];
-    NSArray *districtArray = [self getDistrictsOfCategory:category inCity:city];
-    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-    NSString *language = [self getLanguage];
-    NSString *districtLanguage;
-    NSString *placeNameLanguage;
-    NSMutableDictionary *districtDictionary = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *districtDictionary1 = [[NSMutableDictionary alloc] init];
-    NSMutableArray *placeNames;
-    NSMutableArray *placeCoordinates;
-    NSMutableArray *returArray1 = [[NSMutableArray alloc] init];
-    CLLocation *currentPlace;
-    double lat, lon;
-    
-    if ([language isEqualToString:@"ru"]) {
-        districtLanguage = @"District_RU";
-        placeNameLanguage = @"Name_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        districtLanguage = @"District_DE";
-        placeNameLanguage = @"Name_DE";
-    }
-    else{
-        districtLanguage = @"District_EN";
-        placeNameLanguage = @"Name_EN";
-    }
-    
-    for (int i = 0; i < [districtArray count]; i++) {
-        districtDictionary = [[NSMutableDictionary alloc] init];
-        [districtDictionary setValue:[districtArray objectAtIndex:i] forKey:@"District"];
-        districtDictionary1 = [[NSMutableDictionary alloc] init];
-        [districtDictionary1 setValue:[districtArray objectAtIndex:i] forKey:@"District"];
-        placeNames = [[NSMutableArray alloc] init];
-        placeCoordinates = [[NSMutableArray alloc] init];
-        
-        for (int j = 0; j < [placesArrayInCategory count]; j++) {
-            if ([[[placesArrayInCategory objectAtIndex:j] objectForKey:districtLanguage] isEqualToString:[districtArray objectAtIndex:i]]) {
-                [placeNames addObject:[[placesArrayInCategory objectAtIndex:j] objectForKey:placeNameLanguage]];
-                
-                lat = [[[placesArrayInCategory objectAtIndex:j] objectForKey:@"Lat"] doubleValue];
-                lon = [[[placesArrayInCategory objectAtIndex:j] objectForKey:@"Lon"] doubleValue];
-                currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-                
-                [placeCoordinates addObject:currentPlace];
-            }
-        }
-        
-        [districtDictionary setValue:placeNames forKey:@"Places"];
-        [districtDictionary1 setValue:placeCoordinates forKey:@"Coordinates"];
-        
-        [returnArray addObject:districtDictionary];
-        [returArray1 addObject:districtDictionary1];
-    }
-    
-    if ([listormap isEqualToString:@"list"]) {
-        return returnArray;
-    }
-    else
-        return returArray1;
-}
-
-//
-//Explore by dist
-//
-
-//  список всех районов
-+ (NSArray *) getDistrictsOfCity:(NSString *)city{
-    NSDictionary *cityDictionary = [self cityCatalogueForCity:city];
-    NSArray *districts = [cityDictionary objectForKey:@"districts"];
-    NSString *language = [self getLanguage];
-    NSString *districtLanguage;
-    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-    
-    if ([language isEqualToString:@"ru"]) {
-        districtLanguage = @"name_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        districtLanguage = @"name_DE";
-    }
-    else
-        districtLanguage = @"name_EN";
-    
-    for (int i = 0; i < [districts count]; i++) {
-        [returnArray addObject:[[districts objectAtIndex:i] objectForKey:districtLanguage]];
-    }
-    
-    return returnArray;
-}
 //
 //Around_menu_2
 //
 //  new function
 + (NSArray *) getPlacesAroundMyLocationInCity : (NSString *) city{
+    NSLog(@"city - %@",city);
     city = [[self cityCatalogueForCity:city] objectForKey:@"city_EN"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [defaults objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]];
@@ -1095,9 +702,6 @@ static CLLocation *Me;
     }
 }
 
-
-
-
 //
 //  CATALOGS_1
 //
@@ -1107,16 +711,8 @@ static CLLocation *Me;
     NSMutableArray *tmp1 = [[NSMutableArray alloc]init];
     NSMutableArray *tmp2 = [[NSMutableArray alloc]init];
     NSString *cityLanguage;
-    NSString *language = [self getLanguage];
     
-    if ([language isEqualToString:@"ru"]) {
-        cityLanguage = @"city_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        cityLanguage = @"city_DE";
-    }
-    else
-        cityLanguage = @"city_EN";
+    cityLanguage = [self getLocalizedString:@"city"];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     //    [defaults setObject:@"0" forKey:@"Download"];
@@ -1140,16 +736,8 @@ static CLLocation *Me;
     NSMutableArray *tmp1 = [[NSMutableArray alloc]init];
     NSMutableArray *tmp2 = [[NSMutableArray alloc]init];
     NSString *cityLanguage;
-    NSString *language = [self getLanguage];
     
-    if ([language isEqualToString:@"ru"]) {
-        cityLanguage = @"city_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        cityLanguage = @"city_DE";
-    }
-    else
-        cityLanguage = @"city_EN";
+    cityLanguage = [self getLocalizedString:@"city"];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *catalogues = [defaults objectForKey:catalogue];
@@ -1170,17 +758,8 @@ static CLLocation *Me;
     NSMutableArray *tmp1 = [[NSMutableArray alloc]init];
     NSMutableArray *tmp2 = [[NSMutableArray alloc]init];
     NSString *cityLanguage;
-    NSString *language = [self getLanguage];
     
-    
-    if ([language isEqualToString:@"ru"]) {
-        cityLanguage = @"city_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        cityLanguage = @"city_DE";
-    }
-    else
-        cityLanguage = @"city_EN";
+    cityLanguage = [self getLocalizedString:@"city"];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *catalogues = [defaults objectForKey:catalogue];
@@ -1205,16 +784,8 @@ static CLLocation *Me;
     NSLocale *locale = [NSLocale currentLocale];
     NSString *country = [locale localeIdentifier];
     NSString *cityLanguage;
-    NSString *language = [self getLanguage];
     
-    if ([language isEqualToString:@"ru"]) {
-        cityLanguage = @"city_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        cityLanguage = @"city_DE";
-    }
-    else
-        cityLanguage = @"city_EN";
+    cityLanguage = [self getLocalizedString:@"city"];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *catalogues = [defaults objectForKey:catalogue];
@@ -1314,19 +885,10 @@ static CLLocation *Me;
     NSDictionary *catalogues = [self cityCatalogueForCity:city];
     NSArray *selectedCategoryPlaces;
     NSDictionary *selectedPlace;
-    NSString *language = [self getLanguage];
     NSString *nameLanguage;
     
-    if ([language isEqualToString:@"ru"]) {
-        nameLanguage = @"Name_RU";
-    }
-    else if ([language isEqualToString:@"de"]){
-        nameLanguage = @"Name_DE";
-    }
-    else {
-        nameLanguage = @"Name_EN";
-    }
-    
+    nameLanguage = [self getLocalizedString:@"Name"];
+
     selectedCategoryPlaces = [[catalogues objectForKey:@"places"] objectForKey:category];
     
     for (int i = 0; i < [selectedCategoryPlaces count]; i++) {

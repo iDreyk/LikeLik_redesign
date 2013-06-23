@@ -123,7 +123,7 @@ static NSDictionary *Place1;
         marker1.subtitle = [[AroundArray objectAtIndex:i] objectForKey:@"Category"];
         marker1.userInfo = [AroundArray objectAtIndex:i];
         [self.MapPlace addAnnotation:marker1];
-        NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
+        //NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
     }
 //    NSLog(@"%@",self.MapPlace.annotations);
 
@@ -333,7 +333,7 @@ static NSDictionary *Place1;
     if ([[segue identifier] isEqualToString:@"AroundmeSegue"]) {
         AroundMeViewController *destination =
         [segue destinationViewController];
-        destination.CityName.text = self.Label;
+        destination.CityNameText = self.Label;
         destination.Image = self.Image; 
     }
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
