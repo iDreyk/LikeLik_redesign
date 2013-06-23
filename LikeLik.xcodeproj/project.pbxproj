@@ -316,7 +316,6 @@
 		919E8AAC173A5EAE00A25E07 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8A9F173A5EAE00A25E07 /* AFXMLRequestOperation.m */; };
 		919E8AAD173A5EAE00A25E07 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AA1173A5EAE00A25E07 /* UIImageView+AFNetworking.m */; };
 		919E8AF3173A5F6F00A25E07 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ABA173A5F6D00A25E07 /* SplashViewController.m */; };
-		919E8AF4173A5F6F00A25E07 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ABC173A5F6D00A25E07 /* StartViewController.m */; };
 		919E8AF5173A5F6F00A25E07 /* StartTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ABE173A5F6D00A25E07 /* StartTabBarViewController.m */; };
 		919E8AF6173A5F6F00A25E07 /* StartTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AC0173A5F6D00A25E07 /* StartTableCell.m */; };
 		919E8AF7173A5F6F00A25E07 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AC2173A5F6D00A25E07 /* CategoryViewController.m */; };
@@ -348,6 +347,7 @@
 		919E8B1A173A616500A25E07 /* OpenSansSemibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 919E8B16173A616500A25E07 /* OpenSansSemibold.ttf */; };
 		919E8B1B173A616500A25E07 /* RegularOpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 919E8B17173A616500A25E07 /* RegularOpenSans.ttf */; };
 		919E8B1C173A616500A25E07 /* OpenSansBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 919E8B18173A616500A25E07 /* OpenSansBold.ttf */; };
+		91E4702E1776E92E00D71C39 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E4702D1776E92E00D71C39 /* StartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -598,14 +598,14 @@
 		55764F4E1770849700F006D9 /* tabicon_SpecialSeries@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabicon_SpecialSeries@2x.png"; sourceTree = "<group>"; };
 		55764F4F1770849700F006D9 /* table_grad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad.png; sourceTree = "<group>"; };
 		55764F501770849700F006D9 /* table_grad_o_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad_o_1.png; sourceTree = "<group>"; };
-		55A293CD17746524001E51D3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "/Users/andrey/Desktop/test/LikeLik sources/Reachability.h"; sourceTree = "<absolute>"; };
-		55A293CE17746524001E51D3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "/Users/andrey/Desktop/test/LikeLik sources/Reachability.m"; sourceTree = "<absolute>"; };
-		55A293D31774655F001E51D3 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadRequestOperation.h; path = "/Users/andrey/Desktop/test/LikeLik sources/AFDownloadRequestOperation.h"; sourceTree = "<absolute>"; };
-		55A293D41774655F001E51D3 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFDownloadRequestOperation.m; path = "/Users/andrey/Desktop/test/LikeLik sources/AFDownloadRequestOperation.m"; sourceTree = "<absolute>"; };
-		55A293D51774655F001E51D3 /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = appData.plist; path = "/Users/andrey/Desktop/test/LikeLik sources/appData.plist"; sourceTree = "<absolute>"; };
-		55A293D61774655F001E51D3 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = catalogue.plist; path = "/Users/andrey/Desktop/test/LikeLik sources/catalogue.plist"; sourceTree = "<absolute>"; };
-		55A293EB1774657B001E51D3 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Moscow; path = /Users/andrey/Desktop/test/cities/Moscow; sourceTree = "<absolute>"; };
-		55A293EC1774657B001E51D3 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = /Users/andrey/Desktop/test/cities/Vienna; sourceTree = "<absolute>"; };
+		55A293CD17746524001E51D3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "/Volumes/Data/LikeLik sources/Reachability.h"; sourceTree = "<absolute>"; };
+		55A293CE17746524001E51D3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "/Volumes/Data/LikeLik sources/Reachability.m"; sourceTree = "<absolute>"; };
+		55A293D31774655F001E51D3 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadRequestOperation.h; path = "/Volumes/Data/LikeLik sources/AFDownloadRequestOperation.h"; sourceTree = "<absolute>"; };
+		55A293D41774655F001E51D3 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFDownloadRequestOperation.m; path = "/Volumes/Data/LikeLik sources/AFDownloadRequestOperation.m"; sourceTree = "<absolute>"; };
+		55A293D51774655F001E51D3 /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = appData.plist; path = "/Volumes/Data/LikeLik sources/appData.plist"; sourceTree = "<absolute>"; };
+		55A293D61774655F001E51D3 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = catalogue.plist; path = "/Volumes/Data/LikeLik sources/catalogue.plist"; sourceTree = "<absolute>"; };
+		55A293EB1774657B001E51D3 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Moscow; path = /Volumes/Data/cities/Moscow; sourceTree = "<absolute>"; };
+		55A293EC1774657B001E51D3 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = /Volumes/Data/cities/Vienna; sourceTree = "<absolute>"; };
 		55A80F0A17747C6400089216 /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExternalFunctions.h; path = LikeLik/ExternalFunctions.h; sourceTree = SOURCE_ROOT; };
 		55A80F0B17747C6400089216 /* ExternalFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExternalFunctions.m; path = LikeLik/ExternalFunctions.m; sourceTree = SOURCE_ROOT; };
 		55A80F1617747EF000089216 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -778,7 +778,6 @@
 		919E8AB9173A5F6D00A25E07 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		919E8ABA173A5F6D00A25E07 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		919E8ABB173A5F6D00A25E07 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
-		919E8ABC173A5F6D00A25E07 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartViewController.m; path = /Users/andrey/Desktop/LikeLik/LikeLik/StartViewController.m; sourceTree = "<absolute>"; };
 		919E8ABD173A5F6D00A25E07 /* StartTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTabBarViewController.h; sourceTree = "<group>"; };
 		919E8ABE173A5F6D00A25E07 /* StartTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartTabBarViewController.m; sourceTree = "<group>"; };
 		919E8ABF173A5F6D00A25E07 /* StartTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTableCell.h; sourceTree = "<group>"; };
@@ -833,6 +832,7 @@
 		919E8B16173A616500A25E07 /* OpenSansSemibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansSemibold.ttf; sourceTree = "<group>"; };
 		919E8B17173A616500A25E07 /* RegularOpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RegularOpenSans.ttf; sourceTree = "<group>"; };
 		919E8B18173A616500A25E07 /* OpenSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansBold.ttf; sourceTree = "<group>"; };
+		91E4702D1776E92E00D71C39 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1242,7 +1242,7 @@
 				919E8AB9173A5F6D00A25E07 /* SplashViewController.h */,
 				919E8ABA173A5F6D00A25E07 /* SplashViewController.m */,
 				919E8ABB173A5F6D00A25E07 /* StartViewController.h */,
-				919E8ABC173A5F6D00A25E07 /* StartViewController.m */,
+				91E4702D1776E92E00D71C39 /* StartViewController.m */,
 				919E8ABD173A5F6D00A25E07 /* StartTabBarViewController.h */,
 				919E8ABE173A5F6D00A25E07 /* StartTabBarViewController.m */,
 				919E8ABF173A5F6D00A25E07 /* StartTableCell.h */,
@@ -1887,7 +1887,6 @@
 				919E8AAC173A5EAE00A25E07 /* AFXMLRequestOperation.m in Sources */,
 				919E8AAD173A5EAE00A25E07 /* UIImageView+AFNetworking.m in Sources */,
 				919E8AF3173A5F6F00A25E07 /* SplashViewController.m in Sources */,
-				919E8AF4173A5F6F00A25E07 /* StartViewController.m in Sources */,
 				919E8AF5173A5F6F00A25E07 /* StartTabBarViewController.m in Sources */,
 				919E8AF6173A5F6F00A25E07 /* StartTableCell.m in Sources */,
 				919E8AF7173A5F6F00A25E07 /* CategoryViewController.m in Sources */,
@@ -1920,6 +1919,7 @@
 				55A80F2117747EF000089216 /* unzip.c in Sources */,
 				55A80F2217747EF000089216 /* zip.c in Sources */,
 				55A80F2517747F5200089216 /* SSZipArchive.m in Sources */,
+				91E4702E1776E92E00D71C39 /* StartViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
