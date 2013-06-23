@@ -272,15 +272,25 @@ static BOOL infoViewIsOpen = NO;
     label.backgroundColor =  [UIColor clearColor];
     label.editable = NO;
     
+    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, _infoScroll.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
+            label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
+    if ([AppDelegate isiPhone5])
+        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 260.0);//textViewSize.height+35);
+    else
+        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 225.0);//textViewSize.height+35);
     
-    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 500.0) lineBreakMode:NSLineBreakByWordWrapping];
-    label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
-    if ([AppDelegate isiPhone5]) {
-        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+35);
-    }
-    else{
-        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+50);
-    }
+        
+    
+//    if ([AppDelegate isiPhone5]) {
+//        CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, _infoScroll.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
+//        label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
+//        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+35);
+//    }
+//    else{
+//        CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 416-Red_line.frame.origin.y+Red_line.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
+//        label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
+//        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+50);
+//    }
     [label setScrollEnabled:YES];
     
     [_infoScroll setBackgroundColor:[InterfaceFunctions corporateIdentity]];
@@ -289,9 +299,9 @@ static BOOL infoViewIsOpen = NO;
     
     [_infoScroll addSubview:label];
     
-    CGSize size = _infoScroll.frame.size;
-    size.height = self.Red_line.frame.size.height+self.label.frame.size.height;//+20;//earth.frame.size.height+earth.frame.origin.y + 32.0;
-    _infoScroll.contentSize = size;
+//    CGSize size = _infoScroll.frame.size;
+//    size.height = self.Red_line.frame.size.height+self.label.frame.size.height;//+20;//earth.frame.size.height+earth.frame.origin.y + 32.0;
+//    _infoScroll.contentSize = size;
     
     [self.locationButton setHidden:YES];
     [self.MapPhoto addSubview:self.locationButton];

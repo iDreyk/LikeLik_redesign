@@ -281,16 +281,10 @@
 - (void)tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath{
-    _backCityImages = nil;
-    _CityLabels = nil;
-    [tableView reloadData];
-//    //    nslog(@"Hello!");
-//    NSString *Place = [[FavouritePlaces objectAtIndex:[indexPath row]] objectForKey:@"Name"];
-//    NSString *Category = [[FavouritePlaces objectAtIndex:[indexPath row]] objectForKey:@"Category"];
-//    [ExternalFunctions removeFromFavoritesPlace:Place InCategory:Category InCity:self.CityName];
-//    FavouritePlaces = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName];
-//    [tableView reloadData];
-    
+  
+    [[_CityLabels alloc] init];
+    [[_backCityImages alloc] init];
+    [self.tableView reloadData];
     
 }
 
