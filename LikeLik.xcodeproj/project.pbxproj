@@ -347,7 +347,7 @@
 		919E8B1A173A616500A25E07 /* OpenSansSemibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 919E8B16173A616500A25E07 /* OpenSansSemibold.ttf */; };
 		919E8B1B173A616500A25E07 /* RegularOpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 919E8B17173A616500A25E07 /* RegularOpenSans.ttf */; };
 		919E8B1C173A616500A25E07 /* OpenSansBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 919E8B18173A616500A25E07 /* OpenSansBold.ttf */; };
-		91E4702E1776E92E00D71C39 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E4702D1776E92E00D71C39 /* StartViewController.m */; };
+		91C08F3817771336007B98D3 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C08F3717771336007B98D3 /* StartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -832,7 +832,7 @@
 		919E8B16173A616500A25E07 /* OpenSansSemibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansSemibold.ttf; sourceTree = "<group>"; };
 		919E8B17173A616500A25E07 /* RegularOpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RegularOpenSans.ttf; sourceTree = "<group>"; };
 		919E8B18173A616500A25E07 /* OpenSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansBold.ttf; sourceTree = "<group>"; };
-		91E4702D1776E92E00D71C39 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		91C08F3717771336007B98D3 /* StartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1242,7 +1242,7 @@
 				919E8AB9173A5F6D00A25E07 /* SplashViewController.h */,
 				919E8ABA173A5F6D00A25E07 /* SplashViewController.m */,
 				919E8ABB173A5F6D00A25E07 /* StartViewController.h */,
-				91E4702D1776E92E00D71C39 /* StartViewController.m */,
+				91C08F3717771336007B98D3 /* StartViewController.m */,
 				919E8ABD173A5F6D00A25E07 /* StartTabBarViewController.h */,
 				919E8ABE173A5F6D00A25E07 /* StartTabBarViewController.m */,
 				919E8ABF173A5F6D00A25E07 /* StartTableCell.h */,
@@ -1840,6 +1840,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91C08F3817771336007B98D3 /* StartViewController.m in Sources */,
 				919E870C173A58E700A25E07 /* main.m in Sources */,
 				919E8710173A58E700A25E07 /* AppDelegate.m in Sources */,
 				919E888C173A5B5B00A25E07 /* LocalizationSystem.m in Sources */,
@@ -1919,7 +1920,6 @@
 				55A80F2117747EF000089216 /* unzip.c in Sources */,
 				55A80F2217747EF000089216 /* zip.c in Sources */,
 				55A80F2517747F5200089216 /* SSZipArchive.m in Sources */,
-				91E4702E1776E92E00D71C39 /* StartViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
