@@ -25,7 +25,7 @@
 @property (nonatomic,retain) UIImageView *Use;
 @property (nonatomic,retain) NSString *fromNotification;
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
-@property (weak, nonatomic) IBOutlet UIView *PlaceView;
+
 @property (weak, nonatomic) IBOutlet UILabel *LabelOnScroll;
 @property (retain, nonatomic) IBOutlet UILabel *labelonPhoto;
 @property (nonatomic,retain) IBOutlet UIImageView *background;
@@ -47,7 +47,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *TextPlace;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *PlaceonMap;
 @property (retain, nonatomic) IBOutlet RMMapView *MapPlace;
-
+@property (weak, nonatomic) IBOutlet UIView *PlaceView;
 @property (nonatomic,retain) NSString *PlaceName;
 @property (nonatomic,retain) NSString *PlaceCityName;
 @property (nonatomic,retain) NSString *PlaceCategory;

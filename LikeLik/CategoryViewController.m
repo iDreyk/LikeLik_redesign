@@ -19,6 +19,13 @@
 #import "VisualTourViewController.h"
 #import "TransportationTableViewController.h"
 #import "PracticalInfoViewController.h"
+#import <MapBox/MapBox.h>
+#import "PlaceViewController.h"
+static NSString *PlaceName = @"";
+static NSString *PlaceCategory = @"";
+static NSDictionary *Place;
+static NSDictionary *Place1;
+
 @interface CategoryViewController ()
 
 @end
@@ -59,10 +66,67 @@
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UIButton *btn = [InterfaceFunctions search_button];
-    [btn addTarget:self action:@selector(search:) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *btn = [InterfaceFunctions search_button];
+//    [btn addTarget:self action:@selector(search:) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+//    
+    
+    
+    UIButton *btn = [InterfaceFunctions map_button:1];
+    [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
+    
+    
+#warning Андрей, сделай плз функцию и еще мне нужно знать, какие minZoom и MaxZoom выставлять
+    NSURL *url;
+    if ([self.CityName.text isEqualToString:@"Moscow"] || [self.CityName.text isEqualToString:@"Москва"] || [self.CityName.text isEqualToString:@"Moskau"]){
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
+    }
+    if ([self.CityName.text isEqualToString:@"Vienna"] || [self.CityName.text isEqualToString:@"Вена"] || [self.CityName.text isEqualToString:@"Wien"]){
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
+    }
+    
+    
+    RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
+    self.MapPlace.showsUserLocation = YES;
+    self.MapPlace = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
+    self.MapPlace.hidden = NO;
+    self.MapPlace.hideAttribution = YES;
+    self.MapPlace.delegate = self;
+    
+    if ([AppDelegate isiPhone5])
+        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
+    else
+        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 450.0);
+    
+    
+#warning zoom
+    self.MapPlace.minZoom = 10;
+    self.MapPlace.zoom = 13;
+    self.MapPlace.maxZoom = 17;
+    
+    [self.MapPlace setAdjustTilesForRetinaDisplay:YES];
+    self.MapPlace.showsUserLocation = YES;
+    [self.placeViewMap setHidden:YES];
+    
+    
+    [self.placeViewMap addSubview:self.MapPlace];
+
+    AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
+    RMAnnotation *marker1;
+    for (int i=0; i<[AroundArray count]; i++) {
+        CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
+        marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
+        marker1.annotationType = @"marker";
+        marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
+        marker1.subtitle = [[AroundArray objectAtIndex:i] objectForKey:@"Category"];
+        marker1.userInfo = [AroundArray objectAtIndex:i];
+        [self.MapPlace addAnnotation:marker1];
+        NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
+    }
+//    NSLog(@"%@",self.MapPlace.annotations);
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     NSString *city = [[ExternalFunctions cityCatalogueForCity:self.CityName.text] objectForKey:@"city_EN"];
@@ -126,11 +190,74 @@
     
 }
 
+-(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
+{
+    
+    if ([annotation.annotationType isEqualToString:@"marker"]) {
+        RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
+                                                          tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
+                                                            sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
+        
+        [marker replaceUIImage:[InterfaceFunctions MapPin:annotation.subtitle].image];
+        marker.canShowCallout = YES;
+        marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        return marker;
+        
+    }
+    return nil;
+}
+
+-(void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
+    //  NSLog(@"123");
+    //[map selectAll:map];
+    //    [map selectAnnotation:annotation animated:YES];
+}
+
+
+-(void)tapOnLabelForAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
+    // NSLog(@"123");
+}
+- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
+{
+    // NSLog(@"tap");
+    PlaceName = annotation.title;
+    PlaceCategory = annotation.subtitle;
+    Place = annotation.userInfo;
+    [self performSegueWithIdentifier:@"MapSegue" sender:self];
+}
+
+
+-(IBAction)ShowMap:(id)sender{
+    self.placeViewMap.hidden = !self.placeViewMap.hidden;
+    if (self.placeViewMap.hidden){
+        UIButton *btn = [InterfaceFunctions map_button:1];
+        [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    }
+    else{
+        UIButton *btn = [InterfaceFunctions map_button:0];
+        [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    }
+}
+
 -(void)search:(id)sender{
     [self performSegueWithIdentifier:@"SearchSegue" sender:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    
+    if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
+        self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text].coordinate;
+        NSLog(@"Взяли центер города");
+//        [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+//        self.locationButton.enabled = NO;
+    }
+    else{
+        self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
+     //   self.locationButton.enabled = YES;
+        NSLog(@"Взяли локацию пользователя");
+    }
 }
 
 
@@ -206,7 +333,7 @@
     if ([[segue identifier] isEqualToString:@"AroundmeSegue"]) {
         AroundMeViewController *destination =
         [segue destinationViewController];
-        destination.CityNameText = self.Label;
+        destination.CityName.text = self.Label;
         destination.Image = self.Image; 
     }
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
@@ -240,6 +367,19 @@
         destination.CityName = self.Label;
     }
     
+    if ([[segue identifier] isEqualToString:@"MapSegue"]) {
+        PlaceViewController *PlaceView = [segue destinationViewController];
+        PlaceView.PlaceName = PlaceName;
+        PlaceView.PlaceCategory = PlaceCategory;
+        PlaceView.PlaceCityName = [Place objectForKey:@"City"];
+        PlaceView.PlaceAddress = [Place objectForKey:@"Address"];
+        PlaceView.PlaceAbout = [Place objectForKey:@"About"];
+        PlaceView.PlaceTelephone = [Place objectForKey:@"Telephone"];
+        PlaceView.PlaceWeb = [Place objectForKey:@"Web"];
+        PlaceView.PlaceLocation = [Place objectForKey:@"Location"];
+        PlaceView.Color = [InterfaceFunctions colorTextCategory:PlaceCategory];
+        PlaceView.Photos = [Place objectForKey:@"Photo"];
+    }
     
     if ([[segue identifier] isEqualToString:@"SearchSegue"]){
         SearchViewController *destinaton  = [segue destinationViewController];

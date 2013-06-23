@@ -64,9 +64,9 @@ static NSDictionary *Place1;
     else
         self.Map.frame = CGRectMake(0.0, 0.0, 320.0, 416.0);
     
-    self.Map.minZoom = 13;
+    self.Map.minZoom = 10;
     self.Map.zoom = 13;
-    //self.Map.maxzoom = 17;
+    self.Map.maxZoom = 17;
     
     CLLocation *coord =[ExternalFunctions getCenterCoordinatesOfCity:self.CityName];
     self.Map.centerCoordinate = coord.coordinate;

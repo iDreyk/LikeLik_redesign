@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CategoryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+#import <MapBox/MapBox.h>
+@interface CategoryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,RMMapViewDelegate>{
+        NSArray *AroundArray;
+}
 @property (nonatomic,retain)IBOutlet UITableView *Table;
 @property (weak, nonatomic) IBOutlet UIImageView *CityImage;
 @property (nonatomic,retain)IBOutlet UILabel *CityName;
@@ -19,7 +21,11 @@
 @property (nonatomic,retain)IBOutlet NSArray *CellArray;
 @property (nonatomic,retain)IBOutlet NSArray *SegueArray;
 @property (nonatomic, retain) CLLocationManager *locationManager;
+
+@property (retain, nonatomic) IBOutlet RMMapView *MapPlace;
+@property (weak, nonatomic) IBOutlet UIView *PlaceView;
+@property (nonatomic,retain) IBOutlet UIView *placeViewMap;
 -(void)search:(id)sender;
 - (void)updateOffsets;
-
+-(IBAction)ShowMap:(id)sender;
 @end

@@ -693,6 +693,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aua-JJ-4wB">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -702,9 +705,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="1z2-fN-29b" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="-44" id="KN2-TU-cCS"/>
                             <constraint firstItem="Kj4-Hh-Q6l" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="OaU-Fa-Mip"/>
                             <constraint firstItem="kQr-yS-cLS" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="Otp-2S-qO6"/>
+                            <constraint firstItem="aua-JJ-4wB" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="V60-hR-b7G"/>
+                            <constraint firstItem="aua-JJ-4wB" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="kq6-Sq-tPd"/>
+                            <constraint firstItem="aua-JJ-4wB" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" type="default" id="oav-BP-JE5"/>
                             <constraint firstItem="IHM-mj-lSa" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" constant="12" id="pT3-BK-6MG"/>
                             <constraint firstItem="kQr-yS-cLS" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="rxe-B3-fV2"/>
                             <constraint firstItem="Kj4-Hh-Q6l" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="sQI-AE-jdG"/>
+                            <constraint firstAttribute="bottom" secondItem="aua-JJ-4wB" secondAttribute="bottom" constant="-2" id="smx-R5-Efo"/>
                             <constraint firstItem="kQr-yS-cLS" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="44" id="spe-d4-3Uy"/>
                             <constraint firstItem="1z2-fN-29b" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="yH1-il-pnI"/>
                         </constraints>
@@ -712,7 +719,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" id="vJg-gf-TLW">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="dGq-su-iqp">
                             <connections>
-                                <segue destination="nTr-4r-NYY" kind="push" identifier="SearchSegue" id="O88-nX-oPV"/>
+                                <action selector="ShowMap:" destination="9As-sn-Nda" id="Yxh-Bg-WyX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -722,12 +729,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="CityName" destination="IHM-mj-lSa" id="hdZ-uI-USu"/>
                         <outlet property="GradientUnderLabel" destination="Kj4-Hh-Q6l" id="32G-q6-y5J"/>
                         <outlet property="Table" destination="kQr-yS-cLS" id="y75-WA-tDt"/>
+                        <outlet property="placeViewMap" destination="aua-JJ-4wB" id="aaE-BO-1RX"/>
                         <segue destination="1FC-V3-3wh" kind="push" identifier="AroundmeSegue" id="NbR-YX-niO"/>
                         <segue destination="ofv-1I-lPi" kind="push" identifier="FavoritesSegue" id="Lej-fg-aBp"/>
                         <segue destination="kAC-G7-7GR" kind="push" identifier="VisualtourSegue" id="K8P-hg-1dP"/>
                         <segue destination="OGW-Yk-cVK" kind="push" identifier="TransportationSegue" id="qmW-r3-46J"/>
                         <segue destination="pV2-Ha-ulb" kind="push" identifier="PracticalinfoSegue" id="Cw4-hf-G0e"/>
                         <segue destination="4Ud-1t-vkT" kind="push" identifier="CategorySegue" id="4BB-v1-nLD"/>
+                        <segue destination="Raj-iV-euz" kind="push" identifier="MapSegue" id="lP0-Ve-8FZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtG-qO-vQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1904,10 +1913,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="nft-YQ-xRI"/>
-        <segue reference="mIE-ck-FCQ"/>
         <segue reference="AmV-Pg-vZx"/>
-        <segue reference="O88-nX-oPV"/>
+        <segue reference="lP0-Ve-8FZ"/>
+        <segue reference="nft-YQ-xRI"/>
         <segue reference="6tZ-hu-j1M"/>
+        <segue reference="CID-7V-uDc"/>
     </inferredMetricsTieBreakers>
 </document>
