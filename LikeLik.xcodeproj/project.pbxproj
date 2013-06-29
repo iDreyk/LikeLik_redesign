@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5513E9EA177F0E9B004344AF /* MapBox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5513E9E9177F0E9B004344AF /* MapBox.bundle */; };
 		553C9BA6176E2B4600B46A10 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 553C9BA1176E2B4600B46A10 /* 37x-Checkmark.png */; };
 		553C9BA7176E2B4600B46A10 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 553C9BA2176E2B4600B46A10 /* 37x-Checkmark@2x.png */; };
 		553C9BA8176E2B4600B46A10 /* cross2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 553C9BA3176E2B4600B46A10 /* cross2@2x.png */; };
@@ -237,7 +238,6 @@
 		91102591176DB74B0023F2C7 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */; };
-		9145EAB71771ED1B000138D6 /* MapBox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9145EAB61771ED1B000138D6 /* MapBox.bundle */; };
 		918F70B1176DA433000FE810 /* LikeLik icon 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */; };
 		918F70B2176DA43B000FE810 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */; };
 		919E8700173A58E700A25E07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E86FF173A58E700A25E07 /* UIKit.framework */; };
@@ -351,6 +351,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5513E9E9177F0E9B004344AF /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MapBox.bundle; path = "../../../../../Volumes/Data/LikeLik sources/MapBox.framework/Versions/A/Resources/MapBox.bundle"; sourceTree = "<group>"; };
 		553C9BA1176E2B4600B46A10 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		553C9BA2176E2B4600B46A10 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		553C9BA3176E2B4600B46A10 /* cross2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross2@2x.png"; sourceTree = "<group>"; };
@@ -393,7 +394,7 @@
 		553C9BF8176E2E9000B46A10 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		553C9BF9176E2E9000B46A10 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		553C9BFA176E2E9000B46A10 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
-		553C9C0D176E30ED00B46A10 /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = "../../../../../Volumes/Data/LikeLik sources/MapBox.framework"; sourceTree = "<group>"; };
+		553C9C0D176E30ED00B46A10 /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = "/Volumes/Data/LikeLik sources/MapBox.framework"; sourceTree = "<absolute>"; };
 		55764E841770849600F006D9 /* 124_124 Social_Icons11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "124_124 Social_Icons11@2x.png"; sourceTree = "<group>"; };
 		55764E851770849600F006D9 /* 124_124 Social_Icons22@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "124_124 Social_Icons22@2x.png"; sourceTree = "<group>"; };
 		55764E861770849600F006D9 /* 124_124 Social_Icons33@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "124_124 Social_Icons33@2x.png"; sourceTree = "<group>"; };
@@ -626,7 +627,6 @@
 		9124194B173A9E05004B6837 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124195A173BD4D5004B6837 /* PlacesByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesByCategoryViewController.h; sourceTree = "<group>"; };
 		9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesByCategoryViewController.m; sourceTree = "<group>"; };
-		9145EAB61771ED1B000138D6 /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MapBox.bundle; path = "../../../../../Volumes/Data/LikeLik sources/MapBox.framework/Versions/A/Resources/MapBox.bundle"; sourceTree = "<group>"; };
 		918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 57x57.png"; sourceTree = "<group>"; };
 		918F70B6176DAC44000FE810 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
 		918F70B7176DAC44000FE810 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
@@ -880,8 +880,8 @@
 				553C9BA5176E2B4600B46A10 /* Icon@2x.png */,
 			);
 			name = Images;
-			path = "../../../../../Volumes/Data/LikeLik sources/Images";
-			sourceTree = "<group>";
+			path = "/Volumes/Data/LikeLik sources/Images";
+			sourceTree = "<absolute>";
 		};
 		553C9BD8176E2E9000B46A10 /* ZBarSDK */ = {
 			isa = PBXGroup;
@@ -891,8 +891,8 @@
 				553C9BF5176E2E9000B46A10 /* Resources */,
 			);
 			name = ZBarSDK;
-			path = "../../../../../Volumes/Data/LikeLik sources/ZBarSDK";
-			sourceTree = "<group>";
+			path = "/Volumes/Data/LikeLik sources/ZBarSDK";
+			sourceTree = "<absolute>";
 		};
 		553C9BD9176E2E9000B46A10 /* Headers */ = {
 			isa = PBXGroup;
@@ -1165,8 +1165,8 @@
 				55764F501770849700F006D9 /* table_grad_o_1.png */,
 			);
 			name = "Work PNG";
-			path = "../../../../../Volumes/Data/LikeLik sources/Work PNG";
-			sourceTree = "<group>";
+			path = "/Volumes/Data/LikeLik sources/Work PNG";
+			sourceTree = "<absolute>";
 		};
 		55A80F1517747EF000089216 /* minizip */ = {
 			isa = PBXGroup;
@@ -1301,7 +1301,7 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9145EAB61771ED1B000138D6 /* MapBox.bundle */,
+				5513E9E9177F0E9B004344AF /* MapBox.bundle */,
 				55764E831770849600F006D9 /* Work PNG */,
 				553C9C0D176E30ED00B46A10 /* MapBox.framework */,
 				553C9BD8176E2E9000B46A10 /* ZBarSDK */,
@@ -1825,11 +1825,11 @@
 				5576501B1770849700F006D9 /* tabicon_SpecialSeries@2x.png in Resources */,
 				5576501C1770849700F006D9 /* table_grad.png in Resources */,
 				5576501D1770849700F006D9 /* table_grad_o_1.png in Resources */,
-				9145EAB71771ED1B000138D6 /* MapBox.bundle in Resources */,
 				55A293DA1774655F001E51D3 /* appData.plist in Resources */,
 				55A293DB1774655F001E51D3 /* catalogue.plist in Resources */,
 				55A80F2617747FEF00089216 /* Moscow in Resources */,
 				55A80F271774800000089216 /* Vienna in Resources */,
+				5513E9EA177F0E9B004344AF /* MapBox.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1960,8 +1960,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1994,8 +1994,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2013,8 +2013,8 @@
 		919E871A173A58E700A25E07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2050,8 +2050,8 @@
 		919E871B173A58E700A25E07 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

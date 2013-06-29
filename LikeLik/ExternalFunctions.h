@@ -167,4 +167,6 @@
 + (NSString *) getLanguage;
 
 
+
++ (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
 @end
