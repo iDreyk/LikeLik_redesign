@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5513E9EA177F0E9B004344AF /* MapBox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5513E9E9177F0E9B004344AF /* MapBox.bundle */; };
-		553C9BA6176E2B4600B46A10 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 553C9BA1176E2B4600B46A10 /* 37x-Checkmark.png */; };
-		553C9BA7176E2B4600B46A10 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 553C9BA2176E2B4600B46A10 /* 37x-Checkmark@2x.png */; };
-		553C9BA8176E2B4600B46A10 /* cross2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 553C9BA3176E2B4600B46A10 /* cross2@2x.png */; };
-		553C9BA9176E2B4600B46A10 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 553C9BA4176E2B4600B46A10 /* Icon.png */; };
-		553C9BAA176E2B4600B46A10 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 553C9BA5176E2B4600B46A10 /* Icon@2x.png */; };
 		553C9BFF176E2E9000B46A10 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 553C9BF4176E2E9000B46A10 /* libzbar.a */; };
 		553C9C01176E2E9000B46A10 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 553C9BF7176E2E9000B46A10 /* zbar-back.png */; };
 		553C9C02176E2E9000B46A10 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 553C9BF8176E2E9000B46A10 /* zbar-help.html */; };
@@ -352,11 +347,6 @@
 
 /* Begin PBXFileReference section */
 		5513E9E9177F0E9B004344AF /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MapBox.bundle; path = "../../../../../Volumes/Data/LikeLik sources/MapBox.framework/Versions/A/Resources/MapBox.bundle"; sourceTree = "<group>"; };
-		553C9BA1176E2B4600B46A10 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
-		553C9BA2176E2B4600B46A10 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
-		553C9BA3176E2B4600B46A10 /* cross2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross2@2x.png"; sourceTree = "<group>"; };
-		553C9BA4176E2B4600B46A10 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		553C9BA5176E2B4600B46A10 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		553C9BDA176E2E9000B46A10 /* Icon
  */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
 "; sourceTree = "<group>"; };
@@ -628,8 +618,8 @@
 		9124195A173BD4D5004B6837 /* PlacesByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesByCategoryViewController.h; sourceTree = "<group>"; };
 		9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesByCategoryViewController.m; sourceTree = "<group>"; };
 		918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 57x57.png"; sourceTree = "<group>"; };
-		918F70B6176DAC44000FE810 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
-		918F70B7176DAC44000FE810 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
+		918F70B6176DAC44000FE810 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadRequestOperation.h; path = "../../../../../../Volumes/Data/LikeLik sources/AFDownloadRequestOperation.h"; sourceTree = "<group>"; };
+		918F70B7176DAC44000FE810 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFDownloadRequestOperation.m; path = "../../../../../../Volumes/Data/LikeLik sources/AFDownloadRequestOperation.m"; sourceTree = "<group>"; };
 		919E86FC173A58E700A25E07 /* LikeLik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LikeLik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		919E86FF173A58E700A25E07 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		919E8701173A58E700A25E07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -657,16 +647,16 @@
 		919E8738173A5AE300A25E07 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		919E873A173A5AEF00A25E07 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		919E873C173A5AF700A25E07 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		919E8742173A5B5A00A25E07 /* LocalizationSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationSystem.h; sourceTree = "<group>"; };
-		919E8743173A5B5A00A25E07 /* LocalizationSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationSystem.m; sourceTree = "<group>"; };
-		919E8744173A5B5A00A25E07 /* SCFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFacebook.h; sourceTree = "<group>"; };
-		919E8745173A5B5A00A25E07 /* SCFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFacebook.m; sourceTree = "<group>"; };
-		919E8746173A5B5A00A25E07 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		919E8747173A5B5A00A25E07 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		919E8748173A5B5A00A25E07 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KNSemiModal.h"; sourceTree = "<group>"; };
-		919E8749173A5B5A00A25E07 /* UIViewController+KNSemiModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KNSemiModal.m"; sourceTree = "<group>"; };
-		919E874A173A5B5A00A25E07 /* NSObject+YMOptionsAndDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YMOptionsAndDefaults.h"; sourceTree = "<group>"; };
-		919E874B173A5B5A00A25E07 /* NSObject+YMOptionsAndDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YMOptionsAndDefaults.m"; sourceTree = "<group>"; };
+		919E8742173A5B5A00A25E07 /* LocalizationSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalizationSystem.h; path = "../../../../../Volumes/Data/LikeLik sources/Новая папка/LocalizationSystem.h"; sourceTree = "<group>"; };
+		919E8743173A5B5A00A25E07 /* LocalizationSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalizationSystem.m; path = "../../../../../Volumes/Data/LikeLik sources/Новая папка/LocalizationSystem.m"; sourceTree = "<group>"; };
+		919E8744173A5B5A00A25E07 /* SCFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCFacebook.h; path = "../../../../../Volumes/Data/LikeLik sources/Новая папка/SCFacebook.h"; sourceTree = "<group>"; };
+		919E8745173A5B5A00A25E07 /* SCFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCFacebook.m; path = "../../../../../Volumes/Data/LikeLik sources/Новая папка/SCFacebook.m"; sourceTree = "<group>"; };
+		919E8746173A5B5A00A25E07 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = "../../../../../Volumes/Data/LikeLik sources/Новая папка/MBProgressHUD.h"; sourceTree = "<group>"; };
+		919E8747173A5B5A00A25E07 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = "../../../../../Volumes/Data/LikeLik sources/Новая папка/MBProgressHUD.m"; sourceTree = "<group>"; };
+		919E8748173A5B5A00A25E07 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+KNSemiModal.h"; path = "../../../../../Volumes/Data/LikeLik sources/Новая папка/UIViewController+KNSemiModal.h"; sourceTree = "<group>"; };
+		919E8749173A5B5A00A25E07 /* UIViewController+KNSemiModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+KNSemiModal.m"; path = "../../../../../Volumes/Data/LikeLik sources/Новая папка/UIViewController+KNSemiModal.m"; sourceTree = "<group>"; };
+		919E874A173A5B5A00A25E07 /* NSObject+YMOptionsAndDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+YMOptionsAndDefaults.h"; path = "../../../../../Volumes/Data/LikeLik sources/Новая папка/NSObject+YMOptionsAndDefaults.h"; sourceTree = "<group>"; };
+		919E874B173A5B5A00A25E07 /* NSObject+YMOptionsAndDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+YMOptionsAndDefaults.m"; path = "../../../../../Volumes/Data/LikeLik sources/Новая папка/NSObject+YMOptionsAndDefaults.m"; sourceTree = "<group>"; };
 		919E89D1173A5BFC00A25E07 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		919E89D3173A5C0300A25E07 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		919E89DA173A5E3A00A25E07 /* InterfaceFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceFunctions.h; sourceTree = "<group>"; };
@@ -870,19 +860,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		553C9BA0176E2B4600B46A10 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				553C9BA1176E2B4600B46A10 /* 37x-Checkmark.png */,
-				553C9BA2176E2B4600B46A10 /* 37x-Checkmark@2x.png */,
-				553C9BA3176E2B4600B46A10 /* cross2@2x.png */,
-				553C9BA4176E2B4600B46A10 /* Icon.png */,
-				553C9BA5176E2B4600B46A10 /* Icon@2x.png */,
-			);
-			name = Images;
-			path = "/Volumes/Data/LikeLik sources/Images";
-			sourceTree = "<absolute>";
-		};
 		553C9BD8176E2E9000B46A10 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1345,7 +1322,8 @@
 				919E89E2173A5E8700A25E07 /* VkontakteViewController.h */,
 				919E89E3173A5E8700A25E07 /* VkontakteViewController.m */,
 			);
-			path = Vkontakte;
+			name = Vkontakte;
+			path = "../../../../../Volumes/Data/LikeLik sources/Vkontakte";
 			sourceTree = "<group>";
 		};
 		919E8A0A173A5E9300A25E07 /* Twitter+OAuth */ = {
@@ -1355,7 +1333,8 @@
 				919E8A1F173A5E9300A25E07 /* MGTwitterEngine */,
 				919E8A40173A5E9300A25E07 /* SAOAuthTwitterEngine */,
 			);
-			path = "Twitter+OAuth";
+			name = "Twitter+OAuth";
+			path = "../../../../../Volumes/Data/LikeLik sources";
 			sourceTree = "<group>";
 		};
 		919E8A0B173A5E9300A25E07 /* Libraries & Headers */ = {
@@ -1366,7 +1345,8 @@
 				919E8A0E173A5E9300A25E07 /* libOAuth.a */,
 				919E8A0F173A5E9300A25E07 /* OAuthConsumer */,
 			);
-			path = "Libraries & Headers";
+			name = "Libraries & Headers";
+			path = "Twitter+OAuth/Libraries & Headers";
 			sourceTree = "<group>";
 		};
 		919E8A0F173A5E9300A25E07 /* OAuthConsumer */ = {
@@ -1427,7 +1407,8 @@
 				919E8A3E173A5E9300A25E07 /* NSString+UUID.h */,
 				919E8A3F173A5E9300A25E07 /* NSString+UUID.m */,
 			);
-			path = MGTwitterEngine;
+			name = MGTwitterEngine;
+			path = "Twitter+OAuth/MGTwitterEngine";
 			sourceTree = "<group>";
 		};
 		919E8A40173A5E9300A25E07 /* SAOAuthTwitterEngine */ = {
@@ -1439,7 +1420,8 @@
 				919E8A44173A5E9300A25E07 /* SA_OAuthTwitterEngine.m */,
 				919E8A45173A5E9300A25E07 /* twitter_load.png */,
 			);
-			path = SAOAuthTwitterEngine;
+			name = SAOAuthTwitterEngine;
+			path = "Twitter+OAuth/SAOAuthTwitterEngine";
 			sourceTree = "<group>";
 		};
 		919E8A68173A5EA600A25E07 /* FBConnect */ = {
@@ -1458,7 +1440,8 @@
 				919E8A73173A5EA600A25E07 /* JSON */,
 				919E8A81173A5EA600A25E07 /* README.mdown */,
 			);
-			path = FBConnect;
+			name = FBConnect;
+			path = "../../../../../Volumes/Data/LikeLik sources/FBConnect";
 			sourceTree = "<group>";
 		};
 		919E8A73173A5EA600A25E07 /* JSON */ = {
@@ -2007,8 +1990,8 @@
 		919E871A173A58E700A25E07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Application Developer (RX3537WRY8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Application Developer (RX3537WRY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2023,7 +2006,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
+					"\"/Volumes/Data/LikeLik sources/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
 					"\"/Volumes/Data/LikeLik sources/ZBarSDK\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode/ZBarSDK\"",
@@ -2033,8 +2016,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "E97EC4F9-62DF-466F-98D5-5AA5D0FFD94C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E97EC4F9-62DF-466F-98D5-5AA5D0FFD94C";
 				SDKROOT = iphoneos6.1;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -2044,8 +2027,8 @@
 		919E871B173A58E700A25E07 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Application Developer (RX3537WRY8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Application Developer (RX3537WRY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2060,7 +2043,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
+					"\"/Volumes/Data/LikeLik sources/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
 					"\"/Volumes/Data/LikeLik sources/ZBarSDK\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode/ZBarSDK\"",
@@ -2070,8 +2053,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "E97EC4F9-62DF-466F-98D5-5AA5D0FFD94C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E97EC4F9-62DF-466F-98D5-5AA5D0FFD94C";
 				SDKROOT = iphoneos6.1;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
