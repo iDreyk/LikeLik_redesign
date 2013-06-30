@@ -172,6 +172,9 @@ static CLLocation *Me;
     NSArray *catalogueArray = [[NSArray alloc]initWithContentsOfFile:cataloguesPath];
     [defaults setObject:catalogueArray forKey:catalogue];
     
+    
+    NSURL *documentsDirectoryURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    [self addSkipBackupAttributeToItemAtURL:documentsDirectoryURL];
 }
 
 + (CLLocation *) getMyLocationOrTheLocationOfCityCenter : (NSString *) city{
@@ -920,5 +923,17 @@ static CLLocation *Me;
     }
     
     return selectedPlace;
+}
+
++ (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL {
+    assert([[NSFileManager defaultManager] fileExistsAtPath: [URL path]]);
+    
+    NSError *error = nil;
+    BOOL success = [URL setResourceValue: [NSNumber numberWithBool: YES]
+                                  forKey: NSURLIsExcludedFromBackupKey error: &error];
+    if(!success){
+        NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
+    }
+    return success;
 }
 @end

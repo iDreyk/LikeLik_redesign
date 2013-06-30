@@ -38,10 +38,12 @@ static NSInteger j=0;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    
+    NSLog(@"123");
     if (j==0) {
         Me = newLocation;
-      //  NSLog(@"%@",Me);
+        
+        //  NSLog(@"%@",Me);
+        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:Me];
         [defaults setObject:data forKey:@"location"];
@@ -107,8 +109,15 @@ static NSInteger j=0;
     
     locationManagerRegion = [[CLLocationManager alloc] init];
     [locationManagerRegion setDelegate:self];
-    
-    [locationManager startUpdatingLocation];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^ {
+        
+        [locationManager startUpdatingLocation];
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSLog(@"Back on main thread");
+        });
+    });
     
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
