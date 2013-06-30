@@ -206,7 +206,7 @@ static BOOL infoViewIsOpen = NO;
         tmp = [[coord objectAtIndex:i] objectForKey:@"Location"];
         coord1 = tmp.coordinate;
 //#warning Сюда название достопремичательности на карту (Аналогично Red_title)
-        Title = [[coord objectAtIndex:0] objectForKey:@"Name"];
+        Title = [[coord objectAtIndex:i] objectForKey:@"Name"];
         RMAnnotation *marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPhoto coordinate:coord1 andTitle:Title];
         marker1.annotationType = @"marker";
         marker1.subtitle = [NSString stringWithFormat:@"%d",i];
