@@ -86,7 +86,7 @@ static BOOL foreignversion = NO;
     
      
     
-    label1 = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 252.0, 300.0)];
+    label1 = [[SubText alloc] initWithFrame:CGRectMake(0.0, 5.0, 252.0, 300.0)];
     label1.font = [AppDelegate OpenSansRegular:28];
     label1.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
     label1.backgroundColor =  [UIColor clearColor];

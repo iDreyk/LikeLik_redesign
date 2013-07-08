@@ -287,8 +287,8 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     [ExternalFunctions deleteCityCatalogue:[_CityLabels objectAtIndex:[indexPath row]]];
-    _backCityImages = nil;
-    _CityLabels = nil;
+    _CityLabels = [ExternalFunctions getDownloadedCities:1];
+    _backCityImages = [ExternalFunctions getDownloadedCities:0];
     [tableView reloadData];
 }
 

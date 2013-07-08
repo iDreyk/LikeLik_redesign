@@ -20,7 +20,7 @@
 #import "MBProgressHUD.h"
 #import "RegistrationViewController.h"
 #include "LoginViewController.h"
-#define kOAuthConsumerKey				@"XGaxa31EoympFhxLZooQ"		//REPLACE ME
+#define kOAuthConsumerKey				@"XGaxa31EoympFhxLZooQ"
 #define kOAuthConsumerSecret			@"IbUE5lud22evmrtxjtU1vKvh6VDqRMSHHFJ73rtHI"
 
 #define MAX_HEIGHT 2000
@@ -203,11 +203,6 @@ CGFloat alpha = 0.5;
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
     else
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
-    
-    
-    
-    
-    
     
     self.view.backgroundColor = [UIColor redColor];
     _scroll.pagingEnabled = YES;
@@ -557,8 +552,13 @@ CGFloat alpha = 0.5;
     self.MapPlace.showsUserLocation = YES;
     [self.placeViewMap setHidden:YES];
     
+    
 
     [self.placeViewMap addSubview:self.MapPlace];
+    
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(100.0, 100.0, 30.0, 30.0)];
+    [self.MapPlace addSubview:button];
     
     CLLocation *placecoord = self.PlaceLocation;
     //    nslog(@"%f %f",placecoord.coordinate.latitude,placecoord.coordinate.longitude);
@@ -578,12 +578,17 @@ CGFloat alpha = 0.5;
         [self.MapPlace addAnnotation:marker1];
     }
     [self refreshButtonState];
-    [self.locationButton setHidden:YES];
+  //  [self.locationButton setHidden:YES];
+
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
     [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
+    [self.MapPlace addSubview:self.locationButton];
 }
 
+-(BOOL)canBecomeFirstResponder{
+    return NO;
+}
 
 -(void)backgroundgo{
   //  NSLog(@"backgroundgo");
@@ -689,7 +694,7 @@ CGFloat alpha = 0.5;
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:AMLocalizedString(@"Call", nil)
                                                              delegate:self
-                                                    cancelButtonTitle:@"Close"
+                                                    cancelButtonTitle:AMLocalizedString(@"Close",nil)
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles: sender.titleLabel.text, nil];
     
@@ -714,7 +719,7 @@ CGFloat alpha = 0.5;
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:AMLocalizedString(@"Web", nil)
                                                              delegate:self
-                                                    cancelButtonTitle:@"Close"
+                                                    cancelButtonTitle :AMLocalizedString(@"Close",nil)
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles: url, nil];
     
@@ -816,6 +821,18 @@ CGFloat alpha = 0.5;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
         self.ScrollView.backgroundColor = [InterfaceFunctions colorTextCategory:self.PlaceCategory];        
     }
+    
+    if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0) {
+        self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName].coordinate;
+        self.locationButton.enabled = NO;
+        NSLog(@"Взяли центер города");
+    }
+    else{
+        self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
+        NSLog(@"Взяли локацию пользователя");
+        self.locationButton.enabled = YES;
+    }
+    
 }
 
 -(void)testmethod{
@@ -895,7 +912,7 @@ CGFloat alpha = 0.5;
             
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                   delegate:self
-                                         cancelButtonTitle:@"Close"
+                                         cancelButtonTitle:AMLocalizedString(@"Close",nil)
                                     destructiveButtonTitle:nil
                                                     otherButtonTitles: AMLocalizedString(@"Share on facebook", nil),AMLocalizedString(@"Share on twitter", nil),AMLocalizedString(@"Share on VK", nil),AMLocalizedString(@"Share on Jen Jen", nil),AMLocalizedString(@"Send Email",nil),nil];
         

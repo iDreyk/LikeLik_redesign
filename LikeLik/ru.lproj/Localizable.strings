@@ -48,7 +48,7 @@
 "Share on facebook" = "Поделиться на Facebook";
 "Share on twitter" = "Поделиться в Twitter";
 "Share on VK" = "Поделиться в Вконтакте";
-"Share on Jen Jen" = "Поделиться в  RenRen";
+"Share on Jen Jen" = "Поделиться в RenRen";
 "Send Email" = "Send Email";
 "Explore by District" = "Районы";
 "Explore by Category" = "Категории";
@@ -99,3 +99,5 @@
 "Data processing" = "Обработка данных";
 "Download Error" = "Ошибка загрузки";
 "Guide downloaded" = "Путеводитель скачался!";
+"Soon" = "Скоро";
+"Close" = "Закрыть";

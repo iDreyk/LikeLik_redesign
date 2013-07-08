@@ -225,6 +225,10 @@
 		55E4D348177467F6000CDC3E /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A293D41774655F001E51D3 /* AFDownloadRequestOperation.m */; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */; };
+		9169EA2C1789808B00888531 /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9169EA2B1789808B00888531 /* catalogue.plist */; };
+		9169EA35178AA32E00888531 /* LocalizationSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9169EA34178AA32E00888531 /* LocalizationSystem.m */; };
+		9169EA38178AA71200888531 /* MLPAccessoryBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9169EA37178AA71200888531 /* MLPAccessoryBadge.m */; };
+		9169EA3A178AD94C00888531 /* MapBox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9169EA39178AD94C00888531 /* MapBox.bundle */; };
 		918F70B1176DA433000FE810 /* LikeLik icon 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */; };
 		918F70B2176DA43B000FE810 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */; };
 		919E8700173A58E700A25E07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E86FF173A58E700A25E07 /* UIKit.framework */; };
@@ -250,7 +254,6 @@
 		919E8739173A5AE300A25E07 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8738173A5AE300A25E07 /* libsqlite3.dylib */; };
 		919E873B173A5AEF00A25E07 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E873A173A5AEF00A25E07 /* CoreLocation.framework */; };
 		919E873D173A5AF700A25E07 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E873C173A5AF700A25E07 /* MapKit.framework */; };
-		919E888C173A5B5B00A25E07 /* LocalizationSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8743173A5B5A00A25E07 /* LocalizationSystem.m */; };
 		919E888D173A5B5B00A25E07 /* SCFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8745173A5B5A00A25E07 /* SCFacebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		919E888E173A5B5B00A25E07 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8747173A5B5A00A25E07 /* MBProgressHUD.m */; };
 		919E888F173A5B5B00A25E07 /* UIViewController+KNSemiModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8749173A5B5A00A25E07 /* UIViewController+KNSemiModal.m */; };
@@ -580,6 +583,12 @@
 		9124194B173A9E05004B6837 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124195A173BD4D5004B6837 /* PlacesByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesByCategoryViewController.h; sourceTree = "<group>"; };
 		9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesByCategoryViewController.m; sourceTree = "<group>"; };
+		9169EA2B1789808B00888531 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catalogue.plist; sourceTree = "<group>"; };
+		9169EA33178AA32E00888531 /* LocalizationSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalizationSystem.h; path = "../../../../../Volumes/Data-1/LikeLik sources/Новая папка/LocalizationSystem.h"; sourceTree = "<group>"; };
+		9169EA34178AA32E00888531 /* LocalizationSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalizationSystem.m; path = "../../../../../Volumes/Data-1/LikeLik sources/Новая папка/LocalizationSystem.m"; sourceTree = "<group>"; };
+		9169EA36178AA71200888531 /* MLPAccessoryBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAccessoryBadge.h; sourceTree = "<group>"; };
+		9169EA37178AA71200888531 /* MLPAccessoryBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLPAccessoryBadge.m; sourceTree = "<group>"; };
+		9169EA39178AD94C00888531 /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MapBox.bundle; sourceTree = "<group>"; };
 		918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 57x57.png"; sourceTree = "<group>"; };
 		918F70B6176DAC44000FE810 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadRequestOperation.h; path = "../../../../../../Volumes/Data-1/LikeLik sources/AFDownloadRequestOperation.h"; sourceTree = "<group>"; };
 		918F70B7176DAC44000FE810 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFDownloadRequestOperation.m; path = "../../../../../../Volumes/Data-1/LikeLik sources/AFDownloadRequestOperation.m"; sourceTree = "<group>"; };
@@ -610,8 +619,6 @@
 		919E8738173A5AE300A25E07 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		919E873A173A5AEF00A25E07 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		919E873C173A5AF700A25E07 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		919E8742173A5B5A00A25E07 /* LocalizationSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalizationSystem.h; path = "../../../../../Volumes/Data-1/LikeLik sources/Новая папка/LocalizationSystem.h"; sourceTree = "<group>"; };
-		919E8743173A5B5A00A25E07 /* LocalizationSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalizationSystem.m; path = "../../../../../Volumes/Data-1/LikeLik sources/Новая папка/LocalizationSystem.m"; sourceTree = "<group>"; };
 		919E8744173A5B5A00A25E07 /* SCFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCFacebook.h; path = "../../../../../Volumes/Data-1/LikeLik sources/Новая папка/SCFacebook.h"; sourceTree = "<group>"; };
 		919E8745173A5B5A00A25E07 /* SCFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCFacebook.m; path = "../../../../../Volumes/Data-1/LikeLik sources/Новая папка/SCFacebook.m"; sourceTree = "<group>"; };
 		919E8746173A5B5A00A25E07 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = "../../../../../Volumes/Data-1/LikeLik sources/Новая папка/MBProgressHUD.h"; sourceTree = "<group>"; };
@@ -1197,9 +1204,12 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9169EA36178AA71200888531 /* MLPAccessoryBadge.h */,
+				9169EA37178AA71200888531 /* MLPAccessoryBadge.m */,
 				91C60EFF17845532004CEA56 /* FBConnect */,
 				91C60EBA1781DC55004CEA56 /* ZBarSDK */,
 				55764E831770849600F006D9 /* Work PNG */,
+				9169EA39178AD94C00888531 /* MapBox.bundle */,
 				553C9C0D176E30ED00B46A10 /* MapBox.framework */,
 				919E8707173A58E700A25E07 /* LikeLik-Info.plist */,
 				919E8708173A58E700A25E07 /* InfoPlist.strings */,
@@ -1207,8 +1217,8 @@
 				919E870D173A58E700A25E07 /* LikeLik-Prefix.pch */,
 				919E89DA173A5E3A00A25E07 /* InterfaceFunctions.h */,
 				919E89DB173A5E3A00A25E07 /* InterfaceFunctions.m */,
-				919E8742173A5B5A00A25E07 /* LocalizationSystem.h */,
-				919E8743173A5B5A00A25E07 /* LocalizationSystem.m */,
+				9169EA33178AA32E00888531 /* LocalizationSystem.h */,
+				9169EA34178AA32E00888531 /* LocalizationSystem.m */,
 				919E8744173A5B5A00A25E07 /* SCFacebook.h */,
 				919E8745173A5B5A00A25E07 /* SCFacebook.m */,
 				919E8746173A5B5A00A25E07 /* MBProgressHUD.h */,
@@ -1370,6 +1380,7 @@
 		919E8AB8173A5ED700A25E07 /* Andrew */ = {
 			isa = PBXGroup;
 			children = (
+				9169EA2B1789808B00888531 /* catalogue.plist */,
 				55A293EB1774657B001E51D3 /* Moscow */,
 				55A293EC1774657B001E51D3 /* Vienna */,
 				55A293CD17746524001E51D3 /* Reachability.h */,
@@ -1794,6 +1805,8 @@
 				91C60EE61781DC56004CEA56 /* zbar-samples.png in Resources */,
 				91C60F1A17845532004CEA56 /* FBDialog.bundle in Resources */,
 				91C60F2417845532004CEA56 /* README.mdown in Resources */,
+				9169EA2C1789808B00888531 /* catalogue.plist in Resources */,
+				9169EA3A178AD94C00888531 /* MapBox.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1807,7 +1820,6 @@
 				91C08F3817771336007B98D3 /* StartViewController.m in Sources */,
 				919E870C173A58E700A25E07 /* main.m in Sources */,
 				919E8710173A58E700A25E07 /* AppDelegate.m in Sources */,
-				919E888C173A5B5B00A25E07 /* LocalizationSystem.m in Sources */,
 				919E888D173A5B5B00A25E07 /* SCFacebook.m in Sources */,
 				919E888E173A5B5B00A25E07 /* MBProgressHUD.m in Sources */,
 				919E888F173A5B5B00A25E07 /* UIViewController+KNSemiModal.m in Sources */,
@@ -1884,6 +1896,8 @@
 				91C60F2117845532004CEA56 /* SBJsonBase.m in Sources */,
 				91C60F2217845532004CEA56 /* SBJsonParser.m in Sources */,
 				91C60F2317845532004CEA56 /* SBJsonWriter.m in Sources */,
+				9169EA35178AA32E00888531 /* LocalizationSystem.m in Sources */,
+				9169EA38178AA71200888531 /* MLPAccessoryBadge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1924,8 +1938,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1958,8 +1972,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1977,8 +1991,8 @@
 		919E871A173A58E700A25E07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Application Developer (RX3537WRY8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Application Developer (RX3537WRY8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2005,8 +2019,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E97EC4F9-62DF-466F-98D5-5AA5D0FFD94C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E97EC4F9-62DF-466F-98D5-5AA5D0FFD94C";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos6.1;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -2016,8 +2030,8 @@
 		919E871B173A58E700A25E07 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Application Developer (RX3537WRY8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Application Developer (RX3537WRY8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2044,8 +2058,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E97EC4F9-62DF-466F-98D5-5AA5D0FFD94C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E97EC4F9-62DF-466F-98D5-5AA5D0FFD94C";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos6.1;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

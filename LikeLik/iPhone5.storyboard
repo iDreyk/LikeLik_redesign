@@ -665,7 +665,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1z2-fN-29b">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="152" id="UZW-Dx-lc9"/>
+                                    <constraint firstAttribute="height" constant="221" id="m3I-dZ-UFL"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kQr-yS-cLS">
@@ -933,7 +933,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Tq-oB-9MG">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="152" id="ZiO-Q8-J6l"/>
+                                    <constraint firstAttribute="height" constant="220" id="EcU-QI-WdG"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Bg_gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="dJt-PV-bbN">
@@ -1914,9 +1914,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="8Kb-sg-LTt"/>
-        <segue reference="CID-7V-uDc"/>
-        <segue reference="dba-sy-6dw"/>
-        <segue reference="nft-YQ-xRI"/>
+        <segue reference="lP0-Ve-8FZ"/>
         <segue reference="6tZ-hu-j1M"/>
+        <segue reference="nft-YQ-xRI"/>
+        <segue reference="MxA-FI-ppy"/>
     </inferredMetricsTieBreakers>
 </document>

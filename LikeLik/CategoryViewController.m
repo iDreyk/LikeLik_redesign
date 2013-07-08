@@ -21,6 +21,7 @@
 #import "PracticalInfoViewController.h"
 #import <MapBox/MapBox.h>
 #import "PlaceViewController.h"
+#import "MLPAccessoryBadge.h"
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
@@ -57,7 +58,7 @@ static NSDictionary *Place1;
     self.CityName.text = self.Label;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
-    self.CityImage.image =  [UIImage imageWithContentsOfFile:self.Image];
+    self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
     
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty", @"Hotels",@"Favorites", @"Visual Tour", @"Transportation",@"Practical Info"];
     
@@ -65,12 +66,6 @@ static NSDictionary *Place1;
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-//    UIButton *btn = [InterfaceFunctions search_button];
-//    [btn addTarget:self action:@selector(search:) forControlEvents:UIControlEventTouchUpInside];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-//    
-    
     
     UIButton *btn = [InterfaceFunctions map_button:1];
     [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
@@ -307,18 +302,33 @@ static NSDictionary *Place1;
     }
     else{
         [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions corporateIdentity]]];
-        [cell addSubview:[InterfaceFunctions corporateIdentity_actb]];
+        if ([indexPath row] == 11) {
+            MLPAccessoryBadge *accessoryBadge;
+
+            accessoryBadge = [MLPAccessoryBadge new];
+            [cell setAccessoryView:accessoryBadge];
+            [accessoryBadge setText:AMLocalizedString(@"Soon", nil)];
+            [accessoryBadge setBackgroundColor:[InterfaceFunctions corporateIdentity]];
+            [cell addSubview:accessoryBadge];
+        }
+        else
+            [cell addSubview:[InterfaceFunctions corporateIdentity_actb]];
     }
-    return cell;
+        return cell;
 }
 #pragma mark - Table view delegate
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([indexPath row] == 11) {
+        return nil;
+    }
     return indexPath;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:[indexPath row]] sender:self];
+  //  if ([indexPath row] !=11)
+        [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:[indexPath row]] sender:self];
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -401,7 +411,7 @@ static NSDictionary *Place1;
         self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
     }
     else if (yOffset < 0) {
-        self.CityImage.frame = CGRectMake(0,-44.0,320.0,152.0-yOffset + floorf(threshold / 2.0));
+        self.CityImage.frame = CGRectMake(0,-44.0,320.0,221.0-yOffset + floorf(threshold / 2.0));
         
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
         
