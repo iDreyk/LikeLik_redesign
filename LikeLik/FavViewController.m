@@ -22,7 +22,7 @@ static NSDictionary *Place1;
 @end
 
 @implementation FavViewController
-
+//
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
