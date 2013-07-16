@@ -13,6 +13,8 @@
 #import "SCFacebook.h"
 #import "AFJSONRequestOperation.h"
 #import "AFHTTPClient.h"
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 #define kOAuthConsumerKey				@"XGaxa31EoympFhxLZooQ"
 #define kOAuthConsumerSecret			@"IbUE5lud22evmrtxjtU1vKvh6VDqRMSHHFJ73rtHI"
 #define afterregister             @"l27h7RU2dzVfP12aoQssda"
@@ -505,7 +507,7 @@
     NSLog(@"%@ %@",lat,lon);
     
     if ([Way isEqualToString:@"Self"]) {
-        params = [NSDictionary dictionaryWithObjectsAndKeys:  Email.text,@"Email", Password.text ,@"Password",lat,@"Latitude",lon,@"Longitude",nil];
+        params = [NSDictionary dictionaryWithObjectsAndKeys:  Email.text,@"Email", Password.text ,@"Password",lat,@"lat",lon,@"lon",nil];
         NSLog(@"Self = %@",params);
     }
     

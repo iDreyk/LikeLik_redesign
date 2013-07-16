@@ -12,7 +12,8 @@
 
 #import "AppDelegate.h"
 #import "SubText.h"
-
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 #import <mach/mach_time.h>
 mach_timebase_info_data_t info1;
 
@@ -25,8 +26,8 @@ static BOOL foreignversion = NO;
 @implementation CheckViewController
 @synthesize resultImage,resultText;
 @synthesize PlaceCategory,PlaceName,PlaceCity,QRString;
-@synthesize label1;
 @synthesize alreadyuse,color;
+@synthesize TextCheck;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -83,20 +84,19 @@ static BOOL foreignversion = NO;
     
     
     
-    
      
     
-    label1 = [[SubText alloc] initWithFrame:CGRectMake(0.0, 5.0, 252.0, 300.0)];
-    label1.font = [AppDelegate OpenSansRegular:28];
-    label1.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
-    label1.backgroundColor =  [UIColor clearColor];
-    label1.editable = NO;
-    
-    
-    
-    
-    
-    [self.Offer addSubview:label1];
+//    label1 = [[SubText alloc] initWithFrame:CGRectMake(0.0, 5.0, 252.0, 300.0)];
+//    label1.font = [AppDelegate OpenSansRegular:28];
+//    label1.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
+//    label1.backgroundColor =  [UIColor clearColor];
+//    label1.editable = NO;
+//    
+//    
+//    
+//    
+//    
+//    [self.Offer addSubview:label1];
     self.fistbackground.hidden = YES;
     self.alreadyuse.hidden = YES;
     
@@ -118,10 +118,16 @@ static BOOL foreignversion = NO;
     
     
     dictforCheck = [ExternalFunctions getCheckDictionariesOfPlace:self.PlaceName InCategory:self.PlaceCategory InCity:self.PlaceCity];
-    label1.text = [dictforCheck objectForKey:@"main"];
-    CGSize textViewSize = [label1.text sizeWithFont:label1.font constrainedToSize:CGSizeMake(label1.frame.size.width, 500.0) lineBreakMode:NSLineBreakByWordWrapping];
-    label1.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
-    label1.frame = CGRectMake(0.0,label1.frame.origin.y, 252.0, textViewSize.height+30);
+    
+    self.TextCheck.text = [dictforCheck objectForKey:@"main"];
+    self.TextCheck.font = [AppDelegate OpenSansRegular:28];
+    self.TextCheck.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
+    self.TextCheck.backgroundColor =  [UIColor clearColor];
+    self.TextCheck.editable = NO;
+//    label1.text = [dictforCheck objectForKey:@"main"];
+//    CGSize textViewSize = [label1.text sizeWithFont:label1.font constrainedToSize:CGSizeMake(label1.frame.size.width, 500.0) lineBreakMode:NSLineBreakByWordWrapping];
+//    label1.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
+//    label1.frame = CGRectMake(0.0,label1.frame.origin.y, 252.0, textViewSize.height+30);
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -174,17 +180,11 @@ static BOOL foreignversion = NO;
 -(IBAction)foreignLanguage:(id)sender{
     //    nslog(@"Okay");
     if (foreignversion == NO) {
-        label1.text = [dictforCheck objectForKey:@"secondary"];
+      self.TextCheck.text = [dictforCheck objectForKey:@"secondary"];
     }
     else{
-        label1.text = [dictforCheck objectForKey:@"main"];
+        self.TextCheck.text = [dictforCheck objectForKey:@"main"];
     }
-    
-    CGSize textViewSize = [label1.text sizeWithFont:label1.font constrainedToSize:CGSizeMake(label1.frame.size.width, 500.0) lineBreakMode:NSLineBreakByWordWrapping];
-    label1.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
-    
-    label1.frame = CGRectMake(0.0,label1.frame.origin.y, 252.0, textViewSize.height+30);
- 
     foreignversion = !foreignversion;
     
 }

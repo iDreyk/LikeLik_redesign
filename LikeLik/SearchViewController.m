@@ -9,7 +9,8 @@
 #import "SearchViewController.h"
 #import "PlaceViewController.h"
 #import "AppDelegate.h"
-
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
@@ -47,7 +48,7 @@ static NSDictionary *Place;
     
     self.SearchTable.separatorStyle = UITableViewCellSelectionStyleNone;
     
-    self.SearchTable.backgroundView = [InterfaceFunctions backgroundView];//[[UIImageView alloc] initWithImage:  [UIImage imageNamed:@"bg.png"]];
+    self.SearchTable.backgroundView = [InterfaceFunctions backgroundView];
     Array = [NSArray arrayWithArray:self.PlacesArray];
 
 }

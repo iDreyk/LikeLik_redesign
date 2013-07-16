@@ -11,6 +11,8 @@
 #import "ZBarReaderView.h"
 #import "ZBarSDK.h"
 #import "SubText.h"
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 @interface CheckViewController : UIViewController <ZBarReaderDelegate,UIGestureRecognizerDelegate,MBProgressHUDDelegate>{
     UIImageView *resultImage;
     UITextView *resultText;
@@ -20,7 +22,6 @@
     NSString *QRString;
     NSInteger ribbon;
     UIColor *color;
-    SubText *label1;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *Check_bg;
 @property (weak, nonatomic) IBOutlet UIButton *activate;
@@ -38,12 +39,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *foreignLanguage;
 @property (weak, nonatomic) IBOutlet UIScrollView *Offer;
 @property (weak, nonatomic) IBOutlet UIImageView *fistbackground;
-@property (nonatomic, retain)SubText *label1;
 @property (nonatomic, retain)UILabel *alreadyuse;
 @property (weak, nonatomic) IBOutlet UIImageView *gradientunderbutton;
 @property (weak, nonatomic) IBOutlet UIImageView *ribbonimage;
 @property (weak, nonatomic) IBOutlet UIImageView *check_background;
 @property (nonatomic,retain)UIColor *color;
+@property (weak, nonatomic) IBOutlet UITextView *TextCheck;
 -(IBAction)showQR:(id)sender;
 -(IBAction)CloseCheck:(id)sender;
 -(IBAction)foreignLanguage:(id)sender;

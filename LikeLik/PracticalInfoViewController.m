@@ -10,7 +10,8 @@
 #import "AppDelegate.h"
 
 #import "SubText.h"
-
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 @interface PracticalInfoViewController ()
 
 @end

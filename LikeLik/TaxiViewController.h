@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MBProgressHUD.h"
+#import "LocalizationSystem.h"
 @interface TaxiViewController : UIViewController<UIGestureRecognizerDelegate,UIActionSheetDelegate>
 
 @property(nonatomic,retain)        UIColor *color;

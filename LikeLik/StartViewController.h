@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MBProgressHUD.h"
 @interface StartViewController : UITableViewController<UIAlertViewDelegate,MBProgressHUDDelegate>{
   }
 

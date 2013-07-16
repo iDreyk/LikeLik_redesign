@@ -11,13 +11,13 @@
 
 @interface ExternalFunctions : NSObject<CLLocationManagerDelegate>
 
-+ (void) DownloadController : (NSString *) catalogueName;
-
-+ (void) AFdownload : (NSString *) filename;
-
-+ (void) DownloadSucceeded : (NSString *) fileName;
-
-+ (NSString *) DownloadError : (NSString *) error;
+//+ (void) DownloadController : (NSString *) catalogueName;
+//
+//+ (void) AFdownload : (NSString *) filename;
+//
+//+ (void) DownloadSucceeded : (NSString *) fileName;
+//
+//+ (NSString *) DownloadError : (NSString *) error;
 
 + (void) addCityToDownloaded : (NSString *) city;
 
@@ -41,7 +41,7 @@
 
 + (NSDictionary *) selectedPalceInCity: (NSString *) city category : (NSString *) category withName : (NSString *) placeName;
 
-+ (NSDictionary *) placeDictionaryInCity : (NSString *) city InCategory : (NSString *) category withName : (NSString *) placeName;
+//+ (NSDictionary *) placeDictionaryInCity : (NSString *) city InCategory : (NSString *) category withName : (NSString *) placeName;
 
 
 + (NSArray *) getAllPlacesInCity:(NSString *) city;

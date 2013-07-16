@@ -67,7 +67,7 @@
 "The exclusive LikeLik check offer includes" = "Эксклюзивное предложение по чеку LikeLik включает";
 "Check LikeLik\nused" = "Чек LikeLik\nиспользован!";
 "Invalid QR-code or location" = "Неверный QR-code или Чек";
-"Display text in the local language" = "Показать текст на локальном языке";
+"Display text in the local language" = "Текст на локальном языке";
 "Use check" = "Использовать чек";
 "To use all the features of the world LikeLik, please register" = "Чтобы использовать все возможности мира LikeLik, необходимо пройти регистрацию.";
 "Apparently, you've disabled this application to access your geolocation" = "Видимо, вы запретили этому приложению доступ к вашей геолокации";
@@ -101,3 +101,4 @@
 "Guide downloaded" = "Путеводитель скачался!";
 "Soon" = "Скоро";
 "Close" = "Закрыть";
+"Metro" = "Метро";

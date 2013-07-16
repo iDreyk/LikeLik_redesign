@@ -13,6 +13,8 @@
 #import "PlaceViewController.h"
 #import "SearchViewController.h"
 #import <MapBox/MapBox.h>
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
@@ -50,7 +52,6 @@ static NSDictionary *Place1;
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-    #warning Андрей, сделай плз функцию и еще мне нужно знать, какие minZoom и MaxZoom выставлять
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];

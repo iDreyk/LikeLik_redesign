@@ -8,6 +8,7 @@
 
 #import "InterfaceFunctions.h"
 #import "AppDelegate.h"
+#import "LocalizationSystem.h"
 @implementation InterfaceFunctions
 
 #pragma mark UIButton

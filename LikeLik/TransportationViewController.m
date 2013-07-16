@@ -8,7 +8,8 @@
 
 #import "TransportationViewController.h"
 #import "AppDelegate.h"
-
+#import "MBProgressHUD.h"
+#import "LocalizationSystem.h"
 
 #define MAXIMUM_SCALE 4
 #define MINIMUM_SCALE 2

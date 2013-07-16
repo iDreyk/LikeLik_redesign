@@ -10,7 +10,8 @@
 #import "AppDelegate.h"
 
 #import "StartTabBarViewController.h"
-
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 @interface AboutTableViewController ()
 
 @end

@@ -38,7 +38,7 @@ static NSInteger j=0;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    NSLog(@"123");
+   // NSLog(@"123");
     if (j==0) {
         Me = newLocation;
         

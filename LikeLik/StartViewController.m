@@ -16,7 +16,8 @@
 #import "AFNetworking.h"
 #import "Reachability.h"
 #import "AFDownloadRequestOperation.h"
-
+#import "MBProgressHUD.h"
+#import "LocalizationSystem.h"
 #import "CategoryViewController.h"
 
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
@@ -72,7 +73,7 @@
     
     [self viewDidAppear:YES];
 }
-
+    
 
 -(void)viewDidAppear:(BOOL)animated{
   //  NSLog(@"123");
@@ -420,7 +421,7 @@
             [catalogueArray removeObjectAtIndex:i];
         }
     }
-#warning один раз тут вылетело, но приложение было свернуто [catalogueArray addObject:temp];
+//#warning один раз тут вылетело, но приложение было свернуто [catalogueArray addObject:temp];
     [catalogueArray addObject:temp];
 
     [[NSFileManager defaultManager] removeItemAtPath:cataloguesPath error:nil];

@@ -161,6 +161,19 @@ CGFloat alpha = 0.5;
         
     }
     
+    self.hint.userInteractionEnabled = YES;
+    UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide_hint:)];
+    recognizer.delegate = self;
+    
+    [self.hint addGestureRecognizer:recognizer];
+    if (![[[NSUserDefaults standardUserDefaults ] objectForKey:@"hint"] isEqualToString:@"YES"]) {
+        NSLog(@"%@",LocalizationGetLanguage);
+        [self.hint setImage:[UIImage imageNamed:@"5.png"]];
+        [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"hint"];
+    }
+    else{
+        self.hint.hidden = YES;
+    }
     [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     self.navigationController.navigationBar.hidden = YES;
 
@@ -520,7 +533,6 @@ CGFloat alpha = 0.5;
  
     
     
-    #warning Андрей, сделай плз функцию и еще мне нужно знать, какие minZoom и MaxZoom выставлять
     NSURL *url;
     if ([self.PlaceCityName isEqualToString:@"Moscow"] || [self.PlaceCityName isEqualToString:@"Москва"] || [self.PlaceCityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -1283,5 +1295,11 @@ CGFloat alpha = 0.5;
         [segue destinationViewController];
         destination.Parent = @"Place";
     }
+}
+
+-(IBAction)hide_hint:(id)sender{
+    self.hint.hidden = YES;
+    self.hide_button.hidden = YES;
+    NSLog(@"123123");
 }
 @end

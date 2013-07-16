@@ -9,7 +9,8 @@
 #import "PreferencesViewController.h"
 #import "RegistrationViewController.h"
 #import "AppDelegate.h"
-
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 

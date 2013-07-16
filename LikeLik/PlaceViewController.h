@@ -58,6 +58,8 @@
 @property (nonatomic,retain) CLLocation *PlaceLocation;
 @property (nonatomic,retain) NSArray *Photos;
 @property (nonatomic, retain) UIColor *Color;
+@property (weak, nonatomic) IBOutlet UIImageView *hint;
+@property (weak, nonatomic) IBOutlet UIButton *hide_button;
 
 
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
@@ -75,5 +77,5 @@
 -(IBAction)infotap:(id)sender;
 - (IBAction)tapDetected:(UIGestureRecognizer *)sender;
 -(IBAction)ShowMap:(id)sender;
-
+-(IBAction)hide_hint:(id)sender;
 @end

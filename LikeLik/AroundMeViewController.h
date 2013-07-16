@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MapBox/MapBox.h>
+#import "MBProgressHUD.h"
+#import "LocalizationSystem.h"
 @interface AroundMeViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,RMMapViewDelegate,MBProgressHUDDelegate>{
     
     NSArray *AroundArray;

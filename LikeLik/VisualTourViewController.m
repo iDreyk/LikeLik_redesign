@@ -10,7 +10,7 @@
 
 #import "AppDelegate.h"
 #import <MapBox/MapBox.h>
-
+#import "LocalizationSystem.h"
 #import "SubText.h"
 CGFloat X=0;
 CGFloat Y=0;
@@ -51,7 +51,6 @@ static BOOL infoViewIsOpen = NO;
     }
     
     
-#warning Смена описаний
     Red_line.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"Name"];
     label.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"About"];
     
@@ -62,7 +61,7 @@ static BOOL infoViewIsOpen = NO;
     int page = scrollView.contentOffset.x/scrollView.frame.size.width;
     self.pageControl.currentPage=page;
     NSLog(@"Page = %d",self.pageControl.currentPage);
-#warning Смена описаний
+
     Red_line.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"Name"];
     label.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"About"];
 //    NSLog(@"123");
@@ -162,7 +161,6 @@ static BOOL infoViewIsOpen = NO;
     }
     
     
-#warning Андрей, сделай плз функцию и еще мне нужно знать, какие minZoom и MaxZoom выставлять
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -249,7 +247,6 @@ static BOOL infoViewIsOpen = NO;
     
     
     Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
-#warning название достопремичательности первой
     Red_line.text =  [[coord objectAtIndex:0] objectForKey:@"Name"];
     Red_line.font =[AppDelegate OpenSansSemiBold:28];
     Red_line.textColor = [UIColor whiteColor];
@@ -264,7 +261,6 @@ static BOOL infoViewIsOpen = NO;
     [Red_line sizeThatFits:size1];
 
     label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
-#warning текст достопремичательности первой
     label.text =  [[coord objectAtIndex:0] objectForKey:@"About"];
     label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor whiteColor];
@@ -272,7 +268,7 @@ static BOOL infoViewIsOpen = NO;
     label.backgroundColor =  [UIColor clearColor];
     label.editable = NO;
     
-    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, _infoScroll.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
+//    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, _infoScroll.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
             label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
     if ([AppDelegate isiPhone5])
         label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 260.0);//textViewSize.height+35);

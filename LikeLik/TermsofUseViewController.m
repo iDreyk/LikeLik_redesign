@@ -8,7 +8,8 @@
 
 #import "TermsofUseViewController.h"
 #import "AppDelegate.h"
-
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 #import "SubText.h"
 
 @interface TermsofUseViewController ()

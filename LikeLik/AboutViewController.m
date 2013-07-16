@@ -8,7 +8,8 @@
 
 #import "AboutViewController.h"
 #import "AppDelegate.h"
-
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 #import "SubText.h"
 
 @interface AboutViewController ()

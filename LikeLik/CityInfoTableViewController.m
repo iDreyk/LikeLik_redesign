@@ -11,7 +11,8 @@
 #import "TransportationTableViewController.h"
 #import "PracticalInfoViewController.h"
 #import "AppDelegate.h"
-
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 @interface CityInfoTableViewController ()
 
 @end

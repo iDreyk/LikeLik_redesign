@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 @interface SupportViewController : UIViewController <UITextFieldDelegate,MBProgressHUDDelegate,CLLocationManagerDelegate>
 @property (nonatomic,retain) NSString *lang;
 @property (weak, nonatomic) IBOutlet UITextField *Email;

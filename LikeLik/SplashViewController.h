@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MBProgressHUD.h"
+#import "LocalizationSystem.h"
 @interface SplashViewController : UIViewController<CLLocationManagerDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate,MBProgressHUDDelegate>{
     CLLocationManager *locationManagerRegion;
     CLLocationManager *locationManager;

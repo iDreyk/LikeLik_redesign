@@ -8,7 +8,8 @@
 
 #import "RegistrationViewController.h"
 #import "AppDelegate.h"
-
+#import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 #import "SA_OAuthTwitterEngine.h"
 #import "SCFacebook.h"
 #import "AFJSONRequestOperation.h"
@@ -606,7 +607,7 @@
     
     if ([Way isEqualToString:@"Self"]) {
         NSString *Birth_date = [[NSString alloc] initWithFormat:@"%@-%@-%@",day,month,year];
-       params = [NSDictionary dictionaryWithObjectsAndKeys: Login.text ,@"name", Email.text,@"Email", Password.text ,@"Password",Birth_date,@"Birth_date",lat,@"Latitude",lon,@"Longitude",nil];
+       params = [NSDictionary dictionaryWithObjectsAndKeys: Login.text ,@"name", Email.text,@"Email", Password.text ,@"Password",Birth_date,@"Birth_date",lat,@"lat",lon,@"lon",nil];
         NSLog(@"SELF Body = %@",params);
     }
     
