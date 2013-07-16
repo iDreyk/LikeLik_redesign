@@ -16,8 +16,8 @@
 #import "AFNetworking.h"
 #import "Reachability.h"
 #import "AFDownloadRequestOperation.h"
-#import "MBProgressHUD.h"
 #import "LocalizationSystem.h"
+#import "MBProgressHUD.h"
 #import "CategoryViewController.h"
 
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
@@ -54,8 +54,8 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     
-    _CityLabels = [ExternalFunctions getDownloadedCities:1];
-    _backCityImages = [ExternalFunctions getDownloadedCities:0];
+    _CityLabels = [ExternalFunctions getAllCities:1];
+    _backCityImages = [ExternalFunctions getAllCities:0];
     
     self.tableView.backgroundView = [InterfaceFunctions backgroundView];
     
@@ -73,22 +73,24 @@
     
     [self viewDidAppear:YES];
 }
-    
+
 
 -(void)viewDidAppear:(BOOL)animated{
-  //  NSLog(@"123");
+    //  NSLog(@"123");
     NSInteger tabindex = self.tabBarController.selectedIndex;
     //    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
     
     if (tabindex == 0) { //выбраны featured
         
-        _CityLabels = [ExternalFunctions getFeaturedCities:1];
-        _backCityImages = [ExternalFunctions getFeaturedCities:0];
+        //        _CityLabels = [ExternalFunctions getFeaturedCities:1];
+        //        _backCityImages = [ExternalFunctions getFeaturedCities:0];
+        _CityLabels = [ExternalFunctions getAllCities:1];
+        _backCityImages = [ExternalFunctions getAllCities:0];
     }
     
     
     if (tabindex == 1) { //выбраны downloaded
-       // NSLog(@"Hello");
+        // NSLog(@"Hello");
         _CityLabels = [ExternalFunctions getDownloadedCities:1];
         _backCityImages = [ExternalFunctions getDownloadedCities:0];
         
@@ -105,8 +107,8 @@
         _CityLabels = [ExternalFunctions getSpecialCities:1];
         _backCityImages = [ExternalFunctions getSpecialCities:0];
     }
-  //  NSLog(@"StartView Appear");
-
+    //  NSLog(@"StartView Appear");
+    
     [self.tableView reloadData];
 }
 
@@ -178,13 +180,13 @@
 {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     NSInteger row = [indexPath row];
-  //  NSLog(@"перешёл на экран");
+    //  NSLog(@"перешёл на экран");
     CategoryViewController *destination =
     [segue destinationViewController];
     
     destination.Label = _CityLabels[row];
     destination.Image = _backCityImages[row];
-    [TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
+    //[TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
     
     
     
@@ -192,7 +194,8 @@
 
 -(void)ShowAlertView{
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Покупка"
-                                                      message:@"Вы собираетесь скачать каталог LikeLik объёмом 100Мбайт"
+                                                      message:[NSString stringWithFormat:@"%@ %@",AMLocalizedString(@"You are up to download", nil),
+                                                               _CityLabels[[[[NSUserDefaults standardUserDefaults] objectForKey:@"row"] integerValue] ] ]
                                                      delegate:self
                                             cancelButtonTitle:@"Спасибо, не хочу"
                                             otherButtonTitles:@"Ok",nil];
@@ -204,10 +207,10 @@
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0){
         [self.navigationController popViewControllerAnimated:YES];
-        [TestFlight passCheckpoint:@"Отказался"];
+        //[TestFlight passCheckpoint:@"buying"];
     }
     else{
-       // NSLog(@"Purchased");
+        // NSLog(@"Purchased");
         NSLog(@"Согласился на покупку");
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -330,7 +333,7 @@
         
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x"]];
         self.HUDfade.mode = MBProgressHUDModeCustomView;
-        self.HUDfade.labelText = @"Operation successful";
+        self.HUDfade.labelText = AMLocalizedString(@"Operation succeeded", nil);
         [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
                                 onTarget:self withObject:nil animated:YES];
         
@@ -366,9 +369,9 @@
         
         double currentTime2 = CACurrentMediaTime();
         
-//        float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
-//        
-//        int result = (int)floorf(progress*100);
+        float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile * 100;
+        //
+        //        int result = (int)floorf(progress*100);
         double speed = (totalBytesRead / (currentTime2 - currentTime));
         double bytes_left = totalBytesExpected - totalBytesRead;
         double time_left = bytes_left / speed;
@@ -384,7 +387,8 @@
             self.HUDfade.labelText = AMLocalizedString(@"Data processing", nil);
         }
         else
-            self.HUDfade.labelText = [NSString stringWithFormat:@"%@ \t %@",AMLocalizedString(@"Time left", nil),text];
+            self.HUDfade.labelText = [NSString stringWithFormat:@"%.1f %%",progress];
+        //self.HUDfade.labelText = [NSString stringWithFormat:@"%@ \t %@",AMLocalizedString(@"Time left", nil),text];
         NSLog(@"Time left: %@ \n Speed: %f",text,speed);
         currentTime = currentTime2;
     }];
@@ -421,9 +425,8 @@
             [catalogueArray removeObjectAtIndex:i];
         }
     }
-//#warning один раз тут вылетело, но приложение было свернуто [catalogueArray addObject:temp];
     [catalogueArray addObject:temp];
-
+    
     [[NSFileManager defaultManager] removeItemAtPath:cataloguesPath error:nil];
     
     [catalogueArray writeToFile:cataloguesPath atomically:YES];

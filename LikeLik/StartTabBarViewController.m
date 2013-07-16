@@ -35,7 +35,7 @@
 
     [super viewDidLoad];
 
-    [self setSelectedIndex:1];
+    [self setSelectedIndex:2];
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", nil) AndColor:[InterfaceFunctions corporateIdentity]];
