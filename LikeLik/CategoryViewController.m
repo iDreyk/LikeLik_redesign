@@ -58,7 +58,7 @@ static NSDictionary *Place;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
     self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
-    
+    NSLog(@"%@",[ExternalFunctions larkePictureOfCity:self.Label]);
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty", @"Hotels",@"Favorites", @"Visual Tour", @"Metro",@"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"FavoritesSegue",@"VisualtourSegue",@"TransportationSegue",@"PracticalinfoSegue"];
@@ -342,13 +342,13 @@ static NSDictionary *Place;
         AroundMeViewController *destination =
         [segue destinationViewController];
         destination.CityNameText = self.Label;
-        destination.Image = self.Image; 
+        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
     }
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
         PlacesByCategoryViewController *destination =[segue destinationViewController];
         destination.CityName = self.Label;
         destination.Category = [self.CellArray objectAtIndex:row];
-        destination.Image = self.Image;
+        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
     }
 
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {

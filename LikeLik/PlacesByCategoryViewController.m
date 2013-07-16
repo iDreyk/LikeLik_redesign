@@ -97,7 +97,7 @@ static NSDictionary *Place1;
     self.CategoryLabel.font = [AppDelegate OpenSansSemiBold:60];
     
     
-    self.CityImage.image = [UIImage imageWithContentsOfFile:self.Image];
+    self.CityImage.image = [UIImage imageNamed:self.Image];
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -325,7 +325,7 @@ static NSDictionary *Place1;
 //        if ([CategoryPlaces count] == 1)
 //            self.CityImage.frame = CGRectMake(0,-44.0,320.0,76.0-yOffset + floorf(threshold / 2.0));
 //        else
-            self.CityImage.frame = CGRectMake(0,-44.0,320.0,152.0-yOffset + floorf(threshold / 2.0));
+            self.CityImage.frame = CGRectMake(0,-44.0,320.0,221.0-yOffset + floorf(threshold / 2.0));
         
         self.CategoryLabel.frame = CGRectMake(self.CategoryLabel.frame.origin.x,4-(yOffset),self.CategoryLabel.frame.size.width,self.CategoryLabel.frame.size.height);
 //        

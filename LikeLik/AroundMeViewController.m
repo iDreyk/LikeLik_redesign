@@ -125,7 +125,7 @@ static NSDictionary *Place1;
     locationManager = nil;
     self.CityName.text = AMLocalizedString(@"Around Me", nil);
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
-    self.CityImage.image = [UIImage imageWithContentsOfFile:self.Image];
+    self.CityImage.image = [UIImage imageNamed:self.Image];
     
     
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -154,6 +154,7 @@ static NSDictionary *Place1;
 
 
 -(void)viewDidAppear:(BOOL)animated{
+    [TestFlight passCheckpoint:@"Around Me"];
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText]] > 50000.0) {
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate;
         NSLog(@"Взяли центер города");
@@ -348,7 +349,7 @@ static NSDictionary *Place1;
 
     } else if (yOffset < 0) {
         // NSLog(@"2");
-        self.CityImage.frame = CGRectMake(0,-44.0,320.0,152.0-yOffset + floorf(threshold / 2.0));
+        self.CityImage.frame = CGRectMake(0,-44.0,320.0,221.0-yOffset + floorf(threshold / 2.0));
         
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
         

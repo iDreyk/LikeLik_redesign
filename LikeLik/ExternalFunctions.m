@@ -653,15 +653,16 @@ static CLLocation *Me;
 + (NSString *) smallPictureOfCity : (NSString *) city{
     NSDictionary *City = [self cityCatalogueForCity:city];
     
-    return [[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[City objectForKey:@"city_EN"],[[City objectForKey:@"photos"] objectForKey:@"small"]];
+    //return [[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[City objectForKey:@"city_EN"],[[City objectForKey:@"photos"] objectForKey:@"small"]];
+    return [[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:city ofType:@""],[[City objectForKey:@"photos"] objectForKey:@"small"]];
 }
 //  широкая заставка города
 + (NSString *) larkePictureOfCity : (NSString *) city{
     NSDictionary *City = [self cityCatalogueForCity:city];
     
-    return [[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[City objectForKey:@"city_EN"],[[City objectForKey:@"photos"] objectForKey:@"large"]];
+    //return [[NSString alloc]initWithFormat:@"%@/%@/%@",[self docDir],[City objectForKey:@"city_EN"],[[City objectForKey:@"photos"] objectForKey:@"large"]];
+    return [[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:city ofType:@""],[[City objectForKey:@"photos"] objectForKey:@"large"]];
 }
-
 //
 //  Vis_tour
 //
