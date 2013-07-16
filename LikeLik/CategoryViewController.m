@@ -324,6 +324,7 @@ static NSDictionary *Place;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
   //  if ([indexPath row] !=11)
+    [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:[indexPath row]]];
         [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:[indexPath row]] sender:self];
     
 }

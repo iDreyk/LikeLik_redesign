@@ -827,6 +827,7 @@ CGFloat alpha = 0.5;
 
 -(void)viewDidAppear:(BOOL)animated{
             [self tapDetected:nil];
+    [TestFlight passCheckpoint:self.PlaceName];
     if ([self.fromNotification isEqualToString:@"YES"]){
         UIButton *btn = [InterfaceFunctions home_button];
         [btn addTarget:self action:@selector(testmethod) forControlEvents:UIControlEventTouchUpInside];
@@ -912,6 +913,7 @@ CGFloat alpha = 0.5;
 
  
 -(IBAction)buttonPressed:(UIButton*)sender{
+    [TestFlight passCheckpoint:[NSString stringWithFormat:@"Place button %d",sender.tag]];
     if (sender.tag == 2) {
         [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
         self.navigationController.navigationBar.hidden = YES;

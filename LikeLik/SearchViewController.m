@@ -15,6 +15,7 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 static NSArray *Array;
+static NSArray *tmp;
 static NSDictionary *Place;
 @interface SearchViewController ()
 
@@ -35,13 +36,14 @@ static NSDictionary *Place;
 {
     //1
     //23
+    
     [super viewDidLoad];
     //    nslog(@"Hello!");
     //    nslog(@"CityName = %@",self.CityName);
-    //[TestFlight passCheckpoint:@"Fav open"];
+    [TestFlight passCheckpoint:@"Search view"];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SearchBar setShowsCancelButton:NO];
-//#warning надо переделать под новый каталог
+    //#warning надо переделать под новый каталог
     self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Search", nil)  AndColor:[InterfaceFunctions corporateIdentity]];
     
@@ -50,7 +52,9 @@ static NSDictionary *Place;
     
     self.SearchTable.backgroundView = [InterfaceFunctions backgroundView];
     Array = [NSArray arrayWithArray:self.PlacesArray];
-
+    
+#warning сделать асинхронную загрузку
+    tmp = [ExternalFunctions getAllPlacesInCity:self.CityName];
 }
 
 
@@ -91,14 +95,14 @@ static NSDictionary *Place;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-   [cell addSubview: [InterfaceFunctions TableLabelwithText:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
+    [cell addSubview: [InterfaceFunctions TableLabelwithText:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
     
     cell.backgroundView = [InterfaceFunctions CellBG];
     cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
-
+    
     [cell addSubview:[InterfaceFunctions goLabelCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Category"]]];
     [cell addSubview:[InterfaceFunctions actbwithCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Category"]]];
-
+    
     return cell;
 }
 
@@ -115,9 +119,9 @@ static NSDictionary *Place;
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if (self.navigationController.navigationBar.hidden)
         if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
-        [self.SearchTable setFrame:CGRectMake(self.SearchTable.frame.origin.x, self.SearchTable.frame.origin.y+44.0, 320.0, self.SearchTable.frame.size.height-44.0)];
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
-   
+            [self.SearchTable setFrame:CGRectMake(self.SearchTable.frame.origin.x, self.SearchTable.frame.origin.y+44.0, 320.0, self.SearchTable.frame.size.height-44.0)];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
     NSIndexPath *indexPath = [self.SearchTable indexPathForSelectedRow];
     NSInteger row = [indexPath row];
     if ([[segue identifier] isEqualToString:@"CellSegue"]) {
@@ -162,28 +166,29 @@ static NSDictionary *Place;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    NSArray *tmp;
+    //    NSArray *tmp;
     if (searchBar.text.length>0){//.text.length>0) {
         NSString *strSearchText =searchBar.text;
-            NSLog(@"strSearchText = %@",strSearchText);
-//#warning надо переделать под новый каталог
-         tmp = [ExternalFunctions getAllPlacesInCity:self.CityName];
-//#warning backspace неправильно работает
+        NSLog(@"strSearchText = %@",strSearchText);
+        //#warning надо переделать под новый каталог
+        //       tmp = [ExternalFunctions getAllPlacesInCity:self.CityName];
+        //#warning backspace неправильно работает
         NSMutableArray *ar = [NSMutableArray array];
         for (int i=0;i<[tmp count];i++) {
             NSString *strData = [[tmp objectAtIndex:i] objectForKey:@"Name"];
-      //          NSLog(@"strData = %@ strSearchText = %@",strData, strSearchText);
-             if ([[strData lowercaseString] rangeOfString:[strSearchText lowercaseString]].length>0) 
+            //          NSLog(@"strData = %@ strSearchText = %@",strData, strSearchText);
+            if ([[strData lowercaseString] rangeOfString:[strSearchText lowercaseString]].length>0)
                 [ar addObject:[tmp objectAtIndex:i]];
         }
         self.PlacesArray = ar;
         [self.SearchTable reloadData];
     }
     else{
-    //    NSLog(@"Hello");
-//#warning надо переделать под новый каталог
-        self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
-        NSLog(@"tmp = %@", tmp);
+        //    NSLog(@"Hello");
+        //#warning надо переделать под новый каталог
+        //self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
+        //NSLog(@"tmp = %@", tmp);
+        self.PlacesArray = tmp;
         [self.SearchTable reloadData];
     }
 }
@@ -196,7 +201,7 @@ static NSDictionary *Place;
     [self.SearchTable reloadData];
     [self.SearchBar setShowsCancelButton:NO];
     [self.SearchBar resignFirstResponder];
- 
+    
 }
 
 

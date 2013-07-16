@@ -184,7 +184,7 @@
     
     destination.Label = _CityLabels[row];
     destination.Image = _backCityImages[row];
-    //[TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
+    [TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
     
     
     
@@ -204,7 +204,7 @@
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0){
         [self.navigationController popViewControllerAnimated:YES];
-        //[TestFlight passCheckpoint:@"buying"];
+        [TestFlight passCheckpoint:@"Отказался"];
     }
     else{
        // NSLog(@"Purchased");

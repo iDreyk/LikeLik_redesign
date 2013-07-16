@@ -352,7 +352,7 @@ static BOOL infoViewIsOpen = NO;
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    
+    [TestFlight passCheckpoint:@"VisualTour"];
     if ([[[CLLocation alloc] initWithLatitude:self.MapPhoto.userLocation.coordinate.latitude longitude:self.MapPhoto.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
         self.MapPhoto.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
         self.locationButton.enabled = NO;

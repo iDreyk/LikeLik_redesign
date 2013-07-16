@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [TestFlight passCheckpoint:@"TermsOfUse"];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     //self.view = [InterfaceFunctions backgroundView];
     

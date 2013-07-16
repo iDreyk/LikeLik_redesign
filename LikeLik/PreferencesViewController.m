@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[TestFlight passCheckpoint:@"Открыл stng"];
+    [TestFlight passCheckpoint:@"Открыл stng"];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
@@ -247,17 +247,19 @@
             [defaults setObject:[Language objectAtIndex:[indexPath row]] forKey:@"Language"];
             if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Русский"]){
                 LocalizationSetLanguage(@"ru");
-                //[TestFlight passCheckpoint:@"SetRU"];
+                [TestFlight passCheckpoint:@"SetRU"];
             }
             if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"English"]){
                 LocalizationSetLanguage(@"en");
-                //[TestFlight passCheckpoint:@"SetEn"];
+                [TestFlight passCheckpoint:@"SetEn"];
             }
             if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Deutsch"]){
                 LocalizationSetLanguage(@"de");
+                                [TestFlight passCheckpoint:@"SetDe"];
             }
             if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Japanese"]){
                 LocalizationSetLanguage(@"ja");
+                                [TestFlight passCheckpoint:@"SetJa"];
             }
 
         }

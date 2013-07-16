@@ -39,7 +39,7 @@ static NSDictionary *Place1;
   //  NSLog(@"123");
     CategoryPlaces = [ExternalFunctions getArrayOfPlaceDictionariesInCategory:self.Category InCity:self.CityName];
  //   NSLog(@"%@ %d",CategoryPlaces, [CategoryPlaces count]);
-   
+    
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     
@@ -131,7 +131,7 @@ static NSDictionary *Place1;
 //        
 //    }
     
-    
+    [TestFlight passCheckpoint:self.Category];
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
         NSLog(@"Взяли центер города");

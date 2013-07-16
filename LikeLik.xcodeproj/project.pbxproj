@@ -345,6 +345,9 @@
 		91A80296179519C2007EC5B6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A80294179519C2007EC5B6 /* MBProgressHUD.m */; };
 		91A8029917952432007EC5B6 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A8029717952431007EC5B6 /* 4.png */; };
 		91A8029A17952432007EC5B6 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A8029817952431007EC5B6 /* 5.png */; };
+		91A802A117953898007EC5B6 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A8029D17953898007EC5B6 /* libTestFlight.a */; };
+		91A802A217953898007EC5B6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 91A8029E17953898007EC5B6 /* README.md */; };
+		91A802A317953898007EC5B6 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 91A8029F17953898007EC5B6 /* release_notes.md */; };
 		91C08F3817771336007B98D3 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C08F3717771336007B98D3 /* StartViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -600,7 +603,7 @@
 		916588FD1794409C00F13BF2 /* tabicon_SpecialSeries@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabicon_SpecialSeries@2x.png"; sourceTree = "<group>"; };
 		916588FE1794409C00F13BF2 /* table_grad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad.png; sourceTree = "<group>"; };
 		916588FF1794409C00F13BF2 /* table_grad_o_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_grad_o_1.png; sourceTree = "<group>"; };
-		916589CF179440C800F13BF2 /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MapBox.bundle; sourceTree = "<group>"; };
+		916589CF179440C800F13BF2 /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MapBox.bundle; path = LikeLik/MapBox.bundle; sourceTree = "<group>"; };
 		916589D11794411A00F13BF2 /* LocalizationSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationSystem.h; sourceTree = "<group>"; };
 		916589D21794411A00F13BF2 /* LocalizationSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationSystem.m; sourceTree = "<group>"; };
 		916589D71794417600F13BF2 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KNSemiModal.h"; sourceTree = "<group>"; };
@@ -786,7 +789,7 @@
 		919E8B16173A616500A25E07 /* OpenSansSemibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansSemibold.ttf; sourceTree = "<group>"; };
 		919E8B17173A616500A25E07 /* RegularOpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RegularOpenSans.ttf; sourceTree = "<group>"; };
 		919E8B18173A616500A25E07 /* OpenSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansBold.ttf; sourceTree = "<group>"; };
-		91A8026F17944CE1007EC5B6 /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapBox.framework; sourceTree = "<group>"; };
+		91A8026F17944CE1007EC5B6 /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = LikeLik/MapBox.framework; sourceTree = "<group>"; };
 		91A80275179519A5007EC5B6 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		91A80276179519A5007EC5B6 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
 		91A80277179519A5007EC5B6 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -816,6 +819,10 @@
 		91A80295179519C2007EC5B6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		91A8029717952431007EC5B6 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		91A8029817952431007EC5B6 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		91A8029D17953898007EC5B6 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		91A8029E17953898007EC5B6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		91A8029F17953898007EC5B6 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		91A802A017953898007EC5B6 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		91C08F3717771336007B98D3 /* StartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -847,6 +854,7 @@
 				91658A251794429700F13BF2 /* libOAuth.a in Frameworks */,
 				91A8027017944CE1007EC5B6 /* MapBox.framework in Frameworks */,
 				91A8028F179519A5007EC5B6 /* libzbar.a in Frameworks */,
+				91A802A117953898007EC5B6 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,7 +874,8 @@
 				55A80F1D17747EF000089216 /* zip.c */,
 				55A80F1E17747EF000089216 /* zip.h */,
 			);
-			path = minizip;
+			name = minizip;
+			path = LikeLik/minizip;
 			sourceTree = "<group>";
 		};
 		916587DF1794407600F13BF2 /* FBConnect */ = {
@@ -885,7 +894,8 @@
 				916587EA1794407600F13BF2 /* JSON */,
 				916587F81794407600F13BF2 /* README.mdown */,
 			);
-			path = FBConnect;
+			name = FBConnect;
+			path = LikeLik/FBConnect;
 			sourceTree = "<group>";
 		};
 		916587EA1794407600F13BF2 /* JSON */ = {
@@ -1127,7 +1137,8 @@
 				916589F51794429700F13BF2 /* MGTwitterEngine */,
 				91658A161794429700F13BF2 /* SAOAuthTwitterEngine */,
 			);
-			path = "Twitter+OAuth";
+			name = "Twitter+OAuth";
+			path = "LikeLik/Twitter+OAuth";
 			sourceTree = "<group>";
 		};
 		916589E11794429700F13BF2 /* Libraries & Headers */ = {
@@ -1224,7 +1235,8 @@
 				91658A461794450D00F13BF2 /* VkontakteViewController.h */,
 				91658A471794450D00F13BF2 /* VkontakteViewController.m */,
 			);
-			path = Vkontakte;
+			name = Vkontakte;
+			path = LikeLik/Vkontakte;
 			sourceTree = "<group>";
 		};
 		919E86F3173A58E700A25E07 = {
@@ -1251,20 +1263,29 @@
 		919E86FE173A58E700A25E07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				919E8722173A5A9400A25E07 /* libxml2.dylib */,
+				919E8726173A5AA400A25E07 /* libz.dylib */,
+				919E872E173A5AC300A25E07 /* libiconv.dylib */,
+				919E8738173A5AE300A25E07 /* libsqlite3.dylib */,
+				916589CF179440C800F13BF2 /* MapBox.bundle */,
+				91A8029C17953898007EC5B6 /* TestFlightSDK1.2.6 */,
+				916589E01794429700F13BF2 /* Twitter+OAuth */,
+				91658A411794450D00F13BF2 /* Vkontakte */,
+				55A80F1517747EF000089216 /* minizip */,
+				919E8A8E173A5EAE00A25E07 /* AFNetworking */,
+				916587DF1794407600F13BF2 /* FBConnect */,
+				91A80271179519A5007EC5B6 /* ZBarSDK */,
+				91A8026F17944CE1007EC5B6 /* MapBox.framework */,
 				919E873C173A5AF700A25E07 /* MapKit.framework */,
 				919E873A173A5AEF00A25E07 /* CoreLocation.framework */,
-				919E8738173A5AE300A25E07 /* libsqlite3.dylib */,
 				919E8736173A5ADC00A25E07 /* AVFoundation.framework */,
 				919E8734173A5AD500A25E07 /* CoreMedia.framework */,
 				919E8732173A5ACE00A25E07 /* CoreVideo.framework */,
 				919E8730173A5AC800A25E07 /* QuartzCore.framework */,
-				919E872E173A5AC300A25E07 /* libiconv.dylib */,
 				919E872C173A5AB900A25E07 /* Accounts.framework */,
 				919E872A173A5AB200A25E07 /* AdSupport.framework */,
 				919E8728173A5AAD00A25E07 /* Social.framework */,
-				919E8726173A5AA400A25E07 /* libz.dylib */,
 				919E8724173A5A9B00A25E07 /* CoreText.framework */,
-				919E8722173A5A9400A25E07 /* libxml2.dylib */,
 				919E8720173A5A8C00A25E07 /* MessageUI.framework */,
 				919E871E173A5A8400A25E07 /* SystemConfiguration.framework */,
 				919E871C173A5A7C00A25E07 /* MobileCoreServices.framework */,
@@ -1346,40 +1367,15 @@
 			children = (
 				91A8029717952431007EC5B6 /* 4.png */,
 				91A8029817952431007EC5B6 /* 5.png */,
-				9169EA36178AA71200888531 /* MLPAccessoryBadge.h */,
-				9169EA37178AA71200888531 /* MLPAccessoryBadge.m */,
-				91A80294179519C2007EC5B6 /* MBProgressHUD.m */,
-				91A80295179519C2007EC5B6 /* MBProgressHUD.h */,
-				91A80271179519A5007EC5B6 /* ZBarSDK */,
-				91A8026F17944CE1007EC5B6 /* MapBox.framework */,
-				916589CF179440C800F13BF2 /* MapBox.bundle */,
-				916588321794409B00F13BF2 /* Work PNG */,
-				916587DF1794407600F13BF2 /* FBConnect */,
 				919E8707173A58E700A25E07 /* LikeLik-Info.plist */,
+				91241949173A9CF8004B6837 /* Localizable.strings */,
 				919E8708173A58E700A25E07 /* InfoPlist.strings */,
 				919E870B173A58E700A25E07 /* main.m */,
 				919E870D173A58E700A25E07 /* LikeLik-Prefix.pch */,
-				919E89DA173A5E3A00A25E07 /* InterfaceFunctions.h */,
-				919E89DB173A5E3A00A25E07 /* InterfaceFunctions.m */,
-				916589D11794411A00F13BF2 /* LocalizationSystem.h */,
-				916589D21794411A00F13BF2 /* LocalizationSystem.m */,
-				916589D71794417600F13BF2 /* UIViewController+KNSemiModal.h */,
-				916589D81794417600F13BF2 /* UIViewController+KNSemiModal.m */,
-				916589DA1794418A00F13BF2 /* NSObject+YMOptionsAndDefaults.h */,
-				916589DB1794418A00F13BF2 /* NSObject+YMOptionsAndDefaults.m */,
-				55A80F2317747F5200089216 /* SSZipArchive.h */,
-				55A80F2417747F5200089216 /* SSZipArchive.m */,
-				916589DD1794420500F13BF2 /* Reachability.h */,
-				916589DE1794420500F13BF2 /* Reachability.m */,
-				91658A4E1794457700F13BF2 /* SCFacebook.h */,
-				91658A4F1794457700F13BF2 /* SCFacebook.m */,
-				91658A411794450D00F13BF2 /* Vkontakte */,
-				916589E01794429700F13BF2 /* Twitter+OAuth */,
-				55A80F1517747EF000089216 /* minizip */,
-				91241949173A9CF8004B6837 /* Localizable.strings */,
+				91A8029B17953851007EC5B6 /* Classes */,
+				916588321794409B00F13BF2 /* Work PNG */,
 				919E8C48173A61B200A25E07 /* Source FONTS */,
 				919E8AB8173A5ED700A25E07 /* Andrew */,
-				919E8A8E173A5EAE00A25E07 /* AFNetworking */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1409,7 +1405,8 @@
 				919E8AA0173A5EAE00A25E07 /* UIImageView+AFNetworking.h */,
 				919E8AA1173A5EAE00A25E07 /* UIImageView+AFNetworking.m */,
 			);
-			path = AFNetworking;
+			name = AFNetworking;
+			path = LikeLik/AFNetworking;
 			sourceTree = "<group>";
 		};
 		919E8AB8173A5ED700A25E07 /* Andrew */ = {
@@ -1444,7 +1441,8 @@
 				91A80289179519A5007EC5B6 /* libzbar.a */,
 				91A8028A179519A5007EC5B6 /* Resources */,
 			);
-			path = ZBarSDK;
+			name = ZBarSDK;
+			path = LikeLik/ZBarSDK;
 			sourceTree = "<group>";
 		};
 		91A80272179519A5007EC5B6 /* Headers */ = {
@@ -1499,6 +1497,42 @@
 				91A8028E179519A5007EC5B6 /* zbar-samples.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		91A8029B17953851007EC5B6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				55A80F2317747F5200089216 /* SSZipArchive.h */,
+				55A80F2417747F5200089216 /* SSZipArchive.m */,
+				916589DD1794420500F13BF2 /* Reachability.h */,
+				916589DE1794420500F13BF2 /* Reachability.m */,
+				91658A4E1794457700F13BF2 /* SCFacebook.h */,
+				91658A4F1794457700F13BF2 /* SCFacebook.m */,
+				91A80295179519C2007EC5B6 /* MBProgressHUD.h */,
+				91A80294179519C2007EC5B6 /* MBProgressHUD.m */,
+				919E89DA173A5E3A00A25E07 /* InterfaceFunctions.h */,
+				919E89DB173A5E3A00A25E07 /* InterfaceFunctions.m */,
+				916589D11794411A00F13BF2 /* LocalizationSystem.h */,
+				916589D21794411A00F13BF2 /* LocalizationSystem.m */,
+				9169EA36178AA71200888531 /* MLPAccessoryBadge.h */,
+				9169EA37178AA71200888531 /* MLPAccessoryBadge.m */,
+				916589D71794417600F13BF2 /* UIViewController+KNSemiModal.h */,
+				916589D81794417600F13BF2 /* UIViewController+KNSemiModal.m */,
+				916589DA1794418A00F13BF2 /* NSObject+YMOptionsAndDefaults.h */,
+				916589DB1794418A00F13BF2 /* NSObject+YMOptionsAndDefaults.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		91A8029C17953898007EC5B6 /* TestFlightSDK1.2.6 */ = {
+			isa = PBXGroup;
+			children = (
+				91A8029D17953898007EC5B6 /* libTestFlight.a */,
+				91A8029E17953898007EC5B6 /* README.md */,
+				91A8029F17953898007EC5B6 /* release_notes.md */,
+				91A802A017953898007EC5B6 /* TestFlight.h */,
+			);
+			path = TestFlightSDK1.2.6;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1790,6 +1824,8 @@
 				91A80293179519A5007EC5B6 /* zbar-samples.png in Resources */,
 				91A8029917952432007EC5B6 /* 4.png in Resources */,
 				91A8029A17952432007EC5B6 /* 5.png in Resources */,
+				91A802A217953898007EC5B6 /* README.md in Resources */,
+				91A802A317953898007EC5B6 /* release_notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1996,6 +2032,7 @@
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/TestFlightSDK1.2.6\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
@@ -2035,6 +2072,7 @@
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/TestFlightSDK1.2.6\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",

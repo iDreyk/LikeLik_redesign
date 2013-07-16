@@ -13,7 +13,7 @@
     #import <Foundation/Foundation.h>
     #import "InterfaceFunctions.h"
     #import "ExternalFunctions.h"
-
+    #import "TestFlight.h"
     #import "AFHTTPRequestOperation.h"
     #import "AFHTTPClient.h"
 

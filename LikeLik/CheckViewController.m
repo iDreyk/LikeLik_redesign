@@ -157,7 +157,7 @@ static BOOL foreignversion = NO;
     [scanner setSymbology: ZBAR_I25
                    config: ZBAR_CFG_ENABLE
                        to: 0];
-        //[TestFlight passCheckpoint:@"Open Camera"];
+        [TestFlight passCheckpoint:@"Open Camera"];
     [self presentViewController:reader animated:YES completion:^{}];
 }
 
@@ -194,7 +194,7 @@ static BOOL foreignversion = NO;
 {
     
 
-    //[TestFlight passCheckpoint:@"Recognize QR"];
+    [TestFlight passCheckpoint:@"Recognize QR"];
 
     id<NSFastEnumeration> results =
     [info objectForKey: ZBarReaderControllerResults];

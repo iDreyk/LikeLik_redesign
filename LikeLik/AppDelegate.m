@@ -7,6 +7,7 @@
 //
 NSString *localReceived = @"localReceived";
 #import "AppDelegate.h"
+
 #import <QuartzCore/QuartzCore.h>
 #import "SearchViewController.h"
 #import "PlaceViewController.h"
@@ -26,7 +27,7 @@ NSInteger wasinactive = NO;
 #define backgroundg @"l27h7RU2123123132dzVfPoQssda"
 @implementation AppDelegate
 
-#warning воронка пользования
+//#warning воронка пользования
 @synthesize alertLabel;
 +(UIFont *)OpenSansRegular:(CGFloat)size{
     UIFont* font = [UIFont fontWithName:@"OpenSans" size:size/2];
@@ -173,6 +174,15 @@ NSInteger wasinactive = NO;
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[AppDelegate OpenSansBoldwithSize:20], UITextAttributeFont,nil] forState:UIControlStateNormal];
     
     [SCFacebook initWithAppId:@"465683146835593"];
+    
+    
+    // start of your application:didFinishLaunchingWithOptions
+    
+    // !!!: Use the next line only during beta
+    // [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+    
+    [TestFlight takeOff:@"ea479ea2-6ad1-441d-994b-c32244e4f232"];
+    
     return YES;
 }
 
@@ -247,7 +257,7 @@ NSInteger wasinactive = NO;
         //        [self.window makeKeyAndVisible];
         //      //  [[NSNotificationCenter defaultCenter] postNotificationName:afternotification object:self];
         //
-        //        //[TestFlight passCheckpoint:[notification.userInfo objectForKey:@"Place"]];
+        [TestFlight passCheckpoint:[notification.userInfo objectForKey:@"Place"]];
         //
     }
     else{
