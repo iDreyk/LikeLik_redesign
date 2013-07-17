@@ -816,6 +816,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsG-Z9-q2q"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -827,17 +828,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="Phc-Dy-OOZ" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" constant="23" id="AT3-xl-kC3"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="Cvg-v5-f6q"/>
                             <constraint firstItem="ir1-cR-wYx" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="HDT-kO-s2q"/>
+                            <constraint firstItem="AsG-Z9-q2q" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="Jg7-ee-Aoe"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="LnF-Wb-Bpb"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="MIb-gh-GHj"/>
                             <constraint firstItem="ebO-Ac-SqK" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="SRM-6X-d5L"/>
+                            <constraint firstItem="AsG-Z9-q2q" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="SnG-Aa-vdf"/>
                             <constraint firstItem="pkf-ZQ-6JK" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" constant="5" id="UAa-8a-F14"/>
                             <constraint firstItem="Neb-J9-HD9" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="XSL-Gs-Fl8"/>
                             <constraint firstAttribute="bottom" secondItem="pkf-ZQ-6JK" secondAttribute="bottom" constant="89" id="dqf-qr-QVu"/>
                             <constraint firstAttribute="trailing" secondItem="Phc-Dy-OOZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="frV-Ue-29C"/>
+                            <constraint firstItem="AsG-Z9-q2q" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="lfL-hD-fRg"/>
                             <constraint firstItem="ebO-Ac-SqK" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" constant="35" id="oau-0T-bXN"/>
                             <constraint firstItem="Neb-J9-HD9" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="pSp-4O-zke"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="pq1-18-2h0"/>
                             <constraint firstItem="Neb-J9-HD9" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="q9f-cU-lcX"/>
+                            <constraint firstItem="AsG-Z9-q2q" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="u08-XF-Q7O"/>
                             <constraint firstItem="Neb-J9-HD9" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="wjH-zs-FY3"/>
                             <constraint firstItem="W9Q-eS-Gik" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="xyN-oc-JsL"/>
                         </constraints>
@@ -853,10 +858,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <connections>
                         <outlet property="Favorites" destination="OP5-p7-jgc" id="QCm-O2-CLn"/>
                         <outlet property="GOUSE" destination="RSG-WJ-V5R" id="wd0-iN-sb0"/>
+                        <outlet property="InfoPlaceTable" destination="AsG-Z9-q2q" id="3JS-hd-JDk"/>
                         <outlet property="PlaceView" destination="ir1-cR-wYx" id="Ilu-uK-vCX"/>
                         <outlet property="PlaceonMap" destination="kt1-v4-mLf" id="ihy-F2-1ep"/>
                         <outlet property="ScrollView" destination="9Fa-Su-OBR" id="EgS-EQ-JnK"/>
                         <outlet property="Share" destination="MoY-7z-6sL" id="1Ov-lk-knG"/>
+                        <outlet property="hint" destination="AsG-Z9-q2q" id="gmf-u4-SZu"/>
                         <outlet property="info_button" destination="W9Q-eS-Gik" id="0rU-bM-dZg"/>
                         <outlet property="locationButton" destination="pkf-ZQ-6JK" id="jQv-Ri-52D"/>
                         <outlet property="pageControl" destination="ebO-Ac-SqK" id="0Mj-Z4-XF2"/>
@@ -2161,8 +2168,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="pVH-Es-TaK"/>
-        <segue reference="MxA-FI-ppy"/>
-        <segue reference="uZI-6Y-Ryz"/>
+        <segue reference="mIE-ck-FCQ"/>
+        <segue reference="CID-7V-uDc"/>
         <segue reference="yCK-Wu-Xo6"/>
         <segue reference="XKw-Kc-cfl"/>
     </inferredMetricsTieBreakers>

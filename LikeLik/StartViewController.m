@@ -161,6 +161,15 @@
 
 #pragma mark - Table view delegate
 
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+#warning willSelectRowAtIndexPath
+    if ([indexPath row] > 1) {
+        return nil;
+    }
+
+    return indexPath;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger tabIndex = self.tabBarController.selectedIndex;

@@ -661,6 +661,7 @@ static CLLocation *Me;
     
     return [[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[City objectForKey:@"city_EN"] ofType:@""],[[City objectForKey:@"photos"] objectForKey:@"large"]];
 }
+
 //
 //  Vis_tour
 //
@@ -771,6 +772,11 @@ static CLLocation *Me;
         [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"small"]]];
     }
     
+    NSArray *tmp = [self getSoonCitiesArray:presise];
+    
+    [tmp1 addObjectsFromArray:tmp];
+    [tmp2 addObjectsFromArray:tmp];
+    
     if (presise == 1) {
         return tmp1;
     }
@@ -827,6 +833,38 @@ static CLLocation *Me;
     else
         return tmp2;
 }
+//  soon cities array
++ (NSArray *) getSoonCitiesArray : (int) presise {
+    
+    NSString *cataloguesPath = [[NSBundle mainBundle]pathForResource:@"SoonCities" ofType:@"plist"];
+    NSMutableArray *soonCitiesArray = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
+    NSString *name = [self getLocalizedString:@"name"];
+    
+    NSMutableArray *tmp1 = [[NSMutableArray alloc]init];
+    NSMutableArray *tmp2 = [[NSMutableArray alloc]init];
+    
+    for (int i = 0; i < [soonCitiesArray count]; i++) {
+        [tmp1 addObject:[[soonCitiesArray objectAtIndex:i]objectForKey:name]];
+        [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:@"soonCities" ofType:@""],[[soonCitiesArray objectAtIndex:i] objectForKey:@"img"]]];
+        
+    }
+    
+    if (presise == 1) {
+        return tmp1;
+    }
+    else
+        return tmp2;
+
+}
+
+
+
+
+
+
+
+
+
 
 //
 //  side Functions
@@ -935,4 +973,6 @@ static CLLocation *Me;
     }
     return success;
 }
+
+
 @end

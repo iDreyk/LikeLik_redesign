@@ -166,9 +166,25 @@ CGFloat alpha = 0.5;
     recognizer.delegate = self;
     
     [self.hint addGestureRecognizer:recognizer];
+    NSString *tmp = [[NSString alloc] init];
+    NSString *Lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"Language"];
+    if ([Lang isEqualToString:@"Русский"])
+        tmp = @"ru";
+    if ([Lang isEqualToString:@"Deutsch"])
+        tmp = @"de";
+    if ([Lang isEqualToString:@"English"])
+        tmp = @"en";
+    if ([Lang isEqualToString:@"Japanese"]) {
+        tmp = @"jp";
+    }
     if (![[[NSUserDefaults standardUserDefaults ] objectForKey:@"hint"] isEqualToString:@"YES"]) {
         NSLog(@"%@",LocalizationGetLanguage);
-        [self.hint setImage:[UIImage imageNamed:@"5.png"]];
+        if ([AppDelegate isiPhone5]) {
+            [self.hint setImage:[UIImage imageNamed:[NSString stringWithFormat:@"5-%@.png",tmp]]];
+        }
+        else{
+            [self.hint setImage:[UIImage imageNamed:[NSString stringWithFormat:@"4-%@.png",tmp]]];
+        }
         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"hint"];
     }
     else{
