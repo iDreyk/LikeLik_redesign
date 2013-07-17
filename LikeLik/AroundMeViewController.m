@@ -14,6 +14,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapBox/MapBox.h>
 //
+//
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
