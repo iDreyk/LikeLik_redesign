@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5525F1C81796BDDD00DA8454 /* soonCities_RU in Resources */ = {isa = PBXBuildFile; fileRef = 5525F1C71796BDDD00DA8454 /* soonCities_RU */; };
-		5525F1CB1796BE6400DA8454 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 5525F1C91796BE6400DA8454 /* Moscow */; };
-		5525F1CC1796BE6400DA8454 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 5525F1CA1796BE6400DA8454 /* Vienna */; };
-		5525F1D01796BF3200DA8454 /* SoonCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5525F1CF1796BF3200DA8454 /* SoonCities.plist */; };
-		5525F1D21796BF6100DA8454 /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5525F1D11796BF6100DA8454 /* catalogue.plist */; };
 		5594162A17957BE700828B47 /* appData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5594162917957BE700828B47 /* appData.plist */; };
 		5594162C17957C5200828B47 /* 5-jp.png in Resources */ = {isa = PBXBuildFile; fileRef = 5594162B17957C5200828B47 /* 5-jp.png */; };
 		5594162D17957CA500828B47 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8722173A5A9400A25E07 /* libxml2.dylib */; };
@@ -362,14 +357,13 @@
 		91A802BA17957605007EC5B6 /* 5-ru.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802B417957605007EC5B6 /* 5-ru.png */; };
 		91A802C017957A3A007EC5B6 /* 4-jp.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802BF17957A39007EC5B6 /* 4-jp.png */; };
 		91C08F3817771336007B98D3 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C08F3717771336007B98D3 /* StartViewController.m */; };
+		91FE3A091796C387000304D4 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A071796C387000304D4 /* Moscow */; };
+		91FE3A0A1796C387000304D4 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A081796C387000304D4 /* Vienna */; };
+		91FE3A0C1796C399000304D4 /* soonCities_RU in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A0B1796C399000304D4 /* soonCities_RU */; };
+		91FE3A141796C407000304D4 /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A131796C407000304D4 /* catalogue.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5525F1C71796BDDD00DA8454 /* soonCities_RU */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_RU; sourceTree = "<group>"; };
-		5525F1C91796BE6400DA8454 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Moscow; sourceTree = "<group>"; };
-		5525F1CA1796BE6400DA8454 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Vienna; sourceTree = "<group>"; };
-		5525F1CF1796BF3200DA8454 /* SoonCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SoonCities.plist; sourceTree = "<group>"; };
-		5525F1D11796BF6100DA8454 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catalogue.plist; sourceTree = "<group>"; };
 		5594162917957BE700828B47 /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = appData.plist; path = LikeLik/appData.plist; sourceTree = SOURCE_ROOT; };
 		5594162B17957C5200828B47 /* 5-jp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-jp.png"; sourceTree = "<group>"; };
 		55A80F0A17747C6400089216 /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExternalFunctions.h; path = LikeLik/ExternalFunctions.h; sourceTree = SOURCE_ROOT; };
@@ -850,6 +844,10 @@
 		91A802B417957605007EC5B6 /* 5-ru.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-ru.png"; sourceTree = "<group>"; };
 		91A802BF17957A39007EC5B6 /* 4-jp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4-jp.png"; sourceTree = "<group>"; };
 		91C08F3717771336007B98D3 /* StartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		91FE3A071796C387000304D4 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Moscow; sourceTree = "<group>"; };
+		91FE3A081796C387000304D4 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Vienna; sourceTree = "<group>"; };
+		91FE3A0B1796C399000304D4 /* soonCities_RU */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_RU; sourceTree = "<group>"; };
+		91FE3A131796C407000304D4 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catalogue.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1391,6 +1389,10 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				91FE3A131796C407000304D4 /* catalogue.plist */,
+				91FE3A0B1796C399000304D4 /* soonCities_RU */,
+				91FE3A071796C387000304D4 /* Moscow */,
+				91FE3A081796C387000304D4 /* Vienna */,
 				91A802AF17957604007EC5B6 /* 4-de.png */,
 				91A802B017957604007EC5B6 /* 4-en.png */,
 				91A802B117957604007EC5B6 /* 4-ru.png */,
@@ -1446,11 +1448,6 @@
 			isa = PBXGroup;
 			children = (
 				5594162917957BE700828B47 /* appData.plist */,
-				5525F1CF1796BF3200DA8454 /* SoonCities.plist */,
-				5525F1D11796BF6100DA8454 /* catalogue.plist */,
-				5525F1C71796BDDD00DA8454 /* soonCities_RU */,
-				5525F1C91796BE6400DA8454 /* Moscow */,
-				5525F1CA1796BE6400DA8454 /* Vienna */,
 				55A80F0A17747C6400089216 /* ExternalFunctions.h */,
 				55A80F0B17747C6400089216 /* ExternalFunctions.m */,
 			);
@@ -1881,11 +1878,10 @@
 				91A802C017957A3A007EC5B6 /* 4-jp.png in Resources */,
 				5594162A17957BE700828B47 /* appData.plist in Resources */,
 				5594162C17957C5200828B47 /* 5-jp.png in Resources */,
-				5525F1C81796BDDD00DA8454 /* soonCities_RU in Resources */,
-				5525F1CB1796BE6400DA8454 /* Moscow in Resources */,
-				5525F1CC1796BE6400DA8454 /* Vienna in Resources */,
-				5525F1D01796BF3200DA8454 /* SoonCities.plist in Resources */,
-				5525F1D21796BF6100DA8454 /* catalogue.plist in Resources */,
+				91FE3A091796C387000304D4 /* Moscow in Resources */,
+				91FE3A0A1796C387000304D4 /* Vienna in Resources */,
+				91FE3A0C1796C399000304D4 /* soonCities_RU in Resources */,
+				91FE3A141796C407000304D4 /* catalogue.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
