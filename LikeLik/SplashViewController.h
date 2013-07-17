@@ -18,6 +18,7 @@
     CLRegion *Dostoevskiy;
     CLLocation *Me;
 }
+//
 @property (nonatomic,retain) IBOutlet UILocalNotification *localNotification;
 @property(nonatomic, retain) IBOutlet UILabel  *alertLabel;
 @property (weak, nonatomic) IBOutlet UIButton *LeftButton;
