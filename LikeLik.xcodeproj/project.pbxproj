@@ -7,19 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5525F1C81796BDDD00DA8454 /* soonCities_RU in Resources */ = {isa = PBXBuildFile; fileRef = 5525F1C71796BDDD00DA8454 /* soonCities_RU */; };
+		5525F1CB1796BE6400DA8454 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 5525F1C91796BE6400DA8454 /* Moscow */; };
+		5525F1CC1796BE6400DA8454 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 5525F1CA1796BE6400DA8454 /* Vienna */; };
+		5525F1D01796BF3200DA8454 /* SoonCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5525F1CF1796BF3200DA8454 /* SoonCities.plist */; };
+		5525F1D21796BF6100DA8454 /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5525F1D11796BF6100DA8454 /* catalogue.plist */; };
 		5594162A17957BE700828B47 /* appData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5594162917957BE700828B47 /* appData.plist */; };
 		5594162C17957C5200828B47 /* 5-jp.png in Resources */ = {isa = PBXBuildFile; fileRef = 5594162B17957C5200828B47 /* 5-jp.png */; };
 		5594162D17957CA500828B47 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8722173A5A9400A25E07 /* libxml2.dylib */; };
-		5594162F17958A4100828B47 /* SoonCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5594162E17958A4100828B47 /* SoonCities.plist */; };
-		559416311795944000828B47 /* soonCities in Resources */ = {isa = PBXBuildFile; fileRef = 559416301795944000828B47 /* soonCities */; };
 		55A80F0C17747C6400089216 /* ExternalFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F0B17747C6400089216 /* ExternalFunctions.m */; };
 		55A80F1F17747EF000089216 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F1717747EF000089216 /* ioapi.c */; };
 		55A80F2017747EF000089216 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F1917747EF000089216 /* mztools.c */; };
 		55A80F2117747EF000089216 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F1B17747EF000089216 /* unzip.c */; };
 		55A80F2217747EF000089216 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F1D17747EF000089216 /* zip.c */; };
 		55A80F2517747F5200089216 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F2417747F5200089216 /* SSZipArchive.m */; };
-		55A80F2617747FEF00089216 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 55A293EB1774657B001E51D3 /* Moscow */; };
-		55A80F271774800000089216 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 55A293EC1774657B001E51D3 /* Vienna */; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */; };
 		916587F91794407600F13BF2 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 916587E11794407600F13BF2 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -269,7 +270,6 @@
 		91658A491794450D00F13BF2 /* Vkontakte.m in Sources */ = {isa = PBXBuildFile; fileRef = 91658A451794450D00F13BF2 /* Vkontakte.m */; };
 		91658A4A1794450D00F13BF2 /* VkontakteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91658A471794450D00F13BF2 /* VkontakteViewController.m */; };
 		91658A501794457700F13BF2 /* SCFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 91658A4F1794457700F13BF2 /* SCFacebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9169EA2C1789808B00888531 /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9169EA2B1789808B00888531 /* catalogue.plist */; };
 		9169EA38178AA71200888531 /* MLPAccessoryBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9169EA37178AA71200888531 /* MLPAccessoryBadge.m */; };
 		918F70B1176DA433000FE810 /* LikeLik icon 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */; };
 		918F70B2176DA43B000FE810 /* LikeLik icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */; };
@@ -365,12 +365,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5525F1C71796BDDD00DA8454 /* soonCities_RU */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_RU; sourceTree = "<group>"; };
+		5525F1C91796BE6400DA8454 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Moscow; sourceTree = "<group>"; };
+		5525F1CA1796BE6400DA8454 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Vienna; sourceTree = "<group>"; };
+		5525F1CF1796BF3200DA8454 /* SoonCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SoonCities.plist; sourceTree = "<group>"; };
+		5525F1D11796BF6100DA8454 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catalogue.plist; sourceTree = "<group>"; };
 		5594162917957BE700828B47 /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = appData.plist; path = LikeLik/appData.plist; sourceTree = SOURCE_ROOT; };
 		5594162B17957C5200828B47 /* 5-jp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-jp.png"; sourceTree = "<group>"; };
-		5594162E17958A4100828B47 /* SoonCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SoonCities.plist; path = /Users/vladimirmalov/Desktop/LikeLik/LikeLik/SoonCities.plist; sourceTree = "<absolute>"; };
-		559416301795944000828B47 /* soonCities */ = {isa = PBXFileReference; lastKnownFileType = folder; name = soonCities; path = /Users/vladimirmalov/Desktop/LikeLik/LikeLik/soonCities; sourceTree = "<absolute>"; };
-		55A293EB1774657B001E51D3 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Moscow; path = /Volumes/Data/cities/Moscow; sourceTree = "<absolute>"; };
-		55A293EC1774657B001E51D3 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = /Volumes/Data/cities/Vienna; sourceTree = "<absolute>"; };
 		55A80F0A17747C6400089216 /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExternalFunctions.h; path = LikeLik/ExternalFunctions.h; sourceTree = SOURCE_ROOT; };
 		55A80F0B17747C6400089216 /* ExternalFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExternalFunctions.m; path = LikeLik/ExternalFunctions.m; sourceTree = SOURCE_ROOT; };
 		55A80F1617747EF000089216 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -694,7 +695,6 @@
 		91658A471794450D00F13BF2 /* VkontakteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkontakteViewController.m; sourceTree = "<group>"; };
 		91658A4E1794457700F13BF2 /* SCFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFacebook.h; sourceTree = "<group>"; };
 		91658A4F1794457700F13BF2 /* SCFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFacebook.m; sourceTree = "<group>"; };
-		9169EA2B1789808B00888531 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = catalogue.plist; path = "/Volumes/Data/LikeLik sources/catalogue.plist"; sourceTree = "<absolute>"; };
 		9169EA36178AA71200888531 /* MLPAccessoryBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAccessoryBadge.h; sourceTree = "<group>"; };
 		9169EA37178AA71200888531 /* MLPAccessoryBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLPAccessoryBadge.m; sourceTree = "<group>"; };
 		918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 57x57.png"; sourceTree = "<group>"; };
@@ -1446,11 +1446,11 @@
 			isa = PBXGroup;
 			children = (
 				5594162917957BE700828B47 /* appData.plist */,
-				5594162E17958A4100828B47 /* SoonCities.plist */,
-				9169EA2B1789808B00888531 /* catalogue.plist */,
-				559416301795944000828B47 /* soonCities */,
-				55A293EB1774657B001E51D3 /* Moscow */,
-				55A293EC1774657B001E51D3 /* Vienna */,
+				5525F1CF1796BF3200DA8454 /* SoonCities.plist */,
+				5525F1D11796BF6100DA8454 /* catalogue.plist */,
+				5525F1C71796BDDD00DA8454 /* soonCities_RU */,
+				5525F1C91796BE6400DA8454 /* Moscow */,
+				5525F1CA1796BE6400DA8454 /* Vienna */,
 				55A80F0A17747C6400089216 /* ExternalFunctions.h */,
 				55A80F0B17747C6400089216 /* ExternalFunctions.m */,
 			);
@@ -1650,9 +1650,6 @@
 				919E8B1C173A616500A25E07 /* OpenSansBold.ttf in Resources */,
 				918F70B1176DA433000FE810 /* LikeLik icon 57x57.png in Resources */,
 				918F70B2176DA43B000FE810 /* LikeLik icon 114x114.png in Resources */,
-				55A80F2617747FEF00089216 /* Moscow in Resources */,
-				55A80F271774800000089216 /* Vienna in Resources */,
-				9169EA2C1789808B00888531 /* catalogue.plist in Resources */,
 				916587FA1794407600F13BF2 /* FBDialog.bundle in Resources */,
 				916588041794407600F13BF2 /* README.mdown in Resources */,
 				916589001794409C00F13BF2 /* 124_124 Social_Icons11@2x.png in Resources */,
@@ -1884,8 +1881,11 @@
 				91A802C017957A3A007EC5B6 /* 4-jp.png in Resources */,
 				5594162A17957BE700828B47 /* appData.plist in Resources */,
 				5594162C17957C5200828B47 /* 5-jp.png in Resources */,
-				5594162F17958A4100828B47 /* SoonCities.plist in Resources */,
-				559416311795944000828B47 /* soonCities in Resources */,
+				5525F1C81796BDDD00DA8454 /* soonCities_RU in Resources */,
+				5525F1CB1796BE6400DA8454 /* Moscow in Resources */,
+				5525F1CC1796BE6400DA8454 /* Vienna in Resources */,
+				5525F1D01796BF3200DA8454 /* SoonCities.plist in Resources */,
+				5525F1D21796BF6100DA8454 /* catalogue.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

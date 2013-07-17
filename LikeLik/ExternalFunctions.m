@@ -835,7 +835,7 @@ static CLLocation *Me;
 }
 //  soon cities array
 + (NSArray *) getSoonCitiesArray : (int) presise {
-    
+    NSString *soonCitiesLocalized = [self getLocalizedString:@"soonCities"];
     NSString *cataloguesPath = [[NSBundle mainBundle]pathForResource:@"SoonCities" ofType:@"plist"];
     NSMutableArray *soonCitiesArray = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
     NSString *name = [self getLocalizedString:@"name"];
@@ -845,7 +845,7 @@ static CLLocation *Me;
     
     for (int i = 0; i < [soonCitiesArray count]; i++) {
         [tmp1 addObject:[[soonCitiesArray objectAtIndex:i]objectForKey:name]];
-        [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:@"soonCities" ofType:@""],[[soonCitiesArray objectAtIndex:i] objectForKey:@"img"]]];
+        [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:soonCitiesLocalized ofType:@""],[[soonCitiesArray objectAtIndex:i] objectForKey:@"img"]]];
         
     }
     
