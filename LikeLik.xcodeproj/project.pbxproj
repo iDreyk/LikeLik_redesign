@@ -367,8 +367,8 @@
 /* Begin PBXFileReference section */
 		5594162917957BE700828B47 /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = appData.plist; path = LikeLik/appData.plist; sourceTree = SOURCE_ROOT; };
 		5594162B17957C5200828B47 /* 5-jp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-jp.png"; sourceTree = "<group>"; };
-		5594162E17958A4100828B47 /* SoonCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SoonCities.plist; path = "/Users/andrey/Desktop/LikeLik Копия Вова/LikeLik/SoonCities.plist"; sourceTree = "<absolute>"; };
-		559416301795944000828B47 /* soonCities */ = {isa = PBXFileReference; lastKnownFileType = folder; name = soonCities; path = "/Users/andrey/Desktop/LikeLik Копия Вова/LikeLik/soonCities"; sourceTree = "<absolute>"; };
+		5594162E17958A4100828B47 /* SoonCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SoonCities.plist; path = "/Users/andrey/Desktop/Новая папка/LikeLik Копия Вова/LikeLik/SoonCities.plist"; sourceTree = "<absolute>"; };
+		559416301795944000828B47 /* soonCities */ = {isa = PBXFileReference; lastKnownFileType = folder; name = soonCities; path = "/Users/andrey/Desktop/Новая папка/LikeLik Копия Вова/LikeLik/soonCities"; sourceTree = "<absolute>"; };
 		55A293EB1774657B001E51D3 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Moscow; path = "/Volumes/Data-1/cities/Moscow"; sourceTree = "<absolute>"; };
 		55A293EC1774657B001E51D3 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Vienna; path = "/Volumes/Data-1/cities/Vienna"; sourceTree = "<absolute>"; };
 		55A80F0A17747C6400089216 /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExternalFunctions.h; path = LikeLik/ExternalFunctions.h; sourceTree = SOURCE_ROOT; };
