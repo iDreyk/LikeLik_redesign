@@ -126,7 +126,7 @@ static NSDictionary *Place1;
     locationManager = nil;
     self.CityName.text = AMLocalizedString(@"Around Me", nil);
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
-    self.CityImage.image = [UIImage imageNamed:self.Image];
+    self.CityImage.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.CityNameText]];
     
     
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;

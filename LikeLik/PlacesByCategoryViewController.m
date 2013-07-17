@@ -97,7 +97,7 @@ static NSDictionary *Place1;
     self.CategoryLabel.font = [AppDelegate OpenSansSemiBold:60];
     
     
-    self.CityImage.image = [UIImage imageNamed:self.Image];
+    self.CityImage.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.CityName]];
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
