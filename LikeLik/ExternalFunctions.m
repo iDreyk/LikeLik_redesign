@@ -769,7 +769,7 @@ static CLLocation *Me;
     
     for (int i = 0; i < [catalogues count]; i++) {
         [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-        [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"small"]]];
+        [tmp2 addObject:[UIImage imageWithContentsOfFile:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"small"]]]];
     }
     
     NSArray *tmp = [self getSoonCitiesArray:presise];
@@ -797,7 +797,7 @@ static CLLocation *Me;
     for (int i = 0; i < [catalogues count]; i++) {
         if ([[[catalogues objectAtIndex:i]objectForKey:@"downloaded"] isEqualToString:@"1"]) {
             [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"small"]]];
+            [tmp2 addObject:[UIImage imageWithContentsOfFile:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"small"]]]];
         }
     }
     
@@ -823,7 +823,7 @@ static CLLocation *Me;
     for (int i = 0; i < [catalogues count]; i++) {
         if ([[[catalogues objectAtIndex:i]objectForKey:@"country"] isEqualToString:country]) {
             [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-            [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"small"]]];
+            [tmp2 addObject:[UIImage imageWithContentsOfFile: [[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"small"]]]];
         }
     }
     
@@ -845,7 +845,7 @@ static CLLocation *Me;
     
     for (int i = 0; i < [soonCitiesArray count]; i++) {
         [tmp1 addObject:[[soonCitiesArray objectAtIndex:i]objectForKey:name]];
-        [tmp2 addObject:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:soonCitiesLocalized ofType:@""],[[soonCitiesArray objectAtIndex:i] objectForKey:@"img"]]];
+        [tmp2 addObject:[UIImage imageWithContentsOfFile:[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:soonCitiesLocalized ofType:@""],[[soonCitiesArray objectAtIndex:i] objectForKey:@"img"]]]];
         
     }
     
