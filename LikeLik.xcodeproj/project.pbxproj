@@ -361,6 +361,9 @@
 		91FE3A0A1796C387000304D4 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A081796C387000304D4 /* Vienna */; };
 		91FE3A0C1796C399000304D4 /* soonCities_RU in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A0B1796C399000304D4 /* soonCities_RU */; };
 		91FE3A141796C407000304D4 /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A131796C407000304D4 /* catalogue.plist */; };
+		91FE3A1C1796C581000304D4 /* soonCities_DE in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1B1796C581000304D4 /* soonCities_DE */; };
+		91FE3A1E1796C591000304D4 /* soonCities_EN in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1D1796C591000304D4 /* soonCities_EN */; };
+		91FE3A201796C5A2000304D4 /* SoonCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1F1796C5A2000304D4 /* SoonCities.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -848,6 +851,9 @@
 		91FE3A081796C387000304D4 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Vienna; sourceTree = "<group>"; };
 		91FE3A0B1796C399000304D4 /* soonCities_RU */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_RU; sourceTree = "<group>"; };
 		91FE3A131796C407000304D4 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catalogue.plist; sourceTree = "<group>"; };
+		91FE3A1B1796C581000304D4 /* soonCities_DE */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_DE; sourceTree = "<group>"; };
+		91FE3A1D1796C591000304D4 /* soonCities_EN */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_EN; sourceTree = "<group>"; };
+		91FE3A1F1796C5A2000304D4 /* SoonCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SoonCities.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1389,7 +1395,10 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				91FE3A1F1796C5A2000304D4 /* SoonCities.plist */,
 				91FE3A131796C407000304D4 /* catalogue.plist */,
+				91FE3A1D1796C591000304D4 /* soonCities_EN */,
+				91FE3A1B1796C581000304D4 /* soonCities_DE */,
 				91FE3A0B1796C399000304D4 /* soonCities_RU */,
 				91FE3A071796C387000304D4 /* Moscow */,
 				91FE3A081796C387000304D4 /* Vienna */,
@@ -1882,6 +1891,9 @@
 				91FE3A0A1796C387000304D4 /* Vienna in Resources */,
 				91FE3A0C1796C399000304D4 /* soonCities_RU in Resources */,
 				91FE3A141796C407000304D4 /* catalogue.plist in Resources */,
+				91FE3A1C1796C581000304D4 /* soonCities_DE in Resources */,
+				91FE3A1E1796C591000304D4 /* soonCities_EN in Resources */,
+				91FE3A201796C5A2000304D4 /* SoonCities.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
