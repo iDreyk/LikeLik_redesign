@@ -132,7 +132,7 @@ static NSDictionary *Place;
         
         NSArray *catalogues = [[NSUserDefaults standardUserDefaults] objectForKey:@"Catalogues"];
         
-        if ([Me distanceFromLocation:oldLocation] > 100
+        if ([Me distanceFromLocation:oldLocation] > 10
             || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL) {
             NSLog(@"in if");
 

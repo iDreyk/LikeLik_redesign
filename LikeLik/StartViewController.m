@@ -202,11 +202,10 @@
 }
 
 -(void)ShowAlertView{
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Покупка"
-                                                      message:[NSString stringWithFormat:@"%@ %@",AMLocalizedString(@"You are up to download", nil),
-                                                               _CityLabels[[[[NSUserDefaults standardUserDefaults] objectForKey:@"row"] integerValue] ] ]
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Download", nil)
+                                                      message:AMLocalizedString(@"You are up to download LikeLik Catalogue", nil)
                                                      delegate:self
-                                            cancelButtonTitle:@"Спасибо, не хочу"
+                                            cancelButtonTitle:AMLocalizedString(@"Next time", nil)
                                             otherButtonTitles:@"Ok",nil];
     [message show];
     

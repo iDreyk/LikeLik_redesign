@@ -201,6 +201,7 @@ static CLLocation *Me;
     NSString *version = [self getIphoneString];
     double lat,lon;
     
+    
     int placesCount = [tempArrayOfPlacesIncategory count];
     
     for (int i = 0; i < placesCount; i++) {
