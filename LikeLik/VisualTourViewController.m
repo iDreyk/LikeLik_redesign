@@ -137,175 +137,19 @@ static BOOL infoViewIsOpen = NO;
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
-    [panRecognizer setMinimumNumberOfTouches:1];
-    [panRecognizer setMaximumNumberOfTouches:1];
-    [[self view] addGestureRecognizer:panRecognizer];
-    
-    
-    [super viewDidLoad];
     _scroll.delegate=self;
-    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    
-    self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions corporateIdentity]];
-    
-    
-    for (UIView * view in self.view.subviews) {
-        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
-        recognizer.delegate = self;
-        if ([view isEqual:self.locationButton] == NO) {
-            [view addGestureRecognizer:recognizer];
-        }
-        
+        photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
+    CGFloat xOrigin = 0 * self.view.frame.size.width;
+    UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    awesomeView.backgroundColor = [UIColor colorWithRed:0.5/1 green:0.5 blue:0.5 alpha:1];
+    awesomeView.image = [UIImage imageWithContentsOfFile:[[photos objectAtIndex:0] objectForKey:@"Picture"]];
+    if ([UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:0] objectForKey:@"Picture"]]].size.height == 640.0) {
+        awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:0] objectForKey:@"Picture"]]].size.height/4);
     }
-    
-    
-    NSURL *url;
-    if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
-        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
-    }
-    if ([self.CityName isEqualToString:@"Vienna"] || [self.CityName isEqualToString:@"Вена"] || [self.CityName isEqualToString:@"Wien"]){
-        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
-    }
-    
-    
-    RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
-    self.MapPhoto = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
-    self.MapPhoto.delegate = self;
-    self.MapPhoto.hideAttribution = YES;
-    self.MapPhoto.showsUserLocation = YES;
-    self.MapPhoto.hidden = YES;
-    if ([AppDelegate isiPhone5])
-        self.MapPhoto.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
-    else
-        self.MapPhoto.frame = CGRectMake(0.0, 0.0, 320.0, 416.0);
-    
-    
-    
-    self.MapPhoto.minZoom = 13;
-    self.MapPhoto.zoom = 13;
-    
-    
-    CLLocation *coord2 =[ExternalFunctions getCenterCoordinatesOfCity:self.CityName];
-    self.MapPhoto.centerCoordinate = coord2.coordinate;
-    [self.MapPhoto setAdjustTilesForRetinaDisplay:YES];
-    self.MapPhoto.showsUserLocation = YES;
-    
-    
-    NSArray *coord = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
-    CLLocation *tmp = [[coord objectAtIndex:0] objectForKey:@"Location"];
-    CLLocationCoordinate2D coord1 = tmp.coordinate;
-    // Annotations
-    
-    NSString *Title;
-    NSInteger numberofpins = [coord count];
-    for (int i = 0; i<numberofpins; i++) {
-        tmp = [[coord objectAtIndex:i] objectForKey:@"Location"];
-        coord1 = tmp.coordinate;
-//#warning Сюда название достопремичательности на карту (Аналогично Red_title)
-        Title = [[coord objectAtIndex:i] objectForKey:@"Name"];
-        RMAnnotation *marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPhoto coordinate:coord1 andTitle:Title];
-        marker1.annotationType = @"marker";
-        marker1.subtitle = [NSString stringWithFormat:@"%d",i];
-        marker1.userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blueColor],@"foregroundColor", nil];
-        [self.MapPhoto addAnnotation:marker1];
-    }
-    
-    
-    [self.visualMap setHidden:YES];
-    [self.view addSubview:self.MapPhoto];
-    
-    photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
-    
-    
-    self.pageControl.numberOfPages=[photos count];
-    self.pageControl.currentPage=0;
-    
-    
-    _scroll.pagingEnabled = YES;
-    _scroll.showsHorizontalScrollIndicator = NO;
-    _scroll.showsVerticalScrollIndicator = NO;
-    self.view.backgroundColor = [UIColor blackColor];
-    NSInteger numberOfViews = [photos count];
-    for (int i = 0; i < numberOfViews; i++) {
-        CGFloat xOrigin = i * self.view.frame.size.width;
-        UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        awesomeView.backgroundColor = [UIColor colorWithRed:0.5/i green:0.5 blue:0.5 alpha:1];
-        awesomeView.image = [UIImage imageWithContentsOfFile:[[photos objectAtIndex:i] objectForKey:@"Picture"]];
-        if ([UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:i] objectForKey:@"Picture"]]].size.height == 640.0) {
-            awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:i] objectForKey:@"Picture"]]].size.height/4);
-        }
-        
-        [_scroll addSubview:awesomeView];
-    }
-    _scroll.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, 400.0);
-    //#warning visual tour подготовить материалы
-    UIButton *btn = [InterfaceFunctions map_button:1];
-    [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    
-    
-    Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
-    Red_line.text =  [[coord objectAtIndex:0] objectForKey:@"Name"];
-    Red_line.font =[AppDelegate OpenSansSemiBold:28];
-    Red_line.textColor = [UIColor whiteColor];
-    Red_line.numberOfLines = 10;
-    Red_line.backgroundColor =  [UIColor clearColor];
-    Red_line.numberOfLines = 0;
-    
-    [Red_line sizeToFit];
-    CGSize size1 =Red_line.frame.size;
-    size1.width=292.0;
-    Red_line.frame = CGRectMake(Red_line.frame.origin.x, Red_line.frame.origin.y, size1.width, size1.height);
-    [Red_line sizeThatFits:size1];
-
-    label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
-    label.text =  [[coord objectAtIndex:0] objectForKey:@"About"];
-    label.font = [AppDelegate OpenSansRegular:28];
-    label.textColor = [UIColor whiteColor];
-    
-    label.backgroundColor =  [UIColor clearColor];
-    label.editable = NO;
-    
-//    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, _infoScroll.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
-            label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
-    if ([AppDelegate isiPhone5])
-        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 260.0);//textViewSize.height+35);
-    else
-        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 225.0);//textViewSize.height+35);
-    
-        
-    
-//    if ([AppDelegate isiPhone5]) {
-//        CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, _infoScroll.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
-//        label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
-//        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+35);
-//    }
-//    else{
-//        CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 416-Red_line.frame.origin.y+Red_line.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
-//        label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
-//        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+50);
-//    }
-    [label setScrollEnabled:YES];
-    
-    [_infoScroll setBackgroundColor:[InterfaceFunctions corporateIdentity]];
-    
-    [_infoScroll addSubview:Red_line];
-    
-    [_infoScroll addSubview:label];
-    
-//    CGSize size = _infoScroll.frame.size;
-//    size.height = self.Red_line.frame.size.height+self.label.frame.size.height;//+20;//earth.frame.size.height+earth.frame.origin.y + 32.0;
-//    _infoScroll.contentSize = size;
-    
-    [self.locationButton setHidden:YES];
-    [self.MapPhoto addSubview:self.locationButton];
-    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
-    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
-    [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
+    [_scroll addSubview:awesomeView];
     
 }
+
 
 -(IBAction)showLocation:(id)sender{
     
@@ -363,6 +207,174 @@ static BOOL infoViewIsOpen = NO;
         NSLog(@"Взяли локацию пользователя");
         self.locationButton.enabled = YES;
     }
+    
+    
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
+    [panRecognizer setMinimumNumberOfTouches:1];
+    [panRecognizer setMaximumNumberOfTouches:1];
+    [[self view] addGestureRecognizer:panRecognizer];
+    
+    
+
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
+    
+    self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions corporateIdentity]];
+    
+    
+    for (UIView * view in self.view.subviews) {
+        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
+        recognizer.delegate = self;
+        if ([view isEqual:self.locationButton] == NO) {
+            [view addGestureRecognizer:recognizer];
+        }
+        
+    }
+    
+    
+    NSURL *url;
+    if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
+    }
+    if ([self.CityName isEqualToString:@"Vienna"] || [self.CityName isEqualToString:@"Вена"] || [self.CityName isEqualToString:@"Wien"]){
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
+    }
+    
+    
+    RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
+    self.MapPhoto = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
+    self.MapPhoto.delegate = self;
+    self.MapPhoto.hideAttribution = YES;
+    self.MapPhoto.showsUserLocation = YES;
+    self.MapPhoto.hidden = YES;
+    if ([AppDelegate isiPhone5])
+        self.MapPhoto.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
+    else
+        self.MapPhoto.frame = CGRectMake(0.0, 0.0, 320.0, 416.0);
+    
+    
+    
+    self.MapPhoto.minZoom = 13;
+    self.MapPhoto.zoom = 13;
+    
+    
+    CLLocation *coord2 =[ExternalFunctions getCenterCoordinatesOfCity:self.CityName];
+    self.MapPhoto.centerCoordinate = coord2.coordinate;
+    [self.MapPhoto setAdjustTilesForRetinaDisplay:YES];
+    self.MapPhoto.showsUserLocation = YES;
+    
+    
+    NSArray *coord = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
+    CLLocation *tmp = [[coord objectAtIndex:0] objectForKey:@"Location"];
+    CLLocationCoordinate2D coord1 = tmp.coordinate;
+    // Annotations
+    
+    NSString *Title;
+    NSInteger numberofpins = [coord count];
+    for (int i = 0; i<numberofpins; i++) {
+        tmp = [[coord objectAtIndex:i] objectForKey:@"Location"];
+        coord1 = tmp.coordinate;
+        //#warning Сюда название достопремичательности на карту (Аналогично Red_title)
+        Title = [[coord objectAtIndex:i] objectForKey:@"Name"];
+        RMAnnotation *marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPhoto coordinate:coord1 andTitle:Title];
+        marker1.annotationType = @"marker";
+        marker1.subtitle = [NSString stringWithFormat:@"%d",i];
+        marker1.userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blueColor],@"foregroundColor", nil];
+        [self.MapPhoto addAnnotation:marker1];
+    }
+    
+    
+    [self.visualMap setHidden:YES];
+    [self.view addSubview:self.MapPhoto];
+    
+   // photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
+    
+    
+    self.pageControl.numberOfPages=[photos count];
+    self.pageControl.currentPage=0;
+    
+    
+    _scroll.pagingEnabled = YES;
+    _scroll.showsHorizontalScrollIndicator = NO;
+    _scroll.showsVerticalScrollIndicator = NO;
+    self.view.backgroundColor = [UIColor blackColor];
+    NSInteger numberOfViews = [photos count];
+    for (int i = 1; i < numberOfViews; i++) {
+        CGFloat xOrigin = i * self.view.frame.size.width;
+        UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        awesomeView.backgroundColor = [UIColor colorWithRed:0.5/i green:0.5 blue:0.5 alpha:1];
+        awesomeView.image = [UIImage imageWithContentsOfFile:[[photos objectAtIndex:i] objectForKey:@"Picture"]];
+        if ([UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:i] objectForKey:@"Picture"]]].size.height == 640.0) {
+            awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:i] objectForKey:@"Picture"]]].size.height/4);
+        }
+        
+        [_scroll addSubview:awesomeView];
+    }
+    _scroll.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, 400.0);
+    //#warning visual tour подготовить материалы
+    UIButton *btn = [InterfaceFunctions map_button:1];
+    [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    
+    Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
+    Red_line.text =  [[coord objectAtIndex:0] objectForKey:@"Name"];
+    Red_line.font =[AppDelegate OpenSansSemiBold:28];
+    Red_line.textColor = [UIColor whiteColor];
+    Red_line.numberOfLines = 10;
+    Red_line.backgroundColor =  [UIColor clearColor];
+    Red_line.numberOfLines = 0;
+    
+    [Red_line sizeToFit];
+    CGSize size1 =Red_line.frame.size;
+    size1.width=292.0;
+    Red_line.frame = CGRectMake(Red_line.frame.origin.x, Red_line.frame.origin.y, size1.width, size1.height);
+    [Red_line sizeThatFits:size1];
+    
+    label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
+    label.text =  [[coord objectAtIndex:0] objectForKey:@"About"];
+    label.font = [AppDelegate OpenSansRegular:28];
+    label.textColor = [UIColor whiteColor];
+    
+    label.backgroundColor =  [UIColor clearColor];
+    label.editable = NO;
+    
+    //    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, _infoScroll.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
+    label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
+    if ([AppDelegate isiPhone5])
+        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 260.0);//textViewSize.height+35);
+    else
+        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 225.0);//textViewSize.height+35);
+    
+    
+    
+    //    if ([AppDelegate isiPhone5]) {
+    //        CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, _infoScroll.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
+    //        label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
+    //        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+35);
+    //    }
+    //    else{
+    //        CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 416-Red_line.frame.origin.y+Red_line.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
+    //        label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
+    //        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+50);
+    //    }
+    [label setScrollEnabled:YES];
+    
+    [_infoScroll setBackgroundColor:[InterfaceFunctions corporateIdentity]];
+    
+    [_infoScroll addSubview:Red_line];
+    
+    [_infoScroll addSubview:label];
+    
+    //    CGSize size = _infoScroll.frame.size;
+    //    size.height = self.Red_line.frame.size.height+self.label.frame.size.height;//+20;//earth.frame.size.height+earth.frame.origin.y + 32.0;
+    //    _infoScroll.contentSize = size;
+    
+    [self.locationButton setHidden:YES];
+    [self.MapPhoto addSubview:self.locationButton];
+    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
+    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
+    [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -162,7 +162,6 @@
 #pragma mark - Table view delegate
 
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-#warning willSelectRowAtIndexPath
     if ([indexPath row] > 1) {
         return nil;
     }

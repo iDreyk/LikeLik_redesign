@@ -1115,6 +1115,7 @@ CGFloat alpha = 0.5;
 }
 
 -(IBAction)ShowMap:(id)sender{
+    [self hide_hint:self];
     self.placeViewMap.hidden = !self.placeViewMap.hidden;
     if (self.placeViewMap.hidden){
         UIButton *btn = [InterfaceFunctions map_button:1];
