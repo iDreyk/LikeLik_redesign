@@ -23,6 +23,7 @@ static BOOL infoViewIsOpen = NO;
 @implementation VisualTourViewController
 @synthesize Red_line;
 @synthesize label;
+@synthesize Annotation;
 -(IBAction)clickPageControl:(RMAnnotation *)sender
 {
     
@@ -31,7 +32,7 @@ static BOOL infoViewIsOpen = NO;
     frame.origin.x=frame.size.width=page;
     frame.origin.y=0;
     [_scroll scrollRectToVisible:frame animated:YES];
-   // NSLog(@"%d",page);
+    NSLog(@"%d",page);
     
 }
 
@@ -61,11 +62,11 @@ static BOOL infoViewIsOpen = NO;
     int page = scrollView.contentOffset.x/scrollView.frame.size.width;
     self.pageControl.currentPage=page;
     NSLog(@"Page = %d",self.pageControl.currentPage);
-
     Red_line.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"Name"];
     label.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"About"];
-//    NSLog(@"123");
-    
+    [self.MapPhoto deselectAnnotation:self.MapPhoto.selectedAnnotation animated:NO];
+    [self.MapPhoto selectAnnotation:[self.Annotation objectAtIndex:page] animated:NO];
+
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -139,6 +140,7 @@ static BOOL infoViewIsOpen = NO;
     
     _scroll.delegate=self;
         photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
+    NSLog(@"photos count = %d",[photos count]);
     CGFloat xOrigin = 0 * self.view.frame.size.width;
     UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
     awesomeView.backgroundColor = [UIColor colorWithRed:0.5/1 green:0.5 blue:0.5 alpha:1];
@@ -148,55 +150,14 @@ static BOOL infoViewIsOpen = NO;
     }
     [_scroll addSubview:awesomeView];
     
-}
-
-
--(IBAction)showLocation:(id)sender{
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
-    // NSLog(@"asd");
-    [self.MapPhoto setCenterCoordinate:self.MapPhoto.userLocation.coordinate];
-}
-
-
-
-
-
--(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
-{
+    self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     
-    if ([annotation.annotationType isEqualToString:@"marker"]) {
-        
-        RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
-                                                          tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
-                                                            sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
-        [marker replaceUIImage:[InterfaceFunctions MapPinVisualTour].image];
-        marker.canShowCallout = YES;
-        marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 20.0, 30.0)];
-        UIImage *image = [UIImage imageWithContentsOfFile:[[[ExternalFunctions getVisualTourImagesFromCity:self.CityName] objectAtIndex:[annotation.subtitle intValue]] objectForKey:@"Picture"]];
-        
-        [imageview setImage:image];
-        marker.leftCalloutAccessoryView = imageview;
-        //showLabel];
-        
-        return marker;
-        
-    }
-    return nil;
-}
-
-- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
-{
-    [self ShowMap:self];
-    [map deselectAnnotation:annotation animated:YES];
-    [self MapPageControl:annotation];
+    UIButton *btn = [InterfaceFunctions map_button:1];
+    [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-}
-
-
--(void)viewDidAppear:(BOOL)animated{
-    
-    [TestFlight passCheckpoint:@"VisualTour"];
     if ([[[CLLocation alloc] initWithLatitude:self.MapPhoto.userLocation.coordinate.latitude longitude:self.MapPhoto.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
         self.MapPhoto.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
         self.locationButton.enabled = NO;
@@ -207,29 +168,6 @@ static BOOL infoViewIsOpen = NO;
         NSLog(@"Взяли локацию пользователя");
         self.locationButton.enabled = YES;
     }
-    
-    
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
-    [panRecognizer setMinimumNumberOfTouches:1];
-    [panRecognizer setMaximumNumberOfTouches:1];
-    [[self view] addGestureRecognizer:panRecognizer];
-    
-    
-
-    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    
-    self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions corporateIdentity]];
-    
-    
-    for (UIView * view in self.view.subviews) {
-        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
-        recognizer.delegate = self;
-        if ([view isEqual:self.locationButton] == NO) {
-            [view addGestureRecognizer:recognizer];
-        }
-        
-    }
-    
     
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
@@ -267,7 +205,7 @@ static BOOL infoViewIsOpen = NO;
     CLLocation *tmp = [[coord objectAtIndex:0] objectForKey:@"Location"];
     CLLocationCoordinate2D coord1 = tmp.coordinate;
     // Annotations
-    
+    self.Annotation = [[NSMutableArray alloc] initWithCapacity:[coord count]];
     NSString *Title;
     NSInteger numberofpins = [coord count];
     for (int i = 0; i<numberofpins; i++) {
@@ -280,41 +218,12 @@ static BOOL infoViewIsOpen = NO;
         marker1.subtitle = [NSString stringWithFormat:@"%d",i];
         marker1.userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blueColor],@"foregroundColor", nil];
         [self.MapPhoto addAnnotation:marker1];
+        [self.Annotation addObject:marker1];
     }
-    
-    
+    [self.MapPhoto selectAnnotation:[self.Annotation objectAtIndex:0] animated:YES];
+    NSLog(@"annotation count = %d",[self.Annotation count]);
     [self.visualMap setHidden:YES];
     [self.view addSubview:self.MapPhoto];
-    
-   // photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
-    
-    
-    self.pageControl.numberOfPages=[photos count];
-    self.pageControl.currentPage=0;
-    
-    
-    _scroll.pagingEnabled = YES;
-    _scroll.showsHorizontalScrollIndicator = NO;
-    _scroll.showsVerticalScrollIndicator = NO;
-    self.view.backgroundColor = [UIColor blackColor];
-    NSInteger numberOfViews = [photos count];
-    for (int i = 1; i < numberOfViews; i++) {
-        CGFloat xOrigin = i * self.view.frame.size.width;
-        UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        awesomeView.backgroundColor = [UIColor colorWithRed:0.5/i green:0.5 blue:0.5 alpha:1];
-        awesomeView.image = [UIImage imageWithContentsOfFile:[[photos objectAtIndex:i] objectForKey:@"Picture"]];
-        if ([UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:i] objectForKey:@"Picture"]]].size.height == 640.0) {
-            awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:i] objectForKey:@"Picture"]]].size.height/4);
-        }
-        
-        [_scroll addSubview:awesomeView];
-    }
-    _scroll.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, 400.0);
-    //#warning visual tour подготовить материалы
-    UIButton *btn = [InterfaceFunctions map_button:1];
-    [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    
     
     Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
     Red_line.text =  [[coord objectAtIndex:0] objectForKey:@"Name"];
@@ -374,6 +283,105 @@ static BOOL infoViewIsOpen = NO;
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
     [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+-(IBAction)showLocation:(id)sender{
+    
+    [self.MapPhoto setCenterCoordinate:self.MapPhoto.userLocation.coordinate];
+}
+
+
+
+
+
+-(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
+{
+    
+    if ([annotation.annotationType isEqualToString:@"marker"]) {
+        
+        RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
+                                                          tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
+                                                            sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
+        [marker replaceUIImage:[InterfaceFunctions MapPinVisualTour].image];
+        marker.canShowCallout = YES;
+        marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 20.0, 30.0)];
+        UIImage *image = [UIImage imageWithContentsOfFile:[[[ExternalFunctions getVisualTourImagesFromCity:self.CityName] objectAtIndex:[annotation.subtitle intValue]] objectForKey:@"Picture"]];
+        
+        [imageview setImage:image];
+        marker.leftCalloutAccessoryView = imageview;
+        //showLabel];
+        
+        return marker;
+        
+    }
+    return nil;
+}
+
+- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
+{
+    [self ShowMap:self];
+    [map deselectAnnotation:annotation animated:YES];
+    [self MapPageControl:annotation];
+    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [TestFlight passCheckpoint:@"VisualTour"];
+   
+    
+    
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
+    [panRecognizer setMinimumNumberOfTouches:1];
+    [panRecognizer setMaximumNumberOfTouches:1];
+    [[self view] addGestureRecognizer:panRecognizer];
+    
+    
+
+    
+    for (UIView * view in self.view.subviews) {
+        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
+        recognizer.delegate = self;
+        if ([view isEqual:self.locationButton] == NO) {
+            [view addGestureRecognizer:recognizer];
+        }
+        
+    }
+    
+    
+   
+    
+   // photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
+    
+    
+    self.pageControl.numberOfPages=[photos count];
+    self.pageControl.currentPage=0;
+    
+    
+    _scroll.pagingEnabled = YES;
+    _scroll.showsHorizontalScrollIndicator = NO;
+    _scroll.showsVerticalScrollIndicator = NO;
+    self.view.backgroundColor = [UIColor blackColor];
+    NSInteger numberOfViews = [photos count];
+    for (int i = 1; i < numberOfViews; i++) {
+        CGFloat xOrigin = i * self.view.frame.size.width;
+        UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        awesomeView.backgroundColor = [UIColor colorWithRed:0.5/i green:0.5 blue:0.5 alpha:1];
+        awesomeView.image = [UIImage imageWithContentsOfFile:[[photos objectAtIndex:i] objectForKey:@"Picture"]];
+        if ([UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:i] objectForKey:@"Picture"]]].size.height == 640.0) {
+            awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[[photos objectAtIndex:i] objectForKey:@"Picture"]]].size.height/4);
+        }
+        
+        [_scroll addSubview:awesomeView];
+    }
+    _scroll.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, 400.0);
+    //#warning visual tour подготовить материалы
+    
+    
+   
     
 }
 
