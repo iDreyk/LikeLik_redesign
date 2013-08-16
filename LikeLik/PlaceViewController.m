@@ -20,8 +20,8 @@
 #import "MBProgressHUD.h"
 #import "RegistrationViewController.h"
 #include "LoginViewController.h"
-#define kOAuthConsumerKey				@"XGaxa31EoympFhxLZooQ"
-#define kOAuthConsumerSecret			@"IbUE5lud22evmrtxjtU1vKvh6VDqRMSHHFJ73rtHI"
+#define kOAuthConsumerKey				@"WMLtzHCcXrkaDXzNovw"
+#define kOAuthConsumerSecret			@"AcFQTmoGxkPdOgif68FzYgRBylSXIbeaYTbwnZaR9SE"
 
 #define MAX_HEIGHT 2000
 #define afterCall             @"l27h7RU2dzVfPoQQQQ"
@@ -1054,7 +1054,8 @@ CGFloat alpha = 0.5;
         else
         {
 #warning  текст шаринга
-            [_vkontakte postMessageToWall:self.PlaceAbout];
+            [_vkontakte postMessageToWall:self.PlaceAbout link:[[NSURL alloc] initWithString:@"http://likelik.com"]];
+            NSLog(@"%@",[[NSURL alloc] initWithString:@"http://likelik.com"]);
         }
         
         
@@ -1063,7 +1064,11 @@ CGFloat alpha = 0.5;
     
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString: AMLocalizedString(@"Share on twitter", nil)]) {
-        if (_engine) return;
+        if (_engine){
+            NSLog(@"123");
+            [_engine sendUpdate: self.PlaceAbout];
+            return;
+        }
         _engine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate: self];
         _engine.consumerKey = kOAuthConsumerKey;
         _engine.consumerSecret = kOAuthConsumerSecret;
@@ -1074,6 +1079,7 @@ CGFloat alpha = 0.5;
             [self presentViewController:controller animated:YES completion:^{}];//presentModalViewController: controller animated: YES];
         else {
 #warning текст шаринга
+            NSLog(@"321");
             [_engine sendUpdate: self.PlaceAbout];
         }
     }
@@ -1084,8 +1090,7 @@ CGFloat alpha = 0.5;
         [SCFacebook loginCallBack:^(BOOL success, id result) {
             loadingView.hidden = YES;
             if (success) {
-#warning ссылка шаринга
-                [SCFacebook feedPostWithLinkPath:@"http://www.likelik.com" caption:@"Best Service!" callBack:^(BOOL success, id result) {
+                [SCFacebook feedPostWithLinkPath:@"http://www.likelik.com" caption:self.PlaceAbout callBack:^(BOOL success, id result) {
                     loadingView.hidden = YES;
                     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
                     [self.navigationController.view addSubview:HUD];
@@ -1168,7 +1173,7 @@ CGFloat alpha = 0.5;
 
 - (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte{
 #warning текст шаринга
-    [_vkontakte postMessageToWall:self.PlaceAbout];
+     [_vkontakte postMessageToWall:self.PlaceAbout link:[[NSURL alloc] initWithString:@"http://likelik.com"]];
     [self dismissViewControllerAnimated:YES completion:^{}];//
 }
 
@@ -1198,7 +1203,7 @@ CGFloat alpha = 0.5;
 
 #pragma mark SA_OAuthTwitterControllerDelegate
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username {
-#warning текст шаринга
+
 	[_engine sendUpdate: self.PlaceAbout];
 }
 

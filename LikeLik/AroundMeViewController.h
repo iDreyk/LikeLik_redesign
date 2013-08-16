@@ -27,7 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *CityName;
 @property (weak, nonatomic) IBOutlet NSString *CityNameText;
-
+@property (weak, nonatomic) IBOutlet NSArray *readyArray;
 
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 

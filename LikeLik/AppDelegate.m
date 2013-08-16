@@ -122,7 +122,10 @@ NSInteger wasinactive = NO;
             LocalizationSetLanguage(@"de");
             [defaults setObject:@"Deutsch" forKey:@"Language"];
         }
-        
+        if ([language isEqualToString:@"ja"]){
+            LocalizationSetLanguage(@"ja");
+            [defaults setObject:@"Japanese" forKey:@"Language"];
+        }
     }
     
     NSString *Lang = [defaults objectForKey:@"Language"];
@@ -130,6 +133,11 @@ NSInteger wasinactive = NO;
         LocalizationSetLanguage(@"ru");
     if ([Lang isEqualToString:@"Deutsch"])
         LocalizationSetLanguage(@"de");
+    if ([Lang isEqualToString:@"English"])
+        LocalizationSetLanguage(@"en");
+    if ([Lang isEqualToString:@"Japanese"])
+        LocalizationSetLanguage(@"ja");
+
 }
 
 

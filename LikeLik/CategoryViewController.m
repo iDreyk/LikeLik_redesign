@@ -26,9 +26,13 @@ static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 
+#define FADE_TAG 6217834623874
+
 @interface CategoryViewController ()
 
 @end
+
+static BOOL PLACES_LOADED = NO;
 
 @implementation CategoryViewController
 
@@ -105,20 +109,34 @@ static NSDictionary *Place;
     
     [self.placeViewMap addSubview:self.MapPlace];
 
-    AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
-    RMAnnotation *marker1;
-    for (int i=0; i<[AroundArray count]; i++) {
-        CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
-        marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
-        marker1.annotationType = @"marker";
-        marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
-        marker1.subtitle = [[AroundArray objectAtIndex:i] objectForKey:@"Category"];
-        marker1.userInfo = [AroundArray objectAtIndex:i];
-        [self.MapPlace addAnnotation:marker1];
-        //NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
-    }
-//    NSLog(@"%@",self.MapPlace.annotations);
-
+    PLACES_LOADED = NO;
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // post an NSNotification that loading has started
+        AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
+        RMAnnotation *marker1;
+        for (int i=0; i<[AroundArray count]; i++) {
+            NSLog(@"in cycle %d",i);
+            CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
+            marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
+            marker1.annotationType = @"marker";
+            marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
+            marker1.subtitle = [[AroundArray objectAtIndex:i] objectForKey:@"Category"];
+            marker1.userInfo = [AroundArray objectAtIndex:i];
+            [self.MapPlace addAnnotation:marker1];
+            //NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
+        }
+        //    NSLog(@"%@",self.MapPlace.annotations);]
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSLog(@"Back on main thread");
+            self.navigationItem.rightBarButtonItem.enabled = YES;
+            PLACES_LOADED = YES;
+            [self.Table reloadData];
+        });
+                // post an NSNotification that loading is finished
+    });
+    
+    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     NSString *city = [[ExternalFunctions cityCatalogueForCity:self.CityName.text] objectForKey:@"city_EN"];
@@ -311,6 +329,13 @@ static NSDictionary *Place;
         else
             [cell addSubview:[InterfaceFunctions corporateIdentity_actb]];
     }
+    if(!PLACES_LOADED && [indexPath row] == 0){
+        UIView *fade = [[UIView alloc] initWithFrame:cell.frame];
+        fade.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0.3];
+        fade.tag = FADE_TAG;
+        [cell addSubview:fade];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
         return cell;
 }
 #pragma mark - Table view delegate
@@ -325,7 +350,9 @@ static NSDictionary *Place;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
   //  if ([indexPath row] !=11)
     [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:[indexPath row]]];
-        [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:[indexPath row]] sender:self];
+    if((indexPath.row == 0) && !PLACES_LOADED)
+        return;
+    [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:[indexPath row]] sender:self];
     
 }
 
@@ -343,6 +370,7 @@ static NSDictionary *Place;
         [segue destinationViewController];
         destination.CityNameText = self.Label;
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
+        destination.readyArray = AroundArray;
     }
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
         PlacesByCategoryViewController *destination =[segue destinationViewController];

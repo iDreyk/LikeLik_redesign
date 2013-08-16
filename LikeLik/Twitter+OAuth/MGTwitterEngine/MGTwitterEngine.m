@@ -1017,9 +1017,10 @@
 - (NSString *)sendUpdate:(NSString *)status inReplyTo:(unsigned long)updateID
 {
     if (!status) {
+        NSLog(@"13");
         return nil;
     }
-    
+    NSLog(@"123");
     NSString *path = [NSString stringWithFormat:@"statuses/update.%@", API_FORMAT];
     
     NSString *trimmedText = status;
@@ -1033,7 +1034,7 @@
         [params setObject:[NSString stringWithFormat:@"%lu", updateID] forKey:@"in_reply_to_status_id"];
     }
     NSString *body = [self _queryStringWithBase:nil parameters:params prefixed:NO];
-    
+    NSLog(@"body = %@",body);
     return [self _sendRequestWithMethod:HTTP_POST_METHOD path:path 
                         queryParameters:params body:body 
                             requestType:MGTwitterUpdateSendRequest

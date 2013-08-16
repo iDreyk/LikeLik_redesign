@@ -171,6 +171,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"TOUCHED!");
     NSInteger tabIndex = self.tabBarController.selectedIndex;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if(tabIndex != 1 && ![ExternalFunctions isDownloaded:_CityLabels[[indexPath row]]]){

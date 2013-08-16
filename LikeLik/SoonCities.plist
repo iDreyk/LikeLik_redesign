@@ -144,6 +144,26 @@
 	</dict>
 	<dict>
 		<key>img</key>
+		<string>soch.png</string>
+		<key>name_EN</key>
+		<string>Sochi</string>
+		<key>name_DE</key>
+		<string>Sochi</string>
+		<key>name_RU</key>
+		<string>Сочи</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>vol.png</string>
+		<key>name_EN</key>
+		<string>Vologda</string>
+		<key>name_DE</key>
+		<string>Wologda</string>
+		<key>name_RU</key>
+		<string>Вологда</string>
+	</dict>
+	<dict>
+		<key>img</key>
 		<string>tbili.png</string>
 		<key>name_EN</key>
 		<string>Tbilisi</string>

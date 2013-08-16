@@ -599,19 +599,24 @@ static CLLocation *Me;
     }
     else
         language2 = @"en";
-    
-    if ([language1 isEqualToString:language2] && ![language1 isEqualToString:@"de"]) {
-        checkLanguageFromSystem = @"ru";
-        checkLanguageFromCountry = @"de";
-    }
-    else if ([language1 isEqualToString:language2] && [language1 isEqualToString:@"de"]){
-        checkLanguageFromSystem = language1;
-        checkLanguageFromCountry = @"ru";
-    }
-    else if (![language1 isEqualToString:language2]){
-        checkLanguageFromSystem = @"de";
-        checkLanguageFromCountry = @"ru";
-    }
+#warning Правильное определение языков
+
+    checkLanguageFromCountry = language2;
+    checkLanguageFromSystem = language1;
+//
+//    
+//    if ([language1 isEqualToString:language2] && ![language1 isEqualToString:@"de"]) {
+//        checkLanguageFromSystem = @"ru";
+//        checkLanguageFromCountry = @"de";
+//    }
+//    else if ([language1 isEqualToString:language2] && [language1 isEqualToString:@"de"]){
+//        checkLanguageFromSystem = language1;
+//        checkLanguageFromCountry = @"ru";
+//    }
+//    else if (![language1 isEqualToString:language2]){
+//        checkLanguageFromSystem = @"de";
+//        checkLanguageFromCountry = @"ru";
+//    }
     
     if ([checkLanguageFromCountry isEqualToString:@"ru"]) {
         checkLanguageFromCountry = @"checkText_RU";
@@ -712,20 +717,22 @@ static CLLocation *Me;
 + (NSArray *) getPlacesAroundMyLocationInCity : (NSString *) city{
     NSLog(@"city - %@",city);
     city = [[self cityCatalogueForCity:city] objectForKey:@"city_EN"];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [defaults objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]];
-    NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSData *data = [defaults objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]];
+//    NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
-    if (arr == NULL || [[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]){
+   // if (arr == NULL || [[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]){
         NSLog(@"defaults пустые берём сами");
         [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0] forKey:@"langChanged"];
+#warning Нужно сделать быструю загрузку этой штуки
         return [self arrayOfDictionatySort:[self getAllPlacesInCity:city]];
-    }
-    else
-    {
-        NSLog(@"defaults не пустые берём оттуда");
-        return arr;
-    }
+#warning Нельзя использовать userdefaults! Не меняется язык описания
+    // }
+   // else
+   // {
+   //     NSLog(@"defaults не пустые берём оттуда");
+    //    return arr;
+  //  }
 }
 
 //

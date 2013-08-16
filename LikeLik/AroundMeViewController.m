@@ -107,8 +107,9 @@ static NSDictionary *Place1;
         [HUD show:YES];
         [HUD hide:YES afterDelay:2];
     }
-    
-    AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityNameText];
+   // NSLog(@"Ready array: %@", self.readyArray);
+    AroundArray = [[NSArray alloc] initWithArray:self.readyArray];//[ExternalFunctions getPlacesAroundMyLocationInCity:self.CityNameText];
+    NSLog(@"AroundArray: %@", AroundArray);
     RMAnnotation *marker1;
     for (int i=0; i<[AroundArray count]; i++) {
         CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
@@ -286,7 +287,6 @@ static NSDictionary *Place1;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     [self performSegueWithIdentifier:@"CellSegue" sender:self];
     
 }
@@ -309,6 +309,7 @@ static NSDictionary *Place1;
         destinaton.PlaceWeb = [Place1 objectForKey:@"Web"];
         destinaton.PlaceLocation = [Place1 objectForKey:@"Location"];
         destinaton.Photos = [Place1 objectForKey:@"Photo"];
+        NSLog(@"%@", destinaton.Photos);
     }
 
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {

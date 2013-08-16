@@ -868,13 +868,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="4.png" translatesAutoresizingMaskIntoConstraints="NO" id="WGJ-i4-JPg"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="4.png" translatesAutoresizingMaskIntoConstraints="NO" id="WGJ-i4-JPg">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="569" id="8Hc-uk-m4n"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="0ZB-fS-Ar9"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="1LM-2x-7z4"/>
-                            <constraint firstItem="WGJ-i4-JPg" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="2cU-eA-fQj"/>
                             <constraint firstItem="SM5-Lm-fgX" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="3lZ-3R-C2T"/>
                             <constraint firstItem="2w0-lU-2yd" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" constant="10" id="CQo-iS-TKN"/>
                             <constraint firstItem="dyB-OT-pbh" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="GPD-ta-cWy"/>
@@ -887,9 +890,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="YrU-mE-dbd" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="WOw-Gj-fXO"/>
                             <constraint firstItem="dyB-OT-pbh" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" constant="44" id="bby-IE-WHV"/>
                             <constraint firstItem="WGJ-i4-JPg" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="cBG-5n-U6h"/>
+                            <constraint firstItem="WGJ-i4-JPg" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" constant="-20" id="cZ7-r0-zwk"/>
                             <constraint firstItem="r5c-W8-RBh" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" constant="276" id="lFk-yu-glw"/>
                             <constraint firstAttribute="bottom" secondItem="2w0-lU-2yd" secondAttribute="bottom" constant="77" id="lPe-I0-reF"/>
-                            <constraint firstItem="WGJ-i4-JPg" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="mqL-XU-w29"/>
                             <constraint firstItem="SM5-Lm-fgX" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="pde-12-zRx"/>
                             <constraint firstItem="YrU-mE-dbd" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" constant="547" id="wRQ-Wi-RjC"/>
                             <constraint firstItem="SM5-Lm-fgX" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="x6f-aS-czW"/>

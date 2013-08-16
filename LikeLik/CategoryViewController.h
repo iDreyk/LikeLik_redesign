@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MapBox/MapBox.h>
+#import "MBProgressHUD.h"
+
 @interface CategoryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,RMMapViewDelegate>{
         NSArray *AroundArray;
 }
@@ -21,6 +23,9 @@
 @property (nonatomic,retain)IBOutlet NSArray *CellArray;
 @property (nonatomic,retain)IBOutlet NSArray *SegueArray;
 @property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic,retain)MBProgressHUD *HUDfade;
+
+
 
 @property (retain, nonatomic) IBOutlet RMMapView *MapPlace;
 @property (weak, nonatomic) IBOutlet UIView *PlaceView;
