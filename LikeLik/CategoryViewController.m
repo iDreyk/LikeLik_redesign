@@ -26,7 +26,6 @@ static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 
-#define FADE_TAG 6217834623874
 
 @interface CategoryViewController ()
 
@@ -54,7 +53,73 @@ static BOOL PLACES_LOADED = NO;
     [_locationManager startUpdatingLocation];
     CLLocation *Me = [_locationManager location];
     
-    self.Table.backgroundColor = [UIColor clearColor];
+    self.categoryView.backgroundColor = [UIColor clearColor
+                                         ];
+    [self.categoryView setScrollEnabled:YES];
+    [self.categoryView setContentSize:CGSizeMake(320, 480)];
+    [self.categoryView flashScrollIndicators];
+    self.categoryView.delegate = self;
+    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    background.backgroundColor = [InterfaceFunctions BackgroundColor];
+    [self.categoryView addSubview:background];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
+    
+    UIView *frame1 = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 93, 93)];
+    frame1.backgroundColor = [UIColor blackColor];//[InterfaceFunctions corporateIdentity];
+    frame1.tag = 0;
+    [frame1 addGestureRecognizer:tap];
+    [frame1 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame1];
+    
+    UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(113, 20, 93, 93)];
+    frame2.backgroundColor = [InterfaceFunctions mainTextColor:2];
+    frame2.tag = 1;
+    [frame2 addGestureRecognizer:tap];
+    [frame2 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame2];
+    
+    UIView *frame3 = [[UIView alloc] initWithFrame:CGRectMake(216, 20, 93, 93)];
+    frame3.backgroundColor = [InterfaceFunctions mainTextColor:3];
+    [self.categoryView addSubview:frame3];
+
+    UIView *frame4 = [[UIView alloc] initWithFrame:CGRectMake(10, 133, 93, 93)];
+    frame4.backgroundColor = [InterfaceFunctions mainTextColor:4];
+    [self.categoryView addSubview:frame4];
+    
+    UIView *frame5 = [[UIView alloc] initWithFrame:CGRectMake(113, 133, 93, 93)];
+    frame5.backgroundColor = [InterfaceFunctions mainTextColor:5];
+    [self.categoryView addSubview:frame5];
+    
+    UIView *frame6 = [[UIView alloc] initWithFrame:CGRectMake(216, 133, 93, 93)];
+    frame6.backgroundColor = [InterfaceFunctions mainTextColor:6];
+    [self.categoryView addSubview:frame6];
+
+    UIView *frame7 = [[UIView alloc] initWithFrame:CGRectMake(10, 246, 93, 93)];
+    frame7.backgroundColor = [InterfaceFunctions mainTextColor:7];
+    [self.categoryView addSubview:frame7];
+    
+    UIView *frame8 = [[UIView alloc] initWithFrame:CGRectMake(113, 246, 93, 93)];
+    frame8.backgroundColor = [InterfaceFunctions mainTextColor:8];
+    [self.categoryView addSubview:frame8];
+    
+    UIView *frame9 = [[UIView alloc] initWithFrame:CGRectMake(216, 246, 93, 93)];
+    frame9.backgroundColor = [InterfaceFunctions corporateIdentity];
+    [self.categoryView addSubview:frame9];
+
+    UIView *frame10 = [[UIView alloc] initWithFrame:CGRectMake(10, 359, 93, 93)];
+    frame10.backgroundColor = [InterfaceFunctions corporateIdentity];
+    [self.categoryView addSubview:frame10];
+    
+    UIView *frame11 = [[UIView alloc] initWithFrame:CGRectMake(113, 359, 93, 93)];
+    frame11.backgroundColor = [InterfaceFunctions corporateIdentity];
+    [self.categoryView addSubview:frame11];
+    
+    UIView *frame12 = [[UIView alloc] initWithFrame:CGRectMake(216, 359, 93, 93)];
+    frame12.backgroundColor = [InterfaceFunctions corporateIdentity];
+    [self.categoryView addSubview:frame12];
+    
+//    self.Table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
 
@@ -68,7 +133,7 @@ static BOOL PLACES_LOADED = NO;
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"FavoritesSegue",@"VisualtourSegue",@"TransportationSegue",@"PracticalinfoSegue"];
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     UIButton *btn = [InterfaceFunctions map_button:1];
     [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
@@ -131,7 +196,7 @@ static BOOL PLACES_LOADED = NO;
             NSLog(@"Back on main thread");
             self.navigationItem.rightBarButtonItem.enabled = YES;
             PLACES_LOADED = YES;
-            [self.Table reloadData];
+//            [self.Table reloadData];
         });
                 // post an NSNotification that loading is finished
     });
@@ -274,7 +339,7 @@ static BOOL PLACES_LOADED = NO;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.Table deselectRowAtIndexPath:[self.Table indexPathForSelectedRow] animated:YES];
+//    [self.Table deselectRowAtIndexPath:[self.Table indexPathForSelectedRow] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -286,84 +351,92 @@ static BOOL PLACES_LOADED = NO;
 
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.CellArray count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = nil;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    cell.backgroundView = [InterfaceFunctions CellBG];
-    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    
-    
-    NSString *text = AMLocalizedString([self.CellArray objectAtIndex:[indexPath row]], nil);
-    if ([indexPath row]<8 && [indexPath row]!=0) {
-        [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions mainTextColor:[indexPath row]+1]]];
-        [cell addSubview:[InterfaceFunctions actbwithColor:[indexPath row]]];//actbwithColor:[indexPath row]+1]];
-    }
-    else{
-        [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions corporateIdentity]]];
-        if ([indexPath row] == 11) {
-            MLPAccessoryBadge *accessoryBadge;
-
-            accessoryBadge = [MLPAccessoryBadge new];
-            [cell setAccessoryView:accessoryBadge];
-            [accessoryBadge setText:AMLocalizedString(@"Soon", nil)];
-            [accessoryBadge setBackgroundColor:[InterfaceFunctions corporateIdentity]];
-            [cell addSubview:accessoryBadge];
-        }
-        else
-            [cell addSubview:[InterfaceFunctions corporateIdentity_actb]];
-    }
-    if(!PLACES_LOADED && [indexPath row] == 0){
-        UIView *fade = [[UIView alloc] initWithFrame:cell.frame];
-        fade.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0.3];
-        fade.tag = FADE_TAG;
-        [cell addSubview:fade];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    }
-        return cell;
-}
-#pragma mark - Table view delegate
-
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([indexPath row] == 11) {
-        return nil;
-    }
-    return indexPath;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-  //  if ([indexPath row] !=11)
-    [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:[indexPath row]]];
-    if((indexPath.row == 0) && !PLACES_LOADED)
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 1;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return [self.CellArray count];
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *CellIdentifier = nil;
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+//    
+//    cell.backgroundView = [InterfaceFunctions CellBG];
+//    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
+//    cell.textLabel.backgroundColor = [UIColor clearColor];
+//    
+//    
+//    NSString *text = AMLocalizedString([self.CellArray objectAtIndex:[indexPath row]], nil);
+//    if ([indexPath row]<8 && [indexPath row]!=0) {
+//        [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions mainTextColor:[indexPath row]+1]]];
+//        [cell addSubview:[InterfaceFunctions actbwithColor:[indexPath row]]];//actbwithColor:[indexPath row]+1]];
+//    }
+//    else{
+//        [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions corporateIdentity]]];
+//        if ([indexPath row] == 11) {
+//            MLPAccessoryBadge *accessoryBadge;
+//
+//            accessoryBadge = [MLPAccessoryBadge new];
+//            [cell setAccessoryView:accessoryBadge];
+//            [accessoryBadge setText:AMLocalizedString(@"Soon", nil)];
+//            [accessoryBadge setBackgroundColor:[InterfaceFunctions corporateIdentity]];
+//            [cell addSubview:accessoryBadge];
+//        }
+//        else
+//            [cell addSubview:[InterfaceFunctions corporateIdentity_actb]];
+//    }
+//    if(!PLACES_LOADED && [indexPath row] == 0){
+//        UIView *fade = [[UIView alloc] initWithFrame:cell.frame];
+//        fade.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0.3];
+//        [cell addSubview:fade];
+//        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//    }
+//        return cell;
+//}
+//#pragma mark - Table view delegate
+//
+//- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if ([indexPath row] == 11) {
+//        return nil;
+//    }
+//    return indexPath;
+//}
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//  //  if ([indexPath row] !=11)
+//    [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:[indexPath row]]];
+//    if((indexPath.row == 0) && !PLACES_LOADED)
+//        return;
+//    [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:[indexPath row]] sender:self];
+//    
+//}
+//
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 44.0;
+//}
+//
+-(void)customPush:(UIView *)sender{
+    NSInteger number = [(UIGestureRecognizer *)sender view].tag;
+    [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:number]];
+    if((number == 0) && !PLACES_LOADED)
         return;
-    [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:[indexPath row]] sender:self];
-    
-}
+    NSLog(@"segue");
+    [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:number] sender:self];
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44.0;
 }
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIView *)sender{
     
-    NSIndexPath *indexPath = [self.Table indexPathForSelectedRow];
-     NSInteger row = [indexPath row];
+    //NSIndexPath *indexPath = [self.Table indexPathForSelectedRow];
+    NSInteger row =[(UIGestureRecognizer *)sender view].tag;//[indexPath row];
     
     if ([[segue identifier] isEqualToString:@"AroundmeSegue"]) {
         AroundMeViewController *destination =
@@ -429,19 +502,15 @@ static BOOL PLACES_LOADED = NO;
 
 - (void)updateOffsets {
     
-    CGFloat yOffset   = self.Table.contentOffset.y;
-    CGFloat threshold = self.Table.frame.size.height - self.Table.frame.size.height;
+    CGFloat yOffset   = self.categoryView.contentOffset.y;
     
-    if (yOffset > -threshold && yOffset < 0) {
-        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-yOffset,self.CityName.frame.size.width,self.CityName.frame.size.height);
-        self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
-    }
-    else if (yOffset < 0) {
-        self.CityImage.frame = CGRectMake(0,-44.0,320.0,221.0-yOffset + floorf(threshold / 2.0));
+   if (yOffset < 0) {
+        self.CityImage.frame = CGRectMake(0,-44.0,320.0,221.0-yOffset);
         
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
         
         self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
+        //self.categoryView.frame = CGRectMake(self.categoryView.frame.origin.x,self.categoryView.frame.origin.y-yOffset,self.categoryView.frame.size.width,self.categoryView.frame.size.height);
     }
     else {
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0,self.CityName.frame.size.width,self.CityName.frame.size.height);

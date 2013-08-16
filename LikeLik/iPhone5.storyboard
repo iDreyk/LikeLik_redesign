@@ -668,16 +668,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstAttribute="height" constant="221" id="m3I-dZ-UFL"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kQr-yS-cLS">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="459" id="5wx-Qu-sJX"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="9As-sn-Nda" id="e9M-9R-ubE"/>
-                                    <outlet property="delegate" destination="9As-sn-Nda" id="sCJ-Pg-heQ"/>
-                                </connections>
-                            </tableView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veT-Xa-uYa"/>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Bg_gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kj4-Hh-Q6l">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Lp5-mJ-HzJ"/>
@@ -700,19 +691,20 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IHM-mj-lSa" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="4" id="0gx-pL-lvh"/>
+                            <constraint firstItem="veT-Xa-uYa" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="2ad-9u-quV"/>
+                            <constraint firstAttribute="bottom" secondItem="veT-Xa-uYa" secondAttribute="bottom" constant="1" id="5tj-sh-hZy"/>
+                            <constraint firstItem="veT-Xa-uYa" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="CDK-va-rfH"/>
                             <constraint firstItem="Kj4-Hh-Q6l" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" type="default" id="CS4-4P-Hqm"/>
                             <constraint firstItem="1z2-fN-29b" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="KIR-2h-KnC"/>
                             <constraint firstItem="1z2-fN-29b" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="-44" id="KN2-TU-cCS"/>
                             <constraint firstItem="Kj4-Hh-Q6l" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="OaU-Fa-Mip"/>
-                            <constraint firstItem="kQr-yS-cLS" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="Otp-2S-qO6"/>
                             <constraint firstItem="aua-JJ-4wB" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="V60-hR-b7G"/>
+                            <constraint firstItem="veT-Xa-uYa" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="44" id="YUs-1k-qL8"/>
                             <constraint firstItem="aua-JJ-4wB" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="kq6-Sq-tPd"/>
                             <constraint firstItem="aua-JJ-4wB" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" type="default" id="oav-BP-JE5"/>
                             <constraint firstItem="IHM-mj-lSa" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" constant="12" id="pT3-BK-6MG"/>
-                            <constraint firstItem="kQr-yS-cLS" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="rxe-B3-fV2"/>
                             <constraint firstItem="Kj4-Hh-Q6l" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="sQI-AE-jdG"/>
                             <constraint firstAttribute="bottom" secondItem="aua-JJ-4wB" secondAttribute="bottom" constant="-2" id="smx-R5-Efo"/>
-                            <constraint firstItem="kQr-yS-cLS" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="44" id="spe-d4-3Uy"/>
                             <constraint firstItem="1z2-fN-29b" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="yH1-il-pnI"/>
                         </constraints>
                     </view>
@@ -728,7 +720,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="CityImage" destination="1z2-fN-29b" id="iSL-zw-wty"/>
                         <outlet property="CityName" destination="IHM-mj-lSa" id="hdZ-uI-USu"/>
                         <outlet property="GradientUnderLabel" destination="Kj4-Hh-Q6l" id="32G-q6-y5J"/>
-                        <outlet property="Table" destination="kQr-yS-cLS" id="y75-WA-tDt"/>
+                        <outlet property="categoryView" destination="veT-Xa-uYa" id="H1G-b2-4jV"/>
                         <outlet property="placeViewMap" destination="aua-JJ-4wB" id="aaE-BO-1RX"/>
                         <segue destination="1FC-V3-3wh" kind="push" identifier="AroundmeSegue" id="NbR-YX-niO"/>
                         <segue destination="ofv-1I-lPi" kind="push" identifier="FavoritesSegue" id="Lej-fg-aBp"/>
@@ -1834,9 +1826,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="8Kb-sg-LTt"/>
-        <segue reference="prS-nK-Lt0"/>
-        <segue reference="8A3-mH-hPw"/>
-        <segue reference="nft-YQ-xRI"/>
+        <segue reference="lP0-Ve-8FZ"/>
         <segue reference="6tZ-hu-j1M"/>
+        <segue reference="nft-YQ-xRI"/>
+        <segue reference="8A3-mH-hPw"/>
     </inferredMetricsTieBreakers>
 </document>

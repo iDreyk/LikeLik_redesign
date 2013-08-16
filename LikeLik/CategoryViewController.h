@@ -10,10 +10,9 @@
 #import <MapBox/MapBox.h>
 #import "MBProgressHUD.h"
 
-@interface CategoryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,RMMapViewDelegate>{
+@interface CategoryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,RMMapViewDelegate,UIScrollViewDelegate>{
         NSArray *AroundArray;
 }
-@property (nonatomic,retain)IBOutlet UITableView *Table;
 @property (weak, nonatomic) IBOutlet UIImageView *CityImage;
 @property (nonatomic,retain)IBOutlet UILabel *CityName;
 @property (nonatomic,retain)IBOutlet UIImageView *GradientUnderLabel;
@@ -24,6 +23,7 @@
 @property (nonatomic,retain)IBOutlet NSArray *SegueArray;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic,retain)MBProgressHUD *HUDfade;
+@property (weak, nonatomic) IBOutlet UIScrollView *categoryView;
 
 
 
