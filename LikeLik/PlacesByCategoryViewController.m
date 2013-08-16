@@ -262,7 +262,6 @@ static bool REVERSE_ANIM = false;
     }
     else{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-
         UIImage *cropedImage = [[UIImage alloc] init];
         UIImage *image = [UIImage imageWithContentsOfFile:url];
         CGImageRef imgRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 400, 640, 360));
