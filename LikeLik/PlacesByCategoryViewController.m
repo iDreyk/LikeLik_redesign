@@ -14,10 +14,16 @@
 #import "MBProgressHUD.h"
 #import <MapBox/MapBox.h>
 
+#define tableLabelWithTextTag 87001
+#define goLAbelTag 87002
+#define arrowTag 87003
+#define backgroundViewTag 87004
+
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 static NSDictionary *Place1;
+
 
 @interface PlacesByCategoryViewController ()
 
@@ -232,6 +238,12 @@ static NSDictionary *Place1;
 {
     return [CategoryPlaces count];
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 180;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = [indexPath row];
@@ -239,15 +251,59 @@ static NSDictionary *Place1;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+#warning Временно ?
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)];
+        
+        //[InterfaceFunctions TableLabelwithText:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)];
+        label.tag = tableLabelWithTextTag;  
+        label.font = [AppDelegate OpenSansRegular:28];
+        label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
+        label.shadowOffset = CGSizeMake(0.0, -0.1);
+        label.backgroundColor = [UIColor clearColor];
+//        label.text = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"];
+        label.textColor = [InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+        label.highlightedTextColor = label.textColor;
+        label.shadowColor = [InterfaceFunctions ShadowColor];
+        label.shadowOffset = [InterfaceFunctions ShadowSize];
+        [cell addSubview:label];
+        
+        
+        
+        UILabel *goLabel = [InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+        [cell addSubview:goLabel];
+        UIImageView *arrow = [InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+        [cell addSubview:arrow];
+    
     }
     
-    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
+    UILabel *tableLabelWithText  = (UILabel *)[cell viewWithTag:tableLabelWithTextTag];
+    tableLabelWithText.text = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"];
     
-    [cell addSubview:[InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]]];
-    [cell addSubview:[InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]]];
     
-    cell.backgroundView = [InterfaceFunctions CellBG];
-    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
+    Place1 = [CategoryPlaces objectAtIndex:row];
+    NSArray *photos = [Place1 objectForKey:@"Photo"];
+    UIImageView *bkgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    NSLog(@"pict: %@",(photos)[0]);
+    
+    UIImage *largeImg = [UIImage imageWithContentsOfFile:[photos objectAtIndex:0]];
+
+    // 640 x 1136
+//    CGImageRef imageRef = CGImageCreateWithImageInRect([largeImg CGImage], CGRectMake(0, 400, 640, 360));
+//    // or use the UIImage wherever you like
+//    [bkgView setImage:[UIImage imageWithCGImage:imageRef]];
+//    CGImageRelease(imageRef);
+//    
+//    CALayer *layer = bkgView.layer;
+//    layer.shouldRasterize = YES;
+//        
+//    // This tells QuartzCore to render it as a bitmap
+//    [layer setRasterizationScale:[UIScreen mainScreen].scale];
+//    
+    bkgView.image = largeImg;
+    cell.backgroundView = bkgView;
+    //cell.backgroundView = [InterfaceFunctions CellBG];
+    //cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     return cell;
 }
 

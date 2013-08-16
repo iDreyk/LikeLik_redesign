@@ -26,6 +26,7 @@ static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 
+#define FADE_TAG 66482
 
 @interface CategoryViewController ()
 
@@ -42,6 +43,14 @@ static BOOL PLACES_LOADED = NO;
         
     }
     return self;
+}
+
+- (void)activateAroundMe{
+    for (UIView *subView in self.categoryView.subviews){
+        if(subView.tag == FADE_TAG){
+           [subView removeFromSuperview];
+        }
+    }
 }
 
 - (void)viewDidLoad
@@ -76,91 +85,7 @@ static BOOL PLACES_LOADED = NO;
     UITapGestureRecognizer *tap10 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
     UITapGestureRecognizer *tap11 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
     
-    UIView *frame1 = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 93, 93)];
-    frame1.backgroundColor = [InterfaceFunctions corporateIdentity];
-    frame1.tag = 0;
-    [frame1 addGestureRecognizer:tap];
-    [frame1 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame1];
-    
-    
-    UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(113, 20, 93, 93)];
-    frame2.backgroundColor = [InterfaceFunctions mainTextColor:2];
-    frame2.tag = 1;
-    [frame2 addGestureRecognizer:tap1];
-    [frame2 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame2];
-    
-    UIView *frame3 = [[UIView alloc] initWithFrame:CGRectMake(216, 20, 93, 93)];
-    frame3.backgroundColor = [InterfaceFunctions mainTextColor:3];
-    frame3.tag = 2;
-    [frame3 addGestureRecognizer:tap2];
-    [frame3 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame3];
-
-    UIView *frame4 = [[UIView alloc] initWithFrame:CGRectMake(10, 133, 93, 93)];
-    frame4.backgroundColor = [InterfaceFunctions mainTextColor:4];
-    frame4.tag = 3;
-    [frame4 addGestureRecognizer:tap3];
-    [frame4 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame4];
-    
-    UIView *frame5 = [[UIView alloc] initWithFrame:CGRectMake(113, 133, 93, 93)];
-    frame5.backgroundColor = [InterfaceFunctions mainTextColor:5];
-    frame5.tag = 4;
-    [frame5 addGestureRecognizer:tap4];
-    [frame5 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame5];
-    
-    UIView *frame6 = [[UIView alloc] initWithFrame:CGRectMake(216, 133, 93, 93)];
-    frame6.backgroundColor = [InterfaceFunctions mainTextColor:6];
-    frame6.tag = 5;
-    [frame6 addGestureRecognizer:tap5];
-    [frame6 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame6];
-
-    UIView *frame7 = [[UIView alloc] initWithFrame:CGRectMake(10, 246, 93, 93)];
-    frame7.backgroundColor = [InterfaceFunctions mainTextColor:7];
-    frame7.tag = 6;
-    [frame7 addGestureRecognizer:tap6];
-    [frame7 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame7];
-    
-    UIView *frame8 = [[UIView alloc] initWithFrame:CGRectMake(113, 246, 93, 93)];
-    frame8.backgroundColor = [InterfaceFunctions mainTextColor:8];
-    frame8.tag = 7;
-    [frame8 addGestureRecognizer:tap7];
-    [frame8 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame8];
-    
-    UIView *frame9 = [[UIView alloc] initWithFrame:CGRectMake(216, 246, 93, 93)];
-    frame9.backgroundColor = [InterfaceFunctions corporateIdentity];
-    frame9.tag = 8;
-    [frame9 addGestureRecognizer:tap8];
-    [frame9 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame9];
-
-    UIView *frame10 = [[UIView alloc] initWithFrame:CGRectMake(10, 359, 93, 93)];
-    frame10.backgroundColor = [InterfaceFunctions corporateIdentity];
-    frame10.tag = 9;
-    [frame10 addGestureRecognizer:tap9];
-    [frame10 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame10];
-    
-    UIView *frame11 = [[UIView alloc] initWithFrame:CGRectMake(113, 359, 93, 93)];
-    frame11.backgroundColor = [InterfaceFunctions corporateIdentity];
-    frame11.tag = 10;
-    [frame11 addGestureRecognizer:tap10];
-    [frame1 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame11];
-    
-    UIView *frame12 = [[UIView alloc] initWithFrame:CGRectMake(216, 359, 93, 93)];
-    frame12.backgroundColor = [InterfaceFunctions corporateIdentity];
-    frame12.tag = 11;
-    [frame12 addGestureRecognizer:tap11];
-    [frame12 setUserInteractionEnabled:YES];
-    [self.categoryView addSubview:frame12];
-    
+        
 //    self.Table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
@@ -238,6 +163,7 @@ static BOOL PLACES_LOADED = NO;
             NSLog(@"Back on main thread");
             self.navigationItem.rightBarButtonItem.enabled = YES;
             PLACES_LOADED = YES;
+            [self activateAroundMe];
 //            [self.Table reloadData];
         });
                 // post an NSNotification that loading is finished
@@ -304,6 +230,108 @@ static BOOL PLACES_LOADED = NO;
         }
     }
     
+    
+    UIView *frame1 = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 93, 93)];
+    frame1.backgroundColor = [InterfaceFunctions corporateIdentity];
+    frame1.tag = 0;
+    [frame1 addGestureRecognizer:tap];
+    [frame1 setUserInteractionEnabled:YES];
+    UILabel *text = [[UILabel alloc]initWithFrame:CGRectMake(5, 26, 83, 40)];
+    text.text = AMLocalizedString([self.CellArray objectAtIndex:frame1.tag], nil);
+    text.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    text.textColor = [UIColor whiteColor];
+    [text setFont:[UIFont systemFontOfSize:14]];
+    [frame1 addSubview:text];
+    [self.categoryView addSubview:frame1];
+    
+    UIView *fade = [[UIView alloc] initWithFrame:frame1.frame];
+    fade.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+    fade.tag = FADE_TAG;
+    [self.categoryView addSubview:fade];
+    
+    UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(113, 20, 93, 93)];
+    frame2.backgroundColor = [InterfaceFunctions mainTextColor:2];
+    frame2.tag = 1;
+    [frame2 addGestureRecognizer:tap1];
+    [frame2 setUserInteractionEnabled:YES];
+    UILabel *text1 = [[UILabel alloc]initWithFrame:CGRectMake(5, 26, 83, 40)];
+    text1.text = AMLocalizedString([self.CellArray objectAtIndex:frame2.tag], nil);
+    text1.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    text1.textColor = [UIColor whiteColor];
+    [text1 setFont:[UIFont systemFontOfSize:14]];
+    [frame2 addSubview:text1];
+    [self.categoryView addSubview:frame2];
+    
+    UIView *frame3 = [[UIView alloc] initWithFrame:CGRectMake(216, 20, 93, 93)];
+    frame3.backgroundColor = [InterfaceFunctions mainTextColor:3];
+    frame3.tag = 2;
+    [frame3 addGestureRecognizer:tap2];
+    [frame3 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame3];
+    
+    UIView *frame4 = [[UIView alloc] initWithFrame:CGRectMake(10, 133, 93, 93)];
+    frame4.backgroundColor = [InterfaceFunctions mainTextColor:4];
+    frame4.tag = 3;
+    [frame4 addGestureRecognizer:tap3];
+    [frame4 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame4];
+    
+    UIView *frame5 = [[UIView alloc] initWithFrame:CGRectMake(113, 133, 93, 93)];
+    frame5.backgroundColor = [InterfaceFunctions mainTextColor:5];
+    frame5.tag = 4;
+    [frame5 addGestureRecognizer:tap4];
+    [frame5 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame5];
+    
+    UIView *frame6 = [[UIView alloc] initWithFrame:CGRectMake(216, 133, 93, 93)];
+    frame6.backgroundColor = [InterfaceFunctions mainTextColor:6];
+    frame6.tag = 5;
+    [frame6 addGestureRecognizer:tap5];
+    [frame6 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame6];
+    
+    UIView *frame7 = [[UIView alloc] initWithFrame:CGRectMake(10, 246, 93, 93)];
+    frame7.backgroundColor = [InterfaceFunctions mainTextColor:7];
+    frame7.tag = 6;
+    [frame7 addGestureRecognizer:tap6];
+    [frame7 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame7];
+    
+    UIView *frame8 = [[UIView alloc] initWithFrame:CGRectMake(113, 246, 93, 93)];
+    frame8.backgroundColor = [InterfaceFunctions mainTextColor:8];
+    frame8.tag = 7;
+    [frame8 addGestureRecognizer:tap7];
+    [frame8 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame8];
+    
+    UIView *frame9 = [[UIView alloc] initWithFrame:CGRectMake(216, 246, 93, 93)];
+    frame9.backgroundColor = [InterfaceFunctions corporateIdentity];
+    frame9.tag = 8;
+    [frame9 addGestureRecognizer:tap8];
+    [frame9 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame9];
+    
+    UIView *frame10 = [[UIView alloc] initWithFrame:CGRectMake(10, 359, 93, 93)];
+    frame10.backgroundColor = [InterfaceFunctions corporateIdentity];
+    frame10.tag = 9;
+    [frame10 addGestureRecognizer:tap9];
+    [frame10 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame10];
+    
+    UIView *frame11 = [[UIView alloc] initWithFrame:CGRectMake(113, 359, 93, 93)];
+    frame11.backgroundColor = [InterfaceFunctions corporateIdentity];
+    frame11.tag = 10;
+    [frame11 addGestureRecognizer:tap10];
+    [frame1 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame11];
+    
+    UIView *frame12 = [[UIView alloc] initWithFrame:CGRectMake(216, 359, 93, 93)];
+    frame12.backgroundColor = [InterfaceFunctions corporateIdentity];
+    frame12.tag = 11;
+    [frame12 addGestureRecognizer:tap11];
+    [frame12 setUserInteractionEnabled:YES];
+    [self.categoryView addSubview:frame12];
+
     
 }
 
@@ -481,8 +509,7 @@ static BOOL PLACES_LOADED = NO;
     NSInteger row =[(UIGestureRecognizer *)sender view].tag;//[indexPath row];
     NSLog(@"In segue! Number is: %d", row);
     if ([[segue identifier] isEqualToString:@"AroundmeSegue"]) {
-        AroundMeViewController *destination =
-        [segue destinationViewController];
+        AroundMeViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.readyArray = AroundArray;
