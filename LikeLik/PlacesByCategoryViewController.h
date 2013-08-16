@@ -21,6 +21,9 @@
 @property (nonatomic,retain) NSString *Image;
 @property (retain, nonatomic) IBOutlet UIImageView *CityImage;
 
+@property (nonatomic, strong) NSMutableDictionary *imageCache;
+
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *SegmentedMapandTable;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SearchBarButton;
 @property (retain, nonatomic) IBOutlet RMMapView *Map;
