@@ -564,12 +564,14 @@ static BOOL PLACES_LOADED = NO;
     [self.view addSubview:coolEf];
     [UIView animateWithDuration:0.3 animations:^{
         coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 50, self.view.center.y - 50, 80, 80)];
-        spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 37, self.view.center.y - 37, 74, 74)];
+        //knuckle_1@2x.png
+        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD@2x.png"] scaledToSize:CGSizeMake(74, 74)]];
+        //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
         CALayer *layer = spin.layer;
         layer.cornerRadius = 8;
         spin.clipsToBounds = YES;
-        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
         animation.fromValue = [NSNumber numberWithFloat:0.0f];
         animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
         animation.duration = 3.0f;
