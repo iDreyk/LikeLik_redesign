@@ -27,6 +27,7 @@ static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 
 #define FADE_TAG 66482
+#define EF_TAG 66483
 
 @interface CategoryViewController ()
 
@@ -250,12 +251,19 @@ static BOOL PLACES_LOADED = NO;
     text.backgroundColor = [UIColor clearColor];
     text.textColor = [UIColor whiteColor];
     [text setFont:[UIFont systemFontOfSize:14]];
+    CALayer *layer = frame1.layer;
+    layer.cornerRadius = 10;
+    frame1.clipsToBounds = YES;
     [frame1 addSubview:text];
     [self.categoryView addSubview:frame1];
     
     UIView *fade = [[UIView alloc] initWithFrame:frame1.frame];
     fade.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
     fade.tag = FADE_TAG;
+    CALayer *layer1 = fade.layer;
+    layer1.cornerRadius = 10;
+    frame1.clipsToBounds = YES;
+
     [self.categoryView addSubview:fade];
     
     UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(113, 20, 93, 93)];
@@ -270,6 +278,9 @@ static BOOL PLACES_LOADED = NO;
     text1.textColor = [UIColor whiteColor];
     [text1 setFont:[UIFont systemFontOfSize:14]];
     [frame2 addSubview:text1];
+    CALayer *layer2 = frame2.layer;
+    layer2.cornerRadius = 10;
+    frame2.clipsToBounds = YES;
     [self.categoryView addSubview:frame2];
     
     UIView *frame3 = [[UIView alloc] initWithFrame:CGRectMake(216, 20, 93, 93)];
@@ -278,6 +289,9 @@ static BOOL PLACES_LOADED = NO;
     frame3.tag = 2;
     [frame3 addGestureRecognizer:tap2];
     [frame3 setUserInteractionEnabled:YES];
+    CALayer *layer3 = frame3.layer;
+    layer3.cornerRadius = 10;
+    frame3.clipsToBounds = YES;
     [self.categoryView addSubview:frame3];
     
     UIView *frame4 = [[UIView alloc] initWithFrame:CGRectMake(10, 133, 93, 93)];
@@ -286,11 +300,16 @@ static BOOL PLACES_LOADED = NO;
     frame4.tag = 3;
     [frame4 addGestureRecognizer:tap3];
     [frame4 setUserInteractionEnabled:YES];
+    CALayer *layer4 = frame4.layer;
+    layer4.cornerRadius = 10;
+    frame4.clipsToBounds = YES;
     [self.categoryView addSubview:frame4];
     
     UIView *frame5 = [[UIView alloc] initWithFrame:CGRectMake(113, 133, 93, 93)];
     frame5.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"5.png"] scaledToSize:CGSizeMake(93, 93)]];
-
+    CALayer *layer5 = frame5.layer;
+    layer5.cornerRadius = 10;
+    frame5.clipsToBounds = YES;
     frame5.tag = 4;
     [frame5 addGestureRecognizer:tap4];
     [frame5 setUserInteractionEnabled:YES];
@@ -298,7 +317,9 @@ static BOOL PLACES_LOADED = NO;
     
     UIView *frame6 = [[UIView alloc] initWithFrame:CGRectMake(216, 133, 93, 93)];
     frame6.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"6.png"] scaledToSize:CGSizeMake(93, 93)]];
-
+    CALayer *layer6 = frame6.layer;
+    layer6.cornerRadius = 10;
+    frame6.clipsToBounds = YES;
     frame6.tag = 5;
     [frame6 addGestureRecognizer:tap5];
     [frame6 setUserInteractionEnabled:YES];
@@ -306,7 +327,9 @@ static BOOL PLACES_LOADED = NO;
     
     UIView *frame7 = [[UIView alloc] initWithFrame:CGRectMake(10, 246, 93, 93)];
     frame7.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"7.png"] scaledToSize:CGSizeMake(93, 93)]];
-
+    CALayer *layer7 = frame7.layer;
+    layer7.cornerRadius = 10;
+    frame7.clipsToBounds = YES;
     frame7.tag = 6;
     [frame7 addGestureRecognizer:tap6];
     [frame7 setUserInteractionEnabled:YES];
@@ -314,7 +337,9 @@ static BOOL PLACES_LOADED = NO;
     
     UIView *frame8 = [[UIView alloc] initWithFrame:CGRectMake(113, 246, 93, 93)];
     frame8.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"8.png"] scaledToSize:CGSizeMake(93, 93)]];
-
+    CALayer *layer8 = frame8.layer;
+    layer8.cornerRadius = 10;
+    frame8.clipsToBounds = YES;
     frame8.tag = 7;
     [frame8 addGestureRecognizer:tap7];
     [frame8 setUserInteractionEnabled:YES];
@@ -322,7 +347,9 @@ static BOOL PLACES_LOADED = NO;
     
     UIView *frame9 = [[UIView alloc] initWithFrame:CGRectMake(216, 246, 93, 93)];
     frame9.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"9.png"] scaledToSize:CGSizeMake(93, 93)]];
-
+    CALayer *layer9 = frame9.layer;
+    layer9.cornerRadius = 10;
+    frame9.clipsToBounds = YES;
     frame9.tag = 8;
     [frame9 addGestureRecognizer:tap8];
     [frame9 setUserInteractionEnabled:YES];
@@ -330,7 +357,9 @@ static BOOL PLACES_LOADED = NO;
     
     UIView *frame10 = [[UIView alloc] initWithFrame:CGRectMake(10, 359, 93, 93)];
     frame10.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"10.png"] scaledToSize:CGSizeMake(93, 93)]];
-
+    CALayer *layer10 = frame10.layer;
+    layer10.cornerRadius = 10;
+    frame10.clipsToBounds = YES;
     frame10.tag = 9;
     [frame10 addGestureRecognizer:tap9];
     [frame10 setUserInteractionEnabled:YES];
@@ -338,7 +367,9 @@ static BOOL PLACES_LOADED = NO;
     
     UIView *frame11 = [[UIView alloc] initWithFrame:CGRectMake(113, 359, 93, 93)];
     frame11.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"11.png"] scaledToSize:CGSizeMake(93, 93)]];
-
+    CALayer *layer11 = frame11.layer;
+    layer11.cornerRadius = 10;
+    frame11.clipsToBounds = YES;
     frame11.tag = 10;
     [frame11 addGestureRecognizer:tap10];
     [frame1 setUserInteractionEnabled:YES];
@@ -346,7 +377,9 @@ static BOOL PLACES_LOADED = NO;
     
     UIView *frame12 = [[UIView alloc] initWithFrame:CGRectMake(216, 359, 93, 93)];
     frame12.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"12.png"] scaledToSize:CGSizeMake(93, 93)]];
-
+    CALayer *layer12 = frame12.layer;
+    layer12.cornerRadius = 10;
+    frame12.clipsToBounds = YES;
     frame12.tag = 11;
     [frame12 addGestureRecognizer:tap11];
     [frame12 setUserInteractionEnabled:YES];
@@ -414,7 +447,7 @@ static BOOL PLACES_LOADED = NO;
     
     if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
         self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text].coordinate;
-        NSLog(@"Взяли центер города");
+        NSLog(@"Взяли центр города");
 //        [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
 //        self.locationButton.enabled = NO;
     }
@@ -514,14 +547,46 @@ static BOOL PLACES_LOADED = NO;
 //    return 44.0;
 //}
 //
+-(void)clearView:(UIView *)obj{
+    for (UIView *subView in self.view.subviews){
+        if(subView.tag == EF_TAG)
+            [subView removeFromSuperview];
+    }
+}
 -(void)customPush:(UIView *)sender{
     NSInteger number = [(UIGestureRecognizer *)sender view].tag;
-    NSLog(@"IN CUSTOM PUSH! Number: %d", number);
-    [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:number]];
-    if((number == 0) && !PLACES_LOADED)
-        return;
-    [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:number] sender:sender];
+    UIView *coolEf = [[UIView alloc] initWithFrame:[(UIGestureRecognizer *)sender view].frame];
+    if(number > 0 && number < 8)
+        coolEf.backgroundColor = [InterfaceFunctions mainTextColor:(number + 1)];
+    else
+        coolEf.backgroundColor = [InterfaceFunctions corporateIdentity];
+    coolEf.tag = EF_TAG;
+    [self.view addSubview:coolEf];
+    [UIView animateWithDuration:0.3 animations:^{
+        coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 50, self.view.center.y - 50, 80, 80)];
+        spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+        CALayer *layer = spin.layer;
+        layer.cornerRadius = 8;
+        spin.clipsToBounds = YES;
+        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+        animation.duration = 3.0f;
+        animation.repeatCount = HUGE_VAL;
+        [spin.layer addAnimation:animation forKey:@"MyAnimation"];
+        [coolEf addSubview:spin];
 
+        self.navigationItem.leftBarButtonItem.enabled = NO;
+    } completion:^(BOOL finished) {
+        [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:number]];
+        if((number == 0) && !PLACES_LOADED)
+            return;
+        [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:number] sender:sender];
+        NSTimeInterval delay = 0.4; //in seconds
+        [self performSelector:@selector(clearView:) withObject:nil afterDelay:delay];
+    }];
+    
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIView *)sender{
     
