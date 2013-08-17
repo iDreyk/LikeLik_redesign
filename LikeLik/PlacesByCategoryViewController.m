@@ -89,7 +89,7 @@ static bool REVERSE_ANIM = false;
         marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
         marker1.annotationType = @"marker";
         marker1.title = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Name"];
-       marker1.subtitle = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Category"];
+       marker1.subtitle = AMLocalizedString([[CategoryPlaces objectAtIndex:i] objectForKey:@"Category"], nil);
         marker1.userInfo = [CategoryPlaces objectAtIndex:i];
         [self.Map addAnnotation:marker1];
     }
@@ -148,7 +148,7 @@ static bool REVERSE_ANIM = false;
     [TestFlight passCheckpoint:self.Category];
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
-        NSLog(@"Взяли центер города");
+        NSLog(@"Взяли центр города");
         self.locationButton.enabled = NO;
 
     }
@@ -166,7 +166,7 @@ static bool REVERSE_ANIM = false;
                                                           tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
                                                             sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
         // NSLog(@"Hello %@",self.Сategory);
-        [marker replaceUIImage:[InterfaceFunctions MapPin:self.Category].image];
+        [marker replaceUIImage:[InterfaceFunctions MapPin:AMLocalizedString(self.Category, nil)].image];
         marker.canShowCallout = YES;
         marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         return marker;
@@ -178,7 +178,7 @@ static bool REVERSE_ANIM = false;
 {
     
     PlaceName = annotation.title;
-    PlaceCategory = annotation.subtitle;
+    PlaceCategory = [annotation.userInfo objectForKey:@"Category"];
     Place = annotation.userInfo;
     [self performSegueWithIdentifier:@"MapSegue" sender:self];
 }

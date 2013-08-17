@@ -83,7 +83,7 @@ static NSDictionary *Place1;
         marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
         marker1.annotationType = @"marker";
         marker1.title = [[FavouritePlaces objectAtIndex:i] objectForKey:@"Name"];
-        marker1.subtitle = [[FavouritePlaces objectAtIndex:i] objectForKey:@"Category"];
+        marker1.subtitle = AMLocalizedString([[FavouritePlaces objectAtIndex:i] objectForKey:@"Category"], nil);
         marker1.userInfo = [FavouritePlaces objectAtIndex:i];
         [self.Map addAnnotation:marker1];
     }
@@ -141,7 +141,7 @@ static NSDictionary *Place1;
 - (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
 {
     PlaceName = annotation.title;
-    PlaceCategory = annotation.subtitle;
+    PlaceCategory = [annotation.userInfo objectForKey:@"Category"];
     Place = annotation.userInfo;
     [self performSegueWithIdentifier:@"MapSegue" sender:self];
 }

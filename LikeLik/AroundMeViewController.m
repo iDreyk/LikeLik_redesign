@@ -116,7 +116,7 @@ static NSDictionary *Place1;
         marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
         marker1.annotationType = @"marker";
         marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
-        marker1.subtitle = [[AroundArray objectAtIndex:i] objectForKey:@"Category"];
+        marker1.subtitle = AMLocalizedString([[AroundArray objectAtIndex:i] objectForKey:@"Category"], nil);
         marker1.userInfo = [AroundArray objectAtIndex:i];
         [self.Map addAnnotation:marker1];
     }
@@ -205,7 +205,7 @@ static NSDictionary *Place1;
 {
    // NSLog(@"tap");
     PlaceName = annotation.title;
-    PlaceCategory = annotation.subtitle;
+    PlaceCategory = [annotation.userInfo objectForKey:@"Category"];
     Place = annotation.userInfo;
     [self performSegueWithIdentifier:@"MapSegue" sender:self];
 }

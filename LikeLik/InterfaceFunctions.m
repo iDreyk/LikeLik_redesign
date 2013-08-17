@@ -306,25 +306,25 @@
     UIImageView *Pin=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MapPin_12"]];
     
 
-    if ([Category isEqualToString:@"Restaurants"]) {
+    if ([Category isEqualToString:AMLocalizedString(@"Restaurants", nil)]) {
         Pin.image = [UIImage imageNamed:@"63_76 MapPin_2"];
     }
-    if ([Category isEqualToString:@"NightLife"]) {
+    if ([Category isEqualToString:AMLocalizedString(@"NightLife", nil)]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_3"];
     }
-    if ([Category isEqualToString:@"Shopping"]) {
+    if ([Category isEqualToString:AMLocalizedString(@"Shopping", nil)]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_4"];
     }
-    if ([Category isEqualToString:@"Culture"]) {
+    if ([Category isEqualToString:AMLocalizedString(@"Culture", nil)]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_5"];
     }
-    if ([Category isEqualToString:@"Leisure"]) {
+    if ([Category isEqualToString:AMLocalizedString(@"Leisure", nil)]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_6"];
     }
-    if ([Category isEqualToString:@"Beauty"]) {
+    if ([Category isEqualToString:AMLocalizedString(@"Beauty", nil)]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_7"];
     }
-    if ([Category isEqualToString:@"Hotels"]) {
+    if ([Category isEqualToString:AMLocalizedString(@"Hotels", nil)]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_8"];
     }
     return Pin;

@@ -600,7 +600,7 @@ CGFloat alpha = 0.5;
         marker1.annotationType = @"marker";
         
         marker1.title = self.PlaceName;
-       marker1.subtitle = self.PlaceCategory;
+       marker1.subtitle = AMLocalizedString(self.PlaceCategory, nil);
         marker1.userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blueColor],@"foregroundColor", nil];
         
         [self.MapPlace addAnnotation:marker1];
@@ -764,7 +764,7 @@ CGFloat alpha = 0.5;
                                                             sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
 
 
-        [marker replaceUIImage:[InterfaceFunctions MapPin:self.PlaceCategory].image];
+        [marker replaceUIImage:[InterfaceFunctions MapPin:AMLocalizedString(self.PlaceCategory, nil)].image];
         marker.canShowCallout = YES;
         marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         return marker;
