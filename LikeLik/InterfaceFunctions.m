@@ -103,8 +103,11 @@
     [aButton.titleLabel  setFont:[AppDelegate OpenSansRegular:24]];
     [aButton setTitle:AMLocalizedString(@"Done", nil) forState:UIControlStateNormal];
     
-    aButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
     [aButton sizeToFit];
+    CGRect newFrame = aButton.frame;
+    newFrame.origin.x = 2;
+    newFrame.size.width += 4;
+    aButton.frame = newFrame;
     return aButton;
 }
 
@@ -157,10 +160,11 @@
 }
 +(UIColor *)colorTextCategory:(NSString *)Category{
     UIColor *color;
+    NSLog(@"Category: %@", Category);
     if ([Category isEqualToString:@"Restaurants"]) {
         color = [self mainTextColor:2];
     }
-    if ([Category isEqualToString:@"NightLife"]) {
+    if ([Category isEqualToString:@"Night life"]) {
         color = [self mainTextColor:3];
     }
     if ([Category isEqualToString:@"Shopping"]) {
@@ -276,7 +280,7 @@
     if ([Category isEqualToString:@"Restaurants"]) {
         _actb.image=[UIImage imageNamed:@"44_48 actb_2"];
     }
-    if ([Category isEqualToString:@"NightLife"]) {
+    if ([Category isEqualToString:@"Night life"]) {
         _actb.image=[UIImage imageNamed:@"44_48 actb_3"];
     }
     if ([Category isEqualToString:@"Shopping"]) {
@@ -309,7 +313,7 @@
     if ([Category isEqualToString:AMLocalizedString(@"Restaurants", nil)]) {
         Pin.image = [UIImage imageNamed:@"63_76 MapPin_2"];
     }
-    if ([Category isEqualToString:AMLocalizedString(@"NightLife", nil)]) {
+    if ([Category isEqualToString:AMLocalizedString(@"Night life", nil)]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_3"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Shopping", nil)]) {
@@ -338,7 +342,7 @@
     if ([Category isEqualToString:@"Restaurants"]) {
         Color = 2;
     }
-    if ([Category isEqualToString:@"NightLife"]) {
+    if ([Category isEqualToString:@"Night life"]) {
         Color = 3;
     }
     if ([Category isEqualToString:@"Shopping"]) {
@@ -374,7 +378,7 @@
     if ([Category isEqualToString:@"Restaurants"]) {
         ribbon.image = [UIImage imageNamed:@"592_159 Ribbon_2"];
     }
-    if ([Category isEqualToString:@"NightLife"]) {
+    if ([Category isEqualToString:@"Night life"]) {
         ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_3"];
     }
     if ([Category isEqualToString:@"Shopping"]) {
@@ -401,7 +405,7 @@
     if ([Category isEqualToString:@"Restaurants"]) {
         Color = 2;
     }
-    if ([Category isEqualToString:@"NightLife"]) {
+    if ([Category isEqualToString:@"Night life"]) {
         Color = 3;
     }
     if ([Category isEqualToString:@"Shopping"]) {
@@ -458,7 +462,7 @@
     if ([Category isEqualToString:@"Restaurants"]) {
         imageview.image = [UIImage imageNamed:@"58_82 info_flag_2"];
     }
-    if ([Category isEqualToString:@"NightLife"]) {
+    if ([Category isEqualToString:@"Night life"]) {
         imageview.image=[UIImage imageNamed:@"58_82 info_flag_3"];
     }
     if ([Category isEqualToString:@"Shopping"]) {

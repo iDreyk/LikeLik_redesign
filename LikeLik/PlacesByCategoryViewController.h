@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SearchBarButton;
 @property (retain, nonatomic) IBOutlet RMMapView *Map;
 @property (weak, nonatomic) IBOutlet UIView *ViewForMap;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIImageView *GradientnderLabel;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 -(IBAction)showLocation:(id)sender;

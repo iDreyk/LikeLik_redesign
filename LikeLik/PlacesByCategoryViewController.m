@@ -46,6 +46,9 @@ static bool REVERSE_ANIM = false;
 {
     
     [super viewDidLoad];
+  
+    self.backgroundView.backgroundColor = [InterfaceFunctions colorTextCategory:self.Category];
+    
   //  NSLog(@"123");
     CategoryPlaces = [ExternalFunctions getArrayOfPlaceDictionariesInCategory:self.Category InCity:self.CityName];
  //   NSLog(@"%@ %d",CategoryPlaces, [CategoryPlaces count]);
@@ -108,7 +111,8 @@ static bool REVERSE_ANIM = false;
     
     
     self.CityImage.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.CityName]];
-    self.PlacesTable.backgroundColor = [InterfaceFunctions BackgroundColor];//[UIColor clearColor];
+    self.PlacesTable.backgroundColor = [UIColor clearColor];//[InterfaceFunctions colorTextCategory:self.Category];
+//[InterfaceFunctions BackgroundColor];//[UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     UIButton *btn = [InterfaceFunctions search_button];
@@ -127,6 +131,7 @@ static bool REVERSE_ANIM = false;
     if(!self.imageCache)
         self.imageCache = [[NSMutableDictionary alloc] init];
     
+   
 }
 
 -(IBAction)showLocation:(id)sender{
@@ -192,6 +197,7 @@ static bool REVERSE_ANIM = false;
 
 
 -(IBAction) segmentedControlIndexChanged{
+    self.backgroundView.hidden = !self.backgroundView.hidden;
     self.CityImage.hidden = !self.CityImage.hidden;
     self.CategoryLabel.hidden = !self.CategoryLabel.hidden;
     self.PlacesTable.hidden = !self.PlacesTable.hidden;
@@ -304,7 +310,6 @@ static bool REVERSE_ANIM = false;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 #warning Временно ?
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
         UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 310, 170)];
         preview.tag = backgroundViewTag;
         preview.backgroundColor = [UIColor whiteColor];
@@ -380,7 +385,7 @@ static bool REVERSE_ANIM = false;
     CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
     rotationAndPerspectiveTransform.m34 = 1.0 / -500;
     if(!REVERSE_ANIM){
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/2, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -1, 1, 1, 1);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, -M_PI, -M_PI, 0);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, 0, -M_PI, 0);
@@ -390,7 +395,7 @@ static bool REVERSE_ANIM = false;
         //  rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
     }
     else{
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/2, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 1, -1, -1, 1);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, M_PI, -M_PI, 0);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, 0, M_PI, 0);
@@ -407,7 +412,7 @@ static bool REVERSE_ANIM = false;
     [UIView setAnimationDuration:0.75];
     //[cell setFrame:CGRectMake(0, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
     if(!REVERSE_ANIM){
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/2, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 1, 1, 1, 1);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, -M_PI, -M_PI, 0);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, 0, -M_PI, 0);
@@ -417,7 +422,7 @@ static bool REVERSE_ANIM = false;
         // rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
     }
     else{
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/2, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -1, -1, -1, 1);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, M_PI, -M_PI, 0);
         //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, 0, M_PI, 0);
@@ -486,34 +491,17 @@ static bool REVERSE_ANIM = false;
 
 
 - (void)updateOffsets {
-    
-    
-    
     CGFloat yOffset   = self.PlacesTable.contentOffset.y;
-    CGFloat threshold = self.PlacesTable.frame.size.height - self.PlacesTable.frame.size.height;
-    
-    
-    if (yOffset > -threshold && yOffset < 0) {
-        self.CityImage.frame = CGRectMake(0,-yOffset,320.0,self.CityImage.frame.size.height);
-        self.CategoryLabel.frame = CGRectMake(self.CategoryLabel.frame.origin.x,-yOffset,self.CategoryLabel.frame.size.width,self.CategoryLabel.frame.size.height);
-        self.GradientnderLabel.frame = CGRectMake(self.GradientnderLabel.frame.origin.x,-yOffset,self.GradientnderLabel.frame.size.width,self.GradientnderLabel.frame.size.height);
-//        
-        // NSLog(@"1");
-        
-    } else if (yOffset < 0) {
-        // NSLog(@"2");
-        
-//        if ([CategoryPlaces count] == 1)
-//            self.CityImage.frame = CGRectMake(0,-44.0,320.0,76.0-yOffset + floorf(threshold / 2.0));
-//        else
-            self.CityImage.frame = CGRectMake(0,-44.0,320.0,221.0-yOffset + floorf(threshold / 2.0));
-        
+    if (yOffset < 0) {
+        self.backgroundView.frame = CGRectMake(0, self.PlacesTable.frame.origin.y - yOffset, 320, self.PlacesTable.frame.size.height);
+        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
         self.CategoryLabel.frame = CGRectMake(self.CategoryLabel.frame.origin.x,4-(yOffset),self.CategoryLabel.frame.size.width,self.CategoryLabel.frame.size.height);
 //        
         self.GradientnderLabel.frame = CGRectMake(self.GradientnderLabel.frame.origin.x,-9-yOffset,self.GradientnderLabel.frame.size.width,self.GradientnderLabel.frame.size.height);
     } else {
         // NSLog(@"3");
-        self.CityImage.frame = CGRectMake(0, -44.0, 320, self.CityImage.frame.size.height);
+        self.backgroundView.frame = CGRectMake(0, self.PlacesTable.frame.origin.y , 320, self.PlacesTable.frame.size.height);
+        self.CityImage.frame = CGRectMake(0, -280.0, 320, self.CityImage.frame.size.height);
         
         
         self.CategoryLabel.frame = CGRectMake(self.CategoryLabel.frame.origin.x,4,self.CategoryLabel.frame.size.width,self.CategoryLabel.frame.size.height);

@@ -351,7 +351,7 @@ static NSDictionary *Place1;
 
     } else if (yOffset < 0) {
         // NSLog(@"2");
-        self.CityImage.frame = CGRectMake(0,-44.0,320.0,221.0-yOffset + floorf(threshold / 2.0));
+        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
         
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
         
@@ -359,7 +359,7 @@ static NSDictionary *Place1;
       
     } else {
         // NSLog(@"3");
-        self.CityImage.frame = CGRectMake(0, -44.0, 320, self.CityImage.frame.size.height);
+        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, self.CityImage.frame.size.height);
      
         
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5,self.CityName.frame.size.width,self.CityName.frame.size.height);

@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet NSString *Label;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SearchButton;
 @property (nonatomic,retain)IBOutlet NSArray *CellArray;
+@property (nonatomic,retain)IBOutlet NSArray *frameArray;
 @property (nonatomic,retain)IBOutlet NSArray *SegueArray;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic,retain)MBProgressHUD *HUDfade;

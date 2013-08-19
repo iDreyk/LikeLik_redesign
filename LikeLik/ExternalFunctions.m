@@ -664,7 +664,7 @@ static CLLocation *Me;
 //  широкая заставка города
 + (NSString *) larkePictureOfCity : (NSString *) city{
     NSDictionary *City = [self cityCatalogueForCity:city];
-    
+    NSLog(@"LARKE: %@",[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[City objectForKey:@"city_EN"] ofType:@""],[[City objectForKey:@"photos"] objectForKey:@"large"]]);
     return [[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[City objectForKey:@"city_EN"] ofType:@""],[[City objectForKey:@"photos"] objectForKey:@"large"]];
 }
 

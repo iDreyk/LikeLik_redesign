@@ -81,20 +81,6 @@ static BOOL PLACES_LOADED = NO;
     UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     background.backgroundColor = [InterfaceFunctions BackgroundColor];
     [self.categoryView addSubview:background];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap6 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap7 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap8 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap9 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap10 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    UITapGestureRecognizer *tap11 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
-    
         
 //    self.Table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
@@ -240,21 +226,11 @@ static BOOL PLACES_LOADED = NO;
         }
     }
     
+        
     
     UIView *frame1 = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 93, 93)];
     frame1.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"1.png"] scaledToSize:CGSizeMake(93, 93)]];
     frame1.tag = 0;
-    [frame1 addGestureRecognizer:tap];
-    [frame1 setUserInteractionEnabled:YES];
-    UILabel *text = [[UILabel alloc]initWithFrame:CGRectMake(5, 64, 83, 28)];
-    text.text = AMLocalizedString([self.CellArray objectAtIndex:frame1.tag], nil);
-    text.backgroundColor = [UIColor clearColor];
-    text.textColor = [UIColor whiteColor];
-    [text setFont:[UIFont systemFontOfSize:14]];
-    CALayer *layer = frame1.layer;
-    layer.cornerRadius = 10;
-    frame1.clipsToBounds = YES;
-    [frame1 addSubview:text];
     [self.categoryView addSubview:frame1];
     
     UIView *fade = [[UIView alloc] initWithFrame:frame1.frame];
@@ -263,128 +239,83 @@ static BOOL PLACES_LOADED = NO;
     CALayer *layer1 = fade.layer;
     layer1.cornerRadius = 10;
     frame1.clipsToBounds = YES;
-
     [self.categoryView addSubview:fade];
     
     UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(113, 20, 93, 93)];
     frame2.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"2.png"] scaledToSize:CGSizeMake(93, 93)]];
-
     frame2.tag = 1;
-    [frame2 addGestureRecognizer:tap1];
-    [frame2 setUserInteractionEnabled:YES];
-    UILabel *text1 = [[UILabel alloc]initWithFrame:CGRectMake(5, 64, 83, 28)];
-    text1.text = AMLocalizedString([self.CellArray objectAtIndex:frame2.tag], nil);
-    text1.backgroundColor = [UIColor clearColor];
-    text1.textColor = [UIColor whiteColor];
-    [text1 setFont:[UIFont systemFontOfSize:14]];
-    [frame2 addSubview:text1];
-    CALayer *layer2 = frame2.layer;
-    layer2.cornerRadius = 10;
-    frame2.clipsToBounds = YES;
     [self.categoryView addSubview:frame2];
     
     UIView *frame3 = [[UIView alloc] initWithFrame:CGRectMake(216, 20, 93, 93)];
     frame3.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"3.png"] scaledToSize:CGSizeMake(93, 93)]];
-
     frame3.tag = 2;
-    [frame3 addGestureRecognizer:tap2];
-    [frame3 setUserInteractionEnabled:YES];
-    CALayer *layer3 = frame3.layer;
-    layer3.cornerRadius = 10;
-    frame3.clipsToBounds = YES;
     [self.categoryView addSubview:frame3];
     
     UIView *frame4 = [[UIView alloc] initWithFrame:CGRectMake(10, 133, 93, 93)];
     frame4.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"4.png"] scaledToSize:CGSizeMake(93, 93)]];
-
     frame4.tag = 3;
-    [frame4 addGestureRecognizer:tap3];
-    [frame4 setUserInteractionEnabled:YES];
-    CALayer *layer4 = frame4.layer;
-    layer4.cornerRadius = 10;
-    frame4.clipsToBounds = YES;
     [self.categoryView addSubview:frame4];
     
     UIView *frame5 = [[UIView alloc] initWithFrame:CGRectMake(113, 133, 93, 93)];
     frame5.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"5.png"] scaledToSize:CGSizeMake(93, 93)]];
-    CALayer *layer5 = frame5.layer;
-    layer5.cornerRadius = 10;
-    frame5.clipsToBounds = YES;
     frame5.tag = 4;
-    [frame5 addGestureRecognizer:tap4];
-    [frame5 setUserInteractionEnabled:YES];
     [self.categoryView addSubview:frame5];
     
     UIView *frame6 = [[UIView alloc] initWithFrame:CGRectMake(216, 133, 93, 93)];
     frame6.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"6.png"] scaledToSize:CGSizeMake(93, 93)]];
-    CALayer *layer6 = frame6.layer;
-    layer6.cornerRadius = 10;
-    frame6.clipsToBounds = YES;
     frame6.tag = 5;
-    [frame6 addGestureRecognizer:tap5];
-    [frame6 setUserInteractionEnabled:YES];
     [self.categoryView addSubview:frame6];
     
     UIView *frame7 = [[UIView alloc] initWithFrame:CGRectMake(10, 246, 93, 93)];
     frame7.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"7.png"] scaledToSize:CGSizeMake(93, 93)]];
-    CALayer *layer7 = frame7.layer;
-    layer7.cornerRadius = 10;
-    frame7.clipsToBounds = YES;
     frame7.tag = 6;
-    [frame7 addGestureRecognizer:tap6];
-    [frame7 setUserInteractionEnabled:YES];
     [self.categoryView addSubview:frame7];
     
     UIView *frame8 = [[UIView alloc] initWithFrame:CGRectMake(113, 246, 93, 93)];
     frame8.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"8.png"] scaledToSize:CGSizeMake(93, 93)]];
-    CALayer *layer8 = frame8.layer;
-    layer8.cornerRadius = 10;
-    frame8.clipsToBounds = YES;
     frame8.tag = 7;
-    [frame8 addGestureRecognizer:tap7];
-    [frame8 setUserInteractionEnabled:YES];
     [self.categoryView addSubview:frame8];
     
     UIView *frame9 = [[UIView alloc] initWithFrame:CGRectMake(216, 246, 93, 93)];
     frame9.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"9.png"] scaledToSize:CGSizeMake(93, 93)]];
-    CALayer *layer9 = frame9.layer;
-    layer9.cornerRadius = 10;
-    frame9.clipsToBounds = YES;
     frame9.tag = 8;
-    [frame9 addGestureRecognizer:tap8];
-    [frame9 setUserInteractionEnabled:YES];
     [self.categoryView addSubview:frame9];
     
     UIView *frame10 = [[UIView alloc] initWithFrame:CGRectMake(10, 359, 93, 93)];
     frame10.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"10.png"] scaledToSize:CGSizeMake(93, 93)]];
-    CALayer *layer10 = frame10.layer;
-    layer10.cornerRadius = 10;
-    frame10.clipsToBounds = YES;
     frame10.tag = 9;
-    [frame10 addGestureRecognizer:tap9];
-    [frame10 setUserInteractionEnabled:YES];
     [self.categoryView addSubview:frame10];
     
     UIView *frame11 = [[UIView alloc] initWithFrame:CGRectMake(113, 359, 93, 93)];
     frame11.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"11.png"] scaledToSize:CGSizeMake(93, 93)]];
-    CALayer *layer11 = frame11.layer;
-    layer11.cornerRadius = 10;
-    frame11.clipsToBounds = YES;
     frame11.tag = 10;
-    [frame11 addGestureRecognizer:tap10];
-    [frame1 setUserInteractionEnabled:YES];
     [self.categoryView addSubview:frame11];
     
     UIView *frame12 = [[UIView alloc] initWithFrame:CGRectMake(216, 359, 93, 93)];
     frame12.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"12.png"] scaledToSize:CGSizeMake(93, 93)]];
-    CALayer *layer12 = frame12.layer;
-    layer12.cornerRadius = 10;
-    frame12.clipsToBounds = YES;
     frame12.tag = 11;
-    [frame12 addGestureRecognizer:tap11];
-    [frame12 setUserInteractionEnabled:YES];
     [self.categoryView addSubview:frame12];
 
+    if(!self.frameArray)
+        self.frameArray = [[NSArray alloc] init];
+    
+    self.frameArray = @[frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, frame11, frame12];
+    for (UIView *frame in self.frameArray){
+        UILabel *text = [[UILabel alloc]initWithFrame:CGRectMake(1, 64, 91, 28)];
+        text.text = AMLocalizedString([self.CellArray objectAtIndex:frame.tag], nil);
+        text.backgroundColor = [UIColor clearColor];
+        text.textColor = [UIColor whiteColor];
+        [text setFont:[AppDelegate OpenSansSemiBold:22]];
+        text.textAlignment = NSTextAlignmentCenter;
+        [frame addSubview:text];
+        CALayer *layer = frame.layer;
+        layer.cornerRadius = 10;
+        frame.clipsToBounds = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
+        [frame addGestureRecognizer:tap];
+        [frame setUserInteractionEnabled:YES];
+
+    }
     
 }
 
@@ -661,14 +592,15 @@ static BOOL PLACES_LOADED = NO;
     CGFloat yOffset   = self.categoryView.contentOffset.y;
     
    if (yOffset < 0) {
-        self.CityImage.frame = CGRectMake(0,-44.0,320.0,221.0-yOffset);
-        
+       self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
+       
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
         
         self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
         //self.categoryView.frame = CGRectMake(self.categoryView.frame.origin.x,self.categoryView.frame.origin.y-yOffset,self.categoryView.frame.size.width,self.categoryView.frame.size.height);
     }
     else {
+        self.CityImage.frame = CGRectMake(0, -280.0, 320, self.CityImage.frame.size.height);
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0,self.CityName.frame.size.width,self.CityName.frame.size.height);
         self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,0.0,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
         
