@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *imageCache;
 
+@property (weak, nonatomic) IBOutlet NSArray *categoryArray;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *SegmentedMapandTable;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SearchBarButton;

@@ -506,7 +506,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6m-yY-kDG">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="221" id="jhq-pM-agn"/>
+                                    <constraint firstAttribute="height" constant="568" id="uDk-f8-ens"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Bg_gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vkt-Mu-fmj">
@@ -576,9 +576,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="JHk-FI-IcU"/>
                             <constraint firstItem="Vkt-Mu-fmj" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="NFJ-fq-R7e"/>
                             <constraint firstItem="m6S-MZ-OaS" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" constant="5" id="NTi-CU-tHM"/>
+                            <constraint firstItem="H6m-yY-kDG" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" constant="-280" id="P5M-yg-hvd"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="TJ9-jw-TjS"/>
                             <constraint firstItem="H6m-yY-kDG" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="VNC-2i-zsT"/>
-                            <constraint firstItem="H6m-yY-kDG" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" constant="-44" id="VXI-NZ-sD2"/>
                             <constraint firstItem="H6m-yY-kDG" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="aca-Hx-XoS"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="bc4-av-6fZ"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="rBm-k5-Cxs"/>
@@ -1774,7 +1774,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDR-KQ-afP">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="221" id="Dcf-B5-0yi"/>
+                                    <constraint firstAttribute="height" constant="568" id="RIf-Zd-9p2"/>
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="saQ-QI-AlB">
@@ -1803,13 +1803,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gDR-KQ-afP" firstAttribute="top" secondItem="tMM-qS-G7c" secondAttribute="top" constant="-280" id="0wv-as-uLZ"/>
                             <constraint firstItem="XGe-Ph-Y4i" firstAttribute="top" secondItem="tMM-qS-G7c" secondAttribute="top" type="default" id="3Ql-wj-YsN"/>
                             <constraint firstItem="fWS-sG-OGH" firstAttribute="bottom" secondItem="tMM-qS-G7c" secondAttribute="bottom" type="default" id="AhK-AM-bgY"/>
                             <constraint firstItem="XGe-Ph-Y4i" firstAttribute="leading" secondItem="tMM-qS-G7c" secondAttribute="leading" type="default" id="BjG-NM-YXl"/>
                             <constraint firstItem="gDR-KQ-afP" firstAttribute="leading" secondItem="tMM-qS-G7c" secondAttribute="leading" type="default" id="RZA-sC-ySM"/>
                             <constraint firstItem="gDR-KQ-afP" firstAttribute="trailing" secondItem="tMM-qS-G7c" secondAttribute="trailing" type="default" id="SZ5-RW-9xU"/>
                             <constraint firstItem="0Oh-T2-gu4" firstAttribute="leading" secondItem="tMM-qS-G7c" secondAttribute="leading" constant="12" id="TCj-Ec-xEc"/>
-                            <constraint firstItem="gDR-KQ-afP" firstAttribute="top" secondItem="tMM-qS-G7c" secondAttribute="top" constant="-44" id="UQv-nn-eFJ"/>
                             <constraint firstItem="fWS-sG-OGH" firstAttribute="leading" secondItem="tMM-qS-G7c" secondAttribute="leading" type="default" id="Uht-Dp-5vp"/>
                             <constraint firstItem="saQ-QI-AlB" firstAttribute="leading" secondItem="tMM-qS-G7c" secondAttribute="leading" type="default" id="c7R-uN-xPK"/>
                             <constraint firstItem="XGe-Ph-Y4i" firstAttribute="trailing" secondItem="tMM-qS-G7c" secondAttribute="trailing" type="default" id="cny-ak-oJg"/>
@@ -2175,10 +2175,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="MxA-FI-ppy"/>
         <segue reference="pVH-Es-TaK"/>
-        <segue reference="uZI-6Y-Ryz"/>
-        <segue reference="yCK-Wu-Xo6"/>
+        <segue reference="iFn-sF-BeJ"/>
         <segue reference="XKw-Kc-cfl"/>
+        <segue reference="yCK-Wu-Xo6"/>
+        <segue reference="CID-7V-uDc"/>
     </inferredMetricsTieBreakers>
 </document>

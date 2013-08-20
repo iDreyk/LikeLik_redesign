@@ -26,8 +26,9 @@ static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 
-#define FADE_TAG 66482
 #define EF_TAG 66483
+#define FADE_TAG 66484
+
 
 @interface CategoryViewController ()
 
@@ -47,11 +48,15 @@ static BOOL PLACES_LOADED = NO;
 }
 
 - (void)activateAroundMe{
-    for (UIView *subView in self.categoryView.subviews){
-        if(subView.tag == FADE_TAG){
-           [subView removeFromSuperview];
+    for (UIView *subViews in self.view.subviews)
+        if (subViews.tag == EF_TAG ) {
+            [subViews removeFromSuperview];
         }
+    for (UIView *subViews in self.navigationController.view.subviews){
+        if(subViews.tag == FADE_TAG)
+             [subViews removeFromSuperview];
     }
+    //self.frame1.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"1.png"] scaledToSize:CGSizeMake(93, 93)]];
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
@@ -79,11 +84,12 @@ static BOOL PLACES_LOADED = NO;
     [self.categoryView flashScrollIndicators];
     self.categoryView.delegate = self;
     UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    background.backgroundColor = [InterfaceFunctions BackgroundColor];
+    background.backgroundColor = [UIColor whiteColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
     [self.categoryView addSubview:background];
         
 //    self.Table.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
+    self.view.backgroundColor = [UIColor whiteColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
+    //Overlay_Long@2x.png
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
 
     self.CityName.text = self.Label;
@@ -138,7 +144,11 @@ static BOOL PLACES_LOADED = NO;
     [self.placeViewMap addSubview:self.MapPlace];
 
     PLACES_LOADED = NO;
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
+    fade.tag = FADE_TAG;
+    fade.backgroundColor = [UIColor clearColor];
+    [self.navigationController.view addSubview:fade];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // post an NSNotification that loading has started
         AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
@@ -157,7 +167,6 @@ static BOOL PLACES_LOADED = NO;
         //    NSLog(@"%@",self.MapPlace.annotations);]
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSLog(@"Back on main thread");
-            self.navigationItem.rightBarButtonItem.enabled = YES;
             PLACES_LOADED = YES;
             [self activateAroundMe];
 //            [self.Table reloadData];
@@ -226,80 +235,86 @@ static BOOL PLACES_LOADED = NO;
         }
     }
     
-        
+    CGFloat frameSize = 93.0;
+    CGFloat xOrigin = 10;
+    CGFloat yOrigin = 20;
+    CGFloat yOffset = 10;
     
-    UIView *frame1 = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 93, 93)];
-    frame1.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"1.png"] scaledToSize:CGSizeMake(93, 93)]];
-    frame1.tag = 0;
-    [self.categoryView addSubview:frame1];
+    if(self.view.bounds.size.height == 460.0)
+        yOrigin = 0;
     
-    UIView *fade = [[UIView alloc] initWithFrame:frame1.frame];
-    fade.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-    fade.tag = FADE_TAG;
-    CALayer *layer1 = fade.layer;
-    layer1.cornerRadius = 10;
-    frame1.clipsToBounds = YES;
-    [self.categoryView addSubview:fade];
+    self.frame1 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, yOrigin + yOffset, frameSize, frameSize)];
+    self.frame1.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"1.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
+    self.frame1.tag = 0;
+    [self.categoryView addSubview:self.frame1];
     
-    UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(113, 20, 93, 93)];
-    frame2.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"2.png"] scaledToSize:CGSizeMake(93, 93)]];
+//    UIView *fade = [[UIView alloc] initWithFrame:frame1.frame];
+//    fade.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+//    fade.tag = FADE_TAG;
+//    CALayer *layer1 = fade.layer;
+//    layer1.cornerRadius = 10;
+//    frame1.clipsToBounds = YES;
+//    [self.categoryView addSubview:fade];
+    
+    UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, yOrigin + yOffset, frameSize, frameSize)];
+    frame2.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"2.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame2.tag = 1;
     [self.categoryView addSubview:frame2];
     
-    UIView *frame3 = [[UIView alloc] initWithFrame:CGRectMake(216, 20, 93, 93)];
-    frame3.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"3.png"] scaledToSize:CGSizeMake(93, 93)]];
+    UIView *frame3 = [[UIView alloc] initWithFrame:CGRectMake(2*frameSize + 3*xOrigin, yOrigin + yOffset, frameSize, frameSize)];
+    frame3.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"3.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame3.tag = 2;
     [self.categoryView addSubview:frame3];
     
-    UIView *frame4 = [[UIView alloc] initWithFrame:CGRectMake(10, 133, 93, 93)];
-    frame4.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"4.png"] scaledToSize:CGSizeMake(93, 93)]];
+    UIView *frame4 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, frameSize + yOrigin + 2*yOffset, frameSize, frameSize)];
+    frame4.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"4.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame4.tag = 3;
     [self.categoryView addSubview:frame4];
     
-    UIView *frame5 = [[UIView alloc] initWithFrame:CGRectMake(113, 133, 93, 93)];
-    frame5.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"5.png"] scaledToSize:CGSizeMake(93, 93)]];
+    UIView *frame5 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, frameSize + yOrigin + 2*yOffset, frameSize, frameSize)];
+    frame5.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"5.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame5.tag = 4;
     [self.categoryView addSubview:frame5];
     
-    UIView *frame6 = [[UIView alloc] initWithFrame:CGRectMake(216, 133, 93, 93)];
-    frame6.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"6.png"] scaledToSize:CGSizeMake(93, 93)]];
+    UIView *frame6 = [[UIView alloc] initWithFrame:CGRectMake(2*frameSize + 3*xOrigin, frameSize + yOrigin + 2*yOffset, frameSize, frameSize)];
+    frame6.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"6.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame6.tag = 5;
     [self.categoryView addSubview:frame6];
     
-    UIView *frame7 = [[UIView alloc] initWithFrame:CGRectMake(10, 246, 93, 93)];
-    frame7.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"7.png"] scaledToSize:CGSizeMake(93, 93)]];
+    UIView *frame7 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, 2*frameSize + yOrigin + 3*yOffset, frameSize, frameSize)];
+    frame7.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"7.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame7.tag = 6;
     [self.categoryView addSubview:frame7];
     
-    UIView *frame8 = [[UIView alloc] initWithFrame:CGRectMake(113, 246, 93, 93)];
-    frame8.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"8.png"] scaledToSize:CGSizeMake(93, 93)]];
+    UIView *frame8 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, 2*frameSize + yOrigin + 3*yOffset, frameSize, frameSize)];
+    frame8.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"8.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame8.tag = 7;
     [self.categoryView addSubview:frame8];
     
-    UIView *frame9 = [[UIView alloc] initWithFrame:CGRectMake(216, 246, 93, 93)];
-    frame9.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"9.png"] scaledToSize:CGSizeMake(93, 93)]];
+    UIView *frame9 = [[UIView alloc] initWithFrame:CGRectMake(2*frameSize + 3*xOrigin, 2*frameSize + yOrigin + 3*yOffset, frameSize, frameSize)];
+    frame9.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"9.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame9.tag = 8;
     [self.categoryView addSubview:frame9];
     
-    UIView *frame10 = [[UIView alloc] initWithFrame:CGRectMake(10, 359, 93, 93)];
-    frame10.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"10.png"] scaledToSize:CGSizeMake(93, 93)]];
+    UIView *frame10 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, 3*frameSize + yOrigin + 4*yOffset, frameSize, frameSize)];
+    frame10.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"10.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame10.tag = 9;
     [self.categoryView addSubview:frame10];
     
-    UIView *frame11 = [[UIView alloc] initWithFrame:CGRectMake(113, 359, 93, 93)];
-    frame11.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"11.png"] scaledToSize:CGSizeMake(93, 93)]];
+    UIView *frame11 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, 3*frameSize + yOrigin + 4*yOffset, frameSize, frameSize)];
+    frame11.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"11.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame11.tag = 10;
     [self.categoryView addSubview:frame11];
     
-    UIView *frame12 = [[UIView alloc] initWithFrame:CGRectMake(216, 359, 93, 93)];
-    frame12.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"12.png"] scaledToSize:CGSizeMake(93, 93)]];
+    UIView *frame12 = [[UIView alloc] initWithFrame:CGRectMake(2*frameSize + 3*xOrigin, 3*frameSize + yOrigin + 4*yOffset, frameSize, frameSize)];
+    frame12.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"12.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame12.tag = 11;
     [self.categoryView addSubview:frame12];
 
     if(!self.frameArray)
         self.frameArray = [[NSArray alloc] init];
     
-    self.frameArray = @[frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, frame11, frame12];
+    self.frameArray = @[self.frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, frame11, frame12];
     for (UIView *frame in self.frameArray){
         UILabel *text = [[UILabel alloc]initWithFrame:CGRectMake(1, 64, 91, 28)];
         text.text = AMLocalizedString([self.CellArray objectAtIndex:frame.tag], nil);
@@ -317,6 +332,27 @@ static BOOL PLACES_LOADED = NO;
 
     }
     
+    UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
+    coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    coolEf.tag = EF_TAG;
+    [self.view addSubview:coolEf];
+    [UIView animateWithDuration:0.2 animations:^{
+        coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 37, self.view.center.y - 37, 74, 74)];
+        //knuckle_1@2x.png
+        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD@2x.png"] scaledToSize:CGSizeMake(74, 74)]];
+        //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+        CALayer *layer = spin.layer;
+        layer.cornerRadius = 8;
+        spin.clipsToBounds = YES;
+        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+        animation.duration = 3.0f;
+        animation.repeatCount = HUGE_VAL;
+        [spin.layer addAnimation:animation forKey:@"MyAnimation"];
+        [coolEf addSubview:spin];
+    }];
 }
 
 -(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
@@ -486,41 +522,53 @@ static BOOL PLACES_LOADED = NO;
 }
 -(void)customPush:(UIView *)sender{
     NSInteger number = [(UIGestureRecognizer *)sender view].tag;
-    UIView *coolEf = [[UIView alloc] initWithFrame:[(UIGestureRecognizer *)sender view].frame];
-    if(number > 0 && number < 8)
-        coolEf.backgroundColor = [InterfaceFunctions mainTextColor:(number + 1)];
-    else
-        coolEf.backgroundColor = [InterfaceFunctions corporateIdentity];
-    coolEf.tag = EF_TAG;
-    [self.view addSubview:coolEf];
-    [UIView animateWithDuration:0.3 animations:^{
-        coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 37, self.view.center.y - 37, 74, 74)];
-        //knuckle_1@2x.png
-        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD@2x.png"] scaledToSize:CGSizeMake(74, 74)]];
-        //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-        CALayer *layer = spin.layer;
-        layer.cornerRadius = 8;
-        spin.clipsToBounds = YES;
-        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-        animation.fromValue = [NSNumber numberWithFloat:0.0f];
-        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
-        animation.duration = 3.0f;
-        animation.repeatCount = HUGE_VAL;
-        [spin.layer addAnimation:animation forKey:@"MyAnimation"];
-        [coolEf addSubview:spin];
-
-        self.navigationItem.leftBarButtonItem.enabled = NO;
-    } completion:^(BOOL finished) {
+//    UIView *coolEf = [[UIView alloc] initWithFrame:[(UIGestureRecognizer *)sender view].frame];
+//    if(number > 0 && number < 8)
+//        coolEf.backgroundColor = [InterfaceFunctions mainTextColor:(number + 1)];
+//    else
+//        coolEf.backgroundColor = [InterfaceFunctions corporateIdentity];
+//    coolEf.tag = EF_TAG;
+//    [self.view addSubview:coolEf];
+//    [UIView animateWithDuration:0.1 animations:^{
+//        coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+//        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 37, self.view.center.y - 37, 74, 74)];
+//        //knuckle_1@2x.png
+//        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD@2x.png"] scaledToSize:CGSizeMake(74, 74)]];
+//        //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+//        CALayer *layer = spin.layer;
+//        layer.cornerRadius = 8;
+//        spin.clipsToBounds = YES;
+//        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+//        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+//        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+//        animation.duration = 3.0f;
+//        animation.repeatCount = HUGE_VAL;
+//        [spin.layer addAnimation:animation forKey:@"MyAnimation"];
+//        [coolEf addSubview:spin];
+//
+       self.navigationItem.leftBarButtonItem.enabled = NO;
+//} completion:^(BOOL finished) {
         [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:number]];
         if((number == 0) && !PLACES_LOADED)
             return;
         [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:number] sender:sender];
-        NSTimeInterval delay = 0.4; //in seconds
-        [self performSelector:@selector(clearView:) withObject:nil afterDelay:delay];
-    }];
+//  NSTimeInterval delay = 0.4; //in seconds
+//    [self performSelector:@selector(clearView:) withObject:nil afterDelay:delay];
+//  }];
     
 }
+
+-(NSArray *)placesInCategory:(NSString *)category{
+    NSMutableArray *arrayOfPlacesInCategory = [[NSMutableArray alloc] init];
+    for (int i = 0; i < AroundArray.count; ++i) {
+        if([[[AroundArray objectAtIndex:i] objectForKey:@"Category"] isEqualToString:category]){
+            NSLog(@"name: %@", [[AroundArray objectAtIndex:i] objectForKey:@"Name"]);
+            [arrayOfPlacesInCategory addObject:(AroundArray)[i]];
+        }
+    }
+    return [NSArray arrayWithArray:arrayOfPlacesInCategory];
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIView *)sender{
     
     //NSIndexPath *indexPath = [self.Table indexPathForSelectedRow];
@@ -537,6 +585,7 @@ static BOOL PLACES_LOADED = NO;
         destination.CityName = self.Label;
         destination.Category = [self.CellArray objectAtIndex:row];
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
+        destination.categoryArray = [self placesInCategory:destination.Category];
     }
 
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {

@@ -217,6 +217,7 @@ static CLLocation *Me;
         }
         
         double distance = [location distanceFromLocation:currentPlace];
+        NSLog(@"distance from location: %@ - %f", [[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"Name"]], distance);
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"Name"]] forKey:@"Name"];
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"About"]] forKey:@"About"];
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"address"]] forKey:@"Address"];
@@ -229,6 +230,7 @@ static CLLocation *Me;
         [placeDict setValue:category forKey:@"Category"];
         [placeDict setValue:photos forKey:@"Photo"];
         [placeDict setValue:city forKey:@"City"];
+        [placeDict setValue:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],[cityDict objectForKey:@"city_EN"],[[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"Photo"] objectForKey:@"thumb"]] forKey:@"thumb"];
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"favourite"] forKey:@"Favorite"];
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:@"tag"] forKey:@"Tags"];
         [placeDict setValue:[NSNumber numberWithDouble:lat] forKey:@"Latitude"];

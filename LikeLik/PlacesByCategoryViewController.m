@@ -18,6 +18,8 @@
 #define goLAbelTag 87002
 #define arrowTag 87003
 #define backgroundViewTag 87004
+#define backTag 87005
+#define distanceTag 87006
 
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
@@ -47,10 +49,10 @@ static bool REVERSE_ANIM = false;
     
     [super viewDidLoad];
   
-    self.backgroundView.backgroundColor = [InterfaceFunctions colorTextCategory:self.Category];
+    self.backgroundView.backgroundColor = [UIColor whiteColor];//[InterfaceFunctions colorTextCategory:self.Category];
     
   //  NSLog(@"123");
-    CategoryPlaces = [ExternalFunctions getArrayOfPlaceDictionariesInCategory:self.Category InCity:self.CityName];
+    CategoryPlaces = self.categoryArray;//[ExternalFunctions getArrayOfPlaceDictionariesInCategory:self.Category InCity:self.CityName];
  //   NSLog(@"%@ %d",CategoryPlaces, [CategoryPlaces count]);
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
@@ -131,7 +133,6 @@ static bool REVERSE_ANIM = false;
     if(!self.imageCache)
         self.imageCache = [[NSMutableDictionary alloc] init];
     
-   
 }
 
 -(IBAction)showLocation:(id)sender{
@@ -258,23 +259,37 @@ static bool REVERSE_ANIM = false;
     return 180;
 }
 
-- (void)loadImageFromCache:(NSString *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+- (void)loadImageFromCache:(NSString *)url :(NSString *)backup completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
 {
     
     UIImage* theImage = [self.imageCache objectForKey:url];
+    UIImage* backupImg = [self.imageCache objectForKey:backup];
+
     if ((nil != theImage) && [theImage isKindOfClass:[UIImage class]]) {
         NSLog(@"img loaded from cache!");
         completionBlock(YES, theImage);
     }
+    else if((nil != backupImg) && [backupImg isKindOfClass:[UIImage class]]){
+        NSLog(@"img loaded from cache!");
+        completionBlock(YES, backupImg);
+    }
     else{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *cropedImage = [[UIImage alloc] init];
         UIImage *image = [UIImage imageWithContentsOfFile:url];
-        CGImageRef imgRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 400, 640, 360));
-        cropedImage = [UIImage imageWithCGImage:imgRef];
-        CGImageRelease(imgRef);
-        [self.imageCache setObject:cropedImage forKey:url];
-        NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:url]);
+        UIImage *cropedImage = [[UIImage alloc] init];
+        if(!image){
+            image = [UIImage imageWithContentsOfFile:backup];
+            CGImageRef imgRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 400, 640, 360));
+            cropedImage = [UIImage imageWithCGImage:imgRef];
+            CGImageRelease(imgRef);
+            [self.imageCache setObject:cropedImage forKey:backup];
+            NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:backup]);
+        }
+        else{
+            cropedImage = image;
+            [self.imageCache setObject:cropedImage forKey:url];
+            NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:url]);
+        }
         NSLog(@"Images in cache: %d", [self.imageCache count]);
             dispatch_async(dispatch_get_main_queue(), ^ {
                 completionBlock(YES,cropedImage);
@@ -309,13 +324,47 @@ static bool REVERSE_ANIM = false;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 #warning Временно ?
+        //202,148,78
+        UIView *back = [[UIView alloc] initWithFrame:CGRectMake(7, 7, 306, 166)];
+        back.backgroundColor = [InterfaceFunctions colorTextCategory:self.Category];
+        back.tag = backTag;
+        [cell.contentView addSubview:back];
+        
+        
+        cell.contentView.backgroundColor =[UIColor whiteColor];//[[InterfaceFunctions colorTextCategory:self.Category] colorWithAlphaComponent:0.3];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 310, 170)];
+        CGFloat width = 220;
+        UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(12, 20, width, width / 1.852)];
         preview.tag = backgroundViewTag;
         preview.backgroundColor = [UIColor whiteColor];
         preview.clipsToBounds = NO;
-        CALayer * imgLayer = preview.layer;
         
+        CALayer * imgLayer1 = preview.layer;
+        [imgLayer1 setBorderColor: [[UIColor whiteColor] CGColor]];
+        [imgLayer1 setBorderWidth:0.5f];
+        [imgLayer1 setShadowColor: [[UIColor whiteColor] CGColor]];
+        [imgLayer1 setShadowOpacity:0.9f];
+        [imgLayer1 setShadowOffset: CGSizeMake(0, 1)];
+        [imgLayer1 setShadowRadius:3.0];
+        //        [imgLayer setCornerRadius:4];
+        imgLayer1.shouldRasterize = YES;
+        
+        // This tell QuartzCore where to draw the shadow so it doesn't have to work it out each time
+        [imgLayer1 setShadowPath:[UIBezierPath bezierPathWithRect:imgLayer1.bounds].CGPath];
+        
+        // This tells QuartzCore to render it as a bitmap
+        [imgLayer1 setRasterizationScale:[UIScreen mainScreen].scale];
+
+        
+        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(12, preview.frame.size.height + 10, preview.frame.size.width, 30)];
+        text.text = @"Комплимент от заведения: чашка кофе.";
+        text.backgroundColor = [UIColor clearColor];
+        text.textColor = [UIColor whiteColor];
+        text.font = [UIFont boldSystemFontOfSize:10];
+        [back addSubview:text];
+
+        
+        CALayer * imgLayer = back.layer;
         [imgLayer setBorderColor: [[UIColor whiteColor] CGColor]];
         [imgLayer setBorderWidth:0.5f];
         [imgLayer setShadowColor: [[UIColor blackColor] CGColor]];
@@ -331,10 +380,15 @@ static bool REVERSE_ANIM = false;
         // This tells QuartzCore to render it as a bitmap
         [imgLayer setRasterizationScale:[UIScreen mainScreen].scale];
 
-        [cell.contentView addSubview:preview];
+        [back addSubview:preview];
 
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, -12.0, 260, cell.center.y*2)];
+
+//        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+//        line.backgroundColor = [[InterfaceFunctions colorTextCategory:self.Category] colorWithAlphaComponent:0.3];
+//        [preview addSubview:line];
+
         
         //[InterfaceFunctions TableLabelwithText:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)];
         label.tag = tableLabelWithTextTag;  
@@ -343,27 +397,41 @@ static bool REVERSE_ANIM = false;
         label.shadowOffset = CGSizeMake(0.0, -0.1);
         label.backgroundColor = [UIColor clearColor];
 //        label.text = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"];
-        label.textColor = [InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+        label.textColor = [UIColor whiteColor];//[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
         label.highlightedTextColor = label.textColor;
         label.shadowColor = [InterfaceFunctions ShadowColor];
         label.shadowOffset = [InterfaceFunctions ShadowSize];
-        [preview addSubview:label];
+        [back addSubview:label];
         
+        UILabel *distance = [[UILabel alloc] initWithFrame:CGRectMake(preview.frame.size.width + 20, preview.frame.origin.y, 55, 20)];
+        distance.font = [UIFont systemFontOfSize:10];
+        distance.tag = distanceTag;
+        distance.textColor = [UIColor whiteColor];
+        distance.backgroundColor = [UIColor clearColor];
+        [back addSubview:distance];
         
-        
-        UILabel *goLabel = [InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
-        [preview addSubview:goLabel];
-        UIImageView *arrow = [InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
-        [preview addSubview:arrow];
+//        UILabel *goLabel = [InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+//        [back addSubview:goLabel];
+//        UIImageView *arrow = [InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+//        [back addSubview:arrow];
         
     }
+//    NSLog(@"PLACE1: %@", Place1);
+    NSNumber *distance = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Distance"];
+    float intDist = [distance floatValue];
+    
+    UILabel *dist = (UILabel *)[cell viewWithTag:distanceTag];
+    if(intDist > 1000)
+        dist.text = [NSString stringWithFormat:@"%.2f km", intDist / 1000.];
+    else
+        dist.text = [NSString stringWithFormat:@"%.0f m", intDist];
     
     UILabel *tableLabelWithText  = (UILabel *)[cell viewWithTag:tableLabelWithTextTag];
     tableLabelWithText.text = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"];
     
     Place1 = [CategoryPlaces objectAtIndex:row];
     NSArray *photos = [Place1 objectForKey:@"Photo"];
-       [self loadImageFromCache:[photos objectAtIndex:0] completionBlock:^(BOOL succeeded, UIImage *image) {
+    [self loadImageFromCache:[Place1 objectForKey:@"thumb"] :[photos objectAtIndex:0] completionBlock:^(BOOL succeeded, UIImage *image) {
         if(succeeded){
             UIImageView *preview = (UIImageView *)[cell viewWithTag:backgroundViewTag];
             preview.image = image;
@@ -379,7 +447,8 @@ static bool REVERSE_ANIM = false;
         REVERSE_ANIM = false;
     
     PREV_SECTION = row;
-    UIView *myView = [[cell subviews] objectAtIndex:0];
+    //UIView *myView = [[cell subviews] objectAtIndex:0];
+    UIView *myView = (UIView *)[cell viewWithTag:backTag];
     CALayer *layer = myView.layer;
     
     CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;

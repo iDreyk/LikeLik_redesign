@@ -27,9 +27,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *categoryView;
 
 
-
 @property (retain, nonatomic) IBOutlet RMMapView *MapPlace;
 @property (weak, nonatomic) IBOutlet UIView *PlaceView;
+@property (strong, nonatomic) IBOutlet UIView *frame1;
 @property (nonatomic,retain) IBOutlet UIView *placeViewMap;
 -(void)search:(id)sender;
 - (void)updateOffsets;
