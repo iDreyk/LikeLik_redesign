@@ -359,7 +359,6 @@
 		91FE3A091796C387000304D4 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A071796C387000304D4 /* Moscow */; };
 		91FE3A0A1796C387000304D4 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A081796C387000304D4 /* Vienna */; };
 		91FE3A0C1796C399000304D4 /* soonCities_RU in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A0B1796C399000304D4 /* soonCities_RU */; };
-		91FE3A141796C407000304D4 /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A131796C407000304D4 /* catalogue.plist */; };
 		91FE3A1C1796C581000304D4 /* soonCities_DE in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1B1796C581000304D4 /* soonCities_DE */; };
 		91FE3A1E1796C591000304D4 /* soonCities_EN in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1D1796C591000304D4 /* soonCities_EN */; };
 		91FE3A201796C5A2000304D4 /* SoonCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1F1796C5A2000304D4 /* SoonCities.plist */; };
@@ -377,6 +376,7 @@
 		D05D7BEC17BE7EEF00003A16 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = D05D7BE017BE7EEF00003A16 /* 12.png */; };
 		D0BC8E1517C4BB840048659E /* kul_90.png in Resources */ = {isa = PBXBuildFile; fileRef = D0BC8E1417C4BB840048659E /* kul_90.png */; };
 		D0BC8E1717C4E34F0048659E /* knuk_pin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0BC8E1617C4E34F0048659E /* knuk_pin_4@2x.png */; };
+		D0BC8E1917C4F7B10048659E /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0BC8E1817C4F7B10048659E /* catalogue.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -862,7 +862,6 @@
 		91FE3A071796C387000304D4 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Moscow; sourceTree = "<group>"; };
 		91FE3A081796C387000304D4 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Vienna; sourceTree = "<group>"; };
 		91FE3A0B1796C399000304D4 /* soonCities_RU */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_RU; sourceTree = "<group>"; };
-		91FE3A131796C407000304D4 /* catalogue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catalogue.plist; sourceTree = "<group>"; };
 		91FE3A1B1796C581000304D4 /* soonCities_DE */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_DE; sourceTree = "<group>"; };
 		91FE3A1D1796C591000304D4 /* soonCities_EN */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_EN; sourceTree = "<group>"; };
 		91FE3A1F1796C5A2000304D4 /* SoonCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SoonCities.plist; sourceTree = "<group>"; };
@@ -880,6 +879,7 @@
 		D05D7BE017BE7EEF00003A16 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
 		D0BC8E1417C4BB840048659E /* kul_90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kul_90.png; sourceTree = "<group>"; };
 		D0BC8E1617C4E34F0048659E /* knuk_pin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuk_pin_4@2x.png"; sourceTree = "<group>"; };
+		D0BC8E1817C4F7B10048659E /* catalogue.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = catalogue.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1425,8 +1425,8 @@
 			children = (
 				D05D7BED17BE7EFF00003A16 /* icons */,
 				91FE3A1F1796C5A2000304D4 /* SoonCities.plist */,
-				91FE3A131796C407000304D4 /* catalogue.plist */,
 				919E8707173A58E700A25E07 /* LikeLik-Info.plist */,
+				D0BC8E1817C4F7B10048659E /* catalogue.plist */,
 				919E8708173A58E700A25E07 /* InfoPlist.strings */,
 				919E870B173A58E700A25E07 /* main.m */,
 				919E870D173A58E700A25E07 /* LikeLik-Prefix.pch */,
@@ -1928,7 +1928,6 @@
 				91FE3A091796C387000304D4 /* Moscow in Resources */,
 				91FE3A0A1796C387000304D4 /* Vienna in Resources */,
 				91FE3A0C1796C399000304D4 /* soonCities_RU in Resources */,
-				91FE3A141796C407000304D4 /* catalogue.plist in Resources */,
 				91FE3A1C1796C581000304D4 /* soonCities_DE in Resources */,
 				91FE3A1E1796C591000304D4 /* soonCities_EN in Resources */,
 				91FE3A201796C5A2000304D4 /* SoonCities.plist in Resources */,
@@ -1954,6 +1953,7 @@
 				D05D7BEC17BE7EEF00003A16 /* 12.png in Resources */,
 				D0BC8E1517C4BB840048659E /* kul_90.png in Resources */,
 				D0BC8E1717C4E34F0048659E /* knuk_pin_4@2x.png in Resources */,
+				D0BC8E1917C4F7B10048659E /* catalogue.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
