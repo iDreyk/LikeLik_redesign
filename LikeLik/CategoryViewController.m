@@ -77,9 +77,11 @@ static BOOL PLACES_LOADED = NO;
     [_locationManager startUpdatingLocation];
     CLLocation *Me = [_locationManager location];
     
-    self.categoryView.backgroundColor = [UIColor clearColor
-                                         ];
+    self.categoryView.backgroundColor = [UIColor clearColor];
     [self.categoryView setScrollEnabled:YES];
+    self.categoryView.showsHorizontalScrollIndicator = NO;
+    self.categoryView.showsVerticalScrollIndicator = NO;
+
     [self.categoryView setContentSize:CGSizeMake(320, 480)];
     [self.categoryView flashScrollIndicators];
     self.categoryView.delegate = self;
@@ -324,7 +326,7 @@ static BOOL PLACES_LOADED = NO;
         text.textAlignment = NSTextAlignmentCenter;
         [frame addSubview:text];
         CALayer *layer = frame.layer;
-        layer.cornerRadius = 10;
+        layer.cornerRadius = 5;
         frame.clipsToBounds = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
         [frame addGestureRecognizer:tap];
@@ -338,9 +340,9 @@ static BOOL PLACES_LOADED = NO;
     [self.view addSubview:coolEf];
     [UIView animateWithDuration:0.2 animations:^{
         coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 37, self.view.center.y - 37, 74, 74)];
+        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 22, self.view.center.y - 90, 45, 45)];
         //knuckle_1@2x.png
-        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD@2x.png"] scaledToSize:CGSizeMake(74, 74)]];
+        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"kul_90.png"] scaledToSize:CGSizeMake(45, 45)]];
         //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
         CALayer *layer = spin.layer;
         layer.cornerRadius = 8;

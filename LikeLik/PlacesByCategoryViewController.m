@@ -116,6 +116,8 @@ static bool REVERSE_ANIM = false;
     self.PlacesTable.backgroundColor = [UIColor clearColor];//[InterfaceFunctions colorTextCategory:self.Category];
 //[InterfaceFunctions BackgroundColor];//[UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.PlacesTable.showsVerticalScrollIndicator = NO;
+    self.PlacesTable.showsHorizontalScrollIndicator = NO;
     
     UIButton *btn = [InterfaceFunctions search_button];
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];

@@ -306,18 +306,30 @@
     _actb.image=[UIImage imageNamed:string];//[NSString]]//[UIImage imageNamed:[NSString stringwithFormat:@"44_48 actb_%d@2x"]];
     return _actb;
 }
+
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+
 +(UIImageView *)MapPin:(NSString *)Category{
     UIImageView *Pin=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MapPin_12"]];
     
 
     if ([Category isEqualToString:AMLocalizedString(@"Restaurants", nil)]) {
         Pin.image = [UIImage imageNamed:@"63_76 MapPin_2"];
+//        Pin.image = [UIImage imageNamed:@"pin1"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Night life", nil)]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_3"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Shopping", nil)]) {
-        Pin.image=[UIImage imageNamed:@"63_76 MapPin_4"];
+        Pin.image=[UIImage imageNamed:@"knuk_pin_4"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Culture", nil)]) {
         Pin.image=[UIImage imageNamed:@"63_76 MapPin_5"];

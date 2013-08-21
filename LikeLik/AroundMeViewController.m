@@ -71,6 +71,8 @@ static NSDictionary *Place1;
     
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.PlacesTable.showsHorizontalScrollIndicator = NO;
+    self.PlacesTable.showsVerticalScrollIndicator = NO;
     
     self.CityImage.hidden = NO;
     self.CityName.hidden = NO;

@@ -152,7 +152,7 @@ static bool REVERSE_ANIM = false;
     cell.CityLabel.text  = _CityLabels[row];
     cell.CityLabel.textColor = [UIColor whiteColor];
     cell.BackCityImage.image = _backCityImages[row];//[UIImage imageWithContentsOfFile:_backCityImages[row]];
-    [cell addSubview:[InterfaceFunctions standartAccessorView]];
+    [cell.contentView addSubview:[InterfaceFunctions standartAccessorView]];
     
     //    if ([indexPath row]+1 == [_CityLabels count] ) {
     //        [cell.layer setShadowOpacity:24.4];
