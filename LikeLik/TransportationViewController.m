@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Transportation", nil) AndColor:[InterfaceFunctions corporateIdentity]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Metro", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     //    nslog(@"TransportationViewController City Name = %@",self.CityName);
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
