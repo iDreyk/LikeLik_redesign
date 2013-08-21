@@ -106,7 +106,7 @@
     [aButton sizeToFit];
     CGRect newFrame = aButton.frame;
     newFrame.origin.x = 2;
-    newFrame.size.width += 4;
+    newFrame.size.width += 10;
     aButton.frame = newFrame;
     return aButton;
 }
