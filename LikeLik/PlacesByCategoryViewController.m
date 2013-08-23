@@ -556,6 +556,7 @@ static bool REVERSE_ANIM = false;
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         SearchViewController *destinaton  = [segue destinationViewController];
         destinaton.CityName = self.CityName;
+        destinaton.readyArray = self.categoryArray;
     }
 }
 

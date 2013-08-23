@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *CityImage;
 @property (weak, nonatomic) IBOutlet NSString *Image;
 @property (weak, nonatomic) IBOutlet UIImageView *gradient_under_cityname;
+@property (nonatomic, strong) NSMutableDictionary *imageCache;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *CityName;

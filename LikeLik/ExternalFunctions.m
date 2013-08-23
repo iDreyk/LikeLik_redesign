@@ -217,7 +217,6 @@ static CLLocation *Me;
         }
         
         double distance = [location distanceFromLocation:currentPlace];
-        NSLog(@"distance from location: %@ - %f", [[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"Name"]], distance);
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"Name"]] forKey:@"Name"];
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"About"]] forKey:@"About"];
         [placeDict setValue:[[tempArrayOfPlacesIncategory objectAtIndex:i] objectForKey:[self getLocalizedString:@"address"]] forKey:@"Address"];

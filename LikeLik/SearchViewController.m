@@ -44,7 +44,7 @@ static NSDictionary *Place;
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SearchBar setShowsCancelButton:NO];
     //#warning надо переделать под новый каталог
-    self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
+    self.PlacesArray = [NSArray arrayWithArray:self.readyArray];//[ExternalFunctions getAllPlacesInCity:self.CityName];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Search", nil)  AndColor:[InterfaceFunctions corporateIdentity]];
     
     
@@ -54,7 +54,7 @@ static NSDictionary *Place;
     Array = [NSArray arrayWithArray:self.PlacesArray];
     
 #warning сделать асинхронную загрузку
-    tmp = [ExternalFunctions getAllPlacesInCity:self.CityName];
+    tmp = [NSArray arrayWithArray:self.readyArray];//[ExternalFunctions getAllPlacesInCity:self.CityName];
 }
 
 

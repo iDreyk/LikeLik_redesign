@@ -15,11 +15,20 @@
 #import <MapBox/MapBox.h>
 //
 //
+#define tableLabelWithTextTag 87001
+#define goLAbelTag 87002
+#define arrowTag 87003
+#define backgroundViewTag 87004
+#define cellColorTag 87005
+#define distanceTag 87006
+
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 static NSDictionary *Place1;
 
+NSInteger PREV_SECTION_AROUNDME = 0;
+bool REVERSE_ANIM = false;
 @interface AroundMeViewController ()
 
 @end
@@ -111,7 +120,6 @@ static NSDictionary *Place1;
     }
    // NSLog(@"Ready array: %@", self.readyArray);
     AroundArray = [[NSArray alloc] initWithArray:self.readyArray];//[ExternalFunctions getPlacesAroundMyLocationInCity:self.CityNameText];
-    NSLog(@"AroundArray: %@", AroundArray);
     RMAnnotation *marker1;
     for (int i=0; i<[AroundArray count]; i++) {
         CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
@@ -144,6 +152,10 @@ static NSDictionary *Place1;
     
     [locationManager stopUpdatingLocation];
     locationManager = nil;
+    
+    if(!self.imageCache)
+        self.imageCache = [[NSMutableDictionary alloc] init];
+
 }
 
 
@@ -261,29 +273,267 @@ static NSDictionary *Place1;
 {
     return 1;
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{ 
-    NSInteger row = [indexPath row];
-    static NSString *CellIdentifier = nil;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 180;
+}
+- (void)loadImageFromCache:(NSString *)url :(NSString *)backup completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+{
+    
+    UIImage* theImage = [self.imageCache objectForKey:url];
+    UIImage* backupImg = [self.imageCache objectForKey:backup];
+    
+    if ((nil != theImage) && [theImage isKindOfClass:[UIImage class]]) {
+        NSLog(@"img loaded from cache!");
+        completionBlock(YES, theImage);
     }
-    
-    
-   // NSLog(@"Around Me = %@",[[AroundArray objectAtIndex:row] objectForKey:@"Category"]);
-    
-    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
-    
-    [cell addSubview:[InterfaceFunctions goLabelCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]]];
-    [cell addSubview:[InterfaceFunctions actbwithCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]]];
-    
-    cell.backgroundView = [InterfaceFunctions CellBG];
-    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
-    return cell;
+    else if((nil != backupImg) && [backupImg isKindOfClass:[UIImage class]]){
+        NSLog(@"img loaded from cache!");
+        completionBlock(YES, backupImg);
+    }
+    else{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *image = [UIImage imageWithContentsOfFile:url];
+            UIImage *cropedImage = [[UIImage alloc] init];
+            if(!image){
+                image = [UIImage imageWithContentsOfFile:backup];
+                CGImageRef imgRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 400, 640, 360));
+                cropedImage = [UIImage imageWithCGImage:imgRef];
+                CGImageRelease(imgRef);
+                [self.imageCache setObject:cropedImage forKey:backup];
+                NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:backup]);
+            }
+            else{
+                cropedImage = image;
+                [self.imageCache setObject:cropedImage forKey:url];
+                NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:url]);
+            }
+            NSLog(@"Images in cache: %d", [self.imageCache count]);
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                completionBlock(YES,cropedImage);
+            });
+            
+        });
+    }
 }
 
+
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{ 
+//    NSInteger row = [indexPath row];
+//    static NSString *CellIdentifier = nil;
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+//    
+//    
+//   // NSLog(@"Around Me = %@",[[AroundArray objectAtIndex:row] objectForKey:@"Category"]);
+//    
+//    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
+//    
+//    [cell addSubview:[InterfaceFunctions goLabelCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]]];
+//    [cell addSubview:[InterfaceFunctions actbwithCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]]];
+//    
+//    cell.backgroundView = [InterfaceFunctions CellBG];
+//    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
+//    return cell;
+//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = [indexPath row];
+    static NSString *CellIdentifier = @"CellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSString *category = [[AroundArray objectAtIndex:row] objectForKey:@"Category"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+#warning Временно ?
+        //202,148,78
+        UIView *back = [[UIView alloc] initWithFrame:CGRectMake(7, 7, 306, 166)];
+        //back.backgroundColor = [InterfaceFunctions colorTextCategory:category];
+        back.tag = cellColorTag;
+        [cell.contentView addSubview:back];
+        
+        
+        cell.contentView.backgroundColor =[UIColor whiteColor];//[[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        CGFloat width = 220;
+        UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(12, 20, width, width / 1.852)];
+        preview.tag = backgroundViewTag;
+        preview.backgroundColor = [UIColor whiteColor];
+        preview.clipsToBounds = NO;
+        
+        CALayer * imgLayer1 = preview.layer;
+        [imgLayer1 setBorderColor: [[UIColor whiteColor] CGColor]];
+        [imgLayer1 setBorderWidth:0.5f];
+        [imgLayer1 setShadowColor: [[UIColor whiteColor] CGColor]];
+        [imgLayer1 setShadowOpacity:0.9f];
+        [imgLayer1 setShadowOffset: CGSizeMake(0, 1)];
+        [imgLayer1 setShadowRadius:3.0];
+        //        [imgLayer setCornerRadius:4];
+        imgLayer1.shouldRasterize = YES;
+        
+        // This tell QuartzCore where to draw the shadow so it doesn't have to work it out each time
+        [imgLayer1 setShadowPath:[UIBezierPath bezierPathWithRect:imgLayer1.bounds].CGPath];
+        
+        // This tells QuartzCore to render it as a bitmap
+        [imgLayer1 setRasterizationScale:[UIScreen mainScreen].scale];
+        
+        
+        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(12, preview.frame.size.height + 10, preview.frame.size.width, 30)];
+        text.text = @"Комплимент от заведения: чашка кофе.";
+        text.backgroundColor = [UIColor clearColor];
+        text.textColor = [UIColor whiteColor];
+        text.font = [UIFont boldSystemFontOfSize:10];
+        [back addSubview:text];
+        
+        
+        CALayer * imgLayer = back.layer;
+        [imgLayer setBorderColor: [[UIColor whiteColor] CGColor]];
+        [imgLayer setBorderWidth:0.5f];
+        [imgLayer setShadowColor: [[UIColor blackColor] CGColor]];
+        [imgLayer setShadowOpacity:0.9f];
+        [imgLayer setShadowOffset: CGSizeMake(0, 1)];
+        [imgLayer setShadowRadius:3.0];
+        //        [imgLayer setCornerRadius:4];
+        imgLayer.shouldRasterize = YES;
+        
+        // This tell QuartzCore where to draw the shadow so it doesn't have to work it out each time
+        [imgLayer setShadowPath:[UIBezierPath bezierPathWithRect:imgLayer.bounds].CGPath];
+        
+        // This tells QuartzCore to render it as a bitmap
+        [imgLayer setRasterizationScale:[UIScreen mainScreen].scale];
+        
+        [back addSubview:preview];
+        
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, -12.0, 260, cell.center.y*2)];
+        
+        //        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+        //        line.backgroundColor = [[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
+        //        [preview addSubview:line];
+        
+        
+        //[InterfaceFunctions TableLabelwithText:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)];
+        label.tag = tableLabelWithTextTag;
+        label.font = [AppDelegate OpenSansRegular:28];
+        label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
+        label.shadowOffset = CGSizeMake(0.0, -0.1);
+        label.backgroundColor = [UIColor clearColor];
+        //        label.text = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"];
+        label.textColor = [UIColor whiteColor];//[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+        label.highlightedTextColor = label.textColor;
+        label.shadowColor = [InterfaceFunctions ShadowColor];
+        label.shadowOffset = [InterfaceFunctions ShadowSize];
+        [back addSubview:label];
+        
+        UILabel *distance = [[UILabel alloc] initWithFrame:CGRectMake(preview.frame.size.width + 20, preview.frame.origin.y, 55, 20)];
+        distance.font = [UIFont systemFontOfSize:10];
+        distance.tag = distanceTag;
+        distance.textColor = [UIColor whiteColor];
+        distance.backgroundColor = [UIColor clearColor];
+        [back addSubview:distance];
+        
+        //        UILabel *goLabel = [InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+        //        [back addSubview:goLabel];
+        //        UIImageView *arrow = [InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+        //        [back addSubview:arrow];
+        
+    }
+    //    NSLog(@"PLACE1: %@", Place1);
+    NSNumber *distance = [[AroundArray objectAtIndex:row] objectForKey:@"Distance"];
+    float intDist = [distance floatValue];
+    
+    UILabel *dist = (UILabel *)[cell viewWithTag:distanceTag];
+    if(intDist > 1000)
+        dist.text = [NSString stringWithFormat:@"%.2f km", intDist / 1000.];
+    else
+        dist.text = [NSString stringWithFormat:@"%.0f m", intDist];
+    
+    
+    UIView *cellColor = (UIView *)[cell viewWithTag:cellColorTag];
+    cellColor.backgroundColor = [InterfaceFunctions colorTextCategory:category];
+    
+    UILabel *tableLabelWithText  = (UILabel *)[cell viewWithTag:tableLabelWithTextTag];
+    tableLabelWithText.text = [[AroundArray objectAtIndex:row] objectForKey:@"Name"];
+    
+    Place1 = [AroundArray objectAtIndex:row];
+    NSArray *photos = [Place1 objectForKey:@"Photo"];
+    [self loadImageFromCache:[Place1 objectForKey:@"thumb"] :[photos objectAtIndex:0] completionBlock:^(BOOL succeeded, UIImage *image) {
+        if(succeeded){
+            UIImageView *preview = (UIImageView *)[cell viewWithTag:backgroundViewTag];
+            preview.image = image;
+        }
+    }];
+    //cell.backgroundView = bkgView;
+    
+    //cell.backgroundView = [InterfaceFunctions CellBG];
+    //cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
+    if(PREV_SECTION_AROUNDME > row)
+        REVERSE_ANIM = true;
+    else
+        REVERSE_ANIM = false;
+    
+    PREV_SECTION_AROUNDME = row;
+    //UIView *myView = [[cell subviews] objectAtIndex:0];
+    UIView *myView = (UIView *)[cell viewWithTag:cellColorTag];
+    CALayer *layer = myView.layer;
+    
+    CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
+    rotationAndPerspectiveTransform.m34 = 1.0 / -500;
+    if(!REVERSE_ANIM){
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -1, 1, 1, 1);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, -M_PI, -M_PI, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, 0, -M_PI, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 2 * M_PI / 2, 100, 1, 100);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
+        //  rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
+    }
+    else{
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 1, -1, -1, 1);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, M_PI, -M_PI, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, 0, M_PI, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 2 * M_PI / 2, -100, 1, 100);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
+        // rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
+    }
+    
+    layer.transform = rotationAndPerspectiveTransform;
+    
+    
+    [UIView beginAnimations:NULL context:nil];
+    [UIView setAnimationDuration:0.75];
+    //[cell setFrame:CGRectMake(0, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
+    if(!REVERSE_ANIM){
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 1, 1, 1, 1);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, -M_PI, -M_PI, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, 0, -M_PI, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -2 * M_PI / 2, 100, 1, 100);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
+        // rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
+    }
+    else{
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -1, -1, -1, 1);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, M_PI, -M_PI, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, 0, M_PI, 0);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -2 * M_PI / 2, -100, 1, 100);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
+        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
+    }
+    layer.transform = rotationAndPerspectiveTransform;
+    [UIView commitAnimations];
+    
+    return cell;
+}
  
 #pragma mark - Table view delegate
 
@@ -318,6 +568,7 @@ static NSDictionary *Place1;
         //    nslog(@"[[segue identifier] isEqualToString: SearchSegue");
         SearchViewController *destinaton  = [segue destinationViewController];
         destinaton.CityName = self.CityNameText;
+        destinaton.readyArray = self.readyArray;
     }
 
     if ([[segue identifier] isEqualToString:@"MapSegue"]) {

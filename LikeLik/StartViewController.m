@@ -516,6 +516,7 @@ static bool REVERSE_ANIM = false;
     [defaults setObject:catalogueArray forKey:catalogue];
     
     [ExternalFunctions addCityToDownloaded:fileName];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAllCatalogues" object:nil];
 }
 
 - (NSError *) DownloadError:(NSError *) error{

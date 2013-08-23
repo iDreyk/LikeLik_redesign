@@ -322,26 +322,32 @@
     
 
     if ([Category isEqualToString:AMLocalizedString(@"Restaurants", nil)]) {
-        Pin.image = [UIImage imageNamed:@"63_76 MapPin_2"];
-//        Pin.image = [UIImage imageNamed:@"pin1"];
+        //Pin.image = [UIImage imageNamed:@"63_76 MapPin_2"];
+        Pin.image = [UIImage imageNamed:@"knuck_pin_2"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Night life", nil)]) {
-        Pin.image=[UIImage imageNamed:@"63_76 MapPin_3"];
+        //Pin.image=[UIImage imageNamed:@"63_76 MapPin_3"];
+            Pin.image = [UIImage imageNamed:@"knuck_pin_3"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Shopping", nil)]) {
-        Pin.image=[UIImage imageNamed:@"knuk_pin_4"];
+        Pin.image = [UIImage imageNamed:@"knuck_pin_4"];
+        //Pin.image=[UIImage imageNamed:@"63_76 MapPin_4"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Culture", nil)]) {
-        Pin.image=[UIImage imageNamed:@"63_76 MapPin_5"];
+        //Pin.image=[UIImage imageNamed:@"63_76 MapPin_5"];
+        Pin.image = [UIImage imageNamed:@"knuck_pin_5"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Leisure", nil)]) {
-        Pin.image=[UIImage imageNamed:@"63_76 MapPin_6"];
+        //Pin.image=[UIImage imageNamed:@"63_76 MapPin_6"];
+        Pin.image = [UIImage imageNamed:@"knuck_pin_6"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Beauty", nil)]) {
-        Pin.image=[UIImage imageNamed:@"63_76 MapPin_7"];
+        //Pin.image=[UIImage imageNamed:@"63_76 MapPin_7"];
+        Pin.image = [UIImage imageNamed:@"knuck_pin_7"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Hotels", nil)]) {
-        Pin.image=[UIImage imageNamed:@"63_76 MapPin_8"];
+        //Pin.image=[UIImage imageNamed:@"63_76 MapPin_8"];
+        Pin.image = [UIImage imageNamed:@"knuck_pin_8"];
     }
     return Pin;
 

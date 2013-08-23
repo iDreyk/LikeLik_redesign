@@ -34,8 +34,6 @@ static NSDictionary *Place;
 
 @end
 
-static BOOL PLACES_LOADED = NO;
-
 @implementation CategoryViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,6 +55,86 @@ static BOOL PLACES_LOADED = NO;
              [subViews removeFromSuperview];
     }
     //self.frame1.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"1.png"] scaledToSize:CGSizeMake(93, 93)]];
+}
+
+-(void)reloadCatalogue{
+    NSURL *url;
+    if ([self.CityName.text isEqualToString:@"Moscow"] || [self.CityName.text isEqualToString:@"Москва"] || [self.CityName.text isEqualToString:@"Moskau"]){
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
+    }
+    if ([self.CityName.text isEqualToString:@"Vienna"] || [self.CityName.text isEqualToString:@"Вена"] || [self.CityName.text isEqualToString:@"Wien"]){
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
+    }
+    RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
+    self.MapPlace.showsUserLocation = YES;
+    self.MapPlace = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
+    self.MapPlace.hidden = NO;
+    self.MapPlace.hideAttribution = YES;
+    self.MapPlace.delegate = self;
+    
+    if ([AppDelegate isiPhone5])
+        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
+    else
+        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 450.0);
+    
+    
+    self.MapPlace.minZoom = 10;
+    self.MapPlace.zoom = 13;
+    self.MapPlace.maxZoom = 17;
+    
+    [self.MapPlace setAdjustTilesForRetinaDisplay:YES];
+    self.MapPlace.showsUserLocation = YES;
+    [self.placeViewMap setHidden:YES];
+    [self.placeViewMap addSubview:self.MapPlace];
+
+    UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
+    fade.tag = FADE_TAG;
+    fade.backgroundColor = [UIColor clearColor];
+    [self.navigationController.view addSubview:fade];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // post an NSNotification that loading has started
+        AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
+        RMAnnotation *marker1;
+        for (int i=0; i<[AroundArray count]; i++) {
+            CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
+            marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
+            marker1.annotationType = @"marker";
+            marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
+            marker1.subtitle = AMLocalizedString([[AroundArray objectAtIndex:i] objectForKey:@"Category"], nil);
+            marker1.userInfo = [AroundArray objectAtIndex:i];
+            [self.MapPlace addAnnotation:marker1];
+            //NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
+        }
+        //    NSLog(@"%@",self.MapPlace.annotations);]
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSLog(@"Back on main thread");
+            [self activateAroundMe];
+            //            [self.Table reloadData];
+        });
+        // post an NSNotification that loading is finished
+    });
+    UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
+    coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    coolEf.tag = EF_TAG;
+    [self.view addSubview:coolEf];
+    [UIView animateWithDuration:0.2 animations:^{
+        coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 22, self.view.center.y - 90, 45, 45)];
+        //knuckle_1@2x.png
+        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"kul_90.png"] scaledToSize:CGSizeMake(45, 45)]];
+        //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+        CALayer *layer = spin.layer;
+        layer.cornerRadius = 8;
+        spin.clipsToBounds = YES;
+        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+        animation.duration = 3.0f;
+        animation.repeatCount = HUGE_VAL;
+        [spin.layer addAnimation:animation forKey:@"MyAnimation"];
+        [coolEf addSubview:spin];
+    }];
+
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
@@ -111,7 +189,7 @@ static BOOL PLACES_LOADED = NO;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     
-    
+
     NSURL *url;
     if ([self.CityName.text isEqualToString:@"Moscow"] || [self.CityName.text isEqualToString:@"Москва"] || [self.CityName.text isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -142,11 +220,11 @@ static BOOL PLACES_LOADED = NO;
     self.MapPlace.showsUserLocation = YES;
     [self.placeViewMap setHidden:YES];
     
-    
-    [self.placeViewMap addSubview:self.MapPlace];
+    if([ExternalFunctions isDownloaded:self.CityName.text]){
 
-    PLACES_LOADED = NO;
-    
+    [self.placeViewMap addSubview:self.MapPlace];
+    }
+    if([ExternalFunctions isDownloaded:self.CityName.text]){
     UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
     fade.tag = FADE_TAG;
     fade.backgroundColor = [UIColor clearColor];
@@ -156,7 +234,6 @@ static BOOL PLACES_LOADED = NO;
         AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
         RMAnnotation *marker1;
         for (int i=0; i<[AroundArray count]; i++) {
-            NSLog(@"in cycle %d",i);
             CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
             marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
             marker1.annotationType = @"marker";
@@ -169,13 +246,12 @@ static BOOL PLACES_LOADED = NO;
         //    NSLog(@"%@",self.MapPlace.annotations);]
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSLog(@"Back on main thread");
-            PLACES_LOADED = YES;
             [self activateAroundMe];
 //            [self.Table reloadData];
         });
                 // post an NSNotification that loading is finished
     });
-    
+    }
     
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -333,7 +409,8 @@ static BOOL PLACES_LOADED = NO;
         [frame setUserInteractionEnabled:YES];
 
     }
-    
+    if([ExternalFunctions isDownloaded:self.CityName.text]){
+
     UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
     coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     coolEf.tag = EF_TAG;
@@ -355,6 +432,9 @@ static BOOL PLACES_LOADED = NO;
         [spin.layer addAnimation:animation forKey:@"MyAnimation"];
         [coolEf addSubview:spin];
     }];
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];
+
 }
 
 -(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
@@ -551,8 +631,6 @@ static BOOL PLACES_LOADED = NO;
        self.navigationItem.leftBarButtonItem.enabled = NO;
 //} completion:^(BOOL finished) {
         [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:number]];
-        if((number == 0) && !PLACES_LOADED)
-            return;
         [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:number] sender:sender];
 //  NSTimeInterval delay = 0.4; //in seconds
 //    [self performSelector:@selector(clearView:) withObject:nil afterDelay:delay];
@@ -564,7 +642,6 @@ static BOOL PLACES_LOADED = NO;
     NSMutableArray *arrayOfPlacesInCategory = [[NSMutableArray alloc] init];
     for (int i = 0; i < AroundArray.count; ++i) {
         if([[[AroundArray objectAtIndex:i] objectForKey:@"Category"] isEqualToString:category]){
-            NSLog(@"name: %@", [[AroundArray objectAtIndex:i] objectForKey:@"Name"]);
             [arrayOfPlacesInCategory addObject:(AroundArray)[i]];
         }
     }

@@ -13,4 +13,6 @@
 @property (nonatomic, retain)NSArray *PlacesArray;
 @property (weak, nonatomic) IBOutlet UISearchBar *SearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *SearchTable;
+@property (weak, nonatomic) IBOutlet NSArray *readyArray;
+
 @end
