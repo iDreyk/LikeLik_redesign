@@ -27,6 +27,7 @@
 #define likelikurlcell_4        @"http://likelik.net/ios/cell/4/"
 #define likelikurlcell_5        @"http://likelik.net/ios/cell/5/"
 #define catalogue @"Catalogues"
+#define FADE_TAG 66484
 
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
@@ -282,6 +283,10 @@ static bool REVERSE_ANIM = false;
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0){
         [self.navigationController popViewControllerAnimated:YES];
+        for (UIView *subViews in self.navigationController.view.subviews){
+            if(subViews.tag == FADE_TAG)
+                [subViews removeFromSuperview];
+        }
         //[TestFlight passCheckpoint:@"buying"];
     }
     else{
