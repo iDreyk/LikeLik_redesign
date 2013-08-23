@@ -25,6 +25,7 @@
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
+static BOOL IS_LOADING;
 
 #define EF_TAG 66483
 #define FADE_TAG 66484
@@ -45,16 +46,15 @@ static NSDictionary *Place;
     return self;
 }
 
-- (void)activateAroundMe{
+- (void)removeKnuckleHUD{
     for (UIView *subViews in self.view.subviews)
         if (subViews.tag == EF_TAG ) {
             [subViews removeFromSuperview];
         }
     for (UIView *subViews in self.navigationController.view.subviews){
         if(subViews.tag == FADE_TAG)
-             [subViews removeFromSuperview];
+            [subViews removeFromSuperview];
     }
-    //self.frame1.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"1.png"] scaledToSize:CGSizeMake(93, 93)]];
 }
 
 -(void)reloadCatalogue{
@@ -86,11 +86,12 @@ static NSDictionary *Place;
     self.MapPlace.showsUserLocation = YES;
     [self.placeViewMap setHidden:YES];
     [self.placeViewMap addSubview:self.MapPlace];
-
+    
     UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
     fade.tag = FADE_TAG;
     fade.backgroundColor = [UIColor clearColor];
     [self.navigationController.view addSubview:fade];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // post an NSNotification that loading has started
         AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
@@ -108,7 +109,7 @@ static NSDictionary *Place;
         //    NSLog(@"%@",self.MapPlace.annotations);]
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSLog(@"Back on main thread");
-            [self activateAroundMe];
+            [self removeKnuckleHUD];
             //            [self.Table reloadData];
         });
         // post an NSNotification that loading is finished
@@ -121,7 +122,7 @@ static NSDictionary *Place;
         coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 22, self.view.center.y - 90, 45, 45)];
         //knuckle_1@2x.png
-        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"kul_90.png"] scaledToSize:CGSizeMake(45, 45)]];
+        spin.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kul_90.png"]];
         //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
         CALayer *layer = spin.layer;
         layer.cornerRadius = 8;
@@ -131,10 +132,10 @@ static NSDictionary *Place;
         animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
         animation.duration = 3.0f;
         animation.repeatCount = HUGE_VAL;
-        [spin.layer addAnimation:animation forKey:@"MyAnimation"];
+        [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
         [coolEf addSubview:spin];
     }];
-
+    
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
@@ -150,6 +151,9 @@ static NSDictionary *Place;
 {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appReturnsActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
     _locationManager = [[CLLocationManager alloc] init];
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [_locationManager startUpdatingLocation];
@@ -159,19 +163,19 @@ static NSDictionary *Place;
     [self.categoryView setScrollEnabled:YES];
     self.categoryView.showsHorizontalScrollIndicator = NO;
     self.categoryView.showsVerticalScrollIndicator = NO;
-
+    
     [self.categoryView setContentSize:CGSizeMake(320, 480)];
     [self.categoryView flashScrollIndicators];
     self.categoryView.delegate = self;
     UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     background.backgroundColor = [UIColor whiteColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
     [self.categoryView addSubview:background];
-        
-//    self.Table.backgroundColor = [UIColor clearColor];
+    
+    //    self.Table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor whiteColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
     //Overlay_Long@2x.png
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
-
+    
     self.CityName.text = self.Label;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
@@ -180,16 +184,16 @@ static NSDictionary *Place;
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty", @"Hotels",@"Favorites", @"Visual Tour", @"Metro",@"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"FavoritesSegue",@"VisualtourSegue",@"TransportationSegue",@"PracticalinfoSegue"];
-
+    
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-//    self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //    self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     UIButton *btn = [InterfaceFunctions map_button:1];
     [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     
-
+    
     NSURL *url;
     if ([self.CityName.text isEqualToString:@"Moscow"] || [self.CityName.text isEqualToString:@"Москва"] || [self.CityName.text isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -221,43 +225,45 @@ static NSDictionary *Place;
     [self.placeViewMap setHidden:YES];
     
     if([ExternalFunctions isDownloaded:self.CityName.text]){
-
-    [self.placeViewMap addSubview:self.MapPlace];
+        
+        [self.placeViewMap addSubview:self.MapPlace];
     }
+    IS_LOADING = YES;
     if([ExternalFunctions isDownloaded:self.CityName.text]){
-    UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
-    fade.tag = FADE_TAG;
-    fade.backgroundColor = [UIColor clearColor];
-    [self.navigationController.view addSubview:fade];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // post an NSNotification that loading has started
-        AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
-        RMAnnotation *marker1;
-        for (int i=0; i<[AroundArray count]; i++) {
-            CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
-            marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
-            marker1.annotationType = @"marker";
-            marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
-            marker1.subtitle = AMLocalizedString([[AroundArray objectAtIndex:i] objectForKey:@"Category"], nil);
-            marker1.userInfo = [AroundArray objectAtIndex:i];
-            [self.MapPlace addAnnotation:marker1];
-            //NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
-        }
-        //    NSLog(@"%@",self.MapPlace.annotations);]
-        dispatch_async(dispatch_get_main_queue(), ^ {
-            NSLog(@"Back on main thread");
-            [self activateAroundMe];
-//            [self.Table reloadData];
+        UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
+        fade.tag = FADE_TAG;
+        fade.backgroundColor = [UIColor clearColor];
+        [self.navigationController.view addSubview:fade];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // post an NSNotification that loading has started
+            AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
+            RMAnnotation *marker1;
+            for (int i=0; i<[AroundArray count]; i++) {
+                CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
+                marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
+                marker1.annotationType = @"marker";
+                marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
+                marker1.subtitle = AMLocalizedString([[AroundArray objectAtIndex:i] objectForKey:@"Category"], nil);
+                marker1.userInfo = [AroundArray objectAtIndex:i];
+                [self.MapPlace addAnnotation:marker1];
+                //NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
+            }
+            //    NSLog(@"%@",self.MapPlace.annotations);]
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                NSLog(@"Back on main thread");
+                IS_LOADING = NO;
+                [self removeKnuckleHUD];
+                //            [self.Table reloadData];
+            });
+            // post an NSNotification that loading is finished
         });
-                // post an NSNotification that loading is finished
-    });
     }
     
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     NSString *city = [[ExternalFunctions cityCatalogueForCity:self.CityName.text] objectForKey:@"city_EN"];
     if ([ExternalFunctions isDownloaded:city]) {
-    
+        
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
         
         CLLocation *oldLocation = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -269,7 +275,7 @@ static NSDictionary *Place;
         if ([Me distanceFromLocation:oldLocation] > 10
             || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL) {
             NSLog(@"in if");
-
+            
             [_locationManager stopUpdatingLocation];
             NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
             [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
@@ -326,14 +332,6 @@ static NSDictionary *Place;
     self.frame1.tag = 0;
     [self.categoryView addSubview:self.frame1];
     
-//    UIView *fade = [[UIView alloc] initWithFrame:frame1.frame];
-//    fade.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-//    fade.tag = FADE_TAG;
-//    CALayer *layer1 = fade.layer;
-//    layer1.cornerRadius = 10;
-//    frame1.clipsToBounds = YES;
-//    [self.categoryView addSubview:fade];
-    
     UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, yOrigin + yOffset, frameSize, frameSize)];
     frame2.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"2.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame2.tag = 1;
@@ -388,7 +386,7 @@ static NSDictionary *Place;
     frame12.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"12.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame12.tag = 11;
     [self.categoryView addSubview:frame12];
-
+    
     if(!self.frameArray)
         self.frameArray = [[NSArray alloc] init];
     
@@ -407,15 +405,47 @@ static NSDictionary *Place;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
         [frame addGestureRecognizer:tap];
         [frame setUserInteractionEnabled:YES];
-
+        
     }
     if([ExternalFunctions isDownloaded:self.CityName.text]){
+        
+        UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
+        coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        coolEf.tag = EF_TAG;
+        [self.view addSubview:coolEf];
+        [UIView animateWithDuration:0.2 animations:^{
+            coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+            UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 22, self.view.center.y - 90, 45, 45)];
+            //knuckle_1@2x.png
+            spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"kul_90.png"] scaledToSize:CGSizeMake(45, 45)]];
+            //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+            CALayer *layer = spin.layer;
+            layer.cornerRadius = 8;
+            spin.clipsToBounds = YES;
+            CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+            animation.fromValue = [NSNumber numberWithFloat:0.0f];
+            animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+            animation.duration = 3.0f;
+            animation.repeatCount = HUGE_VAL;
+            [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
+            [coolEf addSubview:spin];
+        }];
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];
+    
+}
 
-    UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
-    coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    coolEf.tag = EF_TAG;
-    [self.view addSubview:coolEf];
-    [UIView animateWithDuration:0.2 animations:^{
+- (void)appToBackground{
+    NSLog(@"LOG: app to background");
+    [self removeKnuckleHUD];
+}
+- (void)appReturnsActive{
+    NSLog(@"LOG: app returns active");
+    if(IS_LOADING){
+        UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
+        coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        coolEf.tag = EF_TAG;
+        [self.view addSubview:coolEf];
         coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 22, self.view.center.y - 90, 45, 45)];
         //knuckle_1@2x.png
@@ -429,13 +459,12 @@ static NSDictionary *Place;
         animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
         animation.duration = 3.0f;
         animation.repeatCount = HUGE_VAL;
-        [spin.layer addAnimation:animation forKey:@"MyAnimation"];
+        [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
         [coolEf addSubview:spin];
-    }];
+        
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];
-
 }
+
 
 -(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
 {
@@ -497,12 +526,12 @@ static NSDictionary *Place;
     if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
         self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text].coordinate;
         NSLog(@"Взяли центр города");
-//        [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
-//        self.locationButton.enabled = NO;
+        //        [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+        //        self.locationButton.enabled = NO;
     }
     else{
         self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
-     //   self.locationButton.enabled = YES;
+        //   self.locationButton.enabled = YES;
         NSLog(@"Взяли локацию пользователя");
     }
 }
@@ -511,7 +540,7 @@ static NSDictionary *Place;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [self.Table deselectRowAtIndexPath:[self.Table indexPathForSelectedRow] animated:YES];
+    //    [self.Table deselectRowAtIndexPath:[self.Table indexPathForSelectedRow] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -522,80 +551,6 @@ static NSDictionary *Place;
 
 
 
-#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return [self.CellArray count];
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = nil;
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
-//    
-//    cell.backgroundView = [InterfaceFunctions CellBG];
-//    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
-//    cell.textLabel.backgroundColor = [UIColor clearColor];
-//    
-//    
-//    NSString *text = AMLocalizedString([self.CellArray objectAtIndex:[indexPath row]], nil);
-//    if ([indexPath row]<8 && [indexPath row]!=0) {
-//        [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions mainTextColor:[indexPath row]+1]]];
-//        [cell addSubview:[InterfaceFunctions actbwithColor:[indexPath row]]];//actbwithColor:[indexPath row]+1]];
-//    }
-//    else{
-//        [cell addSubview:[InterfaceFunctions mainTextLabelwithText:text AndColor:[InterfaceFunctions corporateIdentity]]];
-//        if ([indexPath row] == 11) {
-//            MLPAccessoryBadge *accessoryBadge;
-//
-//            accessoryBadge = [MLPAccessoryBadge new];
-//            [cell setAccessoryView:accessoryBadge];
-//            [accessoryBadge setText:AMLocalizedString(@"Soon", nil)];
-//            [accessoryBadge setBackgroundColor:[InterfaceFunctions corporateIdentity]];
-//            [cell addSubview:accessoryBadge];
-//        }
-//        else
-//            [cell addSubview:[InterfaceFunctions corporateIdentity_actb]];
-//    }
-//    if(!PLACES_LOADED && [indexPath row] == 0){
-//        UIView *fade = [[UIView alloc] initWithFrame:cell.frame];
-//        fade.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0.3];
-//        [cell addSubview:fade];
-//        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//    }
-//        return cell;
-//}
-//#pragma mark - Table view delegate
-//
-//- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if ([indexPath row] == 11) {
-//        return nil;
-//    }
-//    return indexPath;
-//}
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//  //  if ([indexPath row] !=11)
-//    [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:[indexPath row]]];
-//    if((indexPath.row == 0) && !PLACES_LOADED)
-//        return;
-//    [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:[indexPath row]] sender:self];
-//    
-//}
-//
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 44.0;
-//}
-//
 -(void)clearView:(UIView *)obj{
     for (UIView *subView in self.view.subviews){
         if(subView.tag == EF_TAG)
@@ -604,38 +559,9 @@ static NSDictionary *Place;
 }
 -(void)customPush:(UIView *)sender{
     NSInteger number = [(UIGestureRecognizer *)sender view].tag;
-//    UIView *coolEf = [[UIView alloc] initWithFrame:[(UIGestureRecognizer *)sender view].frame];
-//    if(number > 0 && number < 8)
-//        coolEf.backgroundColor = [InterfaceFunctions mainTextColor:(number + 1)];
-//    else
-//        coolEf.backgroundColor = [InterfaceFunctions corporateIdentity];
-//    coolEf.tag = EF_TAG;
-//    [self.view addSubview:coolEf];
-//    [UIView animateWithDuration:0.1 animations:^{
-//        coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-//        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 37, self.view.center.y - 37, 74, 74)];
-//        //knuckle_1@2x.png
-//        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD@2x.png"] scaledToSize:CGSizeMake(74, 74)]];
-//        //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-//        CALayer *layer = spin.layer;
-//        layer.cornerRadius = 8;
-//        spin.clipsToBounds = YES;
-//        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-//        animation.fromValue = [NSNumber numberWithFloat:0.0f];
-//        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
-//        animation.duration = 3.0f;
-//        animation.repeatCount = HUGE_VAL;
-//        [spin.layer addAnimation:animation forKey:@"MyAnimation"];
-//        [coolEf addSubview:spin];
-//
-       self.navigationItem.leftBarButtonItem.enabled = NO;
-//} completion:^(BOOL finished) {
-        [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:number]];
-        [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:number] sender:sender];
-//  NSTimeInterval delay = 0.4; //in seconds
-//    [self performSelector:@selector(clearView:) withObject:nil afterDelay:delay];
-//  }];
-    
+    self.navigationItem.leftBarButtonItem.enabled = NO;
+    [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:number]];
+    [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:number] sender:sender];
 }
 
 -(NSArray *)placesInCategory:(NSString *)category{
@@ -666,7 +592,7 @@ static NSDictionary *Place;
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.categoryArray = [self placesInCategory:destination.Category];
     }
-
+    
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
         FavViewController *destination = [segue destinationViewController];
         [segue destinationViewController];
@@ -719,9 +645,9 @@ static NSDictionary *Place;
     
     CGFloat yOffset   = self.categoryView.contentOffset.y;
     
-   if (yOffset < 0) {
-       self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
-       
+    if (yOffset < 0) {
+        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
+        
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
         
         self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);

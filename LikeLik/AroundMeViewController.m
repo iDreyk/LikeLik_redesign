@@ -58,12 +58,12 @@ bool REVERSE_ANIM = false;
     if ([self.CityNameText isEqualToString:@"Vienna"] || [self.CityNameText isEqualToString:@"Вена"] || [self.CityNameText isEqualToString:@"Wien"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
     }
-
+    
     
     RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
     self.Map = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
     self.Map.delegate = self;
-   // self.Map.hideAttribution = YES;
+    // self.Map.hideAttribution = YES;
     self.Map.showsUserLocation = YES;
     if ([AppDelegate isiPhone5])
         self.Map.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
@@ -89,14 +89,14 @@ bool REVERSE_ANIM = false;
     self.ViewforMap.hidden = YES;
     self.locationButton.hidden = YES;
     
-
-
+    
+    
     [self.ViewforMap addSubview:self.Map];
     locationManager = [[CLLocationManager alloc] init];
     [locationManager setDelegate:self];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     Me = [locationManager location];
-  //  NSLog(@"Around Me = %@", Me);
+    //  NSLog(@"Around Me = %@", Me);
     
     
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
@@ -109,16 +109,16 @@ bool REVERSE_ANIM = false;
         HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
         [self.navigationController.view addSubview:HUD];
         HUD.userInteractionEnabled = NO;
-
+        
         HUD.mode = MBProgressHUDModeCustomView;
-
+        
         HUD.removeFromSuperViewOnHide = YES;
         HUD.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"Apparently, you've disabled this application to access your geolocation", nil)];
         HUD.delegate = self;
         [HUD show:YES];
         [HUD hide:YES afterDelay:2];
     }
-   // NSLog(@"Ready array: %@", self.readyArray);
+    // NSLog(@"Ready array: %@", self.readyArray);
     AroundArray = [[NSArray alloc] initWithArray:self.readyArray];//[ExternalFunctions getPlacesAroundMyLocationInCity:self.CityNameText];
     RMAnnotation *marker1;
     for (int i=0; i<[AroundArray count]; i++) {
@@ -141,7 +141,7 @@ bool REVERSE_ANIM = false;
     
     
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-
+    
     UIButton *btn = [InterfaceFunctions search_button];
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
@@ -155,7 +155,7 @@ bool REVERSE_ANIM = false;
     
     if(!self.imageCache)
         self.imageCache = [[NSMutableDictionary alloc] init];
-
+    
 }
 
 
@@ -195,7 +195,7 @@ bool REVERSE_ANIM = false;
         RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
                                                           tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
                                                             sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
-
+        
         [marker replaceUIImage:[InterfaceFunctions MapPin:annotation.subtitle].image];
         marker.canShowCallout = YES;
         marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -206,18 +206,18 @@ bool REVERSE_ANIM = false;
 }
 
 -(void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-  //  NSLog(@"123");
+    //  NSLog(@"123");
     //[map selectAll:map];
-//    [map selectAnnotation:annotation animated:YES];
+    //    [map selectAnnotation:annotation animated:YES];
 }
 
 
 -(void)tapOnLabelForAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-   // NSLog(@"123");
+    // NSLog(@"123");
 }
 - (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
 {
-   // NSLog(@"tap");
+    // NSLog(@"tap");
     PlaceName = annotation.title;
     PlaceCategory = [annotation.userInfo objectForKey:@"Category"];
     Place = annotation.userInfo;
@@ -230,7 +230,7 @@ bool REVERSE_ANIM = false;
     self.PlacesTable.hidden=!self.PlacesTable.hidden;
     self.ViewforMap.hidden=!self.ViewforMap.hidden;
     self.locationButton.hidden=!self.locationButton.hidden;
-
+    
     if (self.CityImage.hidden) {
         UIButton *titleview = [InterfaceFunctions segmentbar_map_list:0];
         [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
@@ -252,7 +252,7 @@ bool REVERSE_ANIM = false;
 
 
 - (void)locationManager:(CLLocationManager *)manager  didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-
+    
     [self.PlacesTable reloadData];
 }
 
@@ -320,22 +320,22 @@ bool REVERSE_ANIM = false;
 
 //
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{ 
+//{
 //    NSInteger row = [indexPath row];
 //    static NSString *CellIdentifier = nil;
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 //    if (cell == nil) {
 //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 //    }
-//    
-//    
+//
+//
 //   // NSLog(@"Around Me = %@",[[AroundArray objectAtIndex:row] objectForKey:@"Category"]);
-//    
+//
 //    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
-//    
+//
 //    [cell addSubview:[InterfaceFunctions goLabelCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]]];
 //    [cell addSubview:[InterfaceFunctions actbwithCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]]];
-//    
+//
 //    cell.backgroundView = [InterfaceFunctions CellBG];
 //    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
 //    return cell;
@@ -484,23 +484,9 @@ bool REVERSE_ANIM = false;
     rotationAndPerspectiveTransform.m34 = 1.0 / -500;
     if(!REVERSE_ANIM){
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -1, 1, 1, 1);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, -M_PI, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, 0, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 2 * M_PI / 2, 100, 1, 100);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
-        //  rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
     }
     else{
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 1, -1, -1, 1);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, M_PI, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, 0, M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 2 * M_PI / 2, -100, 1, 100);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
-        // rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
     }
     
     layer.transform = rotationAndPerspectiveTransform;
@@ -511,30 +497,16 @@ bool REVERSE_ANIM = false;
     //[cell setFrame:CGRectMake(0, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
     if(!REVERSE_ANIM){
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 1, 1, 1, 1);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, -M_PI, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, 0, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -2 * M_PI / 2, 100, 1, 100);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
-        // rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
     }
     else{
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -1, -1, -1, 1);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, M_PI, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, 0, M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -2 * M_PI / 2, -100, 1, 100);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
     }
     layer.transform = rotationAndPerspectiveTransform;
     [UIView commitAnimations];
     
     return cell;
 }
- 
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -563,14 +535,14 @@ bool REVERSE_ANIM = false;
         destinaton.Photos = [Place1 objectForKey:@"Photo"];
         NSLog(@"%@", destinaton.Photos);
     }
-
+    
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         //    nslog(@"[[segue identifier] isEqualToString: SearchSegue");
         SearchViewController *destinaton  = [segue destinationViewController];
         destinaton.CityName = self.CityNameText;
         destinaton.readyArray = self.readyArray;
     }
-
+    
     if ([[segue identifier] isEqualToString:@"MapSegue"]) {
         PlaceViewController *PlaceView = [segue destinationViewController];
         PlaceView.PlaceName = PlaceName;
@@ -593,7 +565,7 @@ bool REVERSE_ANIM = false;
     
     
     CGFloat yOffset   = self.PlacesTable.contentOffset.y;
-
+    
     CGFloat threshold = self.PlacesTable.frame.size.height - self.PlacesTable.frame.size.height;
     if (yOffset > -threshold && yOffset < 0) {
         self.CityImage.frame = CGRectMake(0,-yOffset,320.0,self.CityImage.frame.size.height);
@@ -601,7 +573,7 @@ bool REVERSE_ANIM = false;
         self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
         
         // NSLog(@"1");
-
+        
     } else if (yOffset < 0) {
         // NSLog(@"2");
         self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
@@ -609,11 +581,11 @@ bool REVERSE_ANIM = false;
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
         
         self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
-      
+        
     } else {
         // NSLog(@"3");
         self.CityImage.frame = CGRectMake(0, -280.0, 320.0, self.CityImage.frame.size.height);
-     
+        
         
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5,self.CityName.frame.size.width,self.CityName.frame.size.height);
         
@@ -622,7 +594,7 @@ bool REVERSE_ANIM = false;
         
     }
     self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
-//    self.CityImage.contentScaleFactor = 2.0;
+    //    self.CityImage.contentScaleFactor = 2.0;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

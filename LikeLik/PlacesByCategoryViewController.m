@@ -48,12 +48,12 @@ static bool REVERSE_ANIM = false;
 {
     
     [super viewDidLoad];
-  
+    
     self.backgroundView.backgroundColor = [UIColor whiteColor];//[InterfaceFunctions colorTextCategory:self.Category];
     
-  //  NSLog(@"123");
+    //  NSLog(@"123");
     CategoryPlaces = self.categoryArray;//[ExternalFunctions getArrayOfPlaceDictionariesInCategory:self.Category InCity:self.CityName];
- //   NSLog(@"%@ %d",CategoryPlaces, [CategoryPlaces count]);
+    //   NSLog(@"%@ %d",CategoryPlaces, [CategoryPlaces count]);
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
@@ -94,7 +94,7 @@ static bool REVERSE_ANIM = false;
         marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
         marker1.annotationType = @"marker";
         marker1.title = [[CategoryPlaces objectAtIndex:i] objectForKey:@"Name"];
-       marker1.subtitle = AMLocalizedString([[CategoryPlaces objectAtIndex:i] objectForKey:@"Category"], nil);
+        marker1.subtitle = AMLocalizedString([[CategoryPlaces objectAtIndex:i] objectForKey:@"Category"], nil);
         marker1.userInfo = [CategoryPlaces objectAtIndex:i];
         [self.Map addAnnotation:marker1];
     }
@@ -114,7 +114,7 @@ static bool REVERSE_ANIM = false;
     
     self.CityImage.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.CityName]];
     self.PlacesTable.backgroundColor = [UIColor clearColor];//[InterfaceFunctions colorTextCategory:self.Category];
-//[InterfaceFunctions BackgroundColor];//[UIColor clearColor];
+    //[InterfaceFunctions BackgroundColor];//[UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.PlacesTable.showsVerticalScrollIndicator = NO;
     self.PlacesTable.showsHorizontalScrollIndicator = NO;
@@ -145,20 +145,20 @@ static bool REVERSE_ANIM = false;
 
 -(void)viewDidAppear:(BOOL)animated{
     
-//    if ([CategoryPlaces count] == 1) {
-//        NSLog(@"hello");`
-//        //self.CityImage.contentMode = UIViewContentModeScaleToFill;
-//        self.CityImage.frame = CGRectMake(0, 0.0, 320, 76.0);
-//        
-//        
-//    }
+    //    if ([CategoryPlaces count] == 1) {
+    //        NSLog(@"hello");`
+    //        //self.CityImage.contentMode = UIViewContentModeScaleToFill;
+    //        self.CityImage.frame = CGRectMake(0, 0.0, 320, 76.0);
+    //
+    //
+    //    }
     
     [TestFlight passCheckpoint:self.Category];
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
         NSLog(@"Взяли центр города");
         self.locationButton.enabled = NO;
-
+        
     }
     else{
         self.Map.centerCoordinate = self.Map.userLocation.coordinate;
@@ -266,7 +266,7 @@ static bool REVERSE_ANIM = false;
     
     UIImage* theImage = [self.imageCache objectForKey:url];
     UIImage* backupImg = [self.imageCache objectForKey:backup];
-
+    
     if ((nil != theImage) && [theImage isKindOfClass:[UIImage class]]) {
         NSLog(@"img loaded from cache!");
         completionBlock(YES, theImage);
@@ -277,43 +277,27 @@ static bool REVERSE_ANIM = false;
     }
     else{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *image = [UIImage imageWithContentsOfFile:url];
-        UIImage *cropedImage = [[UIImage alloc] init];
-        if(!image){
-            image = [UIImage imageWithContentsOfFile:backup];
-            CGImageRef imgRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 400, 640, 360));
-            cropedImage = [UIImage imageWithCGImage:imgRef];
-            CGImageRelease(imgRef);
-            [self.imageCache setObject:cropedImage forKey:backup];
-            NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:backup]);
-        }
-        else{
-            cropedImage = image;
-            [self.imageCache setObject:cropedImage forKey:url];
-            NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:url]);
-        }
-        NSLog(@"Images in cache: %d", [self.imageCache count]);
+            UIImage *image = [UIImage imageWithContentsOfFile:url];
+            UIImage *cropedImage = [[UIImage alloc] init];
+            if(!image){
+                image = [UIImage imageWithContentsOfFile:backup];
+                CGImageRef imgRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 400, 640, 360));
+                cropedImage = [UIImage imageWithCGImage:imgRef];
+                CGImageRelease(imgRef);
+                [self.imageCache setObject:cropedImage forKey:backup];
+                NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:backup]);
+            }
+            else{
+                cropedImage = image;
+                [self.imageCache setObject:cropedImage forKey:url];
+                NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:url]);
+            }
+            NSLog(@"Images in cache: %d", [self.imageCache count]);
             dispatch_async(dispatch_get_main_queue(), ^ {
                 completionBlock(YES,cropedImage);
             });
-
+            
         });
-//        
-//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-//        [NSURLConnection sendAsynchronousRequest:request
-//                                           queue:[NSOperationQueue mainQueue]
-//                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//                                   if ( !error )
-//                                   {
-//                                       UIImage *image = [[UIImage alloc] initWithData:data];
-//                                       [self.imageCache setObject:image forKey:url];
-//                                       NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:url]);
-//                                       NSLog(@"Images in cache: %d", [self.imageCache count]);
-//                                       completionBlock(YES,image);
-//                                   } else{
-//                                       completionBlock(NO, nil);
-//                                   }
-//                               }];
     }
 }
 
@@ -325,8 +309,6 @@ static bool REVERSE_ANIM = false;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-#warning Временно ?
-        //202,148,78
         UIView *back = [[UIView alloc] initWithFrame:CGRectMake(7, 7, 306, 166)];
         back.backgroundColor = [InterfaceFunctions colorTextCategory:self.Category];
         back.tag = backTag;
@@ -356,7 +338,7 @@ static bool REVERSE_ANIM = false;
         
         // This tells QuartzCore to render it as a bitmap
         [imgLayer1 setRasterizationScale:[UIScreen mainScreen].scale];
-
+        
         
         UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(12, preview.frame.size.height + 10, preview.frame.size.width, 30)];
         text.text = @"Комплимент от заведения: чашка кофе.";
@@ -364,7 +346,7 @@ static bool REVERSE_ANIM = false;
         text.textColor = [UIColor whiteColor];
         text.font = [UIFont boldSystemFontOfSize:10];
         [back addSubview:text];
-
+        
         
         CALayer * imgLayer = back.layer;
         [imgLayer setBorderColor: [[UIColor whiteColor] CGColor]];
@@ -381,24 +363,18 @@ static bool REVERSE_ANIM = false;
         
         // This tells QuartzCore to render it as a bitmap
         [imgLayer setRasterizationScale:[UIScreen mainScreen].scale];
-
+        
         [back addSubview:preview];
-
+        
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, -12.0, 260, cell.center.y*2)];
-
-//        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-//        line.backgroundColor = [[InterfaceFunctions colorTextCategory:self.Category] colorWithAlphaComponent:0.3];
-//        [preview addSubview:line];
-
         
-        //[InterfaceFunctions TableLabelwithText:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)];
-        label.tag = tableLabelWithTextTag;  
+        label.tag = tableLabelWithTextTag;
         label.font = [AppDelegate OpenSansRegular:28];
         label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
         label.shadowOffset = CGSizeMake(0.0, -0.1);
         label.backgroundColor = [UIColor clearColor];
-//        label.text = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"];
+        //        label.text = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"];
         label.textColor = [UIColor whiteColor];//[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
         label.highlightedTextColor = label.textColor;
         label.shadowColor = [InterfaceFunctions ShadowColor];
@@ -412,13 +388,13 @@ static bool REVERSE_ANIM = false;
         distance.backgroundColor = [UIColor clearColor];
         [back addSubview:distance];
         
-//        UILabel *goLabel = [InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
-//        [back addSubview:goLabel];
-//        UIImageView *arrow = [InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
-//        [back addSubview:arrow];
+        //        UILabel *goLabel = [InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+        //        [back addSubview:goLabel];
+        //        UIImageView *arrow = [InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+        //        [back addSubview:arrow];
         
     }
-//    NSLog(@"PLACE1: %@", Place1);
+    //    NSLog(@"PLACE1: %@", Place1);
     NSNumber *distance = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Distance"];
     float intDist = [distance floatValue];
     
@@ -457,23 +433,9 @@ static bool REVERSE_ANIM = false;
     rotationAndPerspectiveTransform.m34 = 1.0 / -500;
     if(!REVERSE_ANIM){
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -1, 1, 1, 1);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, -M_PI, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, 0, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 2 * M_PI / 2, 100, 1, 100);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
-        //  rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
     }
     else{
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 1, -1, -1, 1);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, M_PI, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI, 0, M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 2 * M_PI / 2, -100, 1, 100);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
-        // rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
     }
     
     layer.transform = rotationAndPerspectiveTransform;
@@ -484,23 +446,9 @@ static bool REVERSE_ANIM = false;
     //[cell setFrame:CGRectMake(0, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
     if(!REVERSE_ANIM){
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 1, 1, 1, 1);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, -M_PI, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, 0, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -2 * M_PI / 2, 100, 1, 100);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
-        // rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
     }
     else{
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -1, -1, -1, 1);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, M_PI, -M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI, 0, M_PI, 0);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -2 * M_PI / 2, -100, 1, 100);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -8.0f, 1.0f, 0.0f);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, 0, 1.0f, 0.0f);
-        //rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 90.0f * M_PI / 180.0f, -2.0f, 1.0f, 0.0f);
     }
     layer.transform = rotationAndPerspectiveTransform;
     [UIView commitAnimations];
@@ -513,7 +461,7 @@ static bool REVERSE_ANIM = false;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     [self performSegueWithIdentifier:@"CellSegue" sender:self];
     
 }
@@ -568,7 +516,7 @@ static bool REVERSE_ANIM = false;
         self.backgroundView.frame = CGRectMake(0, self.PlacesTable.frame.origin.y - yOffset, 320, self.PlacesTable.frame.size.height);
         self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
         self.CategoryLabel.frame = CGRectMake(self.CategoryLabel.frame.origin.x,4-(yOffset),self.CategoryLabel.frame.size.width,self.CategoryLabel.frame.size.height);
-//        
+        //
         self.GradientnderLabel.frame = CGRectMake(self.GradientnderLabel.frame.origin.x,-9-yOffset,self.GradientnderLabel.frame.size.width,self.GradientnderLabel.frame.size.height);
     } else {
         // NSLog(@"3");
@@ -577,8 +525,8 @@ static bool REVERSE_ANIM = false;
         
         
         self.CategoryLabel.frame = CGRectMake(self.CategoryLabel.frame.origin.x,4,self.CategoryLabel.frame.size.width,self.CategoryLabel.frame.size.height);
-//        
-//        
+        //
+        //
         self.GradientnderLabel.frame = CGRectMake(self.GradientnderLabel.frame.origin.x,-9,self.GradientnderLabel.frame.size.width,self.GradientnderLabel.frame.size.height);
         
     }
@@ -589,5 +537,5 @@ static bool REVERSE_ANIM = false;
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [self updateOffsets];
 }
- 
+
 @end

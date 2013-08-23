@@ -53,7 +53,7 @@ static NSDictionary *Place;
     self.SearchTable.backgroundView = [InterfaceFunctions backgroundView];
     Array = [NSArray arrayWithArray:self.PlacesArray];
     
-#warning сделать асинхронную загрузку
+#warning сделать асинхронную загрузку (Да уже и так норм :) )
     tmp = [NSArray arrayWithArray:self.readyArray];//[ExternalFunctions getAllPlacesInCity:self.CityName];
 }
 
