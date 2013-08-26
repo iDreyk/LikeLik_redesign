@@ -181,9 +181,9 @@ static BOOL IS_LOADING;
     self.CityName.textColor = [UIColor whiteColor];
     self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
     NSLog(@"%@",[ExternalFunctions larkePictureOfCity:self.Label]);
-    self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty", @"Hotels",@"Favorites", @"Visual Tour", @"Metro",@"Practical Info"];
+    self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty", @"Search",@"Favorites", @"Visual Tour", @"Metro",@"Practical Info"];
     
-    self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"FavoritesSegue",@"VisualtourSegue",@"TransportationSegue",@"PracticalinfoSegue"];
+    self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"SearchSegue",@"FavoritesSegue",@"VisualtourSegue",@"TransportationSegue",@"PracticalinfoSegue"];
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     //    self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -363,7 +363,7 @@ static BOOL IS_LOADING;
     [self.categoryView addSubview:frame7];
     
     UIView *frame8 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, 2*frameSize + yOrigin + 3*yOffset, frameSize, frameSize)];
-    frame8.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"8.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
+    frame8.backgroundColor = [UIColor grayColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"8.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame8.tag = 7;
     [self.categoryView addSubview:frame8];
     
@@ -442,6 +442,10 @@ static BOOL IS_LOADING;
 - (void)appReturnsActive{
     NSLog(@"LOG: app returns active");
     if(IS_LOADING){
+        UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
+        fade.tag = FADE_TAG;
+        fade.backgroundColor = [UIColor clearColor];
+        [self.navigationController.view addSubview:fade];
         UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
         coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         coolEf.tag = EF_TAG;
@@ -592,7 +596,6 @@ static BOOL IS_LOADING;
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.categoryArray = [self placesInCategory:destination.Category];
     }
-    
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
         FavViewController *destination = [segue destinationViewController];
         [segue destinationViewController];
@@ -634,6 +637,7 @@ static BOOL IS_LOADING;
     if ([[segue identifier] isEqualToString:@"SearchSegue"]){
         SearchViewController *destinaton  = [segue destinationViewController];
         destinaton.CityName = self.Label;
+        destinaton.readyArray = AroundArray;
     }
 }
 
