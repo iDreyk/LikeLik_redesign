@@ -20,11 +20,13 @@
 #define backgroundViewTag 87004
 #define backTag 87005
 #define distanceTag 87006
+#define announceTag 87007
 
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 static NSDictionary *Place1;
+static CGFloat width = 180;//220;
 
 NSInteger PREV_SECTION = 0;
 static bool REVERSE_ANIM = false;
@@ -49,7 +51,7 @@ static bool REVERSE_ANIM = false;
     
     [super viewDidLoad];
     
-    self.backgroundView.backgroundColor = [UIColor whiteColor];//[InterfaceFunctions colorTextCategory:self.Category];
+    self.backgroundView.backgroundColor = [UIColor lightGrayColor];//[InterfaceFunctions colorTextCategory:self.Category];
     
     //  NSLog(@"123");
     CategoryPlaces = self.categoryArray;//[ExternalFunctions getArrayOfPlaceDictionariesInCategory:self.Category InCity:self.CityName];
@@ -261,6 +263,17 @@ static bool REVERSE_ANIM = false;
     return 180;
 }
 
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+
 - (void)loadImageFromCache:(NSString *)url :(NSString *)backup completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
 {
     
@@ -277,7 +290,7 @@ static bool REVERSE_ANIM = false;
     }
     else{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            UIImage *image = [UIImage imageWithContentsOfFile:url];
+            UIImage * image = [UIImage imageWithContentsOfFile:url];
             UIImage *cropedImage = [[UIImage alloc] init];
             if(!image){
                 image = [UIImage imageWithContentsOfFile:backup];
@@ -310,15 +323,14 @@ static bool REVERSE_ANIM = false;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         UIView *back = [[UIView alloc] initWithFrame:CGRectMake(7, 7, 306, 166)];
-        back.backgroundColor = [InterfaceFunctions colorTextCategory:self.Category];
+        back.backgroundColor = [UIColor whiteColor];//[InterfaceFunctions colorTextCategory:self.Category];
         back.tag = backTag;
         [cell.contentView addSubview:back];
         
         
-        cell.contentView.backgroundColor =[UIColor whiteColor];//[[InterfaceFunctions colorTextCategory:self.Category] colorWithAlphaComponent:0.3];
+        cell.contentView.backgroundColor =[UIColor lightGrayColor];//[[InterfaceFunctions colorTextCategory:self.Category] colorWithAlphaComponent:0.3];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        CGFloat width = 220;
-        UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(12, 20, width, width / 1.852)];
+        UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(12, 55, width, width / 1.852)];
         preview.tag = backgroundViewTag;
         preview.backgroundColor = [UIColor whiteColor];
         preview.clipsToBounds = NO;
@@ -340,12 +352,20 @@ static bool REVERSE_ANIM = false;
         [imgLayer1 setRasterizationScale:[UIScreen mainScreen].scale];
         
         
-        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(12, preview.frame.size.height + 10, preview.frame.size.width, 30)];
-        text.text = @"Комплимент от заведения: чашка кофе.";
+        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(12, preview.frame.size.height + 35, preview.frame.size.width+100, 30)];
+       
+        text.numberOfLines = 2;
+        //text.textAlignment = NSTextAlignmentCenter;
         text.backgroundColor = [UIColor clearColor];
         text.textColor = [UIColor whiteColor];
         text.font = [UIFont boldSystemFontOfSize:10];
+        text.tag = announceTag;
         [back addSubview:text];
+        
+        
+        UILabel * nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 , 305, 42)];
+        nameLabel.backgroundColor = [InterfaceFunctions colorTextCategory:self.Category];
+        [back addSubview:nameLabel];
         
         
         CALayer * imgLayer = back.layer;
@@ -367,10 +387,11 @@ static bool REVERSE_ANIM = false;
         [back addSubview:preview];
         
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, -12.0, 260, cell.center.y*2)];
+        //UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, -12.0, 260, cell.center.y*2)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0, 280, cell.center.y*2)];
         
         label.tag = tableLabelWithTextTag;
-        label.font = [AppDelegate OpenSansRegular:28];
+        label.font = [AppDelegate OpenSansBoldwithSize:45];
         label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
         label.shadowOffset = CGSizeMake(0.0, -0.1);
         label.backgroundColor = [UIColor clearColor];
@@ -407,6 +428,10 @@ static bool REVERSE_ANIM = false;
     UILabel *tableLabelWithText  = (UILabel *)[cell viewWithTag:tableLabelWithTextTag];
     tableLabelWithText.text = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"];
     
+    
+    UILabel *text = (UILabel *)[cell viewWithTag:announceTag];
+     text.text = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Preview"];
+    
     Place1 = [CategoryPlaces objectAtIndex:row];
     NSArray *photos = [Place1 objectForKey:@"Photo"];
     [self loadImageFromCache:[Place1 objectForKey:@"thumb"] :[photos objectAtIndex:0] completionBlock:^(BOOL succeeded, UIImage *image) {
@@ -432,10 +457,10 @@ static bool REVERSE_ANIM = false;
     CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
     rotationAndPerspectiveTransform.m34 = 1.0 / -500;
     if(!REVERSE_ANIM){
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/6, 1, 0, 0);
     }
     else{
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/6, 1, 0, 0);
     }
     
     layer.transform = rotationAndPerspectiveTransform;
@@ -445,10 +470,10 @@ static bool REVERSE_ANIM = false;
     [UIView setAnimationDuration:0.75];
     //[cell setFrame:CGRectMake(0, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
     if(!REVERSE_ANIM){
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/6, 1, 0, 0);
     }
     else{
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/6, 1, 0, 0);
     }
     layer.transform = rotationAndPerspectiveTransform;
     [UIView commitAnimations];

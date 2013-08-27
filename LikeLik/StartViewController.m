@@ -22,8 +22,8 @@
 
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
 #define dismiss                 @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
-#define likelikurlwifi_4        @"http://likelik.net/ios/test/4/" //docs
-#define likelikurlwifi_5        @"http://likelik.net/ios/test/5/" //docs
+#define likelikurlwifi_4        @"http://likelik.net/ios/docs/4/" //docs
+#define likelikurlwifi_5        @"http://likelik.net/ios/docs/5/" //docs
 #define likelikurlcell_4        @"http://likelik.net/ios/cell/4/"
 #define likelikurlcell_5        @"http://likelik.net/ios/cell/5/"
 #define catalogue @"Catalogues"

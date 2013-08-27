@@ -613,6 +613,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="SearchButton" destination="zzm-Cp-rtB" id="mU0-Rx-nyb"/>
                         <outlet property="SegmentedMapandTable" destination="KdP-xq-s9v" id="nvH-0Y-jqf"/>
                         <outlet property="ViewforMap" destination="2Va-kC-PQQ" id="87H-Iw-276"/>
+                        <outlet property="backgroundView" destination="2Va-kC-PQQ" id="0cD-Xl-hEg"/>
                         <outlet property="gradient_under_cityname" destination="Vkt-Mu-fmj" id="o8J-Tb-rLh"/>
                         <outlet property="locationButton" destination="06X-1W-BmY" id="gWg-OJ-wvL"/>
                         <segue destination="Raj-iV-euz" kind="push" identifier="MapSegue" id="Bst-Mm-pco"/>
@@ -1902,70 +1903,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="tabicon_Featured.png" width="16" height="16"/>
         <image name="tabicon_SpecialSeries.png" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="AboutTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="AboutCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="MoreLikeLikApps" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="SupportCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="TermsCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="AboutViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="Title" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="CategoryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CategoryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="ShowMap:"/>
-                <relationship kind="outlet" name="CellArray" candidateClass="NSArray"/>
-                <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="GradientUnderLabel" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Image" candidateClass="NSString"/>
-                <relationship kind="outlet" name="Label" candidateClass="NSString"/>
-                <relationship kind="outlet" name="MapPlace" candidateClass="RMMapView"/>
-                <relationship kind="outlet" name="PlaceView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="SearchButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="SegueArray" candidateClass="NSArray"/>
-                <relationship kind="outlet" name="categoryView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="frame1" candidateClass="UIView"/>
-                <relationship kind="outlet" name="frameArray" candidateClass="NSArray"/>
-                <relationship kind="outlet" name="placeViewMap" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="MyLikeLikeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyLikeLikeViewController.h"/>
-        </class>
-        <class className="RegistrationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationViewController.h"/>
-        </class>
-        <class className="SearchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="SearchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="SearchTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="readyArray" candidateClass="NSArray"/>
-            </relationships>
-        </class>
-        <class className="StartTableCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartTableCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="BackCityImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="CityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="accesor" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="StartViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

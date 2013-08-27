@@ -37,6 +37,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SearchButton;
 @property (weak, nonatomic) IBOutlet UIView *ViewforMap;
 @property (nonatomic,retain)        MBProgressHUD  *HUD;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
+
 -(IBAction) segmentedControlIndexChanged;
 -(IBAction)showLocation:(id)sender;
 

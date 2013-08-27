@@ -21,11 +21,15 @@
 #define backgroundViewTag 87004
 #define cellColorTag 87005
 #define distanceTag 87006
+#define announceTag 87007
+#define labelColorTag 87008
+#define buttonlabel1Tag 87009
 
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 static NSDictionary *Place1;
+static CGFloat width = 180;//220;
 
 NSInteger PREV_SECTION_AROUNDME = 0;
 bool REVERSE_ANIM = false;
@@ -47,6 +51,8 @@ bool REVERSE_ANIM = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.backgroundView.backgroundColor = [UIColor lightGrayColor];//[InterfaceFunctions colorTextCategory:self.Category];
+
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"Map", nil) forSegmentAtIndex:1];
@@ -277,6 +283,18 @@ bool REVERSE_ANIM = false;
 {
     return 180;
 }
+
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+
 - (void)loadImageFromCache:(NSString *)url :(NSString *)backup completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
 {
     
@@ -293,11 +311,12 @@ bool REVERSE_ANIM = false;
     }
     else{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            UIImage *image = [UIImage imageWithContentsOfFile:url];
+            UIImage * image = [UIImage imageWithContentsOfFile:url];
             UIImage *cropedImage = [[UIImage alloc] init];
+            NSLog(@"here");
             if(!image){
                 image = [UIImage imageWithContentsOfFile:backup];
-                CGImageRef imgRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 400, 640, 360));
+                CGImageRef imgRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 400,width, width/1.852));
                 cropedImage = [UIImage imageWithCGImage:imgRef];
                 CGImageRelease(imgRef);
                 [self.imageCache setObject:cropedImage forKey:backup];
@@ -340,6 +359,8 @@ bool REVERSE_ANIM = false;
 //    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
 //    return cell;
 //}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = [indexPath row];
@@ -351,15 +372,17 @@ bool REVERSE_ANIM = false;
 #warning Временно ?
         //202,148,78
         UIView *back = [[UIView alloc] initWithFrame:CGRectMake(7, 7, 306, 166)];
+        CALayer *layer3 = back.layer;
+        layer3.cornerRadius = 5;
+        back.clipsToBounds = YES;
         //back.backgroundColor = [InterfaceFunctions colorTextCategory:category];
         back.tag = cellColorTag;
         [cell.contentView addSubview:back];
         
         
-        cell.contentView.backgroundColor =[UIColor whiteColor];//[[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
+        cell.contentView.backgroundColor =[UIColor lightGrayColor];//[[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        CGFloat width = 220;
-        UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(12, 20, width, width / 1.852)];
+        UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(12, 55, width, width / 1.852)];
         preview.tag = backgroundViewTag;
         preview.backgroundColor = [UIColor whiteColor];
         preview.clipsToBounds = NO;
@@ -381,13 +404,48 @@ bool REVERSE_ANIM = false;
         [imgLayer1 setRasterizationScale:[UIScreen mainScreen].scale];
         
         
-        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(12, preview.frame.size.height + 10, preview.frame.size.width, 30)];
-        text.text = @"Комплимент от заведения: чашка кофе.";
+        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(width + 24, 55, 100, 65)];
+        
+        
         text.backgroundColor = [UIColor clearColor];
-        text.textColor = [UIColor whiteColor];
-        text.font = [UIFont boldSystemFontOfSize:10];
+        //text.textAlignment = NSTextAlignment;
+        text.textColor = [UIColor blackColor];
+        text.font = [UIFont systemFontOfSize:10];
+        text.tag = announceTag;
+        text.numberOfLines = 5;
         [back addSubview:text];
         
+        
+        UILabel * nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 , 306, 42)];
+        CALayer *layer2 = nameLabel.layer;
+        layer2.cornerRadius = 5;
+        nameLabel.clipsToBounds = YES;
+        UILabel * buttonlabel1 = [[UILabel alloc] initWithFrame:CGRectMake(width + 24 - 2 + 12 + 5, 55 + width/1.852 - 24 -2 , 26, 26)];
+        
+        CALayer *layer1 = buttonlabel1.layer;
+        layer1.cornerRadius = 3;
+        buttonlabel1.clipsToBounds = YES;
+        
+        UIView * knucklabel = [[UIView alloc] initWithFrame:CGRectMake(width + 24 + 24 + 24  + 5, 55 + width/1.852 - 24 - 1, 24, 24)];
+        UIView * backknuck = [[UIView alloc] initWithFrame:CGRectMake(width + 24 + 24 + 24  + 5 - 2, 55 + width/1.852 - 24 -2, 26, 26)];
+        backknuck.backgroundColor = [InterfaceFunctions corporateIdentity];
+        CALayer *layer = backknuck.layer;
+        layer.cornerRadius = 3;
+        backknuck.clipsToBounds = YES;
+        [back addSubview:backknuck];
+        //UIView *frame7 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, 2*frameSize + yOrigin + 3*yOffset, frameSize, frameSize)];
+        //frame7.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"7.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
+        //UIImage * knuckImg = [UIImage imageWithContentsOfFile:@"kul_90"];
+        //UIImageView * knuck = [[UIImageView alloc] initWithImage:knuckImg];
+        //knuck.frame = buttonlabel2.frame;
+        
+        buttonlabel1.tag = buttonlabel1Tag;
+        knucklabel.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]];
+        nameLabel.tag = labelColorTag;
+        [back addSubview:buttonlabel1];
+        [back addSubview:knucklabel];
+        [back addSubview:nameLabel];
+        //[back addSubview:knuck];
         
         CALayer * imgLayer = back.layer;
         [imgLayer setBorderColor: [[UIColor whiteColor] CGColor]];
@@ -408,7 +466,7 @@ bool REVERSE_ANIM = false;
         [back addSubview:preview];
         
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, -12.0, 260, cell.center.y*2)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0,280, cell.center.y*2)];
         
         //        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
         //        line.backgroundColor = [[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
@@ -417,7 +475,7 @@ bool REVERSE_ANIM = false;
         
         //[InterfaceFunctions TableLabelwithText:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)];
         label.tag = tableLabelWithTextTag;
-        label.font = [AppDelegate OpenSansRegular:28];
+        label.font = [AppDelegate OpenSansBoldwithSize:45];
         label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
         label.shadowOffset = CGSizeMake(0.0, -0.1);
         label.backgroundColor = [UIColor clearColor];
@@ -428,10 +486,11 @@ bool REVERSE_ANIM = false;
         label.shadowOffset = [InterfaceFunctions ShadowSize];
         [back addSubview:label];
         
-        UILabel *distance = [[UILabel alloc] initWithFrame:CGRectMake(preview.frame.size.width + 20, preview.frame.origin.y, 55, 20)];
+        UILabel *distance = [[UILabel alloc] initWithFrame:CGRectMake(preview.frame.size.width + 10, preview.frame.origin.y + 94, 112, 20)];
+        distance.textAlignment = NSTextAlignmentRight;
         distance.font = [UIFont systemFontOfSize:10];
         distance.tag = distanceTag;
-        distance.textColor = [UIColor whiteColor];
+        distance.textColor = [UIColor grayColor];
         distance.backgroundColor = [UIColor clearColor];
         [back addSubview:distance];
         
@@ -453,10 +512,20 @@ bool REVERSE_ANIM = false;
     
     
     UIView *cellColor = (UIView *)[cell viewWithTag:cellColorTag];
-    cellColor.backgroundColor = [InterfaceFunctions colorTextCategory:category];
+    UILabel * buttonlabel = (UILabel *)[cell viewWithTag:buttonlabel1Tag];
+    buttonlabel.backgroundColor =[InterfaceFunctions colorTextCategory:category];
+    //cellColor.backgroundColor = [InterfaceFunctions colorTextCategory:category];
+    cellColor.backgroundColor = [UIColor whiteColor];
+    
     
     UILabel *tableLabelWithText  = (UILabel *)[cell viewWithTag:tableLabelWithTextTag];
     tableLabelWithText.text = [[AroundArray objectAtIndex:row] objectForKey:@"Name"];
+    
+    UILabel *text = (UILabel *)[cell viewWithTag:announceTag];
+    text.text = [[AroundArray objectAtIndex:row] objectForKey:@"Preview"];
+    
+    UILabel *label = (UILabel *)[cell viewWithTag:labelColorTag];
+    label.backgroundColor = [InterfaceFunctions colorTextCategory:category];
     
     Place1 = [AroundArray objectAtIndex:row];
     NSArray *photos = [Place1 objectForKey:@"Photo"];
@@ -483,10 +552,10 @@ bool REVERSE_ANIM = false;
     CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
     rotationAndPerspectiveTransform.m34 = 1.0 / -500;
     if(!REVERSE_ANIM){
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/6, 1, 0, 0);
     }
     else{
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/6, 1, 0, 0);
     }
     
     layer.transform = rotationAndPerspectiveTransform;
@@ -496,10 +565,10 @@ bool REVERSE_ANIM = false;
     [UIView setAnimationDuration:0.75];
     //[cell setFrame:CGRectMake(0, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
     if(!REVERSE_ANIM){
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/3, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI/6, 1, 0, 0);
     }
     else{
-        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/3, 1, 0, 0);
+        rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/6, 1, 0, 0);
     }
     layer.transform = rotationAndPerspectiveTransform;
     [UIView commitAnimations];
