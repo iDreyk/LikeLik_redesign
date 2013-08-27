@@ -323,7 +323,8 @@
 
     if ([Category isEqualToString:AMLocalizedString(@"Restaurants", nil)]) {
         //Pin.image = [UIImage imageNamed:@"63_76 MapPin_2"];
-        Pin.image = [UIImage imageNamed:@"knuck_pin_2"];
+        //Pin.image = [UIImage imageNamed:@"knuck_pin_2"];
+        Pin.image = [UIImage imageNamed:@"knuck_pin_test5"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Night life", nil)]) {
         //Pin.image=[UIImage imageNamed:@"63_76 MapPin_3"];

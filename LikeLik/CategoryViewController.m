@@ -363,7 +363,7 @@ static BOOL IS_LOADING;
     [self.categoryView addSubview:frame7];
     
     UIView *frame8 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, 2*frameSize + yOrigin + 3*yOffset, frameSize, frameSize)];
-    frame8.backgroundColor = [UIColor grayColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"8.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
+    frame8.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"8.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
     frame8.tag = 7;
     [self.categoryView addSubview:frame8];
     
