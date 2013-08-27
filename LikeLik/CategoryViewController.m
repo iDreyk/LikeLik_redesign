@@ -96,6 +96,7 @@ static BOOL IS_LOADING;
         // post an NSNotification that loading has started
         AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
         RMAnnotation *marker1;
+        NSLog(@"start reading aroundarray in reload");
         for (int i=0; i<[AroundArray count]; i++) {
             CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
             marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
@@ -106,10 +107,12 @@ static BOOL IS_LOADING;
             [self.MapPlace addAnnotation:marker1];
             //NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
         }
+        NSLog(@"finished reading aroundarray in reload");
         //    NSLog(@"%@",self.MapPlace.annotations);]
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSLog(@"Back on main thread");
             [self removeKnuckleHUD];
+            NSLog(@"remove knuckle animation in reload");
             //            [self.Table reloadData];
         });
         // post an NSNotification that loading is finished
@@ -134,6 +137,7 @@ static BOOL IS_LOADING;
         animation.repeatCount = HUGE_VAL;
         [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
         [coolEf addSubview:spin];
+        NSLog(@"start knuckle animation in reload");
     }];
     
 }
@@ -236,8 +240,10 @@ static BOOL IS_LOADING;
         [self.navigationController.view addSubview:fade];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // post an NSNotification that loading has started
+            NSLog(@"creating around array in viewDidLoad");
             AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
             RMAnnotation *marker1;
+            NSLog(@"reading around array in viewDidLoad");
             for (int i=0; i<[AroundArray count]; i++) {
                 CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
                 marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
@@ -248,11 +254,13 @@ static BOOL IS_LOADING;
                 [self.MapPlace addAnnotation:marker1];
                 //NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
             }
+            NSLog(@"finished reading aroundarray in viewDidLoad");
             //    NSLog(@"%@",self.MapPlace.annotations);]
             dispatch_async(dispatch_get_main_queue(), ^ {
                 NSLog(@"Back on main thread");
                 IS_LOADING = NO;
                 [self removeKnuckleHUD];
+                NSLog(@"remove knuckle animation in viewDidLoad");
                 //            [self.Table reloadData];
             });
             // post an NSNotification that loading is finished
@@ -261,63 +269,63 @@ static BOOL IS_LOADING;
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    NSString *city = [[ExternalFunctions cityCatalogueForCity:self.CityName.text] objectForKey:@"city_EN"];
-    if ([ExternalFunctions isDownloaded:city]) {
-        
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
-        
-        CLLocation *oldLocation = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        
-        NSLog(@"Изменение расстояния: %f",[Me distanceFromLocation:oldLocation]);
-        
-        NSArray *catalogues = [[NSUserDefaults standardUserDefaults] objectForKey:@"Catalogues"];
-        
-        if ([Me distanceFromLocation:oldLocation] > 10
-            || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL) {
-            NSLog(@"in if");
-            
-            [_locationManager stopUpdatingLocation];
-            NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
-            [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
-            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-            dispatch_async(queue, ^ {
-                
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text]];
-                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
-                [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",city]];
-                
-                NSLog(@"Finished work in background");
-                
-                
-                dispatch_async(dispatch_get_main_queue(), ^ {
-                    NSLog(@"Back on main thread");
-                });
-            });
-        }
-        else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]) {
-            [_locationManager stopUpdatingLocation];
-            NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
-            [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
-            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-            dispatch_async(queue, ^ {
-                
-                for (int i = 0; i < [catalogues count]; i++) {
-                    NSString *cityName = [[catalogues objectAtIndex:i] objectForKey:@"city_EN"];
-                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                    NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:cityName]];
-                    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
-                    [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",cityName]];
-                    
-                    NSLog(@"Finished work in background");
-                }
-                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0] forKey:@"langChanged"];
-                dispatch_async(dispatch_get_main_queue(), ^ {
-                    NSLog(@"Back on main thread");
-                });
-            });
-        }
-    }
+//    NSString *city = [[ExternalFunctions cityCatalogueForCity:self.CityName.text] objectForKey:@"city_EN"];
+//    if ([ExternalFunctions isDownloaded:city]) {
+//        
+//        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
+//        
+//        CLLocation *oldLocation = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//        
+//        NSLog(@"Изменение расстояния: %f",[Me distanceFromLocation:oldLocation]);
+//        
+//        NSArray *catalogues = [[NSUserDefaults standardUserDefaults] objectForKey:@"Catalogues"];
+//        
+//        if ([Me distanceFromLocation:oldLocation] > 10
+//            || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL) {
+//            NSLog(@"in if");
+//            
+//            [_locationManager stopUpdatingLocation];
+//            NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
+//            [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
+//            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//            dispatch_async(queue, ^ {
+//                
+//                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text]];
+//                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
+//                [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",city]];
+//                
+//                NSLog(@"Finished work in background");
+//                
+//                
+//                dispatch_async(dispatch_get_main_queue(), ^ {
+//                    NSLog(@"Back on main thread");
+//                });
+//            });
+//        }
+//        else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]) {
+//            [_locationManager stopUpdatingLocation];
+//            NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
+//            [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
+//            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//            dispatch_async(queue, ^ {
+//                
+//                for (int i = 0; i < [catalogues count]; i++) {
+//                    NSString *cityName = [[catalogues objectAtIndex:i] objectForKey:@"city_EN"];
+//                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                    NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:cityName]];
+//                    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
+//                    [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",cityName]];
+//                    
+//                    NSLog(@"Finished work in background");
+//                }
+//                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0] forKey:@"langChanged"];
+//                dispatch_async(dispatch_get_main_queue(), ^ {
+//                    NSLog(@"Back on main thread");
+//                });
+//            });
+//        }
+//    }
     
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;
@@ -429,6 +437,7 @@ static BOOL IS_LOADING;
             animation.repeatCount = HUGE_VAL;
             [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
             [coolEf addSubview:spin];
+            NSLog(@"start knuckle animation in viewDidLoad");
         }];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];

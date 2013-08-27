@@ -48,6 +48,8 @@
 
 + (void) getReady;
 
++ (NSArray *) getArrayOfPlaceDictionariesInCategoryForAllPlaces : (NSString *) category InCity : (NSString *) city;
+
 + (NSArray *) getArrayOfPlaceDictionariesInCategory : (NSString *) category InCity : (NSString *) city;
 
 + (CLLocation *) getMyLocationOrTheLocationOfCityCenter : (NSString *)city;

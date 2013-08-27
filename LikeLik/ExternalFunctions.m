@@ -90,7 +90,7 @@ static CLLocation *Me;
             }
             [dictionaryWithTagsAndPlacesInCity setValue:arrayOfPlacesWithChosenTag forKey:[arrayOfTags objectAtIndex:j]];
         }
-        NSLog(@"here");
+        
         [[NSUserDefaults standardUserDefaults] setValue:dictionaryWithTagsAndPlacesInCity forKey:cityName];
     }
 }
@@ -100,7 +100,6 @@ static CLLocation *Me;
 }
 
 + (NSArray *)arrayOfDictionatySort : (NSMutableArray *) placesArray {
-    
     NSSortDescriptor *aSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Distance" ascending:YES];
     [placesArray sortUsingDescriptors:[NSArray arrayWithObject:aSortDescriptor]];
     
@@ -192,6 +191,57 @@ static CLLocation *Me;
     return Me;
 }
 
++ (NSArray *) getArrayOfPlaceDictionariesInCategoryForAllPlaces : (NSString *) category InCity : (NSString *) city{
+    NSDictionary *cityDict = [self cityCatalogueForCity:city];
+    NSMutableDictionary *placeDict;
+    NSArray *tempArrayOfPlacesIncategory = [[cityDict objectForKey:@"places"] objectForKey:category];
+    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    NSString *version = [self getIphoneString];
+    double lat,lon;
+    NSDictionary *placeAtIndexi;
+    
+    int placesCount = [tempArrayOfPlacesIncategory count];
+    
+    for (int i = 0; i < placesCount; i++) {
+        placeDict = [[NSMutableDictionary alloc]init];
+        placeAtIndexi = [tempArrayOfPlacesIncategory objectAtIndex:i];
+        
+        lat = [[placeAtIndexi objectForKey:@"Lat"] doubleValue];
+        lon = [[placeAtIndexi objectForKey:@"Lon"] doubleValue];
+        CLLocation *currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
+        CLLocation *location = [self getMyLocationOrTheLocationOfCityCenter:city];
+        photos = [[NSMutableArray alloc] init];
+        for (int j = 0; j < [[[placeAtIndexi objectForKey:@"Photo"] objectForKey:version] count]; j++) {
+            [photos addObject:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],[cityDict objectForKey:@"city_EN"],[[[placeAtIndexi objectForKey:@"Photo"] objectForKey:version] objectAtIndex:j]]];
+        }
+        
+        double distance = [location distanceFromLocation:currentPlace];
+        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"Name"]] forKey:@"Name"];
+        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"About"]] forKey:@"About"];
+        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"address"]] forKey:@"Address"];
+        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"time"]] forKey:@"Time"];
+        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"metro"]] forKey:@"Metro"];
+        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"Preview"]] forKey:@"Preview"];
+        [placeDict setValue:[placeAtIndexi objectForKey:@"Telephone"] forKey:@"Telephone"];
+        [placeDict setValue:[placeAtIndexi objectForKey:@"web"] forKey:@"Web"];
+        [placeDict setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
+        [placeDict setValue:currentPlace forKey:@"Location"];
+        [placeDict setValue:category forKey:@"Category"];
+        [placeDict setValue:photos forKey:@"Photo"];
+        [placeDict setValue:city forKey:@"City"];
+        [placeDict setValue:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],[cityDict objectForKey:@"city_EN"],[[placeAtIndexi objectForKey:@"Photo"] objectForKey:@"thumb"]] forKey:@"thumb"];
+        [placeDict setValue:[placeAtIndexi objectForKey:@"favourite"] forKey:@"Favorite"];
+        [placeDict setValue:[placeAtIndexi objectForKey:@"tag"] forKey:@"Tags"];
+        [placeDict setValue:[NSNumber numberWithDouble:lat] forKey:@"Latitude"];
+        [placeDict setValue:[NSNumber numberWithDouble:lon] forKey:@"Longitude"];
+        
+        [returnArray addObject:placeDict];
+    }
+    
+    return returnArray;
+}
+
 + (NSArray *) getArrayOfPlaceDictionariesInCategory : (NSString *) category InCity : (NSString *) city{
     NSDictionary *cityDict = [self cityCatalogueForCity:city];
     NSMutableDictionary *placeDict;
@@ -246,26 +296,34 @@ static CLLocation *Me;
 + (NSArray *) getAllPlacesInCity:(NSString *)city{
     NSMutableArray *arrayOfPlaces = [[NSMutableArray alloc] init];
     
-    if ([self getArrayOfPlaceDictionariesInCategory:beauty InCity:city] != NULL) {
-        [arrayOfPlaces addObjectsFromArray:[self getArrayOfPlaceDictionariesInCategory:beauty InCity:city]];
+    NSArray *beautyArray = [self getArrayOfPlaceDictionariesInCategoryForAllPlaces:beauty InCity:city];
+    NSArray *restArray = [self getArrayOfPlaceDictionariesInCategoryForAllPlaces:rest InCity:city];
+    NSArray *nightArray = [self getArrayOfPlaceDictionariesInCategoryForAllPlaces:night InCity:city];
+    NSArray *shopArray = [self getArrayOfPlaceDictionariesInCategoryForAllPlaces:shop InCity:city];
+    NSArray *cultArray = [self getArrayOfPlaceDictionariesInCategoryForAllPlaces:cult InCity:city];
+    NSArray *leisureArray = [self getArrayOfPlaceDictionariesInCategoryForAllPlaces:leisure InCity:city];
+    NSArray *hotelsArray = [self getArrayOfPlaceDictionariesInCategoryForAllPlaces:hotels InCity:city];
+    
+    if (beautyArray != NULL) {
+        [arrayOfPlaces addObjectsFromArray:beautyArray];
     }
-    if ([self getArrayOfPlaceDictionariesInCategory:rest InCity:city] != NULL) {
-        [arrayOfPlaces addObjectsFromArray:[self getArrayOfPlaceDictionariesInCategory:rest InCity:city]];
+    if (restArray != NULL) {
+        [arrayOfPlaces addObjectsFromArray:restArray];
     }
-    if ([self getArrayOfPlaceDictionariesInCategory:night InCity:city] != NULL) {
-        [arrayOfPlaces addObjectsFromArray:[self getArrayOfPlaceDictionariesInCategory:night InCity:city]];
+    if (nightArray != NULL) {
+        [arrayOfPlaces addObjectsFromArray:nightArray];
     }
-    if ([self getArrayOfPlaceDictionariesInCategory:shop InCity:city] != NULL) {
-        [arrayOfPlaces addObjectsFromArray:[self getArrayOfPlaceDictionariesInCategory:shop InCity:city]];
+    if (shopArray != NULL) {
+        [arrayOfPlaces addObjectsFromArray:shopArray];
     }
-    if ([self getArrayOfPlaceDictionariesInCategory:cult InCity:city] != NULL) {
-        [arrayOfPlaces addObjectsFromArray:[self getArrayOfPlaceDictionariesInCategory:cult InCity:city]];
+    if (cultArray != NULL) {
+        [arrayOfPlaces addObjectsFromArray:cultArray];
     }
-    if ([self getArrayOfPlaceDictionariesInCategory:leisure InCity:city] != NULL) {
-        [arrayOfPlaces addObjectsFromArray:[self getArrayOfPlaceDictionariesInCategory:leisure InCity:city]];
+    if (leisureArray != NULL) {
+        [arrayOfPlaces addObjectsFromArray:leisureArray];
     }
-    if ([self getArrayOfPlaceDictionariesInCategory:hotels InCity:city] != NULL) {
-        [arrayOfPlaces addObjectsFromArray:[self getArrayOfPlaceDictionariesInCategory:hotels InCity:city]];
+    if (hotelsArray != NULL) {
+        [arrayOfPlaces addObjectsFromArray:hotelsArray];
     }
     
     return [self arrayOfDictionatySort:arrayOfPlaces];
@@ -331,7 +389,7 @@ static CLLocation *Me;
 
 + (void) unzipFileAt:(NSString *)filePath ToDestination:(NSString *)fileDestination{
     // Unzipping
-   // NSLog(@"Unzipping");
+    NSLog(@"Unzipping");
     NSString *zipPath = filePath;
     NSString *destinationPath = fileDestination;
     [SSZipArchive unzipFileAtPath:zipPath toDestination:destinationPath];
@@ -667,7 +725,7 @@ static CLLocation *Me;
 //  широкая заставка города
 + (NSString *) larkePictureOfCity : (NSString *) city{
     NSDictionary *City = [self cityCatalogueForCity:city];
-    NSLog(@"LARKE: %@",[[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[City objectForKey:@"city_EN"] ofType:@""],[[City objectForKey:@"photos"] objectForKey:@"large"]]);
+    
     return [[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[City objectForKey:@"city_EN"] ofType:@""],[[City objectForKey:@"photos"] objectForKey:@"large"]];
 }
 
@@ -718,24 +776,11 @@ static CLLocation *Me;
 //
 //  new function
 + (NSArray *) getPlacesAroundMyLocationInCity : (NSString *) city{
-    NSLog(@"city - %@",city);
-    city = [[self cityCatalogueForCity:city] objectForKey:@"city_EN"];
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSData *data = [defaults objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]];
-//    NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
-   // if (arr == NULL || [[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]){
-        NSLog(@"defaults пустые берём сами");
-        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0] forKey:@"langChanged"];
-#warning Нужно сделать быструю загрузку этой штуки
-        return [self arrayOfDictionatySort:[self getAllPlacesInCity:city]];
-#warning Нельзя использовать userdefaults! Не меняется язык описания
-    // }
-   // else
-   // {
-   //     NSLog(@"defaults не пустые берём оттуда");
-    //    return arr;
-  //  }
+    city = [[self cityCatalogueForCity:city] objectForKey:@"city_EN"];
+    NSArray *returnArray = [self getAllPlacesInCity:city];
+    
+    return returnArray;
 }
 
 //
