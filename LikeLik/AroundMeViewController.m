@@ -521,9 +521,15 @@ bool REVERSE_ANIM = false;
     UILabel *tableLabelWithText  = (UILabel *)[cell viewWithTag:tableLabelWithTextTag];
     tableLabelWithText.text = [[AroundArray objectAtIndex:row] objectForKey:@"Name"];
     
-    UILabel *text = (UILabel *)[cell viewWithTag:announceTag];
-    text.text = [[AroundArray objectAtIndex:row] objectForKey:@"Preview"];
-    
+    UILabel *previewText = (UILabel *)[cell viewWithTag:announceTag];
+#warning СДЕЛАТЬ ТАК ЖЕ В PlacesByCategory !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    NSString *preview = [[AroundArray objectAtIndex:row] objectForKey:@"Preview"];
+    if(!preview)
+        previewText.text = AMLocalizedString(@"Please, update catalogues to get access to newest features.", nil);
+                            //Добавить в локализации
+    else
+        previewText.text = preview;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     UILabel *label = (UILabel *)[cell viewWithTag:labelColorTag];
     label.backgroundColor = [InterfaceFunctions colorTextCategory:category];
     
@@ -630,9 +636,6 @@ bool REVERSE_ANIM = false;
 
 
 - (void)updateOffsets {
-    
-    
-    
     CGFloat yOffset   = self.PlacesTable.contentOffset.y;
     
     CGFloat threshold = self.PlacesTable.frame.size.height - self.PlacesTable.frame.size.height;

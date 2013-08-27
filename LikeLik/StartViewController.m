@@ -34,6 +34,7 @@
 
 NSInteger PREV_ROW = 0;
 static bool REVERSE_ANIM = false;
+static BOOL JUST_APPEAR = YES;
 
 @interface StartViewController ()
 
@@ -53,7 +54,7 @@ static bool REVERSE_ANIM = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    JUST_APPEAR = YES;
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
@@ -112,7 +113,7 @@ static bool REVERSE_ANIM = false;
         _backCityImages = [ExternalFunctions getSpecialCities:0];
     }
     //  NSLog(@"StartView Appear");
-    
+    JUST_APPEAR = YES;
     [self.tableView reloadData];
 }
 
@@ -168,6 +169,7 @@ static bool REVERSE_ANIM = false;
         REVERSE_ANIM = false;
     
     PREV_ROW = row;
+    if(!JUST_APPEAR){
     UIView *myView = [[cell subviews] objectAtIndex:0];
     CALayer *layer = myView.layer;
     
@@ -194,8 +196,8 @@ static bool REVERSE_ANIM = false;
     }
     layer.transform = rotationAndPerspectiveTransform;
     [UIView commitAnimations];
-    
-    
+}
+
     return cell;
 }
 
@@ -208,6 +210,15 @@ static bool REVERSE_ANIM = false;
     
     return indexPath;
 }
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    if(JUST_APPEAR)
+        JUST_APPEAR = NO;
+}
+
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    if(!JUST_APPEAR)
+//        JUST_APPEAR = NO;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -317,6 +328,7 @@ static bool REVERSE_ANIM = false;
             
         } else {
             // Isn't reachable
+            NSLog(@"Isn't reachable");
             self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
             [self.navigationController.view addSubview:self.HUDfade];
             [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -325,6 +337,7 @@ static bool REVERSE_ANIM = false;
             self.HUDfade.labelText = AMLocalizedString(@"Download error", nil);
             [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds) onTarget:self withObject:nil animated:YES];
             [self.navigationController popViewControllerAnimated:YES];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         }
     }
 }

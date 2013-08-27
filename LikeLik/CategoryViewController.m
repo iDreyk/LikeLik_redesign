@@ -26,6 +26,7 @@ static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 static BOOL IS_LOADING;
+static BOOL IN_BG;
 
 #define EF_TAG 66483
 #define FADE_TAG 66484
@@ -154,10 +155,9 @@ static BOOL IS_LOADING;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    IN_BG = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appReturnsActive) name:UIApplicationDidBecomeActiveNotification object:nil];
-    
     _locationManager = [[CLLocationManager alloc] init];
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [_locationManager startUpdatingLocation];
@@ -269,63 +269,63 @@ static BOOL IS_LOADING;
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-//    NSString *city = [[ExternalFunctions cityCatalogueForCity:self.CityName.text] objectForKey:@"city_EN"];
-//    if ([ExternalFunctions isDownloaded:city]) {
-//        
-//        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
-//        
-//        CLLocation *oldLocation = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//        
-//        NSLog(@"Изменение расстояния: %f",[Me distanceFromLocation:oldLocation]);
-//        
-//        NSArray *catalogues = [[NSUserDefaults standardUserDefaults] objectForKey:@"Catalogues"];
-//        
-//        if ([Me distanceFromLocation:oldLocation] > 10
-//            || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL) {
-//            NSLog(@"in if");
-//            
-//            [_locationManager stopUpdatingLocation];
-//            NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
-//            [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
-//            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//            dispatch_async(queue, ^ {
-//                
-//                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//                NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text]];
-//                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
-//                [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",city]];
-//                
-//                NSLog(@"Finished work in background");
-//                
-//                
-//                dispatch_async(dispatch_get_main_queue(), ^ {
-//                    NSLog(@"Back on main thread");
-//                });
-//            });
-//        }
-//        else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]) {
-//            [_locationManager stopUpdatingLocation];
-//            NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
-//            [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
-//            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//            dispatch_async(queue, ^ {
-//                
-//                for (int i = 0; i < [catalogues count]; i++) {
-//                    NSString *cityName = [[catalogues objectAtIndex:i] objectForKey:@"city_EN"];
-//                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//                    NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:cityName]];
-//                    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
-//                    [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",cityName]];
-//                    
-//                    NSLog(@"Finished work in background");
-//                }
-//                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0] forKey:@"langChanged"];
-//                dispatch_async(dispatch_get_main_queue(), ^ {
-//                    NSLog(@"Back on main thread");
-//                });
-//            });
-//        }
-//    }
+    //    NSString *city = [[ExternalFunctions cityCatalogueForCity:self.CityName.text] objectForKey:@"city_EN"];
+    //    if ([ExternalFunctions isDownloaded:city]) {
+    //
+    //        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"location"];
+    //
+    //        CLLocation *oldLocation = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    //
+    //        NSLog(@"Изменение расстояния: %f",[Me distanceFromLocation:oldLocation]);
+    //
+    //        NSArray *catalogues = [[NSUserDefaults standardUserDefaults] objectForKey:@"Catalogues"];
+    //
+    //        if ([Me distanceFromLocation:oldLocation] > 10
+    //            || [[NSUserDefaults standardUserDefaults] objectForKey:[[NSString alloc] initWithFormat:@"around %@",city]] == NULL) {
+    //            NSLog(@"in if");
+    //
+    //            [_locationManager stopUpdatingLocation];
+    //            NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
+    //            [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
+    //            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    //            dispatch_async(queue, ^ {
+    //
+    //                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //                NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text]];
+    //                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
+    //                [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",city]];
+    //
+    //                NSLog(@"Finished work in background");
+    //
+    //
+    //                dispatch_async(dispatch_get_main_queue(), ^ {
+    //                    NSLog(@"Back on main thread");
+    //                });
+    //            });
+    //        }
+    //        else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"] == [NSNumber numberWithInt:1]) {
+    //            [_locationManager stopUpdatingLocation];
+    //            NSData *newLocation = [NSKeyedArchiver archivedDataWithRootObject:Me];
+    //            [[NSUserDefaults standardUserDefaults] setObject:newLocation forKey:@"location"];
+    //            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    //            dispatch_async(queue, ^ {
+    //
+    //                for (int i = 0; i < [catalogues count]; i++) {
+    //                    NSString *cityName = [[catalogues objectAtIndex:i] objectForKey:@"city_EN"];
+    //                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //                    NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:[ExternalFunctions getPlacesAroundMyLocationInCity:cityName]];
+    //                    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
+    //                    [defaults setObject:data forKey:[[NSString alloc] initWithFormat:@"around %@",cityName]];
+    //
+    //                    NSLog(@"Finished work in background");
+    //                }
+    //                [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:0] forKey:@"langChanged"];
+    //                dispatch_async(dispatch_get_main_queue(), ^ {
+    //                    NSLog(@"Back on main thread");
+    //                });
+    //            });
+    //        }
+    //    }
     
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;
@@ -336,70 +336,26 @@ static BOOL IS_LOADING;
         yOrigin = 0;
     
     self.frame1 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, yOrigin + yOffset, frameSize, frameSize)];
-    self.frame1.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"1.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    self.frame1.tag = 0;
-    [self.categoryView addSubview:self.frame1];
-    
     UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, yOrigin + yOffset, frameSize, frameSize)];
-    frame2.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"2.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame2.tag = 1;
-    [self.categoryView addSubview:frame2];
-    
     UIView *frame3 = [[UIView alloc] initWithFrame:CGRectMake(2*frameSize + 3*xOrigin, yOrigin + yOffset, frameSize, frameSize)];
-    frame3.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"3.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame3.tag = 2;
-    [self.categoryView addSubview:frame3];
-    
     UIView *frame4 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, frameSize + yOrigin + 2*yOffset, frameSize, frameSize)];
-    frame4.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"4.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame4.tag = 3;
-    [self.categoryView addSubview:frame4];
-    
     UIView *frame5 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, frameSize + yOrigin + 2*yOffset, frameSize, frameSize)];
-    frame5.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"5.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame5.tag = 4;
-    [self.categoryView addSubview:frame5];
-    
     UIView *frame6 = [[UIView alloc] initWithFrame:CGRectMake(2*frameSize + 3*xOrigin, frameSize + yOrigin + 2*yOffset, frameSize, frameSize)];
-    frame6.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"6.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame6.tag = 5;
-    [self.categoryView addSubview:frame6];
-    
     UIView *frame7 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, 2*frameSize + yOrigin + 3*yOffset, frameSize, frameSize)];
-    frame7.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"7.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame7.tag = 6;
-    [self.categoryView addSubview:frame7];
-    
     UIView *frame8 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, 2*frameSize + yOrigin + 3*yOffset, frameSize, frameSize)];
-    frame8.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"8.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame8.tag = 7;
-    [self.categoryView addSubview:frame8];
-    
     UIView *frame9 = [[UIView alloc] initWithFrame:CGRectMake(2*frameSize + 3*xOrigin, 2*frameSize + yOrigin + 3*yOffset, frameSize, frameSize)];
-    frame9.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"9.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame9.tag = 8;
-    [self.categoryView addSubview:frame9];
-    
     UIView *frame10 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, 3*frameSize + yOrigin + 4*yOffset, frameSize, frameSize)];
-    frame10.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"10.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame10.tag = 9;
-    [self.categoryView addSubview:frame10];
-    
     UIView *frame11 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, 3*frameSize + yOrigin + 4*yOffset, frameSize, frameSize)];
-    frame11.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"11.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame11.tag = 10;
-    [self.categoryView addSubview:frame11];
-    
     UIView *frame12 = [[UIView alloc] initWithFrame:CGRectMake(2*frameSize + 3*xOrigin, 3*frameSize + yOrigin + 4*yOffset, frameSize, frameSize)];
-    frame12.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"12.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-    frame12.tag = 11;
-    [self.categoryView addSubview:frame12];
-    
     if(!self.frameArray)
         self.frameArray = [[NSArray alloc] init];
     
     self.frameArray = @[self.frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, frame11, frame12];
+    
+    int i = 0;
     for (UIView *frame in self.frameArray){
+        frame.tag = i;
+        frame.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", i+1]] scaledToSize:CGSizeMake(frameSize, frameSize)]];
         UILabel *text = [[UILabel alloc]initWithFrame:CGRectMake(1, 64, 91, 28)];
         text.text = AMLocalizedString([self.CellArray objectAtIndex:frame.tag], nil);
         text.backgroundColor = [UIColor clearColor];
@@ -413,10 +369,11 @@ static BOOL IS_LOADING;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
         [frame addGestureRecognizer:tap];
         [frame setUserInteractionEnabled:YES];
-        
+        [self.categoryView addSubview:frame];
+        ++i;
     }
+    
     if([ExternalFunctions isDownloaded:self.CityName.text]){
-        
         UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
         coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         coolEf.tag = EF_TAG;
@@ -443,14 +400,15 @@ static BOOL IS_LOADING;
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];
     
 }
-
 - (void)appToBackground{
     NSLog(@"LOG: app to background");
+    IN_BG = YES;
     [self removeKnuckleHUD];
 }
 - (void)appReturnsActive{
     NSLog(@"LOG: app returns active");
-    if(IS_LOADING){
+    if(IS_LOADING && IN_BG){
+        IN_BG = false;
         UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
         fade.tag = FADE_TAG;
         fade.backgroundColor = [UIColor clearColor];
