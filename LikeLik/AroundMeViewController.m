@@ -518,7 +518,7 @@ bool REVERSE_ANIM = false;
 //        text.backgroundColor = [UIColor clearColor];
         //text.textAlignment = NSTextAlignment;
         text.textColor = [UIColor blackColor];
-        text.font = [UIFont systemFontOfSize:10];
+        text.font = [AppDelegate OpenSansRegular:20];//[UIFont systemFontOfSize:10];
         text.tag = announceTag;
         text.numberOfLines = 5;
         [back addSubview:text];
@@ -530,18 +530,25 @@ bool REVERSE_ANIM = false;
         nameLabel.clipsToBounds = YES;
         
         // первая кнопка
-        UILabel * buttonlabel1 = [[UILabel alloc] initWithFrame:CGRectMake(width + 2*img_x_dist - 2 + img_x_dist + 5, img_y_dist + width/1.852 - 24 -2 , 26, 26)];
-        CALayer *layer1 = buttonlabel1.layer;
-        layer1.cornerRadius = 3;
-        buttonlabel1.clipsToBounds = YES;
-        buttonlabel1.tag = buttonlabel1Tag;
+//        UILabel * buttonlabel1 = [[UILabel alloc] initWithFrame:CGRectMake(width + 2*img_x_dist - 2 + img_x_dist + 5, img_y_dist + width/1.852 - 24 -2 , 26, 26)];
+//        CALayer *layer1 = buttonlabel1.layer;
+//        layer1.cornerRadius = 3;
+//        buttonlabel1.clipsToBounds = YES;
+//        buttonlabel1.tag = buttonlabel1Tag;
         
         // кнопка с кулаком
-        knuck = [[UIButtonWithAditionalNum alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5, img_y_dist + width/1.852 - 2*img_x_dist - 1, 24, 24)];
+        knuck = [[UIButtonWithAditionalNum alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5, img_y_dist + width/1.852 - 2*img_x_dist - 11, 60, 26)];
         knuck.tag = checkTag;
         knuck.backgroundColor = [InterfaceFunctions corporateIdentity];
         knuck.layer.cornerRadius = 3;
         [knuck addSubview:[[UIImageView alloc]initWithImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]]];
+        
+        UILabel *checkText = [[UILabel alloc] initWithFrame:CGRectMake(24, 0, knuck.frame.size.width - 26, knuck.frame.size.height)];
+        checkText.text = @"Use";
+        checkText.font = [AppDelegate OpenSansBoldwithSize:32];
+        checkText.backgroundColor = [UIColor clearColor];
+        checkText.textColor = [UIColor whiteColor];
+        [knuck addSubview:checkText];
         // knuck.imageView.image = [UIImage imageNamed:@"kul_90"];
         [knuck addTarget:self action:@selector(check:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -549,7 +556,7 @@ bool REVERSE_ANIM = false;
         
         nameLabel.tag = labelColorTag;
         
-        [back addSubview:buttonlabel1];
+//        [back addSubview:buttonlabel1];
         [back addSubview:nameLabel];
         [back addSubview:knuck];
 
@@ -567,7 +574,7 @@ bool REVERSE_ANIM = false;
         
         
         label.tag = tableLabelWithTextTag;
-        label.font = [AppDelegate OpenSansBoldwithSize:45];
+        label.font = [AppDelegate OpenSansSemiBold:45];
         label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
         label.shadowOffset = CGSizeMake(0.0, -0.1);
         label.backgroundColor = [UIColor clearColor];
@@ -579,7 +586,7 @@ bool REVERSE_ANIM = false;
         
         UILabel *distance = [[UILabel alloc] initWithFrame:CGRectMake(img_x_dist, cellHeight - 15, 100, 15)];
         distance.textAlignment = NSTextAlignmentLeft;
-        distance.font = [UIFont systemFontOfSize:10];
+        distance.font = [AppDelegate OpenSansBoldwithSize:20];//[UIFont systemFontOfSize:10];
         distance.tag = distanceTag;
         distance.textColor = [UIColor grayColor];
         distance.backgroundColor = [UIColor clearColor];
