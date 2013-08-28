@@ -38,26 +38,29 @@ static NSInteger j=0;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-   // NSLog(@"123");
-    if (j==0) {
-        Me = newLocation;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // post an NSNotification that loading has started
+        if (j==0) {
+            Me = newLocation;
+            
+            NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
+            
+            j++;
+            NSLog(@"Зашел в счетчик");
+            for (int i = 0; i<[Region count]; i++) {
+                [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSLog(@"Back on main thread");
+            NSLog(@"%d",[[locationManager monitoredRegions] count]);
         
-        //  NSLog(@"%@",Me);
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:Me];
-        [defaults setObject:data forKey:@"location"];
-        
-        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
-        
-    j++;
-        NSLog(@"Зашел в счетчик");
-      for (int i = 0; i<[Region count]; i++) {
-        [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
-    }
+        });
+        // post an NSNotification that loading is finished
         [locationManager stopUpdatingLocation];
-    }
-  NSLog(@"%d",[[locationManager monitoredRegions] count]);
+    
+    });
     
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
