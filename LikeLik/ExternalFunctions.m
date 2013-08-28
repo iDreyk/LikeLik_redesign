@@ -206,6 +206,7 @@ static CLLocation *Me;
     for (int i = 0; i < placesCount; i++) {
         placeDict = [[NSMutableDictionary alloc]init];
         placeAtIndexi = [tempArrayOfPlacesIncategory objectAtIndex:i];
+        NSString *webSite;
         
         lat = [[placeAtIndexi objectForKey:@"Lat"] doubleValue];
         lon = [[placeAtIndexi objectForKey:@"Lon"] doubleValue];
@@ -224,7 +225,12 @@ static CLLocation *Me;
         [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"metro"]] forKey:@"Metro"];
         [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"Preview"]] forKey:@"Preview"];
         [placeDict setValue:[placeAtIndexi objectForKey:@"Telephone"] forKey:@"Telephone"];
-        [placeDict setValue:[placeAtIndexi objectForKey:@"web"] forKey:@"Web"];
+        webSite = [placeAtIndexi objectForKey:@"web"];
+        if (webSite != NULL && [webSite length] > 7) {
+            if (![[webSite substringToIndex:7] isEqualToString:@"http://"]) {
+                [placeDict setValue:[[NSString alloc] initWithFormat:@"http://%@",webSite] forKey:@"Web"];
+            }
+        }
         [placeDict setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
         [placeDict setValue:currentPlace forKey:@"Location"];
         [placeDict setValue:category forKey:@"Category"];
@@ -257,6 +263,7 @@ static CLLocation *Me;
     for (int i = 0; i < placesCount; i++) {
         placeDict = [[NSMutableDictionary alloc]init];
         placeAtIndexi = [tempArrayOfPlacesIncategory objectAtIndex:i];
+        NSString *webSite;
         
         lat = [[placeAtIndexi objectForKey:@"Lat"] doubleValue];
         lon = [[placeAtIndexi objectForKey:@"Lon"] doubleValue];
@@ -275,7 +282,12 @@ static CLLocation *Me;
         [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"metro"]] forKey:@"Metro"];
         [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"Preview"]] forKey:@"Preview"];
         [placeDict setValue:[placeAtIndexi objectForKey:@"Telephone"] forKey:@"Telephone"];
-        [placeDict setValue:[placeAtIndexi objectForKey:@"web"] forKey:@"Web"];
+        webSite = [placeAtIndexi objectForKey:@"web"];
+        if (webSite != NULL && [webSite length] > 7) {
+            if (![[webSite substringToIndex:7] isEqualToString:@"http://"]) {
+                [placeDict setValue:[[NSString alloc] initWithFormat:@"http://%@",webSite] forKey:@"Web"];
+            }
+        }
         [placeDict setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
         [placeDict setValue:currentPlace forKey:@"Location"];
         [placeDict setValue:category forKey:@"Category"];
@@ -286,6 +298,7 @@ static CLLocation *Me;
         [placeDict setValue:[placeAtIndexi objectForKey:@"tag"] forKey:@"Tags"];
         [placeDict setValue:[NSNumber numberWithDouble:lat] forKey:@"Latitude"];
         [placeDict setValue:[NSNumber numberWithDouble:lon] forKey:@"Longitude"];
+        
        
         [returnArray addObject:placeDict];
     }
