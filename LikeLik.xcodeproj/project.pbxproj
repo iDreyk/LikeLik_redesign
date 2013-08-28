@@ -375,6 +375,7 @@
 		D0B430F717C74B2C005BF369 /* knuck_pin_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B430F017C74B2C005BF369 /* knuck_pin_8@2x.png */; };
 		D0BC8E1517C4BB840048659E /* kul_90@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0BC8E1417C4BB840048659E /* kul_90@2x.png */; };
 		D0BC8E1917C4F7B10048659E /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0BC8E1817C4F7B10048659E /* catalogue.plist */; };
+		D0DEEED717CE34DE008872E4 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DEEED617CE34DE008872E4 /* CoreImage.framework */; };
 		FA6D979317CDCFFC000F07E4 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6D978717CDCFFC000F07E4 /* 1.png */; };
 		FA6D979417CDCFFC000F07E4 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6D978817CDCFFC000F07E4 /* 2.png */; };
 		FA6D979517CDCFFC000F07E4 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6D978917CDCFFC000F07E4 /* 3.png */; };
@@ -889,6 +890,7 @@
 		D0B430F017C74B2C005BF369 /* knuck_pin_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuck_pin_8@2x.png"; sourceTree = "<group>"; };
 		D0BC8E1417C4BB840048659E /* kul_90@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kul_90@2x.png"; sourceTree = "<group>"; };
 		D0BC8E1817C4F7B10048659E /* catalogue.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = catalogue.plist; sourceTree = "<group>"; };
+		D0DEEED617CE34DE008872E4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		FA6D978717CDCFFC000F07E4 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		FA6D978817CDCFFC000F07E4 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		FA6D978917CDCFFC000F07E4 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -909,6 +911,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DEEED717CE34DE008872E4 /* CoreImage.framework in Frameworks */,
 				5594162D17957CA500828B47 /* libxml2.dylib in Frameworks */,
 				919E8702173A58E700A25E07 /* Foundation.framework in Frameworks */,
 				919E8700173A58E700A25E07 /* UIKit.framework in Frameworks */,
@@ -1329,6 +1332,7 @@
 		919E86F3173A58E700A25E07 = {
 			isa = PBXGroup;
 			children = (
+				D0DEEED617CE34DE008872E4 /* CoreImage.framework */,
 				918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */,
 				9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */,
 				919E89D3173A5C0300A25E07 /* Default-568h@2x.png */,

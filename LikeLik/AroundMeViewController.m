@@ -13,6 +13,9 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import <MapBox/MapBox.h>
+
+#import <QuartzCore/QuartzCore.h>
+
 //
 //
 #define tableLabelWithTextTag 87001
@@ -47,6 +50,37 @@ bool REVERSE_ANIM = false;
         
     }
     return self;
+}
+
+- (UIImage*) blur:(UIImage*)theImage
+{
+    // create our blurred image
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
+    
+    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [filter setValue:inputImage forKey:kCIInputImageKey];
+    [filter setValue:[NSNumber numberWithFloat:15.0f] forKey:@"inputRadius"];
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+    
+    // CIGaussianBlur has a tendency to shrink the image a little,
+    // this ensures it matches up exactly to the bounds of our original image
+    CGImageRef cgImage = [context createCGImage:result fromRect:[inputImage extent]];
+    
+    return [UIImage imageWithCGImage:cgImage];
+    
+    // if you need scaling
+    // return [[self class] scaleIfNeeded:cgImage];
+}
+
++(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
+    bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
+    if (isRetina) {
+        return [UIImage imageWithCGImage:cgimg scale:2.0 orientation:UIImageOrientationUp];
+    } else {
+        return [UIImage imageWithCGImage:cgimg];
+    }
 }
 
 - (void)viewDidLoad
@@ -400,7 +434,7 @@ bool REVERSE_ANIM = false;
         CGFloat img_y_dist = 55;
         UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(img_x_dist, img_y_dist, width, width / 1.852)];
         preview.tag = backgroundViewTag;
-        preview.backgroundColor = [UIColor whiteColor];
+        preview.backgroundColor =  [UIColor whiteColor];
         preview.clipsToBounds = NO;
         
         CALayer * imgLayer1 = preview.layer;
