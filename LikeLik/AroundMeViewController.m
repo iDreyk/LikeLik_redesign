@@ -119,7 +119,9 @@ bool REVERSE_ANIM = false;
         HUD.mode = MBProgressHUDModeCustomView;
         
         HUD.removeFromSuperViewOnHide = YES;
-        HUD.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"Apparently, you've disabled this application to access your geolocation", nil)];
+        HUD.detailsLabelFont = [AppDelegate OpenSansBoldwithSize:28];
+        HUD.detailsLabelText = AMLocalizedString(@"Apparently, you've disabled this application to access your geolocation", nil);//customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"Apparently, you've disabled this application to access your geolocation", nil)];
+        
         HUD.delegate = self;
         [HUD show:YES];
         [HUD hide:YES afterDelay:2];
