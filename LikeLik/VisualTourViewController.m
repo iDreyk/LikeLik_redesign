@@ -268,7 +268,7 @@ static BOOL infoViewIsOpen = NO;
     //    }
     [label setScrollEnabled:YES];
     
-    [_infoScroll setBackgroundColor:[InterfaceFunctions corporateIdentity]];
+    [_infoScroll setBackgroundColor:[UIColor colorWithRed:0.0/255.0 green:204/255.0 blue:191/255.0 alpha:1]];
     
     [_infoScroll addSubview:Red_line];
     

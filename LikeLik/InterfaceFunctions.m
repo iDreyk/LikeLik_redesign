@@ -126,22 +126,22 @@
             color = [self corporateIdentity];
             break;
         case 2:
-            color = [UIColor colorWithRed:184.0/255.0 green:6.0/255.0 blue:6.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:241/255.0 green:7/255.0 blue:42/255.0 alpha:1];
             break;
         case 3:
-            color = [UIColor colorWithRed:0.0/255.0 green:102.0/255.0 blue:255.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:1/255.0 green:102.0/255.0 blue:255.0/255.0 alpha:1];
             break;
         case 4:
-            color = [UIColor colorWithRed:207.0/255.0 green:16.0/255.0 blue:207.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:255/255.0 green:191/255.0 blue:5/255.0 alpha:1];
             break;
         case 5:
-            color = [UIColor colorWithRed:30.0/255.0 green:187.0/255.0 blue:22.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:111/255.0 green:195/255.0 blue:49/255.0 alpha:1];
             break;
         case 6:
-            color = [UIColor colorWithRed:255.0/255.0 green:100.0/255.0 blue:0/255.0 alpha:1];
+            color = [UIColor colorWithRed:253/255.0 green:91/255.0 blue:4/255.0 alpha:1];
             break;
         case 7:
-            color = [UIColor colorWithRed:255.0/255.0 green:51.0/255.0 blue:153.0/255.0 alpha:1];
+            color = [UIColor colorWithRed:255.0/255.0 green:51.0/255.0 blue:154/255.0 alpha:1];
             break;
         case 8:
             color = [UIColor colorWithRed:0.0/255.0 green:174.0/255.0 blue:217.0/255.0 alpha:1];
