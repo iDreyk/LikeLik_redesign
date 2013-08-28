@@ -212,8 +212,8 @@ bool REVERSE_ANIM = false;
 
 
 -(void)viewDidAppear:(BOOL)animated{
-#warning  TESTFLIGHT
-    //[TestFlight passCheckpoint:@"Around Me"];
+    
+    [TestFlight passCheckpoint:@"Around Me"];
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText]] > 50000.0) {
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate;
         NSLog(@"Взяли центер города");
@@ -430,8 +430,8 @@ bool REVERSE_ANIM = false;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //  картинка
-        CGFloat img_x_dist = 12;
-        CGFloat img_y_dist = 55;
+        CGFloat img_x_dist = 7;
+        CGFloat img_y_dist = 63;
         UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(img_x_dist, img_y_dist, width, width / 1.852)];
         preview.tag = backgroundViewTag;
         preview.backgroundColor =  [UIColor whiteColor];
@@ -535,8 +535,8 @@ bool REVERSE_ANIM = false;
         label.shadowOffset = [InterfaceFunctions ShadowSize];
         [back addSubview:label];
         
-        UILabel *distance = [[UILabel alloc] initWithFrame:CGRectMake(preview.frame.size.width + 10, preview.frame.origin.y + 94, 112, 20)];
-        distance.textAlignment = NSTextAlignmentRight;
+        UILabel *distance = [[UILabel alloc] initWithFrame:CGRectMake(img_x_dist, cellHeight - 15, 100, 15)];
+        distance.textAlignment = NSTextAlignmentLeft;
         distance.font = [UIFont systemFontOfSize:10];
         distance.tag = distanceTag;
         distance.textColor = [UIColor grayColor];
