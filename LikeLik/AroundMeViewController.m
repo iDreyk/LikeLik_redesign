@@ -25,6 +25,7 @@
 #define labelColorTag 87008
 #define buttonlabel1Tag 87009
 
+
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
@@ -51,6 +52,7 @@ bool REVERSE_ANIM = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor lightGrayColor];
     self.backgroundView.backgroundColor = [UIColor lightGrayColor];//[InterfaceFunctions colorTextCategory:self.Category];
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
@@ -81,8 +83,6 @@ bool REVERSE_ANIM = false;
     CLLocation *coord =[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText];
     self.Map.centerCoordinate = coord.coordinate;
     [self.Map setAdjustTilesForRetinaDisplay:YES];
-    
-    self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
     
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -178,7 +178,8 @@ bool REVERSE_ANIM = false;
 
 
 -(void)viewDidAppear:(BOOL)animated{
-    [TestFlight passCheckpoint:@"Around Me"];
+#warning  TESTFLIGHT
+    //[TestFlight passCheckpoint:@"Around Me"];
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText]] > 50000.0) {
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate;
         NSLog(@"Взяли центер города");
@@ -362,6 +363,7 @@ bool REVERSE_ANIM = false;
 //    return cell;
 //}
 
+#pragma mark - cell
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -369,34 +371,46 @@ bool REVERSE_ANIM = false;
     static NSString *CellIdentifier = @"CellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     NSString *category = [[AroundArray objectAtIndex:row] objectForKey:@"Category"];
-    if (cell == nil) {
+    
+    if (cell == nil) { // init the cell
+        
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-#warning Временно ?
+        
         //202,148,78
-        UIView *back = [[UIView alloc] initWithFrame:CGRectMake(7, 7, 306, 166)];
-        CALayer *layer3 = back.layer;
-        layer3.cornerRadius = 5;
+        
+        // плитка, на которую всё накладываем
+        CGFloat x_dist = 7;
+        CGFloat y_dist = 7;
+        CGFloat cellWidth = 306;
+        CGFloat cellHeight = 166;
+        UIView *back = [[UIView alloc] initWithFrame:CGRectMake(x_dist, y_dist, cellWidth, cellHeight)];
+        CALayer * back_layer = back.layer;
+        back_layer.cornerRadius = 5;
         back.clipsToBounds = YES;
-        //back.backgroundColor = [InterfaceFunctions colorTextCategory:category];
         back.tag = cellColorTag;
-        [cell.contentView addSubview:back];
+        back.backgroundColor = [UIColor whiteColor];
+        [cell.contentView addSubview:back]; // добавили на cell
         
         
         cell.contentView.backgroundColor =[UIColor lightGrayColor];//[[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(12, 55, width, width / 1.852)];
+        
+        //  картинка
+        CGFloat img_x_dist = 12;
+        CGFloat img_y_dist = 55;
+        UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(img_x_dist, img_y_dist, width, width / 1.852)];
         preview.tag = backgroundViewTag;
         preview.backgroundColor = [UIColor whiteColor];
         preview.clipsToBounds = NO;
         
         CALayer * imgLayer1 = preview.layer;
-        [imgLayer1 setBorderColor: [[UIColor whiteColor] CGColor]];
+        [imgLayer1 setBorderColor: [[UIColor blackColor] CGColor]];
         [imgLayer1 setBorderWidth:0.5f];
-        [imgLayer1 setShadowColor: [[UIColor whiteColor] CGColor]];
+        [imgLayer1 setShadowColor: [[UIColor blackColor] CGColor]];
         [imgLayer1 setShadowOpacity:0.9f];
         [imgLayer1 setShadowOffset: CGSizeMake(0, 1)];
         [imgLayer1 setShadowRadius:3.0];
-        //        [imgLayer setCornerRadius:4];
+        // [imgLayer setCornerRadius:4];
         imgLayer1.shouldRasterize = YES;
         
         // This tell QuartzCore where to draw the shadow so it doesn't have to work it out each time
@@ -405,50 +419,6 @@ bool REVERSE_ANIM = false;
         // This tells QuartzCore to render it as a bitmap
         [imgLayer1 setRasterizationScale:[UIScreen mainScreen].scale];
         
-        
-        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(width + 24, 55, 100, 65)];
-        
-        
-        text.backgroundColor = [UIColor clearColor];
-        //text.textAlignment = NSTextAlignment;
-        text.textColor = [UIColor blackColor];
-        text.font = [UIFont systemFontOfSize:10];
-        text.tag = announceTag;
-        text.numberOfLines = 5;
-        [back addSubview:text];
-        
-        
-        UILabel * nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 , 306, 42)];
-        CALayer *layer2 = nameLabel.layer;
-        layer2.cornerRadius = 5;
-        nameLabel.clipsToBounds = YES;
-        UILabel * buttonlabel1 = [[UILabel alloc] initWithFrame:CGRectMake(width + 24 - 2 + 12 + 5, 55 + width/1.852 - 24 -2 , 26, 26)];
-        
-        CALayer *layer1 = buttonlabel1.layer;
-        layer1.cornerRadius = 3;
-        buttonlabel1.clipsToBounds = YES;
-        
-        UIView * knucklabel = [[UIView alloc] initWithFrame:CGRectMake(width + 24 + 24 + 24  + 5, 55 + width/1.852 - 24 - 1, 24, 24)];
-        UIView * backknuck = [[UIView alloc] initWithFrame:CGRectMake(width + 24 + 24 + 24  + 5 - 2, 55 + width/1.852 - 24 -2, 26, 26)];
-        backknuck.backgroundColor = [InterfaceFunctions corporateIdentity];
-        CALayer *layer = backknuck.layer;
-        layer.cornerRadius = 3;
-        backknuck.clipsToBounds = YES;
-        [back addSubview:backknuck];
-        //UIView *frame7 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, 2*frameSize + yOrigin + 3*yOffset, frameSize, frameSize)];
-        //frame7.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"7.png"] scaledToSize:CGSizeMake(frameSize, frameSize)]];
-        //UIImage * knuckImg = [UIImage imageWithContentsOfFile:@"kul_90"];
-        //UIImageView * knuck = [[UIImageView alloc] initWithImage:knuckImg];
-        //knuck.frame = buttonlabel2.frame;
-        
-        buttonlabel1.tag = buttonlabel1Tag;
-        knucklabel.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]];
-        nameLabel.tag = labelColorTag;
-        [back addSubview:buttonlabel1];
-        [back addSubview:knucklabel];
-        [back addSubview:nameLabel];
-        //[back addSubview:knuck];
-        
         CALayer * imgLayer = back.layer;
         [imgLayer setBorderColor: [[UIColor whiteColor] CGColor]];
         [imgLayer setBorderWidth:0.5f];
@@ -456,7 +426,7 @@ bool REVERSE_ANIM = false;
         [imgLayer setShadowOpacity:0.9f];
         [imgLayer setShadowOffset: CGSizeMake(0, 1)];
         [imgLayer setShadowRadius:3.0];
-        //        [imgLayer setCornerRadius:4];
+        // [imgLayer setCornerRadius:4];
         imgLayer.shouldRasterize = YES;
         
         // This tell QuartzCore where to draw the shadow so it doesn't have to work it out each time
@@ -466,6 +436,48 @@ bool REVERSE_ANIM = false;
         [imgLayer setRasterizationScale:[UIScreen mainScreen].scale];
         
         [back addSubview:preview];
+        // картинку сделали
+        
+        
+        // анонс
+        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(width + 2*img_x_dist, img_y_dist, cellWidth - width - 2*img_x_dist, 65)];
+        text.backgroundColor = [UIColor blackColor];
+//        text.backgroundColor = [UIColor clearColor];
+        //text.textAlignment = NSTextAlignment;
+        text.textColor = [UIColor whiteColor];
+        text.font = [UIFont systemFontOfSize:10];
+        text.tag = announceTag;
+        text.numberOfLines = 5;
+        [back addSubview:text];
+        
+        // заголовок
+        UILabel * nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 , 306, 42)];
+        CALayer *layer2 = nameLabel.layer;
+        layer2.cornerRadius = 5;
+        nameLabel.clipsToBounds = YES;
+        
+        // первая кнопка
+        UILabel * buttonlabel1 = [[UILabel alloc] initWithFrame:CGRectMake(width + 2*img_x_dist - 2 + img_x_dist + 5, img_y_dist + width/1.852 - 24 -2 , 26, 26)];
+        CALayer *layer1 = buttonlabel1.layer;
+        layer1.cornerRadius = 3;
+        buttonlabel1.clipsToBounds = YES;
+        buttonlabel1.tag = buttonlabel1Tag;
+        
+        // кнопка с кулаком
+        UIView * knucklabel = [[UIView alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5, img_y_dist + width/1.852 - 2*img_x_dist - 1, 24, 24)];
+        UIView * backknuck = [[UIView alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5 - 2, img_y_dist + width/1.852 - 2*img_x_dist -2, 26, 26)];
+        backknuck.backgroundColor = [InterfaceFunctions corporateIdentity];
+        CALayer *layer = backknuck.layer;
+        layer.cornerRadius = 3;
+        backknuck.clipsToBounds = YES;
+        [back addSubview:backknuck];
+        knucklabel.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]];
+        nameLabel.tag = labelColorTag;
+        
+        [back addSubview:buttonlabel1];
+        [back addSubview:knucklabel];
+        [back addSubview:nameLabel];
+        
         
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0,280, cell.center.y*2)];
@@ -476,13 +488,14 @@ bool REVERSE_ANIM = false;
         
         
         //[InterfaceFunctions TableLabelwithText:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)];
+        
+        
         label.tag = tableLabelWithTextTag;
         label.font = [AppDelegate OpenSansBoldwithSize:45];
         label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
         label.shadowOffset = CGSizeMake(0.0, -0.1);
         label.backgroundColor = [UIColor clearColor];
-        //        label.text = [[CategoryPlaces objectAtIndex:row] objectForKey:@"Name"];
-        label.textColor = [UIColor whiteColor];//[InterfaceFunctions colorTextCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
+        label.textColor = [UIColor whiteColor];
         label.highlightedTextColor = label.textColor;
         label.shadowColor = [InterfaceFunctions ShadowColor];
         label.shadowOffset = [InterfaceFunctions ShadowSize];
@@ -502,7 +515,7 @@ bool REVERSE_ANIM = false;
         //        [back addSubview:arrow];
         
     }
-    //    NSLog(@"PLACE1: %@", Place1);
+
     NSNumber *distance = [[AroundArray objectAtIndex:row] objectForKey:@"Distance"];
     float intDist = [distance floatValue];
     
@@ -513,18 +526,15 @@ bool REVERSE_ANIM = false;
         dist.text = [NSString stringWithFormat:@"%.0f m", intDist];
     
     
-    UIView *cellColor = (UIView *)[cell viewWithTag:cellColorTag];
     UILabel * buttonlabel = (UILabel *)[cell viewWithTag:buttonlabel1Tag];
     buttonlabel.backgroundColor =[InterfaceFunctions colorTextCategory:category];
-    //cellColor.backgroundColor = [InterfaceFunctions colorTextCategory:category];
-    cellColor.backgroundColor = [UIColor whiteColor];
-    
     
     UILabel *tableLabelWithText  = (UILabel *)[cell viewWithTag:tableLabelWithTextTag];
     tableLabelWithText.text = [[AroundArray objectAtIndex:row] objectForKey:@"Name"];
     
     UILabel *previewText = (UILabel *)[cell viewWithTag:announceTag];
-#warning СДЕЛАТЬ ТАК ЖЕ В PlacesByCategory !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
+#warning СДЕЛАТЬ ТАК ЖЕ В PlacesByCategory !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!, OK BOSS
     NSString *preview = [[AroundArray objectAtIndex:row] objectForKey:@"Preview"];
     if(!preview)
         previewText.text = AMLocalizedString(@"Please, update catalogues to get access to newest features.", nil);
@@ -532,6 +542,7 @@ bool REVERSE_ANIM = false;
     else
         previewText.text = preview;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     UILabel *label = (UILabel *)[cell viewWithTag:labelColorTag];
     label.backgroundColor = [InterfaceFunctions colorTextCategory:category];
     
