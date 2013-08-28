@@ -589,10 +589,13 @@
 +(UIBarButtonItem *)back_button_house{
     UIImage *image = [UIImage imageNamed:@"60_61 home"];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleBordered target:self action:nil];
+    //[image setImageEdgeInsets:UIEdgeInsetsMake(-5, 0, 0, 0)];
     [backButton setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
     // [backButton setImage:[UIImage imageNamed:@"80_67 icon_home_place@"]];
     return backButton;
 }
+
 +(UIBarButtonItem *)back_button_house_withbackground{
     UIImage *image = [UIImage imageNamed:@"60_61 home"];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleBordered target:self action:nil];
