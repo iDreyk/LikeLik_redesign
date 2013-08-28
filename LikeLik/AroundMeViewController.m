@@ -13,7 +13,8 @@
 #import "CheckViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapBox/MapBox.h>
-
+#import "RegistrationViewController.h"
+#import "LoginViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 //
@@ -601,6 +602,9 @@ bool REVERSE_ANIM = false;
         dist.text = [NSString stringWithFormat:@"%.0f m", intDist];
     
     
+    UIButtonWithAditionalNum * check = (UIButtonWithAditionalNum *)[cell viewWithTag:checkTag];
+    check.tagForCheck = [indexPath row];
+    
     UILabel * buttonlabel = (UILabel *)[cell viewWithTag:buttonlabel1Tag];
     buttonlabel.backgroundColor =[InterfaceFunctions colorTextCategory:category];
     
@@ -676,11 +680,12 @@ bool REVERSE_ANIM = false;
 -(void)check:(UIButtonWithAditionalNum *)sender{
     
     NSDictionary *temp = [AroundArray objectAtIndex:sender.tagForCheck];
+    NSLog(@"TagforCheck = %d",sender.tagForCheck);
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Name"] forKey:@"PlaceTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Category"] forKey:@"CategoryTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"City"] forKey:@"CityTemp"];
     
-    NSLog(@"Check: %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"NameTemp"]);
+    NSLog(@"Check: %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"]);
     
     if ([ExternalFunctions isCheckUsedInPlace:[temp objectForKey:@"Name"] InCategory:[temp objectForKey:@"Category"] InCity:self.CityNameText]){
         NSLog(@"Уже использован");
@@ -776,6 +781,20 @@ bool REVERSE_ANIM = false;
         PlaceView.PlaceLocation = [Place objectForKey:@"Location"];
         PlaceView.Color = [InterfaceFunctions colorTextCategory:PlaceCategory];
         PlaceView.Photos = [Place objectForKey:@"Photo"];
+    }
+    
+    if ([[segue identifier] isEqualToString:@"RegisterSegue"]) {
+        
+        RegistrationViewController  *destination = [segue destinationViewController];
+        [segue destinationViewController];
+        destination.Parent = @"Place";
+    }
+    
+    if ([[segue identifier] isEqualToString:@"LoginSegue"]) {
+        
+        LoginViewController  *destination = [segue destinationViewController];
+        [segue destinationViewController];
+        destination.Parent = @"Place";
     }
 }
 
