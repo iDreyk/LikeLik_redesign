@@ -469,6 +469,8 @@ static BOOL IN_BG;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    AroundArray = [ExternalFunctions getAllPlacesInCity:self.CityName.text];
+    NSLog(@"loadView");
     
     if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
         self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text].coordinate;
@@ -507,7 +509,7 @@ static BOOL IN_BG;
 -(void)customPush:(UIView *)sender{
     NSInteger number = [(UIGestureRecognizer *)sender view].tag;
     self.navigationItem.leftBarButtonItem.enabled = NO;
-    [TestFlight passCheckpoint:[self.SegueArray objectAtIndex:number]];
+    //[TestFlight passCheckpoint:[self.SegueArray objectAtIndex:number]];
     [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:number] sender:sender];
 }
 
