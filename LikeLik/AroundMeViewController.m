@@ -127,7 +127,7 @@ bool REVERSE_ANIM = false;
         [HUD hide:YES afterDelay:2];
     }
     // NSLog(@"Ready array: %@", self.readyArray);
-    AroundArray = [[NSArray alloc] initWithArray:self.readyArray];//[ExternalFunctions getPlacesAroundMyLocationInCity:self.CityNameText];
+    AroundArray = [[NSArray alloc] initWithArray:self.readyArray];
     RMAnnotation *marker1;
     for (int i=0; i<[AroundArray count]; i++) {
         CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];

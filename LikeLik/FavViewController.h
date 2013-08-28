@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIView *ViewforMap;
 @property (retain, nonatomic) IBOutlet RMMapView *Map;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
+
+@property (weak, nonatomic) IBOutlet NSArray *readyArray;
+
 -(IBAction)showLocation:(id)sender;
 -(IBAction) segmentedControlIndexChanged;
 @end

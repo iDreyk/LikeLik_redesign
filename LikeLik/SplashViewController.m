@@ -37,29 +37,34 @@ static NSInteger j=0;
 -(void)startTracking{
 }
 
+-(void) stopUpdating{
+    [locationManager stopUpdatingLocation];
+    NSLog(@"Notification сработал");
+}
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    dispatch_queue_t backGroundQueue;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    backGroundQueue = dispatch_queue_create("backGroundQueueForRegions", NULL);
+    dispatch_async(backGroundQueue, ^{
         // post an NSNotification that loading has started
+        NSLog(@"start background queue");
+        NSLog(@"j=%d",j);
         if (j==0) {
+            j++;
             Me = newLocation;
             
             NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
             
-            j++;
+            
             NSLog(@"Зашел в счетчик");
             for (int i = 0; i<[Region count]; i++) {
                 [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
             }
         }
-        dispatch_async(dispatch_get_main_queue(), ^ {
-            NSLog(@"Back on main thread");
-            NSLog(@"%d",[[locationManager monitoredRegions] count]);
-        
-        });
+        NSLog(@"after j = %d",j);
         // post an NSNotification that loading is finished
-        [locationManager stopUpdatingLocation];
-    
+        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"stopUpdating" object:nil]];
     });
     
 }
@@ -109,6 +114,7 @@ static NSInteger j=0;
     locationManager = [[CLLocationManager alloc] init];
     [locationManager setDelegate:self];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopUpdating) name:@"stopUpdating" object:nil];
     
     locationManagerRegion = [[CLLocationManager alloc] init];
     [locationManagerRegion setDelegate:self];

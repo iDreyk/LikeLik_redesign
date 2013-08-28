@@ -486,6 +486,17 @@ static BOOL IN_BG;
     return [NSArray arrayWithArray:arrayOfPlacesInCategory];
 }
 
+-(NSArray *)favoritePlaces {
+    NSMutableArray *arrayOfFavoritePlaces = [[NSMutableArray alloc] init];
+    for (int i = 0; i < AroundArray.count; ++i) {
+        if([[[AroundArray objectAtIndex:i] objectForKey:@"Favorite"] isEqualToString:@"1"]){
+            [arrayOfFavoritePlaces addObject:(AroundArray)[i]];
+        }
+    }
+    return [NSArray arrayWithArray:arrayOfFavoritePlaces];
+}
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIView *)sender{
     
     //NSIndexPath *indexPath = [self.Table indexPathForSelectedRow];
@@ -508,6 +519,7 @@ static BOOL IN_BG;
         FavViewController *destination = [segue destinationViewController];
         [segue destinationViewController];
         destination.CityName = self.Label;
+        destination.readyArray = [self favoritePlaces];
     }
     
     if ([[segue identifier] isEqualToString:@"VisualtourSegue"]) {

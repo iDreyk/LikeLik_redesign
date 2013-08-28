@@ -43,7 +43,7 @@ static NSDictionary *Place1;
     
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"Map", nil) forSegmentAtIndex:1];
-    FavouritePlaces = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName];
+    FavouritePlaces = self.readyArray;//[ExternalFunctions getAllFavouritePlacesInCity:self.CityName];
    
     self.FavTable.backgroundView = [InterfaceFunctions backgroundView];
     self.FavTable.separatorStyle = UITableViewCellSeparatorStyleNone;
