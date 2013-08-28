@@ -275,7 +275,7 @@ static BOOL JUST_APPEAR = YES;
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSInteger row = [[defaults objectForKey:@"row"] integerValue];
-        Reachability *reach = [Reachability reachabilityWithHostname:@"google.com"];
+        Reachability *reach = [Reachability reachabilityWithHostname:@"likelik.net"];
         
         if ([reach isReachable]) {
             if ([reach isReachableViaWiFi]) {
