@@ -54,7 +54,7 @@ static bool REVERSE_ANIM = false;
     self.backgroundView.backgroundColor = [UIColor lightGrayColor];//[InterfaceFunctions colorTextCategory:self.Category];
     
     //  NSLog(@"123");
-    CategoryPlaces = self.categoryArray;//[ExternalFunctions getArrayOfPlaceDictionariesInCategory:self.Category InCity:self.CityName];
+    CategoryPlaces = self.categoryArray;
     //   NSLog(@"%@ %d",CategoryPlaces, [CategoryPlaces count]);
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
