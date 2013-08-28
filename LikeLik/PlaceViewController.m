@@ -624,6 +624,7 @@ CGFloat alpha = 0.5;
     if (infoViewIsOpen == YES) {
         [self tapDetected:nil];
         self.placeViewMap.hidden = YES;
+        [self hide_hint:self];
     }
 }
 
@@ -827,6 +828,7 @@ CGFloat alpha = 0.5;
 
 -(void)viewWillDisappear:(BOOL)animated{
     infoViewIsOpen = NO;
+    NSLog(@"Cammon");
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
