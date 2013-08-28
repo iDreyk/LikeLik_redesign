@@ -10,7 +10,7 @@
 #import "PlaceViewController.h"
 #import "SearchViewController.h"
 #import "AppDelegate.h"
-
+#import "CheckViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapBox/MapBox.h>
 
@@ -27,7 +27,8 @@
 #define announceTag 87007
 #define labelColorTag 87008
 #define buttonlabel1Tag 87009
-
+#define checkTag 87010
+#define afterregister             @"l27h7RU2dzVfP12aoQssda"
 
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
@@ -37,12 +38,22 @@ static CGFloat width = 180;//220;
 
 NSInteger PREV_SECTION_AROUNDME = 0;
 bool REVERSE_ANIM = false;
+
+@interface UIButtonWithAditionalNum ()
+
+@end
+
+@implementation UIButtonWithAditionalNum
+
+@end
+
 @interface AroundMeViewController ()
 
 @end
 
+
 @implementation AroundMeViewController
-@synthesize HUD;
+@synthesize HUD,knuck;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -198,8 +209,35 @@ bool REVERSE_ANIM = false;
     if(!self.imageCache)
         self.imageCache = [[NSMutableDictionary alloc] init];
     
+    if ([AppDelegate isiPhone5])
+        VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
+    else
+        VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(test:)
+                                                 name: afterregister
+                                               object: nil];
 }
 
+-(void)test:(id)sender{
+    
+    NSLog(@"test : %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"], [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"]);
+    
+    [self presentSemiViewController:VC withOptions:@{
+     KNSemiModalOptionKeys.pushParentBack    : @(YES),
+     KNSemiModalOptionKeys.animationDuration : @(0.5),
+     KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+     }];
+    
+    
+    VC.view.backgroundColor = [UIColor clearColor];
+    VC.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
+    VC.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
+    VC.PlaceCity =  [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
+    VC.color = [InterfaceFunctions colorTextCategory:@"Category"];
+}
 
 -(IBAction)showLocation:(id)sender{
     [self.Map setCenterCoordinate:self.Map.userLocation.coordinate];
@@ -498,19 +536,22 @@ bool REVERSE_ANIM = false;
         buttonlabel1.tag = buttonlabel1Tag;
         
         // кнопка с кулаком
-        UIView * knucklabel = [[UIView alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5, img_y_dist + width/1.852 - 2*img_x_dist - 1, 24, 24)];
-        UIView * backknuck = [[UIView alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5 - 2, img_y_dist + width/1.852 - 2*img_x_dist -2, 26, 26)];
-        backknuck.backgroundColor = [InterfaceFunctions corporateIdentity];
-        CALayer *layer = backknuck.layer;
-        layer.cornerRadius = 3;
-        backknuck.clipsToBounds = YES;
-        [back addSubview:backknuck];
-        knucklabel.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]];
+        knuck = [[UIButtonWithAditionalNum alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5, img_y_dist + width/1.852 - 2*img_x_dist - 1, 24, 24)];
+        knuck.tag = checkTag;
+        knuck.backgroundColor = [InterfaceFunctions corporateIdentity];
+        knuck.layer.cornerRadius = 3;
+        [knuck addSubview:[[UIImageView alloc]initWithImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]]];
+        // knuck.imageView.image = [UIImage imageNamed:@"kul_90"];
+        [knuck addTarget:self action:@selector(check:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        
         nameLabel.tag = labelColorTag;
         
         [back addSubview:buttonlabel1];
-        [back addSubview:knucklabel];
         [back addSubview:nameLabel];
+        [back addSubview:knuck];
+
         
         
         
@@ -631,6 +672,61 @@ bool REVERSE_ANIM = false;
     
     return cell;
 }
+
+-(void)check:(UIButtonWithAditionalNum *)sender{
+    
+    NSDictionary *temp = [AroundArray objectAtIndex:sender.tagForCheck];
+    [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Name"] forKey:@"PlaceTemp"];
+    [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Category"] forKey:@"CategoryTemp"];
+    [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"City"] forKey:@"CityTemp"];
+    
+    NSLog(@"Check: %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"NameTemp"]);
+    
+    if ([ExternalFunctions isCheckUsedInPlace:[temp objectForKey:@"Name"] InCategory:[temp objectForKey:@"Category"] InCity:self.CityNameText]){
+        NSLog(@"Уже использован");
+    }
+    else{
+        NSLog(@"Еще не использован");
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"]) {
+            [self presentSemiViewController:VC withOptions:@{
+             KNSemiModalOptionKeys.pushParentBack    : @(YES),
+             KNSemiModalOptionKeys.animationDuration : @(0.5),
+             KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+             }];
+            
+            
+            VC.view.backgroundColor = [UIColor clearColor];
+            VC.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
+            VC.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
+            VC.PlaceCity =  [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
+            VC.color = [InterfaceFunctions colorTextCategory:@"Category"];
+        }
+        else{
+            [self showRegistrationMessage:self];
+            
+        }
+    }
+}
+-(IBAction)showRegistrationMessage:(id)sender{
+    
+    UIAlertView  *message = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Registration", nil)
+                                                       message:AMLocalizedString(@"To use all the features of the world LikeLik, please register", nil)
+                                                      delegate:nil
+                                             cancelButtonTitle:AMLocalizedString(@"Cancel", nil)
+                                             otherButtonTitles:AMLocalizedString(@"Registration", nil),AMLocalizedString(@"Login", nil), nil];
+    message.delegate = self;
+    [message show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1)
+        [self performSegueWithIdentifier:@"RegisterSegue" sender:self];
+    if (buttonIndex == 2)
+        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+    
+}
+
+
 
 #pragma mark - Table view delegate
 

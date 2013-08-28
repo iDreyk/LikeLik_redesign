@@ -10,12 +10,22 @@
 #import <MapBox/MapBox.h>
 #import "MBProgressHUD.h"
 #import "LocalizationSystem.h"
+
+@class UIButtonWithAditionalNum;
+@interface UIButtonWithAditionalNum : UIButton
+@property(nonatomic)NSInteger tagForCheck;
+@end
+
+
+@class CheckViewController;
+
+
 @interface AroundMeViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,RMMapViewDelegate,MBProgressHUDDelegate>{
     
     NSArray *AroundArray;
     CLLocation *Me;
     CLLocationManager *locationManager;
-    
+    CheckViewController *VC;    
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *PlacesTable;
@@ -37,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SearchButton;
 @property (weak, nonatomic) IBOutlet UIView *ViewforMap;
 @property (nonatomic,retain)        MBProgressHUD  *HUD;
+@property (nonatomic,retain) UIButtonWithAditionalNum *knuck;
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 
 -(IBAction) segmentedControlIndexChanged;
