@@ -13,7 +13,7 @@
 
 #pragma mark UIButton
 +(UIButton *)Pref_button{
-    UIImage *buttonImage = [UIImage imageNamed:@"60_61 settings"];
+    UIImage *buttonImage = [UIImage imageNamed:@"60_61 settings.png"];
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [aButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [aButton.titleLabel  setFont:[AppDelegate OpenSansRegular:24]];

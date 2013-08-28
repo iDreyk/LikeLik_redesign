@@ -52,8 +52,8 @@ bool REVERSE_ANIM = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor lightGrayColor];
-    self.backgroundView.backgroundColor = [UIColor lightGrayColor];//[InterfaceFunctions colorTextCategory:self.Category];
+    self.view.backgroundColor = [UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
+    self.backgroundView.backgroundColor = [UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
@@ -284,7 +284,7 @@ bool REVERSE_ANIM = false;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    return 185;
 }
 
 
@@ -379,10 +379,10 @@ bool REVERSE_ANIM = false;
         //202,148,78
         
         // плитка, на которую всё накладываем
-        CGFloat x_dist = 7;
-        CGFloat y_dist = 7;
-        CGFloat cellWidth = 306;
-        CGFloat cellHeight = 166;
+        CGFloat x_dist = 3;
+        CGFloat y_dist = 3;
+        CGFloat cellWidth = 314;
+        CGFloat cellHeight = 174;
         UIView *back = [[UIView alloc] initWithFrame:CGRectMake(x_dist, y_dist, cellWidth, cellHeight)];
         CALayer * back_layer = back.layer;
         back_layer.cornerRadius = 5;
@@ -392,7 +392,7 @@ bool REVERSE_ANIM = false;
         [cell.contentView addSubview:back]; // добавили на cell
         
         
-        cell.contentView.backgroundColor =[UIColor lightGrayColor];//[[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
+        cell.contentView.backgroundColor =[UIColor lightGrayColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //  картинка
@@ -441,17 +441,17 @@ bool REVERSE_ANIM = false;
         
         // анонс
         UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(width + 2*img_x_dist, img_y_dist, cellWidth - width - 2*img_x_dist, 65)];
-        text.backgroundColor = [UIColor blackColor];
+        //text.backgroundColor = [UIColor blackColor];
 //        text.backgroundColor = [UIColor clearColor];
         //text.textAlignment = NSTextAlignment;
-        text.textColor = [UIColor whiteColor];
+        text.textColor = [UIColor blackColor];
         text.font = [UIFont systemFontOfSize:10];
         text.tag = announceTag;
         text.numberOfLines = 5;
         [back addSubview:text];
         
         // заголовок
-        UILabel * nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 , 306, 42)];
+        UILabel * nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 , cellWidth, 42)];
         CALayer *layer2 = nameLabel.layer;
         layer2.cornerRadius = 5;
         nameLabel.clipsToBounds = YES;
