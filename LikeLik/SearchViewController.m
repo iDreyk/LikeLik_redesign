@@ -17,6 +17,7 @@
 static NSArray *Array;
 static NSArray *tmp;
 static NSDictionary *Place;
+CGRect oldRect;
 
 #define tableLabelWithTextTag 87001
 #define goLAbelTag 87002
@@ -66,6 +67,9 @@ static NSDictionary *Place;
     
 #warning сделать асинхронную загрузку (Да уже и так норм :) )
     tmp = [NSArray arrayWithArray:self.readyArray];//[ExternalFunctions getAllPlacesInCity:self.CityName];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 
@@ -85,6 +89,22 @@ static NSDictionary *Place;
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Keyboard events
+
+
+-(void)keyboardHidden:(NSNotification *)note{
+    self.SearchTable.frame = oldRect;
+}
+
+-(void)keyboardShown:(NSNotification *)note{
+    oldRect = self.SearchTable.frame;
+        CGRect keyboardFrame;
+        [[[note userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
+        CGRect ViewFrame = self.SearchTable.frame;
+        ViewFrame.size.height -= keyboardFrame.size.height;
+        self.SearchTable.frame = ViewFrame;
+    
+}
 
 #pragma mark - Table view data source
 
