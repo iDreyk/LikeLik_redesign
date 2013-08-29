@@ -15,7 +15,6 @@
 #import "LocalizationSystem.h"
 #import "FavViewController.h"
 #import "AboutTableViewController.h"
-#import "PlacesByCategoryViewController.h"
 #import "VisualTourViewController.h"
 #import "TransportationTableViewController.h"
 #import "PracticalInfoViewController.h"

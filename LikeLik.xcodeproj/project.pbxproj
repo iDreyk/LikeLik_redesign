@@ -15,7 +15,6 @@
 		55A80F2217747EF000089216 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F1D17747EF000089216 /* zip.c */; };
 		55A80F2517747F5200089216 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F2417747F5200089216 /* SSZipArchive.m */; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
-		9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */; };
 		916587F91794407600F13BF2 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 916587E11794407600F13BF2 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		916587FA1794407600F13BF2 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916587E31794407600F13BF2 /* FBDialog.bundle */; };
 		916587FB1794407600F13BF2 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 916587E51794407600F13BF2 /* FBDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -405,8 +404,6 @@
 		91241948173A9CF8004B6837 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194A173A9DF5004B6837 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194B173A9E05004B6837 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9124195A173BD4D5004B6837 /* PlacesByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesByCategoryViewController.h; sourceTree = "<group>"; };
-		9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesByCategoryViewController.m; sourceTree = "<group>"; };
 		916587E01794407600F13BF2 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		916587E11794407600F13BF2 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
 		916587E21794407600F13BF2 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
@@ -1395,8 +1392,6 @@
 				919E8AC2173A5F6D00A25E07 /* CategoryViewController.m */,
 				919E8AC3173A5F6D00A25E07 /* AroundMeViewController.h */,
 				919E8AC4173A5F6D00A25E07 /* AroundMeViewController.m */,
-				9124195A173BD4D5004B6837 /* PlacesByCategoryViewController.h */,
-				9124195B173BD4D5004B6837 /* PlacesByCategoryViewController.m */,
 				919E8ACB173A5F6D00A25E07 /* SubText.h */,
 				919E8ACC173A5F6D00A25E07 /* SubText.m */,
 				919E8ACD173A5F6D00A25E07 /* PlaceViewController.h */,
@@ -2029,7 +2024,6 @@
 				919E8B0E173A5F6F00A25E07 /* LoginViewController.m in Sources */,
 				919E8B0F173A5F6F00A25E07 /* PreferencesViewController.m in Sources */,
 				919E8B10173A5F6F00A25E07 /* MyLikeLikeViewController.m in Sources */,
-				9124195C173BD4D5004B6837 /* PlacesByCategoryViewController.m in Sources */,
 				55A80F0C17747C6400089216 /* ExternalFunctions.m in Sources */,
 				55A80F1F17747EF000089216 /* ioapi.c in Sources */,
 				55A80F2017747EF000089216 /* mztools.c in Sources */,
