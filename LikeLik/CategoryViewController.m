@@ -142,6 +142,7 @@ static BOOL IN_BG;
         
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSLog(@"Back on main thread");
+            [self getSoonLabels];
             [self removeKnuckleHUD];
             NSLog(@"remove knuckle animation in reload");
             //            [self.Table reloadData];

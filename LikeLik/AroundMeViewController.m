@@ -417,6 +417,43 @@ bool REVERSE_ANIM = false;
 
 #pragma mark - cell
 
+//For future cool animation
+//-(CAAnimationGroup*)animationGroupForward:(BOOL)_forward {
+//    // Create animation keys, forwards and backwards
+//    CATransform3D t1 = CATransform3DIdentity;
+//    t1.m34 = 1.0/-900;
+//    t1 = CATransform3DScale(t1, 0.95, 0.95, 1);
+//    t1 = CATransform3DRotate(t1, 15.0f*M_PI/180.0f, 1, 0, 0);
+//    
+//    CATransform3D t2 = CATransform3DIdentity;
+//    t2.m34 = t1.m34;
+//    t2 = CATransform3DTranslate(t2, 0, 185*-0.08, 0);
+//    t2 = CATransform3DScale(t2, 0.8, 0.8, 1);
+//    
+//    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+//    animation.toValue = [NSValue valueWithCATransform3D:t1];
+//	CFTimeInterval duration = 0.5;
+//    animation.duration = duration/2;
+//    animation.fillMode = kCAFillModeForwards;
+//    animation.removedOnCompletion = NO;
+//    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+//    
+//    CABasicAnimation *animation2 = [CABasicAnimation animationWithKeyPath:@"transform"];
+//    animation2.toValue = [NSValue valueWithCATransform3D:(_forward?t2:CATransform3DIdentity)];
+//    animation2.beginTime = animation.duration;
+//    animation2.duration = animation.duration;
+//    animation2.fillMode = kCAFillModeForwards;
+//    animation2.removedOnCompletion = NO;
+//    
+//    CAAnimationGroup *group = [CAAnimationGroup animation];
+//    group.fillMode = kCAFillModeForwards;
+//    group.removedOnCompletion = NO;
+//    [group setDuration:animation.duration*2];
+//    [group setAnimations:[NSArray arrayWithObjects:animation,animation2, nil]];
+//    return group;
+//}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = [indexPath row];
@@ -619,18 +656,13 @@ bool REVERSE_ANIM = false;
     
     UILabel *previewText = (UILabel *)[cell viewWithTag:announceTag];
     
-#warning СДЕЛАТЬ ТАК ЖЕ В PlacesByCategory !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!, OK BOSS
     NSString *preview = [[AroundArray objectAtIndex:row] objectForKey:@"Preview"];
     if(!preview)
         previewText.text = AMLocalizedString(@"Please, update catalogues to get access to newest features.", nil);
                             //Добавить в локализации
     else
         previewText.text = preview;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     previewText.numberOfLines = 0;
-    
-    
-
     
     UILabel *label = (UILabel *)[cell viewWithTag:labelColorTag];
     label.backgroundColor = [InterfaceFunctions colorTextCategory:category];
@@ -657,7 +689,7 @@ bool REVERSE_ANIM = false;
     UIView *myView = (UIView *)[cell viewWithTag:cellColorTag];
     CALayer *layer = myView.layer;
     
-    CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
+    CATransform3D rotationAndPerspectiveTransform = CATransform3DMakeTranslation(0, 0, -10);
     rotationAndPerspectiveTransform.m34 = 1.0 / -500;
     if(!REVERSE_ANIM){
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/6, 1, 0, 0);
@@ -679,8 +711,9 @@ bool REVERSE_ANIM = false;
         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -M_PI/6, 1, 0, 0);
     }
     layer.transform = rotationAndPerspectiveTransform;
-    [UIView commitAnimations];
     
+    [UIView commitAnimations];
+
     return cell;
 }
 
