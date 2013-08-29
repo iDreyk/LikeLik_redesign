@@ -287,8 +287,8 @@ static BOOL IN_BG;
                 NSLog(@"Back on main thread");
                 IS_LOADING = NO;
                 [self removeKnuckleHUD];
+                
                 NSLog(@"remove knuckle animation");
-                //            [self.Table reloadData];
             });
             // post an NSNotification that loading is finished
         });
@@ -323,6 +323,7 @@ static BOOL IN_BG;
     self.frameArray = @[self.frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, frame11, frame12];
     
     int i = 0;
+    NSLog(@"cellArray = %@",self.CellArray);
     for (UIView *frame in self.frameArray){
         frame.tag = i;
         frame.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", i+1]] scaledToSize:CGSizeMake(frameSize, frameSize)]];
@@ -330,6 +331,16 @@ static BOOL IN_BG;
         text.text = AMLocalizedString([self.CellArray objectAtIndex:frame.tag], nil);
         text.backgroundColor = [UIColor clearColor];
         text.textColor = [UIColor whiteColor];
+
+#warning Начало
+        /*Кусок в комментах запихнуть в условие*/
+        MLPAccessoryBadge *Badge = [MLPAccessoryBadge new];
+        [Badge.textLabel setFont:[AppDelegate OpenSansSemiBold:12]];
+        [Badge sizeToFit];
+        [Badge setBackgroundColor:[InterfaceFunctions colorTextCategory:[self.CellArray objectAtIndex:i]]];
+        [Badge setText:AMLocalizedString(@"Soon", nil)];
+        Badge.frame = CGRectMake(frameSize-Badge.frame.size.width, 0.0, Badge.frame.size.width, Badge.frame.size.height);
+        [frame addSubview:Badge];
         [text setFont:[AppDelegate OpenSansSemiBold:22]];
         text.textAlignment = NSTextAlignmentCenter;
         [frame addSubview:text];
@@ -339,6 +350,9 @@ static BOOL IN_BG;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
         [frame addGestureRecognizer:tap];
         [frame setUserInteractionEnabled:YES];
+        /**/
+#warning Конец
+        
         [self.categoryView addSubview:frame];
         ++i;
     }
@@ -503,7 +517,6 @@ static BOOL IN_BG;
 -(void)customPush:(UIView *)sender{
     NSInteger number = [(UIGestureRecognizer *)sender view].tag;
     self.navigationItem.leftBarButtonItem.enabled = NO;
-    //[TestFlight passCheckpoint:[self.SegueArray objectAtIndex:number]];
     [self performSegueWithIdentifier:[self.SegueArray objectAtIndex:number] sender:sender];
 }
 
