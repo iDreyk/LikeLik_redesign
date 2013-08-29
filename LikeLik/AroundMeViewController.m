@@ -148,7 +148,6 @@ bool REVERSE_ANIM = false;
     [locationManager setDelegate:self];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     Me = [locationManager location];
-    //  NSLog(@"Around Me = %@", Me);
     
     
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
@@ -172,7 +171,7 @@ bool REVERSE_ANIM = false;
         [HUD show:YES];
         [HUD hide:YES afterDelay:2];
     }
-    // NSLog(@"Ready array: %@", self.readyArray);
+    
     AroundArray = [[NSArray alloc] initWithArray:self.readyArray];
     RMAnnotation *marker1;
     for (int i=0; i<[AroundArray count]; i++) {
@@ -260,14 +259,13 @@ bool REVERSE_ANIM = false;
     [TestFlight passCheckpoint:@"Around Me"];
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText]] > 50000.0) {
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate;
-        NSLog(@"Взяли центер города");
+        
         [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         self.locationButton.enabled = NO;
     }
     else{
         self.Map.centerCoordinate = self.Map.userLocation.coordinate;
         self.locationButton.enabled = YES;
-        NSLog(@"Взяли локацию пользователя");
     }
 }
 
@@ -293,18 +291,15 @@ bool REVERSE_ANIM = false;
 }
 
 -(void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-    //  NSLog(@"123");
-    //[map selectAll:map];
-    //    [map selectAnnotation:annotation animated:YES];
+    
 }
 
 
 -(void)tapOnLabelForAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-    // NSLog(@"123");
+    
 }
 - (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
 {
-    // NSLog(@"tap");
     PlaceName = annotation.title;
     PlaceCategory = [annotation.userInfo objectForKey:@"Category"];
     Place = annotation.userInfo;
@@ -383,18 +378,17 @@ bool REVERSE_ANIM = false;
     UIImage* backupImg = [self.imageCache objectForKey:backup];
     
     if ((nil != theImage) && [theImage isKindOfClass:[UIImage class]]) {
-        NSLog(@"img loaded from cache!");
+//        NSLog(@"img loaded from cache!");
         completionBlock(YES, theImage);
     }
     else if((nil != backupImg) && [backupImg isKindOfClass:[UIImage class]]){
-        NSLog(@"img loaded from cache!");
+//        NSLog(@"img loaded from cache!");
         completionBlock(YES, backupImg);
     }
     else{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             UIImage * image = [UIImage imageWithContentsOfFile:url];
             UIImage *cropedImage = [[UIImage alloc] init];
-            NSLog(@"here");
             if(!image){
                 image = [UIImage imageWithContentsOfFile:backup];
                 CGImageRef imgRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 400,width, width/1.852));
@@ -417,29 +411,6 @@ bool REVERSE_ANIM = false;
     }
 }
 
-
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSInteger row = [indexPath row];
-//    static NSString *CellIdentifier = nil;
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
-//
-//
-//   // NSLog(@"Around Me = %@",[[AroundArray objectAtIndex:row] objectForKey:@"Category"]);
-//
-//    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
-//
-//    [cell addSubview:[InterfaceFunctions goLabelCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]]];
-//    [cell addSubview:[InterfaceFunctions actbwithCategory:[[AroundArray objectAtIndex:row] objectForKey:@"Category"]]];
-//
-//    cell.backgroundView = [InterfaceFunctions CellBG];
-//    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
-//    return cell;
-//}
 
 #pragma mark - cell
 
@@ -807,11 +778,9 @@ bool REVERSE_ANIM = false;
         destinaton.PlaceWeb = [Place1 objectForKey:@"Web"];
         destinaton.PlaceLocation = [Place1 objectForKey:@"Location"];
         destinaton.Photos = [Place1 objectForKey:@"Photo"];
-        NSLog(@"%@", destinaton.Photos);
     }
     
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
-        //    nslog(@"[[segue identifier] isEqualToString: SearchSegue");
         SearchViewController *destinaton  = [segue destinationViewController];
         destinaton.CityName = self.CityNameText;
         destinaton.readyArray = self.readyArray;
@@ -857,10 +826,8 @@ bool REVERSE_ANIM = false;
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-yOffset,self.CityName.frame.size.width,self.CityName.frame.size.height);
         self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
         
-        // NSLog(@"1");
         
     } else if (yOffset < 0) {
-        // NSLog(@"2");
         self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
         
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
@@ -868,7 +835,6 @@ bool REVERSE_ANIM = false;
         self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
         
     } else {
-        // NSLog(@"3");
         self.CityImage.frame = CGRectMake(0, -280.0, 320.0, self.CityImage.frame.size.height);
         
         

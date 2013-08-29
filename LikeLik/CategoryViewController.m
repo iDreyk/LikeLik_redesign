@@ -130,7 +130,6 @@ static BOOL IN_BG;
         // post an NSNotification that loading has started
         AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
         RMAnnotation *marker1;
-        NSLog(@"start reading aroundarray in reload");
         for (int i=0; i<[AroundArray count]; i++) {
             CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
             marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
@@ -140,8 +139,7 @@ static BOOL IN_BG;
             marker1.userInfo = [AroundArray objectAtIndex:i];
             [self.MapPlace addAnnotation:marker1];
         }
-        NSLog(@"finished reading aroundarray in reload");
-        //    NSLog(@"%@",self.MapPlace.annotations);]
+        
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSLog(@"Back on main thread");
             [self removeKnuckleHUD];
@@ -217,7 +215,7 @@ static BOOL IN_BG;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
     self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
-    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
+//    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"VisualtourSegue",@"TransportationSegue",@"SearchSegue",@"FavoritesSegue",@"PracticalinfoSegue"];
@@ -271,7 +269,6 @@ static BOOL IN_BG;
         [self.navigationController.view addSubview:fade];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // post an NSNotification that loading has started
-            NSLog(@"started reading aroundarray in viewDidLoad");
 
             AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
             RMAnnotation *marker1;
@@ -285,7 +282,7 @@ static BOOL IN_BG;
                 marker1.userInfo = [AroundArray objectAtIndex:i];
                 [self.MapPlace addAnnotation:marker1];
             }
-            NSLog(@"finished reading aroundarray in viewDidLoad");
+            
             dispatch_async(dispatch_get_main_queue(), ^ {
                 NSLog(@"Back on main thread");
                 IS_LOADING = NO;
