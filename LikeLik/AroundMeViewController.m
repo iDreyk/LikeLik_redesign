@@ -228,7 +228,14 @@ bool REVERSE_ANIM = false;
 
 -(void)test:(id)sender{
     
-    NSLog(@"test : %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"], [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"]);
+    
+
+    
+    VC.view.backgroundColor = [UIColor clearColor];
+    VC.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
+    VC.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
+    VC.PlaceCity =  [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
+    VC.color = [InterfaceFunctions colorTextCategory:@"Category"];
     
     [self presentSemiViewController:VC withOptions:@{
      KNSemiModalOptionKeys.pushParentBack    : @(YES),
@@ -237,11 +244,7 @@ bool REVERSE_ANIM = false;
      }];
     
     
-    VC.view.backgroundColor = [UIColor clearColor];
-    VC.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
-    VC.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
-    VC.PlaceCity =  [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
-    VC.color = [InterfaceFunctions colorTextCategory:@"Category"];
+
 }
 
 -(IBAction)showLocation:(id)sender{
@@ -697,6 +700,15 @@ bool REVERSE_ANIM = false;
     else{
         NSLog(@"Еще не использован");
         if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:checkOpen
+                                                                object:self];
+            
+            VC.view.backgroundColor = [UIColor clearColor];
+            VC.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
+            VC.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
+            VC.PlaceCity =  [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
+            VC.color = [InterfaceFunctions colorTextCategory:@"Category"];
+            
             [self presentSemiViewController:VC withOptions:@{
              KNSemiModalOptionKeys.pushParentBack    : @(YES),
              KNSemiModalOptionKeys.animationDuration : @(0.5),
@@ -704,11 +716,7 @@ bool REVERSE_ANIM = false;
              }];
             
             
-            VC.view.backgroundColor = [UIColor clearColor];
-            VC.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
-            VC.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
-            VC.PlaceCity =  [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
-            VC.color = [InterfaceFunctions colorTextCategory:@"Category"];
+            
         }
         else{
             [self showRegistrationMessage:self];

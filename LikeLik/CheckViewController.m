@@ -41,6 +41,13 @@ static BOOL foreignversion = NO;
 {
     [super viewDidLoad];
 
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(check_Open:)
+                                                 name: checkOpen
+                                               object: nil];
+    [self check_Open:self];
+    
+    
     UIGestureRecognizer *tap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     tap.delegate = self;
     
@@ -100,27 +107,47 @@ static BOOL foreignversion = NO;
     self.fistbackground.hidden = YES;
     self.alreadyuse.hidden = YES;
     
-}
--(void)viewDidAppear:(BOOL)animated{
-    //    nslog(@"%@",self.PlaceName);
+    
+    
+    NSLog(@"BLYAAA");
 
-    self.Label.font = [AppDelegate OpenSansRegular:40];
-    self.Label.text = self.PlaceName;
+    NSLog(@"%@",self.Label.text);
+}
+
+-(void)check_Open:(id)sender{
+    NSLog(@"check_Open");
+        self.Label.font = [AppDelegate OpenSansRegular:40];
+        self.TextCheck.font = [AppDelegate OpenSansRegular:28];
+    self.Label.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
+    self.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
+    self.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
+    self.PlaceCity = [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
+    self.ribbonimage.image = [InterfaceFunctions Ribbon:self.PlaceCategory].image;
+    dictforCheck = [ExternalFunctions getCheckDictionariesOfPlace:self.PlaceName InCategory:self.PlaceCategory InCity:self.PlaceCity];
+    [self.activate setBackgroundImage:[InterfaceFunctions usecheckbutton:self.PlaceCategory andTag:@""].image forState:UIControlStateNormal];
+    [self.activate setBackgroundImage:[InterfaceFunctions usecheckbutton:self.PlaceCategory andTag:@"_selected"].image forState:UIControlStateHighlighted];
+    self.TextCheck.text = [dictforCheck objectForKey:@"main"];
+    
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+
+    [self check_Open:self];
+    
+
+   // self.Label.text = self.PlaceName;
     self.Label.hidden = NO;
     self.Label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
     self.Label.shadowOffset = CGSizeMake(0.0, -0.5);
-    self.ribbonimage.image = [InterfaceFunctions Ribbon:self.PlaceCategory].image;
+
     self.ribbonimage.hidden = NO;
     self.check_background.image = [InterfaceFunctions check_background];
-    [self.activate setBackgroundImage:[InterfaceFunctions usecheckbutton:self.PlaceCategory andTag:@""].image forState:UIControlStateNormal];
-    [self.activate setBackgroundImage:[InterfaceFunctions usecheckbutton:self.PlaceCategory andTag:@"_selected"].image forState:UIControlStateHighlighted];
+
     
     
     
-    dictforCheck = [ExternalFunctions getCheckDictionariesOfPlace:self.PlaceName InCategory:self.PlaceCategory InCity:self.PlaceCity];
-    
-    self.TextCheck.text = [dictforCheck objectForKey:@"main"];
-    self.TextCheck.font = [AppDelegate OpenSansRegular:28];
+
     self.TextCheck.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
     self.TextCheck.backgroundColor =  [UIColor clearColor];
     self.TextCheck.editable = NO;

@@ -28,6 +28,7 @@
 #define afternotification             @"l27h7RU2dzVfPoQssda"
 #define afterregister             @"l27h7RU2dzVfP12aoQssda"
 #define backgroundg @"l27h7RU2123123132dzVfPoQssda"
+#define checkOpen                 @"l27h7RU2dzVfP12aoQssdasasa"
 static BOOL infoViewIsOpen = NO;
 static UIAlertView *alertView = nil;
 CGFloat firstX=0;
@@ -232,6 +233,9 @@ CGFloat alpha = 0.5;
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
     else
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
+    
+    
+
     
     self.view.backgroundColor = [UIColor redColor];
     _scroll.pagingEnabled = YES;
@@ -686,6 +690,14 @@ CGFloat alpha = 0.5;
     }];
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"])
     {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:self.PlaceName forKey:@"PlaceTemp"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.PlaceCategory forKey:@"CategoryTemp"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.PlaceCityName forKey:@"CityTemp"];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:checkOpen
+                                                            object:self];
+        
         infoViewIsOpen = !infoViewIsOpen;
         [self presentSemiViewController:VC withOptions:@{
          KNSemiModalOptionKeys.pushParentBack    : @(YES),
@@ -694,9 +706,12 @@ CGFloat alpha = 0.5;
          }];
         
         VC.view.backgroundColor = [UIColor clearColor];
-        VC.PlaceName = self.PlaceName;
-        VC.PlaceCategory = self.PlaceCategory;
-        VC.PlaceCity = self.PlaceCityName;
+        
+
+        
+//        VC.PlaceName = self.PlaceName;
+//        VC.PlaceCategory = self.PlaceCategory;
+//        VC.PlaceCity = self.PlaceCityName;
         VC.color = self.Color;
         _labelonPhoto.hidden = NO;
         _background.hidden = NO;
@@ -963,6 +978,16 @@ CGFloat alpha = 0.5;
                     [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
             }];
             infoViewIsOpen = !infoViewIsOpen;
+            
+            
+            [[NSUserDefaults standardUserDefaults] setObject:self.PlaceName forKey:@"PlaceTemp"];
+            [[NSUserDefaults standardUserDefaults] setObject:self.PlaceCategory forKey:@"CategoryTemp"];
+            [[NSUserDefaults standardUserDefaults] setObject:self.PlaceCityName forKey:@"CityTemp"];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:checkOpen
+                                                                object:self];
+            
+            
             [self presentSemiViewController:VC withOptions:@{
              KNSemiModalOptionKeys.pushParentBack    : @(YES),
              KNSemiModalOptionKeys.animationDuration : @(0.5),
@@ -970,9 +995,9 @@ CGFloat alpha = 0.5;
              }];
             
             VC.view.backgroundColor = [UIColor clearColor];
-            VC.PlaceName = self.PlaceName;
-            VC.PlaceCategory = self.PlaceCategory;
-            VC.PlaceCity = self.PlaceCityName;
+//            VC.PlaceName = self.PlaceName;
+//            VC.PlaceCategory = self.PlaceCategory;
+//            VC.PlaceCity = self.PlaceCityName;
             VC.color = self.Color;
             _labelonPhoto.hidden = NO;
             _background.hidden = NO;
