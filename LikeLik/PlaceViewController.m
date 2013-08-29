@@ -879,11 +879,11 @@ CGFloat alpha = 0.5;
         self.locationButton.enabled = YES;
     }
     
-    for (UIView *view in self.navigationController.navigationBar.subviews) {
-        NSLog(@"%@",view);
-        view.userInteractionEnabled = YES;
-    }
-    
+//    for (UIView *view in self.navigationController.navigationBar.subviews) {
+//        NSLog(@"%@",view);
+//        view.userInteractionEnabled = YES;
+//    }
+
 }
 
 -(void)testmethod{
