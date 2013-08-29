@@ -515,11 +515,14 @@ bool REVERSE_ANIM = false;
         
         // кнопка с кулаком
 
-        knuck = [[UIButtonWithAditionalNum alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5, img_y_dist + width/1.852 - 2*img_x_dist - 11, 60, 26)];
+        knuck = [[UIButtonWithAditionalNum alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5, img_y_dist + width/1.852 - 2*img_x_dist - 11, 60, 30)];
         knuck.tag = checkTag;
         knuck.backgroundColor = [InterfaceFunctions corporateIdentity];
         knuck.layer.cornerRadius = 3;
-        [knuck addSubview:[[UIImageView alloc]initWithImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]]];
+        UIImageView *knPict = [[UIImageView alloc] initWithImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]];
+        knPict.frame = CGRectMake(0, 3, 24, 24);
+        [knuck addSubview:knPict];
+        //[knuck addSubview:[[UIImageView alloc]initWithImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]]];
         
         UILabel *checkText = [[UILabel alloc] initWithFrame:CGRectMake(24, 0, knuck.frame.size.width - 26, knuck.frame.size.height)];
         checkText.text = @"Use";
