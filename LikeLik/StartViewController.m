@@ -19,6 +19,7 @@
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
 #import "CategoryViewController.h"
+#import "AFJSONRequestOperation.h"
 
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
 #define dismiss                 @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
@@ -249,9 +250,98 @@ static BOOL JUST_APPEAR = YES;
     //[TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
 }
 
+-(NSString *)getContentLenght:(NSURLResponse *)response {
+    int a;
+    NSString *json = [response description];
+    NSString *search = @"Length\" = ";
+    NSString *sub = [json substringFromIndex:NSMaxRange([json rangeOfString:search])];
+    for (int i = 0; [sub characterAtIndex:i] != ';'; i++) {
+        a = i+1;
+    }
+    
+    NSString *finish = [sub substringToIndex:a];
+    unsigned long long ullvalue = strtoull([finish UTF8String], NULL, 0)/1024/1024;
+    NSString *returnString = [NSString stringWithFormat:@"%@",[NSNumber numberWithLongLong:ullvalue]];
+    return returnString;
+}
+
+- (NSString *)retrieveFileSizeFromServer{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger row = [[defaults objectForKey:@"row"] integerValue];
+    Reachability *reach = [Reachability reachabilityWithHostname:@"likelik.net"];
+    NSURL *aURL;
+    
+    if ([reach isReachable]) {
+        if ([reach isReachableViaWiFi]) {
+            // On WiFi
+            if ([_CityLabels[row] isEqualToString:@"Moscow"] ||
+                [_CityLabels[row] isEqualToString:@"Moskau"] ||
+                [_CityLabels[row] isEqualToString:@"Москва"]) {
+                
+                if(IS_IPHONE_5 == 1) {
+                    aURL = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"%@%@",likelikurlwifi_5,@"Moscow.zip"]];
+                }
+                else {
+                    aURL = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"%@%@",likelikurlwifi_4,@"Moscow.zip"]];
+                }
+            }
+            else if ([_CityLabels[row] isEqualToString:@"Вена"] ||
+                     [_CityLabels[row] isEqualToString:@"Vienna"] ||
+                     [_CityLabels[row] isEqualToString:@"Wien"]) {
+                
+                if(IS_IPHONE_5 == 1) {
+                    aURL = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"%@%@",likelikurlwifi_5,@"Vienna.zip"]];
+                }
+                else {
+                    aURL = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"%@%@",likelikurlwifi_4,@"Vienna.zip"]];
+                }
+            }
+            
+            NSLog(@"Downloading via Wi-Fi");
+        }
+        else {
+            // On Cell
+            
+            if ([_CityLabels[row] isEqualToString:@"Moscow"] ||
+                [_CityLabels[row] isEqualToString:@"Moskau"] ||
+                [_CityLabels[row] isEqualToString:@"Москва"]) {
+                
+                if(IS_IPHONE_5 == 1)
+                    aURL = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"%@%@",likelikurlcell_5,@"Moscow.zip"]];
+                else
+                    aURL = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"%@%@",likelikurlcell_4,@"Moscow.zip"]];
+            }
+            else if ([_CityLabels[row] isEqualToString:@"Вена"] ||
+                     [_CityLabels[row] isEqualToString:@"Vienna"] ||
+                     [_CityLabels[row] isEqualToString:@"Wien"]) {
+                
+                if(IS_IPHONE_5 == 1)
+                    aURL = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"%@%@",likelikurlcell_5,@"Vienna.zip"]];
+                else
+                    aURL = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"%@%@",likelikurlcell_4,@"Vienna.zip"]];
+            }
+            
+            NSLog(@"Downloading via cell network");
+        }
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aURL];
+        [request setHTTPMethod:@"HEAD"];
+        
+        NSURLResponse *response = nil;
+        NSError *err = nil;
+        
+        NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
+        
+        return [self getContentLenght:response];
+    }
+    return @"done";
+}
+
 -(void)ShowAlertView{
+    //NSString *str = [NSString stringWithFormat:@"%@ %@ Mb",AMLocalizedString(@"You are up to download LikeLik Catalogue", nil),[self retrieveFileSizeFromServer]];
+    NSString *str = AMLocalizedString(@"You are up to download LikeLik Catalogue", nil);
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Download", nil)
-                                                      message:AMLocalizedString(@"You are up to download LikeLik Catalogue", nil)
+                                                      message:str
                                                      delegate:self
                                             cancelButtonTitle:AMLocalizedString(@"Next time", nil)
                                             otherButtonTitles:@"Ok",nil];
@@ -270,8 +360,6 @@ static BOOL JUST_APPEAR = YES;
         //[TestFlight passCheckpoint:@"buying"];
     }
     else{
-        // NSLog(@"Purchased");
-        NSLog(@"Согласился на покупку");
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSInteger row = [[defaults objectForKey:@"row"] integerValue];
