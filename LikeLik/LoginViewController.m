@@ -122,6 +122,7 @@
         
         NSLog(@"Back to Place");
     }
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 }
 
 - (void)refreshButtonState

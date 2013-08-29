@@ -699,11 +699,11 @@ CGFloat alpha = 0.5;
                                                             object:self];
         
         infoViewIsOpen = !infoViewIsOpen;
-        [self presentSemiViewController:VC withOptions:@{
-         KNSemiModalOptionKeys.pushParentBack    : @(YES),
-         KNSemiModalOptionKeys.animationDuration : @(0.5),
-         KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
-         }];
+//        [self presentSemiViewController:VC withOptions:@{
+//         KNSemiModalOptionKeys.pushParentBack    : @(YES),
+//         KNSemiModalOptionKeys.animationDuration : @(0.5),
+//         KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+//         }];
         
         VC.view.backgroundColor = [UIColor clearColor];
         
@@ -877,6 +877,11 @@ CGFloat alpha = 0.5;
         self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
         NSLog(@"Взяли локацию пользователя");
         self.locationButton.enabled = YES;
+    }
+    
+    for (UIView *view in self.navigationController.navigationBar.subviews) {
+        NSLog(@"%@",view);
+        view.userInteractionEnabled = YES;
     }
     
 }

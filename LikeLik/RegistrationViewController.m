@@ -332,6 +332,7 @@
 
         NSLog(@"Back to Place");
     }
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 }
 
 

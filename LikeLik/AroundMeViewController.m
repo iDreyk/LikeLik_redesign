@@ -230,20 +230,21 @@ bool REVERSE_ANIM = false;
     
     
 
-    
-    VC.view.backgroundColor = [UIColor clearColor];
-    VC.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
-    VC.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
-    VC.PlaceCity =  [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
-    VC.color = [InterfaceFunctions colorTextCategory:@"Category"];
-    
-    [self presentSemiViewController:VC withOptions:@{
-     KNSemiModalOptionKeys.pushParentBack    : @(YES),
-     KNSemiModalOptionKeys.animationDuration : @(0.5),
-     KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
-     }];
-    
-    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"])
+    {
+        VC.view.backgroundColor = [UIColor clearColor];
+        VC.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
+        VC.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
+        VC.PlaceCity =  [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
+        VC.color = [InterfaceFunctions colorTextCategory:@"Category"];
+        
+        [self presentSemiViewController:VC withOptions:@{
+         KNSemiModalOptionKeys.pushParentBack    : @(YES),
+         KNSemiModalOptionKeys.animationDuration : @(0.5),
+         KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+         }];
+        
+    }
 
 }
 
@@ -270,6 +271,7 @@ bool REVERSE_ANIM = false;
         self.Map.centerCoordinate = self.Map.userLocation.coordinate;
         self.locationButton.enabled = YES;
     }
+    //[self.PlacesTable reloadData];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
