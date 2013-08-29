@@ -68,7 +68,7 @@ static BOOL IN_BG;
     return [UIImage imageWithCGImage:cgImage];
     
     // if you need scaling
-     //return [[self class] scaleIfNeeded:cgImage];
+    //return [[self class] scaleIfNeeded:cgImage];
 }
 
 
@@ -182,6 +182,27 @@ static BOOL IN_BG;
     return newImage;
 }
 
+-(void)getSoonLabels{
+    for (int i = 1; i < 7; ++i){
+        UIView *frame = (self.frameArray)[i];
+        MLPAccessoryBadge *Badge = [MLPAccessoryBadge new];
+        [Badge.textLabel setFont:[AppDelegate OpenSansSemiBold:32]];
+        //[Badge sizeToFit];
+        [Badge setBackgroundColor:[InterfaceFunctions colorTextCategory:[self.CellArray objectAtIndex:i]]];
+        [Badge setText:AMLocalizedString(@"Soon", nil)];
+        Badge.center = frame.center;//CGRectMake(0.0, 0.0, frameSize, frameSize);
+        if ([[self placesInCategory:[self.CellArray objectAtIndex:i]] count] == 0) {
+            frame.alpha = 0.3;
+            [self.categoryView addSubview:Badge];
+            [frame setUserInteractionEnabled:NO];
+        }
+        else{
+            [frame setUserInteractionEnabled:YES];
+        }
+    }
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -191,7 +212,7 @@ static BOOL IN_BG;
     _locationManager = [[CLLocationManager alloc] init];
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [_locationManager startUpdatingLocation];
-//    CLLocation *Me = [_locationManager location];
+    //    CLLocation *Me = [_locationManager location];
     
     self.categoryView.backgroundColor = [UIColor clearColor];
     [self.categoryView setScrollEnabled:YES];
@@ -215,7 +236,7 @@ static BOOL IN_BG;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
     self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
-//    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
+    //    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"VisualtourSegue",@"TransportationSegue",@"SearchSegue",@"FavoritesSegue",@"PracticalinfoSegue"];
@@ -269,7 +290,7 @@ static BOOL IN_BG;
         [self.navigationController.view addSubview:fade];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // post an NSNotification that loading has started
-
+            
             AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
             RMAnnotation *marker1;
             
@@ -286,6 +307,7 @@ static BOOL IN_BG;
             dispatch_async(dispatch_get_main_queue(), ^ {
                 NSLog(@"Back on main thread");
                 IS_LOADING = NO;
+                [self getSoonLabels];
                 [self removeKnuckleHUD];
                 
                 NSLog(@"remove knuckle animation");
@@ -296,7 +318,7 @@ static BOOL IN_BG;
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-        
+    
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;
     CGFloat yOrigin = 20;
@@ -331,16 +353,7 @@ static BOOL IN_BG;
         text.text = AMLocalizedString([self.CellArray objectAtIndex:frame.tag], nil);
         text.backgroundColor = [UIColor clearColor];
         text.textColor = [UIColor whiteColor];
-
-#warning Начало
-        /*Кусок в комментах запихнуть в условие*/
-        MLPAccessoryBadge *Badge = [MLPAccessoryBadge new];
-        [Badge.textLabel setFont:[AppDelegate OpenSansSemiBold:12]];
-        [Badge sizeToFit];
-        [Badge setBackgroundColor:[InterfaceFunctions colorTextCategory:[self.CellArray objectAtIndex:i]]];
-        [Badge setText:AMLocalizedString(@"Soon", nil)];
-        Badge.frame = CGRectMake(frameSize-Badge.frame.size.width, 0.0, Badge.frame.size.width, Badge.frame.size.height);
-        [frame addSubview:Badge];
+        
         [text setFont:[AppDelegate OpenSansSemiBold:22]];
         text.textAlignment = NSTextAlignmentCenter;
         [frame addSubview:text];
@@ -350,9 +363,6 @@ static BOOL IN_BG;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
         [frame addGestureRecognizer:tap];
         [frame setUserInteractionEnabled:YES];
-        /**/
-#warning Конец
-        
         [self.categoryView addSubview:frame];
         ++i;
     }
@@ -477,7 +487,7 @@ static BOOL IN_BG;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-  //  AroundArray = [ExternalFunctions getAllPlacesInCity:self.CityName.text];
+    //  AroundArray = [ExternalFunctions getAllPlacesInCity:self.CityName.text];
     NSLog(@"loadView");
     
     if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
@@ -560,10 +570,10 @@ static BOOL IN_BG;
         destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];//AroundArray;
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);//AMLocalizedString(@"Around Me", nil);
         //        PlacesByCategoryViewController *destination =[segue destinationViewController];
-//        destination.CityName = self.Label;
-//        destination.Category = [self.CellArray objectAtIndex:row];
-//        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
-//        destination.categoryArray = [self placesInCategory:destination.Category];
+        //        destination.CityName = self.Label;
+        //        destination.Category = [self.CellArray objectAtIndex:row];
+        //        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
+        //        destination.categoryArray = [self placesInCategory:destination.Category];
     }
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
         FavViewController *destination = [segue destinationViewController];
