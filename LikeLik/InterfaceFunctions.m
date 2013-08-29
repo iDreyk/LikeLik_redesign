@@ -160,7 +160,7 @@
 }
 +(UIColor *)colorTextCategory:(NSString *)Category{
     UIColor *color;
-    NSLog(@"Category: %@", Category);
+//    NSLog(@"Category: %@", Category);
     if ([Category isEqualToString:@"Restaurants"]) {
         color = [self mainTextColor:2];
     }

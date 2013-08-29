@@ -272,7 +272,7 @@ static BOOL JUST_APPEAR = YES;
     else{
         // NSLog(@"Purchased");
         NSLog(@"Согласился на покупку");
-        
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSInteger row = [[defaults objectForKey:@"row"] integerValue];
         Reachability *reach = [Reachability reachabilityWithHostname:@"likelik.net"];
@@ -331,14 +331,15 @@ static BOOL JUST_APPEAR = YES;
             NSLog(@"Isn't reachable");
             self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
             [self.navigationController.view addSubview:self.HUDfade];
-            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+          //  [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
             self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross2@2x"]];
             self.HUDfade.mode = MBProgressHUDModeCustomView;
             self.HUDfade.labelText = AMLocalizedString(@"Download error", nil);
             [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds) onTarget:self withObject:nil animated:YES];
             [self.navigationController popViewControllerAnimated:YES];
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+//            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         }
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }
 }
 
