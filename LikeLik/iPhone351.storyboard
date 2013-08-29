@@ -888,7 +888,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <viewController id="4Ud-1t-vkT" customClass="PlacesByCategoryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8mT-Ja-KWe">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="640_1136 background-568h@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="WJO-Ur-1kQ">
@@ -1842,10 +1842,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <segue destination="0Jt-4j-Wmn" kind="push" identifier="FavoritesSegue" id="4IS-jT-fqa"/>
                         <segue destination="kAC-G7-7GR" kind="push" identifier="VisualtourSegue" id="gVD-gh-N8p"/>
                         <segue destination="pV2-Ha-ulb" kind="push" identifier="PracticalinfoSegue" id="7Ut-Q6-Hdj"/>
-                        <segue destination="4Ud-1t-vkT" kind="push" identifier="CategorySegue" id="gTd-JO-yK4"/>
                         <segue destination="Raj-iV-euz" kind="push" identifier="MapSegue" id="iFn-sF-BeJ"/>
                         <segue destination="N3A-Wm-so7" kind="push" identifier="TransportationSegue" id="9aa-no-5hP"/>
                         <segue destination="nTr-4r-NYY" kind="push" identifier="SearchSegue" id="27d-SI-zSj"/>
+                        <segue destination="1FC-V3-3wh" kind="push" identifier="CategorySegue" id="ZJh-ZB-Acn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUf-go-UcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2185,10 +2185,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6P9-zt-v0l"/>
         <segue reference="pVH-Es-TaK"/>
+        <segue reference="27d-SI-zSj"/>
+        <segue reference="iFn-sF-BeJ"/>
+        <segue reference="ZJh-ZB-Acn"/>
         <segue reference="AMn-TY-YM3"/>
-        <segue reference="mIE-ck-FCQ"/>
-        <segue reference="CID-7V-uDc"/>
+        <segue reference="6P9-zt-v0l"/>
     </inferredMetricsTieBreakers>
 </document>

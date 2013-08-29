@@ -189,7 +189,7 @@ bool REVERSE_ANIM = false;
     
     [locationManager stopUpdatingLocation];
     locationManager = nil;
-    self.CityName.text = AMLocalizedString(@"Around Me", nil);
+    self.CityName.text = self.CityNameString;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityImage.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.CityNameText]];
     
@@ -220,6 +220,11 @@ bool REVERSE_ANIM = false;
                                              selector: @selector(test:)
                                                  name: afterregister
                                                object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(semiModalDismissed:)
+                                                 name:kSemiModalDidHideNotification
+                                               object:nil];
 }
 
 -(void)test:(id)sender{
@@ -443,10 +448,11 @@ bool REVERSE_ANIM = false;
     NSInteger row = [indexPath row];
     static NSString *CellIdentifier = @"CellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     NSString *category = [[AroundArray objectAtIndex:row] objectForKey:@"Category"];
     
     if (cell == nil) { // init the cell
-        
+        NSLog(@"Created! %@",indexPath);
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
         //202,148,78
@@ -537,6 +543,7 @@ bool REVERSE_ANIM = false;
 //        buttonlabel1.tag = buttonlabel1Tag;
         
         // кнопка с кулаком
+
         knuck = [[UIButtonWithAditionalNum alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5, img_y_dist + width/1.852 - 2*img_x_dist - 11, 60, 26)];
         knuck.tag = checkTag;
         knuck.backgroundColor = [InterfaceFunctions corporateIdentity];
@@ -612,6 +619,21 @@ bool REVERSE_ANIM = false;
     UIButtonWithAditionalNum * check = (UIButtonWithAditionalNum *)[cell viewWithTag:checkTag];
     check.tagForCheck = [indexPath row];
     
+    NSDictionary *temp = [AroundArray objectAtIndex:row];
+
+    NSLog(@"Name = %@ Category = %@ City = %@ row = %d",[temp objectForKey:@"Name"],[temp objectForKey:@"Category"],self.CityNameText,row);
+
+    if ([ExternalFunctions isCheckUsedInPlace:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] InCategory:category InCity:self.CityNameText]){
+    
+        NSLog(@"isUsed = %d row = %d",[ExternalFunctions isCheckUsedInPlace:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] InCategory:category InCity:self.CityNameText],row);
+        check.alpha = 0.5;
+    }
+    else{
+        check.alpha = 1.0;
+        NSLog(@"NOOOOOO %@",[temp objectForKey:@"Name"]);
+    }
+    
+    
     UILabel * buttonlabel = (UILabel *)[cell viewWithTag:buttonlabel1Tag];
     buttonlabel.backgroundColor =[InterfaceFunctions colorTextCategory:category];
     
@@ -630,6 +652,8 @@ bool REVERSE_ANIM = false;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     previewText.numberOfLines = 0;
     
+    
+
     
     UILabel *label = (UILabel *)[cell viewWithTag:labelColorTag];
     label.backgroundColor = [InterfaceFunctions colorTextCategory:category];
@@ -690,7 +714,7 @@ bool REVERSE_ANIM = false;
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Name"] forKey:@"PlaceTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Category"] forKey:@"CategoryTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"City"] forKey:@"CityTemp"];
-    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",sender.tagForCheck] forKey:@"RowTemp"];
     NSLog(@"Check: %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"]);
     
     if ([ExternalFunctions isCheckUsedInPlace:[temp objectForKey:@"Name"] InCategory:[temp objectForKey:@"Category"] InCity:self.CityNameText]){
@@ -718,6 +742,24 @@ bool REVERSE_ANIM = false;
         }
     }
 }
+
+
+- (void)semiModalDismissed:(NSNotification *) notification {
+    if (notification.object == self) {
+//        [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+//        self.navigationController.navigationBar.hidden = YES;
+        if ([ExternalFunctions isCheckUsedInPlace:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"] InCategory:[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"] InCity:[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"]]){
+            NSLog(@"HAAAAALO!!!");
+            NSIndexPath *durPath = [NSIndexPath indexPathForRow:[[[NSUserDefaults standardUserDefaults] objectForKey:@"RowTemp"] integerValue] inSection:0];
+            NSArray *paths = [NSArray arrayWithObject:durPath];
+            [self.PlacesTable reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationRight];
+
+        //    self.GOUSE.enabled = NO;
+        //    [Use stopAnimating];
+        }
+    }
+}
+
 -(IBAction)showRegistrationMessage:(id)sender{
     
     UIAlertView  *message = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Registration", nil)

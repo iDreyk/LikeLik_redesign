@@ -542,13 +542,19 @@ static BOOL IN_BG;
         destination.CityNameText = self.Label;
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.readyArray = AroundArray;
+        destination.CityNameString = AMLocalizedString(@"Around Me", nil);
     }
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
-        PlacesByCategoryViewController *destination =[segue destinationViewController];
-        destination.CityName = self.Label;
-        destination.Category = [self.CellArray objectAtIndex:row];
+        AroundMeViewController *destination = [segue destinationViewController];
+        destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
-        destination.categoryArray = [self placesInCategory:destination.Category];
+        destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];//AroundArray;
+        destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);//AMLocalizedString(@"Around Me", nil);
+        //        PlacesByCategoryViewController *destination =[segue destinationViewController];
+//        destination.CityName = self.Label;
+//        destination.Category = [self.CellArray objectAtIndex:row];
+//        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
+//        destination.categoryArray = [self placesInCategory:destination.Category];
     }
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
         FavViewController *destination = [segue destinationViewController];

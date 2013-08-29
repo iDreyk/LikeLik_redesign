@@ -729,10 +729,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <segue destination="ofv-1I-lPi" kind="push" identifier="FavoritesSegue" id="Lej-fg-aBp"/>
                         <segue destination="kAC-G7-7GR" kind="push" identifier="VisualtourSegue" id="K8P-hg-1dP"/>
                         <segue destination="pV2-Ha-ulb" kind="push" identifier="PracticalinfoSegue" id="Cw4-hf-G0e"/>
-                        <segue destination="4Ud-1t-vkT" kind="push" identifier="CategorySegue" id="4BB-v1-nLD"/>
                         <segue destination="Raj-iV-euz" kind="push" identifier="MapSegue" id="lP0-Ve-8FZ"/>
                         <segue destination="N3A-Wm-so7" kind="push" identifier="TransportationSegue" id="8xw-B5-rL1"/>
                         <segue destination="nTr-4r-NYY" kind="push" identifier="SearchSegue" id="Ewz-Pd-opy"/>
+                        <segue destination="1FC-V3-3wh" kind="push" identifier="CategorySegue" id="tB3-mu-76X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtG-qO-vQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -929,7 +929,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <viewController id="4Ud-1t-vkT" customClass="PlacesByCategoryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8mT-Ja-KWe">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="640_1136 background-568h@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="ok8-lW-X0G"/>
@@ -1852,7 +1852,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="segmentedControlIndexChanged"/>
                 <relationship kind="action" name="showLocation:"/>
-                <relationship kind="action" name="showRegistrationMessage:"/>
                 <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="CityNameText" candidateClass="NSString"/>
@@ -2110,9 +2109,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="8Kb-sg-LTt"/>
+        <segue reference="lP0-Ve-8FZ"/>
+        <segue reference="tB3-mu-76X"/>
         <segue reference="Ewz-Pd-opy"/>
-        <segue reference="Eqc-1c-gEJ"/>
         <segue reference="zUH-te-kZE"/>
-        <segue reference="mIE-ck-FCQ"/>
+        <segue reference="Eqc-1c-gEJ"/>
     </inferredMetricsTieBreakers>
 </document>
