@@ -140,7 +140,6 @@ static BOOL IN_BG;
             marker1.subtitle = AMLocalizedString([[AroundArray objectAtIndex:i] objectForKey:@"Category"], nil);
             marker1.userInfo = [AroundArray objectAtIndex:i];
             [self.MapPlace addAnnotation:marker1];
-            //NSLog(@"! %@ %f %f",marker1.title,marker1.coordinate.latitude,marker1.coordinate.longitude);
         }
         NSLog(@"finished reading aroundarray in reload");
         //    NSLog(@"%@",self.MapPlace.annotations);]
@@ -195,7 +194,7 @@ static BOOL IN_BG;
     _locationManager = [[CLLocationManager alloc] init];
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [_locationManager startUpdatingLocation];
-    CLLocation *Me = [_locationManager location];
+//    CLLocation *Me = [_locationManager location];
     
     self.categoryView.backgroundColor = [UIColor clearColor];
     [self.categoryView setScrollEnabled:YES];
@@ -219,7 +218,7 @@ static BOOL IN_BG;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
     self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
-    NSLog(@"%@",[ExternalFunctions larkePictureOfCity:self.Label]);
+    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"VisualtourSegue",@"TransportationSegue",@"SearchSegue",@"FavoritesSegue",@"PracticalinfoSegue"];
@@ -230,8 +229,6 @@ static BOOL IN_BG;
     UIButton *btn = [InterfaceFunctions map_button:1];
     [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    
-    
     
     NSURL *url;
     if ([self.CityName.text isEqualToString:@"Moscow"] || [self.CityName.text isEqualToString:@"Москва"] || [self.CityName.text isEqualToString:@"Moskau"]){
@@ -275,7 +272,8 @@ static BOOL IN_BG;
         [self.navigationController.view addSubview:fade];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // post an NSNotification that loading has started
-            
+            NSLog(@"started reading aroundarray in viewDidLoad");
+
             AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
             RMAnnotation *marker1;
             
@@ -469,7 +467,7 @@ static BOOL IN_BG;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    AroundArray = [ExternalFunctions getAllPlacesInCity:self.CityName.text];
+  //  AroundArray = [ExternalFunctions getAllPlacesInCity:self.CityName.text];
     NSLog(@"loadView");
     
     if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
