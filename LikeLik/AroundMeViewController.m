@@ -471,7 +471,7 @@ bool REVERSE_ANIM = false;
         [cell.contentView addSubview:back]; // добавили на cell
         
         
-        cell.contentView.backgroundColor =[UIColor lightGrayColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //  картинка
