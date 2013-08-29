@@ -19,6 +19,17 @@ static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 static NSDictionary *Place1;
+#define tableLabelWithTextTag 87001
+#define goLAbelTag 87002
+#define arrowTag 87003
+#define backgroundViewTag 87004
+#define cellColorTag 87005
+#define distanceTag 87006
+#define announceTag 87007
+#define labelColorTag 87008
+#define buttonlabel1Tag 87009
+#define checkTag 87010
+
 @interface FavViewController ()
 
 @end
@@ -211,27 +222,107 @@ static NSDictionary *Place1;
     return [FavouritePlaces count];
     
 }
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//    NSInteger row = [indexPath row];
+//    static NSString *CellIdentifier = nil;
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+//    
+//    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
+//   
+//    [cell addSubview:[InterfaceFunctions goLabelCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Category"]]];
+//    [cell addSubview:[InterfaceFunctions actbwithCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Category"]]];
+//    
+//    cell.backgroundView = [InterfaceFunctions CellBG];
+//    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
+//    return cell;
+//}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    NSInteger row = [indexPath row];
-    static NSString *CellIdentifier = nil;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    [cell addSubview:[InterfaceFunctions TableLabelwithText:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 290, cell.center.y*2)]];
-   
-    [cell addSubview:[InterfaceFunctions goLabelCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Category"]]];
-    [cell addSubview:[InterfaceFunctions actbwithCategory:[[FavouritePlaces objectAtIndex:row] objectForKey:@"Category"]]];
-    
-    cell.backgroundView = [InterfaceFunctions CellBG];
-    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
-    return cell;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 48;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger row = [indexPath row];
+    static NSString *CellIdentifier = @"CellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSString *category = [[FavouritePlaces objectAtIndex:row] objectForKey:@"Category"];
+    
+    if (cell == nil) { // init the cell
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        //202,148,78
+        
+        // плитка, на которую всё накладываем
+        CGFloat x_dist = 3;
+        CGFloat y_dist = 3;
+        CGFloat cellWidth = 314;
+        CGFloat cellHeight = 42;
+        UIView *back = [[UIView alloc] initWithFrame:CGRectMake(x_dist, y_dist, cellWidth, cellHeight)];
+        CALayer * back_layer = back.layer;
+        back_layer.cornerRadius = 5;
+        back.clipsToBounds = YES;
+        back.tag = cellColorTag;
+        back.backgroundColor = [UIColor whiteColor];
+        [cell.contentView addSubview:back]; // добавили на cell
+        
+        
+        cell.contentView.backgroundColor =[UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        CALayer * imgLayer = back.layer;
+        [imgLayer setBorderColor: [[UIColor whiteColor] CGColor]];
+        [imgLayer setBorderWidth:0.5f];
+        [imgLayer setShadowColor: [[UIColor blackColor] CGColor]];
+        [imgLayer setShadowOpacity:0.9f];
+        [imgLayer setShadowOffset: CGSizeMake(0, 1)];
+        [imgLayer setShadowRadius:3.0];
+        // [imgLayer setCornerRadius:4];
+        imgLayer.shouldRasterize = YES;
+        
+        // This tell QuartzCore where to draw the shadow so it doesn't have to work it out each time
+        [imgLayer setShadowPath:[UIBezierPath bezierPathWithRect:imgLayer.bounds].CGPath];
+        
+        // This tells QuartzCore to render it as a bitmap
+        [imgLayer setRasterizationScale:[UIScreen mainScreen].scale];
+        
+        // заголовок
+        UILabel * nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 , cellWidth, 42)];
+        CALayer *layer2 = nameLabel.layer;
+        layer2.cornerRadius = 5;
+        nameLabel.clipsToBounds = YES;
+        nameLabel.tag = labelColorTag;
+        [back addSubview:nameLabel];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0,280, cell.center.y*2)];
+        
+        label.tag = tableLabelWithTextTag;
+        label.font = [AppDelegate OpenSansSemiBold:35];
+        label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
+        label.shadowOffset = CGSizeMake(0.0, -0.1);
+        label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor whiteColor];
+        label.highlightedTextColor = label.textColor;
+        label.shadowColor = [InterfaceFunctions ShadowColor];
+        label.shadowOffset = [InterfaceFunctions ShadowSize];
+        [back addSubview:label];
+    }
+    UILabel * buttonlabel = (UILabel *)[cell viewWithTag:buttonlabel1Tag];
+    buttonlabel.backgroundColor =[InterfaceFunctions colorTextCategory:category];
+    
+    UILabel *tableLabelWithText  = (UILabel *)[cell viewWithTag:tableLabelWithTextTag];
+    tableLabelWithText.text = [[FavouritePlaces objectAtIndex:row] objectForKey:@"Name"];
+    
+    UILabel *label = (UILabel *)[cell viewWithTag:labelColorTag];
+    label.backgroundColor = [InterfaceFunctions colorTextCategory:category];
+    
+    return cell;
+}
 
 #pragma mark - Table view delegate
 

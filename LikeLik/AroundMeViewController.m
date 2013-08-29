@@ -629,7 +629,6 @@ bool REVERSE_ANIM = false;
         previewText.text = preview;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     previewText.numberOfLines = 0;
-    [previewText sizeToFit];
     
     
     UILabel *label = (UILabel *)[cell viewWithTag:labelColorTag];

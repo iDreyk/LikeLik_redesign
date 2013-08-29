@@ -1323,7 +1323,6 @@
 		919E86F3173A58E700A25E07 = {
 			isa = PBXGroup;
 			children = (
-				D0DEEED617CE34DE008872E4 /* CoreImage.framework */,
 				918F70B0176DA433000FE810 /* LikeLik icon 57x57.png */,
 				9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */,
 				919E89D3173A5C0300A25E07 /* Default-568h@2x.png */,
@@ -1361,6 +1360,7 @@
 				919E873C173A5AF700A25E07 /* MapKit.framework */,
 				919E873A173A5AEF00A25E07 /* CoreLocation.framework */,
 				919E8736173A5ADC00A25E07 /* AVFoundation.framework */,
+				D0DEEED617CE34DE008872E4 /* CoreImage.framework */,
 				919E8734173A5AD500A25E07 /* CoreMedia.framework */,
 				919E8732173A5ACE00A25E07 /* CoreVideo.framework */,
 				919E8730173A5AC800A25E07 /* QuartzCore.framework */,
