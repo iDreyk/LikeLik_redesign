@@ -598,7 +598,6 @@
 		916588D71794409B00F13BF2 /* check_background_7-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_background_7-568h@2x.png"; sourceTree = "<group>"; };
 		916588D81794409B00F13BF2 /* check_background_8-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_background_8-568h@2x.png"; sourceTree = "<group>"; };
 		916588D91794409B00F13BF2 /* check_background_9-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_background_9-568h@2x.png"; sourceTree = "<group>"; };
-		916588DA1794409B00F13BF2 /* desktop.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = desktop.ini; sourceTree = "<group>"; };
 		916588DB1794409B00F13BF2 /* done_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done_button@2x.png"; sourceTree = "<group>"; };
 		916588DC1794409B00F13BF2 /* Fist_animated_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fist_animated_1@2x.png"; sourceTree = "<group>"; };
 		916588DD1794409B00F13BF2 /* Fist_animated_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fist_animated_2@2x.png"; sourceTree = "<group>"; };
@@ -1169,7 +1168,6 @@
 				916588D71794409B00F13BF2 /* check_background_7-568h@2x.png */,
 				916588D81794409B00F13BF2 /* check_background_8-568h@2x.png */,
 				916588D91794409B00F13BF2 /* check_background_9-568h@2x.png */,
-				916588DA1794409B00F13BF2 /* desktop.ini */,
 				916588DB1794409B00F13BF2 /* done_button@2x.png */,
 				916588DC1794409B00F13BF2 /* Fist_animated_1@2x.png */,
 				916588DD1794409B00F13BF2 /* Fist_animated_2@2x.png */,
