@@ -41,56 +41,56 @@ static NSInteger j=0;
     [locationManager stopUpdatingLocation];
     NSLog(@"Notification сработал");
 }
-//
-//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-//    dispatch_queue_t backGroundQueue;
-//    
-//    backGroundQueue = dispatch_queue_create("backGroundQueueForRegions", NULL);
-//    dispatch_async(backGroundQueue, ^{
-//        // post an NSNotification that loading has started
-//        NSLog(@"start background queue");
-//        NSLog(@"j=%d",j);
-//        if (j==0) {
-//            j++;
-//            Me = newLocation;
-//            
-//            NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
-//            
-//            
-//            NSLog(@"Зашел в счетчик");
-//            for (int i = 0; i<[Region count]; i++) {
-//                [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
-//            }
-//        }
-//        NSLog(@"after j = %d",j);
-//        // post an NSNotification that loading is finished
-//        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"stopUpdating" object:nil]];
-//    });
-//    
-//}
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    if (j==0) {
-        Me = newLocation;
-        
-        //  NSLog(@"%@",Me);
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:Me];
-        [defaults setObject:data forKey:@"location"];
-        
-        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
-        
-        j++;
-        NSLog(@"Зашел в счетчик");
-        for (int i = 0; i<[Region count]; i++) {
-            [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
+    dispatch_queue_t backGroundQueue;
+    
+    backGroundQueue = dispatch_queue_create("backGroundQueueForRegions", NULL);
+    dispatch_async(backGroundQueue, ^{
+        // post an NSNotification that loading has started
+        NSLog(@"start background queue");
+        NSLog(@"j=%d",j);
+        if (j==0) {
+            j++;
+            Me = newLocation;
+            
+            NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
+            
+            
+            NSLog(@"Зашел в счетчик");
+            for (int i = 0; i<[Region count]; i++) {
+                [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
+            }
         }
-        [locationManager stopUpdatingLocation];
-    }
-    NSLog(@"Monitored regions: %d",[[locationManager monitoredRegions] count]);
+        NSLog(@"after j = %d",j);
+        // post an NSNotification that loading is finished
+        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"stopUpdating" object:nil]];
+    });
     
 }
+
+//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+//    if (j==0) {
+//        Me = newLocation;
+//        
+//        //  NSLog(@"%@",Me);
+//        
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:Me];
+//        [defaults setObject:data forKey:@"location"];
+//        
+//        NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
+//        
+//        j++;
+//        NSLog(@"Зашел в счетчик");
+//        for (int i = 0; i<[Region count]; i++) {
+//            [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
+//        }
+//        [locationManager stopUpdatingLocation];
+//    }
+//    NSLog(@"Monitored regions: %d",[[locationManager monitoredRegions] count]);
+//    
+//}
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     
