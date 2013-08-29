@@ -192,7 +192,20 @@ static CLLocation *Me;
 }
 
 + (NSArray *) getArrayOfPlaceDictionariesInCategoryForAllPlaces : (NSString *) category InCity : (NSString *) city{
+    
     NSDictionary *cityDict = [self cityCatalogueForCity:city];
+    NSString *cityNameInEnglish = [cityDict objectForKey:@"city_EN"];
+    NSArray *photoNamesOfIPlace;
+    NSString *docDirectory = [self docDir];
+    CLLocation *location = [self getMyLocationOrTheLocationOfCityCenter:city];
+    
+    NSString *name = [self getLocalizedString:@"Name"];
+    NSString *about = [self getLocalizedString:@"About"];
+    NSString *address = [self getLocalizedString:@"address"];
+    NSString *time = [self getLocalizedString:@"time"];
+    NSString *metro = [self getLocalizedString:@"metro"];
+    NSString *preview = [self getLocalizedString:@"Preview"];
+    
     NSMutableDictionary *placeDict;
     NSArray *tempArrayOfPlacesIncategory = [[cityDict objectForKey:@"places"] objectForKey:category];
     NSMutableArray *returnArray = [[NSMutableArray alloc] init];
@@ -207,36 +220,38 @@ static CLLocation *Me;
         placeDict = [[NSMutableDictionary alloc]init];
         placeAtIndexi = [tempArrayOfPlacesIncategory objectAtIndex:i];
         NSString *webSite;
+        photoNamesOfIPlace = [[placeAtIndexi objectForKey:@"Photo"] objectForKey:version];
         
         lat = [[placeAtIndexi objectForKey:@"Lat"] doubleValue];
         lon = [[placeAtIndexi objectForKey:@"Lon"] doubleValue];
         CLLocation *currentPlace = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-        CLLocation *location = [self getMyLocationOrTheLocationOfCityCenter:city];
         photos = [[NSMutableArray alloc] init];
         for (int j = 0; j < [[[placeAtIndexi objectForKey:@"Photo"] objectForKey:version] count]; j++) {
-            [photos addObject:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],[cityDict objectForKey:@"city_EN"],[[[placeAtIndexi objectForKey:@"Photo"] objectForKey:version] objectAtIndex:j]]];
+            [photos addObject:[[NSString alloc] initWithFormat:@"%@/%@/%@",docDirectory,cityNameInEnglish,[photoNamesOfIPlace objectAtIndex:j]]];
         }
         
         double distance = [location distanceFromLocation:currentPlace];
-        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"Name"]] forKey:@"Name"];
-        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"About"]] forKey:@"About"];
-        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"address"]] forKey:@"Address"];
-        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"time"]] forKey:@"Time"];
-        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"metro"]] forKey:@"Metro"];
-        [placeDict setValue:[placeAtIndexi objectForKey:[self getLocalizedString:@"Preview"]] forKey:@"Preview"];
+        [placeDict setValue:[placeAtIndexi objectForKey:name] forKey:@"Name"];
+        [placeDict setValue:[placeAtIndexi objectForKey:about] forKey:@"About"];
+        [placeDict setValue:[placeAtIndexi objectForKey:address] forKey:@"Address"];
+        [placeDict setValue:[placeAtIndexi objectForKey:time] forKey:@"Time"];
+        [placeDict setValue:[placeAtIndexi objectForKey:metro] forKey:@"Metro"];
+        [placeDict setValue:[placeAtIndexi objectForKey:preview] forKey:@"Preview"];
         [placeDict setValue:[placeAtIndexi objectForKey:@"Telephone"] forKey:@"Telephone"];
         webSite = [placeAtIndexi objectForKey:@"web"];
+        
         if (webSite != NULL && [webSite length] > 7) {
             if (![[webSite substringToIndex:7] isEqualToString:@"http://"]) {
                 [placeDict setValue:[[NSString alloc] initWithFormat:@"http://%@",webSite] forKey:@"Web"];
             }
         }
+        
         [placeDict setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
         [placeDict setValue:currentPlace forKey:@"Location"];
         [placeDict setValue:category forKey:@"Category"];
         [placeDict setValue:photos forKey:@"Photo"];
         [placeDict setValue:city forKey:@"City"];
-        [placeDict setValue:[[NSString alloc] initWithFormat:@"%@/%@/%@",[self docDir],[cityDict objectForKey:@"city_EN"],[[placeAtIndexi objectForKey:@"Photo"] objectForKey:@"thumb"]] forKey:@"thumb"];
+        [placeDict setValue:[[NSString alloc] initWithFormat:@"%@/%@/%@",docDirectory,cityNameInEnglish,[[placeAtIndexi objectForKey:@"Photo"] objectForKey:@"thumb"]] forKey:@"thumb"];
         [placeDict setValue:[placeAtIndexi objectForKey:@"favourite"] forKey:@"Favorite"];
         [placeDict setValue:[placeAtIndexi objectForKey:@"tag"] forKey:@"Tags"];
         [placeDict setValue:[NSNumber numberWithDouble:lat] forKey:@"Latitude"];
