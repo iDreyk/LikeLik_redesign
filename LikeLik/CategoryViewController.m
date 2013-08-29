@@ -142,6 +142,7 @@ static BOOL IN_BG;
         
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSLog(@"Back on main thread");
+            IS_LOADING = NO;
             [self getSoonLabels];
             [self removeKnuckleHUD];
             NSLog(@"remove knuckle animation in reload");
@@ -402,33 +403,33 @@ static BOOL IN_BG;
 }
 - (void)appReturnsActive{
     NSLog(@"LOG: app returns active");
-    if(IS_LOADING && IN_BG){
-        IN_BG = false;
-        UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
-        fade.tag = FADE_TAG;
-        fade.backgroundColor = [UIColor clearColor];
-        [self.navigationController.view addSubview:fade];
-        UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
-        coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-        coolEf.tag = EF_TAG;
-        [self.view addSubview:coolEf];
-        coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 22, self.view.center.y - 90, 45, 45)];
-        //knuckle_1@2x.png
-        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"kul_90.png"] scaledToSize:CGSizeMake(45, 45)]];
-        //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-        CALayer *layer = spin.layer;
-        layer.cornerRadius = 8;
-        spin.clipsToBounds = YES;
-        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-        animation.fromValue = [NSNumber numberWithFloat:0.0f];
-        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
-        animation.duration = 3.0f;
-        animation.repeatCount = HUGE_VAL;
-        [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
-        [coolEf addSubview:spin];
-        
-    }
+//    if(IS_LOADING && IN_BG){
+//        IN_BG = false;
+//        UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
+//        fade.tag = FADE_TAG;
+//        fade.backgroundColor = [UIColor clearColor];
+//        [self.navigationController.view addSubview:fade];
+//        UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
+//        coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+//        coolEf.tag = EF_TAG;
+//        [self.view addSubview:coolEf];
+//        coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+//        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 22, self.view.center.y - 90, 45, 45)];
+//        //knuckle_1@2x.png
+//        spin.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"kul_90.png"] scaledToSize:CGSizeMake(45, 45)]];
+//        //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+//        CALayer *layer = spin.layer;
+//        layer.cornerRadius = 8;
+//        spin.clipsToBounds = YES;
+//        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+//        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+//        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+//        animation.duration = 3.0f;
+//        animation.repeatCount = HUGE_VAL;
+//        [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
+//        [coolEf addSubview:spin];
+//        
+//    }
 }
 
 
