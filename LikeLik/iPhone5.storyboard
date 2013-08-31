@@ -1399,12 +1399,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <action selector="segmentedControlIndexChanged" destination="ofv-1I-lPi" eventType="valueChanged" id="x4N-PM-jjH"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="bh3-VB-cgN">
-                            <connections>
-                                <action selector="segmentedControlIndexChanged" destination="ofv-1I-lPi" id="6fw-fU-XgK"/>
-                                <segue destination="nTr-4r-NYY" kind="push" identifier="SearchSegue" id="8A3-mH-hPw"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="FavTable" destination="ckI-wL-DxX" id="m9D-UW-Evu"/>
@@ -1852,7 +1846,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="segmentedControlIndexChanged"/>
                 <relationship kind="action" name="showLocation:"/>
-                <relationship kind="action" name="showRegistrationMessage:"/>
                 <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="CityNameText" candidateClass="NSString"/>
@@ -2091,11 +2084,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8Kb-sg-LTt"/>
-        <segue reference="lP0-Ve-8FZ"/>
-        <segue reference="tB3-mu-76X"/>
-        <segue reference="Ewz-Pd-opy"/>
         <segue reference="nft-YQ-xRI"/>
+        <segue reference="prS-nK-Lt0"/>
+        <segue reference="8Kb-sg-LTt"/>
+        <segue reference="Ewz-Pd-opy"/>
+        <segue reference="tB3-mu-76X"/>
         <segue reference="zUH-te-kZE"/>
     </inferredMetricsTieBreakers>
 </document>
