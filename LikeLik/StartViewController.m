@@ -76,7 +76,7 @@ static BOOL JUST_APPEAR = YES;
 }
 
 -(void)pref_dismiss{
-    
+    //
     [self viewDidAppear:YES];
 }
 
