@@ -64,36 +64,36 @@ bool REVERSE_ANIM = false;
     return self;
 }
 
-- (UIImage*) blur:(UIImage*)theImage
-{
-    // create our blurred image
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
-    
-    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
-    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
-    [filter setValue:inputImage forKey:kCIInputImageKey];
-    [filter setValue:[NSNumber numberWithFloat:15.0f] forKey:@"inputRadius"];
-    CIImage *result = [filter valueForKey:kCIOutputImageKey];
-    
-    // CIGaussianBlur has a tendency to shrink the image a little,
-    // this ensures it matches up exactly to the bounds of our original image
-    CGImageRef cgImage = [context createCGImage:result fromRect:[inputImage extent]];
-    
-    return [UIImage imageWithCGImage:cgImage];
-    
-    // if you need scaling
-    // return [[self class] scaleIfNeeded:cgImage];
-}
-
-+(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
-    bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
-    if (isRetina) {
-        return [UIImage imageWithCGImage:cgimg scale:2.0 orientation:UIImageOrientationUp];
-    } else {
-        return [UIImage imageWithCGImage:cgimg];
-    }
-}
+//- (UIImage*) blur:(UIImage*)theImage
+//{
+//    // create our blurred image
+//    CIContext *context = [CIContext contextWithOptions:nil];
+//    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
+//    
+//    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
+//    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+//    [filter setValue:inputImage forKey:kCIInputImageKey];
+//    [filter setValue:[NSNumber numberWithFloat:15.0f] forKey:@"inputRadius"];
+//    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+//    
+//    // CIGaussianBlur has a tendency to shrink the image a little,
+//    // this ensures it matches up exactly to the bounds of our original image
+//    CGImageRef cgImage = [context createCGImage:result fromRect:[inputImage extent]];
+//    
+//    return [UIImage imageWithCGImage:cgImage];
+//    
+//    // if you need scaling
+//    // return [[self class] scaleIfNeeded:cgImage];
+//}
+//
+//+(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
+//    bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
+//    if (isRetina) {
+//        return [UIImage imageWithCGImage:cgimg scale:2.0 orientation:UIImageOrientationUp];
+//    } else {
+//        return [UIImage imageWithCGImage:cgimg];
+//    }
+//}
 
 - (void)viewDidLoad
 {
@@ -829,7 +829,7 @@ bool REVERSE_ANIM = false;
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         SearchViewController *destinaton  = [segue destinationViewController];
         destinaton.CityName = self.CityNameText;
-        destinaton.readyArray = self.readyArray;
+        destinaton.readyArray = AroundArray;
     }
     
     if ([[segue identifier] isEqualToString:@"MapSegue"]) {
