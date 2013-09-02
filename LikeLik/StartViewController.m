@@ -330,7 +330,7 @@ static BOOL JUST_APPEAR = YES;
         NSURLResponse *response = nil;
         NSError *err = nil;
         
-        NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
+        //NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
         
         return [self getContentLenght:response];
     }
