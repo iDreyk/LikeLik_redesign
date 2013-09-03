@@ -191,9 +191,6 @@ static NSInteger j=0;
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    
-    
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     if ([[defaults objectForKey:@"Language"] length] == 0) {
@@ -232,7 +229,16 @@ static NSInteger j=0;
                          self.Firsttitle.alpha = 1;
                          self.subtitle.alpha = 1;
                          //     [self.HUDfade hide:YES];
+#if LIKELIK
                          [self performSegueWithIdentifier:@"fistSegue" sender:self];
+                         
+#endif
+#if VIENNA
+                         [self performSegueWithIdentifier:@"CitySegue" sender:self];
+#endif
+#if MOSCOW
+                         [self performSegueWithIdentifier:@"CitySegue" sender:self];
+#endif
                      }];
     
 }

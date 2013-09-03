@@ -144,6 +144,18 @@ NSInteger wasinactive = NO;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+#if MOSCOW
+    NSLog(@"LikeLik MOSCOW onboard");
+#endif
+    
+#if VIENNA
+    NSLog(@"LikeLik Vienna onboard");
+#endif
+    
+#if LIKELIK
+    NSLog(@"LikeLik onboard");
+#endif
+    
     [AppDelegate segmentControlMapList];
     [AppDelegate lang];
     [ExternalFunctions getReady];

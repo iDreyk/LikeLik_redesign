@@ -28,11 +28,11 @@ static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 static BOOL IS_LOADING;
 static BOOL IN_BG;
-
+#define textinFrame 131313
 #define EF_TAG 66483
 #define FADE_TAG 66484
-
-
+#define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
+static NSString *city = @"";
 @interface CategoryViewController ()
 
 @end
@@ -207,7 +207,12 @@ static BOOL IN_BG;
 
 - (void)viewDidLoad
 {
+    
+    
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+    
     IN_BG = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appReturnsActive) name:UIApplicationDidBecomeActiveNotification object:nil];
@@ -234,6 +239,15 @@ static BOOL IN_BG;
     //Overlay_Long@2x.png
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
     
+#if MOSCOW
+    self.Label = @"Moscow";
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
+#endif
+#if VIENNA
+    self.Label = @"Vienna";
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
+#endif
+
     self.CityName.text = self.Label;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
@@ -245,7 +259,7 @@ static BOOL IN_BG;
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     //    self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+#if LIKELIK
     UIButton *btn = [InterfaceFunctions map_button:1];
     [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
@@ -279,6 +293,23 @@ static BOOL IN_BG;
     [self.MapPlace setAdjustTilesForRetinaDisplay:YES];
     self.MapPlace.showsUserLocation = YES;
     [self.placeViewMap setHidden:YES];
+
+#else
+    [self.placeViewMap setHidden:YES];
+    UIButton *btn_left = [InterfaceFunctions Info_button];
+    [btn_left addTarget:self action:@selector(Info) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn_left];
+    
+    UIButton *btn = [InterfaceFunctions Pref_button];
+    [btn addTarget:self action:@selector(Pref) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(pref_dismiss)
+                                                 name: dismiss
+                                               object: nil];
+    
+    
+#endif
     
     if([ExternalFunctions isDownloaded:self.CityName.text]){
         
@@ -355,7 +386,7 @@ static BOOL IN_BG;
         text.text = AMLocalizedString([self.CellArray objectAtIndex:frame.tag], nil);
         text.backgroundColor = [UIColor clearColor];
         text.textColor = [UIColor whiteColor];
-        
+        text.tag = textinFrame;
         [text setFont:[AppDelegate OpenSansSemiBold:22]];
         text.textAlignment = NSTextAlignmentCenter;
         [frame addSubview:text];
@@ -396,6 +427,20 @@ static BOOL IN_BG;
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];
     
 }
+
+
+-(void)pref_dismiss{
+    [self viewDidAppear:YES];
+}
+
+-(void)Pref{
+    [self performSegueWithIdentifier:@"PrefSegue" sender:self];
+}
+
+-(void)Info{
+    [self performSegueWithIdentifier:@"InfoSegue" sender:self];
+}
+
 - (void)appToBackground{
     NSLog(@"LOG: app to background");
     IN_BG = YES;
@@ -503,6 +548,50 @@ static BOOL IN_BG;
         //   self.locationButton.enabled = YES;
         NSLog(@"Взяли локацию пользователя");
     }
+    
+#if VIENNA
+    city = @"Vienna";
+#endif
+#if MOSCOW
+    city = @"Moscow";
+#endif
+    
+#if LIKELIK
+#else
+    self.Label = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
+    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+        for (int i = 0; i < 12; ++i){
+            UILabel *label = (UILabel *)[[self.frameArray objectAtIndex:i] viewWithTag:textinFrame];
+            label.text = AMLocalizedString([self.CellArray objectAtIndex:i], nil);
+            }
+    [self getSoonLabels];
+#endif
+    //        UIView *frame = (self.frameArray)[i];
+    //        MLPAccessoryBadge *Badge = [MLPAccessoryBadge new];
+    //        [Badge.textLabel setFont:[AppDelegate OpenSansSemiBold:32]];
+    //        //[Badge sizeToFit];
+    //        [Badge setBackgroundColor:[InterfaceFunctions colorTextCategory:[self.CellArray objectAtIndex:i]]];
+    //        [Badge setText:AMLocalizedString(@"Soon", nil)];
+    //        Badge.center = frame.center;//CGRectMake(0.0, 0.0, frameSize, frameSize);
+    //        if ([[self placesInCategory:[self.CellArray objectAtIndex:i]] count] == 0) {
+    //            frame.alpha = 0.3;
+    //            [self.categoryView addSubview:Badge];
+    //            [frame setUserInteractionEnabled:NO];
+    //        }
+    //        else{
+    //            [frame setUserInteractionEnabled:YES];
+    //        }
+        
+    //    
+    //}
+    //    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+
+    //    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+//    [self.Table reloadData];
+//    self.Label = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+//    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
+//    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
 }
 
 
