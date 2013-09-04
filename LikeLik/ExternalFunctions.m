@@ -301,8 +301,9 @@ static CLLocation *Me;
 
 //  удаление каталога
 + (void) deleteCityCatalogue : (NSString *) city{
+    NSString *documentsDirectoryPath = [self docDir];
     NSString *cityName = [self getInternationalCityNameByLocalizedCityName:city];
-    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
+    NSString *cataloguesPath = [documentsDirectoryPath stringByAppendingPathComponent:@"catalogue.plist"];
     NSMutableArray *newCatalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *catalogues = [[NSMutableArray alloc]initWithArray:[defaults objectForKey:catalogue]];
@@ -319,7 +320,7 @@ static CLLocation *Me;
         }
     }
     
-    [[NSFileManager defaultManager] removeItemAtPath:[[self docDir]stringByAppendingPathComponent:cityName] error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:[documentsDirectoryPath stringByAppendingPathComponent:cityName] error:nil];
     [self getReady];
 }
 
@@ -339,7 +340,7 @@ static CLLocation *Me;
 }
 //  добавить в скаченные
 + (void) addCityToDownloaded : (NSString *) city {
-    NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
+    NSString *cataloguesPath = [[self docDir] stringByAppendingPathComponent:@"catalogue.plist"];
     NSMutableArray *newCatalogues = [[NSMutableArray alloc]initWithContentsOfFile:cataloguesPath];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *catalogues = [[NSMutableArray alloc]initWithArray:[defaults objectForKey:catalogue]];
@@ -634,20 +635,6 @@ static CLLocation *Me;
 
     checkLanguageFromCountry = language2;
     checkLanguageFromSystem = language1;
-//
-//    
-//    if ([language1 isEqualToString:language2] && ![language1 isEqualToString:@"de"]) {
-//        checkLanguageFromSystem = @"ru";
-//        checkLanguageFromCountry = @"de";
-//    }
-//    else if ([language1 isEqualToString:language2] && [language1 isEqualToString:@"de"]){
-//        checkLanguageFromSystem = language1;
-//        checkLanguageFromCountry = @"ru";
-//    }
-//    else if (![language1 isEqualToString:language2]){
-//        checkLanguageFromSystem = @"de";
-//        checkLanguageFromCountry = @"ru";
-//    }
     
     if ([checkLanguageFromCountry isEqualToString:@"ru"]) {
         checkLanguageFromCountry = @"checkText_RU";
@@ -882,14 +869,6 @@ static CLLocation *Me;
         return tmp2;
 
 }
-
-
-
-
-
-
-
-
 
 
 //
