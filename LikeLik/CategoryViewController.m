@@ -585,6 +585,7 @@ static NSString *city = @"";
     return [NSArray arrayWithArray:arrayOfPlacesInCategory];
 }
 
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIView *)sender{
     
     //NSIndexPath *indexPath = [self.Table indexPathForSelectedRow];
