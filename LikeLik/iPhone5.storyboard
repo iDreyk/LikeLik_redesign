@@ -485,11 +485,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstAttribute="height" constant="568" id="vzq-k5-nd6"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Bg_gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="04F-T3-mKj">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="w7f-1j-aGh"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Va-kC-PQQ">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -544,18 +539,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="04F-T3-mKj" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="4Zh-OM-BPC"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="7Cz-en-7ek"/>
                             <constraint firstItem="xP9-xf-rsy" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" constant="5" id="9Bk-KK-zWq"/>
                             <constraint firstItem="H6m-yY-kDG" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="9mz-50-6xO"/>
                             <constraint firstItem="m6S-MZ-OaS" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" constant="14" id="FMe-2P-PHu"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="G0Q-bH-ewe"/>
-                            <constraint firstItem="04F-T3-mKj" firstAttribute="centerY" secondItem="m6S-MZ-OaS" secondAttribute="centerY" type="default" id="H0M-23-lG0"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="PkM-Jy-Xpd"/>
+                            <constraint firstItem="m6S-MZ-OaS" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" constant="5" id="RLh-AV-eQA"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="RnK-ax-rvg"/>
-                            <constraint firstItem="04F-T3-mKj" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="St3-Ua-QSI"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="TcT-uj-qKr"/>
-                            <constraint firstItem="04F-T3-mKj" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="haD-r2-4fB"/>
                             <constraint firstItem="H6m-yY-kDG" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="rTH-bQ-8Mm"/>
                             <constraint firstItem="H6m-yY-kDG" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="sti-Pq-Qid"/>
                             <constraint firstAttribute="bottom" secondItem="xP9-xf-rsy" secondAttribute="bottom" constant="33" id="tzx-7m-ckY"/>
@@ -591,7 +583,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="SegmentedMapandTable" destination="KdP-xq-s9v" id="nvH-0Y-jqf"/>
                         <outlet property="ViewforMap" destination="2Va-kC-PQQ" id="87H-Iw-276"/>
                         <outlet property="backgroundView" destination="2Va-kC-PQQ" id="My1-En-4DT"/>
-                        <outlet property="gradient_under_cityname" destination="04F-T3-mKj" id="IHT-6R-vNS"/>
                         <outlet property="locationButton" destination="xP9-xf-rsy" id="jid-tn-dgZ"/>
                         <segue destination="Raj-iV-euz" kind="push" identifier="MapSegue" id="Tjm-t9-blW"/>
                         <segue destination="don-oj-O1o" kind="push" identifier="RegisterSegue" id="zUH-te-kZE"/>
@@ -673,11 +664,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veT-Xa-uYa"/>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Bg_gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kj4-Hh-Q6l">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Lp5-mJ-HzJ"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHM-mj-lSa">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -698,16 +684,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="veT-Xa-uYa" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="2ad-9u-quV"/>
                             <constraint firstAttribute="bottom" secondItem="veT-Xa-uYa" secondAttribute="bottom" constant="1" id="5tj-sh-hZy"/>
                             <constraint firstItem="veT-Xa-uYa" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="CDK-va-rfH"/>
-                            <constraint firstItem="Kj4-Hh-Q6l" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" type="default" id="CS4-4P-Hqm"/>
                             <constraint firstItem="1z2-fN-29b" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" type="default" id="Dpe-4h-eie"/>
                             <constraint firstItem="1z2-fN-29b" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="KIR-2h-KnC"/>
-                            <constraint firstItem="Kj4-Hh-Q6l" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="OaU-Fa-Mip"/>
                             <constraint firstItem="aua-JJ-4wB" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="V60-hR-b7G"/>
                             <constraint firstItem="veT-Xa-uYa" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="44" id="YUs-1k-qL8"/>
                             <constraint firstItem="aua-JJ-4wB" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="kq6-Sq-tPd"/>
                             <constraint firstItem="aua-JJ-4wB" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" type="default" id="oav-BP-JE5"/>
                             <constraint firstItem="IHM-mj-lSa" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" constant="12" id="pT3-BK-6MG"/>
-                            <constraint firstItem="Kj4-Hh-Q6l" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="sQI-AE-jdG"/>
                             <constraint firstAttribute="bottom" secondItem="aua-JJ-4wB" secondAttribute="bottom" constant="-2" id="smx-R5-Efo"/>
                             <constraint firstItem="1z2-fN-29b" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="yH1-il-pnI"/>
                         </constraints>
@@ -723,7 +706,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <connections>
                         <outlet property="CityImage" destination="1z2-fN-29b" id="iSL-zw-wty"/>
                         <outlet property="CityName" destination="IHM-mj-lSa" id="hdZ-uI-USu"/>
-                        <outlet property="GradientUnderLabel" destination="Kj4-Hh-Q6l" id="32G-q6-y5J"/>
                         <outlet property="categoryView" destination="veT-Xa-uYa" id="H1G-b2-4jV"/>
                         <outlet property="placeViewMap" destination="aua-JJ-4wB" id="aaE-BO-1RX"/>
                         <segue destination="1FC-V3-3wh" kind="push" identifier="AroundmeSegue" id="NbR-YX-niO"/>
