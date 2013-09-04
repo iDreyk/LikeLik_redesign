@@ -49,7 +49,7 @@ static NSString *city = @"";
 }
 
 
-- (UIImage*) blur:(UIImage*)theImage
+- (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
 {
     // create our blurred image
     CIContext *context = [CIContext contextWithOptions:nil];
@@ -58,17 +58,17 @@ static NSString *city = @"";
     // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
     CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
     [filter setValue:inputImage forKey:kCIInputImageKey];
-    [filter setValue:[NSNumber numberWithFloat:0.0f] forKey:@"inputRadius"];
+    [filter setValue:[NSNumber numberWithFloat:blurSize] forKey:@"inputRadius"];
     CIImage *result = [filter valueForKey:kCIOutputImageKey];
     
     // CIGaussianBlur has a tendency to shrink the image a little,
     // this ensures it matches up exactly to the bounds of our original image
-    CGImageRef cgImage = [context createCGImage:result fromRect:[inputImage extent]];
+    CGImageRef cgImage = [context createCGImage:result fromRect:CGRectMake(blurSize, 0, [inputImage extent].size.width - 2*blurSize, [inputImage extent].size.height)];
     
-    return [UIImage imageWithCGImage:cgImage];
+    //return [UIImage imageWithCGImage:cgImage];
     
     // if you need scaling
-    //return [[self class] scaleIfNeeded:cgImage];
+    return [[self class] scaleIfNeeded:cgImage];
 }
 
 
@@ -231,7 +231,7 @@ static NSString *city = @"";
     self.categoryView.delegate = self;
     UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     
-    background.backgroundColor = [UIColor whiteColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
+    background.backgroundColor = [UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
     [self.categoryView addSubview:background];
     
     //    self.Table.backgroundColor = [UIColor clearColor];
@@ -251,7 +251,8 @@ static NSString *city = @"";
     self.CityName.text = self.Label;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
-    self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
+    self.CityImage.frame = self.view.frame;
+    self.CityImage.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]] withFloat:15.0f];
     //    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
     
@@ -716,30 +717,30 @@ static NSString *city = @"";
 - (void)viewDidUnload {
     [super viewDidUnload];
 }
-
-- (void)updateOffsets {
-    
-    CGFloat yOffset   = self.categoryView.contentOffset.y;
-    
-    if (yOffset < 0) {
-        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
-        
-        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
-        
-        self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
-        //self.categoryView.frame = CGRectMake(self.categoryView.frame.origin.x,self.categoryView.frame.origin.y-yOffset,self.categoryView.frame.size.width,self.categoryView.frame.size.height);
-    }
-    else {
-        self.CityImage.frame = CGRectMake(0, -280.0, 320, self.CityImage.frame.size.height);
-        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0,self.CityName.frame.size.width,self.CityName.frame.size.height);
-        self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,0.0,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
-        
-    }
-    self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
-}
+//
+//- (void)updateOffsets {
+//    
+//    CGFloat yOffset   = self.categoryView.contentOffset.y;
+//    
+//    if (yOffset < 0) {
+//        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
+//        
+//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
+//        
+//        self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
+//        //self.categoryView.frame = CGRectMake(self.categoryView.frame.origin.x,self.categoryView.frame.origin.y-yOffset,self.categoryView.frame.size.width,self.categoryView.frame.size.height);
+//    }
+//    else {
+//        self.CityImage.frame = CGRectMake(0, -280.0, 320, self.CityImage.frame.size.height);
+//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0,self.CityName.frame.size.width,self.CityName.frame.size.height);
+//        self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,0.0,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
+//        
+//    }
+//    self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
+//}
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self updateOffsets];
+    //[self updateOffsets];
 }
 
 @end
