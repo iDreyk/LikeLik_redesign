@@ -966,7 +966,7 @@ CGFloat alpha = 0.5;
                                                   delegate:self
                                          cancelButtonTitle:AMLocalizedString(@"Close",nil)
                                     destructiveButtonTitle:nil
-                                                    otherButtonTitles: AMLocalizedString(@"Share on facebook", nil),AMLocalizedString(@"Share on twitter", nil),AMLocalizedString(@"Share on VK", nil),AMLocalizedString(@"Share on Jen Jen", nil),AMLocalizedString(@"Send Email",nil),nil];
+                                                    otherButtonTitles: AMLocalizedString(@"Share on facebook", nil),AMLocalizedString(@"Share on twitter", nil),AMLocalizedString(@"Share on VK", nil),/*AMLocalizedString(@"Share on Jen Jen", nil),*/AMLocalizedString(@"Send Email",nil),nil];
         
         [actionSheet showFromRect:CGRectMake(0.0, 0.0, 320.0, 300.) inView:[[self navigationController] navigationBar] animated:YES];//showInView: [[self navigationController] navigationBar]];
         actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
@@ -1110,7 +1110,7 @@ CGFloat alpha = 0.5;
         if (controller)
             [self presentViewController:controller animated:YES completion:^{}];//presentModalViewController: controller animated: YES];
         else {
-#warning текст шаринга
+
             NSLog(@"321");
             [_engine sendUpdate: self.PlaceAbout];
         }
@@ -1204,7 +1204,6 @@ CGFloat alpha = 0.5;
 }
 
 - (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte{
-#warning текст шаринга
      [_vkontakte postMessageToWall:self.PlaceAbout link:[[NSURL alloc] initWithString:@"http://likelik.com"]];
     [self dismissViewControllerAnimated:YES completion:^{}];//
 }
@@ -1290,7 +1289,6 @@ CGFloat alpha = 0.5;
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
         mailer.mailComposeDelegate = self;
         [mailer setSubject:AMLocalizedString(@"Email Subject", nil)];
-#warning поправить текст
         NSString *emailBody = AMLocalizedString(@"Email Text", nil);
         [mailer setMessageBody:emailBody isHTML:NO];
         [self presentViewController:mailer animated:YES completion:^{}];

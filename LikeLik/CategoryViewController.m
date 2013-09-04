@@ -601,13 +601,8 @@ static NSString *city = @"";
         AroundMeViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
-        destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];//AroundArray;
-        destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);//AMLocalizedString(@"Around Me", nil);
-        //        PlacesByCategoryViewController *destination =[segue destinationViewController];
-        //        destination.CityName = self.Label;
-        //        destination.Category = [self.CellArray objectAtIndex:row];
-        //        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
-        //        destination.categoryArray = [self placesInCategory:destination.Category];
+        destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];
+        destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
     }
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
         FavViewController *destination = [segue destinationViewController];

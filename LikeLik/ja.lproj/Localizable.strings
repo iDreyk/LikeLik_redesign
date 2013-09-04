@@ -79,7 +79,7 @@
 "Add to Favourites" = "ブックマークに追加";
 "Call" = "コール";
 "Web" = "サイト";
-"Email Text" = "メールのテキスト";
+"Email Text" = "";//"メールのテキスト";
 "Email Subject" = "メールの件名";
 "Send Email" = "メールで送信";
 "Favorited" = "ブックマーク";
@@ -104,3 +104,5 @@
 "Download" = "Download";
 "Next time" = "Next time";
 "Please, update catalogues to get access to newest features." = "Please, update catalogues to get access to newest features.";
+"km" = "km";
+"m" = "m";

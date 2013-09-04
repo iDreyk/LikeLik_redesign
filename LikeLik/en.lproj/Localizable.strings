@@ -82,7 +82,7 @@
 "Call" = "Call";
 "Web" = "Web";
 "Email Subject" = "I recommend";
-"Email Text" = "Email Text";
+"Email Text" = "";
 "Favorited" = "Added to Favorites";
 "Send Email" = "Send Email";
 "Something goes wrong" = "Something went wrong :(\nTry Later!";
@@ -106,3 +106,5 @@
 "Download" = "Download";
 "Next time" = "Next time";
 "Please, update catalogues to get access to newest features." = "Please, update catalogues to get access to newest features.";
+"km" = "km";
+"m" = "m";

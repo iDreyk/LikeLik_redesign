@@ -29,7 +29,7 @@ static NSString *city = @"";
 @interface SplashViewController ()
 
 @end
-
+//testing git
 @implementation SplashViewController
 @synthesize locationManagerRegion,locationManager;
 @synthesize alertLabel;
