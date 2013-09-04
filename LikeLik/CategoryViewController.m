@@ -213,7 +213,6 @@ static NSString *city = @"";
     NSLog(@"viewDidLoad");
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    
     IN_BG = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appReturnsActive) name:UIApplicationDidBecomeActiveNotification object:nil];
@@ -536,9 +535,9 @@ static NSString *city = @"";
 #if LIKELIK
 #else
     self.navigationItem.leftBarButtonItem.enabled = YES;
-    self.Label = city;//[[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+    self.Label = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
-    self.CityName.text = city;//[[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
         for (int i = 0; i < 12; ++i){
             UILabel *label = (UILabel *)[[self.frameArray objectAtIndex:i] viewWithTag:textinFrame];
             label.text = AMLocalizedString([self.CellArray objectAtIndex:i], nil);
@@ -588,8 +587,7 @@ static NSString *city = @"";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIView *)sender{
     
-    //NSIndexPath *indexPath = [self.Table indexPathForSelectedRow];
-    NSInteger row =[(UIGestureRecognizer *)sender view].tag;//[indexPath row];
+    NSInteger row =[(UIGestureRecognizer *)sender view].tag;
     NSLog(@"In segue! Number is: %d", row);
     if ([[segue identifier] isEqualToString:@"AroundmeSegue"]) {
         AroundMeViewController *destination = [segue destinationViewController];

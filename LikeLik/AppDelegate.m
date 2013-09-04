@@ -159,6 +159,8 @@ NSInteger wasinactive = NO;
     [AppDelegate segmentControlMapList];
     [AppDelegate lang];
     
+    [ExternalFunctions getReady];
+    
     CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
     
     if (iOSDeviceScreenSize.height == 480)
