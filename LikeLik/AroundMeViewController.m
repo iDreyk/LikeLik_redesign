@@ -627,9 +627,9 @@ bool REVERSE_ANIM = false;
     
     UILabel *dist = (UILabel *)[cell viewWithTag:distanceTag];
     if(intDist > 1000)
-        dist.text = [NSString stringWithFormat:@"%.2f km", intDist / 1000.];
+        dist.text = [NSString stringWithFormat:@"%.2fЧ%@", intDist / 1000.,AMLocalizedString(@"km", nil)];
     else
-        dist.text = [NSString stringWithFormat:@"%.0f m", intDist];
+        dist.text = [NSString stringWithFormat:@"%.0f%@", intDist,AMLocalizedString(@"m", nil)];
     
     
     UIButtonWithAditionalNum * check = (UIButtonWithAditionalNum *)[cell viewWithTag:checkTag];

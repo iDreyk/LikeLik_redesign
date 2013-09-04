@@ -82,7 +82,7 @@
 "Add to Favourites" = "В Избранное";
 "Call" = "Позвонить";
 "Web" = "Сайт";
-"Email Text" = "Email Text";
+"Email Text" = "";
 "Email Subject" = "Рекомендую";
 "Send Email" = "Отправить по почте";
 "Favorited" = "В Избранном";
@@ -107,3 +107,5 @@
 "Download" = "Загрузка";
 "Next time" = "В следующий раз";
 "Please, update catalogues to get access to newest features." = "Пожалуйста, обновите каталоги, чтобы получить доступ к новейшим функциям.";
+"km" = "км";
+"m" = "м";

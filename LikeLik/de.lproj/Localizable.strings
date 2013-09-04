@@ -79,7 +79,7 @@
 "Add to Favourites" = "Zum Favoriten";
 "Call" = "Anrufen";
 "Web" = "Web";
-"Email Text" = "Email Text";
+"Email Text" = "";
 "Email Subject" = "Ich empfehle";
 "Send Email" = "Per E-Mail";
 "Favorited" = "Ist schon in Favoriten";
@@ -104,3 +104,5 @@
 "Download" = "Download";
 "Next time" = "Nächstes Mal";
 "Please, update catalogues to get access to newest features." = "Bitte aktualisieren Sie die Kataloge, um Zugang zu neuesten Features zu erhalten.";
+"km" = "km";
+"m" = "m";
