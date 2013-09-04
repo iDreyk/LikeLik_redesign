@@ -430,7 +430,6 @@ static NSString *city = @"";
 }
 
 -(void)viewReload{
-    NSLog(@"обновить view");
     [self viewDidLoad];
 }
 
