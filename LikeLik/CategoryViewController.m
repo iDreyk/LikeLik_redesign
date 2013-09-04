@@ -633,13 +633,14 @@ static NSString *city = @"";
 }
 
 -(NSArray *)favoritePlaces {
-    NSMutableArray *arrayOfFavoritePlaces = [[NSMutableArray alloc] init];
-    for (int i = 0; i < AroundArray.count; ++i) {
-        if([[[AroundArray objectAtIndex:i] objectForKey:@"Favorite"] isEqualToString:@"1"]){
-            [arrayOfFavoritePlaces addObject:(AroundArray)[i]];
-        }
-    }
-    return [NSArray arrayWithArray:arrayOfFavoritePlaces];
+//    NSMutableArray *arrayOfFavoritePlaces = [[NSMutableArray alloc] init];
+//    for (int i = 0; i < AroundArray.count; ++i) {
+//        if([[[AroundArray objectAtIndex:i] objectForKey:@"Favorite"] isEqualToString:@"1"]){
+//            [arrayOfFavoritePlaces addObject:(AroundArray)[i]];
+//        }
+//    }
+//    return [NSArray arrayWithArray:arrayOfFavoritePlaces];
+    return [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];
 }
 
 
@@ -659,19 +660,20 @@ static NSString *city = @"";
         AroundMeViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
-        destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];//AroundArray;
-        destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);//AMLocalizedString(@"Around Me", nil);
-        //        PlacesByCategoryViewController *destination =[segue destinationViewController];
-        //        destination.CityName = self.Label;
-        //        destination.Category = [self.CellArray objectAtIndex:row];
-        //        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
-        //        destination.categoryArray = [self placesInCategory:destination.Category];
+        destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];
+        destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
     }
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
-        FavViewController *destination = [segue destinationViewController];
-        [segue destinationViewController];
-        destination.CityName = self.Label;
-        destination.readyArray = [self favoritePlaces];
+        AroundMeViewController *destination = [segue destinationViewController];
+        destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
+        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
+        NSLog(@"%@",[self favoritePlaces]);
+        destination.readyArray = [self favoritePlaces];//[self placesInCategory:[self.CellArray objectAtIndex:row]];
+        destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
+//        FavViewController *destination = [segue destinationViewController];
+//        [segue destinationViewController];
+//        destination.CityName = self.Label;
+//        destination.readyArray = [self favoritePlaces];
     }
     
     if ([[segue identifier] isEqualToString:@"VisualtourSegue"]) {

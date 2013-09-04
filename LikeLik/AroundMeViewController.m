@@ -165,7 +165,7 @@ bool REVERSE_ANIM = false;
         
         HUD.removeFromSuperViewOnHide = YES;
         HUD.detailsLabelFont = [AppDelegate OpenSansBoldwithSize:28];
-        HUD.detailsLabelText = AMLocalizedString(@"Apparently, you've disabled this application to access your geolocation", nil);//customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"Apparently, you've disabled this application to access your geolocation", nil)];
+        HUD.detailsLabelText = AMLocalizedString(@"Apparently, you've disabled this application to access your geolocation", nil);
         
         HUD.delegate = self;
         [HUD show:YES];
@@ -353,6 +353,45 @@ bool REVERSE_ANIM = false;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+    if ([AroundArray count] == 0) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height/4, 0.0, 0.0)];
+        [label setText:AMLocalizedString(@"Add to Favorites best places", nil)];
+        label.numberOfLines = 0;
+        label.textAlignment = NSTextAlignmentCenter;
+        [label sizeToFit];
+        [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
+        [label setFont:[AppDelegate OpenSansRegular:32]];
+        [label setBackgroundColor:[UIColor clearColor]];
+        
+        
+        UILabel *sublabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0,label.frame.origin.y +label.frame.size.height +40.0,0.0,0.0)];
+        [sublabel setText:AMLocalizedString(@"To do this, just click on a star when you look interesting place ", nil)];
+        sublabel.numberOfLines = 0;
+        sublabel.textAlignment = NSTextAlignmentCenter;
+        [sublabel sizeToFit];
+        [sublabel setFrame:CGRectMake((320.0-sublabel.frame.size.width)/2, label.frame.origin.y + label.frame.size.height + 40.0, sublabel.frame.size.width, sublabel.frame.size.height+30)];
+        [sublabel setFont:[AppDelegate OpenSansRegular:32]];
+        [sublabel setBackgroundColor:[UIColor clearColor]];
+        
+        self.CityImage.hidden = YES;
+        self.gradient_under_cityname.hidden = YES;
+        self.CityName.hidden = YES;
+        self.PlacesTable.hidden = YES;
+        //    self.FavTable.backgroundView = [InterfaceFunctions backgroundView];
+        [self.view addSubview:[InterfaceFunctions backgroundView]];
+        [self.view addSubview:[InterfaceFunctions favourite_star_empty]];
+        //self.view.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:label];
+        [self.view addSubview:sublabel];
+//        [self.PlacesTable.backgroundView addSubview:[InterfaceFunctions favourite_star_empty]];
+//        self.PlacesTable.backgroundView.backgroundColor = [UIColor whiteColor];
+//        [self.PlacesTable.backgroundView addSubview:label];
+//        [self.PlacesTable.backgroundView addSubview:sublabel];
+        NSLog(@"ПУСТО");
+    }
+    
+    
     return [AroundArray count];
 }
 
@@ -365,6 +404,31 @@ bool REVERSE_ANIM = false;
     return 185;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"CityNameString = %@ %@",self.CityNameString,AMLocalizedString(@"Favorites", nil));
+    if ([self.CityNameString isEqualToString: AMLocalizedString(@"Favorites", nil)]){
+        NSLog(@"canEditRowAtIndexPath");
+        return YES;
+    }
+    else{
+        NSLog(@"no canEditRowAtIndexPath");
+        return NO;
+    }
+}
+
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath{
+    //    nslog(@"Hello!");
+    NSString *Place = [[AroundArray objectAtIndex:[indexPath row]] objectForKey:@"Name"];
+    NSString *Category = [[AroundArray objectAtIndex:[indexPath row]] objectForKey:@"Category"];
+    [ExternalFunctions removeFromFavoritesPlace:Place InCategory:Category InCity:self.CityNameText];
+    AroundArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityNameText];
+    [tableView reloadData];
+    
+    
+}
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     //UIGraphicsBeginImageContext(newSize);
@@ -627,7 +691,7 @@ bool REVERSE_ANIM = false;
     
     UILabel *dist = (UILabel *)[cell viewWithTag:distanceTag];
     if(intDist > 1000)
-        dist.text = [NSString stringWithFormat:@"%.2fЧ%@", intDist / 1000.,AMLocalizedString(@"km", nil)];
+        dist.text = [NSString stringWithFormat:@"%.2f%@", intDist / 1000.,AMLocalizedString(@"km", nil)];
     else
         dist.text = [NSString stringWithFormat:@"%.0f%@", intDist,AMLocalizedString(@"m", nil)];
     

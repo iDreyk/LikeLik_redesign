@@ -1835,13 +1835,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="categoryView" destination="saQ-QI-AlB" id="glH-QI-vOc"/>
                         <outlet property="placeViewMap" destination="fWS-sG-OGH" id="Roh-Qa-7da"/>
                         <segue destination="1FC-V3-3wh" kind="push" identifier="AroundmeSegue" id="eas-vr-neV"/>
-                        <segue destination="0Jt-4j-Wmn" kind="push" identifier="FavoritesSegue" id="4IS-jT-fqa"/>
+                        <segue destination="0Jt-4j-Wmn" kind="push" identifier="" id="4IS-jT-fqa"/>
                         <segue destination="kAC-G7-7GR" kind="push" identifier="VisualtourSegue" id="gVD-gh-N8p"/>
                         <segue destination="pV2-Ha-ulb" kind="push" identifier="PracticalinfoSegue" id="7Ut-Q6-Hdj"/>
                         <segue destination="Raj-iV-euz" kind="push" identifier="MapSegue" id="iFn-sF-BeJ"/>
                         <segue destination="N3A-Wm-so7" kind="push" identifier="TransportationSegue" id="9aa-no-5hP"/>
                         <segue destination="nTr-4r-NYY" kind="push" identifier="SearchSegue" id="27d-SI-zSj"/>
                         <segue destination="1FC-V3-3wh" kind="push" identifier="CategorySegue" id="ZJh-ZB-Acn"/>
+                        <segue destination="1FC-V3-3wh" kind="push" identifier="FavoritesSegue" id="o2g-Ep-1Rf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUf-go-UcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2163,10 +2164,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="CLK-nn-xFX"/>
-        <segue reference="ZJh-ZB-Acn"/>
-        <segue reference="BLQ-Zb-c2f"/>
-        <segue reference="yCK-Wu-Xo6"/>
+        <segue reference="27d-SI-zSj"/>
+        <segue reference="o2g-Ep-1Rf"/>
+        <segue reference="iFn-sF-BeJ"/>
         <segue reference="AMn-TY-YM3"/>
-        <segue reference="CID-7V-uDc"/>
+        <segue reference="yCK-Wu-Xo6"/>
     </inferredMetricsTieBreakers>
 </document>
