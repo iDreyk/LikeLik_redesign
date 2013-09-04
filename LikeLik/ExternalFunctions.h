@@ -11,7 +11,7 @@
 
 @interface ExternalFunctions : NSObject<CLLocationManagerDelegate>
 
-+ (void) addCityToDownloaded : (NSString *) city;
++ (void) addCityToDownloaded : (NSString *) city;               //  зафиксировать скачанность каталога
 
 //  удаление каталога
 + (void) deleteCityCatalogue : (NSString *) city;
