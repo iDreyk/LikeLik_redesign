@@ -210,6 +210,7 @@ static NSString *city = @"";
     
     
     [super viewDidLoad];
+    NSLog(@"viewDidLoad");
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     
@@ -252,13 +253,13 @@ static NSString *city = @"";
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
     self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
-    //    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
+        NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"VisualtourSegue",@"TransportationSegue",@"SearchSegue",@"FavoritesSegue",@"PracticalinfoSegue"];
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    //    self.Table.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
 #if LIKELIK
     UIButton *btn = [InterfaceFunctions map_button:1];
     [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
@@ -271,7 +272,6 @@ static NSString *city = @"";
     if ([self.CityName.text isEqualToString:@"Vienna"] || [self.CityName.text isEqualToString:@"Вена"] || [self.CityName.text isEqualToString:@"Wien"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
     }
-    
     
     RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
     self.MapPlace.showsUserLocation = YES;
@@ -308,6 +308,7 @@ static NSString *city = @"";
                                                  name: dismiss
                                                object: nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewReload) name:@"reloadView" object:nil];
     
 #endif
     
@@ -378,7 +379,7 @@ static NSString *city = @"";
     self.frameArray = @[self.frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, frame11, frame12];
     
     int i = 0;
-    NSLog(@"cellArray = %@",self.CellArray);
+//    NSLog(@"cellArray = %@",self.CellArray);
     for (UIView *frame in self.frameArray){
         frame.tag = i;
         frame.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", i+1]] scaledToSize:CGSizeMake(frameSize, frameSize)]];
@@ -428,6 +429,10 @@ static NSString *city = @"";
     
 }
 
+-(void)viewReload{
+    NSLog(@"обновить view");
+    [self viewDidLoad];
+}
 
 -(void)pref_dismiss{
     [self viewDidAppear:YES];
@@ -559,40 +564,16 @@ static NSString *city = @"";
 #if LIKELIK
 #else
     self.navigationItem.leftBarButtonItem.enabled = YES;
-    self.Label = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+    self.Label = city;//[[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
-    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+    self.CityName.text = city;//[[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
         for (int i = 0; i < 12; ++i){
             UILabel *label = (UILabel *)[[self.frameArray objectAtIndex:i] viewWithTag:textinFrame];
             label.text = AMLocalizedString([self.CellArray objectAtIndex:i], nil);
             }
     [self getSoonLabels];
 #endif
-    //        UIView *frame = (self.frameArray)[i];
-    //        MLPAccessoryBadge *Badge = [MLPAccessoryBadge new];
-    //        [Badge.textLabel setFont:[AppDelegate OpenSansSemiBold:32]];
-    //        //[Badge sizeToFit];
-    //        [Badge setBackgroundColor:[InterfaceFunctions colorTextCategory:[self.CellArray objectAtIndex:i]]];
-    //        [Badge setText:AMLocalizedString(@"Soon", nil)];
-    //        Badge.center = frame.center;//CGRectMake(0.0, 0.0, frameSize, frameSize);
-    //        if ([[self placesInCategory:[self.CellArray objectAtIndex:i]] count] == 0) {
-    //            frame.alpha = 0.3;
-    //            [self.categoryView addSubview:Badge];
-    //            [frame setUserInteractionEnabled:NO];
-    //        }
-    //        else{
-    //            [frame setUserInteractionEnabled:YES];
-    //        }
-        
-    //    
-    //}
-    //    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
 
-    //    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
-//    [self.Table reloadData];
-//    self.Label = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
-//    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
-//    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
 }
 
 
@@ -632,17 +613,6 @@ static NSString *city = @"";
     return [NSArray arrayWithArray:arrayOfPlacesInCategory];
 }
 
--(NSArray *)favoritePlaces {
-    NSMutableArray *arrayOfFavoritePlaces = [[NSMutableArray alloc] init];
-    for (int i = 0; i < AroundArray.count; ++i) {
-        if([[[AroundArray objectAtIndex:i] objectForKey:@"Favorite"] isEqualToString:@"1"]){
-            [arrayOfFavoritePlaces addObject:(AroundArray)[i]];
-        }
-    }
-    return [NSArray arrayWithArray:arrayOfFavoritePlaces];
-}
-
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIView *)sender{
     
     //NSIndexPath *indexPath = [self.Table indexPathForSelectedRow];
@@ -671,7 +641,7 @@ static NSString *city = @"";
         FavViewController *destination = [segue destinationViewController];
         [segue destinationViewController];
         destination.CityName = self.Label;
-        destination.readyArray = [self favoritePlaces];
+        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];
     }
     
     if ([[segue identifier] isEqualToString:@"VisualtourSegue"]) {
