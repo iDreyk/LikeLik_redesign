@@ -604,10 +604,18 @@ static NSString *city = @"";
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
     }
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
-        FavViewController *destination = [segue destinationViewController];
-        [segue destinationViewController];
-        destination.CityName = self.Label;
-        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];
+//        FavViewController *destination = [segue destinationViewController];
+//        [segue destinationViewController];
+//        destination.CityName = self.Label;
+//        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];
+//        
+        AroundMeViewController *destination = [segue destinationViewController];
+        destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
+        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
+      //  NSLog(@"%@",[self favoritePlaces]);
+        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];//[self favoritePlaces];//[self placesInCategory:[self.CellArray objectAtIndex:row]];
+        destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
+        
     }
     
     if ([[segue identifier] isEqualToString:@"VisualtourSegue"]) {

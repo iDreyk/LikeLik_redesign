@@ -353,6 +353,7 @@
 		91A802AC179558F8007EC5B6 /* cross2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A7179558F8007EC5B6 /* cross2@2x.png */; };
 		91A802AD179558F8007EC5B6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A8179558F8007EC5B6 /* Icon.png */; };
 		91A802AE179558F8007EC5B6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A9179558F8007EC5B6 /* Icon@2x.png */; };
+		91B831AE17D8B020008E6750 /* 512x512 special Series.png in Resources */ = {isa = PBXBuildFile; fileRef = 91B831AD17D8B01C008E6750 /* 512x512 special Series.png */; };
 		91C08F3817771336007B98D3 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C08F3717771336007B98D3 /* StartViewController.m */; };
 		91FE3A091796C387000304D4 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A071796C387000304D4 /* Moscow */; };
 		91FE3A0A1796C387000304D4 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A081796C387000304D4 /* Vienna */; };
@@ -861,6 +862,7 @@
 		91A802A7179558F8007EC5B6 /* cross2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross2@2x.png"; sourceTree = "<group>"; };
 		91A802A8179558F8007EC5B6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		91A802A9179558F8007EC5B6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		91B831AD17D8B01C008E6750 /* 512x512 special Series.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "512x512 special Series.png"; sourceTree = "<group>"; };
 		91C08F3717771336007B98D3 /* StartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		91FE3A071796C387000304D4 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Moscow; sourceTree = "<group>"; };
 		91FE3A081796C387000304D4 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Vienna; sourceTree = "<group>"; };
@@ -990,6 +992,7 @@
 			isa = PBXGroup;
 			children = (
 				D0BC8E1417C4BB840048659E /* kul_90@2x.png */,
+				91B831AD17D8B01C008E6750 /* 512x512 special Series.png */,
 				FAB01E9D17CC70200052E3E8 /* knuck_pin_test5@2x.png */,
 				916588331794409B00F13BF2 /* 124_124 Social_Icons11@2x.png */,
 				916588341794409B00F13BF2 /* 124_124 Social_Icons22@2x.png */,
@@ -1977,6 +1980,7 @@
 				FA6D979C17CDCFFC000F07E4 /* 10.png in Resources */,
 				FA6D979D17CDCFFC000F07E4 /* 11.png in Resources */,
 				FA6D979E17CDCFFC000F07E4 /* 12.png in Resources */,
+				91B831AE17D8B020008E6750 /* 512x512 special Series.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

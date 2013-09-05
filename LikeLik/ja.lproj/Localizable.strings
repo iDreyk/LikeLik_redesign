@@ -22,7 +22,7 @@
 "Display kilometers" = "キロで";
 "My" = "Meine";
 "More" = "My";
-"More LikeLik Apps" = "Mehr LikeLik Apps";
+"More LikeLik Apps" = "もっとLikeLikアプリ";
 "Available" = "Verfügbar";
 "Update LikeLik Guide" = "LikeLik Guideアップデートする";
 "Later" = " 後で";
@@ -106,3 +106,4 @@
 "Please, update catalogues to get access to newest features." = "Please, update catalogues to get access to newest features.";
 "km" = "km";
 "m" = "m";
+"Special Annotation" = "We will notify you about\nthe release of a special series";
