@@ -331,6 +331,7 @@ static BOOL JUST_APPEAR = YES;
     
     AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
     UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
+    imback.backgroundColor = [UIColor blackColor];
     imback.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f];
     NSLog(@"%@",imback);
     
