@@ -210,9 +210,10 @@ static NSString *city = @"";
     
     
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor clearColor]];
     NSLog(@"viewDidLoad");
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    
+    self.categoryView.backgroundColor = [UIColor clearColor];
     IN_BG = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appReturnsActive) name:UIApplicationDidBecomeActiveNotification object:nil];
@@ -235,7 +236,7 @@ static NSString *city = @"";
     [self.categoryView addSubview:background];
     
     //    self.Table.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor whiteColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
+    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
     //Overlay_Long@2x.png
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
     
@@ -662,8 +663,19 @@ static NSString *city = @"";
     [super viewDidUnload];
 }
 
-//- (void)updateOffsets {
+
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
 //    
+//    NSLog(@"%f", scrollView.contentOffset.y);
+//    if (scrollView.contentOffset.y > 0.0) {
+//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x, self.CityName.frame.origin.y-scrollView.contentOffset.y, self.CityName.frame.size.width, self.CityName.frame.size.height);
+//    }
+//    
+//}
+
+- (void)updateOffsets {
+}//
 //    CGFloat yOffset   = self.categoryView.contentOffset.y;
 //    
 //    if (yOffset > 0) {

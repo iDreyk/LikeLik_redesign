@@ -32,7 +32,7 @@
 
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-
+#define backgroundTag 2442441
 NSInteger PREV_ROW = 0;
 static bool REVERSE_ANIM = false;
 static BOOL JUST_APPEAR = YES;
@@ -277,16 +277,58 @@ static BOOL JUST_APPEAR = YES;
     return 152;
 }
 
+- (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
+{
+    // create our blurred image
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
+    
+    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [filter setValue:inputImage forKey:kCIInputImageKey];
+    [filter setValue:[NSNumber numberWithFloat:blurSize] forKey:@"inputRadius"];
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+    
+    // CIGaussianBlur has a tendency to shrink the image a little,
+    // this ensures it matches up exactly to the bounds of our original image
+    CGImageRef cgImage = [context createCGImage:result fromRect:CGRectMake(blurSize, 0, [inputImage extent].size.width - 2*blurSize, [inputImage extent].size.height)];
+    
+    //return [UIImage imageWithCGImage:cgImage];
+    
+    // if you need scaling
+    return [[self class] scaleIfNeeded:cgImage];
+}
+
++(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
+    bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
+    if (isRetina) {
+        return [UIImage imageWithCGImage:cgimg scale:2.0 orientation:UIImageOrientationUp];
+    } else {
+        return [UIImage imageWithCGImage:cgimg];
+    }
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+
+    
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     NSInteger row = [indexPath row];
     //  NSLog(@"перешёл на экран");
+    
+    
     CategoryViewController *destination =
     [segue destinationViewController];
     
     destination.Label = _CityLabels[row];
     destination.Image = _backCityImages[row];
+    
+    AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
+    UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
+    imback.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f];
+    NSLog(@"%@",imback);
+    
+
     //[TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
 }
 

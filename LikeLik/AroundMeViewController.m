@@ -99,8 +99,8 @@ bool REVERSE_ANIM = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
-    self.backgroundView.backgroundColor = [UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
+    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
+    self.backgroundView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
@@ -136,7 +136,7 @@ bool REVERSE_ANIM = false;
     self.PlacesTable.showsHorizontalScrollIndicator = NO;
     self.PlacesTable.showsVerticalScrollIndicator = NO;
     
-    self.CityImage.hidden = NO;
+   // self.CityImage.hidden = NO;
     self.CityName.hidden = NO;
     self.PlacesTable.hidden =NO;
     self.ViewforMap.hidden = YES;
@@ -313,13 +313,13 @@ bool REVERSE_ANIM = false;
 }
 
 -(IBAction) segmentedControlIndexChanged{
-    self.CityImage.hidden=!self.CityImage.hidden;
+    //self.CityImage.hidden=!self.CityImage.hidden;
     self.CityName.hidden=!self.CityName.hidden;
     self.PlacesTable.hidden=!self.PlacesTable.hidden;
     self.ViewforMap.hidden=!self.ViewforMap.hidden;
     self.locationButton.hidden=!self.locationButton.hidden;
     
-    if (self.CityImage.hidden) {
+    if (self.CityName.hidden) {
         UIButton *titleview = [InterfaceFunctions segmentbar_map_list:0];
         [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -375,7 +375,7 @@ bool REVERSE_ANIM = false;
         [sublabel setFont:[AppDelegate OpenSansRegular:32]];
         [sublabel setBackgroundColor:[UIColor clearColor]];
         
-        self.CityImage.hidden = YES;
+      //  self.CityImage.hidden = YES;
         self.gradient_under_cityname.hidden = YES;
         self.CityName.hidden = YES;
         self.PlacesTable.hidden = YES;

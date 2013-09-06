@@ -505,7 +505,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6m-yY-kDG">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6m-yY-kDG">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="568" id="uDk-f8-ens"/>
                                 </constraints>
@@ -1762,7 +1762,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDR-KQ-afP">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDR-KQ-afP">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="568" id="RIf-Zd-9p2"/>
                                 </constraints>
@@ -2134,8 +2134,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <segue reference="CLK-nn-xFX"/>
         <segue reference="o2g-Ep-1Rf"/>
         <segue reference="CID-7V-uDc"/>
-        <segue reference="6P9-zt-v0l"/>
         <segue reference="mIE-ck-FCQ"/>
         <segue reference="AMn-TY-YM3"/>
+        <segue reference="6P9-zt-v0l"/>
     </inferredMetricsTieBreakers>
 </document>
