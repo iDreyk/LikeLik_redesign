@@ -323,7 +323,6 @@
 		919E8B05173A5F6F00A25E07 /* TransportationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ADC173A5F6E00A25E07 /* TransportationViewController.m */; };
 		919E8B06173A5F6F00A25E07 /* TaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ADE173A5F6E00A25E07 /* TaxiViewController.m */; };
 		919E8B07173A5F6F00A25E07 /* PracticalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE0173A5F6E00A25E07 /* PracticalInfoViewController.m */; };
-		919E8B08173A5F6F00A25E07 /* FavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE2173A5F6E00A25E07 /* FavViewController.m */; };
 		919E8B09173A5F6F00A25E07 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE4173A5F6E00A25E07 /* AboutTableViewController.m */; };
 		919E8B0A173A5F6F00A25E07 /* TermsofUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE6173A5F6E00A25E07 /* TermsofUseViewController.m */; };
 		919E8B0B173A5F6F00A25E07 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE8173A5F6E00A25E07 /* AboutViewController.m */; };
@@ -801,8 +800,6 @@
 		919E8ADE173A5F6E00A25E07 /* TaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiViewController.m; sourceTree = "<group>"; };
 		919E8ADF173A5F6E00A25E07 /* PracticalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PracticalInfoViewController.h; sourceTree = "<group>"; };
 		919E8AE0173A5F6E00A25E07 /* PracticalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PracticalInfoViewController.m; sourceTree = "<group>"; };
-		919E8AE1173A5F6E00A25E07 /* FavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavViewController.h; sourceTree = "<group>"; };
-		919E8AE2173A5F6E00A25E07 /* FavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavViewController.m; sourceTree = "<group>"; };
 		919E8AE3173A5F6E00A25E07 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
 		919E8AE4173A5F6E00A25E07 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
 		919E8AE5173A5F6E00A25E07 /* TermsofUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsofUseViewController.h; sourceTree = "<group>"; };
@@ -1417,8 +1414,6 @@
 				919E8ADE173A5F6E00A25E07 /* TaxiViewController.m */,
 				919E8ADF173A5F6E00A25E07 /* PracticalInfoViewController.h */,
 				919E8AE0173A5F6E00A25E07 /* PracticalInfoViewController.m */,
-				919E8AE1173A5F6E00A25E07 /* FavViewController.h */,
-				919E8AE2173A5F6E00A25E07 /* FavViewController.m */,
 				919E8AE3173A5F6E00A25E07 /* AboutTableViewController.h */,
 				919E8AE4173A5F6E00A25E07 /* AboutTableViewController.m */,
 				919E8AE5173A5F6E00A25E07 /* TermsofUseViewController.h */,
@@ -2019,7 +2014,6 @@
 				919E8B05173A5F6F00A25E07 /* TransportationViewController.m in Sources */,
 				919E8B06173A5F6F00A25E07 /* TaxiViewController.m in Sources */,
 				919E8B07173A5F6F00A25E07 /* PracticalInfoViewController.m in Sources */,
-				919E8B08173A5F6F00A25E07 /* FavViewController.m in Sources */,
 				919E8B09173A5F6F00A25E07 /* AboutTableViewController.m in Sources */,
 				919E8B0A173A5F6F00A25E07 /* TermsofUseViewController.m in Sources */,
 				919E8B0B173A5F6F00A25E07 /* AboutViewController.m in Sources */,
