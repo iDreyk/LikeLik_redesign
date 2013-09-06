@@ -1790,17 +1790,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <constraints>
                             <constraint firstItem="gDR-KQ-afP" firstAttribute="bottom" secondItem="tMM-qS-G7c" secondAttribute="bottom" type="default" id="8KR-n9-twy"/>
                             <constraint firstItem="fWS-sG-OGH" firstAttribute="bottom" secondItem="tMM-qS-G7c" secondAttribute="bottom" type="default" id="AhK-AM-bgY"/>
+                            <constraint firstItem="saQ-QI-AlB" firstAttribute="top" secondItem="tMM-qS-G7c" secondAttribute="top" type="default" id="HyW-NY-0eY"/>
                             <constraint firstItem="gDR-KQ-afP" firstAttribute="leading" secondItem="tMM-qS-G7c" secondAttribute="leading" type="default" id="RZA-sC-ySM"/>
                             <constraint firstItem="gDR-KQ-afP" firstAttribute="trailing" secondItem="tMM-qS-G7c" secondAttribute="trailing" type="default" id="SZ5-RW-9xU"/>
                             <constraint firstItem="0Oh-T2-gu4" firstAttribute="leading" secondItem="tMM-qS-G7c" secondAttribute="leading" constant="12" id="TCj-Ec-xEc"/>
                             <constraint firstItem="fWS-sG-OGH" firstAttribute="leading" secondItem="tMM-qS-G7c" secondAttribute="leading" type="default" id="Uht-Dp-5vp"/>
                             <constraint firstItem="saQ-QI-AlB" firstAttribute="leading" secondItem="tMM-qS-G7c" secondAttribute="leading" type="default" id="c7R-uN-xPK"/>
+                            <constraint firstItem="saQ-QI-AlB" firstAttribute="bottom" secondItem="tMM-qS-G7c" secondAttribute="bottom" type="default" id="e2y-ho-ypU"/>
                             <constraint firstItem="saQ-QI-AlB" firstAttribute="trailing" secondItem="tMM-qS-G7c" secondAttribute="trailing" type="default" id="j4h-3s-XWT"/>
                             <constraint firstItem="fWS-sG-OGH" firstAttribute="trailing" secondItem="tMM-qS-G7c" secondAttribute="trailing" type="default" id="lG3-Na-OV1"/>
                             <constraint firstItem="fWS-sG-OGH" firstAttribute="top" secondItem="tMM-qS-G7c" secondAttribute="top" type="default" id="lIa-Ms-dkJ"/>
                             <constraint firstItem="0Oh-T2-gu4" firstAttribute="top" secondItem="tMM-qS-G7c" secondAttribute="top" constant="4" id="oHG-q7-AuD"/>
-                            <constraint firstAttribute="bottom" secondItem="saQ-QI-AlB" secondAttribute="bottom" constant="-1" id="ugd-4A-SuN"/>
-                            <constraint firstItem="saQ-QI-AlB" firstAttribute="top" secondItem="tMM-qS-G7c" secondAttribute="top" constant="44" id="vO9-gO-oju"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PHy-1g-uxx">

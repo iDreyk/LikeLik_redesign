@@ -351,16 +351,16 @@ static NSString *city = @"";
         });
     }
     
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
+    self.categoryView.contentSize = CGSizeMake(320, 560);
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;
-    CGFloat yOrigin = 20;
+    CGFloat yOrigin = 64; // 20 + 44
     CGFloat yOffset = 10;
     
-    if(self.view.bounds.size.height == 460.0)
-        yOrigin = 0;
+    if(self.view.bounds.size.height == 460.0){
+        yOrigin = 44;
+        self.categoryView.contentSize = CGSizeMake(320, 470);
+    }
     
     self.frame1 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, yOrigin + yOffset, frameSize, frameSize)];
     UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, yOrigin + yOffset, frameSize, frameSize)];
