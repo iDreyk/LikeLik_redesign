@@ -29,7 +29,8 @@
 #define likelikurlcell_5        @"http://likelik.net/ios/cell/5/"
 #define catalogue @"Catalogues"
 #define FADE_TAG 66484
-
+#define LABELTAG 44324
+#define THUNDER_TAG 123123
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define backgroundTag 2442441
@@ -42,7 +43,7 @@ static BOOL JUST_APPEAR = YES;
 @end
 
 @implementation StartViewController
-
+@synthesize label,special_series;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -66,6 +67,30 @@ static BOOL JUST_APPEAR = YES;
     self.tableView.backgroundView = [InterfaceFunctions backgroundView];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height/4, 0.0, 0.0)];
+    special_series = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128.0, 128.0)];
+//    [label setText:AMLocalizedString(@"Special Annotation", nil)];
+//    label.numberOfLines = 0;
+//    [label sizeToFit];
+//    [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
+//    label.tag = LABELTAG;
+    label.textAlignment = NSTextAlignmentCenter;
+    [label setFont:[AppDelegate OpenSansRegular:32]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    label.hidden = YES;
+    [label setText:AMLocalizedString(@"Special Annotation", nil)];
+    label.numberOfLines = 0;
+    [label sizeToFit];
+    [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
+    
+    
+    
+    special_series.tag = THUNDER_TAG;
+    [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
+    [special_series setAlpha:0.7];
+    special_series.hidden = YES;
+    [self.view addSubview:special_series];
+    [self.view addSubview:label];
     
     
     [[NSNotificationCenter defaultCenter] addObserver: self
@@ -75,14 +100,23 @@ static BOOL JUST_APPEAR = YES;
     
 }
 
+
+
 -(void)pref_dismiss{
-    //
+
     [self viewDidAppear:YES];
+
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
-    //  NSLog(@"123");
+      NSLog(@"loglog");
+    [label setText:AMLocalizedString(@"Special Annotation", nil)];
+    
+    CGPoint temp = self.view.center;
+    temp.y -= 80;
+    [special_series setCenter:temp];
+    
     NSInteger tabindex = self.tabBarController.selectedIndex;
     //    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
     
@@ -115,6 +149,7 @@ static BOOL JUST_APPEAR = YES;
     }
     //  NSLog(@"StartView Appear");
     JUST_APPEAR = YES;
+
     [self.tableView reloadData];
 }
 
@@ -136,42 +171,13 @@ static BOOL JUST_APPEAR = YES;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ( self.tabBarController.selectedIndex == 3) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height/4, 0.0, 0.0)];
-        [label setText:AMLocalizedString(@"Special Annotation", nil)];
-        label.numberOfLines = 0;
-        label.textAlignment = NSTextAlignmentCenter;
-        [label sizeToFit];
-        [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
-        [label setFont:[AppDelegate OpenSansRegular:32]];
-        [label setBackgroundColor:[UIColor clearColor]];
-        
-        
-        UILabel *sublabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0,label.frame.origin.y +label.frame.size.height +40.0,0.0,0.0)];
-        [sublabel setText:AMLocalizedString(@"Special Annotation", nil)];
-        sublabel.numberOfLines = 0;
-        sublabel.textAlignment = NSTextAlignmentCenter;
-        [sublabel sizeToFit];
-        [sublabel setFrame:CGRectMake((320.0-sublabel.frame.size.width)/2, label.frame.origin.y + label.frame.size.height + 40.0, sublabel.frame.size.width, sublabel.frame.size.height+30)];
-        [sublabel setFont:[AppDelegate OpenSansRegular:32]];
-        [sublabel setBackgroundColor:[UIColor clearColor]];
-        
-//        self.CityImage.hidden = YES;
-//        self.gradient_under_cityname.hidden = YES;
-//        self.CityName.hidden = YES;
-//        self.PlacesTable.hidden = YES;
-        //    self.FavTable.backgroundView = [InterfaceFunctions backgroundView];
-        [self.view addSubview:[InterfaceFunctions backgroundView]];
-        UIImageView *special_series = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128.0, 128.0)];
-        CGPoint temp = self.view.center;
-        temp.y -= 80;
-        [special_series setCenter:temp];
-        [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
-        [special_series setAlpha:0.7];
-        [self.view addSubview:special_series];
-
-        [self.view addSubview:label];
-       // [self.view addSubview:sublabel];
+    if ( [self.CityLabels count] == 0) {
+        label.hidden= NO;
+        special_series.hidden=NO;
+    }
+    else{
+        label.hidden = YES;
+        special_series.hidden = YES;
     }
     return [_CityLabels count];
 }
