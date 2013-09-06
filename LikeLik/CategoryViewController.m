@@ -675,28 +675,30 @@ static NSString *city = @"";
 //}
 
 - (void)updateOffsets {
-}//
-//    CGFloat yOffset   = self.categoryView.contentOffset.y;
-//    
-//    if (yOffset > 0) {
-//        //self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
-//        
-//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
-//        
-//        //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
-//        //self.categoryView.frame = CGRectMake(self.categoryView.frame.origin.x,self.categoryView.frame.origin.y-yOffset,self.categoryView.frame.size.width,self.categoryView.frame.size.height);
-//    }
-//    else {
-//        //self.CityImage.frame = CGRectMake(0, 0.0, 320, self.CityImage.frame.size.height);
-//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0,self.CityName.frame.size.width,self.CityName.frame.size.height);
-//        //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,0.0,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
-//        
-//    }
-//    self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
-//}
-//
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    [self updateOffsets];
-//}
+    
+    CGFloat yOffset   = self.categoryView.contentOffset.y;
+    NSLog(@"yofs: %f", yOffset);
+    if (yOffset > 0) {
+        //self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
+        
+        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
+       // self.categoryView.frame = CGRectMake(0, 44-(yOffset), 320, self.categoryView.frame.size.height);
+        //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
+        //self.categoryView.frame = CGRectMake(self.categoryView.frame.origin.x,self.categoryView.frame.origin.y-yOffset,self.categoryView.frame.size.width,self.categoryView.frame.size.height);
+    }
+    else{
+        //self.CityImage.frame = CGRectMake(0, 0.0, 320, self.CityImage.frame.size.height);
+        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0,self.CityName.frame.size.width,self.CityName.frame.size.height);
+       // self.categoryView.frame = CGRectMake(0, 44.0, 320, self.categoryView.frame.size.height);
+
+        //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,0.0,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
+        
+    }
+    //self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self updateOffsets];
+}
 
 @end
