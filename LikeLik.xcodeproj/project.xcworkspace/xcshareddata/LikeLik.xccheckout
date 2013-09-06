@@ -2,35 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-<<<<<<< HEAD
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>73BD6038-6E01-4989-819A-1ED293F3BA20</string>
-=======
-	<key>IDESourceControlProjectIdentifier</key>
-	<string>EDE51989-1951-4531-B10F-9CE1A680ECAA</string>
->>>>>>> f82bd12218bfdf0ee95f916f37a45b111832ffff
+	<string>BD9BB481-B875-496D-BD87-4BC748577755</string>
 	<key>IDESourceControlProjectName</key>
 	<string>LikeLik</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-<<<<<<< HEAD
-		<key>BC40C5D8-2173-49F2-8D55-3A3ADDAADB1F</key>
-=======
-		<key>9F659FA3-59CE-44E5-896A-CC8EE7E6ADD8</key>
->>>>>>> f82bd12218bfdf0ee95f916f37a45b111832ffff
+		<key>D335EA62-F065-45D1-8B06-2E547E76A61C</key>
 		<string>https://github.com/iDreyk/LikeLik_redesign.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>LikeLik.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-<<<<<<< HEAD
-		<key>BC40C5D8-2173-49F2-8D55-3A3ADDAADB1F</key>
-=======
-		<key>9F659FA3-59CE-44E5-896A-CC8EE7E6ADD8</key>
->>>>>>> f82bd12218bfdf0ee95f916f37a45b111832ffff
+		<key>D335EA62-F065-45D1-8B06-2E547E76A61C</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -38,22 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-<<<<<<< HEAD
-	<string>BC40C5D8-2173-49F2-8D55-3A3ADDAADB1F</string>
-=======
-	<string>9F659FA3-59CE-44E5-896A-CC8EE7E6ADD8</string>
->>>>>>> f82bd12218bfdf0ee95f916f37a45b111832ffff
+	<string>D335EA62-F065-45D1-8B06-2E547E76A61C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-<<<<<<< HEAD
-			<string>BC40C5D8-2173-49F2-8D55-3A3ADDAADB1F</string>
-=======
-			<string>9F659FA3-59CE-44E5-896A-CC8EE7E6ADD8</string>
->>>>>>> f82bd12218bfdf0ee95f916f37a45b111832ffff
+			<string>D335EA62-F065-45D1-8B06-2E547E76A61C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>LikeLik_redesign</string>
 		</dict>
