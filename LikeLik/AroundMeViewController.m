@@ -39,6 +39,7 @@ static CGFloat width = 180;//220;
 
 NSInteger PREV_SECTION_AROUNDME = 0;
 bool REVERSE_ANIM = false;
+static BOOL JUST_APPEAR = YES;
 
 @interface UIButtonWithAditionalNum ()
 
@@ -99,6 +100,8 @@ bool REVERSE_ANIM = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    JUST_APPEAR = YES;
+
     self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
     self.backgroundView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
 
@@ -272,6 +275,8 @@ bool REVERSE_ANIM = false;
         self.Map.centerCoordinate = self.Map.userLocation.coordinate;
         self.locationButton.enabled = YES;
     }
+    JUST_APPEAR = YES;
+
     //[self.PlacesTable reloadData];
 }
 
@@ -754,6 +759,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         REVERSE_ANIM = false;
     
     PREV_SECTION_AROUNDME = row;
+    if(!JUST_APPEAR){
+
     //UIView *myView = [[cell subviews] objectAtIndex:0];
     UIView *myView = (UIView *)[cell viewWithTag:cellColorTag];
     CALayer *layer = myView.layer;
@@ -782,7 +789,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     layer.transform = rotationAndPerspectiveTransform;
     
     [UIView commitAnimations];
-
+    }
     return cell;
 }
 
@@ -928,6 +935,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     }
 }
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    if(JUST_APPEAR)
+        JUST_APPEAR = NO;
+}
 
 
 //- (void)updateOffsets {
