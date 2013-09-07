@@ -691,7 +691,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     float intDist = [distance floatValue];
     
     UILabel *dist = (UILabel *)[cell viewWithTag:distanceTag];
-    if(intDist > 1000)
+    if(intDist > 20000)
+        dist.text = [NSString stringWithFormat:@"20+ %@",AMLocalizedString(@"km", nil)];
+    else if(intDist > 1000)
         dist.text = [NSString stringWithFormat:@"%.2f%@", intDist / 1000.,AMLocalizedString(@"km", nil)];
     else
         dist.text = [NSString stringWithFormat:@"%.0f%@", intDist,AMLocalizedString(@"m", nil)];
