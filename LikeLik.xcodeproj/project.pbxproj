@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5594162D17957CA500828B47 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8722173A5A9400A25E07 /* libxml2.dylib */; };
+		559AA1C317D9EDDB005362CC /* appData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 559AA1C217D9EDDB005362CC /* appData.plist */; };
 		55A80F0C17747C6400089216 /* ExternalFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F0B17747C6400089216 /* ExternalFunctions.m */; };
 		55A80F1F17747EF000089216 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F1717747EF000089216 /* ioapi.c */; };
 		55A80F2017747EF000089216 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F1917747EF000089216 /* mztools.c */; };
@@ -386,6 +387,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		559AA1C217D9EDDB005362CC /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = appData.plist; sourceTree = "<group>"; };
 		55A80F0A17747C6400089216 /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExternalFunctions.h; path = LikeLik/ExternalFunctions.h; sourceTree = SOURCE_ROOT; };
 		55A80F0B17747C6400089216 /* ExternalFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExternalFunctions.m; path = LikeLik/ExternalFunctions.m; sourceTree = SOURCE_ROOT; };
 		55A80F1617747EF000089216 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -1440,6 +1442,7 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				559AA1C217D9EDDB005362CC /* appData.plist */,
 				D05D7BED17BE7EFF00003A16 /* icons */,
 				91FE3A1F1796C5A2000304D4 /* SoonCities.plist */,
 				919E8707173A58E700A25E07 /* LikeLik-Info.plist */,
@@ -1977,6 +1980,7 @@
 				FA6D979C17CDCFFC000F07E4 /* 10.png in Resources */,
 				FA6D979D17CDCFFC000F07E4 /* 11.png in Resources */,
 				FA6D979E17CDCFFC000F07E4 /* 12.png in Resources */,
+				559AA1C317D9EDDB005362CC /* appData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
