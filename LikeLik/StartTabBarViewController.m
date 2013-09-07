@@ -69,6 +69,9 @@
 -(void)pref_dismiss{
     [self viewDidAppear:YES];
 }
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    NSLog(@"item = %d",item.tag);
+}
 
 -(void)viewDidAppear:(BOOL)animated{
     // NSLog(@"Tabbar Appear");

@@ -400,7 +400,6 @@ CGFloat alpha = 0.5;
      //   //    nslog(@"%f %f",Red_line.frame.size.width,Red_line.frame.size.height);
     
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
-
     label.text = self.PlaceAbout;
     label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor whiteColor];
@@ -410,12 +409,13 @@ CGFloat alpha = 0.5;
     CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 500.0) lineBreakMode:NSLineBreakByTruncatingTail];
     label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
     if ([AppDelegate isiPhone5]) {
-        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+35);
+        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+70);
     }
     else{
-        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+50);
+        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+70);
     }
-  
+    [label sizeToFit];
+
 //    demoLabel= [[OHAttributedLabel alloc]initWithFrame:label.frame];
 //    //    [demoLabel setFrame:label.frame];
 //    [demoLabel setAttributedText:attrStr];
@@ -428,16 +428,23 @@ CGFloat alpha = 0.5;
     
     
 
-    UIButton *address = [UIButton buttonWithType:UIButtonTypeCustom];
-    [address setFrame:CGRectMake(35.0, label.frame.origin.y+label.frame.size.height, 250.0, 32.0)];
-    [address setTitle:self.PlaceAddress forState:UIControlStateNormal];    [address setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    [address setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
-    [address sizeToFit];
+    UILabel *address = [[UILabel alloc] init];//[UIButton buttonWithType:UIButtonTypeCustom];
+    [address setFrame:CGRectMake(35.0, label.frame.origin.y+label.frame.size.height, 262.0, 32.0)];
+    //[address setTitle:self.PlaceAddress forState:UIControlStateNormal];
+    [address setText:self.PlaceAddress];
+    //[address setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    //[address setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
+    //[address sizeToFit];
     CGRect frame = address.frame;
     frame.size.height*=2;
     address.frame = frame;
-    [address.titleLabel setFont:[AppDelegate OpenSansRegular:28]];//[UIFont boldSystemFontOfSize:20]];
-    [address addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
+    address.backgroundColor = [UIColor clearColor];
+    address.textColor = [UIColor whiteColor];
+    [address setFont:[AppDelegate OpenSansRegular:28]];//[UIFont boldSystemFontOfSize:20]];
+    //[address addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowMap:)];
+    [address addGestureRecognizer:tap];
+    [address setUserInteractionEnabled:YES];
 
     UIImageView *Point =  [[UIImageView alloc] initWithFrame:CGRectMake(14.0, label.frame.origin.y+label.frame.size.height+10, 14.0, 16.0)];
     Point.backgroundColor =  [UIColor clearColor];
@@ -445,7 +452,7 @@ CGFloat alpha = 0.5;
     CGPoint center = address.center;
     center.x = Point.center.x;
     Point.center = center;//tel.center;
-    [address setTitleEdgeInsets:UIEdgeInsetsMake(12.0, 0.0, 0.0, 0.0)];//
+    //[address setTitleEdgeInsets:UIEdgeInsetsMake(12.0, 0.0, 0.0, 0.0)];//
     
     UIImageView *line1 = [[UIImageView alloc] initWithFrame:CGRectMake(14.0, address.frame.origin.y+address.frame.size.height, 292.0, 1.0)];
     line1.backgroundColor =  [UIColor clearColor];
@@ -524,7 +531,7 @@ CGFloat alpha = 0.5;
     [web setTitleEdgeInsets:UIEdgeInsetsMake(12.0, 0.0, 0.0, 0.0)];
     
     
-    _actb = [[UIImageView alloc] initWithFrame:CGRectMake(250,16, 9, 14)];
+    _actb = [[UIImageView alloc] initWithFrame:CGRectMake(250, 26, 9, 14)];
     _actb.image=[UIImage imageNamed:@"actb_white"];
     [address addSubview:_actb];
     

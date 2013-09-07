@@ -29,10 +29,11 @@
 #define likelikurlcell_5        @"http://likelik.net/ios/cell/5/"
 #define catalogue @"Catalogues"
 #define FADE_TAG 66484
-
+#define LABELTAG 44324
+#define THUNDER_TAG 123123
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-
+#define backgroundTag 2442441
 NSInteger PREV_ROW = 0;
 static bool REVERSE_ANIM = false;
 static BOOL JUST_APPEAR = YES;
@@ -42,7 +43,7 @@ static BOOL JUST_APPEAR = YES;
 @end
 
 @implementation StartViewController
-
+@synthesize label,special_series;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -66,6 +67,30 @@ static BOOL JUST_APPEAR = YES;
     self.tableView.backgroundView = [InterfaceFunctions backgroundView];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height/4, 0.0, 0.0)];
+    special_series = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128.0, 128.0)];
+//    [label setText:AMLocalizedString(@"Special Annotation", nil)];
+//    label.numberOfLines = 0;
+//    [label sizeToFit];
+//    [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
+//    label.tag = LABELTAG;
+    label.textAlignment = NSTextAlignmentCenter;
+    [label setFont:[AppDelegate OpenSansRegular:32]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    label.hidden = YES;
+    [label setText:AMLocalizedString(@"Special Annotation", nil)];
+    label.numberOfLines = 0;
+    [label sizeToFit];
+    [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
+    
+    
+    
+    special_series.tag = THUNDER_TAG;
+    [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
+    [special_series setAlpha:0.7];
+    special_series.hidden = YES;
+    [self.view addSubview:special_series];
+    [self.view addSubview:label];
     
     
     [[NSNotificationCenter defaultCenter] addObserver: self
@@ -75,14 +100,23 @@ static BOOL JUST_APPEAR = YES;
     
 }
 
+
+
 -(void)pref_dismiss{
-    //
+
     [self viewDidAppear:YES];
+
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
-    //  NSLog(@"123");
+      NSLog(@"loglog");
+    [label setText:AMLocalizedString(@"Special Annotation", nil)];
+    
+    CGPoint temp = self.view.center;
+    temp.y -= 80;
+    [special_series setCenter:temp];
+    
     NSInteger tabindex = self.tabBarController.selectedIndex;
     //    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
     
@@ -115,6 +149,7 @@ static BOOL JUST_APPEAR = YES;
     }
     //  NSLog(@"StartView Appear");
     JUST_APPEAR = YES;
+
     [self.tableView reloadData];
 }
 
@@ -136,11 +171,22 @@ static BOOL JUST_APPEAR = YES;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if ( [self.CityLabels count] == 0) {
+        label.hidden= NO;
+        special_series.hidden=NO;
+    }
+    else{
+        label.hidden = YES;
+        special_series.hidden = YES;
+    }
     return [_CityLabels count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    
     int row = [indexPath row];
     static NSString *CellIdentifier = @"StartTableCell";
     StartTableCell *cell;
@@ -237,16 +283,59 @@ static BOOL JUST_APPEAR = YES;
     return 152;
 }
 
+- (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
+{
+    // create our blurred image
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
+    
+    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [filter setValue:inputImage forKey:kCIInputImageKey];
+    [filter setValue:[NSNumber numberWithFloat:blurSize] forKey:@"inputRadius"];
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+    
+    // CIGaussianBlur has a tendency to shrink the image a little,
+    // this ensures it matches up exactly to the bounds of our original image
+    CGImageRef cgImage = [context createCGImage:result fromRect:CGRectMake(blurSize, 0, [inputImage extent].size.width - 2*blurSize, [inputImage extent].size.height)];
+    
+    //return [UIImage imageWithCGImage:cgImage];
+    
+    // if you need scaling
+    return [[self class] scaleIfNeeded:cgImage];
+}
+
++(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
+    bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
+    if (isRetina) {
+        return [UIImage imageWithCGImage:cgimg scale:2.0 orientation:UIImageOrientationUp];
+    } else {
+        return [UIImage imageWithCGImage:cgimg];
+    }
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+
+    
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     NSInteger row = [indexPath row];
     //  NSLog(@"перешёл на экран");
+    
+    
     CategoryViewController *destination =
     [segue destinationViewController];
     
     destination.Label = _CityLabels[row];
     destination.Image = _backCityImages[row];
+    
+    AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
+    UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
+    imback.backgroundColor = [UIColor blackColor];
+    imback.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f];
+    NSLog(@"%@",imback);
+    
+
     //[TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
 }
 

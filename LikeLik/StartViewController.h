@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSArray *CityLabels;
 @property (nonatomic, strong) NSArray *accesors;
 @property (nonatomic, retain) NSString *City;
+@property (nonatomic,retain) UILabel *label;
+@property (nonatomic,retain) UIImageView *special_series;
 @property (nonatomic,retain)MBProgressHUD *HUDfade;
 
 

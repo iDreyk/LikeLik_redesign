@@ -13,7 +13,6 @@
 #import "SearchViewController.h"
 #import "AppDelegate.h"
 #import "LocalizationSystem.h"
-#import "FavViewController.h"
 #import "AboutTableViewController.h"
 #import "VisualTourViewController.h"
 #import "TransportationTableViewController.h"
@@ -49,7 +48,8 @@ static NSString *city = @"";
 }
 
 
-- (UIImage*) blur:(UIImage*)theImage
+
+- (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
 {
     // create our blurred image
     CIContext *context = [CIContext contextWithOptions:nil];
@@ -58,17 +58,17 @@ static NSString *city = @"";
     // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
     CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
     [filter setValue:inputImage forKey:kCIInputImageKey];
-    [filter setValue:[NSNumber numberWithFloat:0.0f] forKey:@"inputRadius"];
+    [filter setValue:[NSNumber numberWithFloat:blurSize] forKey:@"inputRadius"];
     CIImage *result = [filter valueForKey:kCIOutputImageKey];
     
     // CIGaussianBlur has a tendency to shrink the image a little,
     // this ensures it matches up exactly to the bounds of our original image
-    CGImageRef cgImage = [context createCGImage:result fromRect:[inputImage extent]];
+    CGImageRef cgImage = [context createCGImage:result fromRect:CGRectMake(blurSize, 0, [inputImage extent].size.width - 2*blurSize, [inputImage extent].size.height)];
     
-    return [UIImage imageWithCGImage:cgImage];
+    //return [UIImage imageWithCGImage:cgImage];
     
     // if you need scaling
-    //return [[self class] scaleIfNeeded:cgImage];
+    return [[self class] scaleIfNeeded:cgImage];
 }
 
 
@@ -210,9 +210,10 @@ static NSString *city = @"";
     
     
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor clearColor]];
     NSLog(@"viewDidLoad");
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    
+    self.categoryView.backgroundColor = [UIColor clearColor];
     IN_BG = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appReturnsActive) name:UIApplicationDidBecomeActiveNotification object:nil];
@@ -231,11 +232,11 @@ static NSString *city = @"";
     self.categoryView.delegate = self;
     UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     
-    background.backgroundColor = [UIColor whiteColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
+    background.backgroundColor = [UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
     [self.categoryView addSubview:background];
     
     //    self.Table.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor whiteColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
+    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
     //Overlay_Long@2x.png
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
     
@@ -251,8 +252,9 @@ static NSString *city = @"";
     self.CityName.text = self.Label;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
-    self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
-        NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
+//    self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
+    self.CityImage.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]] withFloat:15.0f];
+    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"VisualtourSegue",@"TransportationSegue",@"SearchSegue",@"FavoritesSegue",@"PracticalinfoSegue"];
@@ -349,16 +351,16 @@ static NSString *city = @"";
         });
     }
     
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
+    self.categoryView.contentSize = CGSizeMake(320, 560);
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;
-    CGFloat yOrigin = 20;
+    CGFloat yOrigin = 64; // 20 + 44
     CGFloat yOffset = 10;
     
-    if(self.view.bounds.size.height == 460.0)
-        yOrigin = 0;
+    if(self.view.bounds.size.height == 460.0){
+        yOrigin = 44;
+        self.categoryView.contentSize = CGSizeMake(320, 470);
+    }
     
     self.frame1 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, yOrigin + yOffset, frameSize, frameSize)];
     UIView *frame2 = [[UIView alloc] initWithFrame:CGRectMake(frameSize +2*xOrigin, yOrigin + yOffset, frameSize, frameSize)];
@@ -604,10 +606,18 @@ static NSString *city = @"";
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
     }
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
-        FavViewController *destination = [segue destinationViewController];
-        [segue destinationViewController];
-        destination.CityName = self.Label;
-        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];
+//        FavViewController *destination = [segue destinationViewController];
+//        [segue destinationViewController];
+//        destination.CityName = self.Label;
+//        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];
+//        
+        AroundMeViewController *destination = [segue destinationViewController];
+        destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
+        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
+      //  NSLog(@"%@",[self favoritePlaces]);
+        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];//[self favoritePlaces];//[self placesInCategory:[self.CellArray objectAtIndex:row]];
+        destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
+        
     }
     
     if ([[segue identifier] isEqualToString:@"VisualtourSegue"]) {
@@ -653,25 +663,38 @@ static NSString *city = @"";
     [super viewDidUnload];
 }
 
+
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    
+//    NSLog(@"%f", scrollView.contentOffset.y);
+//    if (scrollView.contentOffset.y > 0.0) {
+//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x, self.CityName.frame.origin.y-scrollView.contentOffset.y, self.CityName.frame.size.width, self.CityName.frame.size.height);
+//    }
+//    
+//}
+
 - (void)updateOffsets {
     
     CGFloat yOffset   = self.categoryView.contentOffset.y;
-    
-    if (yOffset < 0) {
-        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
+    NSLog(@"yofs: %f", yOffset);
+    if (yOffset > 0) {
+        //self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
         
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
-        
-        self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
+       // self.categoryView.frame = CGRectMake(0, 44-(yOffset), 320, self.categoryView.frame.size.height);
+        //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
         //self.categoryView.frame = CGRectMake(self.categoryView.frame.origin.x,self.categoryView.frame.origin.y-yOffset,self.categoryView.frame.size.width,self.categoryView.frame.size.height);
     }
-    else {
-        self.CityImage.frame = CGRectMake(0, -280.0, 320, self.CityImage.frame.size.height);
+    else{
+        //self.CityImage.frame = CGRectMake(0, 0.0, 320, self.CityImage.frame.size.height);
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0,self.CityName.frame.size.width,self.CityName.frame.size.height);
-        self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,0.0,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
+       // self.categoryView.frame = CGRectMake(0, 44.0, 320, self.categoryView.frame.size.height);
+
+        //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,0.0,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
         
     }
-    self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
+    //self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

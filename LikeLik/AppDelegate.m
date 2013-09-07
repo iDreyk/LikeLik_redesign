@@ -25,6 +25,7 @@ NSInteger wasinactive = NO;
 #define afterFB             @"l27h7RU2dadsdafszVfPoQQQQ"
 #define afternotification             @"l27h7RU2dzVfPoQssda"
 #define backgroundg @"l27h7RU2123123132dzVfPoQssda"
+#define backgroundTag 2442441
 @implementation AppDelegate
 
 //#warning воронка пользования
@@ -141,6 +142,37 @@ NSInteger wasinactive = NO;
 }
 
 
+- (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
+{
+    // create our blurred image
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
+    
+    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [filter setValue:inputImage forKey:kCIInputImageKey];
+    [filter setValue:[NSNumber numberWithFloat:blurSize] forKey:@"inputRadius"];
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+    
+    // CIGaussianBlur has a tendency to shrink the image a little,
+    // this ensures it matches up exactly to the bounds of our original image
+    CGImageRef cgImage = [context createCGImage:result fromRect:CGRectMake(blurSize, 0, [inputImage extent].size.width - 2*blurSize, [inputImage extent].size.height)];
+    
+    //return [UIImage imageWithCGImage:cgImage];
+    
+    // if you need scaling
+    return [[self class] scaleIfNeeded:cgImage];
+}
+
++(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
+    bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
+    if (isRetina) {
+        return [UIImage imageWithCGImage:cgimg scale:2.0 orientation:UIImageOrientationUp];
+    } else {
+        return [UIImage imageWithCGImage:cgimg];
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
@@ -170,6 +202,7 @@ NSInteger wasinactive = NO;
             UIViewController *initialViewController = [ios5iphone35Storyboard instantiateInitialViewController];
             self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
             self.window.rootViewController  = initialViewController;
+            
             [self.window makeKeyAndVisible];
         }
         else{
@@ -178,6 +211,11 @@ NSInteger wasinactive = NO;
             self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
             self.window.rootViewController  = initialViewController;
             [self.window makeKeyAndVisible];
+            UIImageView *image =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+            image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f];
+            image.tag = backgroundTag;
+            [self.window.rootViewController.view insertSubview:image atIndex:0];
+
         }
     }
     
@@ -189,6 +227,10 @@ NSInteger wasinactive = NO;
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController  = initialViewController;
         [self.window makeKeyAndVisible];
+        UIImageView *image =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f];
+        image.tag = backgroundTag;
+        [self.window.rootViewController.view insertSubview:image atIndex:0];
     }
     
     

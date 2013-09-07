@@ -324,7 +324,6 @@
 		919E8B05173A5F6F00A25E07 /* TransportationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ADC173A5F6E00A25E07 /* TransportationViewController.m */; };
 		919E8B06173A5F6F00A25E07 /* TaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ADE173A5F6E00A25E07 /* TaxiViewController.m */; };
 		919E8B07173A5F6F00A25E07 /* PracticalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE0173A5F6E00A25E07 /* PracticalInfoViewController.m */; };
-		919E8B08173A5F6F00A25E07 /* FavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE2173A5F6E00A25E07 /* FavViewController.m */; };
 		919E8B09173A5F6F00A25E07 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE4173A5F6E00A25E07 /* AboutTableViewController.m */; };
 		919E8B0A173A5F6F00A25E07 /* TermsofUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE6173A5F6E00A25E07 /* TermsofUseViewController.m */; };
 		919E8B0B173A5F6F00A25E07 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE8173A5F6E00A25E07 /* AboutViewController.m */; };
@@ -354,6 +353,7 @@
 		91A802AC179558F8007EC5B6 /* cross2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A7179558F8007EC5B6 /* cross2@2x.png */; };
 		91A802AD179558F8007EC5B6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A8179558F8007EC5B6 /* Icon.png */; };
 		91A802AE179558F8007EC5B6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A9179558F8007EC5B6 /* Icon@2x.png */; };
+		91B831AE17D8B020008E6750 /* 512x512 special Series.png in Resources */ = {isa = PBXBuildFile; fileRef = 91B831AD17D8B01C008E6750 /* 512x512 special Series.png */; };
 		91C08F3817771336007B98D3 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C08F3717771336007B98D3 /* StartViewController.m */; };
 		91FE3A091796C387000304D4 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A071796C387000304D4 /* Moscow */; };
 		91FE3A0A1796C387000304D4 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A081796C387000304D4 /* Vienna */; };
@@ -802,8 +802,6 @@
 		919E8ADE173A5F6E00A25E07 /* TaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiViewController.m; sourceTree = "<group>"; };
 		919E8ADF173A5F6E00A25E07 /* PracticalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PracticalInfoViewController.h; sourceTree = "<group>"; };
 		919E8AE0173A5F6E00A25E07 /* PracticalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PracticalInfoViewController.m; sourceTree = "<group>"; };
-		919E8AE1173A5F6E00A25E07 /* FavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavViewController.h; sourceTree = "<group>"; };
-		919E8AE2173A5F6E00A25E07 /* FavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavViewController.m; sourceTree = "<group>"; };
 		919E8AE3173A5F6E00A25E07 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
 		919E8AE4173A5F6E00A25E07 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
 		919E8AE5173A5F6E00A25E07 /* TermsofUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsofUseViewController.h; sourceTree = "<group>"; };
@@ -863,6 +861,7 @@
 		91A802A7179558F8007EC5B6 /* cross2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross2@2x.png"; sourceTree = "<group>"; };
 		91A802A8179558F8007EC5B6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		91A802A9179558F8007EC5B6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		91B831AD17D8B01C008E6750 /* 512x512 special Series.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "512x512 special Series.png"; sourceTree = "<group>"; };
 		91C08F3717771336007B98D3 /* StartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		91FE3A071796C387000304D4 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Moscow; sourceTree = "<group>"; };
 		91FE3A081796C387000304D4 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Vienna; sourceTree = "<group>"; };
@@ -992,6 +991,7 @@
 			isa = PBXGroup;
 			children = (
 				D0BC8E1417C4BB840048659E /* kul_90@2x.png */,
+				91B831AD17D8B01C008E6750 /* 512x512 special Series.png */,
 				FAB01E9D17CC70200052E3E8 /* knuck_pin_test5@2x.png */,
 				916588331794409B00F13BF2 /* 124_124 Social_Icons11@2x.png */,
 				916588341794409B00F13BF2 /* 124_124 Social_Icons22@2x.png */,
@@ -1416,8 +1416,6 @@
 				919E8ADE173A5F6E00A25E07 /* TaxiViewController.m */,
 				919E8ADF173A5F6E00A25E07 /* PracticalInfoViewController.h */,
 				919E8AE0173A5F6E00A25E07 /* PracticalInfoViewController.m */,
-				919E8AE1173A5F6E00A25E07 /* FavViewController.h */,
-				919E8AE2173A5F6E00A25E07 /* FavViewController.m */,
 				919E8AE3173A5F6E00A25E07 /* AboutTableViewController.h */,
 				919E8AE4173A5F6E00A25E07 /* AboutTableViewController.m */,
 				919E8AE5173A5F6E00A25E07 /* TermsofUseViewController.h */,
@@ -2019,7 +2017,6 @@
 				919E8B05173A5F6F00A25E07 /* TransportationViewController.m in Sources */,
 				919E8B06173A5F6F00A25E07 /* TaxiViewController.m in Sources */,
 				919E8B07173A5F6F00A25E07 /* PracticalInfoViewController.m in Sources */,
-				919E8B08173A5F6F00A25E07 /* FavViewController.m in Sources */,
 				919E8B09173A5F6F00A25E07 /* AboutTableViewController.m in Sources */,
 				919E8B0A173A5F6F00A25E07 /* TermsofUseViewController.m in Sources */,
 				919E8B0B173A5F6F00A25E07 /* AboutViewController.m in Sources */,

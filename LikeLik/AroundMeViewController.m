@@ -64,42 +64,43 @@ bool REVERSE_ANIM = false;
     return self;
 }
 
-//- (UIImage*) blur:(UIImage*)theImage
-//{
-//    // create our blurred image
-//    CIContext *context = [CIContext contextWithOptions:nil];
-//    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
-//    
-//    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
-//    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
-//    [filter setValue:inputImage forKey:kCIInputImageKey];
-//    [filter setValue:[NSNumber numberWithFloat:15.0f] forKey:@"inputRadius"];
-//    CIImage *result = [filter valueForKey:kCIOutputImageKey];
-//    
-//    // CIGaussianBlur has a tendency to shrink the image a little,
-//    // this ensures it matches up exactly to the bounds of our original image
-//    CGImageRef cgImage = [context createCGImage:result fromRect:[inputImage extent]];
-//    
-//    return [UIImage imageWithCGImage:cgImage];
-//    
-//    // if you need scaling
-//    // return [[self class] scaleIfNeeded:cgImage];
-//}
-//
-//+(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
-//    bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
-//    if (isRetina) {
-//        return [UIImage imageWithCGImage:cgimg scale:2.0 orientation:UIImageOrientationUp];
-//    } else {
-//        return [UIImage imageWithCGImage:cgimg];
-//    }
-//}
+
+- (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
+{
+    // create our blurred image
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
+    
+    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [filter setValue:inputImage forKey:kCIInputImageKey];
+    [filter setValue:[NSNumber numberWithFloat:blurSize] forKey:@"inputRadius"];
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+    
+    // CIGaussianBlur has a tendency to shrink the image a little,
+    // this ensures it matches up exactly to the bounds of our original image
+    CGImageRef cgImage = [context createCGImage:result fromRect:CGRectMake(blurSize, 0, [inputImage extent].size.width - 2*blurSize, [inputImage extent].size.height)];
+    
+    //return [UIImage imageWithCGImage:cgImage];
+    
+    // if you need scaling
+    return [[self class] scaleIfNeeded:cgImage];
+}
+
++(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
+    bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
+    if (isRetina) {
+        return [UIImage imageWithCGImage:cgimg scale:2.0 orientation:UIImageOrientationUp];
+    } else {
+        return [UIImage imageWithCGImage:cgimg];
+    }
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
-    self.backgroundView.backgroundColor = [UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
+    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
+    self.backgroundView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
@@ -135,7 +136,7 @@ bool REVERSE_ANIM = false;
     self.PlacesTable.showsHorizontalScrollIndicator = NO;
     self.PlacesTable.showsVerticalScrollIndicator = NO;
     
-    self.CityImage.hidden = NO;
+   // self.CityImage.hidden = NO;
     self.CityName.hidden = NO;
     self.PlacesTable.hidden =NO;
     self.ViewforMap.hidden = YES;
@@ -190,8 +191,8 @@ bool REVERSE_ANIM = false;
     locationManager = nil;
     self.CityName.text = self.CityNameString;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
-    self.CityImage.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.CityNameText]];
-    
+    //self.CityImage.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.CityNameText]];
+    self.CityImage.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.CityNameText]] withFloat:15.0f];
     
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -312,13 +313,13 @@ bool REVERSE_ANIM = false;
 }
 
 -(IBAction) segmentedControlIndexChanged{
-    self.CityImage.hidden=!self.CityImage.hidden;
+    //self.CityImage.hidden=!self.CityImage.hidden;
     self.CityName.hidden=!self.CityName.hidden;
     self.PlacesTable.hidden=!self.PlacesTable.hidden;
     self.ViewforMap.hidden=!self.ViewforMap.hidden;
     self.locationButton.hidden=!self.locationButton.hidden;
     
-    if (self.CityImage.hidden) {
+    if (self.CityName.hidden) {
         UIButton *titleview = [InterfaceFunctions segmentbar_map_list:0];
         [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -374,7 +375,7 @@ bool REVERSE_ANIM = false;
         [sublabel setFont:[AppDelegate OpenSansRegular:32]];
         [sublabel setBackgroundColor:[UIColor clearColor]];
         
-        self.CityImage.hidden = YES;
+      //  self.CityImage.hidden = YES;
         self.gradient_under_cityname.hidden = YES;
         self.CityName.hidden = YES;
         self.PlacesTable.hidden = YES;
@@ -548,7 +549,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         [cell.contentView addSubview:back]; // добавили на cell
         
         
-        cell.contentView.backgroundColor = [UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
+        cell.contentView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //  картинка
@@ -690,7 +691,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     float intDist = [distance floatValue];
     
     UILabel *dist = (UILabel *)[cell viewWithTag:distanceTag];
-    if(intDist > 1000)
+    if(intDist > 20000)
+        dist.text = [NSString stringWithFormat:@"20+ %@",AMLocalizedString(@"km", nil)];
+    else if(intDist > 1000)
         dist.text = [NSString stringWithFormat:@"%.2f%@", intDist / 1000.,AMLocalizedString(@"km", nil)];
     else
         dist.text = [NSString stringWithFormat:@"%.0f%@", intDist,AMLocalizedString(@"m", nil)];
@@ -927,40 +930,40 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 
 
 
-- (void)updateOffsets {
-    CGFloat yOffset   = self.PlacesTable.contentOffset.y;
-    
-    CGFloat threshold = self.PlacesTable.frame.size.height - self.PlacesTable.frame.size.height;
-    if (yOffset > -threshold && yOffset < 0) {
-        self.CityImage.frame = CGRectMake(0,-yOffset,320.0,self.CityImage.frame.size.height);
-        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-yOffset,self.CityName.frame.size.width,self.CityName.frame.size.height);
-        self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
-        
-        
-    } else if (yOffset < 0) {
-        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
-        
-        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
-        
-        self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
-        
-    } else {
-        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, self.CityImage.frame.size.height);
-        
-        
-        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5,self.CityName.frame.size.width,self.CityName.frame.size.height);
-        
-        
-        self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,0,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
-        
-    }
-    self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
-    //    self.CityImage.contentScaleFactor = 2.0;
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self updateOffsets];
-}
+//- (void)updateOffsets {
+//    CGFloat yOffset   = self.PlacesTable.contentOffset.y;
+//    
+//    CGFloat threshold = self.PlacesTable.frame.size.height - self.PlacesTable.frame.size.height;
+//    if (yOffset > -threshold && yOffset < 0) {
+//        self.CityImage.frame = CGRectMake(0,-yOffset,320.0,self.CityImage.frame.size.height);
+//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-yOffset,self.CityName.frame.size.width,self.CityName.frame.size.height);
+//        self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
+//        
+//        
+//    } else if (yOffset < 0) {
+//        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
+//        
+//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
+//        
+//        self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
+//        
+//    } else {
+//        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, self.CityImage.frame.size.height);
+//        
+//        
+//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5,self.CityName.frame.size.width,self.CityName.frame.size.height);
+//        
+//        
+//        self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,0,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
+//        
+//    }
+//    self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
+//    //    self.CityImage.contentScaleFactor = 2.0;
+//}
+//
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    [self updateOffsets];
+//}
 
 
 - (void)viewDidUnload {
