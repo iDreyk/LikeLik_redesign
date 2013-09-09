@@ -421,8 +421,7 @@ static NSInteger j=0;
     [defaults setObject:catalogueArray forKey:catalogue];
     
     [ExternalFunctions addCityToDownloaded:fileName];
-    
-    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"reloadView" object:nil]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAllCatalogues" object:nil];
 }
 
 - (NSError *) DownloadError:(NSError *) error{

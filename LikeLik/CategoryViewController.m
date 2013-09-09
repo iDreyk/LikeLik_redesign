@@ -49,162 +49,6 @@ static NSString *city = @"";
 
 
 
-- (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
-{
-    // create our blurred image
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
-    
-    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
-    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
-    [filter setValue:inputImage forKey:kCIInputImageKey];
-    [filter setValue:[NSNumber numberWithFloat:blurSize] forKey:@"inputRadius"];
-    CIImage *result = [filter valueForKey:kCIOutputImageKey];
-    
-    // CIGaussianBlur has a tendency to shrink the image a little,
-    // this ensures it matches up exactly to the bounds of our original image
-    CGImageRef cgImage = [context createCGImage:result fromRect:CGRectMake(blurSize, 0, [inputImage extent].size.width - 2*blurSize, [inputImage extent].size.height)];
-    
-    //return [UIImage imageWithCGImage:cgImage];
-    
-    // if you need scaling
-    return [[self class] scaleIfNeeded:cgImage];
-}
-
-
-+(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
-    bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
-    if (isRetina) {
-        return [UIImage imageWithCGImage:cgimg scale:2.0 orientation:UIImageOrientationUp];
-    } else {
-        return [UIImage imageWithCGImage:cgimg];
-    }
-}
-- (void)removeKnuckleHUD{
-    for (UIView *subViews in self.view.subviews)
-        if (subViews.tag == EF_TAG ) {
-            [subViews removeFromSuperview];
-        }
-    for (UIView *subViews in self.navigationController.view.subviews){
-        if(subViews.tag == FADE_TAG)
-            [subViews removeFromSuperview];
-    }
-}
-
--(void)reloadCatalogue{
-    NSURL *url;
-    if ([self.CityName.text isEqualToString:@"Moscow"] || [self.CityName.text isEqualToString:@"Москва"] || [self.CityName.text isEqualToString:@"Moskau"]){
-        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
-    }
-    if ([self.CityName.text isEqualToString:@"Vienna"] || [self.CityName.text isEqualToString:@"Вена"] || [self.CityName.text isEqualToString:@"Wien"]){
-        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
-    }
-    RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
-    self.MapPlace.showsUserLocation = YES;
-    self.MapPlace = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
-    self.MapPlace.hidden = NO;
-    self.MapPlace.hideAttribution = YES;
-    self.MapPlace.delegate = self;
-    
-    if ([AppDelegate isiPhone5])
-        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
-    else
-        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 450.0);
-    
-    
-    self.MapPlace.minZoom = 10;
-    self.MapPlace.zoom = 13;
-    self.MapPlace.maxZoom = 17;
-    
-    [self.MapPlace setAdjustTilesForRetinaDisplay:YES];
-    self.MapPlace.showsUserLocation = YES;
-    [self.placeViewMap setHidden:YES];
-    [self.placeViewMap addSubview:self.MapPlace];
-    
-    UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
-    fade.tag = FADE_TAG;
-    fade.backgroundColor = [UIColor clearColor];
-    [self.navigationController.view addSubview:fade];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // post an NSNotification that loading has started
-        AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
-        RMAnnotation *marker1;
-        for (int i=0; i<[AroundArray count]; i++) {
-            CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
-            marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
-            marker1.annotationType = @"marker";
-            marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
-            marker1.subtitle = AMLocalizedString([[AroundArray objectAtIndex:i] objectForKey:@"Category"], nil);
-            marker1.userInfo = [AroundArray objectAtIndex:i];
-            [self.MapPlace addAnnotation:marker1];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^ {
-            NSLog(@"Back on main thread");
-            IS_LOADING = NO;
-            [self getSoonLabels];
-            [self removeKnuckleHUD];
-         //   NSLog(@"remove knuckle animation in reload");
-            //            [self.Table reloadData];
-        });
-        // post an NSNotification that loading is finished
-    });
-    UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
-    coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    coolEf.tag = EF_TAG;
-    [self.view addSubview:coolEf];
-    [UIView animateWithDuration:0.2 animations:^{
-        coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 22, self.view.center.y - 90, 45, 45)];
-        //knuckle_1@2x.png
-        spin.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kul_90.png"]];
-        //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-        CALayer *layer = spin.layer;
-        layer.cornerRadius = 8;
-        spin.clipsToBounds = YES;
-        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-        animation.fromValue = [NSNumber numberWithFloat:0.0f];
-        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
-        animation.duration = 3.0f;
-        animation.repeatCount = HUGE_VAL;
-        [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
-        [coolEf addSubview:spin];
-  //      NSLog(@"start knuckle animation in reload");
-    }];
-    
-}
-
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    //UIGraphicsBeginImageContext(newSize);
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
-}
-
--(void)getSoonLabels{
-    for (int i = 1; i < 7; ++i){
-        UIView *frame = (self.frameArray)[i];
-        MLPAccessoryBadge *Badge = [MLPAccessoryBadge new];
-        [Badge.textLabel setFont:[AppDelegate OpenSansSemiBold:32]];
-        //[Badge sizeToFit];
-        [Badge setBackgroundColor:[InterfaceFunctions colorTextCategory:[self.CellArray objectAtIndex:i]]];
-        [Badge setText:AMLocalizedString(@"Soon", nil)];
-        Badge.center = frame.center;//CGRectMake(0.0, 0.0, frameSize, frameSize);
-        if ([[self placesInCategory:[self.CellArray objectAtIndex:i]] count] == 0) {
-            frame.alpha = 0.3;
-            [self.categoryView addSubview:Badge];
-            [frame setUserInteractionEnabled:NO];
-        }
-        else{
-            [frame setUserInteractionEnabled:YES];
-        }
-    }
-    
-}
-
 - (void)viewDidLoad
 {
     
@@ -308,9 +152,6 @@ static NSString *city = @"";
                                              selector: @selector(pref_dismiss)
                                                  name: dismiss
                                                object: nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewReload) name:@"reloadView" object:nil];
-    
 #endif
     
     if([ExternalFunctions isDownloaded:self.CityName.text]){
@@ -430,6 +271,59 @@ static NSString *city = @"";
     
 }
 
+
+-(void)viewDidAppear:(BOOL)animated{
+    //  AroundArray = [ExternalFunctions getAllPlacesInCity:self.CityName.text];
+    //  NSLog(@"loadView");
+    
+    if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
+        self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text].coordinate;
+        //    NSLog(@"Взяли центр города");
+        //        [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+        //        self.locationButton.enabled = NO;
+    }
+    else{
+        self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
+        //   self.locationButton.enabled = YES;
+        //   NSLog(@"Взяли локацию пользователя");
+    }
+    
+#if VIENNA
+    city = @"Vienna";
+#endif
+#if MOSCOW
+    city = @"Moscow";
+#endif
+    
+#if LIKELIK
+#else
+    self.navigationItem.leftBarButtonItem.enabled = YES;
+    self.Label = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
+    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+    for (int i = 0; i < 12; ++i){
+        UILabel *label = (UILabel *)[[self.frameArray objectAtIndex:i] viewWithTag:textinFrame];
+        label.text = AMLocalizedString([self.CellArray objectAtIndex:i], nil);
+    }
+    // [self getSoonLabels];
+#endif
+    
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.categoryView.contentOffset = CGPointMake(self.categoryView.contentOffset.x, 0);
+    self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0,self.CityName.frame.size.width,self.CityName.frame.size.height);
+    //    [self.Table deselectRowAtIndexPath:[self.Table indexPathForSelectedRow] animated:YES];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
 -(void)viewReload{
     [self viewDidLoad];
 }
@@ -453,6 +347,162 @@ static NSString *city = @"";
 }
 - (void)appReturnsActive{
     NSLog(@"LOG: app returns active");
+}
+
+- (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
+{
+    // create our blurred image
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *inputImage = [CIImage imageWithCGImage:theImage.CGImage];
+    
+    // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [filter setValue:inputImage forKey:kCIInputImageKey];
+    [filter setValue:[NSNumber numberWithFloat:blurSize] forKey:@"inputRadius"];
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+    
+    // CIGaussianBlur has a tendency to shrink the image a little,
+    // this ensures it matches up exactly to the bounds of our original image
+    CGImageRef cgImage = [context createCGImage:result fromRect:CGRectMake(blurSize, 0, [inputImage extent].size.width - 2*blurSize, [inputImage extent].size.height)];
+    
+    //return [UIImage imageWithCGImage:cgImage];
+    
+    // if you need scaling
+    return [[self class] scaleIfNeeded:cgImage];
+}
+
+
++(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
+    bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
+    if (isRetina) {
+        return [UIImage imageWithCGImage:cgimg scale:2.0 orientation:UIImageOrientationUp];
+    } else {
+        return [UIImage imageWithCGImage:cgimg];
+    }
+}
+- (void)removeKnuckleHUD{
+    for (UIView *subViews in self.view.subviews)
+        if (subViews.tag == EF_TAG ) {
+            [subViews removeFromSuperview];
+        }
+    for (UIView *subViews in self.navigationController.view.subviews){
+        if(subViews.tag == FADE_TAG)
+            [subViews removeFromSuperview];
+    }
+}
+
+-(void)reloadCatalogue{
+    NSURL *url;
+    if ([self.CityName.text isEqualToString:@"Moscow"] || [self.CityName.text isEqualToString:@"Москва"] || [self.CityName.text isEqualToString:@"Moskau"]){
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
+    }
+    if ([self.CityName.text isEqualToString:@"Vienna"] || [self.CityName.text isEqualToString:@"Вена"] || [self.CityName.text isEqualToString:@"Wien"]){
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
+    }
+    RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
+    self.MapPlace.showsUserLocation = YES;
+    self.MapPlace = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
+    self.MapPlace.hidden = NO;
+    self.MapPlace.hideAttribution = YES;
+    self.MapPlace.delegate = self;
+    
+    if ([AppDelegate isiPhone5])
+        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
+    else
+        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 450.0);
+    
+    
+    self.MapPlace.minZoom = 10;
+    self.MapPlace.zoom = 13;
+    self.MapPlace.maxZoom = 17;
+    
+    [self.MapPlace setAdjustTilesForRetinaDisplay:YES];
+    self.MapPlace.showsUserLocation = YES;
+    [self.placeViewMap setHidden:YES];
+    [self.placeViewMap addSubview:self.MapPlace];
+    
+    UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
+    fade.tag = FADE_TAG;
+    fade.backgroundColor = [UIColor clearColor];
+    [self.navigationController.view addSubview:fade];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // post an NSNotification that loading has started
+        AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
+        RMAnnotation *marker1;
+        for (int i=0; i<[AroundArray count]; i++) {
+            CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
+            marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:tmp.coordinate andTitle:@"Pin"];
+            marker1.annotationType = @"marker";
+            marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
+            marker1.subtitle = AMLocalizedString([[AroundArray objectAtIndex:i] objectForKey:@"Category"], nil);
+            marker1.userInfo = [AroundArray objectAtIndex:i];
+            [self.MapPlace addAnnotation:marker1];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSLog(@"Back on main thread");
+            IS_LOADING = NO;
+            [self getSoonLabels];
+            [self removeKnuckleHUD];
+            //   NSLog(@"remove knuckle animation in reload");
+            //            [self.Table reloadData];
+        });
+        // post an NSNotification that loading is finished
+    });
+    UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
+    coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    coolEf.tag = EF_TAG;
+    [self.view addSubview:coolEf];
+    [UIView animateWithDuration:0.2 animations:^{
+        coolEf.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        UIView *spin = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - 22, self.view.center.y - 90, 45, 45)];
+        //knuckle_1@2x.png
+        spin.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kul_90.png"]];
+        //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+        CALayer *layer = spin.layer;
+        layer.cornerRadius = 8;
+        spin.clipsToBounds = YES;
+        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+        animation.duration = 3.0f;
+        animation.repeatCount = HUGE_VAL;
+        [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
+        [coolEf addSubview:spin];
+        //      NSLog(@"start knuckle animation in reload");
+    }];
+    
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+-(void)getSoonLabels{
+    for (int i = 1; i < 7; ++i){
+        UIView *frame = (self.frameArray)[i];
+        MLPAccessoryBadge *Badge = [MLPAccessoryBadge new];
+        [Badge.textLabel setFont:[AppDelegate OpenSansSemiBold:32]];
+        //[Badge sizeToFit];
+        [Badge setBackgroundColor:[InterfaceFunctions colorTextCategory:[self.CellArray objectAtIndex:i]]];
+        [Badge setText:AMLocalizedString(@"Soon", nil)];
+        Badge.center = frame.center;//CGRectMake(0.0, 0.0, frameSize, frameSize);
+        if ([[self placesInCategory:[self.CellArray objectAtIndex:i]] count] == 0) {
+            frame.alpha = 0.3;
+            [self.categoryView addSubview:Badge];
+            [frame setUserInteractionEnabled:NO];
+        }
+        else{
+            [frame setUserInteractionEnabled:YES];
+        }
+    }
+    
 }
 
 
@@ -510,59 +560,6 @@ static NSString *city = @"";
 -(void)search:(id)sender{
     [self performSegueWithIdentifier:@"SearchSegue" sender:self];
 }
-
--(void)viewDidAppear:(BOOL)animated{
-    //  AroundArray = [ExternalFunctions getAllPlacesInCity:self.CityName.text];
-  //  NSLog(@"loadView");
-    
-    if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
-        self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text].coordinate;
-    //    NSLog(@"Взяли центр города");
-        //        [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
-        //        self.locationButton.enabled = NO;
-    }
-    else{
-        self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
-        //   self.locationButton.enabled = YES;
-     //   NSLog(@"Взяли локацию пользователя");
-    }
-    
-#if VIENNA
-    city = @"Vienna";
-#endif
-#if MOSCOW
-    city = @"Moscow";
-#endif
-    
-#if LIKELIK
-#else
-    self.navigationItem.leftBarButtonItem.enabled = YES;
-    self.Label = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
-    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
-        for (int i = 0; i < 12; ++i){
-            UILabel *label = (UILabel *)[[self.frameArray objectAtIndex:i] viewWithTag:textinFrame];
-            label.text = AMLocalizedString([self.CellArray objectAtIndex:i], nil);
-            }
-   // [self getSoonLabels];
-#endif
-
-}
-
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.categoryView.contentOffset = CGPointMake(self.categoryView.contentOffset.x, 0);
-    self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0,self.CityName.frame.size.width,self.CityName.frame.size.height);
-    //    [self.Table deselectRowAtIndexPath:[self.Table indexPathForSelectedRow] animated:YES];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
 
 
 
