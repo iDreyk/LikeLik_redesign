@@ -120,7 +120,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:afterregister
                                                             object:self];
         
-        NSLog(@"Back to Place");
+     //   NSLog(@"Back to Place");
     }
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 }
@@ -147,7 +147,7 @@
 {
     if (![_vkontakte isAuthorized])
     {
-        NSLog(@"111");
+      //  NSLog(@"111");
         [_vkontakte authenticate];
     }
     else
@@ -381,7 +381,7 @@
         }
         else{
             loadingView.hidden = YES;
-            NSLog(@"not success");
+          //  NSLog(@"not success");
         }
         
     }];
@@ -488,7 +488,7 @@
 }
 #pragma mark myFunctions
 -(NSString *)HUDStringLocalized:(id)JSON{
-    NSLog(@"HUDStringLocalized: %@",JSON);
+  //  NSLog(@"HUDStringLocalized: %@",JSON);
     if ([[[JSON objectForKey:@"Error"]objectForKey:@"message"] isEqual:[NSNull null]] || [[[JSON objectForKey:@"Error"]objectForKey:@"message"] length] == 0) {
         return AMLocalizedString(@"Something goes wrong", nil);
     }
@@ -502,10 +502,10 @@
     [locationManager setDelegate:self];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     CLLocation *Me = [locationManager location];
-    NSLog(@"Me = %@", Me);
+//    NSLog(@"Me = %@", Me);
     NSString *lat = [NSString stringWithFormat:@"%f",Me.coordinate.latitude];
     NSString *lon = [NSString stringWithFormat:@"%f",Me.coordinate.longitude];
-    NSLog(@"%@ %@",lat,lon);
+  //  NSLog(@"%@ %@",lat,lon);
     
     if ([Way isEqualToString:@"Self"]) {
         params = [NSDictionary dictionaryWithObjectsAndKeys:  Email.text,@"Email", Password.text ,@"Password",lat,@"lat",lon,@"lon",nil];

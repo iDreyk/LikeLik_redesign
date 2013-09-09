@@ -30,9 +30,9 @@
 {
     [super viewDidLoad];
     //[TestFlight passCheckpoint:@"MyLikeLik Open"];
-    LikeLikString = @[@"LikeLik Moscow",@"LikeLik Vienna",@"LikeLik Amsterdam",@"LikeLik Shanghai"];
+    LikeLikString = @[@"Moscow LikeLik",@"Vienna LikeLik"];
     LikeLikImage = @[@"Fist_animated_1",@"Fist_animated_2",@"Fist_animated_3",@"Fist_animated_4"];
-    
+    urls = @[@"https://itunes.apple.com/ru/app/likelik-moscow/id675597201?mt=8",@"https://itunes.apple.com/ru/app/vienna-likelik/id675607865?mt=8"];
     self.TableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.TableView.backgroundView = [InterfaceFunctions backgroundView];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"More LikeLik Apps", nil) AndColor:[InterfaceFunctions corporateIdentity]];
@@ -68,7 +68,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSInteger row = [indexPath row];
     static NSString *CellIdentifier = nil;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -77,11 +76,11 @@
     
     
 
-    [cell addSubview:[InterfaceFunctions TableLabelwithText:[LikeLikString objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions mainTextColor:row+1] AndFrame:CGRectMake((cell.frame.size.width-240.0)/2, (cell.frame.size.height-35.0)/2, 240.0, 35.0)]];
+    [cell addSubview:[InterfaceFunctions TableLabelwithText:[LikeLikString objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions corporateIdentity] AndFrame:CGRectMake((cell.frame.size.width-240.0)/2, (cell.frame.size.height-35.0)/2, 240.0, 35.0)]];
         
     
     
-    [cell addSubview:[InterfaceFunctions actbwithColor:[indexPath row]+1]];
+    [cell addSubview:[InterfaceFunctions corporateIdentity_actb]];//actbwithColor:[indexPath row]+1]];
     
     cell.backgroundView = [InterfaceFunctions CellBG];
     cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
@@ -105,7 +104,8 @@
 {
     
     [self.TableView deselectRowAtIndexPath:[self.TableView indexPathForSelectedRow] animated:YES];
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[urls objectAtIndex:[indexPath row]]]];
+
 }
 
 

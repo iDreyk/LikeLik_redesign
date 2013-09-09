@@ -70,7 +70,7 @@
     [self viewDidAppear:YES];
 }
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
-    NSLog(@"item = %d",item.tag);
+    //NSLog(@"item = %d",item.tag);
 }
 
 -(void)viewDidAppear:(BOOL)animated{

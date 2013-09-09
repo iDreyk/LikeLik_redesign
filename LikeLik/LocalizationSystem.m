@@ -20,9 +20,11 @@ static NSBundle *bundle = nil;
 {
 	@synchronized([LocalizationSystem class])
 	{
+        LocalizationSystem *tmp;
 		if (!_sharedLocalSystem){
-			LocalizationSystem *tmp = [[self alloc] init];
-            NSLog(@"%@",tmp);
+            tmp = [[self alloc] init];
+          //  NSLog(@"%@",tmp);
+            
 		}
 		return _sharedLocalSystem;
 	}

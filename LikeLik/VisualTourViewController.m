@@ -32,7 +32,7 @@ static BOOL infoViewIsOpen = NO;
     frame.origin.x=frame.size.width=page;
     frame.origin.y=0;
     [_scroll scrollRectToVisible:frame animated:YES];
-    NSLog(@"%d",page);
+  //  NSLog(@"%d",page);
     
 }
 
@@ -61,7 +61,7 @@ static BOOL infoViewIsOpen = NO;
 {
     int page = scrollView.contentOffset.x/scrollView.frame.size.width;
     self.pageControl.currentPage=page;
-    NSLog(@"Page = %d",self.pageControl.currentPage);
+  //  NSLog(@"Page = %d",self.pageControl.currentPage);
     Red_line.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"Name"];
     label.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"About"];
     [self.MapPhoto deselectAnnotation:self.MapPhoto.selectedAnnotation animated:NO];
@@ -140,7 +140,7 @@ static BOOL infoViewIsOpen = NO;
     
     _scroll.delegate=self;
         photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
-    NSLog(@"photos count = %d",[photos count]);
+//    NSLog(@"photos count = %d",[photos count]);
     CGFloat xOrigin = 0 * self.view.frame.size.width;
     UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
     awesomeView.backgroundColor = [UIColor colorWithRed:0.5/1 green:0.5 blue:0.5 alpha:1];
@@ -161,11 +161,11 @@ static BOOL infoViewIsOpen = NO;
     if ([[[CLLocation alloc] initWithLatitude:self.MapPhoto.userLocation.coordinate.latitude longitude:self.MapPhoto.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
         self.MapPhoto.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
         self.locationButton.enabled = NO;
-        NSLog(@"Взяли центер города");
+       // NSLog(@"Взяли центер города");
     }
     else{
         self.MapPhoto.centerCoordinate = self.MapPhoto.userLocation.coordinate;
-        NSLog(@"Взяли локацию пользователя");
+      //  NSLog(@"Взяли локацию пользователя");
         self.locationButton.enabled = YES;
     }
     
@@ -221,7 +221,7 @@ static BOOL infoViewIsOpen = NO;
         [self.Annotation addObject:marker1];
     }
     [self.MapPhoto selectAnnotation:[self.Annotation objectAtIndex:0] animated:YES];
-    NSLog(@"annotation count = %d",[self.Annotation count]);
+   // NSLog(@"annotation count = %d",[self.Annotation count]);
     [self.visualMap setHidden:YES];
     [self.view addSubview:self.MapPhoto];
     

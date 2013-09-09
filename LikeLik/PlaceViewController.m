@@ -640,7 +640,7 @@ CGFloat alpha = 0.5;
 }
 
 -(IBAction)showLocation:(id)sender{
-    NSLog(@"showlocation");
+  //  NSLog(@"showlocation");
    
     if (self.navigationController.navigationBar.frame.origin.y !=20) {
         infoViewIsOpen = !infoViewIsOpen;
@@ -682,7 +682,7 @@ CGFloat alpha = 0.5;
 }
 
 -(void)afterreg{
-     NSLog(@"Hello after reg");
+  //   NSLog(@"Hello after reg");
     self.labelonPhoto.hidden = NO;
     self.background.hidden = NO;
     self.navigationController.navigationBar.hidden = YES;
@@ -800,7 +800,7 @@ CGFloat alpha = 0.5;
 }
 
 -(void)aftercall:(NSNotification *)notification{
-    NSLog(@"some thing");
+  //  NSLog(@"some thing");
     if (self.navigationController.navigationBar.frame.origin.y ==20) {
         infoViewIsOpen = !infoViewIsOpen;
         _labelonPhoto.hidden = NO;
@@ -817,7 +817,7 @@ CGFloat alpha = 0.5;
         [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
         
     }
-    NSLog(@"aftercall");
+  //  NSLog(@"aftercall");
     if (self.placeViewMap.hidden == NO){
         _background.hidden = NO;
         _labelonPhoto.hidden = NO;
@@ -850,13 +850,13 @@ CGFloat alpha = 0.5;
 
 -(void)viewWillDisappear:(BOOL)animated{
     infoViewIsOpen = NO;
-    NSLog(@"Cammon");
+ //   NSLog(@"Cammon");
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     if ([self.fromNotification isEqualToString:@"YES"]) {
-        NSLog(@"disappear");
-        NSLog(@"Ку-ку");
+      //  NSLog(@"disappear");
+     //   NSLog(@"Ку-ку");
         self.navigationController.navigationBar.hidden = NO;
     }
 }
@@ -878,11 +878,11 @@ CGFloat alpha = 0.5;
     if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0) {
         self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName].coordinate;
         self.locationButton.enabled = NO;
-        NSLog(@"Взяли центер города");
+      //  NSLog(@"Взяли центер города");
     }
     else{
         self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
-        NSLog(@"Взяли локацию пользователя");
+       // NSLog(@"Взяли локацию пользователя");
         self.locationButton.enabled = YES;
     }
     
@@ -1092,9 +1092,8 @@ CGFloat alpha = 0.5;
         }
         else
         {
-#warning  текст шаринга
             [_vkontakte postMessageToWall:self.PlaceAbout link:[[NSURL alloc] initWithString:@"http://likelik.com"]];
-            NSLog(@"%@",[[NSURL alloc] initWithString:@"http://likelik.com"]);
+           // NSLog(@"%@",[[NSURL alloc] initWithString:@"http://likelik.com"]);
         }
         
         
@@ -1104,7 +1103,7 @@ CGFloat alpha = 0.5;
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString: AMLocalizedString(@"Share on twitter", nil)]) {
         if (_engine){
-            NSLog(@"123");
+         //   NSLog(@"123");
             [_engine sendUpdate: self.PlaceAbout];
             return;
         }
@@ -1118,7 +1117,7 @@ CGFloat alpha = 0.5;
             [self presentViewController:controller animated:YES completion:^{}];//presentModalViewController: controller animated: YES];
         else {
 
-            NSLog(@"321");
+        //    NSLog(@"321");
             [_engine sendUpdate: self.PlaceAbout];
         }
     }
@@ -1361,6 +1360,6 @@ CGFloat alpha = 0.5;
 -(IBAction)hide_hint:(id)sender{
     self.hint.hidden = YES;
     self.hide_button.hidden = YES;
-    NSLog(@"123123");
+  //  NSLog(@"123123");
 }
 @end

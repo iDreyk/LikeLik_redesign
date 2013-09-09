@@ -110,7 +110,7 @@ static BOOL JUST_APPEAR = YES;
 
 
 -(void)viewDidAppear:(BOOL)animated{
-      NSLog(@"loglog");
+    //  NSLog(@"loglog");
     [label setText:AMLocalizedString(@"Special Annotation", nil)];
     
     CGPoint temp = self.view.center;
@@ -269,7 +269,7 @@ static BOOL JUST_APPEAR = YES;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"TOUCHED!");
+   // NSLog(@"TOUCHED!");
     NSInteger tabIndex = self.tabBarController.selectedIndex;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if(tabIndex != 1 && ![ExternalFunctions isDownloaded:_CityLabels[[indexPath row]]]){
@@ -333,7 +333,7 @@ static BOOL JUST_APPEAR = YES;
     UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
     imback.backgroundColor = [UIColor blackColor];
     imback.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f];
-    NSLog(@"%@",imback);
+//    NSLog(@"%@",imback);
     
 
     //[TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
@@ -386,7 +386,7 @@ static BOOL JUST_APPEAR = YES;
                 }
             }
             
-            NSLog(@"Downloading via Wi-Fi");
+        //    NSLog(@"Downloading via Wi-Fi");
         }
         else {
             // On Cell
@@ -410,14 +410,14 @@ static BOOL JUST_APPEAR = YES;
                     aURL = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"%@%@",likelikurlcell_4,@"Vienna.zip"]];
             }
             
-            NSLog(@"Downloading via cell network");
+           // NSLog(@"Downloading via cell network");
         }
         
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aURL];
         [request setHTTPMethod:@"HEAD"];
         
         NSURLResponse *response = nil;
-        NSError *err = nil;
+      //  NSError *err = nil;
         
         //NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
         
@@ -476,7 +476,7 @@ static BOOL JUST_APPEAR = YES;
                         [self AFdownload:@"Vienna" fromURL:likelikurlwifi_4];
                 }
                 
-                NSLog(@"Downloading via Wi-Fi");
+       //         NSLog(@"Downloading via Wi-Fi");
             }
             else if (![ExternalFunctions isDownloaded:_CityLabels[row]]) {
                 // On Cell
@@ -500,12 +500,12 @@ static BOOL JUST_APPEAR = YES;
                         [self AFdownload:@"Vienna" fromURL:likelikurlcell_4];
                 }
                 
-                NSLog(@"Downloading via cell network");
+          //      NSLog(@"Downloading via cell network");
             }
             
         } else {
             // Isn't reachable
-            NSLog(@"Isn't reachable");
+    //        NSLog(@"Isn't reachable");
             self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
             [self.navigationController.view addSubview:self.HUDfade];
           //  [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -621,7 +621,7 @@ static BOOL JUST_APPEAR = YES;
         int m = secs / 60 % 60;
         int s = secs % 60;
         
-        NSString *text = [NSString stringWithFormat:@"%02d:%02d", m, s];
+     //   NSString *text = [NSString stringWithFormat:@"%02d:%02d", m, s];
         if (m == 0 && s==0) {
             
             self.HUDfade.labelText = AMLocalizedString(@"Data processing", nil);
@@ -629,7 +629,7 @@ static BOOL JUST_APPEAR = YES;
         else
             self.HUDfade.labelText = [NSString stringWithFormat:@"%.1f %%",progress];
         //self.HUDfade.labelText = [NSString stringWithFormat:@"%@ \t %@",AMLocalizedString(@"Time left", nil),text];
-        NSLog(@"Time left: %@ \n Speed: %f",text,speed);
+     //   NSLog(@"Time left: %@ \n Speed: %f",text,speed);
         currentTime = currentTime2;
     }];
     
@@ -680,8 +680,8 @@ static BOOL JUST_APPEAR = YES;
 }
 
 - (NSError *) DownloadError:(NSError *) error{
-    NSLog(@"error = %d",error.code);
-    NSLog(@"error description = %@",error.description);
+ //   NSLog(@"error = %d",error.code);
+ //   NSLog(@"error description = %@",error.description);
     return error;
 }
 

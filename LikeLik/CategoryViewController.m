@@ -145,7 +145,7 @@ static NSString *city = @"";
             IS_LOADING = NO;
             [self getSoonLabels];
             [self removeKnuckleHUD];
-            NSLog(@"remove knuckle animation in reload");
+         //   NSLog(@"remove knuckle animation in reload");
             //            [self.Table reloadData];
         });
         // post an NSNotification that loading is finished
@@ -170,7 +170,7 @@ static NSString *city = @"";
         animation.repeatCount = HUGE_VAL;
         [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
         [coolEf addSubview:spin];
-        NSLog(@"start knuckle animation in reload");
+  //      NSLog(@"start knuckle animation in reload");
     }];
     
 }
@@ -211,7 +211,7 @@ static NSString *city = @"";
     
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor clearColor]];
-    NSLog(@"viewDidLoad");
+ //   NSLog(@"viewDidLoad");
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     self.categoryView.backgroundColor = [UIColor clearColor];
     IN_BG = NO;
@@ -254,7 +254,7 @@ static NSString *city = @"";
     self.CityName.textColor = [UIColor whiteColor];
 //    self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
     self.CityImage.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]] withFloat:15.0f];
-    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
+//    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"VisualtourSegue",@"TransportationSegue",@"SearchSegue",@"FavoritesSegue",@"PracticalinfoSegue"];
@@ -345,7 +345,7 @@ static NSString *city = @"";
                 [self getSoonLabels];
                 [self removeKnuckleHUD];
                 
-                NSLog(@"remove knuckle animation");
+              //  NSLog(@"remove knuckle animation");
             });
             // post an NSNotification that loading is finished
         });
@@ -423,7 +423,7 @@ static NSString *city = @"";
             animation.repeatCount = HUGE_VAL;
             [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
             [coolEf addSubview:spin];
-            NSLog(@"start knuckle animation in viewDidLoad");
+          //  NSLog(@"start knuckle animation in viewDidLoad");
         }];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];
@@ -513,18 +513,18 @@ static NSString *city = @"";
 
 -(void)viewDidAppear:(BOOL)animated{
     //  AroundArray = [ExternalFunctions getAllPlacesInCity:self.CityName.text];
-    NSLog(@"loadView");
+  //  NSLog(@"loadView");
     
     if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
         self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text].coordinate;
-        NSLog(@"Взяли центр города");
+    //    NSLog(@"Взяли центр города");
         //        [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         //        self.locationButton.enabled = NO;
     }
     else{
         self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
         //   self.locationButton.enabled = YES;
-        NSLog(@"Взяли локацию пользователя");
+     //   NSLog(@"Взяли локацию пользователя");
     }
     
 #if VIENNA
@@ -544,7 +544,7 @@ static NSString *city = @"";
             UILabel *label = (UILabel *)[[self.frameArray objectAtIndex:i] viewWithTag:textinFrame];
             label.text = AMLocalizedString([self.CellArray objectAtIndex:i], nil);
             }
-    [self getSoonLabels];
+   // [self getSoonLabels];
 #endif
 
 }
@@ -590,7 +590,7 @@ static NSString *city = @"";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIView *)sender{
     
     NSInteger row =[(UIGestureRecognizer *)sender view].tag;
-    NSLog(@"In segue! Number is: %d", row);
+  //  NSLog(@"In segue! Number is: %d", row);
     if ([[segue identifier] isEqualToString:@"AroundmeSegue"]) {
         AroundMeViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;
@@ -677,7 +677,7 @@ static NSString *city = @"";
 - (void)updateOffsets {
     
     CGFloat yOffset   = self.categoryView.contentOffset.y;
-    NSLog(@"yofs: %f", yOffset);
+  //  NSLog(@"yofs: %f", yOffset);
     if (yOffset > 0) {
         //self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
         

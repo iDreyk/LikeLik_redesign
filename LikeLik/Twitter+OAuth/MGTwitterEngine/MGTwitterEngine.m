@@ -1017,10 +1017,10 @@
 - (NSString *)sendUpdate:(NSString *)status inReplyTo:(unsigned long)updateID
 {
     if (!status) {
-        NSLog(@"13");
+     //   NSLog(@"13");
         return nil;
     }
-    NSLog(@"123");
+   // NSLog(@"123");
     NSString *path = [NSString stringWithFormat:@"statuses/update.%@", API_FORMAT];
     
     NSString *trimmedText = status;

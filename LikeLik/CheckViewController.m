@@ -109,13 +109,11 @@ static BOOL foreignversion = NO;
     
     
     
-    NSLog(@"BLYAAA");
 
-    NSLog(@"%@",self.Label.text);
 }
 
 -(void)check_Open:(id)sender{
-    NSLog(@"check_Open");
+   // NSLog(@"check_Open");
         self.Label.font = [AppDelegate OpenSansRegular:40];
         self.TextCheck.font = [AppDelegate OpenSansRegular:28];
     self.Label.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];

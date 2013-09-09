@@ -65,7 +65,6 @@ CGRect oldRect;
     self.SearchTable.backgroundView = [InterfaceFunctions backgroundView];
     Array = [NSArray arrayWithArray:self.PlacesArray];
     
-#warning сделать асинхронную загрузку (Да уже и так норм :) )
     tmp = [NSArray arrayWithArray:self.readyArray];//[ExternalFunctions getAllPlacesInCity:self.CityName];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
@@ -279,7 +278,7 @@ CGRect oldRect;
     //    NSArray *tmp;
     if (searchBar.text.length>0){//.text.length>0) {
         NSString *strSearchText =searchBar.text;
-        NSLog(@"strSearchText = %@",strSearchText);
+    //    NSLog(@"strSearchText = %@",strSearchText);
         //#warning надо переделать под новый каталог
         //       tmp = [ExternalFunctions getAllPlacesInCity:self.CityName];
         //#warning backspace неправильно работает

@@ -394,7 +394,7 @@ static BOOL JUST_APPEAR = YES;
 //        self.PlacesTable.backgroundView.backgroundColor = [UIColor whiteColor];
 //        [self.PlacesTable.backgroundView addSubview:label];
 //        [self.PlacesTable.backgroundView addSubview:sublabel];
-        NSLog(@"ПУСТО");
+   //     NSLog(@"ПУСТО");
     }
     
     
@@ -411,13 +411,13 @@ static BOOL JUST_APPEAR = YES;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"CityNameString = %@ %@",self.CityNameString,AMLocalizedString(@"Favorites", nil));
+  //  NSLog(@"CityNameString = %@ %@",self.CityNameString,AMLocalizedString(@"Favorites", nil));
     if ([self.CityNameString isEqualToString: AMLocalizedString(@"Favorites", nil)]){
-        NSLog(@"canEditRowAtIndexPath");
+    //    NSLog(@"canEditRowAtIndexPath");
         return YES;
     }
     else{
-        NSLog(@"no canEditRowAtIndexPath");
+    //    NSLog(@"no canEditRowAtIndexPath");
         return NO;
     }
 }
@@ -470,14 +470,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
                 cropedImage = [UIImage imageWithCGImage:imgRef];
                 CGImageRelease(imgRef);
                 [self.imageCache setObject:cropedImage forKey:backup];
-                NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:backup]);
+            //    NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:backup]);
             }
             else{
                 cropedImage = image;
                 [self.imageCache setObject:cropedImage forKey:url];
-                NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:url]);
+           //     NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:url]);
             }
-            NSLog(@"Images in cache: %d", [self.imageCache count]);
+       //     NSLog(@"Images in cache: %d", [self.imageCache count]);
             dispatch_async(dispatch_get_main_queue(), ^ {
                 completionBlock(YES,cropedImage);
             });
@@ -535,7 +535,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *category = [[AroundArray objectAtIndex:row] objectForKey:@"Category"];
     
     if (cell == nil) { // init the cell
-        NSLog(@"Created! %@",indexPath);
+      //  NSLog(@"Created! %@",indexPath);
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
         //202,148,78
@@ -709,16 +709,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSDictionary *temp = [AroundArray objectAtIndex:row];
 
-    NSLog(@"Name = %@ Category = %@ City = %@ row = %d",[temp objectForKey:@"Name"],[temp objectForKey:@"Category"],self.CityNameText,row);
+  //  NSLog(@"Name = %@ Category = %@ City = %@ row = %d",[temp objectForKey:@"Name"],[temp objectForKey:@"Category"],self.CityNameText,row);
 
     if ([ExternalFunctions isCheckUsedInPlace:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] InCategory:category InCity:self.CityNameText]){
     
-        NSLog(@"isUsed = %d row = %d",[ExternalFunctions isCheckUsedInPlace:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] InCategory:category InCity:self.CityNameText],row);
+   //     NSLog(@"isUsed = %d row = %d",[ExternalFunctions isCheckUsedInPlace:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] InCategory:category InCity:self.CityNameText],row);
         check.alpha = 0.5;
     }
     else{
         check.alpha = 1.0;
-        NSLog(@"NOOOOOO %@",[temp objectForKey:@"Name"]);
+     //   NSLog(@"NOOOOOO %@",[temp objectForKey:@"Name"]);
     }
     
     
@@ -796,7 +796,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 -(void)check:(UIButtonWithAditionalNum *)sender{
     
     NSDictionary *temp = [AroundArray objectAtIndex:sender.tagForCheck];
-    NSLog(@"TagforCheck = %d",sender.tagForCheck);
+  //  NSLog(@"TagforCheck = %d",sender.tagForCheck);
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Name"] forKey:@"PlaceTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Category"] forKey:@"CategoryTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"City"] forKey:@"CityTemp"];
@@ -804,10 +804,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"Check: %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"]);
     
     if ([ExternalFunctions isCheckUsedInPlace:[temp objectForKey:@"Name"] InCategory:[temp objectForKey:@"Category"] InCity:self.CityNameText]){
-        NSLog(@"Уже использован");
+ //       NSLog(@"Уже использован");
     }
     else{
-        NSLog(@"Еще не использован");
+ //       NSLog(@"Еще не использован");
         if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:checkOpen
                                                                 object:self];
@@ -840,7 +840,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 //        [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
 //        self.navigationController.navigationBar.hidden = YES;
         if ([ExternalFunctions isCheckUsedInPlace:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"] InCategory:[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"] InCity:[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"]]){
-            NSLog(@"HAAAAALO!!!");
+   //         NSLog(@"HAAAAALO!!!");
             NSIndexPath *durPath = [NSIndexPath indexPathForRow:[[[NSUserDefaults standardUserDefaults] objectForKey:@"RowTemp"] integerValue] inSection:0];
             NSArray *paths = [NSArray arrayWithObject:durPath];
             [self.PlacesTable reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationRight];

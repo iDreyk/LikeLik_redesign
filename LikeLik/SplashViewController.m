@@ -51,7 +51,7 @@ static NSInteger j=0;
 
 -(void) stopUpdating{
     [locationManager stopUpdatingLocation];
-    NSLog(@"Notification сработал");
+ //   NSLog(@"Notification сработал");
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
@@ -62,7 +62,7 @@ static NSInteger j=0;
         [ExternalFunctions getReady];
         // post an NSNotification that loading has started
         NSLog(@"start background queue");
-        NSLog(@"j=%d",j);
+  //      NSLog(@"j=%d",j);
         if (j==0) {
             j++;
             Me = newLocation;
@@ -70,12 +70,12 @@ static NSInteger j=0;
             NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
             
             
-            NSLog(@"Зашел в счетчик");
+       //     NSLog(@"Зашел в счетчик");
             for (int i = 0; i<[Region count]; i++) {
                 [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
             }
         }
-        NSLog(@"after j = %d",j);
+      //  NSLog(@"after j = %d",j);
         // post an NSNotification that loading is finished
         [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"stopUpdating" object:nil]];
     });
@@ -121,6 +121,27 @@ static NSInteger j=0;
     
 }
 
+-(void)ShowAlertView{
+    //NSString *str = [NSString stringWithFormat:@"%@ %@ Mb",AMLocalizedString(@"You are up to download LikeLik Catalogue", nil),[self retrieveFileSizeFromServer]];
+    NSString *str = AMLocalizedString(@"You are up to download LikeLik Catalogue", nil);
+    UIAlertView *message1 = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Download", nil)
+                                                      message:str
+                                                     delegate:self
+                                            cancelButtonTitle:AMLocalizedString(@"Next time", nil)
+                                            otherButtonTitles:@"Ok",nil];
+    [message1 show];
+    
+}
+
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0){
+        exit(0);
+    }
+    else{
+        [self startDownloading];
+    }
+}
 - (void)viewDidLoad
 {
     
@@ -136,7 +157,8 @@ static NSInteger j=0;
 #if LIKELIK
 #else
     if (![ExternalFunctions isDownloaded:city]) {
-        [self startDownloading];
+       
+        [self ShowAlertView];
     }
 //    else
 //        [self prepareAroundMe];
@@ -279,7 +301,7 @@ static NSInteger j=0;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     NSString *url = [[NSString alloc] initWithFormat:@"%@%@.zip",likelikUrl,filename];
-    NSLog(@"%@",url);
+  //  NSLog(@"%@",url);
     NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",filename];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
@@ -345,7 +367,7 @@ static NSInteger j=0;
         int m = secs / 60 % 60;
         int s = secs % 60;
         
-        NSString *text = [NSString stringWithFormat:@"%02d:%02d", m, s];
+//        NSString *text = [NSString stringWithFormat:@"%02d:%02d", m, s];
         if (m == 0 && s==0) {
             
             self.HUDfade.labelText = AMLocalizedString(@"Data processing", nil);
@@ -406,8 +428,8 @@ static NSInteger j=0;
 }
 
 - (NSError *) DownloadError:(NSError *) error{
-    NSLog(@"error = %d",error.code);
-    NSLog(@"error description = %@",error.description);
+   // NSLog(@"error = %d",error.code);
+   // NSLog(@"error description = %@",error.description);
     return error;
 }
 
@@ -416,7 +438,7 @@ static NSInteger j=0;
 }
 
 - (void) startDownloading {
-    NSLog(@"Согласился на покупку");
+//    NSLog(@"Согласился на покупку");
     
     Reachability *reach = [Reachability reachabilityWithHostname:@"google.com"];
     
@@ -429,7 +451,7 @@ static NSInteger j=0;
             else
                 [self AFdownload:city fromURL:likelikurlwifi_4];
             
-            NSLog(@"Downloading via Wi-Fi");
+        //    NSLog(@"Downloading via Wi-Fi");
         }
         else {
             // On Cell
@@ -442,7 +464,7 @@ static NSInteger j=0;
                 [self AFdownload:city fromURL:likelikurlcell_4];
             
             
-            NSLog(@"Downloading via cell network");
+        //    NSLog(@"Downloading via cell network");
         }
         
     } else {

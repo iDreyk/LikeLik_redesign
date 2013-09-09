@@ -631,7 +631,7 @@ static CLLocation *Me;
     }
     else
         language2 = @"en";
-#warning Правильное определение языков
+//#warning Правильное определение языков
 
     checkLanguageFromCountry = language2;
     checkLanguageFromSystem = language1;

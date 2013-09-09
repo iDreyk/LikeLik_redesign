@@ -287,7 +287,7 @@
 }
 
 -(void)afterFacebook{
-    NSLog(@"yo!");
+ //   NSLog(@"yo!");
     self.navigationController.navigationBar.hidden= NO;
 }
 
@@ -441,7 +441,7 @@
 {
     if (![_vkontakte isAuthorized])
     {
-         NSLog(@"111");
+  //       NSLog(@"111");
         [_vkontakte authenticate];
     }
     else
@@ -588,7 +588,7 @@
 
 #pragma mark myFunctions
 -(NSString *)HUDStringLocalized:(id)JSON{
-    NSLog(@"HUDStringLocalized: %@",JSON);
+ //   NSLog(@"HUDStringLocalized: %@",JSON);
     if ([[[JSON objectForKey:@"Error"]objectForKey:@"message"] isEqual:[NSNull null]] || [[[JSON objectForKey:@"Error"]objectForKey:@"message"] length] == 0) {
         return AMLocalizedString(@"Something goes wrong", nil);
     }
@@ -602,10 +602,10 @@
     [locationManager setDelegate:self];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     CLLocation *Me = [locationManager location];
-    NSLog(@"Me = %@", Me);
+ //   NSLog(@"Me = %@", Me);
     NSString *lat = [NSString stringWithFormat:@"%f",Me.coordinate.latitude];
     NSString *lon = [NSString stringWithFormat:@"%f",Me.coordinate.longitude];
-    NSLog(@"%@ %@",lat,lon);
+//    NSLog(@"%@ %@",lat,lon);
     
     if ([Way isEqualToString:@"Self"]) {
         NSString *Birth_date = [[NSString alloc] initWithFormat:@"%@-%@-%@",day,month,year];

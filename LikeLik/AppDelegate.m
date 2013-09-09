@@ -304,7 +304,7 @@ NSInteger wasinactive = NO;
         
         
         
-        NSLog(@"userinfo = %@",notification.userInfo);
+  //      NSLog(@"userinfo = %@",notification.userInfo);
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view];
         [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
         [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];

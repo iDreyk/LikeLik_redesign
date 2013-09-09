@@ -15,6 +15,8 @@
 		55A80F2117747EF000089216 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F1B17747EF000089216 /* unzip.c */; };
 		55A80F2217747EF000089216 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F1D17747EF000089216 /* zip.c */; };
 		55A80F2517747F5200089216 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F2417747F5200089216 /* SSZipArchive.m */; };
+		9111163A17DDD00F00474B13 /* icon_Vienna.png in Resources */ = {isa = PBXBuildFile; fileRef = 9111163817DDD00F00474B13 /* icon_Vienna.png */; };
+		9111163B17DDD00F00474B13 /* icon_Moscow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9111163917DDD00F00474B13 /* icon_Moscow.png */; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		916587F91794407600F13BF2 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 916587E11794407600F13BF2 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		916587FA1794407600F13BF2 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916587E31794407600F13BF2 /* FBDialog.bundle */; };
@@ -402,6 +404,8 @@
 		55A80F2317747F5200089216 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
 		55A80F2417747F5200089216 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		91102734176DB8440023F2C7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9111163817DDD00F00474B13 /* icon_Vienna.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_Vienna.png; sourceTree = "<group>"; };
+		9111163917DDD00F00474B13 /* icon_Moscow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_Moscow.png; sourceTree = "<group>"; };
 		9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 114x114.png"; sourceTree = "<group>"; };
 		91241948173A9CF8004B6837 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194A173A9DF5004B6837 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -992,6 +996,8 @@
 		916588321794409B00F13BF2 /* Work PNG */ = {
 			isa = PBXGroup;
 			children = (
+				9111163817DDD00F00474B13 /* icon_Vienna.png */,
+				9111163917DDD00F00474B13 /* icon_Moscow.png */,
 				D0BC8E1417C4BB840048659E /* kul_90@2x.png */,
 				91B831AD17D8B01C008E6750 /* 512x512 special Series.png */,
 				FAB01E9D17CC70200052E3E8 /* knuck_pin_test5@2x.png */,
@@ -1983,6 +1989,8 @@
 				FA6D979D17CDCFFC000F07E4 /* 11.png in Resources */,
 				FA6D979E17CDCFFC000F07E4 /* 12.png in Resources */,
 				559AA1C317D9EDDB005362CC /* appData.plist in Resources */,
+				9111163A17DDD00F00474B13 /* icon_Vienna.png in Resources */,
+				9111163B17DDD00F00474B13 /* icon_Moscow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2127,11 +2135,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 			};
 			name = LikeLik;
 		};
@@ -2200,11 +2208,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 			};
 			name = Debug;
 		};
@@ -2227,11 +2235,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2340,11 +2348,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 			};
 			name = Vienna;
 		};
@@ -2413,11 +2421,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 			};
 			name = Moscow;
 		};

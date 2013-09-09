@@ -11,6 +11,7 @@
 @interface MyLikeLikeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
     NSArray *LikeLikImage;
     NSArray *LikeLikString;
+    NSArray *urls;
 }
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
 
