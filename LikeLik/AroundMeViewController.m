@@ -16,7 +16,7 @@
 #import "RegistrationViewController.h"
 #import "LoginViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "CoreTextLabel.h"
 //
 //
 #define tableLabelWithTextTag 87001
@@ -602,14 +602,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         
         
         // анонс
-        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(width + 2*img_x_dist, img_y_dist, cellWidth - width - 2*img_x_dist, 65)];
-        //text.backgroundColor = [UIColor blackColor];
-//        text.backgroundColor = [UIColor clearColor];
-        //text.textAlignment = NSTextAlignment;
+        CoreTextLabel *text = [[CoreTextLabel alloc]  initWithFrame:CGRectMake(width + 2*img_x_dist + 3, img_y_dist - 4, cellWidth - width - 2*img_x_dist - 10, 70)]; // y - 4
         text.textColor = [UIColor blackColor];
-        text.font = [AppDelegate OpenSansRegular:20];//[UIFont systemFontOfSize:10];
         text.tag = announceTag;
-        text.numberOfLines = 5;
+        text.adjustsFontSizeToFitWidth = NO;
+        text.textAlignment = kCTLeftTextAlignment;
+        text.font = [AppDelegate  OpenSansRegular:19];
+        text.textColor = [UIColor blackColor];
+        text.lineBreakMode = kCTLineBreakByWordWrapping;
         [back addSubview:text];
         
         // заголовок
@@ -627,7 +627,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         
         // кнопка с кулаком
 
-        knuck = [[UIButtonWithAditionalNum alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5, img_y_dist + width/1.852 - 2*img_x_dist - 11, 60, 30)];
+        knuck = [[UIButtonWithAditionalNum alloc] initWithFrame:CGRectMake(width + 2*img_x_dist + 2*img_x_dist + 2*img_x_dist  + 5 - 6, img_y_dist + width/1.852 - 2*img_x_dist - 11 - 5, 60, 30)];
         knuck.tag = checkTag;
         knuck.backgroundColor = [InterfaceFunctions corporateIdentity];
         knuck.layer.cornerRadius = 3;
@@ -731,12 +731,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     UILabel *previewText = (UILabel *)[cell viewWithTag:announceTag];
     
     NSString *preview = [[AroundArray objectAtIndex:row] objectForKey:@"Preview"];
-    if(!preview)
-        previewText.text = AMLocalizedString(@"Please, update catalogues to get access to newest features.", nil);
+    if(preview.length < 10)
+    previewText.text = AMLocalizedString(@"Please, update catalogues to get access to newest features.", nil);
                             //Добавить в локализации
     else
         previewText.text = preview;
-    previewText.numberOfLines = 0;
     
     UILabel *label = (UILabel *)[cell viewWithTag:labelColorTag];
     label.backgroundColor = [InterfaceFunctions colorTextCategory:category];
