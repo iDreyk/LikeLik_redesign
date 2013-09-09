@@ -353,7 +353,6 @@
 		91A802AC179558F8007EC5B6 /* cross2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A7179558F8007EC5B6 /* cross2@2x.png */; };
 		91A802AD179558F8007EC5B6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A8179558F8007EC5B6 /* Icon.png */; };
 		91A802AE179558F8007EC5B6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A9179558F8007EC5B6 /* Icon@2x.png */; };
-		91B831AE17D8B020008E6750 /* 512x512 special Series.png in Resources */ = {isa = PBXBuildFile; fileRef = 91B831AD17D8B01C008E6750 /* 512x512 special Series.png */; };
 		91C08F3817771336007B98D3 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C08F3717771336007B98D3 /* StartViewController.m */; };
 		91FE3A091796C387000304D4 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A071796C387000304D4 /* Moscow */; };
 		91FE3A0A1796C387000304D4 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A081796C387000304D4 /* Vienna */; };
@@ -371,6 +370,7 @@
 		D0BC8E1517C4BB840048659E /* kul_90@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0BC8E1417C4BB840048659E /* kul_90@2x.png */; };
 		D0BC8E1917C4F7B10048659E /* catalogue.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0BC8E1817C4F7B10048659E /* catalogue.plist */; };
 		D0DEEED717CE34DE008872E4 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DEEED617CE34DE008872E4 /* CoreImage.framework */; };
+		FA34883117DDF9E90090DC7C /* CoreTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34883017DDF9E90090DC7C /* CoreTextLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FA6D979317CDCFFC000F07E4 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6D978717CDCFFC000F07E4 /* 1.png */; };
 		FA6D979417CDCFFC000F07E4 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6D978817CDCFFC000F07E4 /* 2.png */; };
 		FA6D979517CDCFFC000F07E4 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6D978917CDCFFC000F07E4 /* 3.png */; };
@@ -879,6 +879,8 @@
 		D0BC8E1417C4BB840048659E /* kul_90@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kul_90@2x.png"; sourceTree = "<group>"; };
 		D0BC8E1817C4F7B10048659E /* catalogue.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = catalogue.plist; sourceTree = "<group>"; };
 		D0DEEED617CE34DE008872E4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		FA34882F17DDF9E90090DC7C /* CoreTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextLabel.h; sourceTree = "<group>"; };
+		FA34883017DDF9E90090DC7C /* CoreTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextLabel.m; sourceTree = "<group>"; };
 		FA6D978717CDCFFC000F07E4 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		FA6D978817CDCFFC000F07E4 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		FA6D978917CDCFFC000F07E4 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -1388,6 +1390,8 @@
 				91C08F3717771336007B98D3 /* StartViewController.m */,
 				919E8ABD173A5F6D00A25E07 /* StartTabBarViewController.h */,
 				919E8ABE173A5F6D00A25E07 /* StartTabBarViewController.m */,
+				FA34882F17DDF9E90090DC7C /* CoreTextLabel.h */,
+				FA34883017DDF9E90090DC7C /* CoreTextLabel.m */,
 				919E8ABF173A5F6D00A25E07 /* StartTableCell.h */,
 				919E8AC0173A5F6D00A25E07 /* StartTableCell.m */,
 				919E8AC1173A5F6D00A25E07 /* CategoryViewController.h */,
@@ -2068,6 +2072,7 @@
 				91658A4A1794450D00F13BF2 /* VkontakteViewController.m in Sources */,
 				91658A501794457700F13BF2 /* SCFacebook.m in Sources */,
 				91A80296179519C2007EC5B6 /* MBProgressHUD.m in Sources */,
+				FA34883117DDF9E90090DC7C /* CoreTextLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
