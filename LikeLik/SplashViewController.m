@@ -136,7 +136,6 @@ static NSInteger j=0;
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0){
-        exit(0);
     }
     else{
         [self startDownloading];
@@ -335,7 +334,6 @@ static NSInteger j=0;
                                 onTarget:self withObject:nil animated:YES];
         
         [self DownloadError:error];
-        
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [self.navigationController popViewControllerAnimated:YES];

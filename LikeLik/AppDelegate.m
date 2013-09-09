@@ -212,7 +212,12 @@ NSInteger wasinactive = NO;
             self.window.rootViewController  = initialViewController;
             [self.window makeKeyAndVisible];
             UIImageView *image =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-            image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f];
+            image.backgroundColor = [UIColor blackColor];
+#if VIENNA
+    image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:15.0f];
+#else
+    image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f];
+#endif
             image.tag = backgroundTag;
             [self.window.rootViewController.view insertSubview:image atIndex:0];
 
@@ -228,7 +233,12 @@ NSInteger wasinactive = NO;
         self.window.rootViewController  = initialViewController;
         [self.window makeKeyAndVisible];
         UIImageView *image =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        image.backgroundColor = [UIColor blackColor];
+#if VIENNA
+        image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:15.0f];
+#else
         image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f];
+#endif
         image.tag = backgroundTag;
         [self.window.rootViewController.view insertSubview:image atIndex:0];
     }
