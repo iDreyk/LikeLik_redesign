@@ -553,6 +553,8 @@ static NSString *city = @"";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.categoryView.contentOffset = CGPointMake(self.categoryView.contentOffset.x, 0);
+    self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0,self.CityName.frame.size.width,self.CityName.frame.size.height);
     //    [self.Table deselectRowAtIndexPath:[self.Table indexPathForSelectedRow] animated:YES];
 }
 
