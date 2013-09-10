@@ -601,7 +601,7 @@ static BOOL JUST_APPEAR = YES;
     //Setup Upload block to return progress of file upload
     [operation setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
         BOOL i = YES;
-        double currentTime;
+        double currentTime = 0.0;
         if (i) {
             currentTime = CurrentTime1;
             i = NO;

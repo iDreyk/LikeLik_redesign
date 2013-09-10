@@ -707,7 +707,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     UIButtonWithAditionalNum * check = (UIButtonWithAditionalNum *)[cell viewWithTag:checkTag];
     check.tagForCheck = [indexPath row];
     
-    NSDictionary *temp = [AroundArray objectAtIndex:row];
+  //  NSDictionary *temp = [AroundArray objectAtIndex:row];
 
   //  NSLog(@"Name = %@ Category = %@ City = %@ row = %d",[temp objectForKey:@"Name"],[temp objectForKey:@"Category"],self.CityNameText,row);
 

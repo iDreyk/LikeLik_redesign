@@ -2152,7 +2152,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/LikeLik\"",
-					"\"/Volumes/Data/LikeLik sources\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2162,9 +2161,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Volumes/Data/LikeLik sources/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
-					"\"/Volumes/Data/LikeLik sources/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/TestFlightSDK1.2.6\"",
@@ -2253,7 +2250,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/LikeLik\"",
-					"\"/Volumes/Data/LikeLik sources\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2263,9 +2259,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Volumes/Data/LikeLik sources/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
-					"\"/Volumes/Data/LikeLik sources/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/TestFlightSDK1.2.6\"",
@@ -2292,7 +2286,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/LikeLik\"",
-					"\"/Volumes/Data/LikeLik sources\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2302,9 +2295,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Volumes/Data/LikeLik sources/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
-					"\"/Volumes/Data/LikeLik sources/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/TestFlightSDK1.2.6\"",
@@ -2365,7 +2356,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/LikeLik\"",
-					"\"/Volumes/Data/LikeLik sources\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2375,9 +2365,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Volumes/Data/LikeLik sources/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
-					"\"/Volumes/Data/LikeLik sources/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/TestFlightSDK1.2.6\"",
@@ -2438,7 +2426,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/LikeLik\"",
-					"\"/Volumes/Data/LikeLik sources\"",
 					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2448,9 +2435,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Volumes/Data/LikeLik sources/Twitter+OAuth/Libraries & Headers\"",
 					"\"/usr/include/libxml2\"/**",
-					"\"/Volumes/Data/LikeLik sources/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/ZBarSDK\"",
 					"\"$(SRCROOT)/LikeLik/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/TestFlightSDK1.2.6\"",
