@@ -26,6 +26,8 @@ NSInteger wasinactive = NO;
 #define afternotification             @"l27h7RU2dzVfPoQssda"
 #define backgroundg @"l27h7RU2123123132dzVfPoQssda"
 #define backgroundTag 2442441
+#define backgroundTag2 2442442
+
 @implementation AppDelegate
 
 //#warning воронка пользования
@@ -215,11 +217,23 @@ NSInteger wasinactive = NO;
             image.backgroundColor = [UIColor blackColor];
 #if VIENNA
     image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:15.0f];
+    image.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:15.0f]];
+
 #else
+    image.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f]];
     image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f];
 #endif
             image.tag = backgroundTag;
             [self.window.rootViewController.view insertSubview:image atIndex:0];
+            UIImageView *image2 =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+            image2.backgroundColor = [UIColor blackColor];
+#if VIENNA
+            image2.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:0.0f];
+#else
+            image2.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:0.0f];
+#endif
+            image2.tag = backgroundTag2;
+            [self.window.rootViewController.view insertSubview:image2 atIndex:0];
 
         }
     }
@@ -233,14 +247,26 @@ NSInteger wasinactive = NO;
         self.window.rootViewController  = initialViewController;
         [self.window makeKeyAndVisible];
         UIImageView *image =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        image.backgroundColor = [UIColor blackColor];
 #if VIENNA
+        image.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:15.0f]];
         image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:15.0f];
 #else
+        image.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f]];
         image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f];
 #endif
         image.tag = backgroundTag;
         [self.window.rootViewController.view insertSubview:image atIndex:0];
+        
+        UIImageView *image2 =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        image2.backgroundColor = [UIColor blackColor];
+#if VIENNA
+        image2.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:0.0f];
+#else
+        image2.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:0.0f];
+#endif
+        image2.tag = backgroundTag2;
+        [self.window.rootViewController.view insertSubview:image2 atIndex:0];
+
     }
     
     

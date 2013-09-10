@@ -30,8 +30,10 @@ static BOOL IN_BG;
 #define textinFrame 131313
 #define EF_TAG 66483
 #define FADE_TAG 66484
+#define backgroundTag 2442441
+
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
-//static NSString *city = @"";
+static NSString *city = @"";
 @interface CategoryViewController ()
 
 @end
@@ -677,6 +679,12 @@ static BOOL IN_BG;
     
     CGFloat yOffset   = self.categoryView.contentOffset.y;
   //  NSLog(@"yofs: %f", yOffset);
+    if(yOffset < 0){
+        AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
+        UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
+        imback.alpha = 1.0 + yOffset/400;
+    }
+    
     if (yOffset > 0) {
         //self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
         

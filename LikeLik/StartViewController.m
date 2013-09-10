@@ -34,6 +34,8 @@
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define backgroundTag 2442441
+#define backgroundTag2 2442442
+
 NSInteger PREV_ROW = 0;
 static bool REVERSE_ANIM = false;
 static BOOL JUST_APPEAR = YES;
@@ -331,8 +333,11 @@ static BOOL JUST_APPEAR = YES;
     
     AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
     UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
-    imback.backgroundColor = [UIColor blackColor];
+    //imback.backgroundColor = [UIColor blackColor];
     imback.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f];
+    imback.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f]];
+    UIImageView *imback2 = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag2];
+    imback2.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:0.0f];
 //    NSLog(@"%@",imback);
     
 
