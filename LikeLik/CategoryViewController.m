@@ -682,7 +682,7 @@ static NSString *city = @"";
     if(yOffset < 0){
         AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
         UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
-        imback.alpha = 1.0 + yOffset/400;
+        imback.alpha = 1.0 + yOffset/200;
     }
     
     if (yOffset > 0) {
