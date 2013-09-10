@@ -113,6 +113,7 @@ static BOOL JUST_APPEAR = YES;
 
 -(void)viewDidAppear:(BOOL)animated{
     //  NSLog(@"loglog");
+   
     [label setText:AMLocalizedString(@"Special Annotation", nil)];
     
     CGPoint temp = self.view.center;
@@ -153,6 +154,9 @@ static BOOL JUST_APPEAR = YES;
     JUST_APPEAR = YES;
 
     [self.tableView reloadData];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

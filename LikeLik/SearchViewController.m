@@ -59,10 +59,13 @@ CGRect oldRect;
     self.PlacesArray = [NSArray arrayWithArray:self.readyArray];//[ExternalFunctions getAllPlacesInCity:self.CityName];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Search", nil)  AndColor:[InterfaceFunctions corporateIdentity]];
     
-    
+    [self.SearchBar setTranslucent:YES];
     self.SearchTable.separatorStyle = UITableViewCellSelectionStyleNone;
     
-    self.SearchTable.backgroundView = [InterfaceFunctions backgroundView];
+    //self.SearchTable.backgroundView = [InterfaceFunctions backgroundView];
+    self.SearchTable.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor clearColor];
+
     Array = [NSArray arrayWithArray:self.PlacesArray];
     
     tmp = [NSArray arrayWithArray:self.readyArray];//[ExternalFunctions getAllPlacesInCity:self.CityName];
@@ -161,7 +164,7 @@ CGRect oldRect;
         back_layer.cornerRadius = 5;
         back.clipsToBounds = YES;
         back.tag = cellColorTag;
-        back.backgroundColor = [UIColor whiteColor];
+        back.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:back]; // добавили на cell
         
         
@@ -204,7 +207,7 @@ CGRect oldRect;
         label.shadowOffset = [InterfaceFunctions ShadowSize];
         [back addSubview:label];
     }
-    UILabel * buttonlabel = (UILabel *)[cell viewWithTag:buttonlabel1Tag];
+    UILabel * buttonlabel = (UILabel *)[cell viewWithTag:cellColorTag];
     buttonlabel.backgroundColor =[InterfaceFunctions colorTextCategory:category];
     
     UILabel *tableLabelWithText  = (UILabel *)[cell viewWithTag:tableLabelWithTextTag];

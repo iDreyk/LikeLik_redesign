@@ -507,7 +507,7 @@
 }
 +(UIImageView *)backgroundView{
     UIImageView *imageview = [[UIImageView alloc] initWithImage:  [UIImage imageNamed:@"640_1136 background-568h@2x"]];
-    imageview.frame = CGRectMake(0.0, 0.0, 320.0, 548);
+    imageview.frame = CGRectMake(0.0, 10.0, 320.0, 548);
     [imageview setContentMode:UIViewContentModeScaleAspectFill];
     return  imageview;
     
