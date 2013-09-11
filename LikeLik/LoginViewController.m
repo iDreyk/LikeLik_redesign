@@ -15,6 +15,8 @@
 #import "AFHTTPClient.h"
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
+#import <QuartzCore/QuartzCore.h>
+
 #define kOAuthConsumerKey				@"XGaxa31EoympFhxLZooQ"
 #define kOAuthConsumerSecret			@"IbUE5lud22evmrtxjtU1vKvh6VDqRMSHHFJ73rtHI"
 #define afterregister             @"l27h7RU2dzVfP12aoQssda"
@@ -57,7 +59,7 @@
     
     [self.LoginTable setBackgroundColor:[UIColor clearColor]];
     //self.LoginTable.backgroundView = [InterfaceFunctions backgroundView];
-    self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
+    self.view.backgroundColor = [UIColor clearColor];//[InterfaceFunctions BackgroundColor];
     self.LoginTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.LoginTable.backgroundColor = [UIColor clearColor];
     
@@ -68,7 +70,15 @@
     
     [self.SNetworkLabel setText: AMLocalizedString(@"You can go with the social network", nil)];
     [self.SNetworkLabel setFont:[AppDelegate OpenSansRegular:28]];
- 
+    [self.SNetworkLabel setTextColor:[UIColor whiteColor]];
+    CALayer *layer = self.SNetworkLabel.layer;
+    UIColor *color = [UIColor blackColor];
+    layer.shadowColor = [color CGColor];
+    layer.shadowRadius = 4.0f;
+    layer.shadowOpacity = .9;
+    layer.shadowOffset = CGSizeZero;
+    layer.masksToBounds = NO;
+
     _vkontakte = [Vkontakte sharedInstance];
     _vkontakte.delegate = self;
     [self refreshButtonState];

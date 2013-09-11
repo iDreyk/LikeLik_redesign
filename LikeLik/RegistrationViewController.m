@@ -15,6 +15,8 @@
 //
 #import "AFJSONRequestOperation.h"
 #import "AFHTTPClient.h"
+#import <QuartzCore/QuartzCore.h>
+
 #define kOAuthConsumerKey				@"XGaxa31EoympFhxLZooQ"
 #define kOAuthConsumerSecret			@"IbUE5lud22evmrtxjtU1vKvh6VDqRMSHHFJ73rtHI"
 #define afterCall             @"l27h7RU2dzVfPoQQQQ"
@@ -54,7 +56,7 @@
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Registration", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.RegistrationTable setBackgroundColor:[UIColor clearColor]];
-    self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
+    self.view.backgroundColor = [UIColor clearColor];//[InterfaceFunctions BackgroundColor];
 	// Do any additional setup after loading the view.
     self.RegistrationTable.separatorStyle = UITableViewCellSeparatorStyleNone;
 
@@ -65,7 +67,15 @@
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
     [self.SurpriseText setText: AMLocalizedString(@"I want to receive gifts on my birthday", nil)];
-    
+    [self.SurpriseText setTextColor:[UIColor whiteColor]];
+    CALayer *layer = self.SurpriseText.layer;
+    UIColor *color = [UIColor blackColor];
+    layer.shadowColor = [color CGColor];
+    layer.shadowRadius = 4.0f;
+    layer.shadowOpacity = .9;
+    layer.shadowOffset = CGSizeZero;
+    layer.masksToBounds = NO;
+
     NSLocale * locale;
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"Русский"])
         locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];

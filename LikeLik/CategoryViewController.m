@@ -710,7 +710,7 @@ static NSString *city = @"";
     
     if (yOffset > 0) {
         //self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
-        imback.alpha = 1.0 - yOffset/200;
+        imback.alpha = 1.0 - yOffset/300;
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
        // self.categoryView.frame = CGRectMake(0, 44-(yOffset), 320, self.categoryView.frame.size.height);
         //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
