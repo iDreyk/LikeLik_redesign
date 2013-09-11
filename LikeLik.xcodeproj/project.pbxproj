@@ -17,6 +17,8 @@
 		55A80F2517747F5200089216 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F2417747F5200089216 /* SSZipArchive.m */; };
 		9111163A17DDD00F00474B13 /* icon_Vienna.png in Resources */ = {isa = PBXBuildFile; fileRef = 9111163817DDD00F00474B13 /* icon_Vienna.png */; };
 		9111163B17DDD00F00474B13 /* icon_Moscow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9111163917DDD00F00474B13 /* icon_Moscow.png */; };
+		9111163C17DF21C200474B13 /* 512x512 special Series.png in Resources */ = {isa = PBXBuildFile; fileRef = 91B831AD17D8B01C008E6750 /* 512x512 special Series.png */; };
+		9111164017DF269800474B13 /* 617x617 Download.png in Resources */ = {isa = PBXBuildFile; fileRef = 9111163F17DF269800474B13 /* 617x617 Download.png */; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		916587F91794407600F13BF2 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 916587E11794407600F13BF2 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		916587FA1794407600F13BF2 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916587E31794407600F13BF2 /* FBDialog.bundle */; };
@@ -406,6 +408,7 @@
 		91102734176DB8440023F2C7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9111163817DDD00F00474B13 /* icon_Vienna.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_Vienna.png; sourceTree = "<group>"; };
 		9111163917DDD00F00474B13 /* icon_Moscow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_Moscow.png; sourceTree = "<group>"; };
+		9111163F17DF269800474B13 /* 617x617 Download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "617x617 Download.png"; sourceTree = "<group>"; };
 		9122D2AC173E422C0096BB24 /* LikeLik icon 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeLik icon 114x114.png"; sourceTree = "<group>"; };
 		91241948173A9CF8004B6837 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194A173A9DF5004B6837 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1000,6 +1003,7 @@
 				9111163917DDD00F00474B13 /* icon_Moscow.png */,
 				D0BC8E1417C4BB840048659E /* kul_90@2x.png */,
 				91B831AD17D8B01C008E6750 /* 512x512 special Series.png */,
+				9111163F17DF269800474B13 /* 617x617 Download.png */,
 				FAB01E9D17CC70200052E3E8 /* knuck_pin_test5@2x.png */,
 				916588331794409B00F13BF2 /* 124_124 Social_Icons11@2x.png */,
 				916588341794409B00F13BF2 /* 124_124 Social_Icons22@2x.png */,
@@ -1991,6 +1995,8 @@
 				559AA1C317D9EDDB005362CC /* appData.plist in Resources */,
 				9111163A17DDD00F00474B13 /* icon_Vienna.png in Resources */,
 				9111163B17DDD00F00474B13 /* icon_Moscow.png in Resources */,
+				9111163C17DF21C200474B13 /* 512x512 special Series.png in Resources */,
+				9111164017DF269800474B13 /* 617x617 Download.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
