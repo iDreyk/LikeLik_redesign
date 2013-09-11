@@ -73,9 +73,9 @@ static BOOL JUST_APPEAR = YES;
     special_series = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128.0, 128.0)];
 //    [label setText:AMLocalizedString(@"Special Annotation", nil)];
 //    label.numberOfLines = 0;
-//    [label sizeToFit];
+//    [label sizeToFit]; 
 //    [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
-//    label.tag = LABELTAG;
+//    label.tag = LABELTAG; //
     label.textAlignment = NSTextAlignmentCenter;
     [label setFont:[AppDelegate OpenSansRegular:32]];
     [label setBackgroundColor:[UIColor clearColor]];
