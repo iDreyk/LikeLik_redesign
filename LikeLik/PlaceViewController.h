@@ -61,6 +61,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *hint;
 @property (weak, nonatomic) IBOutlet UIButton *hide_button;
 
+@property (nonatomic,retain) IBOutlet MKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 @property (nonatomic,retain)IBOutlet UIPageControl *pageControl;

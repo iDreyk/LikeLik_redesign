@@ -113,7 +113,7 @@
             <objects>
                 <viewController id="gTe-ms-8dk" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fd8-S0-hQY">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="kgR-yb-n8o">
@@ -347,7 +347,7 @@
             <objects>
                 <viewController id="don-oj-O1o" customClass="RegistrationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pM6-Ie-RnO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Jcf-LI-VcL">
@@ -505,11 +505,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6m-yY-kDG">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="568" id="uDk-f8-ens"/>
-                                </constraints>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Va-kC-PQQ">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qap-s8-gZD">
+                                <connections>
+                                    <outlet property="delegate" destination="1FC-V3-3wh" id="HmV-jk-gDA"/>
+                                </connections>
+                            </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rOd-xd-e34">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -542,9 +545,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Va-kC-PQQ">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06X-1W-BmY">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="MYp-No-Z7C"/>
@@ -564,18 +564,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="06X-1W-BmY" firstAttribute="leading" secondItem="m6S-MZ-OaS" secondAttribute="leading" type="default" id="1BP-Zd-i8n"/>
-                            <constraint firstItem="H6m-yY-kDG" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="49p-4f-5ld"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="9WN-Px-czu"/>
                             <constraint firstAttribute="bottom" secondItem="06X-1W-BmY" secondAttribute="bottom" constant="45" id="CzQ-d8-w3h"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="FBG-eK-Gyy"/>
+                            <constraint firstItem="qap-s8-gZD" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="Fon-LZ-zLX"/>
                             <constraint firstItem="m6S-MZ-OaS" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" constant="5" id="Fus-mH-XY7"/>
+                            <constraint firstItem="qap-s8-gZD" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="Hgl-P7-T7f"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="JHk-FI-IcU"/>
                             <constraint firstItem="m6S-MZ-OaS" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" constant="5" id="NTi-CU-tHM"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="TJ9-jw-TjS"/>
-                            <constraint firstItem="H6m-yY-kDG" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="VNC-2i-zsT"/>
-                            <constraint firstItem="H6m-yY-kDG" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="aca-Hx-XoS"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="bc4-av-6fZ"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="rBm-k5-Cxs"/>
+                            <constraint firstItem="qap-s8-gZD" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="svd-t2-syA"/>
+                            <constraint firstItem="qap-s8-gZD" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="uT0-5C-WR3"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="xkw-Lg-nqm"/>
                         </constraints>
                     </view>
@@ -600,7 +601,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="CityImage" destination="H6m-yY-kDG" id="7fA-g1-SCP"/>
                         <outlet property="CityName" destination="m6S-MZ-OaS" id="kw1-wC-PFB"/>
                         <outlet property="PlacesTable" destination="rOd-xd-e34" id="S7u-F6-Ejj"/>
                         <outlet property="SearchButton" destination="zzm-Cp-rtB" id="mU0-Rx-nyb"/>
@@ -608,6 +608,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="ViewforMap" destination="2Va-kC-PQQ" id="87H-Iw-276"/>
                         <outlet property="backgroundView" destination="2Va-kC-PQQ" id="0cD-Xl-hEg"/>
                         <outlet property="locationButton" destination="06X-1W-BmY" id="gWg-OJ-wvL"/>
+                        <outlet property="mapView" destination="qap-s8-gZD" id="CeJ-T2-w8T"/>
                         <segue destination="Raj-iV-euz" kind="push" identifier="MapSegue" id="Bst-Mm-pco"/>
                         <segue destination="don-oj-O1o" kind="push" identifier="RegisterSegue" id="AMn-TY-YM3"/>
                         <segue destination="gTe-ms-8dk" kind="push" identifier="LoginSegue" id="6P9-zt-v0l"/>
@@ -796,6 +797,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Neb-J9-HD9">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tQy-KX-ZkQ">
+                                <connections>
+                                    <outlet property="delegate" destination="Raj-iV-euz" id="iro-wm-a2N"/>
+                                </connections>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkf-ZQ-6JK">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="tRy-3U-qWG"/>
@@ -828,6 +834,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="Cvg-v5-f6q"/>
                             <constraint firstItem="ir1-cR-wYx" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="HDT-kO-s2q"/>
                             <constraint firstItem="AsG-Z9-q2q" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="Jg7-ee-Aoe"/>
+                            <constraint firstItem="tQy-KX-ZkQ" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="LMz-4M-Jz7"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="LnF-Wb-Bpb"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="MIb-gh-GHj"/>
                             <constraint firstItem="ebO-Ac-SqK" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="SRM-6X-d5L"/>
@@ -837,10 +844,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="Neb-J9-HD9" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="XSL-Gs-Fl8"/>
                             <constraint firstAttribute="bottom" secondItem="pkf-ZQ-6JK" secondAttribute="bottom" constant="89" id="dqf-qr-QVu"/>
                             <constraint firstAttribute="trailing" secondItem="Phc-Dy-OOZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="frV-Ue-29C"/>
+                            <constraint firstItem="tQy-KX-ZkQ" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="kgk-Aw-bmB"/>
                             <constraint firstItem="ebO-Ac-SqK" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" constant="35" id="oau-0T-bXN"/>
+                            <constraint firstItem="tQy-KX-ZkQ" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="okT-j2-wQp"/>
                             <constraint firstItem="Neb-J9-HD9" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="pSp-4O-zke"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="pq1-18-2h0"/>
                             <constraint firstItem="Neb-J9-HD9" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="q9f-cU-lcX"/>
+                            <constraint firstItem="tQy-KX-ZkQ" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="sGq-tP-1Yc"/>
                             <constraint firstItem="Neb-J9-HD9" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="wjH-zs-FY3"/>
                             <constraint firstItem="W9Q-eS-Gik" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="xyN-oc-JsL"/>
                         </constraints>
@@ -864,6 +874,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="hint" destination="AsG-Z9-q2q" id="gmf-u4-SZu"/>
                         <outlet property="info_button" destination="W9Q-eS-Gik" id="0rU-bM-dZg"/>
                         <outlet property="locationButton" destination="pkf-ZQ-6JK" id="jQv-Ri-52D"/>
+                        <outlet property="mapView" destination="tQy-KX-ZkQ" id="4qx-aU-fyB"/>
                         <outlet property="pageControl" destination="ebO-Ac-SqK" id="0Mj-Z4-XF2"/>
                         <outlet property="placeViewMap" destination="Neb-J9-HD9" id="1yN-eF-56m"/>
                         <outlet property="scroll" destination="3zb-fZ-Bb4" id="OeQ-0c-bqC"/>
@@ -919,6 +930,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="821-8A-Q5n">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bRT-g6-pcw">
+                                <connections>
+                                    <outlet property="delegate" destination="kAC-G7-7GR" id="OC0-fp-OHi"/>
+                                </connections>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h96-aD-xL5">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="Ng6-5C-PMR"/>
@@ -940,6 +956,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstAttribute="bottom" secondItem="h96-aD-xL5" secondAttribute="bottom" constant="45" id="24l-qy-Z1e"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="bottom" secondItem="Xfc-LP-6rD" secondAttribute="bottom" type="default" id="43j-Lv-TkZ"/>
                             <constraint firstItem="821-8A-Q5n" firstAttribute="trailing" secondItem="Xfc-LP-6rD" secondAttribute="trailing" type="default" id="5YJ-RU-jir"/>
+                            <constraint firstItem="bRT-g6-pcw" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" type="default" id="5en-U9-lXX"/>
                             <constraint firstAttribute="bottom" secondItem="La8-ft-EbP" secondAttribute="bottom" constant="5" id="6KK-Fo-Gzr"/>
                             <constraint firstItem="Yp6-hO-XGJ" firstAttribute="trailing" secondItem="Xfc-LP-6rD" secondAttribute="trailing" type="default" id="9ep-yC-eXL"/>
                             <constraint firstItem="h96-aD-xL5" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" constant="5" id="AEH-3x-x3p"/>
@@ -947,15 +964,18 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="821-8A-Q5n" firstAttribute="bottom" secondItem="Xfc-LP-6rD" secondAttribute="bottom" type="default" id="BjP-Ff-N0y"/>
                             <constraint firstAttribute="trailing" secondItem="La8-ft-EbP" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Ddr-cX-6sH"/>
                             <constraint firstItem="821-8A-Q5n" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" type="default" id="IeQ-Ab-Hif"/>
-                            <constraint firstItem="35k-le-gki" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" constant="376" id="KK2-SP-PEG"/>
                             <constraint firstItem="Yp6-hO-XGJ" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" type="default" id="Kbk-dO-Snn"/>
+                            <constraint firstItem="bRT-g6-pcw" firstAttribute="centerY" secondItem="821-8A-Q5n" secondAttribute="centerY" type="default" id="LyY-1T-8Hf"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" type="default" id="Pwe-pE-aXb"/>
                             <constraint firstItem="La8-ft-EbP" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="QeX-e8-pjW"/>
                             <constraint firstAttribute="bottom" secondItem="Yp6-hO-XGJ" secondAttribute="bottom" constant="-295" id="QoC-m8-g51"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" type="default" id="SAR-vf-Gxd"/>
                             <constraint firstItem="821-8A-Q5n" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" type="default" id="Syx-lF-9CW"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="trailing" secondItem="Xfc-LP-6rD" secondAttribute="trailing" type="default" id="Tic-IS-rLd"/>
+                            <constraint firstItem="35k-le-gki" firstAttribute="bottom" secondItem="bRT-g6-pcw" secondAttribute="bottom" type="default" id="c1b-xB-NUY"/>
                             <constraint firstItem="Yp6-hO-XGJ" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" constant="417" id="q6p-fD-VLx"/>
+                            <constraint firstItem="bRT-g6-pcw" firstAttribute="trailing" secondItem="Xfc-LP-6rD" secondAttribute="trailing" type="default" id="qvo-9u-JYn"/>
+                            <constraint firstItem="bRT-g6-pcw" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" type="default" id="s32-tL-eii"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yFx-0I-swd">
@@ -966,6 +986,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="MKMap" destination="bRT-g6-pcw" id="Koj-wi-CgU"/>
                         <outlet property="PhotoCard" destination="Yp6-hO-XGJ" id="f50-Kq-3GG"/>
                         <outlet property="PlaceonMap" destination="SQ0-of-8fz" id="JHQ-M2-BfE"/>
                         <outlet property="infoScroll" destination="rBU-Yv-L1J" id="Uua-aO-au5"/>
@@ -1687,6 +1708,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="gradient_under_cityname" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="readyArray" candidateClass="NSArray"/>
             </relationships>
         </class>
@@ -1737,10 +1759,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
             <relationships>
                 <relationship kind="action" name="ShowMap:"/>
+                <relationship kind="action" name="buttonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="clickPageControl:"/>
                 <relationship kind="action" name="hide_hint:"/>
                 <relationship kind="action" name="infotap:"/>
                 <relationship kind="action" name="openMail:"/>
                 <relationship kind="action" name="showLocation:"/>
+                <relationship kind="action" name="showRegistrationMessage:"/>
                 <relationship kind="action" name="tapDetected:" candidateClass="UIGestureRecognizer"/>
                 <relationship kind="outlet" name="Favorites" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="GOUSE" candidateClass="UIButton"/>
@@ -1770,6 +1795,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="info_button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="labelonPhoto" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="placeViewMap" candidateClass="UIView"/>
                 <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
@@ -1880,6 +1906,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="showLocation:"/>
                 <relationship kind="action" name="tapDetected:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="MKMap" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="PhotoCard" candidateClass="UIView"/>
                 <relationship kind="outlet" name="PlaceonMap" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="Red_line" candidateClass="UILabel"/>
@@ -1899,13 +1926,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iFn-sF-BeJ"/>
-        <segue reference="SI1-Ju-Rvv"/>
         <segue reference="hfX-vG-Z1Q"/>
-        <segue reference="Nu2-rP-gIA"/>
-        <segue reference="lwD-Xs-wV0"/>
+        <segue reference="SI1-Ju-Rvv"/>
         <segue reference="mEV-eK-NSs"/>
         <segue reference="o2g-Ep-1Rf"/>
-        <segue reference="27d-SI-zSj"/>
+        <segue reference="CID-7V-uDc"/>
+        <segue reference="mIE-ck-FCQ"/>
+        <segue reference="yCK-Wu-Xo6"/>
+        <segue reference="XKw-Kc-cfl"/>
     </inferredMetricsTieBreakers>
 </document>

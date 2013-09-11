@@ -112,7 +112,7 @@
             <objects>
                 <viewController id="gTe-ms-8dk" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fd8-S0-hQY">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="LW7-Bp-IAU">
@@ -332,7 +332,7 @@
             <objects>
                 <viewController id="don-oj-O1o" customClass="RegistrationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pM6-Ie-RnO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Я хочу получать подарки в свой день рождения" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="193" translatesAutoresizingMaskIntoConstraints="NO" id="Dg5-VG-5z9">
@@ -480,14 +480,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6m-yY-kDG">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="568" id="vzq-k5-nd6"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Va-kC-PQQ">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teU-sI-kfT">
+                                <connections>
+                                    <outlet property="delegate" destination="1FC-V3-3wh" id="gTm-x4-spA"/>
+                                </connections>
+                            </mapView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xP9-xf-rsy">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="Gk1-dO-Te9"/>
@@ -539,17 +539,18 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="H6m-yY-kDG" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="14K-Ca-duL"/>
+                            <constraint firstItem="teU-sI-kfT" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="0kj-7B-Hud"/>
                             <constraint firstItem="m6S-MZ-OaS" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" constant="5" id="43c-iz-bdk"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="7Cz-en-7ek"/>
                             <constraint firstItem="xP9-xf-rsy" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" constant="5" id="9Bk-KK-zWq"/>
+                            <constraint firstItem="teU-sI-kfT" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="AWu-L9-85D"/>
                             <constraint firstItem="m6S-MZ-OaS" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" constant="14" id="FMe-2P-PHu"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="G0Q-bH-ewe"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="PkM-Jy-Xpd"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="RnK-ax-rvg"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="TcT-uj-qKr"/>
-                            <constraint firstItem="H6m-yY-kDG" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="rTH-bQ-8Mm"/>
-                            <constraint firstItem="H6m-yY-kDG" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="sti-Pq-Qid"/>
+                            <constraint firstItem="teU-sI-kfT" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="Z1r-Hs-XrV"/>
+                            <constraint firstItem="teU-sI-kfT" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="hSt-KV-Apd"/>
                             <constraint firstAttribute="bottom" secondItem="xP9-xf-rsy" secondAttribute="bottom" constant="33" id="tzx-7m-ckY"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="xWl-ny-1ir"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="zLW-9X-xD0"/>
@@ -576,7 +577,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="CityImage" destination="H6m-yY-kDG" id="7fA-g1-SCP"/>
                         <outlet property="CityName" destination="m6S-MZ-OaS" id="kw1-wC-PFB"/>
                         <outlet property="PlacesTable" destination="rOd-xd-e34" id="S7u-F6-Ejj"/>
                         <outlet property="SearchButton" destination="zzm-Cp-rtB" id="mU0-Rx-nyb"/>
@@ -584,6 +584,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="ViewforMap" destination="2Va-kC-PQQ" id="87H-Iw-276"/>
                         <outlet property="backgroundView" destination="2Va-kC-PQQ" id="My1-En-4DT"/>
                         <outlet property="locationButton" destination="xP9-xf-rsy" id="jid-tn-dgZ"/>
+                        <outlet property="mapView" destination="teU-sI-kfT" id="QcM-ym-gRu"/>
                         <segue destination="Raj-iV-euz" kind="push" identifier="MapSegue" id="Tjm-t9-blW"/>
                         <segue destination="don-oj-O1o" kind="push" identifier="RegisterSegue" id="zUH-te-kZE"/>
                         <segue destination="gTe-ms-8dk" kind="push" identifier="LoginSegue" id="Eqc-1c-gEJ"/>
@@ -834,6 +835,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SM5-Lm-fgX">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0Vt-bp-sLD">
+                                <connections>
+                                    <outlet property="delegate" destination="Raj-iV-euz" id="5qg-v9-KAr"/>
+                                </connections>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2w0-lU-2yd">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="4HP-un-mIJ"/>
@@ -849,7 +855,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="4.png" translatesAutoresizingMaskIntoConstraints="NO" id="WGJ-i4-JPg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGJ-i4-JPg">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="569" id="8Hc-uk-m4n"/>
                                 </constraints>
@@ -860,12 +866,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="0ZB-fS-Ar9"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="1LM-2x-7z4"/>
                             <constraint firstItem="SM5-Lm-fgX" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="3lZ-3R-C2T"/>
+                            <constraint firstItem="0Vt-bp-sLD" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" type="default" id="4HB-mK-sPR"/>
                             <constraint firstItem="2w0-lU-2yd" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" constant="10" id="CQo-iS-TKN"/>
+                            <constraint firstItem="0Vt-bp-sLD" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="EzR-rX-AP3"/>
                             <constraint firstItem="dyB-OT-pbh" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="GPD-ta-cWy"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="ITz-6R-yG7"/>
                             <constraint firstItem="3zb-fZ-Bb4" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="JGb-95-lRa"/>
                             <constraint firstItem="SM5-Lm-fgX" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="LIE-r1-VOw"/>
+                            <constraint firstItem="0Vt-bp-sLD" firstAttribute="leading" secondItem="63j-sW-yoq" secondAttribute="leading" type="default" id="La4-zt-Js1"/>
                             <constraint firstItem="WGJ-i4-JPg" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="PCd-R5-uj2"/>
+                            <constraint firstItem="0Vt-bp-sLD" firstAttribute="bottom" secondItem="63j-sW-yoq" secondAttribute="bottom" type="default" id="Q13-G0-UxQ"/>
                             <constraint firstItem="r5c-W8-RBh" firstAttribute="top" secondItem="63j-sW-yoq" secondAttribute="top" constant="509" id="TJi-e4-lB2"/>
                             <constraint firstAttribute="bottom" secondItem="YrU-mE-dbd" secondAttribute="bottom" constant="-399" id="VsW-KH-Kr1"/>
                             <constraint firstItem="YrU-mE-dbd" firstAttribute="trailing" secondItem="63j-sW-yoq" secondAttribute="trailing" type="default" id="WOw-Gj-fXO"/>
@@ -898,6 +908,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="hint" destination="WGJ-i4-JPg" id="FVA-7L-6B3"/>
                         <outlet property="info_button" destination="r5c-W8-RBh" id="Egm-t3-aDJ"/>
                         <outlet property="locationButton" destination="2w0-lU-2yd" id="FfJ-HZ-qo4"/>
+                        <outlet property="mapView" destination="0Vt-bp-sLD" id="dTK-lc-Y7E"/>
                         <outlet property="pageControl" destination="dyB-OT-pbh" id="b6X-pB-7qh"/>
                         <outlet property="placeViewMap" destination="SM5-Lm-fgX" id="Qfy-Gg-iUA"/>
                         <outlet property="scroll" destination="3zb-fZ-Bb4" id="OeQ-0c-bqC"/>
@@ -957,6 +968,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF6-4K-97G">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fYi-XZ-6EY">
+                                <connections>
+                                    <outlet property="delegate" destination="kAC-G7-7GR" id="Js5-QF-Xp7"/>
+                                </connections>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5Y-9p-ixb">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="XUY-ci-MLq"/>
@@ -975,13 +991,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fYi-XZ-6EY" firstAttribute="trailing" secondItem="Xfc-LP-6rD" secondAttribute="trailing" type="default" id="2fz-pz-zJZ"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="bottom" secondItem="Xfc-LP-6rD" secondAttribute="bottom" type="default" id="6oU-Do-x8D"/>
                             <constraint firstItem="c1F-Dg-5eN" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" constant="506" id="7u0-pI-TtZ"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" type="default" id="H7a-UT-ZTs"/>
                             <constraint firstItem="gF6-4K-97G" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" type="default" id="IXc-36-EZ3"/>
                             <constraint firstItem="OOD-Ce-qHB" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" constant="465" id="Lgj-UM-ewd"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" type="default" id="Lug-E9-q8L"/>
+                            <constraint firstItem="fYi-XZ-6EY" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" type="default" id="Mvm-P9-Oou"/>
                             <constraint firstItem="c1F-Dg-5eN" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" type="default" id="O7G-oP-OIY"/>
+                            <constraint firstItem="fYi-XZ-6EY" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" type="default" id="PbH-L0-Ahh"/>
                             <constraint firstItem="gF6-4K-97G" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" type="default" id="Q0x-Zh-Qsq"/>
                             <constraint firstItem="OOD-Ce-qHB" firstAttribute="bottom" secondItem="VDS-sY-VzI" secondAttribute="bottom" type="default" id="WXx-4K-rVm"/>
                             <constraint firstItem="gF6-4K-97G" firstAttribute="bottom" secondItem="Xfc-LP-6rD" secondAttribute="bottom" type="default" id="X0f-c4-rM4"/>
@@ -993,6 +1012,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstAttribute="bottom" secondItem="C5Y-9p-ixb" secondAttribute="bottom" constant="33" id="opR-Pn-y2i"/>
                             <constraint firstAttribute="trailing" secondItem="OOD-Ce-qHB" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="pJd-FS-piO"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="trailing" secondItem="Xfc-LP-6rD" secondAttribute="trailing" type="default" id="rvY-xY-BXZ"/>
+                            <constraint firstItem="fYi-XZ-6EY" firstAttribute="bottom" secondItem="Xfc-LP-6rD" secondAttribute="bottom" type="default" id="zmj-PR-6X1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yFx-0I-swd">
@@ -1003,6 +1023,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="MKMap" destination="fYi-XZ-6EY" id="fiR-gw-c85"/>
                         <outlet property="PhotoCard" destination="c1F-Dg-5eN" id="UqW-DC-PPE"/>
                         <outlet property="PlaceonMap" destination="SQ0-of-8fz" id="JHQ-M2-BfE"/>
                         <outlet property="infoScroll" destination="fFr-tj-CbD" id="N4M-UM-ibO"/>
@@ -1564,7 +1585,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="124_124 Social_Icons11@2x.png" width="124" height="124"/>
         <image name="124_124 Social_Icons22@2x.png" width="124" height="124"/>
         <image name="124_124 Social_Icons44@2x.png" width="124" height="124"/>
-        <image name="4.png" width="186" height="186"/>
         <image name="44_48 actb_corporateIdentity@2x.png" width="44" height="48"/>
         <image name="58_82 info_flag_1@2x.png" width="58" height="82"/>
         <image name="58_82 info_flag_8@2x.png" width="58" height="82"/>
@@ -1578,260 +1598,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="tabicon_Featured.png" width="16" height="16"/>
         <image name="tabicon_SpecialSeries.png" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="AboutTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="AboutCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="MoreLikeLikApps" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="SupportCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="TermsCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="AboutViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="Title" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="AroundMeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AroundMeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentedControlIndexChanged"/>
-                <relationship kind="action" name="showLocation:"/>
-                <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="CityNameText" candidateClass="NSString"/>
-                <relationship kind="outlet" name="Image" candidateClass="NSString"/>
-                <relationship kind="outlet" name="Map" candidateClass="RMMapView"/>
-                <relationship kind="outlet" name="PlacesTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="SearchButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="SegmentedMapandTable" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="ViewforMap" candidateClass="UIView"/>
-                <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="gradient_under_cityname" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="readyArray" candidateClass="NSArray"/>
-            </relationships>
-        </class>
-        <class className="CategoryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CategoryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="ShowMap:"/>
-                <relationship kind="outlet" name="CellArray" candidateClass="NSArray"/>
-                <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="GradientUnderLabel" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Image" candidateClass="NSString"/>
-                <relationship kind="outlet" name="Label" candidateClass="NSString"/>
-                <relationship kind="outlet" name="MapPlace" candidateClass="RMMapView"/>
-                <relationship kind="outlet" name="PlaceView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="SearchButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="SegueArray" candidateClass="NSArray"/>
-                <relationship kind="outlet" name="categoryView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="frame1" candidateClass="UIView"/>
-                <relationship kind="outlet" name="frameArray" candidateClass="NSArray"/>
-                <relationship kind="outlet" name="placeViewMap" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="SocialClicked:" candidateClass="UIButton"/>
-                <relationship kind="action" name="loginPressed:"/>
-                <relationship kind="outlet" name="FaceBook" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="LoginTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="Parent" candidateClass="NSString"/>
-                <relationship kind="outlet" name="SNetworkLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="Twitter" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="Vkontakte" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="MyLikeLikeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyLikeLikeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="TableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PlaceViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="ShowMap:"/>
-                <relationship kind="action" name="hide_hint:"/>
-                <relationship kind="action" name="infotap:"/>
-                <relationship kind="action" name="openMail:"/>
-                <relationship kind="action" name="showLocation:"/>
-                <relationship kind="action" name="tapDetected:" candidateClass="UIGestureRecognizer"/>
-                <relationship kind="outlet" name="Favorites" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="GOUSE" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="InfoPlaceTable" candidateClass="UIView"/>
-                <relationship kind="outlet" name="LabelOnScroll" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="MapPlace" candidateClass="RMMapView"/>
-                <relationship kind="outlet" name="PlacePinimage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="PlaceView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="Placeadress" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="PlaceonMap" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="ScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="Separator" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Separator1" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Separator3" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Share" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="TelPinimage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Teltext" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="TextPlace" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="WebPinimage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="favImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="favText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="hide_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="hint" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="info_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="labelonPhoto" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="placeViewMap" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="webtext" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PracticalInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PracticalInfoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="CityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="InfoScroll" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="PreferencesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreferencesViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="PreferencesTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="RMMapView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="RegistrationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="switchtoPicker:"/>
-                <relationship kind="outlet" name="BirthDayPicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="RegistrationTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="SurpriseText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="Switch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SearchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="SearchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="SearchTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="readyArray" candidateClass="NSArray"/>
-            </relationships>
-        </class>
-        <class className="SplashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="Firsttitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="LeftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="RightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="Shade" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="alertLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="fist" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="localNotification" candidateClass="UILocalNotification"/>
-                <relationship kind="outlet" name="maintitle" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="message" candidateClass="UIAlertView"/>
-                <relationship kind="outlet" name="subtitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="StartTabBarViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartTabBarViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="search:"/>
-                <relationship kind="outlet" name="NavBar" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="SearchBarButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="StartTableCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartTableCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="BackCityImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="CityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="accesor" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="StartViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartViewController.h"/>
-        </class>
-        <class className="SubText" superclassName="UITextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubText.h"/>
-        </class>
-        <class className="SupportViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SupportViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="Contactinformation" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="Email" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="FeedBack" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="TermsofUseViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TermsofUseViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="InfoScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="Title" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TransportationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TransportationViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="UILocalNotification" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UILocalNotification.h"/>
-        </class>
-        <class className="VisualTourViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VisualTourViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showLocation:"/>
-                <relationship kind="action" name="tapDetected:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="PhotoCard" candidateClass="UIView"/>
-                <relationship kind="outlet" name="PlaceonMap" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="Red_line" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="info_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="label" candidateClass="SubText"/>
-                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="visualMap" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Gv0-46-PWw"/>
-        <segue reference="RKc-vx-BkY"/>
+        <segue reference="6tZ-hu-j1M"/>
+        <segue reference="mIE-ck-FCQ"/>
         <segue reference="eFr-63-bPF"/>
+        <segue reference="RKc-vx-BkY"/>
+        <segue reference="Gv0-46-PWw"/>
         <segue reference="9er-Oy-Z8P"/>
         <segue reference="CID-7V-uDc"/>
-        <segue reference="zUH-te-kZE"/>
-        <segue reference="Eqc-1c-gEJ"/>
-        <segue reference="mIE-ck-FCQ"/>
+        <segue reference="nft-YQ-xRI"/>
     </inferredMetricsTieBreakers>
 </document>

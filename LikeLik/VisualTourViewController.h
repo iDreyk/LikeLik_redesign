@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @property (nonatomic,retain)IBOutlet UILabel *Red_line;
 @property (nonatomic, retain)IBOutlet SubText *label;
+@property (nonatomic,retain)IBOutlet MKMapView *MKMap;
 @property (nonatomic,retain)NSArray *coord;
 @property (nonatomic,retain)NSMutableArray *Annotation;
 -(IBAction)showLocation:(id)sender;

@@ -19,7 +19,9 @@
 #import "SCFacebook.h"
 #import "MBProgressHUD.h"
 #import "RegistrationViewController.h"
+#import "MapViewAnnotation.h"
 #include "LoginViewController.h"
+
 #define kOAuthConsumerKey				@"WMLtzHCcXrkaDXzNovw"
 #define kOAuthConsumerSecret			@"AcFQTmoGxkPdOgif68FzYgRBylSXIbeaYTbwnZaR9SE"
 
@@ -557,9 +559,7 @@ CGFloat alpha = 0.5;
     UIButton *btn = [InterfaceFunctions map_button:1];
     [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
- 
-    
-    
+#if LIKELIK
     NSURL *url;
     if ([self.PlaceCityName isEqualToString:@"Moscow"] || [self.PlaceCityName isEqualToString:@"Москва"] || [self.PlaceCityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -623,7 +623,105 @@ CGFloat alpha = 0.5;
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
     [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
     [self.MapPlace addSubview:self.locationButton];
+#else
+    self.placeViewMap.hidden = YES;
+    self.mapView.hidden = YES;
+
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta=0.2;
+    span.longitudeDelta=0.2;
+    
+    CLLocationCoordinate2D location = self.PlaceLocation.coordinate;
+    region.span=span;
+    region.center=location;
+    
+    [self.mapView setRegion:region animated:TRUE];
+    [self.mapView regionThatFits:region];
+    
+    MapViewAnnotation *Annotation = [[MapViewAnnotation alloc] initWithTitle:self.PlaceName andCoordinate:self.PlaceLocation.coordinate andUserinfo:nil andSubtitle:self.PlaceCategory AndTag:0];
+    [self.mapView addAnnotation:Annotation];
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [rightButton setTitle:Annotation.title forState:UIControlStateNormal];
+#endif
+    
 }
+
+#if  LIKELIK
+-(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation{
+    if ([annotation.annotationType isEqualToString:@"marker"]) {
+        RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
+                                                          tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
+                                                            sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
+        
+        
+        [marker replaceUIImage:[InterfaceFunctions MapPin:AMLocalizedString(self.PlaceCategory, nil)].image];
+        marker.canShowCallout = YES;
+        marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        return marker;
+    }
+    return nil;
+}
+
+- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
+    [self ShowMap:map];
+}
+
+#else
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(MapViewAnnotation *)annotation {
+    
+    static NSString *identifier = @"MyLocation";
+    if ([annotation isKindOfClass:[MapViewAnnotation class]]) {
+        
+        MKPinAnnotationView *annotationView =
+        (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        
+        if (annotationView == nil) {
+            annotationView = [[MKPinAnnotationView alloc]
+                              initWithAnnotation:annotation
+                              reuseIdentifier:identifier];
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        annotationView.enabled = YES;
+        annotationView.canShowCallout = YES;
+        annotationView.image = [InterfaceFunctions MapPin:annotation.subtitle].image;
+        
+        
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        rightButton.tag = [annotation.tag intValue];
+        [rightButton addTarget:self action:@selector(map_tu:) forControlEvents:UIControlEventTouchUpInside];
+        [rightButton setTitle:annotation.title forState:UIControlStateNormal];
+        [annotationView setRightCalloutAccessoryView:rightButton];
+        
+        UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        leftButton.tag = [annotation.tag intValue];
+        [leftButton addTarget:self action:@selector(showAppleMap:) forControlEvents:UIControlEventTouchUpInside];
+        [leftButton setTitle:annotation.title forState:UIControlStateNormal];
+        [annotationView setLeftCalloutAccessoryView:leftButton];
+        
+        return annotationView;
+    }
+    
+    return nil;
+}
+
+-(void)showAppleMap:(UIButton *)sender{
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.PlaceLocation.coordinate.latitude,self.PlaceLocation.coordinate.longitude);
+    
+    //create MKMapItem out of coordinates
+    MKPlacemark* placeMark = [[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil];
+    MKMapItem* destination =  [[MKMapItem alloc] initWithPlacemark:placeMark];
+    
+    [destination openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeWalking}];
+}
+
+-(void)map_tu:(UIButton *)sender{
+    self.mapView.hidden= !self.mapView.hidden;
+    
+}
+#endif
 
 -(BOOL)canBecomeFirstResponder{
     return NO;
@@ -778,25 +876,6 @@ CGFloat alpha = 0.5;
     actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
     
     
-}
-
--(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation{
-    if ([annotation.annotationType isEqualToString:@"marker"]) {
-        RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
-                                                          tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
-                                                            sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
-
-
-        [marker replaceUIImage:[InterfaceFunctions MapPin:AMLocalizedString(self.PlaceCategory, nil)].image];
-        marker.canShowCallout = YES;
-        marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        return marker;
-    }
-    return nil;
-}
-
-- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-    [self ShowMap:map];
 }
 
 -(void)aftercall:(NSNotification *)notification{
@@ -1159,6 +1238,7 @@ CGFloat alpha = 0.5;
 
 -(IBAction)ShowMap:(id)sender{
     [self hide_hint:self];
+#if LIKELIK
     self.placeViewMap.hidden = !self.placeViewMap.hidden;
     if (self.placeViewMap.hidden){
         UIButton *btn = [InterfaceFunctions map_button:1];
@@ -1170,6 +1250,21 @@ CGFloat alpha = 0.5;
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     }
+
+#else
+    self.mapView.hidden = !self.mapView.hidden;
+    if (self.mapView.hidden){
+        UIButton *btn = [InterfaceFunctions map_button:1];
+        [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    }
+    else{
+        UIButton *btn = [InterfaceFunctions map_button:0];
+        [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    }
+
+#endif
 }
 
 - (void)viewDidUnload {

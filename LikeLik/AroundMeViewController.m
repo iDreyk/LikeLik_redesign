@@ -17,6 +17,7 @@
 #import "LoginViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CoreTextLabel.h"
+#import "MapViewAnnotation.h"
 //
 //
 #define tableLabelWithTextTag 87001
@@ -101,14 +102,12 @@ static BOOL JUST_APPEAR = YES;
 {
     [super viewDidLoad];
     JUST_APPEAR = YES;
-
-    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
-    self.backgroundView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
-
-    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
-    [self.SegmentedMapandTable setTitle:AMLocalizedString(@"Map", nil) forSegmentAtIndex:1];
+    AroundArray = [[NSArray alloc] initWithArray:self.readyArray];
     
+#if LIKELIK
+    self.mapView.hidden = YES;
+    self.ViewforMap.hidden = YES;
+    self.Map.hidden = YES;
     NSURL *url;
     if ([self.CityNameText isEqualToString:@"Moscow"] || [self.CityNameText isEqualToString:@"Москва"] || [self.CityNameText isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -116,7 +115,6 @@ static BOOL JUST_APPEAR = YES;
     if ([self.CityNameText isEqualToString:@"Vienna"] || [self.CityNameText isEqualToString:@"Вена"] || [self.CityNameText isEqualToString:@"Wien"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
     }
-    
     
     RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
     self.Map = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
@@ -133,7 +131,57 @@ static BOOL JUST_APPEAR = YES;
     CLLocation *coord =[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText];
     self.Map.centerCoordinate = coord.coordinate;
     [self.Map setAdjustTilesForRetinaDisplay:YES];
+    [self.ViewforMap addSubview:self.Map];
+    RMAnnotation *marker1;
+    for (int i=0; i<[AroundArray count]; i++) {
+        CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
+        marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
+        marker1.annotationType = @"marker";
+        marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
+        marker1.subtitle = AMLocalizedString([[AroundArray objectAtIndex:i] objectForKey:@"Category"], nil);
+        marker1.userInfo = [AroundArray objectAtIndex:i];
+        [self.Map addAnnotation:marker1];
+    }
     
+#warning fav проваливается nav от segment
+#else
+    self.mapView.hidden = YES;
+    self.ViewforMap.hidden = YES;
+    self.Map.hidden = YES;
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta=0.2;
+    span.longitudeDelta=0.2;
+    
+    CLLocationCoordinate2D location = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate;
+    region.span=span;
+    region.center=location;
+#warning центр карты
+    [self.mapView setRegion:region animated:TRUE];
+    [self.mapView regionThatFits:region];
+    
+    for (int i=0; i<[AroundArray count]; i++) {
+        CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
+        
+        MapViewAnnotation *Annotation = [[MapViewAnnotation alloc] initWithTitle:[[AroundArray objectAtIndex:i] objectForKey:@"Name"] andCoordinate:tmp.coordinate andUserinfo:[AroundArray objectAtIndex:i] andSubtitle:[[AroundArray objectAtIndex:i] objectForKey:@"Category"] AndTag:[[NSString alloc] initWithFormat:@"%d",i]];
+        [self.mapView addAnnotation:Annotation];
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [rightButton setTitle:Annotation.title forState:UIControlStateNormal];
+        
+    }
+#endif
+    
+    
+    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
+    self.backgroundView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
+
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
+    [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
+    [self.SegmentedMapandTable setTitle:AMLocalizedString(@"Map", nil) forSegmentAtIndex:1];
+    
+      
+    
+       
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.PlacesTable.showsHorizontalScrollIndicator = NO;
@@ -147,7 +195,6 @@ static BOOL JUST_APPEAR = YES;
     
     
     
-    [self.ViewforMap addSubview:self.Map];
     locationManager = [[CLLocationManager alloc] init];
     [locationManager setDelegate:self];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
@@ -176,17 +223,7 @@ static BOOL JUST_APPEAR = YES;
         [HUD hide:YES afterDelay:2];
     }
     
-    AroundArray = [[NSArray alloc] initWithArray:self.readyArray];
-    RMAnnotation *marker1;
-    for (int i=0; i<[AroundArray count]; i++) {
-        CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
-        marker1 = [[RMAnnotation alloc]initWithMapView:self.Map coordinate:tmp.coordinate andTitle:@"Pin"];
-        marker1.annotationType = @"marker";
-        marker1.title = [[AroundArray objectAtIndex:i] objectForKey:@"Name"];
-        marker1.subtitle = AMLocalizedString([[AroundArray objectAtIndex:i] objectForKey:@"Category"], nil);
-        marker1.userInfo = [AroundArray objectAtIndex:i];
-        [self.Map addAnnotation:marker1];
-    }
+
     
     
     
@@ -228,8 +265,96 @@ static BOOL JUST_APPEAR = YES;
                                              selector:@selector(semiModalDismissed:)
                                                  name:kSemiModalDidHideNotification
                                                object:nil];
+    
+    
+    
 }
 
+
+
+#if LIKELIK
+
+
+-(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
+{
+    
+    if ([annotation.annotationType isEqualToString:@"marker"]) {
+        RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
+                                                          tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
+                                                            sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
+        
+        [marker replaceUIImage:[InterfaceFunctions MapPin:annotation.subtitle].image];
+        marker.canShowCallout = YES;
+        marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        return marker;
+        
+    }
+    return nil;
+}
+
+-(void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
+    
+}
+
+
+-(void)tapOnLabelForAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
+    
+}
+- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
+{
+    PlaceName = annotation.title;
+    PlaceCategory = [annotation.userInfo objectForKey:@"Category"];
+    Place = annotation.userInfo;
+    [self performSegueWithIdentifier:@"MapSegue" sender:self];
+}
+
+
+#else
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(MapViewAnnotation *)annotation {
+    
+    static NSString *identifier = @"MyLocation";
+    if ([annotation isKindOfClass:[MapViewAnnotation class]]) {
+        
+        MKPinAnnotationView *annotationView =
+        (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        
+        if (annotationView == nil) {
+            annotationView = [[MKPinAnnotationView alloc]
+                              initWithAnnotation:annotation
+                              reuseIdentifier:identifier];
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        //  NSLog(@"%@",annotation.userinfo);
+        annotationView.enabled = YES;
+        annotationView.canShowCallout = YES;
+        annotationView.image = [InterfaceFunctions MapPin:annotation.subtitle].image;
+        
+        
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        rightButton.tag = [annotation.tag intValue];
+        [rightButton addTarget:self action:@selector(map_tu:) forControlEvents:UIControlEventTouchUpInside];
+        [rightButton setTitle:annotation.title forState:UIControlStateNormal];
+        [annotationView setRightCalloutAccessoryView:rightButton];
+        return annotationView;
+    }
+    
+    return nil;
+}
+-(void)map_tu:(UIButton *)sender{
+    NSLog(@"123 %d",sender.tag);
+    
+    
+    PlaceName = [[AroundArray objectAtIndex:sender.tag] objectForKey:@"Name"];
+    PlaceCategory = [[AroundArray objectAtIndex:sender.tag] objectForKey:@"Category"];
+    Place = [AroundArray objectAtIndex:sender.tag];
+    //[self performSegueWithIdentifier:@"" sender:]
+    [self performSegueWithIdentifier:@"MapSegue" sender:self];
+    
+    NSLog(@"%@",[AroundArray objectAtIndex:sender.tag]);
+}
+#endif
 -(void)test:(id)sender{
     
     
@@ -284,39 +409,6 @@ static BOOL JUST_APPEAR = YES;
     [HUD setHidden:YES];
 }
 
--(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
-{
-    
-    if ([annotation.annotationType isEqualToString:@"marker"]) {
-        RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
-                                                          tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
-                                                            sizeString:[annotation.userInfo objectForKey:@"marker-size"]];
-        
-        [marker replaceUIImage:[InterfaceFunctions MapPin:annotation.subtitle].image];
-        marker.canShowCallout = YES;
-        marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        return marker;
-        
-    }
-    return nil;
-}
-
--(void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-    
-}
-
-
--(void)tapOnLabelForAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-    
-}
-- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
-{
-    PlaceName = annotation.title;
-    PlaceCategory = [annotation.userInfo objectForKey:@"Category"];
-    Place = annotation.userInfo;
-    [self performSegueWithIdentifier:@"MapSegue" sender:self];
-}
-
 
 - (UIImage *)imageByApplyingAlpha:(CGFloat) alpha andPict:(UIImage *)pic{
     UIGraphicsBeginImageContextWithOptions(pic.size, NO, 0.0f);
@@ -344,7 +436,11 @@ static BOOL JUST_APPEAR = YES;
     //self.CityImage.hidden=!self.CityImage.hidden;
     self.CityName.hidden=!self.CityName.hidden;
     self.PlacesTable.hidden=!self.PlacesTable.hidden;
+#if LIKELIK
     self.ViewforMap.hidden=!self.ViewforMap.hidden;
+#else
+    self.mapView.hidden =!self.mapView.hidden;
+#endif
     self.locationButton.hidden=!self.locationButton.hidden;
     
     if (self.CityName.hidden) {
@@ -357,7 +453,6 @@ static BOOL JUST_APPEAR = YES;
          [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.5 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
         [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
     }
-    
 }
 
 

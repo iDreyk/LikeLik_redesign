@@ -50,6 +50,7 @@
 @property (nonatomic,retain) UIButtonWithAditionalNum *knuck;
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 @property (nonatomic,retain) NSString *CityNameString;
+@property (nonatomic,retain) IBOutlet MKMapView *mapView;
 -(IBAction) segmentedControlIndexChanged;
 -(IBAction)showLocation:(id)sender;
 

@@ -12,6 +12,7 @@
 #import <MapBox/MapBox.h>
 #import "LocalizationSystem.h"
 #import "SubText.h"
+#import "MapViewAnnotation.h"
 CGFloat X=0;
 CGFloat Y=0;
 NSArray *photos;
@@ -56,6 +57,30 @@ static BOOL infoViewIsOpen = NO;
     label.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"About"];
     
 }
+
+-(IBAction)MKMapPageControl:(NSInteger)i
+{
+    NSLog(@"Hello!");
+    
+    int page=i;
+    NSLog(@"page = %d",page);
+    CGRect frame=_scroll.frame;
+    frame.origin.x=self.scroll.frame.size.width*page;
+    frame.size.width =320.;
+    frame.origin.y=0;
+    self.pageControl.currentPage=page;
+    [_scroll scrollRectToVisible:frame animated:YES];
+    if (infoViewIsOpen == YES) {
+        [self tapDetected:nil];
+    }
+    
+    
+    //#warning Смена описаний
+    Red_line.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"Name"];
+    label.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"About"];
+    
+}
+
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
@@ -169,6 +194,57 @@ static BOOL infoViewIsOpen = NO;
         self.locationButton.enabled = YES;
     }
     
+        NSArray *coord = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
+     
+    Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
+    Red_line.text =  [[coord objectAtIndex:0] objectForKey:@"Name"];
+    Red_line.font =[AppDelegate OpenSansSemiBold:28];
+    Red_line.textColor = [UIColor whiteColor];
+    Red_line.numberOfLines = 10;
+    Red_line.backgroundColor =  [UIColor clearColor];
+    Red_line.numberOfLines = 0;
+    
+    [Red_line sizeToFit];
+    CGSize size1 =Red_line.frame.size;
+    size1.width=292.0;
+    Red_line.frame = CGRectMake(Red_line.frame.origin.x, Red_line.frame.origin.y, size1.width, size1.height);
+    [Red_line sizeThatFits:size1];
+    
+    label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
+    label.text =  [[coord objectAtIndex:0] objectForKey:@"About"];
+    label.font = [AppDelegate OpenSansRegular:28];
+    label.textColor = [UIColor whiteColor];
+    
+    label.backgroundColor =  [UIColor clearColor];
+    label.editable = NO;
+    
+    label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
+    if ([AppDelegate isiPhone5])
+        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 260.0);//textViewSize.height+35);
+    else
+        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 225.0);//textViewSize.height+35);
+    
+    
+    [label setScrollEnabled:YES];
+    
+    [_infoScroll setBackgroundColor:[UIColor colorWithRed:0.0/255.0 green:204/255.0 blue:191/255.0 alpha:1]];
+    
+    [_infoScroll addSubview:Red_line];
+    
+    [_infoScroll addSubview:label];
+    
+    //    CGSize size = _infoScroll.frame.size;
+    //    size.height = self.Red_line.frame.size.height+self.label.frame.size.height;//+20;//earth.frame.size.height+earth.frame.origin.y + 32.0;
+    //    _infoScroll.contentSize = size;
+    
+    [self.locationButton setHidden:YES];
+    [self.MapPhoto addSubview:self.locationButton];
+    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
+    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
+    [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
+    
+#if LIKELIK
+    
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -176,7 +252,6 @@ static BOOL infoViewIsOpen = NO;
     if ([self.CityName isEqualToString:@"Vienna"] || [self.CityName isEqualToString:@"Вена"] || [self.CityName isEqualToString:@"Wien"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
     }
-    
     
     RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
     self.MapPhoto = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
@@ -201,7 +276,6 @@ static BOOL infoViewIsOpen = NO;
     self.MapPhoto.showsUserLocation = YES;
     
     
-    NSArray *coord = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
     CLLocation *tmp = [[coord objectAtIndex:0] objectForKey:@"Location"];
     CLLocationCoordinate2D coord1 = tmp.coordinate;
     // Annotations
@@ -221,78 +295,34 @@ static BOOL infoViewIsOpen = NO;
         [self.Annotation addObject:marker1];
     }
     [self.MapPhoto selectAnnotation:[self.Annotation objectAtIndex:0] animated:YES];
-   // NSLog(@"annotation count = %d",[self.Annotation count]);
     [self.visualMap setHidden:YES];
     [self.view addSubview:self.MapPhoto];
+#else
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta=0.2;
+    span.longitudeDelta=0.2;
     
-    Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
-    Red_line.text =  [[coord objectAtIndex:0] objectForKey:@"Name"];
-    Red_line.font =[AppDelegate OpenSansSemiBold:28];
-    Red_line.textColor = [UIColor whiteColor];
-    Red_line.numberOfLines = 10;
-    Red_line.backgroundColor =  [UIColor clearColor];
-    Red_line.numberOfLines = 0;
+    CLLocationCoordinate2D location = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
+    region.span=span;
+    region.center=location;
     
-    [Red_line sizeToFit];
-    CGSize size1 =Red_line.frame.size;
-    size1.width=292.0;
-    Red_line.frame = CGRectMake(Red_line.frame.origin.x, Red_line.frame.origin.y, size1.width, size1.height);
-    [Red_line sizeThatFits:size1];
+    [self.MKMap setRegion:region animated:TRUE];
+    [self.MKMap regionThatFits:region];
     
-    label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
-    label.text =  [[coord objectAtIndex:0] objectForKey:@"About"];
-    label.font = [AppDelegate OpenSansRegular:28];
-    label.textColor = [UIColor whiteColor];
+    for (int i=0; i<[coord count]; i++) {
+        NSLog(@"%d",[coord count]);
+        CLLocation *tmp = [[coord objectAtIndex:i] objectForKey:@"Location"];
+        
+        MapViewAnnotation *Annotation = [[MapViewAnnotation alloc] initWithTitle:[[coord objectAtIndex:i] objectForKey:@"Name"] andCoordinate:tmp.coordinate andUserinfo:[coord objectAtIndex:i] andSubtitle:[NSString stringWithFormat:@"%d",i] AndTag:[[NSString alloc] initWithFormat:@"%d",i]];
+        [self.MKMap addAnnotation:Annotation];
+        [self.Annotation addObject:Annotation];
+        
+    }
+#endif
     
-    label.backgroundColor =  [UIColor clearColor];
-    label.editable = NO;
-    
-    //    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, _infoScroll.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
-    label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
-    if ([AppDelegate isiPhone5])
-        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 260.0);//textViewSize.height+35);
-    else
-        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 225.0);//textViewSize.height+35);
-    
-    
-    
-    //    if ([AppDelegate isiPhone5]) {
-    //        CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, _infoScroll.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
-    //        label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
-    //        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+35);
-    //    }
-    //    else{
-    //        CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 416-Red_line.frame.origin.y+Red_line.frame.size.height) lineBreakMode:NSLineBreakByWordWrapping];
-    //        label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
-    //        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+50);
-    //    }
-    [label setScrollEnabled:YES];
-    
-    [_infoScroll setBackgroundColor:[UIColor colorWithRed:0.0/255.0 green:204/255.0 blue:191/255.0 alpha:1]];
-    
-    [_infoScroll addSubview:Red_line];
-    
-    [_infoScroll addSubview:label];
-    
-    //    CGSize size = _infoScroll.frame.size;
-    //    size.height = self.Red_line.frame.size.height+self.label.frame.size.height;//+20;//earth.frame.size.height+earth.frame.origin.y + 32.0;
-    //    _infoScroll.contentSize = size;
-    
-    [self.locationButton setHidden:YES];
-    [self.MapPhoto addSubview:self.locationButton];
-    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
-    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
-    [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
 }
-
-
--(IBAction)showLocation:(id)sender{
-    
-    [self.MapPhoto setCenterCoordinate:self.MapPhoto.userLocation.coordinate];
-}
-
-
-
+#if LIKELIK
 
 
 -(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
@@ -326,6 +356,65 @@ static BOOL infoViewIsOpen = NO;
     [self MapPageControl:annotation];
     
 }
+
+#else
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(MapViewAnnotation *)annotation {
+    static NSString *identifier = @"MyLocation";
+    //NSLog(@"%@",identifier);
+    if ([annotation isKindOfClass:[MapViewAnnotation class]]) {
+        
+        MKPinAnnotationView *annotationView =
+        (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        
+        if (annotationView == nil) {
+            annotationView = [[MKPinAnnotationView alloc]
+                              initWithAnnotation:annotation
+                              reuseIdentifier:identifier];
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        annotationView.enabled = YES;
+        annotationView.canShowCallout = YES;
+        annotationView.image = [InterfaceFunctions MapPinVisualTour].image;
+        
+        
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        rightButton.tag = [annotation.tag intValue];
+        [rightButton addTarget:self action:@selector(map_tu:) forControlEvents:UIControlEventTouchUpInside];
+        [rightButton setTitle:annotation.title forState:UIControlStateNormal];
+        [annotationView setRightCalloutAccessoryView:rightButton];
+        
+        
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 20.0, 30.0)];
+        UIImage *image = [UIImage imageWithContentsOfFile:[[[ExternalFunctions getVisualTourImagesFromCity:self.CityName] objectAtIndex:[annotation.subtitle intValue]] objectForKey:@"Picture"]];
+        imageview.image = image;
+        [annotationView setLeftCalloutAccessoryView:imageview];
+        
+        return annotationView;
+    }
+    
+    return nil;
+}
+
+-(void)map_tu:(UIButton *)sender{
+    
+    [self ShowMap:self];
+    NSLog(@"sender.tag = %d",sender.tag);
+    [self MKMapPageControl:sender.tag];
+    
+}
+#endif
+
+-(IBAction)showLocation:(id)sender{
+    
+    [self.MapPhoto setCenterCoordinate:self.MapPhoto.userLocation.coordinate];
+}
+
+
+
+
+
 
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -392,7 +481,13 @@ static BOOL infoViewIsOpen = NO;
 }
 
 -(IBAction)ShowMap:(id)sender{
+#warning nav проваливается с картой
+#if LIKELIK
+
     self.MapPhoto.hidden = !self.MapPhoto.hidden;
+#else
+    self.MKMap.hidden = !self.MKMap.hidden;
+#endif
     self.locationButton.hidden =!self.locationButton.hidden;
     if (self.MapPhoto.hidden){
         UIButton *btn = [InterfaceFunctions map_button:1];
