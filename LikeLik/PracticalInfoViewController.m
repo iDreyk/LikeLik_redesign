@@ -46,7 +46,7 @@
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 300.0)];
     label.text = [[NSString alloc] initWithFormat:@"\n%@",[ExternalFunctions getPracticalInfoForCity:self.CityName]];
     label.font = [AppDelegate OpenSansRegular:28];
-    label.textColor = [UIColor blackColor];
+    label.textColor = [UIColor whiteColor];
     label.backgroundColor =  [UIColor clearColor];
     label.editable = NO;
     CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 5000.0) lineBreakMode:NSLineBreakByWordWrapping];
@@ -63,10 +63,14 @@
     imageview.frame = CGRectMake(0.0, 10.0, 320.0, 548.0);
 //    NSLog(@"%@ %@",self.view,imageview);
     [imageview setContentMode:UIViewContentModeScaleAspectFill];
-    [self.view addSubview:imageview];
+    //[self.view addSubview:imageview];
     [self.view addSubview:label];
     
-
+    [self.view setBackgroundColor:[UIColor clearColor]];
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, -44, 320, 568)];
+    bg.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    [self.view addSubview:bg];
+    [self.view bringSubviewToFront:label];
 }
 
 - (void)didReceiveMemoryWarning
