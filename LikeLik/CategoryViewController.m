@@ -80,7 +80,6 @@ static NSString *city = @"";
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor clearColor]];
     [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.5 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
- //   NSLog(@"viewDidLoad");
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     self.categoryView.backgroundColor = [UIColor clearColor];
     IN_BG = NO;
@@ -89,7 +88,6 @@ static NSString *city = @"";
     _locationManager = [[CLLocationManager alloc] init];
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [_locationManager startUpdatingLocation];
-    //    CLLocation *Me = [_locationManager location];
     
     self.categoryView.backgroundColor = [UIColor clearColor];
     [self.categoryView setScrollEnabled:YES];
@@ -298,8 +296,6 @@ static NSString *city = @"";
 
 
 -(void)viewDidAppear:(BOOL)animated{
-    //  AroundArray = [ExternalFunctions getAllPlacesInCity:self.CityName.text];
-    //  NSLog(@"loadView");
     
     if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
         self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text].coordinate;

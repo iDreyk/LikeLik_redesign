@@ -153,7 +153,7 @@ CGFloat alpha = 0.5;
     
 
     [self.info_button setImage:[InterfaceFunctions Info_buttonwithCategory:self.PlaceCategory].image forState:UIControlStateNormal];
-    
+#warning навбар прыгает
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     for (UIView * view in self.view.subviews) {
         UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gesture:)];
@@ -561,6 +561,7 @@ CGFloat alpha = 0.5;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
 #if LIKELIK
     NSURL *url;
+    self.mapView.hidden = YES;
     if ([self.PlaceCityName isEqualToString:@"Moscow"] || [self.PlaceCityName isEqualToString:@"Москва"] || [self.PlaceCityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
     }
@@ -643,6 +644,14 @@ CGFloat alpha = 0.5;
     [self.mapView addAnnotation:Annotation];
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [rightButton setTitle:Annotation.title forState:UIControlStateNormal];
+    
+    
+    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
+    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
+    [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
+    [self.locationButton setHidden:YES];
+    
+   // [self.mapView addSubview:self.locationButton];
 #endif
     
 }
@@ -719,7 +728,7 @@ CGFloat alpha = 0.5;
 
 -(void)map_tu:(UIButton *)sender{
     self.mapView.hidden= !self.mapView.hidden;
-    
+    self.locationButton.hidden =! self.locationButton.hidden;
 }
 #endif
 
@@ -733,6 +742,7 @@ CGFloat alpha = 0.5;
     if (infoViewIsOpen == YES) {
         [self tapDetected:nil];
         self.placeViewMap.hidden = YES;
+        self.mapView.hidden = YES;
         [self hide_hint:self];
     }
 }
@@ -747,7 +757,11 @@ CGFloat alpha = 0.5;
         self.navigationController.navigationBarHidden = NO;
     }
     
-    [self.MapPlace setCenterCoordinate:self.MapPlace.userLocation.coordinate];
+#if LIKELIK
+        [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate];
+#else
+        [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
+#endif
 }
 
 - (void)refreshButtonState{
@@ -901,9 +915,6 @@ CGFloat alpha = 0.5;
         _background.hidden = NO;
         _labelonPhoto.hidden = NO;
         [self ShowMap:self];
-    
-    
-
     }
 }
 
@@ -954,21 +965,37 @@ CGFloat alpha = 0.5;
         self.ScrollView.backgroundColor = [InterfaceFunctions colorTextCategory:self.PlaceCategory];        
     }
     
-    if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0) {
-        self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName].coordinate;
-        self.locationButton.enabled = NO;
-      //  NSLog(@"Взяли центер города");
-    }
-    else{
-        self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
-       // NSLog(@"Взяли локацию пользователя");
-        self.locationButton.enabled = YES;
-    }
+#if LIKELIK
+if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0) {
+    self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName].coordinate;
+    self.locationButton.enabled = NO;
     
-//    for (UIView *view in self.navigationController.navigationBar.subviews) {
-//        NSLog(@"%@",view);
-//        view.userInteractionEnabled = YES;
-//    }
+}
+else{
+    self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
+    self.locationButton.enabled = YES;
+}
+#else
+MKCoordinateSpan span;
+span.latitudeDelta = 0.2;
+span.longitudeDelta = 0.2;
+// define starting point for map
+CLLocationCoordinate2D start;
+if ([[[CLLocation alloc] initWithLatitude:self.mapView.userLocation.coordinate.latitude longitude:self.mapView.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0){
+    start = [ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName].coordinate;
+    self.locationButton.enabled = NO;
+}
+else{
+    start = self.mapView.userLocation.coordinate;
+    self.locationButton.enabled = YES;
+}
+MKCoordinateRegion region;
+region.span = span;
+region.center = start;
+
+[self.mapView setRegion:region animated:YES];
+
+#endif
 
 }
 
@@ -1254,11 +1281,13 @@ CGFloat alpha = 0.5;
 #else
     self.mapView.hidden = !self.mapView.hidden;
     if (self.mapView.hidden){
+        [self.locationButton setHidden:YES];
         UIButton *btn = [InterfaceFunctions map_button:1];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     }
     else{
+        [self.locationButton setHidden:NO];
         UIButton *btn = [InterfaceFunctions map_button:0];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];

@@ -160,9 +160,9 @@ static BOOL infoViewIsOpen = NO;
         }
     }
 }
+
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
     _scroll.delegate=self;
         photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
 //    NSLog(@"photos count = %d",[photos count]);
@@ -183,16 +183,7 @@ static BOOL infoViewIsOpen = NO;
     [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-    if ([[[CLLocation alloc] initWithLatitude:self.MapPhoto.userLocation.coordinate.latitude longitude:self.MapPhoto.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
-        self.MapPhoto.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
-        self.locationButton.enabled = NO;
-       // NSLog(@"Взяли центер города");
-    }
-    else{
-        self.MapPhoto.centerCoordinate = self.MapPhoto.userLocation.coordinate;
-      //  NSLog(@"Взяли локацию пользователя");
-        self.locationButton.enabled = YES;
-    }
+ 
     
         NSArray *coord = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
      
@@ -244,7 +235,7 @@ static BOOL infoViewIsOpen = NO;
     [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
     
 #if LIKELIK
-    
+    self.MKMap.hidden = YES;
     NSURL *url;
     if ([self.CityName isEqualToString:@"Moscow"] || [self.CityName isEqualToString:@"Москва"] || [self.CityName isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
@@ -298,6 +289,7 @@ static BOOL infoViewIsOpen = NO;
     [self.visualMap setHidden:YES];
     [self.view addSubview:self.MapPhoto];
 #else
+    self.MKMap.hidden = YES;
     MKCoordinateRegion region;
     MKCoordinateSpan span;
     span.latitudeDelta=0.2;
@@ -314,9 +306,9 @@ static BOOL infoViewIsOpen = NO;
         NSLog(@"%d",[coord count]);
         CLLocation *tmp = [[coord objectAtIndex:i] objectForKey:@"Location"];
         
-        MapViewAnnotation *Annotation = [[MapViewAnnotation alloc] initWithTitle:[[coord objectAtIndex:i] objectForKey:@"Name"] andCoordinate:tmp.coordinate andUserinfo:[coord objectAtIndex:i] andSubtitle:[NSString stringWithFormat:@"%d",i] AndTag:[[NSString alloc] initWithFormat:@"%d",i]];
-        [self.MKMap addAnnotation:Annotation];
-        [self.Annotation addObject:Annotation];
+        MapViewAnnotation *Annotation1 = [[MapViewAnnotation alloc] initWithTitle:[[coord objectAtIndex:i] objectForKey:@"Name"] andCoordinate:tmp.coordinate andUserinfo:[coord objectAtIndex:i] andSubtitle:[NSString stringWithFormat:@"%d",i] AndTag:[[NSString alloc] initWithFormat:@"%d",i]];
+        [self.MKMap addAnnotation:Annotation1];
+        [self.Annotation addObject:Annotation1];
         
     }
 #endif
@@ -407,8 +399,11 @@ static BOOL infoViewIsOpen = NO;
 #endif
 
 -(IBAction)showLocation:(id)sender{
-    
+#if LIKELIK
     [self.MapPhoto setCenterCoordinate:self.MapPhoto.userLocation.coordinate];
+#else
+    [self.MKMap setCenterCoordinate:self.MKMap.userLocation.coordinate animated:YES];
+#endif
 }
 
 
@@ -422,6 +417,40 @@ static BOOL infoViewIsOpen = NO;
     [TestFlight passCheckpoint:@"VisualTour"];
    
     
+#if LIKELIK
+    if ([[[CLLocation alloc] initWithLatitude:self.MapPhoto.userLocation.coordinate.latitude longitude:self.MapPhoto.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
+        self.MapPhoto.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
+        self.locationButton.enabled = NO;
+        // NSLog(@"Взяли центер города");
+    }
+    else{
+        self.MapPhoto.centerCoordinate = self.MapPhoto.userLocation.coordinate;
+        //  NSLog(@"Взяли локацию пользователя");
+        self.locationButton.enabled = YES;
+    }
+#warning выпало после закачки сразу
+#else
+#warning Фон под навбаром
+#warning  обновлять пин на карте при пролистывании
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.2;
+    span.longitudeDelta = 0.2;
+    // define starting point for map
+    CLLocationCoordinate2D start;
+    if ([[[CLLocation alloc] initWithLatitude:self.MKMap.userLocation.coordinate.latitude longitude:self.MKMap.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0){
+        start = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
+        self.locationButton.enabled = NO;
+    }
+    else{
+        start = self.MKMap.userLocation.coordinate;
+        self.locationButton.enabled = YES;
+    }
+    MKCoordinateRegion region;
+    region.span = span;
+    region.center = start;
+    
+    [self.MKMap setRegion:region animated:YES];
+#endif
     
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
     [panRecognizer setMinimumNumberOfTouches:1];
@@ -481,9 +510,7 @@ static BOOL infoViewIsOpen = NO;
 }
 
 -(IBAction)ShowMap:(id)sender{
-#warning nav проваливается с картой
 #if LIKELIK
-
     self.MapPhoto.hidden = !self.MapPhoto.hidden;
 #else
     self.MKMap.hidden = !self.MKMap.hidden;

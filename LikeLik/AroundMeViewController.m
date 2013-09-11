@@ -148,21 +148,26 @@ static BOOL JUST_APPEAR = YES;
     self.mapView.hidden = YES;
     self.ViewforMap.hidden = YES;
     self.Map.hidden = YES;
-    MKCoordinateRegion region;
+
     MKCoordinateSpan span;
-    span.latitudeDelta=0.2;
-    span.longitudeDelta=0.2;
+    span.latitudeDelta = 0.002;
+    span.longitudeDelta = 0.002;
     
-    CLLocationCoordinate2D location = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate;
-    region.span=span;
-    region.center=location;
-#warning центр карты
-    [self.mapView setRegion:region animated:TRUE];
-    [self.mapView regionThatFits:region];
+    // define starting point for map
+    CLLocationCoordinate2D start;
+    start.latitude = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate.latitude;
+    start.longitude = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate.longitude;
     
+    MKCoordinateRegion region;
+    region.span = span;
+    region.center = start;
+    
+    [self.mapView setRegion:region animated:YES];
+    
+
+    NSLog(@"%f",[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate.latitude);
     for (int i=0; i<[AroundArray count]; i++) {
         CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
-        
         MapViewAnnotation *Annotation = [[MapViewAnnotation alloc] initWithTitle:[[AroundArray objectAtIndex:i] objectForKey:@"Name"] andCoordinate:tmp.coordinate andUserinfo:[AroundArray objectAtIndex:i] andSubtitle:[[AroundArray objectAtIndex:i] objectForKey:@"Category"] AndTag:[[NSString alloc] initWithFormat:@"%d",i]];
         [self.mapView addAnnotation:Annotation];
         UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -273,10 +278,7 @@ static BOOL JUST_APPEAR = YES;
 
 
 #if LIKELIK
-
-
--(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
-{
+-(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation{
     
     if ([annotation.annotationType isEqualToString:@"marker"]) {
         RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
@@ -291,24 +293,18 @@ static BOOL JUST_APPEAR = YES;
     }
     return nil;
 }
-
 -(void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
     
 }
-
-
 -(void)tapOnLabelForAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
     
 }
-- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
-{
+- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
     PlaceName = annotation.title;
     PlaceCategory = [annotation.userInfo objectForKey:@"Category"];
     Place = annotation.userInfo;
     [self performSegueWithIdentifier:@"MapSegue" sender:self];
 }
-
-
 #else
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(MapViewAnnotation *)annotation {
     
@@ -343,7 +339,7 @@ static BOOL JUST_APPEAR = YES;
     return nil;
 }
 -(void)map_tu:(UIButton *)sender{
-    NSLog(@"123 %d",sender.tag);
+   // NSLog(@"123 %d",sender.tag);
     
     
     PlaceName = [[AroundArray objectAtIndex:sender.tag] objectForKey:@"Name"];
@@ -352,9 +348,11 @@ static BOOL JUST_APPEAR = YES;
     //[self performSegueWithIdentifier:@"" sender:]
     [self performSegueWithIdentifier:@"MapSegue" sender:self];
     
-    NSLog(@"%@",[AroundArray objectAtIndex:sender.tag]);
+   // NSLog(@"%@",[AroundArray objectAtIndex:sender.tag]);
 }
 #endif
+
+
 -(void)test:(id)sender{
     
     
@@ -378,7 +376,11 @@ static BOOL JUST_APPEAR = YES;
 }
 
 -(IBAction)showLocation:(id)sender{
+#if LIKELIK
     [self.Map setCenterCoordinate:self.Map.userLocation.coordinate];
+#else
+    [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
+#endif
 }
 
 -(void)Search{
@@ -388,8 +390,9 @@ static BOOL JUST_APPEAR = YES;
 
 
 -(void)viewDidAppear:(BOOL)animated{
-    
+#warning фон под навбаром в fav 
     [TestFlight passCheckpoint:@"Around Me"];
+#if LIKELIK
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText]] > 50000.0) {
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate;
         
@@ -400,6 +403,31 @@ static BOOL JUST_APPEAR = YES;
         self.Map.centerCoordinate = self.Map.userLocation.coordinate;
         self.locationButton.enabled = YES;
     }
+    
+#else 
+#warning тестануть Apple Maps на 3.5"
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.2;
+    span.longitudeDelta = 0.2;
+    // define starting point for map
+    CLLocationCoordinate2D start;
+    if ([[[CLLocation alloc] initWithLatitude:self.mapView.userLocation.coordinate.latitude longitude:self.mapView.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText]] > 50000.0){
+        start = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate;
+        self.locationButton.enabled = NO;
+    }
+    else{
+        start = self.mapView.userLocation.coordinate;
+        self.locationButton.enabled = YES;
+    }
+    MKCoordinateRegion region;
+    region.span = span;
+    region.center = start;
+    
+    [self.mapView setRegion:region animated:YES];
+    
+
+#endif
+    
     JUST_APPEAR = YES;
 
     //[self.PlacesTable reloadData];
@@ -920,7 +948,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Category"] forKey:@"CategoryTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"City"] forKey:@"CityTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",sender.tagForCheck] forKey:@"RowTemp"];
-    NSLog(@"Check: %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"]);
+  //  NSLog(@"Check: %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"]);
     
     if ([ExternalFunctions isCheckUsedInPlace:[temp objectForKey:@"Name"] InCategory:[temp objectForKey:@"Category"] InCity:self.CityNameText]){
  //       NSLog(@"Уже использован");
