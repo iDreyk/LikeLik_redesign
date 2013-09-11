@@ -319,7 +319,6 @@
 
 +(UIImageView *)MapPin:(NSString *)Category{
     UIImageView *Pin=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MapPin_12"]];
-    
 
     if ([Category isEqualToString:AMLocalizedString(@"Restaurants", nil)]) {
         //Pin.image = [UIImage imageNamed:@"63_76 MapPin_2"];

@@ -695,7 +695,7 @@ CGFloat alpha = 0.5;
         
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
-        annotationView.image = [InterfaceFunctions MapPin:annotation.subtitle].image;
+        annotationView.image = [InterfaceFunctions MapPin:AMLocalizedString(annotation.subtitle, NULL)].image;
         
         
         UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];

@@ -325,8 +325,7 @@ static BOOL JUST_APPEAR = YES;
         //  NSLog(@"%@",annotation.userinfo);
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
-        annotationView.image = [InterfaceFunctions MapPin:annotation.subtitle].image;
-        
+        annotationView.image = [InterfaceFunctions MapPin:AMLocalizedString(annotation.subtitle, nil)].image;
         
         UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         rightButton.tag = [annotation.tag intValue];
