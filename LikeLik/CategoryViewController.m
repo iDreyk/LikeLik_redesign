@@ -81,6 +81,7 @@ static NSString *city = @"";
     [self.view setBackgroundColor:[UIColor clearColor]];
     [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
     self.categoryView.backgroundColor = [UIColor clearColor];
     IN_BG = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -115,6 +116,7 @@ static NSString *city = @"";
     self.Label = @"Vienna";
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
 #endif
+
 
     self.CityName.text = self.Label;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
@@ -570,7 +572,7 @@ static NSString *city = @"";
         UIButton *btn = [InterfaceFunctions map_button:1];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-         [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.5 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     }
     else{
          [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];

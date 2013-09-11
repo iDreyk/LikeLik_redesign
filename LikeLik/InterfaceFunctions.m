@@ -9,6 +9,8 @@
 #import "InterfaceFunctions.h"
 #import "AppDelegate.h"
 #import "LocalizationSystem.h"
+#import <QuartzCore/QuartzCore.h>
+
 @implementation InterfaceFunctions
 
 #pragma mark UIButton
@@ -203,7 +205,7 @@
 #pragma mark UILabel
 +(UILabel *)NavLabelwithTitle:(NSString *)string AndColor:(UIColor *)Color{
     UIFont* font = [AppDelegate OpenSansSemiBold:32];
-    CGSize maximumLabelSize = CGSizeMake(296,9999);
+    CGSize maximumLabelSize = CGSizeMake(296,9999);         // 9999, o rly? oO
     CGSize expectedLabelSize = [string sizeWithFont:font constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByCharWrapping];
     CGRect frame = CGRectMake(0, 0, expectedLabelSize.width, expectedLabelSize.height);
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
@@ -214,6 +216,15 @@
     label.text = string;
     label.shadowColor = [InterfaceFunctions ShadowColor];
     label.shadowOffset = [InterfaceFunctions ShadowSize];
+//    label.highlightedTextColor = [UIColor whiteColor];
+//    [label setHighlighted:YES];
+    CALayer *layer = label.layer;
+    UIColor *color = [UIColor whiteColor];
+    layer.shadowColor = [color CGColor];
+    layer.shadowRadius = 4.0f;
+    layer.shadowOpacity = .9;
+    layer.shadowOffset = CGSizeZero;
+    layer.masksToBounds = NO;
     return label;
     
 }

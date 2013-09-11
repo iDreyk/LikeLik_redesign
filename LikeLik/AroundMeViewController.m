@@ -477,7 +477,7 @@ static BOOL JUST_APPEAR = YES;
     }
     else{
         UIButton *titleview = [InterfaceFunctions segmentbar_map_list:1];
-         [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.5 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
         [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
     }
 }

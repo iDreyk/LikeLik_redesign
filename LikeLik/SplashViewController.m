@@ -204,7 +204,7 @@ static NSInteger j=0;
 
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
     //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.5 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     //[self.navigationController.navigationBar setTranslucent:YES];
     [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
     
