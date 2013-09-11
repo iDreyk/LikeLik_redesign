@@ -79,7 +79,7 @@ static NSString *city = @"";
     
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor clearColor]];
-    [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.5 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     self.categoryView.backgroundColor = [UIColor clearColor];
     IN_BG = NO;
@@ -700,15 +700,15 @@ static NSString *city = @"";
     
     CGFloat yOffset   = self.categoryView.contentOffset.y;
   //  NSLog(@"yofs: %f", yOffset);
+    AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
+    UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
     if(yOffset < 0){
-        AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
-        UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
         imback.alpha = 1.0 + yOffset/200;
     }
     
     if (yOffset > 0) {
         //self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
-        
+        imback.alpha = 1.0 - yOffset/200;
         self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,4.0-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
        // self.categoryView.frame = CGRectMake(0, 44-(yOffset), 320, self.categoryView.frame.size.height);
         //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
