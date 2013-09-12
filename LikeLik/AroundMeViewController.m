@@ -41,6 +41,8 @@ static CGFloat width = 180;//220;
 NSInteger PREV_SECTION_AROUNDME = 0;
 bool REVERSE_ANIM = false;
 static BOOL JUST_APPEAR = YES;
+static BOOL BACK_PRESSED = NO;
+
 
 @interface UIButtonWithAditionalNum ()
 
@@ -428,8 +430,14 @@ static BOOL JUST_APPEAR = YES;
 #endif
     
     JUST_APPEAR = YES;
-
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    self.PlacesTable.contentOffset = CGPointMake(0, -40);
+    [UIView commitAnimations];
     //[self.PlacesTable reloadData];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    BACK_PRESSED = YES;
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -486,7 +494,7 @@ static BOOL JUST_APPEAR = YES;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    BACK_PRESSED = NO;
     [self.PlacesTable deselectRowAtIndexPath:[self.PlacesTable indexPathForSelectedRow] animated:YES];
 }
 
@@ -1087,9 +1095,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 
 
-//- (void)updateOffsets {
-//    CGFloat yOffset   = self.PlacesTable.contentOffset.y;
-//    
+- (void)updateOffsets {
+    CGFloat yOffset   = self.PlacesTable.contentOffset.y;
+    if(yOffset == 0){
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.3];
+        self.PlacesTable.contentOffset = CGPointMake(0, -40);
+        [UIView commitAnimations];
+    }
 //    CGFloat threshold = self.PlacesTable.frame.size.height - self.PlacesTable.frame.size.height;
 //    if (yOffset > -threshold && yOffset < 0) {
 //        self.CityImage.frame = CGRectMake(0,-yOffset,320.0,self.CityImage.frame.size.height);
@@ -1115,12 +1128,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 //        
 //    }
 //    self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
-//    //    self.CityImage.contentScaleFactor = 2.0;
-//}
-//
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    [self updateOffsets];
-//}
+    //    self.CityImage.contentScaleFactor = 2.0;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!BACK_PRESSED)
+        [self updateOffsets];
+}
 
 
 - (void)viewDidUnload {
