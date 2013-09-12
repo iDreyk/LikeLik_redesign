@@ -468,7 +468,8 @@ static BOOL BACK_PRESSED = NO;
 }
 
 -(IBAction) segmentedControlIndexChanged{
-    
+    if(AroundArray.count == 0)
+        return;
     //self.CityImage.hidden=!self.CityImage.hidden;
     self.CityName.hidden=!self.CityName.hidden;
     self.PlacesTable.hidden=!self.PlacesTable.hidden;

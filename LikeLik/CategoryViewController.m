@@ -220,11 +220,11 @@ static BOOL IN_BG;
     self.categoryView.contentSize = CGSizeMake(320, 560);
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;
-    CGFloat yOrigin = 64; // 20 + 44
+    CGFloat yOrigin = 104; // 20 + 44
     CGFloat yOffset = 10;
     
     if(self.view.bounds.size.height == 460.0){
-        yOrigin = 44;
+        yOrigin = 84;
         self.categoryView.contentSize = CGSizeMake(320, 470);
     }
     
