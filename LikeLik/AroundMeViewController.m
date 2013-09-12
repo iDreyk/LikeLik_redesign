@@ -274,7 +274,11 @@ static BOOL BACK_PRESSED = NO;
                                                object:nil];
     
     
-    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    self.PlacesTable.contentOffset = CGPointMake(0, -40);
+    [UIView commitAnimations];
+
 }
 
 
@@ -430,11 +434,7 @@ static BOOL BACK_PRESSED = NO;
 #endif
     
     JUST_APPEAR = YES;
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    self.PlacesTable.contentOffset = CGPointMake(0, -40);
-    [UIView commitAnimations];
-    //[self.PlacesTable reloadData];
+        //[self.PlacesTable reloadData];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     BACK_PRESSED = YES;
