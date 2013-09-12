@@ -655,10 +655,10 @@
 }
 
 -(void)Send:(NSString *)RegistrationWay{
-    NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
+    NSURL *baseURL = [NSURL URLWithString:@"http://llwebapi.cloudapp.net"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     [httpClient defaultValueForHeader:@"Accept"];
-    NSString *params = [NSString stringWithFormat:@"/api/v1/users?lang=%@",_lang];
+    NSString *params = [NSString stringWithFormat:@"/LikeLikWebAPI/api/v1/users?lang=%@",_lang];
     NSLog(@"%@",params);
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:params parameters:[self POSTRequest:RegistrationWay]];
     
@@ -677,6 +677,7 @@
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSString *answer = [self HUDStringLocalized:JSON];
+        NSLog(@"error = %@",error);
         [self.HUDfade hide:YES];
         
         self.HUDerror.customView = [InterfaceFunctions LabelHUDwithString:answer];

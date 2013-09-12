@@ -80,17 +80,23 @@ static BOOL JUST_APPEAR = YES;
     [label setFont:[AppDelegate OpenSansRegular:32]];
     [label setBackgroundColor:[UIColor clearColor]];
     label.hidden = YES;
-    [label setText:AMLocalizedString(@"Special Annotation", nil)];
+   special_series.tag = THUNDER_TAG;
+
+    [special_series setAlpha:0.7];
+    special_series.hidden = YES;
+    if (self.tabBarController.selectedIndex == 1){
+        [label setText:AMLocalizedString(@"Download Annotation", nil)];
+        [special_series setImage:[UIImage imageNamed:@"512x512 download"]];
+    }
+    if (self.tabBarController.selectedIndex == 3){
+        [label setText:AMLocalizedString(@"Special Annotation", nil)];
+        [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
+    }
     label.numberOfLines = 0;
     [label sizeToFit];
     [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
     
     
-    
-    special_series.tag = THUNDER_TAG;
-    [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
-    [special_series setAlpha:0.7];
-    special_series.hidden = YES;
     [self.view addSubview:special_series];
     [self.view addSubview:label];
     
@@ -114,7 +120,20 @@ static BOOL JUST_APPEAR = YES;
 -(void)viewDidAppear:(BOOL)animated{
     //  NSLog(@"loglog");
    
-    [label setText:AMLocalizedString(@"Special Annotation", nil)];
+    
+
+    if (self.tabBarController.selectedIndex == 1){
+        [label setText:AMLocalizedString(@"Download Annotation", nil)];
+        [special_series setImage:[UIImage imageNamed:@"617x617 Download"]];
+    }
+    if (self.tabBarController.selectedIndex == 3){
+        [label setText:AMLocalizedString(@"Special Annotation", nil)];
+        [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
+    }
+    label.numberOfLines = 0;
+    [label sizeToFit];
+#warning начинает "скукоживаться" при смене языков много раз
+    [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
     
     CGPoint temp = self.view.center;
     temp.y -= 80;
@@ -152,7 +171,8 @@ static BOOL JUST_APPEAR = YES;
     }
     //  NSLog(@"StartView Appear");
     JUST_APPEAR = YES;
-
+    
+    
     [self.tableView reloadData];
 }
 -(void)viewWillAppear:(BOOL)animated{

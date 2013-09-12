@@ -553,10 +553,11 @@
 }
 
 -(void)Send:(NSString *)RegistrationWay{
-    NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
+#warning через раз login/registration error
+    NSURL *baseURL = [NSURL URLWithString:@"http://llwebapi.cloudapp.net"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     [httpClient defaultValueForHeader:@"Accept"];
-    NSString *params = [NSString stringWithFormat:@"/api/v1/users/login?lang=%@",_lang];
+    NSString *params = [NSString stringWithFormat:@"/LikeLikWebAPI/api/v1/users/login?lang=%@",_lang];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:params parameters:[self POSTRequest:RegistrationWay]];
     
     

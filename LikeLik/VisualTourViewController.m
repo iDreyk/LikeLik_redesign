@@ -60,10 +60,10 @@ static BOOL infoViewIsOpen = NO;
 
 -(IBAction)MKMapPageControl:(NSInteger)i
 {
-    NSLog(@"Hello!");
+  //  NSLog(@"Hello!");
     
     int page=i;
-    NSLog(@"page = %d",page);
+    //NSLog(@"page = %d",page);
     CGRect frame=_scroll.frame;
     frame.origin.x=self.scroll.frame.size.width*page;
     frame.size.width =320.;

@@ -33,7 +33,7 @@ static BOOL IN_BG;
 #define backgroundTag 2442441
 
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
-static NSString *city = @"";
+//static NSString *city = @"";
 @interface CategoryViewController ()
 
 @end
