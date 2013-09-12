@@ -44,13 +44,15 @@
 @synthesize minimumLineHeight;
 @synthesize lineSpacing;
 @synthesize baseWritingDirection;
+@synthesize rotate_angle;
+@synthesize autoheight;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self == nil) {
         return nil;
     }
-    
+        
     self.userInteractionEnabled = NO;
     self.opaque = NO;
     self.contentMode = UIViewContentModeRedraw;
@@ -71,7 +73,8 @@
     self.minimumLineHeight = 0.0f;
     self.lineSpacing = 0.0f;
     self.baseWritingDirection = 0.0f;
-    
+    self.rotate_angle = 0.0f;
+    self.autoheight = NO;
     return self;
 }
 
@@ -89,6 +92,9 @@
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
     CGContextTranslateCTM(context, 0, self.bounds.size.height);
     CGContextScaleCTM(context, 1.0, -1.0);
+    if (rotate_angle != 0) {
+        CGContextRotateCTM(context, rotate_angle);
+    }
     
     CGColorRef backgroundCGColor = (self.backgroundColor != nil ?
                                     self.backgroundColor.CGColor :
@@ -236,6 +242,7 @@
     
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter,
                                                 CFRangeMake(0, 0), path, NULL);
+    
     CFRelease(path);
     CFRelease(framesetter);
     CTFrameDraw(frame, context);

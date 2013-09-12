@@ -408,13 +408,13 @@ CGFloat alpha = 0.5;
     //label.numberOfLines = 10;
     label.backgroundColor =  [UIColor clearColor];
     label.editable = NO;
-    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 500.0) lineBreakMode:NSLineBreakByTruncatingTail];
+    CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 500.0) lineBreakMode:NSLineBreakByWordWrapping];
     label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
     if ([AppDelegate isiPhone5]) {
-        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+70);
+        label.frame = CGRectMake(14.0,label.frame.origin.y, 320.0, textViewSize.height+70);
     }
     else{
-        label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, textViewSize.height+70);
+        label.frame = CGRectMake(14.0,label.frame.origin.y, 320.0, textViewSize.height+70);
     }
     [label sizeToFit];
 

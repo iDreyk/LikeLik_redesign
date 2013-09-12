@@ -44,4 +44,7 @@
 @property(nonatomic, assign) CGFloat minimumLineHeight;
 @property(nonatomic, assign) CGFloat lineSpacing;
 @property(nonatomic, assign) CTWritingDirection baseWritingDirection;
+@property(nonatomic, assign) CGFloat rotate_angle;
+@property(nonatomic, assign) BOOL autoheight;
+
 @end

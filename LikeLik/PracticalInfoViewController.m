@@ -52,10 +52,10 @@
     CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 5000.0) lineBreakMode:NSLineBreakByWordWrapping];
     label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
     if ([AppDelegate isiPhone5]) {
-        label.frame = CGRectMake(7.0,0.0, 306.0,502.0);
+        label.frame = CGRectMake(14.0,0.0, 320.0,502.0);
     }
     else{
-        label.frame = CGRectMake(7.0,0.0, 306.0, 412.0);
+        label.frame = CGRectMake(14.0,0.0, 320.0, 412.0);
     }
     label.contentSize = CGSizeMake(320.0, textViewSize.height);
     
