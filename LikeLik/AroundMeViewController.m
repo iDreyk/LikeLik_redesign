@@ -498,6 +498,13 @@ static BOOL BACK_PRESSED = NO;
     [super viewWillAppear:animated];
     BACK_PRESSED = NO;
     [self.PlacesTable deselectRowAtIndexPath:[self.PlacesTable indexPathForSelectedRow] animated:YES];
+    if (self.mapView.hidden){
+        [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
+    }
+    else{
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
+    }
+
 }
 
 

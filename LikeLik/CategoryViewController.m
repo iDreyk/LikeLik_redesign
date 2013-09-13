@@ -329,7 +329,6 @@ static BOOL IN_BG;
     }
     // [self getSoonLabels];
 #endif
-    
 }
 
 
@@ -337,6 +336,14 @@ static BOOL IN_BG;
 {
     [super viewWillAppear:animated];
     self.categoryView.contentOffset = CGPointMake(self.categoryView.contentOffset.x, 0);
+    if (self.placeViewMap.hidden){
+        [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
+    }
+    else{
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
+    }
+    
+
     //    [self.Table deselectRowAtIndexPath:[self.Table indexPathForSelectedRow] animated:YES];
 }
 
