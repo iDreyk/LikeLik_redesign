@@ -8,6 +8,12 @@
 
 
 #import <UIKit/UIKit.h>
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{
     
 }
@@ -16,6 +22,7 @@
 @property (strong, nonatomic) UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet UILabel  *alertLabel;
 @property (nonatomic, assign) UIViewController *currentController;
+@property(nonatomic, strong) id<GAITracker> tracker;
 
 +(UIFont *)OpenSansRegular:(CGFloat)size;
 +(UIFont *)OpenSansSemiBold:(CGFloat)size;

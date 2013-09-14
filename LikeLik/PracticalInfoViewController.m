@@ -30,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Practial Info Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     //self.view = [InterfaceFunctions backgroundView];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions corporateIdentity]];

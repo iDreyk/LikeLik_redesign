@@ -167,6 +167,11 @@ static NSInteger j=0;
 {
     
     [super viewDidLoad];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Splash Screen"];
+    
+    // Send the screen view.
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
 #if VIENNA
     city = @"Vienna";
 #endif

@@ -654,6 +654,9 @@ CGFloat alpha = 0.5;
    // [self.mapView addSubview:self.locationButton];
 #endif
     
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:self.PlaceName];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
 }
 
 #if  LIKELIK

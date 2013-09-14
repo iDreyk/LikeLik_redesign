@@ -31,6 +31,8 @@
 {
     [super viewDidLoad];
     [TestFlight passCheckpoint:@"TermsOfUse"];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Terms of use Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     //self.view = [InterfaceFunctions backgroundView];
     

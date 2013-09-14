@@ -43,6 +43,9 @@
 {
     [super viewDidLoad];
     
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Registration Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
     array = @[@"Name",@"E-Mail",@"Password",@"Password"];
     self.lang = [[NSString alloc] init];
     NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"]);

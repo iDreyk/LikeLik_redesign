@@ -40,7 +40,8 @@ static BOOL foreignversion = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:self.PlaceName,@" Check"]];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(check_Open:)
                                                  name: checkOpen

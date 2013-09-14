@@ -78,6 +78,10 @@ static BOOL IN_BG;
     
     
     [super viewDidLoad];
+    
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Category Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
     [self.view setBackgroundColor:[UIColor clearColor]];
     [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
@@ -572,14 +576,20 @@ static BOOL IN_BG;
 
 
 -(IBAction)ShowMap:(id)sender{
+    
     self.placeViewMap.hidden = !self.placeViewMap.hidden;
     if (self.placeViewMap.hidden){
+        
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Category Screen"];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
         UIButton *btn = [InterfaceFunctions map_button:1];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
         [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     }
     else{
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Map Screen"];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
          [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
         UIButton *btn = [InterfaceFunctions map_button:0];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
@@ -626,6 +636,8 @@ static BOOL IN_BG;
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.readyArray = AroundArray;
         destination.CityNameString = AMLocalizedString(@"Around Me", nil);
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Aroundme Screen"];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     }
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
         AroundMeViewController *destination = [segue destinationViewController];
@@ -633,6 +645,8 @@ static BOOL IN_BG;
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:[self.CellArray objectAtIndex:row],@" Screen"]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     }
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
 //        FavViewController *destination = [segue destinationViewController];
@@ -646,6 +660,8 @@ static BOOL IN_BG;
       //  NSLog(@"%@",[self favoritePlaces]);
         destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];//[self favoritePlaces];//[self placesInCategory:[self.CellArray objectAtIndex:row]];
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Favorutes Screen"];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
         
     }
     
@@ -689,6 +705,7 @@ static BOOL IN_BG;
 }
 
 - (void)viewDidUnload {
+    
     [super viewDidUnload];
 }
 

@@ -28,6 +28,11 @@ NSInteger wasinactive = NO;
 #define backgroundTag 2442441
 #define backgroundTag2 2442442
 
+
+static NSString *const kTrackingId = @"UA-44026994-1";
+static NSString *const kAllowTracking = @"allowTracking";
+
+
 @implementation AppDelegate
 
 //#warning воронка пользования
@@ -177,16 +182,32 @@ NSInteger wasinactive = NO;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSDictionary *appDefaults = @{kAllowTracking: @(YES)};
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    // User must be able to opt out of tracking
+    [GAI sharedInstance].optOut =
+    ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
+    // Initialize Google Analytics with a 120-second dispatch interval. There is a
+    // tradeoff between battery usage and timely dispatch.
+    [GAI sharedInstance].dispatchInterval = 5;
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+   
     
 #if MOSCOW
+    self.tracker = [[GAI sharedInstance] trackerWithName:@"Likelik Moscow"
+                                              trackingId:@"UA-44026994-2"];
     NSLog(@"LikeLik MOSCOW onboard");
 #endif
     
 #if VIENNA
+    self.tracker = [[GAI sharedInstance] trackerWithName:@"Likelik Vienna"
+                                              trackingId:@"UA-44026994-3"];
     NSLog(@"LikeLik Vienna onboard");
 #endif
     
 #if LIKELIK
+    self.tracker = [[GAI sharedInstance] trackerWithName:@"Likelik"
+                                              trackingId:kTrackingId];
     NSLog(@"LikeLik onboard");
 #endif
     
@@ -204,7 +225,7 @@ NSInteger wasinactive = NO;
             UIViewController *initialViewController = [ios5iphone35Storyboard instantiateInitialViewController];
             self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
             self.window.rootViewController  = initialViewController;
-            
+
             [self.window makeKeyAndVisible];
         }
         else{
@@ -380,6 +401,8 @@ NSInteger wasinactive = NO;
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [[NSNotificationCenter defaultCenter] postNotificationName:afterFB
                                                         object:self];
+    [GAI sharedInstance].optOut =
+    ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
 }
 
 #pragma mark - SCFacebook Handle

@@ -103,6 +103,10 @@ static BOOL BACK_PRESSED = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:PlaceCategory, @" Screen"]];
+//    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
     JUST_APPEAR = YES;
     AroundArray = [[NSArray alloc] initWithArray:self.readyArray];
     

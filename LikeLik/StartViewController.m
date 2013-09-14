@@ -58,6 +58,9 @@ static BOOL JUST_APPEAR = YES;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Start Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     JUST_APPEAR = YES;
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
@@ -121,7 +124,7 @@ static BOOL JUST_APPEAR = YES;
     //  NSLog(@"loglog");
    
     
-
+    
     if (self.tabBarController.selectedIndex == 1){
         [label setText:AMLocalizedString(@"Download Annotation", nil)];
         [special_series setImage:[UIImage imageNamed:@"617x617 Download"]];

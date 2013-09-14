@@ -27,7 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Support Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     self.lang = [[NSString alloc] init];
     NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"]);
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"Русский"])

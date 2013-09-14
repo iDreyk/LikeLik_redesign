@@ -33,6 +33,10 @@
 {
     [super viewDidLoad];
     [TestFlight passCheckpoint:@"Открыл stng"];
+    
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Preferences Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
