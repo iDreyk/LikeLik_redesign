@@ -228,8 +228,8 @@ static BOOL IN_BG;
     CGFloat yOffset = 10;
     
     if(self.view.bounds.size.height == 460.0){
-        yOrigin = 84;
-        self.categoryView.contentSize = CGSizeMake(320, 470);
+        yOrigin = 74;
+        self.categoryView.contentSize = CGSizeMake(320, 500);
     }
     
     self.frame1 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, yOrigin + yOffset, frameSize, frameSize)];

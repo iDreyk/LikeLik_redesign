@@ -399,7 +399,6 @@ static BOOL BACK_PRESSED = NO;
 
 
 -(void)viewDidAppear:(BOOL)animated{
-#warning фон под навбаром в fav 
     [TestFlight passCheckpoint:@"Around Me"];
 #if LIKELIK
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText]] > 50000.0) {
