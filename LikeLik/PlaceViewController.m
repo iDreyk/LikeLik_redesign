@@ -937,6 +937,7 @@ CGFloat alpha = 0.5;
         if ([ExternalFunctions isCheckUsedInPlace:self.PlaceName InCategory:self.PlaceCategory InCity:self.PlaceCityName]){
             self.GOUSE.enabled = NO;
             [Use stopAnimating];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadTableInPlaces" object:nil];
         }        
     }
 }

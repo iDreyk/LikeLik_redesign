@@ -43,6 +43,7 @@ NSInteger PREV_SECTION_AROUNDME = 0;
 bool REVERSE_ANIM = false;
 static BOOL JUST_APPEAR = YES;
 static BOOL BACK_PRESSED = NO;
+static BOOL NEED_TO_RELOAD = NO;
 
 
 @interface UIButtonWithAditionalNum ()
@@ -284,7 +285,10 @@ static BOOL BACK_PRESSED = NO;
                                                  name:kSemiModalDidHideNotification
                                                object:nil];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(tableNeedsToReload:)
+                                                 name: @"ReloadTableInPlaces"
+                                               object: nil];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
     self.PlacesTable.contentOffset = CGPointMake(0, -40);
@@ -292,7 +296,10 @@ static BOOL BACK_PRESSED = NO;
 
 }
 
-
+- (void)tableNeedsToReload:(NSNotification *) notification {
+    NEED_TO_RELOAD = YES;
+    //[self.PlacesTable reloadData];
+}
 
 #if LIKELIK
 -(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation{
@@ -444,7 +451,11 @@ static BOOL BACK_PRESSED = NO;
 #endif
     
     JUST_APPEAR = YES;
-    
+    if(NEED_TO_RELOAD){
+        NSLog(@"Reloading table");
+        [self.PlacesTable reloadData];
+        NEED_TO_RELOAD = NO;
+    }
     //[self.PlacesTable reloadData];
 }
 -(void)viewWillDisappear:(BOOL)animated{
