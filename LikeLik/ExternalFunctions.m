@@ -244,6 +244,8 @@ static CLLocation *Me;
             if (![[webSite substringToIndex:7] isEqualToString:@"http://"]) {
                 [placeDict setValue:[[NSString alloc] initWithFormat:@"http://%@",webSite] forKey:@"Web"];
             }
+            else
+                [placeDict setValue: webSite forKey:@"Web"];
         }
         
         [placeDict setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
