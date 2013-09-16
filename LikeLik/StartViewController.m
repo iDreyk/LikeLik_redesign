@@ -183,10 +183,10 @@ static BOOL JUST_APPEAR = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    
 }
 - (void)didReceiveMemoryWarning
 {
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Memory warning" action:@"Catch warning"                                                                                          label:@"Start view" value:nil] build]];
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

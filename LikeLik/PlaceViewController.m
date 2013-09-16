@@ -33,6 +33,8 @@
 #define checkOpen                 @"l27h7RU2dzVfP12aoQssdasasa"
 static BOOL infoViewIsOpen = NO;
 static UIAlertView *alertView = nil;
+static NSString * currentCity = @"";
+
 CGFloat firstX=0;
 CGFloat firstY=0;
 CGFloat alpha = 0.5;
@@ -145,6 +147,13 @@ CGFloat alpha = 0.5;
 - (void)viewDidLoad{
     [super viewDidLoad];
 
+#warning need a better way to do it
+    if ([AMLocalizedString(@"Moscow", nil) isEqualToString:self.PlaceCityName]) {
+        currentCity = @"Moscow";
+    }
+    else{
+        currentCity = @"Vienna";
+    }
 
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
     [panRecognizer setMinimumNumberOfTouches:1];
@@ -654,9 +663,9 @@ CGFloat alpha = 0.5;
    // [self.mapView addSubview:self.locationButton];
 #endif
     
-    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:self.PlaceName];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@" %@ %@ %@",currentCity,self.PlaceCategory,self.PlaceNameEn ]];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-    
+
 }
 
 #if  LIKELIK

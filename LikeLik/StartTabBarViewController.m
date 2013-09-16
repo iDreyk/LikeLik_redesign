@@ -35,9 +35,6 @@
 
     [super viewDidLoad];
 
-    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"StartTabBar Screen"];
-    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-    
     [self setSelectedIndex:0];
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
