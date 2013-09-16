@@ -258,6 +258,7 @@ static CLLocation *Me;
         [placeDict setValue:[placeAtIndexi objectForKey:@"tag"] forKey:@"Tags"];
         [placeDict setValue:[NSNumber numberWithDouble:lat] forKey:@"Latitude"];
         [placeDict setValue:[NSNumber numberWithDouble:lon] forKey:@"Longitude"];
+        [placeDict setValue:[placeAtIndexi objectForKey:@"Name_EN"] forKey:@"Name_EN"];
         
         [returnArray addObject:placeDict];
     }
