@@ -146,33 +146,26 @@ static BOOL JUST_APPEAR = YES;
     //    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
     
     if (tabindex == 0) { //выбраны featured
-        
-        //        _CityLabels = [ExternalFunctions getFeaturedCities:1];
-        //        _backCityImages = [ExternalFunctions getFeaturedCities:0];
         _CityLabels = [ExternalFunctions getAllCities:1];
         _backCityImages = [ExternalFunctions getAllCities:0];
     }
     
     
     if (tabindex == 1) { //выбраны downloaded
-        // NSLog(@"Hello");
         _CityLabels = [ExternalFunctions getDownloadedCities:1];
         _backCityImages = [ExternalFunctions getDownloadedCities:0];
         
     }
     
     if (tabindex == 2) { //выбраны все гайды
-        
         _CityLabels = [ExternalFunctions getAllCities:1];
         _backCityImages = [ExternalFunctions getAllCities:0];
     }
     
     if (tabindex == 3) {//Специальная серия
-        
         _CityLabels = [ExternalFunctions getSpecialCities:1];
         _backCityImages = [ExternalFunctions getSpecialCities:0];
     }
-    //  NSLog(@"StartView Appear");
     JUST_APPEAR = YES;
     
     
@@ -229,16 +222,9 @@ static BOOL JUST_APPEAR = YES;
     cell.CityLabel.font = [AppDelegate OpenSansSemiBold:60];
     cell.CityLabel.text  = _CityLabels[row];
     cell.CityLabel.textColor = [UIColor whiteColor];
-    cell.BackCityImage.image = _backCityImages[row];//[UIImage imageWithContentsOfFile:_backCityImages[row]];
+    cell.BackCityImage.image = _backCityImages[row];
     [cell.contentView addSubview:[InterfaceFunctions standartAccessorView]];
     
-    //    if ([indexPath row]+1 == [_CityLabels count] ) {
-    //        [cell.layer setShadowOpacity:24.4];
-    //        [cell.layer setShadowRadius:5];
-    //    }
-    
-    
-    //cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
     if(PREV_ROW > row)
         REVERSE_ANIM = true;
     else

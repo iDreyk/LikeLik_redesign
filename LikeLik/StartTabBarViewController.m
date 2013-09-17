@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
-#import "AboutTableViewController.h"
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
 #define changetab             @"l27haasas7RU2dzVaQsadaQeSFfPoQQQQ"
 #define setselectedindex             @"l27h7RU2dzVfP12aoQssda"
@@ -59,10 +58,10 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     
-    UIButton *btn_left = [InterfaceFunctions Info_button];
-    [btn_left addTarget:self action:@selector(Info) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn_left];
-    
+//    UIButton *btn_left = [InterfaceFunctions Info_button];
+//    [btn_left addTarget:self action:@selector(Info) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn_left];
+//    
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(pref_dismiss)
                                                  name: dismiss

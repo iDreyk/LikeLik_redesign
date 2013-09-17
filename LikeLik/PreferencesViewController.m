@@ -38,23 +38,15 @@
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    
-     
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Settings", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     
-
     RegisterAndLogin = @[AMLocalizedString(@"Registration", nil),AMLocalizedString(@"Login", nil)];
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"])
         RegisterAndLogin = @[];
     Language = @[@"English",@"Русский",@"Deutsch",@"Japanese"];
     Measures = @[@"Miles",@"Kilometers"];
-//    [self.navigationController.navigationBar setBounds:CGRectMake(0.0, 0.0, 320.0, 70.0)];
-//    [self.navigationController.navigationBar setFrame:CGRectMake(0.0, 0.0, 320.0, 70.0)];
-    
-    
-    
+    Information = @[AMLocalizedString(@"Terms of use", nil),AMLocalizedString(@"About", nil),AMLocalizedString(@"Support", nil),AMLocalizedString(@"More LikeLik Apps", nil)];
     
     self.tableView.backgroundView = [InterfaceFunctions backgroundView];//[[UIImageView alloc] initWithImage: [UIImage imageNamed:@"bg.png"]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -67,19 +59,14 @@
 }
 
 -(void)Back{
-    // NSLog(@"123");
     [[NSNotificationCenter defaultCenter] postNotificationName:dismiss
                                                         object:self];
-    [self dismissViewControllerAnimated:YES completion:^{}];//dismissModalViewControllerAnimated:YES];
-//    NSLog(@"%d",[self dismissViewControllerAnimated:YES completion:^{}]);
-    //[self dismissViewControllerAnimated:YES completion:^{}];
-    //[self dismissViewControllerAnimated:YES completion:^{}];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
@@ -90,8 +77,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    // NSLog(@"123");
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"])
+     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"])
         RegisterAndLogin = @[];
     [self.tableView reloadData];
 }
@@ -99,9 +85,6 @@
 -(void)viewWillDisappear:(BOOL)animated{
     
     if([self isMovingFromParentViewController]){
-//#warning для splash раскомментировать
-        // [self.navigationController setNavigationBarHidden:YES animated:YES];
-        //specific stuff for being popped off stack
     }
 }
 
@@ -109,7 +92,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -125,6 +108,8 @@
         case 2:
             number = [Measures count];
             break;
+        case 3:
+            number = [Information count];
         default:
             break;
         }
@@ -143,14 +128,18 @@
     
     switch ([indexPath section]) {
         case 0:
-      //      NSLog(@"123");
         [cell addSubview:[InterfaceFunctions TableLabelwithText:[RegisterAndLogin objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions corporateIdentity] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
+            [cell addSubview:[InterfaceFunctions corporateIdentity_actb]];
             break;
         case 1:
         [cell addSubview:[InterfaceFunctions TableLabelwithText:[Language objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions corporateIdentity] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
             break;
         case 2:
         [cell addSubview:[InterfaceFunctions TableLabelwithText: [NSString stringWithFormat:@"Display %@",[Measures objectAtIndex:[indexPath row]]] AndColor:[InterfaceFunctions corporateIdentity] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
+            break;
+        case 3:
+        [cell addSubview:[InterfaceFunctions TableLabelwithText:[Information objectAtIndex:[indexPath row]] AndColor:[InterfaceFunctions corporateIdentity] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
+            [cell addSubview:[InterfaceFunctions corporateIdentity_actb]];
             break;
         default:
             break;
@@ -163,8 +152,6 @@
         
     if ([indexPath section] == 0 && [indexPath row] == 1)
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    
     if ([indexPath section] == 1)
         if ([[defaults objectForKey:@"Language"] isEqualToString:[Language objectAtIndex:[indexPath row]]])
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -202,10 +189,12 @@
 	}
 	if(section ==1) {
 		headerLabel.text =  AMLocalizedString(@"Language", nil);
-
 	}
     if (section == 2) {
         headerLabel.text =  @"Measures";
+    }
+    if (section == 3) {
+        headerLabel.text =  AMLocalizedString(@"About", nil);
     }
 	[customView addSubview:headerLabel];
     
@@ -233,52 +222,24 @@
     if ([indexPath section] == 0 && [indexPath row] == 1) {
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
+    if ([indexPath section] == 3 && [indexPath row] == 0) {
+        [self performSegueWithIdentifier:@"TermsofUse" sender:self];
+    }
+    if ([indexPath section] == 3 && [indexPath row] == 1) {
+        [self performSegueWithIdentifier:@"About" sender:self];
+    }
+    if ([indexPath section] == 3 && [indexPath row] == 2) {
+        [self performSegueWithIdentifier:@"Support" sender:self];
+    }
+    if ([indexPath section] == 3 && [indexPath row] == 3) {
+        [self performSegueWithIdentifier:@"MoreLikeLik" sender:self];
+    }
     
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-        if ([indexPath section] == 1){
-            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1] forKey:@"langChanged"];
-            
-            for (int i=0; i<[Language count]; i++)
-                [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:1]].accessoryType = UITableViewCellAccessoryNone;
-            [defaults setObject:[Language objectAtIndex:[indexPath row]] forKey:@"Language"];
-            if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Русский"]){
-                LocalizationSetLanguage(@"ru");
-                [TestFlight passCheckpoint:@"SetRU"];
-            }
-            if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"English"]){
-                LocalizationSetLanguage(@"en");
-                [TestFlight passCheckpoint:@"SetEn"];
-            }
-            if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Deutsch"]){
-                LocalizationSetLanguage(@"de");
-                                [TestFlight passCheckpoint:@"SetDe"];
-            }
-            if ([[Language objectAtIndex:[indexPath row]] isEqualToString:@"Japanese"]){
-                LocalizationSetLanguage(@"ja");
-                                [TestFlight passCheckpoint:@"SetJa"];
-            }
-
-        }
-        
-        if ([indexPath section] == 2){
-            for (int i=0; i<[Measures count]; i++)
-                [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:2]].accessoryType = UITableViewCellAccessoryNone;
-            [defaults setObject:[Measures objectAtIndex:[indexPath row]] forKey:@"Measure"];
-            
-        }
-        
-    }
-    else{
-        
-        if ([indexPath section] == 1){
+            if ([indexPath section] == 1){
             [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1] forKey:@"langChanged"];
             NSLog(@"lngChanged - %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"]);
             for (int i=0; i<[Language count]; i++)
@@ -301,13 +262,9 @@
             [defaults setObject:[Measures objectAtIndex:[indexPath row]] forKey:@"Measure"];
             
         }
-        
-    }
     
-    
-    if ([indexPath section] == 1 || [indexPath section] == 2) {
+    if ([indexPath section] == 1 || [indexPath section] == 2)
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
 
     [defaults synchronize];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -329,80 +286,12 @@
     
     Language = @[@"English",@"Русский",@"Deutsch",@"Japanese"];
     Measures = @[@"Miles",@"Kilometers"];
+    Information = @[AMLocalizedString(@"Terms of use", nil),AMLocalizedString(@"About", nil),AMLocalizedString(@"Support", nil),AMLocalizedString(@"More LikeLik Apps", nil)];
+    
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    /*
-    if ([[segue identifier] isEqualToString:@"RegisterSegue"]) {
-        PlaceViewController *destination =[segue destinationViewController];
-        NSIndexPath *indexPath = [self.TablePlaces indexPathForSelectedRow];
-        
-        destination.PlaceCityName = self.CityNameText;
-        switch ([indexPath section]) {
-            case 0:
-                destination.PlaceName  = [Rest objectAtIndex:[indexPath row]];
-                destination.PlaceCategory =  @"Restaurant";
-                break;
-            case 1:
-                destination.PlaceName = [Shopping objectAtIndex:[indexPath row]];
-                destination.PlaceCategory = @"Shopping";
-                break;
-            case 2:
-                destination.PlaceName = [Entertainment objectAtIndex:[indexPath row]];
-                destination.PlaceCategory = @"Entertainment";
-                break;
-            case 3:
-                destination.PlaceName = [Sport objectAtIndex:[indexPath row]];
-                destination.PlaceCategory = @"Sport";
-            default:
-                break;
-        }
-    }
-    
-    if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
-        //    nslog(@"[[segue identifier] isEqualToString: SearchSegue");
-        SearchViewController *destinaton  = [segue destinationViewController];
-        destinaton.CityName = self.CityNameText;
-    }
-     */
     
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 @end

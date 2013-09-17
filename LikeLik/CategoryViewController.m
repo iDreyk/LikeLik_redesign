@@ -13,7 +13,6 @@
 #import "SearchViewController.h"
 #import "AppDelegate.h"
 #import "LocalizationSystem.h"
-#import "AboutTableViewController.h"
 #import "VisualTourViewController.h"
 #import "TransportationTableViewController.h"
 #import "PracticalInfoViewController.h"
@@ -33,7 +32,7 @@ static BOOL IN_BG;
 #define backgroundTag 2442441
 
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
-//static NSString *city = @"";
+static NSString *city = @"";
 @interface CategoryViewController ()
 
 @end
@@ -75,7 +74,7 @@ static BOOL IN_BG;
 
 - (void)viewDidLoad
 {
-    
+#warning about и termsofuse
     
     [super viewDidLoad];
     
@@ -170,9 +169,9 @@ static BOOL IN_BG;
 
 #else
     [self.placeViewMap setHidden:YES];
-    UIButton *btn_left = [InterfaceFunctions Info_button];
-    [btn_left addTarget:self action:@selector(Info) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn_left];
+//    UIButton *btn_left = [InterfaceFunctions Info_button];
+//    [btn_left addTarget:self action:@selector(Info) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.hidesBackButton = YES;//[[UIBarButtonItem alloc] initWithCustomView:btn_left];
     
     UIButton *btn = [InterfaceFunctions Pref_button];
     [btn addTarget:self action:@selector(Pref) forControlEvents:UIControlEventTouchUpInside];

@@ -12,6 +12,7 @@
     NSArray *RegisterAndLogin;
     NSArray *Language;
     NSArray *Measures;
+    NSArray *Information;
 }
 @property (strong, nonatomic) IBOutlet UITableView *PreferencesTable;
 

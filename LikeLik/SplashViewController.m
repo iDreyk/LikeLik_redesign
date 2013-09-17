@@ -9,7 +9,7 @@
 #import "SplashViewController.h"
 #import "AppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
-#import "AboutTableViewController.h"
+
 #import "RegistrationViewController.h"
 #import "AFDownloadRequestOperation.h"
 #import "Reachability.h"
