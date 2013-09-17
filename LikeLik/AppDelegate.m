@@ -37,6 +37,7 @@ static NSString *const kAllowTracking = @"allowTracking";
 
 //#warning воронка пользования
 @synthesize alertLabel;
+
 +(UIFont *)OpenSansRegular:(CGFloat)size{
     UIFont* font = [UIFont fontWithName:@"OpenSans" size:size/2];
     return font;
@@ -59,8 +60,6 @@ static NSString *const kAllowTracking = @"allowTracking";
     return font;
 }
 
-
-
 +(BOOL)isiPhone5{
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
@@ -82,7 +81,6 @@ static NSString *const kAllowTracking = @"allowTracking";
     [[UISegmentedControl appearance] setBackgroundImage:unselectedBackgroundImage
                                                forState:UIControlStateNormal
                                              barMetrics:UIBarMetricsDefault];
-    
     /* Selected background */
     UIImage *selectedBackgroundImage = [[UIImage imageNamed:@"segmentbar_background_selected"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     [[UISegmentedControl appearance] setBackgroundImage:selectedBackgroundImage
@@ -287,7 +285,7 @@ static NSString *const kAllowTracking = @"allowTracking";
 #endif
         image2.tag = backgroundTag2;
         [self.window.rootViewController.view insertSubview:image2 atIndex:0];
-
+        
     }
     
     

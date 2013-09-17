@@ -50,8 +50,6 @@ CGRect oldRect;
     //23
     
     [super viewDidLoad];
-    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Search View Screen"];
-    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     
     //    nslog(@"Hello!");
     //    nslog(@"CityName = %@",self.CityName);

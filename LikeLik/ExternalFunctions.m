@@ -244,6 +244,8 @@ static CLLocation *Me;
             if (![[webSite substringToIndex:7] isEqualToString:@"http://"]) {
                 [placeDict setValue:[[NSString alloc] initWithFormat:@"http://%@",webSite] forKey:@"Web"];
             }
+            else
+                [placeDict setValue: webSite forKey:@"Web"];
         }
         
         [placeDict setValue:[NSNumber numberWithDouble:distance] forKey:@"Distance"];
@@ -256,6 +258,7 @@ static CLLocation *Me;
         [placeDict setValue:[placeAtIndexi objectForKey:@"tag"] forKey:@"Tags"];
         [placeDict setValue:[NSNumber numberWithDouble:lat] forKey:@"Latitude"];
         [placeDict setValue:[NSNumber numberWithDouble:lon] forKey:@"Longitude"];
+        [placeDict setValue:[placeAtIndexi objectForKey:@"Name_EN"] forKey:@"Name_EN"];
         
         [returnArray addObject:placeDict];
     }

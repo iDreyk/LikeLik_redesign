@@ -26,6 +26,8 @@ static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 static BOOL IS_LOADING;
 static BOOL IN_BG;
+static NSString *currentCity = @"";
+
 #define textinFrame 131313
 #define EF_TAG 66483
 #define FADE_TAG 66484
@@ -76,9 +78,16 @@ static NSString *city = @"";
 {
 #warning about и termsofuse
     
-    [super viewDidLoad];
     
-    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Category Screen"];
+#warning need a better way to do it
+    if ([AMLocalizedString(@"Moscow", nil) isEqualToString:self.Label]) {
+       currentCity = @"Moscow";
+    }
+    else{
+      currentCity = @"Vienna";
+    }
+    
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@" %@ Category Screen",currentCity]];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     
     [self.view setBackgroundColor:[UIColor clearColor]];
@@ -227,8 +236,8 @@ static NSString *city = @"";
     CGFloat yOffset = 10;
     
     if(self.view.bounds.size.height == 460.0){
-        yOrigin = 84;
-        self.categoryView.contentSize = CGSizeMake(320, 470);
+        yOrigin = 74;
+        self.categoryView.contentSize = CGSizeMake(320, 500);
     }
     
     self.frame1 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, yOrigin + yOffset, frameSize, frameSize)];
@@ -296,6 +305,7 @@ static NSString *city = @"";
         }];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];
+
 }
 
 
@@ -352,6 +362,7 @@ static NSString *city = @"";
 
 - (void)didReceiveMemoryWarning
 {
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Memory warning" action:@"Catch warning"                                                                                          label:@"Category view" value:nil] build]];
     [super didReceiveMemoryWarning];
 }
 
@@ -579,7 +590,7 @@ static NSString *city = @"";
     self.placeViewMap.hidden = !self.placeViewMap.hidden;
     if (self.placeViewMap.hidden){
         
-        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Category Screen"];
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Category Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
         UIButton *btn = [InterfaceFunctions map_button:1];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
@@ -587,7 +598,7 @@ static NSString *city = @"";
         [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     }
     else{
-        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Map Screen"];
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Category Map Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
          [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
         UIButton *btn = [InterfaceFunctions map_button:0];
@@ -635,8 +646,9 @@ static NSString *city = @"";
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.readyArray = AroundArray;
         destination.CityNameString = AMLocalizedString(@"Around Me", nil);
-        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Aroundme Screen"];
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Aroundme Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+        //currentCategory =@"Aroundme";
     }
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
         AroundMeViewController *destination = [segue destinationViewController];
@@ -644,8 +656,9 @@ static NSString *city = @"";
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
-        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:[self.CellArray objectAtIndex:row],@" Screen"]];
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Screen",currentCity,[self.CellArray objectAtIndex:row]]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+       //currentCategory =[self.CellArray objectAtIndex:row];
     }
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
 //        FavViewController *destination = [segue destinationViewController];
@@ -659,8 +672,9 @@ static NSString *city = @"";
       //  NSLog(@"%@",[self favoritePlaces]);
         destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];//[self favoritePlaces];//[self placesInCategory:[self.CellArray objectAtIndex:row]];
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
-        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Favorutes Screen"];
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Favorites Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+       //currentCategory =@"Favorites";
         
     }
     
@@ -668,18 +682,27 @@ static NSString *city = @"";
         VisualTourViewController *destination =
         [segue destinationViewController];
         destination.CityName = self.Label;
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Visual Tour Screen",currentCity]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+        //currentCategory =@"Visual Tour";
     }
     
     if ([[segue identifier] isEqualToString:@"TransportationSegue"]) {
         TransportationTableViewController *destination = [segue destinationViewController];
         [segue destinationViewController];
         destination.CityName = self.Label;
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Transportation Screen",currentCity]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+        //currentCategory =@"Transportation";
     }
     
     if ([[segue identifier] isEqualToString:@"PracticalinfoSegue"]) {
         PracticalInfoViewController  *destination = [segue destinationViewController];
         [segue destinationViewController];
         destination.CityName = self.Label;
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Practical Info Screen",currentCity]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+        //currentCategory =@"Favorites";
     }
     
     if ([[segue identifier] isEqualToString:@"MapSegue"]) {
@@ -700,12 +723,14 @@ static NSString *city = @"";
         SearchViewController *destinaton  = [segue destinationViewController];
         destinaton.CityName = self.Label;
         destinaton.readyArray = AroundArray;
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Category Search Screen",currentCity]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+        //currentCategory =@"Search";
     }
 }
 
 - (void)viewDidUnload {
-    
-    [super viewDidUnload];
+        [super viewDidUnload];
 }
 
 
@@ -749,6 +774,7 @@ static NSString *city = @"";
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+#warning добавить гуглоэвент
     [self updateOffsets];
 }
 

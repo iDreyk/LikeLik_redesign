@@ -163,8 +163,7 @@ static BOOL infoViewIsOpen = NO;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Visual Tour Screen"];
-    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
     _scroll.delegate=self;
         photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
 //    NSLog(@"photos count = %d",[photos count]);

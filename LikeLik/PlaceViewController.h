@@ -49,6 +49,7 @@
 @property (retain, nonatomic) IBOutlet RMMapView *MapPlace;
 @property (weak, nonatomic) IBOutlet UIView *PlaceView;
 @property (nonatomic,retain) NSString *PlaceName;
+@property (nonatomic,retain) NSString *PlaceNameEn;
 @property (nonatomic,retain) NSString *PlaceCityName;
 @property (nonatomic,retain) NSString *PlaceCategory;
 @property (nonatomic,retain) NSString *PlaceAbout;

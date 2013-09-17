@@ -37,11 +37,13 @@ static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
 static NSDictionary *Place1;
 static CGFloat width = 180;//220;
+static NSString * currentCity = @"";
 
 NSInteger PREV_SECTION_AROUNDME = 0;
 bool REVERSE_ANIM = false;
 static BOOL JUST_APPEAR = YES;
 static BOOL BACK_PRESSED = NO;
+static BOOL NEED_TO_RELOAD = NO;
 
 
 @interface UIButtonWithAditionalNum ()
@@ -104,8 +106,14 @@ static BOOL BACK_PRESSED = NO;
 {
     [super viewDidLoad];
     
-//    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:PlaceCategory, @" Screen"]];
-//    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+#warning need a better way to do it
+    if ([AMLocalizedString(@"Moscow", nil) isEqualToString:self.CityName.text]) {
+        currentCity = @"Moscow";
+    }
+    else{
+        currentCity = @"Vienna";
+    }
+    
     
     JUST_APPEAR = YES;
     AroundArray = [[NSArray alloc] initWithArray:self.readyArray];
@@ -277,7 +285,10 @@ static BOOL BACK_PRESSED = NO;
                                                  name:kSemiModalDidHideNotification
                                                object:nil];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(tableNeedsToReload:)
+                                                 name: @"ReloadTableInPlaces"
+                                               object: nil];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
     self.PlacesTable.contentOffset = CGPointMake(0, -40);
@@ -285,7 +296,10 @@ static BOOL BACK_PRESSED = NO;
 
 }
 
-
+- (void)tableNeedsToReload:(NSNotification *) notification {
+    NEED_TO_RELOAD = YES;
+    //[self.PlacesTable reloadData];
+}
 
 #if LIKELIK
 -(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation{
@@ -399,7 +413,6 @@ static BOOL BACK_PRESSED = NO;
 
 
 -(void)viewDidAppear:(BOOL)animated{
-#warning фон под навбаром в fav 
     [TestFlight passCheckpoint:@"Around Me"];
 #if LIKELIK
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText]] > 50000.0) {
@@ -438,7 +451,12 @@ static BOOL BACK_PRESSED = NO;
 #endif
     
     JUST_APPEAR = YES;
-        //[self.PlacesTable reloadData];
+    if(NEED_TO_RELOAD){
+        NSLog(@"Reloading table");
+        [self.PlacesTable reloadData];
+        NEED_TO_RELOAD = NO;
+    }
+    //[self.PlacesTable reloadData];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     BACK_PRESSED = YES;
@@ -475,12 +493,29 @@ static BOOL BACK_PRESSED = NO;
     if(AroundArray.count == 0)
         return;
     //self.CityImage.hidden=!self.CityImage.hidden;
+    
     self.CityName.hidden=!self.CityName.hidden;
     self.PlacesTable.hidden=!self.PlacesTable.hidden;
 #if LIKELIK
     self.ViewforMap.hidden=!self.ViewforMap.hidden;
+    if (!self.ViewforMap.hidden) {
+          [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Map Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
+          [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    }
+    else {
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    }
 #else
     self.mapView.hidden =!self.mapView.hidden;
+    if (!self.mapview.hidden){
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Map Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    }
+    else {
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    }
 #endif
     self.locationButton.hidden=!self.locationButton.hidden;
     
@@ -1065,12 +1100,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         destinaton.PlaceWeb = [Place1 objectForKey:@"Web"];
         destinaton.PlaceLocation = [Place1 objectForKey:@"Location"];
         destinaton.Photos = [Place1 objectForKey:@"Photo"];
+        destinaton.PlaceNameEn = Place1[@"Name_EN"];
+        
     }
     
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         SearchViewController *destinaton  = [segue destinationViewController];
         destinaton.CityName = self.CityNameText;
         destinaton.readyArray = AroundArray;
+        
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Search Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     }
     
     if ([[segue identifier] isEqualToString:@"MapSegue"]) {
@@ -1092,6 +1132,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         RegistrationViewController  *destination = [segue destinationViewController];
         [segue destinationViewController];
         destination.Parent = @"Place";
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Register Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+
     }
     
     if ([[segue identifier] isEqualToString:@"LoginSegue"]) {
@@ -1099,6 +1142,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         LoginViewController  *destination = [segue destinationViewController];
         [segue destinationViewController];
         destination.Parent = @"Place";
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Login Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+
     }
 }
 
