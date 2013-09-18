@@ -508,7 +508,7 @@ static BOOL NEED_TO_RELOAD = NO;
     }
 #else
     self.mapView.hidden =!self.mapView.hidden;
-    if (!self.mapview.hidden){
+    if (!self.mapView.hidden){
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Map Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     }
