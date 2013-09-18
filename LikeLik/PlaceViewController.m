@@ -1076,8 +1076,13 @@ region.center = start;
 
  
 -(IBAction)buttonPressed:(UIButton*)sender{
-    [TestFlight passCheckpoint:[NSString stringWithFormat:@"Place button %d",sender.tag]];
+    [TestFlight passCheckpoint:[NSString stringWithFormat:@"Place button %d",sender.tag]];    
+    
     if (sender.tag == 2) {
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"  // Event category (required)
+                                                                                            action:@"button_press"  // Event action
+                                                                                             label:[NSString stringWithFormat:@"%@ %@ @ Is Going to Share",currentCity,self.PlaceNameEn]  // Event label
+                                                                                             value:nil] build]];
         [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
         self.navigationController.navigationBar.hidden = YES;
         
@@ -1117,7 +1122,8 @@ region.center = start;
             [[NSNotificationCenter defaultCenter] postNotificationName:checkOpen
                                                                 object:self];
             
-            
+            [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Check Screen",currentCity,self.PlaceNameEn]];
+            [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
             [self presentSemiViewController:VC withOptions:@{
              KNSemiModalOptionKeys.pushParentBack    : @(YES),
              KNSemiModalOptionKeys.animationDuration : @(0.5),
@@ -1134,13 +1140,21 @@ region.center = start;
             
         }
         else{
-
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"  // Event category
+                                                                                            action:@"button_press"  // Event action
+                                                                                            label:[NSString stringWithFormat:@"%@ %@ @ Is Going to log in or Register",currentCity,self.PlaceNameEn]  // Event label
+                                                                                            value:nil] build]];
         [self showRegistrationMessage:self];
         }
         
     }
     
     if (sender.tag == 0) {
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"  // Event category (required)
+                                                                                            action:@"button_press"  // Event action
+                                                                                             label:[NSString stringWithFormat:@"%@ %@ into the favorites",currentCity,self.PlaceNameEn]          // Event label
+                                                                                             value:nil] build]];
+
         HUD = [MBProgressHUD showHUDAddedTo:self.PlaceView animated:YES];
         HUD.mode = MBProgressHUDModeCustomView;
         HUD.margin = 10.f;
@@ -1179,7 +1193,10 @@ region.center = start;
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([actionSheet.title isEqualToString:AMLocalizedString(@"Call", nil)]) {
         if (buttonIndex == 0){
-            
+            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"  // Event category (required)
+                                                                                                action:@"button_press"  // Event action
+                                                                                                 label:[NSString stringWithFormat:@"%@ %@ @ Is Going to call",currentCity,self.PlaceNameEn]  // Event label
+                                                                                                 value:nil] build]];
             
             NSString *tel =[actionSheet buttonTitleAtIndex:0];
             NSString* launchUrl = [NSString stringWithFormat:@"tel:%@",tel];
@@ -1189,7 +1206,10 @@ region.center = start;
     
     if ([actionSheet.title isEqualToString:AMLocalizedString(@"Web", nil)]) {
         if (buttonIndex == 0){
-            
+            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"  // Event category (required)
+                                                                                                action:@"button_press"  // Event action
+                                                                                                 label:[NSString stringWithFormat:@"%@ %@ @ Is Going to the site",currentCity,self.PlaceNameEn]  // Event label
+                                                                                                 value:nil] build]];
             NSURL *address =[[NSURL alloc] initWithString:[actionSheet buttonTitleAtIndex:0]];
             [[UIApplication sharedApplication] openURL:address];
             
@@ -1198,7 +1218,10 @@ region.center = start;
     
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString: AMLocalizedString(@"Share on VK", nil)]) {
-        
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"  // Event category (required)
+                                                                                            action:@"button_press"  // Event action
+                                                                                             label:[NSString stringWithFormat:@"%@ %@ @ Is Going to share on VK",currentCity,self.PlaceNameEn]  // Event label
+                                                                                             value:nil] build]];
         _vkontakte = [Vkontakte sharedInstance];
         _vkontakte.delegate = self;
 
@@ -1220,6 +1243,10 @@ region.center = start;
     
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString: AMLocalizedString(@"Share on twitter", nil)]) {
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"  // Event category (required)
+                                                                                            action:@"button_press"  // Event action
+                                                                                             label:[NSString stringWithFormat:@"%@ %@ @ Is Going to share on Twitter",currentCity,self.PlaceNameEn]  // Event label
+                                                                                             value:nil] build]];
         if (_engine){
          //   NSLog(@"123");
             [_engine sendUpdate: self.PlaceAbout];
@@ -1242,6 +1269,10 @@ region.center = start;
     
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:AMLocalizedString(@"Share on facebook", nil)]) {
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"  // Event category (required)
+                                                                                            action:@"button_press"  // Event action
+                                                                                             label:[NSString stringWithFormat:@"%@ %@ @ Is Going to share on FB",currentCity,self.PlaceNameEn]  // Event label
+                                                                                             value:nil] build]];
         loadingView.hidden = NO;
         [SCFacebook loginCallBack:^(BOOL success, id result) {
             loadingView.hidden = YES;
@@ -1266,6 +1297,10 @@ region.center = start;
     }
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:AMLocalizedString(@"Send Email", nil)]) {
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"  // Event category (required)
+                                                                                            action:@"button_press"  // Event action
+                                                                                             label:[NSString stringWithFormat:@"%@ %@ @ Is Going to share by email",currentCity,self.PlaceNameEn]  // Event label
+                                                                                             value:nil] build]];
         [self openMail:self];
     }
 }
