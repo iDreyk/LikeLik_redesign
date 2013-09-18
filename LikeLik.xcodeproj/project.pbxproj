@@ -317,7 +317,7 @@
 		919E8AF5173A5F6F00A25E07 /* StartTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ABE173A5F6D00A25E07 /* StartTabBarViewController.m */; };
 		919E8AF6173A5F6F00A25E07 /* StartTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AC0173A5F6D00A25E07 /* StartTableCell.m */; };
 		919E8AF7173A5F6F00A25E07 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AC2173A5F6D00A25E07 /* CategoryViewController.m */; };
-		919E8AF8173A5F6F00A25E07 /* AroundMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AC4173A5F6D00A25E07 /* AroundMeViewController.m */; };
+		919E8AF8173A5F6F00A25E07 /* PlaceslistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AC4173A5F6D00A25E07 /* PlaceslistViewController.m */; };
 		919E8AFC173A5F6F00A25E07 /* SubText.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ACC173A5F6D00A25E07 /* SubText.m */; };
 		919E8AFD173A5F6F00A25E07 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ACE173A5F6D00A25E07 /* PlaceViewController.m */; };
 		919E8AFE173A5F6F00A25E07 /* CheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AD0173A5F6D00A25E07 /* CheckViewController.m */; };
@@ -794,8 +794,8 @@
 		919E8AC0173A5F6D00A25E07 /* StartTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartTableCell.m; sourceTree = "<group>"; };
 		919E8AC1173A5F6D00A25E07 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
 		919E8AC2173A5F6D00A25E07 /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CategoryViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		919E8AC3173A5F6D00A25E07 /* AroundMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundMeViewController.h; sourceTree = "<group>"; };
-		919E8AC4173A5F6D00A25E07 /* AroundMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AroundMeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		919E8AC3173A5F6D00A25E07 /* PlaceslistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceslistViewController.h; sourceTree = "<group>"; };
+		919E8AC4173A5F6D00A25E07 /* PlaceslistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PlaceslistViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		919E8ACB173A5F6D00A25E07 /* SubText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubText.h; sourceTree = "<group>"; };
 		919E8ACC173A5F6D00A25E07 /* SubText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubText.m; sourceTree = "<group>"; };
 		919E8ACD173A5F6D00A25E07 /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceViewController.h; sourceTree = "<group>"; };
@@ -1423,8 +1423,8 @@
 				919E8AC0173A5F6D00A25E07 /* StartTableCell.m */,
 				919E8AC1173A5F6D00A25E07 /* CategoryViewController.h */,
 				919E8AC2173A5F6D00A25E07 /* CategoryViewController.m */,
-				919E8AC3173A5F6D00A25E07 /* AroundMeViewController.h */,
-				919E8AC4173A5F6D00A25E07 /* AroundMeViewController.m */,
+				919E8AC3173A5F6D00A25E07 /* PlaceslistViewController.h */,
+				919E8AC4173A5F6D00A25E07 /* PlaceslistViewController.m */,
 				9111164117E0520900474B13 /* MapViewAnnotation.h */,
 				9111164217E0520900474B13 /* MapViewAnnotation.m */,
 				919E8ACB173A5F6D00A25E07 /* SubText.h */,
@@ -2066,7 +2066,7 @@
 				919E8AF5173A5F6F00A25E07 /* StartTabBarViewController.m in Sources */,
 				919E8AF6173A5F6F00A25E07 /* StartTableCell.m in Sources */,
 				919E8AF7173A5F6F00A25E07 /* CategoryViewController.m in Sources */,
-				919E8AF8173A5F6F00A25E07 /* AroundMeViewController.m in Sources */,
+				919E8AF8173A5F6F00A25E07 /* PlaceslistViewController.m in Sources */,
 				919E8AFC173A5F6F00A25E07 /* SubText.m in Sources */,
 				919E8AFD173A5F6F00A25E07 /* PlaceViewController.m in Sources */,
 				919E8AFE173A5F6F00A25E07 /* CheckViewController.m in Sources */,

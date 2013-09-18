@@ -8,7 +8,7 @@
 
 #import "CategoryViewController.h"
 #import "AppDelegate.h"
-#import "AroundMeViewController.h"
+#import "PlaceslistViewController.h"
 #import "CityInfoTableViewController.h"
 #import "SearchViewController.h"
 #import "AppDelegate.h"
@@ -641,7 +641,7 @@ static NSString *city = @"";
     NSInteger row =[(UIGestureRecognizer *)sender view].tag;
   //  NSLog(@"In segue! Number is: %d", row);
     if ([[segue identifier] isEqualToString:@"AroundmeSegue"]) {
-        AroundMeViewController *destination = [segue destinationViewController];
+        PlaceslistViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.readyArray = AroundArray;
@@ -651,7 +651,7 @@ static NSString *city = @"";
         //currentCategory =@"Aroundme";
     }
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
-        AroundMeViewController *destination = [segue destinationViewController];
+        PlaceslistViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];
@@ -666,7 +666,7 @@ static NSString *city = @"";
 //        destination.CityName = self.Label;
 //        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];
 //        
-        AroundMeViewController *destination = [segue destinationViewController];
+        PlaceslistViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
       //  NSLog(@"%@",[self favoritePlaces]);

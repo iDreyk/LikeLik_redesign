@@ -20,7 +20,7 @@
 @class CheckViewController;
 
 
-@interface AroundMeViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,RMMapViewDelegate,MBProgressHUDDelegate>{
+@interface PlaceslistViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,RMMapViewDelegate,MBProgressHUDDelegate>{
     
     NSArray *AroundArray;
     CLLocation *Me;

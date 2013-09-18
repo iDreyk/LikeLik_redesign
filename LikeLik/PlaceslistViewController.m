@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 LikeLik. All rights reserved.
 //
 
-#import "AroundMeViewController.h"
+#import "PlaceslistViewController.h"
 #import "PlaceViewController.h"
 #import "SearchViewController.h"
 #import "AppDelegate.h"
@@ -53,12 +53,12 @@ static BOOL NEED_TO_RELOAD = NO;
 
 @end
 
-@interface AroundMeViewController ()
+@interface PlaceslistViewController ()
 
 @end
 
 
-@implementation AroundMeViewController
+@implementation PlaceslistViewController
 @synthesize HUD,knuck;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
