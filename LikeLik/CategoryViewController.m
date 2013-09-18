@@ -9,13 +9,11 @@
 #import "CategoryViewController.h"
 #import "AppDelegate.h"
 #import "PlaceslistViewController.h"
-#import "CityInfoTableViewController.h"
 #import "SearchViewController.h"
 #import "AppDelegate.h"
 #import "LocalizationSystem.h"
 #import "VisualTourViewController.h"
-#import "TransportationTableViewController.h"
-#import "PracticalInfoViewController.h"
+#import "ScrollinfoViewController.h"
 #import <MapBox/MapBox.h>
 #import "PlaceViewController.h"
 #import "MLPAccessoryBadge.h"
@@ -687,19 +685,20 @@ static NSString *city = @"";
         //currentCategory =@"Visual Tour";
     }
     
-    if ([[segue identifier] isEqualToString:@"TransportationSegue"]) {
-        TransportationTableViewController *destination = [segue destinationViewController];
-        [segue destinationViewController];
-        destination.CityName = self.Label;
-        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Transportation Screen",currentCity]];
-        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-        //currentCategory =@"Transportation";
-    }
+//    if ([[segue identifier] isEqualToString:@"TransportationSegue"]) {
+//        TransportationTableViewController *destination = [segue destinationViewController];
+//        [segue destinationViewController];
+//        destination.CityName = self.Label;
+//        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Transportation Screen",currentCity]];
+//        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+//        //currentCategory =@"Transportation";
+//    }
     
     if ([[segue identifier] isEqualToString:@"PracticalinfoSegue"]) {
-        PracticalInfoViewController  *destination = [segue destinationViewController];
+        ScrollinfoViewController  *destination = [segue destinationViewController];
         [segue destinationViewController];
         destination.CityName = self.Label;
+        destination.Parent = @"Practical";
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Practical Info Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
         //currentCategory =@"Favorites";

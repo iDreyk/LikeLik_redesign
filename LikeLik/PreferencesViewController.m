@@ -12,6 +12,7 @@
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
+#import "ScrollinfoViewController.h"
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 static NSString *LorR=nil;
 @interface PreferencesViewController ()
@@ -290,11 +291,22 @@ static NSString *LorR=nil;
     
     
 }
-#warning открывать чек
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+#warning открывать чек
     if ([[segue identifier] isEqualToString:@"LoginSegue"]) {
         RegistrationViewController *destination = [segue destinationViewController];
         destination.LorR = LorR;
     }
+    if ([[segue identifier] isEqualToString:@"About"]) {
+        ScrollinfoViewController *destination = [segue destinationViewController];
+        destination.Parent = @"About";
+    }
+    if ([[segue identifier] isEqualToString:@"TermsofUse"]) {
+        ScrollinfoViewController *destination = [segue destinationViewController];
+        destination.Parent = @"Terms";
+    }
+    
+    //TermsofUse
 }
 @end

@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface PracticalInfoViewController : UIViewController {
+#import "SubText.h"
+@interface ScrollinfoViewController : UIViewController {
     NSString *cataloguesPath;
     NSMutableArray *catalogues;
+    
 }
 @property (nonatomic,retain) NSString *CityName;
 @property (weak, nonatomic) IBOutlet UILabel *CityLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *InfoScroll;
+@property (nonatomic,retain)SubText *label;
+@property (nonatomic,retain) NSString *Parent;
 @end

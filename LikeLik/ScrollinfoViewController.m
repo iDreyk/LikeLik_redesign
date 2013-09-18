@@ -6,18 +6,18 @@
 //  Copyright (c) 2013 LikeLik. All rights reserved.
 //
 
-#import "PracticalInfoViewController.h"
+#import "ScrollinfoViewController.h"
 #import "AppDelegate.h"
 
 #import "SubText.h"
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
-@interface PracticalInfoViewController ()
+@interface ScrollinfoViewController ()
 
 @end
 
-@implementation PracticalInfoViewController
-
+@implementation ScrollinfoViewController
+@synthesize label;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,11 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
-    //self.view = [InterfaceFunctions backgroundView];
+#warning слетают фоны
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions corporateIdentity]];
-
+    
     self.CityLabel.text = [[NSString alloc] initWithFormat:@"\n%@",self.CityName];
     self.CityLabel.font = [AppDelegate OpenSansSemiBold:32];
     cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
@@ -44,8 +42,28 @@
     UIView *awesomeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 512.0)];
     awesomeView.backgroundColor = [UIColor colorWithRed:0.5/2 green:0.5 blue:0.5 alpha:1];
     
-    SubText *label = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 300.0)];
-    label.text = [[NSString alloc] initWithFormat:@"\n%@",[ExternalFunctions getPracticalInfoForCity:self.CityName]];
+    label = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 300.0)];
+    
+    if ([self.Parent  isEqualToString:@"About"]){
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"About Screen"];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+        self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"About", nil) AndColor:[InterfaceFunctions corporateIdentity]];
+        label.text = [NSString stringWithFormat:@"\n %@", [ExternalFunctions getAboutText]];
+    }
+    if ([self.Parent isEqualToString:@"Terms"]){
+        label.text = [NSString stringWithFormat:@"\n %@", [ExternalFunctions getAboutText]];
+        [TestFlight passCheckpoint:@"TermsOfUse"];
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Terms of use Screen"];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];        
+         self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Terms of use", nil) AndColor:[InterfaceFunctions corporateIdentity]];
+
+    }
+    if ([self.Parent isEqualToString:@"Practical"]){
+        label.text = [NSString stringWithFormat:@"\n%@",[ExternalFunctions getPracticalInfoForCity:self.CityName]];
+        self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions corporateIdentity]];
+
+    }
+    
     label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor whiteColor];
     label.backgroundColor =  [UIColor clearColor];

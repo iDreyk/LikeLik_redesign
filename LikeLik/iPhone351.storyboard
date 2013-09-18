@@ -84,11 +84,11 @@
                     <navigationItem key="navigationItem" id="WyS-E4-8N8"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <segue destination="LKa-Cd-Pt9" kind="push" identifier="TermsofUse" id="EZH-De-Tak"/>
-                        <segue destination="Ujq-gz-vdd" kind="push" identifier="About" id="WO0-VR-oNg"/>
                         <segue destination="q5L-dO-O6N" kind="push" identifier="Support" id="G4T-Xm-bfq"/>
                         <segue destination="4Xf-ao-0V2" kind="push" identifier="MoreLikeLik" id="DOi-kB-OZD"/>
                         <segue destination="k2b-hO-6Mf" kind="push" identifier="LoginSegue" id="9GP-as-AR2"/>
+                        <segue destination="pV2-Ha-ulb" kind="push" identifier="TermsofUse" id="gUy-x0-aKw"/>
+                        <segue destination="pV2-Ha-ulb" kind="push" identifier="About" id="Kzd-lI-8VU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yD2-Gy-aik" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -728,7 +728,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYG-iH-oxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3459" y="1953"/>
+            <point key="canvasLocation" x="3875" y="2313"/>
         </scene>
         <!--Transportation View Controller-->
         <scene sceneID="1ub-4X-fbU">
@@ -761,12 +761,12 @@
             </objects>
             <point key="canvasLocation" x="4254" y="2925"/>
         </scene>
-        <!--Practical Info View Controller-->
+        <!--Scrollinfo View Controller-->
         <scene sceneID="Hxi-dI-UI6">
             <objects>
-                <viewController id="pV2-Ha-ulb" customClass="PracticalInfoViewController" sceneMemberID="viewController">
+                <viewController id="pV2-Ha-ulb" customClass="ScrollinfoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zbr-gh-ODc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzF-pB-MG0"/>
@@ -786,7 +786,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgX-7m-4Kh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3459" y="3464"/>
+            <point key="canvasLocation" x="3035" y="2936"/>
         </scene>
         <!--Start View Controller - Downloaded-->
         <scene sceneID="rkX-sf-Owx">
@@ -931,61 +931,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Cn-6q-Zj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="5794"/>
-        </scene>
-        <!--About View Controller-->
-        <scene sceneID="nHk-8f-1cn">
-            <objects>
-                <viewController id="Ujq-gz-vdd" customClass="AboutViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gVt-jO-Haw">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fF7-VT-UUb"/>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="fF7-VT-UUb" firstAttribute="bottom" secondItem="gVt-jO-Haw" secondAttribute="bottom" type="default" id="d2v-sP-dQR"/>
-                            <constraint firstItem="fF7-VT-UUb" firstAttribute="leading" secondItem="gVt-jO-Haw" secondAttribute="leading" type="default" id="hkX-Iq-sWZ"/>
-                            <constraint firstItem="fF7-VT-UUb" firstAttribute="top" secondItem="gVt-jO-Haw" secondAttribute="top" constant="40" id="oxq-Sk-EuE"/>
-                            <constraint firstItem="fF7-VT-UUb" firstAttribute="trailing" secondItem="gVt-jO-Haw" secondAttribute="trailing" type="default" id="snE-Hi-yE3"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="DR6-9M-flu"/>
-                    <connections>
-                        <outlet property="infoScroll" destination="fF7-VT-UUb" id="Gsf-19-ZQ2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9bW-ne-ASe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1607" y="4875"/>
-        </scene>
-        <!--Termsof Use View Controller-->
-        <scene sceneID="npM-Ea-ApX">
-            <objects>
-                <viewController id="LKa-Cd-Pt9" customClass="TermsofUseViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Xi7-eH-SiH">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gO4-N5-LQJ"/>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gO4-N5-LQJ" firstAttribute="bottom" secondItem="Xi7-eH-SiH" secondAttribute="bottom" type="default" id="8MJ-VU-0MC"/>
-                            <constraint firstItem="gO4-N5-LQJ" firstAttribute="top" secondItem="Xi7-eH-SiH" secondAttribute="top" constant="38" id="KGf-Gi-Y5r"/>
-                            <constraint firstItem="gO4-N5-LQJ" firstAttribute="trailing" secondItem="Xi7-eH-SiH" secondAttribute="trailing" type="default" id="OhY-XI-5xt"/>
-                            <constraint firstItem="gO4-N5-LQJ" firstAttribute="leading" secondItem="Xi7-eH-SiH" secondAttribute="leading" type="default" id="d5N-wJ-GNu"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="n5q-TD-ANc"/>
-                    <connections>
-                        <outlet property="InfoScroll" destination="gO4-N5-LQJ" id="Xuu-vh-gFd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8a7-Mh-dVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1559" y="4017"/>
+            <point key="canvasLocation" x="2775" y="4634"/>
         </scene>
         <!--Start View Controller - All Guides-->
         <scene sceneID="Hnj-8l-nNd">
@@ -1237,14 +1183,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jP1-l3-mlb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2243" y="5745"/>
+            <point key="canvasLocation" x="4283" y="4721"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="p36-XO-BKg">
             <objects>
                 <viewController id="k2b-hO-6Mf" customClass="RegistrationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rdx-HS-9ye">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Я хочу получать подарки в свой день рождения" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="193" translatesAutoresizingMaskIntoConstraints="NO" id="Ihz-bg-Nj5">
@@ -1402,6 +1348,205 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="tabicon_Featured.png" width="16" height="16"/>
         <image name="tabicon_SpecialSeries.png" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="CategoryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CategoryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ShowMap:"/>
+                <relationship kind="outlet" name="CellArray" candidateClass="NSArray"/>
+                <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="GradientUnderLabel" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Image" candidateClass="NSString"/>
+                <relationship kind="outlet" name="Label" candidateClass="NSString"/>
+                <relationship kind="outlet" name="MapPlace" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="PlaceView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="SearchButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="SegueArray" candidateClass="NSArray"/>
+                <relationship kind="outlet" name="categoryView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="frame1" candidateClass="UIView"/>
+                <relationship kind="outlet" name="frameArray" candidateClass="NSArray"/>
+                <relationship kind="outlet" name="placeViewMap" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="MyLikeLikeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyLikeLikeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="TableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PlaceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ShowMap:"/>
+                <relationship kind="action" name="hide_hint:"/>
+                <relationship kind="action" name="infotap:"/>
+                <relationship kind="action" name="openMail:"/>
+                <relationship kind="action" name="showLocation:"/>
+                <relationship kind="action" name="tapDetected:" candidateClass="UIGestureRecognizer"/>
+                <relationship kind="outlet" name="Favorites" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="GOUSE" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="InfoPlaceTable" candidateClass="UIView"/>
+                <relationship kind="outlet" name="LabelOnScroll" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="MapPlace" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="PlacePinimage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="PlaceView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="Placeadress" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="PlaceonMap" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="ScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="Separator" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Separator1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Separator3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Share" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="TelPinimage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="Teltext" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="TextPlace" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="WebPinimage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="favImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="favText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hide_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="hint" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="info_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="labelonPhoto" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="placeViewMap" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="webtext" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PlaceslistViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceslistViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentedControlIndexChanged"/>
+                <relationship kind="action" name="showLocation:"/>
+                <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="CityNameText" candidateClass="NSString"/>
+                <relationship kind="outlet" name="Image" candidateClass="NSString"/>
+                <relationship kind="outlet" name="Map" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="PlacesTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="SearchButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="SegmentedMapandTable" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="ViewforMap" candidateClass="UIView"/>
+                <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="gradient_under_cityname" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="readyArray" candidateClass="NSArray"/>
+            </relationships>
+        </class>
+        <class className="PreferencesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreferencesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="PreferencesTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RMMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="RegistrationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="switchtoPicker:"/>
+                <relationship kind="outlet" name="BirthDayPicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="RegistrationTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="SurpriseText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="Switch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SearchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="SearchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="SearchTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="readyArray" candidateClass="NSArray"/>
+            </relationships>
+        </class>
+        <class className="SplashViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="Firsttitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="LeftButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="RightButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="Shade" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="alertLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fist" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="localNotification" candidateClass="UILocalNotification"/>
+                <relationship kind="outlet" name="maintitle" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="message" candidateClass="UIAlertView"/>
+                <relationship kind="outlet" name="subtitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="StartTabBarViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartTabBarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="search:"/>
+                <relationship kind="outlet" name="NavBar" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="SearchBarButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="StartTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="BackCityImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="CityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="accesor" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="StartViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartViewController.h"/>
+        </class>
+        <class className="SubText" superclassName="UITextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubText.h"/>
+        </class>
+        <class className="SupportViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SupportViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="Contactinformation" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="Email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="FeedBack" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="TransportationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TransportationViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="UILocalNotification" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UILocalNotification.h"/>
+        </class>
+        <class className="VisualTourViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VisualTourViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showLocation:"/>
+                <relationship kind="action" name="tapDetected:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="MKMap" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="PhotoCard" candidateClass="UIView"/>
+                <relationship kind="outlet" name="PlaceonMap" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="Red_line" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="info_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="label" candidateClass="SubText"/>
+                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="visualMap" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -1411,8 +1556,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <segue reference="SI1-Ju-Rvv"/>
         <segue reference="ABD-A5-mk2"/>
         <segue reference="o2g-Ep-1Rf"/>
+        <segue reference="Kzd-lI-8VU"/>
+        <segue reference="9GP-as-AR2"/>
         <segue reference="CID-7V-uDc"/>
-        <segue reference="vfJ-rG-Gh1"/>
         <segue reference="mIE-ck-FCQ"/>
     </inferredMetricsTieBreakers>
 </document>

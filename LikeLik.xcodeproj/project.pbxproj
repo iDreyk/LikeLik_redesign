@@ -324,14 +324,9 @@
 		919E8AFF173A5F6F00A25E07 /* CheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 919E8AD1173A5F6D00A25E07 /* CheckViewController.xib */; };
 		919E8B00173A5F6F00A25E07 /* CheckViewController35.xib in Resources */ = {isa = PBXBuildFile; fileRef = 919E8AD2173A5F6D00A25E07 /* CheckViewController35.xib */; };
 		919E8B01173A5F6F00A25E07 /* SupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AD4173A5F6D00A25E07 /* SupportViewController.m */; };
-		919E8B02173A5F6F00A25E07 /* CityInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AD6173A5F6D00A25E07 /* CityInfoTableViewController.m */; };
 		919E8B03173A5F6F00A25E07 /* VisualTourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AD8173A5F6D00A25E07 /* VisualTourViewController.m */; };
-		919E8B04173A5F6F00A25E07 /* TransportationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ADA173A5F6E00A25E07 /* TransportationTableViewController.m */; };
 		919E8B05173A5F6F00A25E07 /* TransportationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ADC173A5F6E00A25E07 /* TransportationViewController.m */; };
-		919E8B06173A5F6F00A25E07 /* TaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8ADE173A5F6E00A25E07 /* TaxiViewController.m */; };
-		919E8B07173A5F6F00A25E07 /* PracticalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE0173A5F6E00A25E07 /* PracticalInfoViewController.m */; };
-		919E8B0A173A5F6F00A25E07 /* TermsofUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE6173A5F6E00A25E07 /* TermsofUseViewController.m */; };
-		919E8B0B173A5F6F00A25E07 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE8173A5F6E00A25E07 /* AboutViewController.m */; };
+		919E8B07173A5F6F00A25E07 /* ScrollinfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE0173A5F6E00A25E07 /* ScrollinfoViewController.m */; };
 		919E8B0C173A5F6F00A25E07 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AEA173A5F6E00A25E07 /* SearchViewController.m */; };
 		919E8B0F173A5F6F00A25E07 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AF0173A5F6F00A25E07 /* PreferencesViewController.m */; };
 		919E8B10173A5F6F00A25E07 /* MyLikeLikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AF2173A5F6F00A25E07 /* MyLikeLikeViewController.m */; };
@@ -806,22 +801,12 @@
 		919E8AD2173A5F6D00A25E07 /* CheckViewController35.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckViewController35.xib; sourceTree = "<group>"; };
 		919E8AD3173A5F6D00A25E07 /* SupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportViewController.h; sourceTree = "<group>"; };
 		919E8AD4173A5F6D00A25E07 /* SupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportViewController.m; sourceTree = "<group>"; };
-		919E8AD5173A5F6D00A25E07 /* CityInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityInfoTableViewController.h; sourceTree = "<group>"; };
-		919E8AD6173A5F6D00A25E07 /* CityInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityInfoTableViewController.m; sourceTree = "<group>"; };
 		919E8AD7173A5F6D00A25E07 /* VisualTourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualTourViewController.h; sourceTree = "<group>"; };
 		919E8AD8173A5F6D00A25E07 /* VisualTourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisualTourViewController.m; sourceTree = "<group>"; };
-		919E8AD9173A5F6D00A25E07 /* TransportationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportationTableViewController.h; sourceTree = "<group>"; };
-		919E8ADA173A5F6E00A25E07 /* TransportationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportationTableViewController.m; sourceTree = "<group>"; };
 		919E8ADB173A5F6E00A25E07 /* TransportationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportationViewController.h; sourceTree = "<group>"; };
 		919E8ADC173A5F6E00A25E07 /* TransportationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportationViewController.m; sourceTree = "<group>"; };
-		919E8ADD173A5F6E00A25E07 /* TaxiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiViewController.h; sourceTree = "<group>"; };
-		919E8ADE173A5F6E00A25E07 /* TaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiViewController.m; sourceTree = "<group>"; };
-		919E8ADF173A5F6E00A25E07 /* PracticalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PracticalInfoViewController.h; sourceTree = "<group>"; };
-		919E8AE0173A5F6E00A25E07 /* PracticalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PracticalInfoViewController.m; sourceTree = "<group>"; };
-		919E8AE5173A5F6E00A25E07 /* TermsofUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsofUseViewController.h; sourceTree = "<group>"; };
-		919E8AE6173A5F6E00A25E07 /* TermsofUseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsofUseViewController.m; sourceTree = "<group>"; };
-		919E8AE7173A5F6E00A25E07 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
-		919E8AE8173A5F6E00A25E07 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		919E8ADF173A5F6E00A25E07 /* ScrollinfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollinfoViewController.h; sourceTree = "<group>"; };
+		919E8AE0173A5F6E00A25E07 /* ScrollinfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollinfoViewController.m; sourceTree = "<group>"; };
 		919E8AE9173A5F6E00A25E07 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		919E8AEA173A5F6E00A25E07 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		919E8AEF173A5F6E00A25E07 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
@@ -1437,22 +1422,12 @@
 				919E8AD2173A5F6D00A25E07 /* CheckViewController35.xib */,
 				919E8AD3173A5F6D00A25E07 /* SupportViewController.h */,
 				919E8AD4173A5F6D00A25E07 /* SupportViewController.m */,
-				919E8AD5173A5F6D00A25E07 /* CityInfoTableViewController.h */,
-				919E8AD6173A5F6D00A25E07 /* CityInfoTableViewController.m */,
 				919E8AD7173A5F6D00A25E07 /* VisualTourViewController.h */,
 				919E8AD8173A5F6D00A25E07 /* VisualTourViewController.m */,
-				919E8AD9173A5F6D00A25E07 /* TransportationTableViewController.h */,
-				919E8ADA173A5F6E00A25E07 /* TransportationTableViewController.m */,
 				919E8ADB173A5F6E00A25E07 /* TransportationViewController.h */,
 				919E8ADC173A5F6E00A25E07 /* TransportationViewController.m */,
-				919E8ADD173A5F6E00A25E07 /* TaxiViewController.h */,
-				919E8ADE173A5F6E00A25E07 /* TaxiViewController.m */,
-				919E8ADF173A5F6E00A25E07 /* PracticalInfoViewController.h */,
-				919E8AE0173A5F6E00A25E07 /* PracticalInfoViewController.m */,
-				919E8AE5173A5F6E00A25E07 /* TermsofUseViewController.h */,
-				919E8AE6173A5F6E00A25E07 /* TermsofUseViewController.m */,
-				919E8AE7173A5F6E00A25E07 /* AboutViewController.h */,
-				919E8AE8173A5F6E00A25E07 /* AboutViewController.m */,
+				919E8ADF173A5F6E00A25E07 /* ScrollinfoViewController.h */,
+				919E8AE0173A5F6E00A25E07 /* ScrollinfoViewController.m */,
 				919E8AE9173A5F6E00A25E07 /* SearchViewController.h */,
 				919E8AEA173A5F6E00A25E07 /* SearchViewController.m */,
 				919E8AEF173A5F6E00A25E07 /* PreferencesViewController.h */,
@@ -2071,14 +2046,9 @@
 				919E8AFD173A5F6F00A25E07 /* PlaceViewController.m in Sources */,
 				919E8AFE173A5F6F00A25E07 /* CheckViewController.m in Sources */,
 				919E8B01173A5F6F00A25E07 /* SupportViewController.m in Sources */,
-				919E8B02173A5F6F00A25E07 /* CityInfoTableViewController.m in Sources */,
 				919E8B03173A5F6F00A25E07 /* VisualTourViewController.m in Sources */,
-				919E8B04173A5F6F00A25E07 /* TransportationTableViewController.m in Sources */,
 				919E8B05173A5F6F00A25E07 /* TransportationViewController.m in Sources */,
-				919E8B06173A5F6F00A25E07 /* TaxiViewController.m in Sources */,
-				919E8B07173A5F6F00A25E07 /* PracticalInfoViewController.m in Sources */,
-				919E8B0A173A5F6F00A25E07 /* TermsofUseViewController.m in Sources */,
-				919E8B0B173A5F6F00A25E07 /* AboutViewController.m in Sources */,
+				919E8B07173A5F6F00A25E07 /* ScrollinfoViewController.m in Sources */,
 				919E8B0C173A5F6F00A25E07 /* SearchViewController.m in Sources */,
 				919E8B0F173A5F6F00A25E07 /* PreferencesViewController.m in Sources */,
 				919E8B10173A5F6F00A25E07 /* MyLikeLikeViewController.m in Sources */,
