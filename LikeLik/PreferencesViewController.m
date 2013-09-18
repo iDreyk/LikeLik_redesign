@@ -148,10 +148,10 @@ static NSString *LorR=nil;
     
     
     if ([indexPath section] == 0 && [indexPath row] == 0)
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = UITableViewCellAccessoryNone;
         
     if ([indexPath section] == 0 && [indexPath row] == 1)
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = UITableViewCellAccessoryNone;
     if ([indexPath section] == 1)
         if ([[defaults objectForKey:@"Language"] isEqualToString:[Language objectAtIndex:[indexPath row]]])
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -273,8 +273,6 @@ static NSString *LorR=nil;
     [self.tableView reloadData];
     
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Settings", nil) AndColor:[InterfaceFunctions corporateIdentity]];
-    
-    
     
     UIButton *back = [InterfaceFunctions done_button];
     [back  addTarget:self action:@selector(Back) forControlEvents:UIControlEventTouchUpInside];

@@ -22,6 +22,7 @@
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
 		91448DE617E9C230002D7820 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 91448DE317E9C230002D7820 /* Account.m */; };
 		91448DE717E9C230002D7820 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91448DE517E9C230002D7820 /* RegistrationViewController.m */; };
+		91448DE817E9E188002D7820 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 919E89D3173A5C0300A25E07 /* Default-568h@2x.png */; };
 		916587F91794407600F13BF2 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 916587E11794407600F13BF2 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		916587FA1794407600F13BF2 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916587E31794407600F13BF2 /* FBDialog.bundle */; };
 		916587FB1794407600F13BF2 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 916587E51794407600F13BF2 /* FBDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -302,7 +303,6 @@
 		919E873B173A5AEF00A25E07 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E873A173A5AEF00A25E07 /* CoreLocation.framework */; };
 		919E873D173A5AF700A25E07 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E873C173A5AF700A25E07 /* MapKit.framework */; };
 		919E89D2173A5BFC00A25E07 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 919E89D1173A5BFC00A25E07 /* Default@2x.png */; };
-		919E89D4173A5C0300A25E07 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 919E89D3173A5C0300A25E07 /* Default-568h@2x.png */; };
 		919E89DC173A5E3A00A25E07 /* InterfaceFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E89DB173A5E3A00A25E07 /* InterfaceFunctions.m */; };
 		919E8AA5173A5EAE00A25E07 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8A90173A5EAE00A25E07 /* AFHTTPClient.m */; };
 		919E8AA6173A5EAE00A25E07 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8A92173A5EAE00A25E07 /* AFHTTPRequestOperation.m */; };
@@ -1765,7 +1765,6 @@
 				919E870A173A58E700A25E07 /* InfoPlist.strings in Resources */,
 				91241947173A9CF8004B6837 /* Localizable.strings in Resources */,
 				919E89D2173A5BFC00A25E07 /* Default@2x.png in Resources */,
-				919E89D4173A5C0300A25E07 /* Default-568h@2x.png in Resources */,
 				919E8AFF173A5F6F00A25E07 /* CheckViewController.xib in Resources */,
 				919E8B00173A5F6F00A25E07 /* CheckViewController35.xib in Resources */,
 				919E8B13173A5FA500A25E07 /* iPhone5.storyboard in Resources */,
@@ -2039,6 +2038,7 @@
 				9111164717E0A4F100474B13 /* 617x617 Download.png in Resources */,
 				FA3892CA17E4CD1100B1D169 /* Changelog.txt in Resources */,
 				FA3892CC17E4CD1100B1D169 /* Readme.txt in Resources */,
+				91448DE817E9E188002D7820 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

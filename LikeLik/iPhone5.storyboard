@@ -230,7 +230,7 @@
             <objects>
                 <viewController id="1FC-V3-3wh" customClass="AroundMeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ndp-PE-uyM">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Va-kC-PQQ">
@@ -267,6 +267,9 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rOd-xd-e34">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="504" id="K8Y-In-Tw0"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="vUQ-a6-KHC">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -289,22 +292,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="teU-sI-kfT" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="0kj-7B-Hud"/>
+                            <constraint firstItem="2Va-kC-PQQ" firstAttribute="top" secondItem="teU-sI-kfT" secondAttribute="top" type="default" id="2h8-Le-E0x"/>
                             <constraint firstItem="m6S-MZ-OaS" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" constant="5" id="43c-iz-bdk"/>
                             <constraint firstItem="xP9-xf-rsy" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" constant="5" id="9Bk-KK-zWq"/>
                             <constraint firstItem="teU-sI-kfT" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="AWu-L9-85D"/>
                             <constraint firstItem="m6S-MZ-OaS" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" constant="14" id="FMe-2P-PHu"/>
-                            <constraint firstItem="2Va-kC-PQQ" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="G0Q-bH-ewe"/>
+                            <constraint firstItem="2Va-kC-PQQ" firstAttribute="top" secondItem="rOd-xd-e34" secondAttribute="top" type="default" id="Ola-ku-N2T"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="PkM-Jy-Xpd"/>
+                            <constraint firstItem="2Va-kC-PQQ" firstAttribute="bottom" secondItem="rOd-xd-e34" secondAttribute="bottom" type="default" id="QeC-Vb-Wkp"/>
+                            <constraint firstItem="2Va-kC-PQQ" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" constant="-1" id="Rdk-dQ-Ian"/>
                             <constraint firstItem="rOd-xd-e34" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="RnK-ax-rvg"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="TcT-uj-qKr"/>
                             <constraint firstItem="teU-sI-kfT" firstAttribute="trailing" secondItem="Ndp-PE-uyM" secondAttribute="trailing" type="default" id="Z1r-Hs-XrV"/>
-                            <constraint firstItem="teU-sI-kfT" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="hSt-KV-Apd"/>
-                            <constraint firstItem="rOd-xd-e34" firstAttribute="top" secondItem="Ndp-PE-uyM" secondAttribute="top" type="default" id="jJK-7O-No1"/>
-                            <constraint firstAttribute="bottom" secondItem="xP9-xf-rsy" secondAttribute="bottom" constant="33" id="tzx-7m-ckY"/>
-                            <constraint firstItem="2Va-kC-PQQ" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="xWl-ny-1ir"/>
+                            <constraint firstAttribute="bottom" secondItem="xP9-xf-rsy" secondAttribute="bottom" constant="32" id="bId-Wn-l2Q"/>
+                            <constraint firstItem="rOd-xd-e34" firstAttribute="bottom" secondItem="teU-sI-kfT" secondAttribute="bottom" type="default" id="f8u-LZ-few"/>
                             <constraint firstItem="2Va-kC-PQQ" firstAttribute="leading" secondItem="Ndp-PE-uyM" secondAttribute="leading" type="default" id="zLW-9X-xD0"/>
-                            <constraint firstItem="rOd-xd-e34" firstAttribute="bottom" secondItem="Ndp-PE-uyM" secondAttribute="bottom" type="default" id="zoY-of-7Cf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XCJ-a2-A6N">
@@ -349,7 +351,7 @@
             <objects>
                 <viewController id="nTr-4r-NYY" customClass="SearchViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TvF-gA-6cF">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OZ8-6p-H77">
@@ -399,14 +401,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qt-do-4iB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1802" y="-202"/>
+            <point key="canvasLocation" x="1778" y="54"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="Jod-tf-qZ1">
             <objects>
                 <viewController id="9As-sn-Nda" customClass="CategoryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Vq-v2-qLA">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1z2-fN-29b">
@@ -431,18 +433,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IHM-mj-lSa" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="-6" id="29M-28-Imp"/>
                             <constraint firstItem="veT-Xa-uYa" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="2ad-9u-quV"/>
-                            <constraint firstItem="veT-Xa-uYa" firstAttribute="bottom" secondItem="2Vq-v2-qLA" secondAttribute="bottom" type="default" id="3tt-3F-21I"/>
+                            <constraint firstItem="aua-JJ-4wB" firstAttribute="centerY" secondItem="2Vq-v2-qLA" secondAttribute="centerY" type="default" id="5Fh-sM-wtX"/>
+                            <constraint firstAttribute="bottom" secondItem="veT-Xa-uYa" secondAttribute="bottom" constant="2" id="6wF-yQ-oxJ"/>
                             <constraint firstItem="veT-Xa-uYa" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="CDK-va-rfH"/>
-                            <constraint firstItem="veT-Xa-uYa" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="-44" id="DJq-ZR-kl5"/>
                             <constraint firstItem="1z2-fN-29b" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="KIR-2h-KnC"/>
+                            <constraint firstItem="aua-JJ-4wB" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="-2" id="Roo-Cg-7Xb"/>
                             <constraint firstItem="1z2-fN-29b" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" type="default" id="UOz-eY-4z9"/>
                             <constraint firstItem="aua-JJ-4wB" firstAttribute="trailing" secondItem="2Vq-v2-qLA" secondAttribute="trailing" type="default" id="V60-hR-b7G"/>
+                            <constraint firstItem="IHM-mj-lSa" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="-5" id="WYn-gb-0WG"/>
+                            <constraint firstItem="veT-Xa-uYa" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" constant="-46" id="in9-sv-mc4"/>
                             <constraint firstItem="aua-JJ-4wB" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="kq6-Sq-tPd"/>
-                            <constraint firstItem="aua-JJ-4wB" firstAttribute="top" secondItem="2Vq-v2-qLA" secondAttribute="top" type="default" id="oav-BP-JE5"/>
                             <constraint firstItem="IHM-mj-lSa" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" constant="12" id="pT3-BK-6MG"/>
-                            <constraint firstAttribute="bottom" secondItem="aua-JJ-4wB" secondAttribute="bottom" constant="-2" id="smx-R5-Efo"/>
                             <constraint firstItem="1z2-fN-29b" firstAttribute="leading" secondItem="2Vq-v2-qLA" secondAttribute="leading" type="default" id="yH1-il-pnI"/>
                         </constraints>
                     </view>
@@ -666,14 +668,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbT-yE-dWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4290" y="-451"/>
+            <point key="canvasLocation" x="2810" y="1141"/>
         </scene>
         <!--Visual Tour View Controller-->
         <scene sceneID="gpN-eK-g6x">
             <objects>
                 <viewController id="kAC-G7-7GR" customClass="VisualTourViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xfc-LP-6rD">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJm-qd-lFs"/>
@@ -707,10 +709,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="fFr-tj-CbD" firstAttribute="top" secondItem="c1F-Dg-5eN" secondAttribute="top" type="default" id="6eo-rO-Imu"/>
                                     <constraint firstItem="fFr-tj-CbD" firstAttribute="leading" secondItem="c1F-Dg-5eN" secondAttribute="leading" type="default" id="CeI-DO-asA"/>
+                                    <constraint firstAttribute="bottom" secondItem="fFr-tj-CbD" secondAttribute="bottom" constant="2" id="Mo8-Fg-pby"/>
+                                    <constraint firstItem="fFr-tj-CbD" firstAttribute="top" secondItem="c1F-Dg-5eN" secondAttribute="top" constant="-2" id="UjP-Zo-c0W"/>
                                     <constraint firstItem="fFr-tj-CbD" firstAttribute="trailing" secondItem="c1F-Dg-5eN" secondAttribute="trailing" type="default" id="Xk5-gm-VU8"/>
-                                    <constraint firstItem="fFr-tj-CbD" firstAttribute="bottom" secondItem="c1F-Dg-5eN" secondAttribute="bottom" type="default" id="tVY-r0-hC2"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF6-4K-97G">
@@ -744,7 +746,6 @@
                         <constraints>
                             <constraint firstItem="fYi-XZ-6EY" firstAttribute="trailing" secondItem="Xfc-LP-6rD" secondAttribute="trailing" type="default" id="2fz-pz-zJZ"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="bottom" secondItem="Xfc-LP-6rD" secondAttribute="bottom" type="default" id="6oU-Do-x8D"/>
-                            <constraint firstItem="c1F-Dg-5eN" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" constant="506" id="7u0-pI-TtZ"/>
                             <constraint firstItem="gF6-4K-97G" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" type="default" id="IXc-36-EZ3"/>
                             <constraint firstItem="OOD-Ce-qHB" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" constant="465" id="Lgj-UM-ewd"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" type="default" id="Lug-E9-q8L"/>
@@ -753,13 +754,14 @@
                             <constraint firstItem="OOD-Ce-qHB" firstAttribute="bottom" secondItem="VDS-sY-VzI" secondAttribute="bottom" type="default" id="WXx-4K-rVm"/>
                             <constraint firstItem="gF6-4K-97G" firstAttribute="bottom" secondItem="Xfc-LP-6rD" secondAttribute="bottom" type="default" id="X0f-c4-rM4"/>
                             <constraint firstItem="gF6-4K-97G" firstAttribute="trailing" secondItem="Xfc-LP-6rD" secondAttribute="trailing" type="default" id="aAI-KS-LiM"/>
-                            <constraint firstAttribute="bottom" secondItem="c1F-Dg-5eN" secondAttribute="bottom" constant="-299" id="cty-OS-A1h"/>
                             <constraint firstItem="c1F-Dg-5eN" firstAttribute="trailing" secondItem="Xfc-LP-6rD" secondAttribute="trailing" type="default" id="dBm-Uk-KQc"/>
+                            <constraint firstAttribute="bottom" secondItem="C5Y-9p-ixb" secondAttribute="bottom" constant="32" id="fnf-Ef-GBX"/>
                             <constraint firstItem="gF6-4K-97G" firstAttribute="top" secondItem="fYi-XZ-6EY" secondAttribute="top" type="default" id="h58-z3-2XX"/>
+                            <constraint firstItem="c1F-Dg-5eN" firstAttribute="top" secondItem="Xfc-LP-6rD" secondAttribute="top" constant="505" id="hBe-aX-qZP"/>
                             <constraint firstItem="c1F-Dg-5eN" firstAttribute="centerX" secondItem="VDS-sY-VzI" secondAttribute="centerX" type="default" id="keW-gd-bP1"/>
                             <constraint firstItem="C5Y-9p-ixb" firstAttribute="leading" secondItem="Xfc-LP-6rD" secondAttribute="leading" constant="10" id="l1D-lV-0UK"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="top" secondItem="gF6-4K-97G" secondAttribute="top" type="default" id="oW7-DX-wIL"/>
-                            <constraint firstAttribute="bottom" secondItem="C5Y-9p-ixb" secondAttribute="bottom" constant="33" id="opR-Pn-y2i"/>
+                            <constraint firstAttribute="bottom" secondItem="c1F-Dg-5eN" secondAttribute="bottom" constant="-297" id="orw-Ij-UJH"/>
                             <constraint firstAttribute="trailing" secondItem="OOD-Ce-qHB" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="pJd-FS-piO"/>
                             <constraint firstItem="vJm-qd-lFs" firstAttribute="trailing" secondItem="Xfc-LP-6rD" secondAttribute="trailing" type="default" id="rvY-xY-BXZ"/>
                             <constraint firstItem="fYi-XZ-6EY" firstAttribute="bottom" secondItem="Xfc-LP-6rD" secondAttribute="bottom" type="default" id="zmj-PR-6X1"/>
@@ -793,7 +795,7 @@
             <objects>
                 <viewController id="N3A-Wm-so7" customClass="TransportationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5bf-pu-pwE">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ua-kr-JR1">
@@ -918,7 +920,7 @@
             <objects>
                 <viewController id="pV2-Ha-ulb" customClass="PracticalInfoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zbr-gh-ODc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzF-pB-MG0"/>
@@ -926,8 +928,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TzF-pB-MG0" firstAttribute="trailing" secondItem="Zbr-gh-ODc" secondAttribute="trailing" type="default" id="B3z-KC-AC1"/>
+                            <constraint firstItem="TzF-pB-MG0" firstAttribute="top" secondItem="Zbr-gh-ODc" secondAttribute="top" constant="36" id="DDB-1g-Nbe"/>
                             <constraint firstItem="TzF-pB-MG0" firstAttribute="leading" secondItem="Zbr-gh-ODc" secondAttribute="leading" type="default" id="NDx-NG-x7v"/>
-                            <constraint firstItem="TzF-pB-MG0" firstAttribute="top" secondItem="Zbr-gh-ODc" secondAttribute="top" constant="38" id="mwY-mm-PQp"/>
                             <constraint firstItem="TzF-pB-MG0" firstAttribute="bottom" secondItem="Zbr-gh-ODc" secondAttribute="bottom" type="default" id="tSS-JD-joO"/>
                         </constraints>
                     </view>
@@ -1193,7 +1195,7 @@
             <objects>
                 <viewController id="qyQ-MD-7gI" customClass="RegistrationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JVt-ux-Rjr">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Я хочу получать подарки в свой день рождения" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="193" translatesAutoresizingMaskIntoConstraints="NO" id="4Fh-pU-SBd">
@@ -1301,18 +1303,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ug9-Xj-q70" firstAttribute="leading" secondItem="JVt-ux-Rjr" secondAttribute="leading" constant="-1" id="2VW-Qb-MOS"/>
                             <constraint firstItem="u7I-rw-7Ob" firstAttribute="bottom" secondItem="QBA-lf-Vi6" secondAttribute="bottom" type="default" id="Dnb-SH-PIg"/>
                             <constraint firstAttribute="trailing" secondItem="u7I-rw-7Ob" secondAttribute="trailing" constant="44" id="Ew3-5e-RcQ"/>
-                            <constraint firstItem="Ug9-Xj-q70" firstAttribute="leading" secondItem="JVt-ux-Rjr" secondAttribute="leading" type="default" id="GZL-5j-8o4"/>
                             <constraint firstItem="4Fh-pU-SBd" firstAttribute="top" secondItem="JVt-ux-Rjr" secondAttribute="top" constant="205" id="Lxw-M2-KkX"/>
                             <constraint firstItem="tO2-uj-IYi" firstAttribute="leading" secondItem="JVt-ux-Rjr" secondAttribute="leading" constant="45" id="RYg-0D-lCU"/>
                             <constraint firstAttribute="trailing" secondItem="4Fh-pU-SBd" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="UXd-Wi-pky"/>
                             <constraint firstItem="u7I-rw-7Ob" firstAttribute="top" secondItem="QBA-lf-Vi6" secondAttribute="top" type="default" id="asl-TA-CiI"/>
                             <constraint firstItem="xiw-EE-l5j" firstAttribute="leading" secondItem="JVt-ux-Rjr" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bRN-Be-s8A"/>
                             <constraint firstItem="Ug9-Xj-q70" firstAttribute="bottom" secondItem="JVt-ux-Rjr" secondAttribute="bottom" type="default" id="csx-z6-TEq"/>
+                            <constraint firstAttribute="bottom" secondItem="tO2-uj-IYi" secondAttribute="bottom" constant="138" id="dxz-4i-gnc"/>
                             <constraint firstItem="QBA-lf-Vi6" firstAttribute="bottom" secondItem="tO2-uj-IYi" secondAttribute="bottom" type="default" id="eLE-W2-9E2"/>
-                            <constraint firstItem="Ug9-Xj-q70" firstAttribute="trailing" secondItem="JVt-ux-Rjr" secondAttribute="trailing" type="default" id="hU8-7n-KqC"/>
-                            <constraint firstAttribute="bottom" secondItem="QBA-lf-Vi6" secondAttribute="bottom" constant="137" id="inE-vt-ItQ"/>
                             <constraint firstItem="QBA-lf-Vi6" firstAttribute="top" secondItem="tO2-uj-IYi" secondAttribute="top" type="default" id="lCh-l0-qX2"/>
                             <constraint firstItem="xiw-EE-l5j" firstAttribute="centerY" secondItem="4Fh-pU-SBd" secondAttribute="centerY" type="default" id="lHP-vl-zF5"/>
                             <constraint firstItem="IK9-nN-bHI" firstAttribute="top" secondItem="JVt-ux-Rjr" secondAttribute="top" type="default" id="my5-vP-Axj"/>
@@ -1350,227 +1351,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="tabicon_Featured.png" width="16" height="16"/>
         <image name="tabicon_SpecialSeries.png" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="AboutViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="Title" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="AroundMeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AroundMeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentedControlIndexChanged"/>
-                <relationship kind="action" name="showLocation:"/>
-                <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="CityNameText" candidateClass="NSString"/>
-                <relationship kind="outlet" name="Image" candidateClass="NSString"/>
-                <relationship kind="outlet" name="Map" candidateClass="RMMapView"/>
-                <relationship kind="outlet" name="PlacesTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="SearchButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="SegmentedMapandTable" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="ViewforMap" candidateClass="UIView"/>
-                <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="gradient_under_cityname" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="readyArray" candidateClass="NSArray"/>
-            </relationships>
-        </class>
-        <class className="CategoryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CategoryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="ShowMap:"/>
-                <relationship kind="outlet" name="CellArray" candidateClass="NSArray"/>
-                <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="GradientUnderLabel" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Image" candidateClass="NSString"/>
-                <relationship kind="outlet" name="Label" candidateClass="NSString"/>
-                <relationship kind="outlet" name="MapPlace" candidateClass="RMMapView"/>
-                <relationship kind="outlet" name="PlaceView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="SearchButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="SegueArray" candidateClass="NSArray"/>
-                <relationship kind="outlet" name="categoryView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="frame1" candidateClass="UIView"/>
-                <relationship kind="outlet" name="frameArray" candidateClass="NSArray"/>
-                <relationship kind="outlet" name="placeViewMap" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="MyLikeLikeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyLikeLikeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="TableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PlaceViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="ShowMap:"/>
-                <relationship kind="action" name="hide_hint:"/>
-                <relationship kind="action" name="infotap:"/>
-                <relationship kind="action" name="openMail:"/>
-                <relationship kind="action" name="showLocation:"/>
-                <relationship kind="action" name="tapDetected:" candidateClass="UIGestureRecognizer"/>
-                <relationship kind="outlet" name="Favorites" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="GOUSE" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="InfoPlaceTable" candidateClass="UIView"/>
-                <relationship kind="outlet" name="LabelOnScroll" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="MapPlace" candidateClass="RMMapView"/>
-                <relationship kind="outlet" name="PlacePinimage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="PlaceView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="Placeadress" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="PlaceonMap" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="ScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="Separator" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Separator1" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Separator3" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Share" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="TelPinimage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="Teltext" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="TextPlace" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="WebPinimage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="favImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="favText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="hide_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="hint" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="info_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="labelonPhoto" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="placeViewMap" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="webtext" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PracticalInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PracticalInfoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="CityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="InfoScroll" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="PreferencesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreferencesViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="PreferencesTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="RMMapView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="RegistrationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="switchtoPicker:"/>
-                <relationship kind="outlet" name="BirthDayPicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="RegistrationTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="SurpriseText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="Switch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SearchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="SearchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="SearchTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="readyArray" candidateClass="NSArray"/>
-            </relationships>
-        </class>
-        <class className="SplashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="Firsttitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="LeftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="RightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="Shade" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="alertLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="fist" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="localNotification" candidateClass="UILocalNotification"/>
-                <relationship kind="outlet" name="maintitle" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="message" candidateClass="UIAlertView"/>
-                <relationship kind="outlet" name="subtitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="StartTabBarViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartTabBarViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="search:"/>
-                <relationship kind="outlet" name="NavBar" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="SearchBarButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="StartTableCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartTableCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="BackCityImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="CityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="accesor" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="StartViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartViewController.h"/>
-        </class>
-        <class className="SubText" superclassName="UITextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubText.h"/>
-        </class>
-        <class className="SupportViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SupportViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="Contactinformation" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="Email" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="FeedBack" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="TermsofUseViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TermsofUseViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="InfoScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="Title" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TransportationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TransportationViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="UILocalNotification" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UILocalNotification.h"/>
-        </class>
-        <class className="VisualTourViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VisualTourViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showLocation:"/>
-                <relationship kind="action" name="tapDetected:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="MKMap" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="PhotoCard" candidateClass="UIView"/>
-                <relationship kind="outlet" name="PlaceonMap" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="Red_line" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="infoScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="info_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="label" candidateClass="SubText"/>
-                <relationship kind="outlet" name="locationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="scroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="visualMap" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -1578,10 +1358,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="9er-Oy-Z8P"/>
-        <segue reference="RKc-vx-BkY"/>
+        <segue reference="NuU-1J-Ecu"/>
         <segue reference="eFr-63-bPF"/>
         <segue reference="CID-7V-uDc"/>
-        <segue reference="b4H-ap-9IP"/>
-        <segue reference="mIE-ck-FCQ"/>
+        <segue reference="lbw-n9-L1h"/>
+        <segue reference="asu-UQ-2oN"/>
     </inferredMetricsTieBreakers>
 </document>
