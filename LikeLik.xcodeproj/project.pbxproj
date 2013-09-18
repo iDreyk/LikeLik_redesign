@@ -20,6 +20,8 @@
 		9111164317E0520900474B13 /* MapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9111164217E0520900474B13 /* MapViewAnnotation.m */; };
 		9111164717E0A4F100474B13 /* 617x617 Download.png in Resources */ = {isa = PBXBuildFile; fileRef = 9111164617E0A4F100474B13 /* 617x617 Download.png */; };
 		91241947173A9CF8004B6837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91241949173A9CF8004B6837 /* Localizable.strings */; };
+		91448DE617E9C230002D7820 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 91448DE317E9C230002D7820 /* Account.m */; };
+		91448DE717E9C230002D7820 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91448DE517E9C230002D7820 /* RegistrationViewController.m */; };
 		916587F91794407600F13BF2 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 916587E11794407600F13BF2 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		916587FA1794407600F13BF2 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916587E31794407600F13BF2 /* FBDialog.bundle */; };
 		916587FB1794407600F13BF2 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 916587E51794407600F13BF2 /* FBDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -331,8 +333,6 @@
 		919E8B0A173A5F6F00A25E07 /* TermsofUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE6173A5F6E00A25E07 /* TermsofUseViewController.m */; };
 		919E8B0B173A5F6F00A25E07 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AE8173A5F6E00A25E07 /* AboutViewController.m */; };
 		919E8B0C173A5F6F00A25E07 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AEA173A5F6E00A25E07 /* SearchViewController.m */; };
-		919E8B0D173A5F6F00A25E07 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AEC173A5F6E00A25E07 /* RegistrationViewController.m */; };
-		919E8B0E173A5F6F00A25E07 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AEE173A5F6E00A25E07 /* LoginViewController.m */; };
 		919E8B0F173A5F6F00A25E07 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AF0173A5F6F00A25E07 /* PreferencesViewController.m */; };
 		919E8B10173A5F6F00A25E07 /* MyLikeLikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E8AF2173A5F6F00A25E07 /* MyLikeLikeViewController.m */; };
 		919E8B13173A5FA500A25E07 /* iPhone5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 919E8B11173A5FA400A25E07 /* iPhone5.storyboard */; };
@@ -418,6 +418,10 @@
 		91241948173A9CF8004B6837 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194A173A9DF5004B6837 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9124194B173A9E05004B6837 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		91448DE217E9C230002D7820 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		91448DE317E9C230002D7820 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		91448DE417E9C230002D7820 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
+		91448DE517E9C230002D7820 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		916587E01794407600F13BF2 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		916587E11794407600F13BF2 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
 		916587E21794407600F13BF2 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
@@ -820,10 +824,6 @@
 		919E8AE8173A5F6E00A25E07 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		919E8AE9173A5F6E00A25E07 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		919E8AEA173A5F6E00A25E07 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		919E8AEB173A5F6E00A25E07 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
-		919E8AEC173A5F6E00A25E07 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
-		919E8AED173A5F6E00A25E07 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		919E8AEE173A5F6E00A25E07 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		919E8AEF173A5F6E00A25E07 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
 		919E8AF0173A5F6F00A25E07 /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
 		919E8AF1173A5F6F00A25E07 /* MyLikeLikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLikeLikeViewController.h; sourceTree = "<group>"; };
@@ -1455,14 +1455,14 @@
 				919E8AE8173A5F6E00A25E07 /* AboutViewController.m */,
 				919E8AE9173A5F6E00A25E07 /* SearchViewController.h */,
 				919E8AEA173A5F6E00A25E07 /* SearchViewController.m */,
-				919E8AEB173A5F6E00A25E07 /* RegistrationViewController.h */,
-				919E8AEC173A5F6E00A25E07 /* RegistrationViewController.m */,
-				919E8AED173A5F6E00A25E07 /* LoginViewController.h */,
-				919E8AEE173A5F6E00A25E07 /* LoginViewController.m */,
 				919E8AEF173A5F6E00A25E07 /* PreferencesViewController.h */,
 				919E8AF0173A5F6F00A25E07 /* PreferencesViewController.m */,
 				919E8AF1173A5F6F00A25E07 /* MyLikeLikeViewController.h */,
 				919E8AF2173A5F6F00A25E07 /* MyLikeLikeViewController.m */,
+				91448DE217E9C230002D7820 /* Account.h */,
+				91448DE317E9C230002D7820 /* Account.m */,
+				91448DE417E9C230002D7820 /* RegistrationViewController.h */,
+				91448DE517E9C230002D7820 /* RegistrationViewController.m */,
 				919E8706173A58E700A25E07 /* Supporting Files */,
 			);
 			path = LikeLik;
@@ -2080,8 +2080,6 @@
 				919E8B0A173A5F6F00A25E07 /* TermsofUseViewController.m in Sources */,
 				919E8B0B173A5F6F00A25E07 /* AboutViewController.m in Sources */,
 				919E8B0C173A5F6F00A25E07 /* SearchViewController.m in Sources */,
-				919E8B0D173A5F6F00A25E07 /* RegistrationViewController.m in Sources */,
-				919E8B0E173A5F6F00A25E07 /* LoginViewController.m in Sources */,
 				919E8B0F173A5F6F00A25E07 /* PreferencesViewController.m in Sources */,
 				919E8B10173A5F6F00A25E07 /* MyLikeLikeViewController.m in Sources */,
 				55A80F0C17747C6400089216 /* ExternalFunctions.m in Sources */,
@@ -2129,6 +2127,8 @@
 				91A80296179519C2007EC5B6 /* MBProgressHUD.m in Sources */,
 				FA34883117DDF9E90090DC7C /* CoreTextLabel.m in Sources */,
 				9111164317E0520900474B13 /* MapViewAnnotation.m in Sources */,
+				91448DE617E9C230002D7820 /* Account.m in Sources */,
+				91448DE717E9C230002D7820 /* RegistrationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

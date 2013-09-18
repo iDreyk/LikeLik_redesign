@@ -99,120 +99,16 @@
                     <navigationItem key="navigationItem" id="WyS-E4-8N8"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <segue destination="gTe-ms-8dk" kind="push" identifier="LoginSegue" id="Nu2-rP-gIA"/>
-                        <segue destination="don-oj-O1o" kind="push" identifier="RegisterSegue" id="lwD-Xs-wV0"/>
                         <segue destination="LKa-Cd-Pt9" kind="push" identifier="TermsofUse" id="WE4-L5-FfN"/>
                         <segue destination="Ujq-gz-vdd" kind="push" identifier="About" id="om3-VK-OtE"/>
                         <segue destination="KQ1-8M-8yf" kind="push" identifier="Support" id="wPj-A7-Smi"/>
                         <segue destination="eaR-c3-xH6" kind="push" identifier="MoreLikeLik" id="LHi-dx-eXo"/>
+                        <segue destination="qyQ-MD-7gI" kind="push" identifier="LoginSegue" id="CcH-gL-bZM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yD2-Gy-aik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1695" y="3066"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="VKb-52-3Xn">
-            <objects>
-                <viewController id="gTe-ms-8dk" customClass="LoginViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Fd8-S0-hQY">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="LW7-Bp-IAU">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="118" id="hzh-lb-m6z"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="gTe-ms-8dk" id="WKi-UV-I4j"/>
-                                    <outlet property="delegate" destination="gTe-ms-8dk" id="ltm-Qw-7xv"/>
-                                </connections>
-                            </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4E-62-PFn">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XX-NX-AjJ">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="kNi-qX-3AO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="124_124 Social_Icons44@2x.png">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SocialClicked:" destination="gTe-ms-8dk" eventType="touchUpInside" id="XVq-Ln-sor"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFF-gG-NWZ">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="TW5-9m-1P1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="124_124 Social_Icons22@2x.png">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SocialClicked:" destination="gTe-ms-8dk" eventType="touchUpInside" id="WXm-Hw-gh4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-K1-HFH">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="cgB-cq-OGn"/>
-                                    <constraint firstAttribute="height" constant="62" id="pMz-nS-Bdd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" image="124_124 Social_Icons11@2x.png">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SocialClicked:" destination="gTe-ms-8dk" eventType="touchUpInside" id="FhA-nZ-3ss"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="xdw-K1-HFH" firstAttribute="bottom" secondItem="9XX-NX-AjJ" secondAttribute="bottom" type="default" id="4zu-EC-Pjp"/>
-                            <constraint firstItem="LW7-Bp-IAU" firstAttribute="leading" secondItem="Fd8-S0-hQY" secondAttribute="leading" type="default" id="BwW-NT-lcl"/>
-                            <constraint firstAttribute="trailing" secondItem="dFF-gG-NWZ" secondAttribute="trailing" constant="44" id="DwP-vE-Eh3"/>
-                            <constraint firstItem="LW7-Bp-IAU" firstAttribute="top" secondItem="Fd8-S0-hQY" secondAttribute="top" type="default" id="EeL-0e-hUw"/>
-                            <constraint firstItem="9XX-NX-AjJ" firstAttribute="top" secondItem="dFF-gG-NWZ" secondAttribute="top" type="default" id="NKy-PN-eCX"/>
-                            <constraint firstItem="LW7-Bp-IAU" firstAttribute="trailing" secondItem="Fd8-S0-hQY" secondAttribute="trailing" type="default" id="RKu-hE-Z6D"/>
-                            <constraint firstItem="x4E-62-PFn" firstAttribute="centerX" secondItem="LW7-Bp-IAU" secondAttribute="centerX" type="default" id="Yc3-ic-b2M"/>
-                            <constraint firstItem="9XX-NX-AjJ" firstAttribute="top" secondItem="xdw-K1-HFH" secondAttribute="top" type="default" id="ZFo-gi-fQI"/>
-                            <constraint firstItem="x4E-62-PFn" firstAttribute="top" secondItem="Fd8-S0-hQY" secondAttribute="top" constant="206" id="anr-US-8g8"/>
-                            <constraint firstItem="dFF-gG-NWZ" firstAttribute="bottom" secondItem="9XX-NX-AjJ" secondAttribute="bottom" type="default" id="fTJ-2v-cR3"/>
-                            <constraint firstItem="xdw-K1-HFH" firstAttribute="leading" secondItem="Fd8-S0-hQY" secondAttribute="leading" constant="45" id="fjl-9Y-Cr5"/>
-                            <constraint firstItem="xdw-K1-HFH" firstAttribute="top" secondItem="Fd8-S0-hQY" secondAttribute="top" constant="246" id="nSV-8a-cPO"/>
-                            <constraint firstItem="9XX-NX-AjJ" firstAttribute="centerX" secondItem="x4E-62-PFn" secondAttribute="centerX" type="default" id="uSh-Qr-EZB"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Gtl-0q-w8j"/>
-                    <connections>
-                        <outlet property="FaceBook" destination="xdw-K1-HFH" id="Xd2-2f-n5h"/>
-                        <outlet property="LoginTable" destination="LW7-Bp-IAU" id="d70-qh-7LK"/>
-                        <outlet property="SNetworkLabel" destination="x4E-62-PFn" id="YQb-tY-ZuB"/>
-                        <outlet property="Twitter" destination="dFF-gG-NWZ" id="z31-Ri-IfH"/>
-                        <outlet property="Vkontakte" destination="9XX-NX-AjJ" id="N5j-Rv-3hd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mRZ-ip-4JI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4676" y="3374"/>
         </scene>
         <!--Start Tab Bar View Controller-->
         <scene sceneID="0cQ-Vr-YHE">
@@ -329,151 +225,6 @@
             </objects>
             <point key="canvasLocation" x="-1849" y="-165"/>
         </scene>
-        <!--Registration View Controller-->
-        <scene sceneID="oR5-cL-Pjj">
-            <objects>
-                <viewController id="don-oj-O1o" customClass="RegistrationViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pM6-Ie-RnO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Я хочу получать подарки в свой день рождения" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="193" translatesAutoresizingMaskIntoConstraints="NO" id="Dg5-VG-5z9">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="193" id="ewP-uB-pXB"/>
-                                    <constraint firstAttribute="height" constant="45" id="yyf-9h-Ijf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="j3q-A7-AFb">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="231" id="70k-7N-JQf"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="don-oj-O1o" id="lMV-Fs-7yd"/>
-                                    <outlet property="delegate" destination="don-oj-O1o" id="7BF-EA-Qcl"/>
-                                </connections>
-                            </tableView>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xcj-RF-8lE">
-                                <connections>
-                                    <action selector="switchtoPicker:" destination="don-oj-O1o" eventType="valueChanged" id="Td5-HW-YUi"/>
-                                </connections>
-                            </switch>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQz-6D-c3j">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="MbF-Gf-h8s"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="124_124 Social_Icons44@2x.png">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SocialClicked:" destination="don-oj-O1o" eventType="touchUpInside" id="n7B-9L-foC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygb-E9-9NX">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="kYt-sk-JBt"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="124_124 Social_Icons22@2x.png">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SocialClicked:" destination="don-oj-O1o" eventType="touchUpInside" id="Vel-HZ-Ynx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kl1-ek-ihJ">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="8tY-2q-pVl"/>
-                                    <constraint firstAttribute="width" constant="62" id="ACB-ar-ZVL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" image="124_124 Social_Icons11@2x.png">
-                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SocialClicked:" destination="don-oj-O1o" eventType="touchUpInside" id="tQI-nG-9XI"/>
-                                </connections>
-                            </button>
-                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dVR-Vm-tpv">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="o8l-CL-fFP"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="-970541999.42171097">
-                                    <!--1970-03-31 21:00:00 +0000-->
-                                </date>
-                                <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <data key="data">
-VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
-y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
-5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
-8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
-AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
-DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
-HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
-KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
-OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
-Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
-VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
-Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
-cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
-f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</data>
-                                </timeZone>
-                            </datePicker>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="XQz-6D-c3j" firstAttribute="centerX" secondItem="j3q-A7-AFb" secondAttribute="centerX" type="default" id="5n8-9S-IRh"/>
-                            <constraint firstAttribute="bottom" secondItem="XQz-6D-c3j" secondAttribute="bottom" constant="137" id="A3d-KD-fvR"/>
-                            <constraint firstItem="Ygb-E9-9NX" firstAttribute="bottom" secondItem="XQz-6D-c3j" secondAttribute="bottom" type="default" id="E7o-Be-nUN"/>
-                            <constraint firstItem="XQz-6D-c3j" firstAttribute="bottom" secondItem="Kl1-ek-ihJ" secondAttribute="bottom" type="default" id="E9k-8w-R6a"/>
-                            <constraint firstItem="dVR-Vm-tpv" firstAttribute="bottom" secondItem="pM6-Ie-RnO" secondAttribute="bottom" type="default" id="IZT-9D-m8Q"/>
-                            <constraint firstItem="j3q-A7-AFb" firstAttribute="leading" secondItem="pM6-Ie-RnO" secondAttribute="leading" type="default" id="QXR-Ye-zRY"/>
-                            <constraint firstItem="xcj-RF-8lE" firstAttribute="leading" secondItem="pM6-Ie-RnO" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="RJd-0t-HiD"/>
-                            <constraint firstItem="dVR-Vm-tpv" firstAttribute="leading" secondItem="pM6-Ie-RnO" secondAttribute="leading" type="default" id="Uh8-aO-efc"/>
-                            <constraint firstItem="j3q-A7-AFb" firstAttribute="trailing" secondItem="pM6-Ie-RnO" secondAttribute="trailing" type="default" id="Wl5-IK-OWe"/>
-                            <constraint firstItem="j3q-A7-AFb" firstAttribute="top" secondItem="pM6-Ie-RnO" secondAttribute="top" type="default" id="eSr-je-hOG"/>
-                            <constraint firstAttribute="trailing" secondItem="Ygb-E9-9NX" secondAttribute="trailing" constant="44" id="fIm-OD-ylR"/>
-                            <constraint firstAttribute="trailing" secondItem="Dg5-VG-5z9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fte-me-iog"/>
-                            <constraint firstItem="Dg5-VG-5z9" firstAttribute="top" secondItem="pM6-Ie-RnO" secondAttribute="top" constant="205" id="jMJ-1a-9aW"/>
-                            <constraint firstItem="dVR-Vm-tpv" firstAttribute="trailing" secondItem="pM6-Ie-RnO" secondAttribute="trailing" type="default" id="kA4-Jo-yQa"/>
-                            <constraint firstItem="XQz-6D-c3j" firstAttribute="top" secondItem="Kl1-ek-ihJ" secondAttribute="top" type="default" id="mxJ-Ex-reW"/>
-                            <constraint firstItem="xcj-RF-8lE" firstAttribute="centerY" secondItem="Dg5-VG-5z9" secondAttribute="centerY" type="default" id="qkY-mZ-F3b"/>
-                            <constraint firstItem="Ygb-E9-9NX" firstAttribute="top" secondItem="XQz-6D-c3j" secondAttribute="top" type="default" id="yYj-io-v8S"/>
-                            <constraint firstItem="Kl1-ek-ihJ" firstAttribute="leading" secondItem="pM6-Ie-RnO" secondAttribute="leading" constant="45" id="ztm-1B-inA"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="bKk-yt-Peb"/>
-                    <connections>
-                        <outlet property="BirthDayPicker" destination="dVR-Vm-tpv" id="oqY-YW-Tbu"/>
-                        <outlet property="RegistrationTable" destination="j3q-A7-AFb" id="wvT-j0-VQp"/>
-                        <outlet property="SurpriseText" destination="Dg5-VG-5z9" id="udg-z9-bdT"/>
-                        <outlet property="Switch" destination="xcj-RF-8lE" id="toP-ZD-jm5"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mTw-4M-hjm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4676" y="2577"/>
-        </scene>
         <!--Around Me View Controller-->
         <scene sceneID="khR-L0-xiP">
             <objects>
@@ -586,8 +337,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="locationButton" destination="xP9-xf-rsy" id="jid-tn-dgZ"/>
                         <outlet property="mapView" destination="teU-sI-kfT" id="QcM-ym-gRu"/>
                         <segue destination="Raj-iV-euz" kind="push" identifier="MapSegue" id="Tjm-t9-blW"/>
-                        <segue destination="don-oj-O1o" kind="push" identifier="RegisterSegue" id="zUH-te-kZE"/>
-                        <segue destination="gTe-ms-8dk" kind="push" identifier="LoginSegue" id="Eqc-1c-gEJ"/>
+                        <segue destination="qyQ-MD-7gI" kind="push" identifier="LoginSegue" id="b4H-ap-9IP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxQ-c5-SK0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -911,8 +661,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="pageControl" destination="dyB-OT-pbh" id="b6X-pB-7qh"/>
                         <outlet property="placeViewMap" destination="SM5-Lm-fgX" id="Qfy-Gg-iUA"/>
                         <outlet property="scroll" destination="3zb-fZ-Bb4" id="OeQ-0c-bqC"/>
-                        <segue destination="don-oj-O1o" kind="push" identifier="RegisterSegue" id="6tZ-hu-j1M"/>
-                        <segue destination="gTe-ms-8dk" kind="push" identifier="LoginSegue" id="nft-YQ-xRI"/>
+                        <segue destination="qyQ-MD-7gI" kind="push" identifier="LoginSegue" id="asu-UQ-2oN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbT-yE-dWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1439,6 +1188,151 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-1849" y="2046"/>
         </scene>
+        <!--Registration View Controller-->
+        <scene sceneID="nDA-8b-cx9">
+            <objects>
+                <viewController id="qyQ-MD-7gI" customClass="RegistrationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JVt-ux-Rjr">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Я хочу получать подарки в свой день рождения" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="193" translatesAutoresizingMaskIntoConstraints="NO" id="4Fh-pU-SBd">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="QYA-FK-taC"/>
+                                    <constraint firstAttribute="width" constant="193" id="dh4-07-Op7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="IK9-nN-bHI">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="231" id="6Bi-zg-Siw"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="qyQ-MD-7gI" id="9J2-8U-lZj"/>
+                                    <outlet property="delegate" destination="qyQ-MD-7gI" id="vtu-1T-vk6"/>
+                                </connections>
+                            </tableView>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xiw-EE-l5j">
+                                <connections>
+                                    <action selector="switchtoPicker:" destination="qyQ-MD-7gI" eventType="valueChanged" id="bsl-f9-sLG"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBA-lf-Vi6">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="tiQ-Pm-Kbe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="124_124 Social_Icons44@2x.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SocialClicked:" destination="qyQ-MD-7gI" eventType="touchUpInside" id="exm-Wu-Uws"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7I-rw-7Ob">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="uWu-Rk-c97"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="124_124 Social_Icons22@2x.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SocialClicked:" destination="qyQ-MD-7gI" eventType="touchUpInside" id="byO-8D-1kU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tO2-uj-IYi">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="DqP-cd-FDy"/>
+                                    <constraint firstAttribute="width" constant="62" id="hDf-4G-FYK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" image="124_124 Social_Icons11@2x.png">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SocialClicked:" destination="qyQ-MD-7gI" eventType="touchUpInside" id="0wo-by-IX5"/>
+                                </connections>
+                            </button>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ug9-Xj-q70">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="h7v-zE-pNR"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="-970541999.42171097">
+                                    <!--1970-03-31 21:00:00 +0000-->
+                                </date>
+                                <timeZone key="timeZone" name="America/Los_Angeles">
+                                    <mutableData key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</mutableData>
+                                </timeZone>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u7I-rw-7Ob" firstAttribute="bottom" secondItem="QBA-lf-Vi6" secondAttribute="bottom" type="default" id="Dnb-SH-PIg"/>
+                            <constraint firstAttribute="trailing" secondItem="u7I-rw-7Ob" secondAttribute="trailing" constant="44" id="Ew3-5e-RcQ"/>
+                            <constraint firstItem="Ug9-Xj-q70" firstAttribute="leading" secondItem="JVt-ux-Rjr" secondAttribute="leading" type="default" id="GZL-5j-8o4"/>
+                            <constraint firstItem="4Fh-pU-SBd" firstAttribute="top" secondItem="JVt-ux-Rjr" secondAttribute="top" constant="205" id="Lxw-M2-KkX"/>
+                            <constraint firstItem="tO2-uj-IYi" firstAttribute="leading" secondItem="JVt-ux-Rjr" secondAttribute="leading" constant="45" id="RYg-0D-lCU"/>
+                            <constraint firstAttribute="trailing" secondItem="4Fh-pU-SBd" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="UXd-Wi-pky"/>
+                            <constraint firstItem="u7I-rw-7Ob" firstAttribute="top" secondItem="QBA-lf-Vi6" secondAttribute="top" type="default" id="asl-TA-CiI"/>
+                            <constraint firstItem="xiw-EE-l5j" firstAttribute="leading" secondItem="JVt-ux-Rjr" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bRN-Be-s8A"/>
+                            <constraint firstItem="Ug9-Xj-q70" firstAttribute="bottom" secondItem="JVt-ux-Rjr" secondAttribute="bottom" type="default" id="csx-z6-TEq"/>
+                            <constraint firstItem="QBA-lf-Vi6" firstAttribute="bottom" secondItem="tO2-uj-IYi" secondAttribute="bottom" type="default" id="eLE-W2-9E2"/>
+                            <constraint firstItem="Ug9-Xj-q70" firstAttribute="trailing" secondItem="JVt-ux-Rjr" secondAttribute="trailing" type="default" id="hU8-7n-KqC"/>
+                            <constraint firstAttribute="bottom" secondItem="QBA-lf-Vi6" secondAttribute="bottom" constant="137" id="inE-vt-ItQ"/>
+                            <constraint firstItem="QBA-lf-Vi6" firstAttribute="top" secondItem="tO2-uj-IYi" secondAttribute="top" type="default" id="lCh-l0-qX2"/>
+                            <constraint firstItem="xiw-EE-l5j" firstAttribute="centerY" secondItem="4Fh-pU-SBd" secondAttribute="centerY" type="default" id="lHP-vl-zF5"/>
+                            <constraint firstItem="IK9-nN-bHI" firstAttribute="top" secondItem="JVt-ux-Rjr" secondAttribute="top" type="default" id="my5-vP-Axj"/>
+                            <constraint firstItem="IK9-nN-bHI" firstAttribute="trailing" secondItem="JVt-ux-Rjr" secondAttribute="trailing" type="default" id="oiU-0t-7lq"/>
+                            <constraint firstItem="QBA-lf-Vi6" firstAttribute="centerX" secondItem="IK9-nN-bHI" secondAttribute="centerX" type="default" id="pXK-vl-Unf"/>
+                            <constraint firstItem="IK9-nN-bHI" firstAttribute="leading" secondItem="JVt-ux-Rjr" secondAttribute="leading" type="default" id="rGB-YC-Gna"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nGq-Ji-ejp"/>
+                    <connections>
+                        <outlet property="BirthDayPicker" destination="Ug9-Xj-q70" id="lEj-Ux-xWc"/>
+                        <outlet property="RegistrationTable" destination="IK9-nN-bHI" id="gB7-4j-67A"/>
+                        <outlet property="SurpriseText" destination="4Fh-pU-SBd" id="7Fm-2J-N1t"/>
+                        <outlet property="Switch" destination="xiw-EE-l5j" id="x4o-wW-Gon"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2yL-Xk-Glv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4462" y="2605"/>
+        </scene>
     </scenes>
     <resources>
         <image name="124_124 Social_Icons11@2x.png" width="124" height="124"/>
@@ -1470,7 +1364,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="segmentedControlIndexChanged"/>
                 <relationship kind="action" name="showLocation:"/>
-                <relationship kind="action" name="showRegistrationMessage:"/>
                 <relationship kind="outlet" name="CityImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="CityName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="CityNameText" candidateClass="NSString"/>
@@ -1505,20 +1398,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="frame1" candidateClass="UIView"/>
                 <relationship kind="outlet" name="frameArray" candidateClass="NSArray"/>
                 <relationship kind="outlet" name="placeViewMap" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="SocialClicked:" candidateClass="UIButton"/>
-                <relationship kind="action" name="loginPressed:"/>
-                <relationship kind="outlet" name="FaceBook" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="LoginTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="Parent" candidateClass="NSString"/>
-                <relationship kind="outlet" name="SNetworkLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="Twitter" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="Vkontakte" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_loginB" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="MyLikeLikeViewController" superclassName="UIViewController">
@@ -1698,12 +1577,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="9er-Oy-Z8P"/>
         <segue reference="RKc-vx-BkY"/>
-        <segue reference="Ocj-i0-Rml"/>
-        <segue reference="lwD-Xs-wV0"/>
-        <segue reference="Nu2-rP-gIA"/>
-        <segue reference="Ewz-Pd-opy"/>
         <segue reference="eFr-63-bPF"/>
-        <segue reference="lbw-n9-L1h"/>
+        <segue reference="CID-7V-uDc"/>
+        <segue reference="b4H-ap-9IP"/>
+        <segue reference="mIE-ck-FCQ"/>
     </inferredMetricsTieBreakers>
 </document>

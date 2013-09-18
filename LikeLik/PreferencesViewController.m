@@ -13,7 +13,7 @@
 #import "MBProgressHUD.h"
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-
+static NSString *LorR=nil;
 @interface PreferencesViewController ()
 
 @end
@@ -212,14 +212,16 @@
 }
 
 #pragma mark - Table view delegate
-
+#warning фон для регистрации
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //    nslog(@"%d %d",[indexPath section],[indexPath row]);
     if ([indexPath section] == 0 && [indexPath row] == 0) {
-        [self performSegueWithIdentifier:@"RegisterSegue" sender:self];
+        LorR = @"Registration";
+        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
     if ([indexPath section] == 0 && [indexPath row] == 1) {
+        LorR = @"Login";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
     if ([indexPath section] == 3 && [indexPath row] == 0) {
@@ -290,8 +292,11 @@
     
     
 }
-
+#warning открывать чек
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
+    if ([[segue identifier] isEqualToString:@"LoginSegue"]) {
+        RegistrationViewController *destination = [segue destinationViewController];
+        destination.LorR = LorR;
+    }
 }
 @end

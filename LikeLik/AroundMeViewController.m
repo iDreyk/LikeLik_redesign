@@ -14,7 +14,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapBox/MapBox.h>
 #import "RegistrationViewController.h"
-#import "LoginViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CoreTextLabel.h"
 #import "MapViewAnnotation.h"
@@ -31,7 +30,7 @@
 #define buttonlabel1Tag 87009
 #define checkTag 87010
 #define afterregister             @"l27h7RU2dzVfP12aoQssda"
-
+static NSString *LorR = nil;
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
@@ -1065,11 +1064,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1)
-        [self performSegueWithIdentifier:@"RegisterSegue" sender:self];
-    if (buttonIndex == 2)
+    if (buttonIndex == 1){
+        LorR = @"Registration";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
-    
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Register Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    }
+    if (buttonIndex == 2){
+        LorR = @"Login";
+        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Login Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    }
 }
 
 
@@ -1138,14 +1144,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     }
     
     if ([[segue identifier] isEqualToString:@"LoginSegue"]) {
-        
-        LoginViewController  *destination = [segue destinationViewController];
-        [segue destinationViewController];
-        destination.Parent = @"Place";
-        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Login Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
-        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-
+        RegistrationViewController *destination = [segue destinationViewController];
+        destination.LorR = LorR;
     }
+
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{

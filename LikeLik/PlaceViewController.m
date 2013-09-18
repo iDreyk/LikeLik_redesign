@@ -20,7 +20,6 @@
 #import "MBProgressHUD.h"
 #import "RegistrationViewController.h"
 #import "MapViewAnnotation.h"
-#include "LoginViewController.h"
 
 #define kOAuthConsumerKey				@"WMLtzHCcXrkaDXzNovw"
 #define kOAuthConsumerSecret			@"AcFQTmoGxkPdOgif68FzYgRBylSXIbeaYTbwnZaR9SE"
@@ -38,7 +37,7 @@ static NSString * currentCity = @"";
 CGFloat firstX=0;
 CGFloat firstY=0;
 CGFloat alpha = 0.5;
-
+static NSString *LorR = nil;
 @interface PlaceViewController ()
 
 @end
@@ -1361,12 +1360,6 @@ region.center = start;
 }
 
 - (void)vkontakteAuthControllerDidCancelled{
-    //[self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
-//    self.navigationController.navigationBar.hidden = YES;
-//    if ([ExternalFunctions isCheckUsedInPlace:self.PlaceName InCategory:self.PlaceCategory InCity:self.PlaceCityName]){
-//        self.GOUSE.enabled = NO;
-//        [Use stopAnimating];
-//    }
     [self dismissViewControllerAnimated:YES completion:^{[self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
         self.navigationController.navigationBar.hidden = YES;
         [self tapDetected:nil];
@@ -1449,11 +1442,14 @@ region.center = start;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1)
-        [self performSegueWithIdentifier:@"RegisterSegue" sender:self];
-    if (buttonIndex == 2)
+    if (buttonIndex == 1){
+        LorR = @"Registration";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
-    
+    }
+    if (buttonIndex == 2){
+        LorR = @"Login";
+        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+    }
 }
 
 - (IBAction)openMail:(id)sender{
@@ -1507,25 +1503,17 @@ region.center = start;
             [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
     }];
     infoViewIsOpen = !infoViewIsOpen;
-    
-    if ([[segue identifier] isEqualToString:@"RegisterSegue"]) {
-
-        RegistrationViewController  *destination = [segue destinationViewController];
-        [segue destinationViewController];
-        destination.Parent = @"Place";
-    }
-    
     if ([[segue identifier] isEqualToString:@"LoginSegue"]) {
-        
-        LoginViewController  *destination = [segue destinationViewController];
-        [segue destinationViewController];
-        destination.Parent = @"Place";
+        RegistrationViewController *destination = [segue destinationViewController];
+        destination.LorR = LorR;
     }
 }
-
+#warning нотификейшн для навбара
+#warning после твиттера и вк авторизации сползает фото
 -(IBAction)hide_hint:(id)sender{
     self.hint.hidden = YES;
     self.hide_button.hidden = YES;
   //  NSLog(@"123123");
 }
+
 @end
