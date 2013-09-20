@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 
 #import <MapBox/MapBox.h>
-#import "SubText.h"
 #import "CheckViewController.h"
 
 #import "SplashViewController.h"
@@ -38,6 +37,9 @@ CGFloat firstX=0;
 CGFloat firstY=0;
 CGFloat alpha = 0.5;
 static NSString *LorR = nil;
+
+
+
 @interface PlaceViewController ()
 
 @end
@@ -239,10 +241,11 @@ static NSString *LorR = nil;
     [self.scroll addGestureRecognizer:singleTap];
     NSArray *photos = self.Photos;
     
-    if ([AppDelegate isiPhone5])
+//    if ([AppDelegate isiPhone5])
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
-    else
-        VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
+    NSLog(@"Hello = %@",VC.nibName);
+//    else
+//        VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
     
     
 

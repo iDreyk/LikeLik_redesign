@@ -11,12 +11,41 @@
 #import "AppDelegate.h"
 #import <MapBox/MapBox.h>
 #import "LocalizationSystem.h"
-#import "SubText.h"
 #import "MapViewAnnotation.h"
 CGFloat X=0;
 CGFloat Y=0;
 NSArray *photos;
 static BOOL infoViewIsOpen = NO;
+
+@interface UITextView ()
+- (id)styleString; // make compiler happy
+@end
+
+
+@implementation SubText2
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+- (id)styleString {
+    return [[super styleString] stringByAppendingString:@"; line-height: 1.5em"];
+}
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
+
+@end
+
 @interface VisualTourViewController ()
 
 @end
@@ -202,7 +231,7 @@ static BOOL infoViewIsOpen = NO;
     Red_line.frame = CGRectMake(Red_line.frame.origin.x, Red_line.frame.origin.y, size1.width, size1.height);
     [Red_line sizeThatFits:size1];
     
-    label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
+    label = [[SubText2 alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
     label.text =  [[coord objectAtIndex:0] objectForKey:@"About"];
     label.font = [AppDelegate OpenSansRegular:28];
     label.textColor = [UIColor whiteColor];

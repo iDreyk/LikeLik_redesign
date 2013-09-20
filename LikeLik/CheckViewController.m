@@ -11,7 +11,6 @@
 #import "UIViewController+KNSemiModal.h"
 
 #import "AppDelegate.h"
-#import "SubText.h"
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
 #import <mach/mach_time.h>
@@ -19,6 +18,39 @@ mach_timebase_info_data_t info1;
 
 NSDictionary *dictforCheck;
 static BOOL foreignversion = NO;
+
+
+
+
+@interface UITextView ()
+- (id)styleString; // make compiler happy
+@end
+
+
+@implementation SubText
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+- (id)styleString {
+    return [[super styleString] stringByAppendingString:@"; line-height: 1.5em"];
+}
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
+
+@end
+
 @interface CheckViewController ()
 
 @end

@@ -14,6 +14,9 @@
 #import "SA_OAuthTwitterController.h"
 @class CheckViewController;
 
+
+
+
 @interface PlaceViewController : UIViewController<RMMapViewDelegate, UIActionSheetDelegate,UIGestureRecognizerDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate,VkontakteDelegate,SA_OAuthTwitterControllerDelegate,MBProgressHUDDelegate,UIAlertViewDelegate,MFMailComposeViewControllerDelegate> {
     CheckViewController *VC;
     UIPageControl *pageControl;

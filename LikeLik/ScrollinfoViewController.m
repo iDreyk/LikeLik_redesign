@@ -8,10 +8,31 @@
 
 #import "ScrollinfoViewController.h"
 #import "AppDelegate.h"
-
-#import "SubText.h"
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
+#import "CategoryViewController.h"
+//@class SubText;
+
+@interface UITextView ()
+- (id)styleString; // make compiler happy
+@end
+
+
+@implementation SubText1
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+- (id)styleString {
+    return [[super styleString] stringByAppendingString:@"; line-height: 1.5em"];
+}
+@end
+
 @interface ScrollinfoViewController ()
 
 @end
@@ -42,7 +63,7 @@
     UIView *awesomeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 512.0)];
     awesomeView.backgroundColor = [UIColor colorWithRed:0.5/2 green:0.5 blue:0.5 alpha:1];
     
-    label = [[SubText alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 300.0)];
+    label = [[SubText1 alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 300.0)];
     
     if ([self.Parent  isEqualToString:@"About"]){
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"About Screen"];

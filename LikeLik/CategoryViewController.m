@@ -646,54 +646,33 @@ static NSString *city = @"";
         destination.CityNameString = AMLocalizedString(@"Around Me", nil);
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Aroundme Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-        //currentCategory =@"Aroundme";
     }
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
         PlaceslistViewController *destination = [segue destinationViewController];
-        destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
+        destination.CityNameText = self.Label;
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Screen",currentCity,[self.CellArray objectAtIndex:row]]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-       //currentCategory =[self.CellArray objectAtIndex:row];
     }
     if ([[segue identifier] isEqualToString:@"FavoritesSegue"]) {
-//        FavViewController *destination = [segue destinationViewController];
-//        [segue destinationViewController];
-//        destination.CityName = self.Label;
-//        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];
-//        
         PlaceslistViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
-      //  NSLog(@"%@",[self favoritePlaces]);
         destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];//[self favoritePlaces];//[self placesInCategory:[self.CellArray objectAtIndex:row]];
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Favorites Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-       //currentCategory =@"Favorites";
         
     }
-    
     if ([[segue identifier] isEqualToString:@"VisualtourSegue"]) {
         VisualTourViewController *destination =
         [segue destinationViewController];
         destination.CityName = self.Label;
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Visual Tour Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-        //currentCategory =@"Visual Tour";
     }
-    
-//    if ([[segue identifier] isEqualToString:@"TransportationSegue"]) {
-//        TransportationTableViewController *destination = [segue destinationViewController];
-//        [segue destinationViewController];
-//        destination.CityName = self.Label;
-//        [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Transportation Screen",currentCity]];
-//        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-//        //currentCategory =@"Transportation";
-//    }
-    
     if ([[segue identifier] isEqualToString:@"PracticalinfoSegue"]) {
         ScrollinfoViewController  *destination = [segue destinationViewController];
         [segue destinationViewController];
@@ -701,7 +680,6 @@ static NSString *city = @"";
         destination.Parent = @"Practical";
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Practical Info Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-        //currentCategory =@"Favorites";
     }
     
     if ([[segue identifier] isEqualToString:@"MapSegue"]) {
@@ -732,16 +710,6 @@ static NSString *city = @"";
         [super viewDidUnload];
 }
 
-
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    
-//    NSLog(@"%f", scrollView.contentOffset.y);
-//    if (scrollView.contentOffset.y > 0.0) {
-//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x, self.CityName.frame.origin.y-scrollView.contentOffset.y, self.CityName.frame.size.width, self.CityName.frame.size.height);
-//    }
-//    
-//}
 
 - (void)updateOffsets {
     

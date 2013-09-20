@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MapBox/MapBox.h>
-#import "SubText.h"
+
+@interface SubText2 : UITextView
+
+@end
+
+
+
 @interface VisualTourViewController : UIViewController <RMMapViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>{
     
 }
@@ -23,7 +29,7 @@
 @property (nonatomic,retain)IBOutlet UIView *visualMap;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @property (nonatomic,retain)IBOutlet UILabel *Red_line;
-@property (nonatomic, retain)IBOutlet SubText *label;
+@property (nonatomic, retain)IBOutlet SubText2 *label;
 @property (nonatomic,retain)IBOutlet MKMapView *MKMap;
 @property (nonatomic,retain)NSArray *coord;
 @property (nonatomic,retain)NSMutableArray *Annotation;

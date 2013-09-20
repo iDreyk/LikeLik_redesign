@@ -10,10 +10,16 @@
 #import "ZBarReaderViewController.h"
 #import "ZBarReaderView.h"
 #import "ZBarSDK.h"
-#import "SubText.h"
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
 #define checkOpen                 @"l27h7RU2dzVfP12aoQssdasasa"
+
+@interface SubText : UITextView
+
+@end
+
+
+
 @interface CheckViewController : UIViewController <ZBarReaderDelegate,UIGestureRecognizerDelegate,MBProgressHUDDelegate>{
     UIImageView *resultImage;
     UITextView *resultText;
