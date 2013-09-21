@@ -39,6 +39,7 @@
 
 @implementation ScrollinfoViewController
 @synthesize label;
+@synthesize webView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -69,7 +70,16 @@
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"About Screen"];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
         self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"About", nil) AndColor:[InterfaceFunctions corporateIdentity]];
-        label.text = [NSString stringWithFormat:@"\n %@", [ExternalFunctions getAboutText]];
+        webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64)];
+        NSString *url = @"http://www.likelik.com";
+        NSURL *nsurl = [NSURL URLWithString:url];
+        NSURLRequest *nsrequest = [NSURLRequest requestWithURL:nsurl];
+        [webView loadRequest:nsrequest];
+        [webView setScalesPageToFit:YES];
+        [webView setUserInteractionEnabled:YES];
+        [self.view addSubview:webView];
+        //label.text = [NSString stringWithFormat:@"\n %@", [ExternalFunctions getAboutText]];
+        
     }
     if ([self.Parent isEqualToString:@"Terms"]){
         label.text = [NSString stringWithFormat:@"\n %@", [ExternalFunctions getAboutText]];
@@ -107,10 +117,11 @@
     [self.view addSubview:label];
     
     [self.view setBackgroundColor:[UIColor clearColor]];
-    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, -44, 320, 568)];
-    bg.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
-    [self.view addSubview:bg];
+//    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, -44, 320, 568)];
+//    bg.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+//    [self.view addSubview:bg];
     [self.view bringSubviewToFront:label];
+    [self.view bringSubviewToFront:webView];
 }
 
 - (void)didReceiveMemoryWarning

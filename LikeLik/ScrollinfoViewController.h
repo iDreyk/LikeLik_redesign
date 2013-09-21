@@ -17,6 +17,7 @@
     
 }
 @property (nonatomic,retain) NSString *CityName;
+@property (nonatomic,retain) UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UILabel *CityLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *InfoScroll;
 @property (nonatomic,retain)SubText1 *label;
