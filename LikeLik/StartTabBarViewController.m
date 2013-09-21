@@ -69,11 +69,11 @@
     [self viewDidAppear:YES];
 }
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
-    //NSLog(@"item = %d",item.tag);
+    //log([NSString stringWithFormat:@"item = %d",item.tag);
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    // NSLog(@"Tabbar Appear");
+    // log([NSString stringWithFormat:@"Tabbar Appear");
     [[self.viewControllers objectAtIndex:0] setTitle:AMLocalizedString(@"Featured", nil)];
     
     [[self.viewControllers objectAtIndex:1] setTitle:AMLocalizedString(@"Downloaded", nil)];
@@ -109,7 +109,7 @@
    
     if([self isMovingFromParentViewController]){
    
-        //    // NSLog(@"123");
+        //    // log([NSString stringWithFormat:@"123");
         
         [self.navigationController setNavigationBarHidden:YES animated:YES];
         //specific stuff for being popped off stack

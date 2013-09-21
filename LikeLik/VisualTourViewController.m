@@ -62,7 +62,7 @@ static BOOL infoViewIsOpen = NO;
     frame.origin.x=frame.size.width=page;
     frame.origin.y=0;
     [_scroll scrollRectToVisible:frame animated:YES];
-  //  NSLog(@"%d",page);
+  //  log([NSString stringWithFormat:@"%d",page);
     
 }
 
@@ -89,10 +89,10 @@ static BOOL infoViewIsOpen = NO;
 
 -(IBAction)MKMapPageControl:(NSInteger)i
 {
-  //  NSLog(@"Hello!");
+  //  log([NSString stringWithFormat:@"Hello!");
     
     int page=i;
-    //NSLog(@"page = %d",page);
+    //log([NSString stringWithFormat:@"page = %d",page);
     CGRect frame=_scroll.frame;
     frame.origin.x=self.scroll.frame.size.width*page;
     frame.size.width =320.;
@@ -115,7 +115,7 @@ static BOOL infoViewIsOpen = NO;
 {
     int page = scrollView.contentOffset.x/scrollView.frame.size.width;
     self.pageControl.currentPage=page;
-  //  NSLog(@"Page = %d",self.pageControl.currentPage);
+  //  log([NSString stringWithFormat:@"Page = %d",self.pageControl.currentPage);
     Red_line.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"Name"];
     label.text = [[photos objectAtIndex:self.pageControl.currentPage] objectForKey:@"About"];
     [self.MapPhoto deselectAnnotation:self.MapPhoto.selectedAnnotation animated:NO];
@@ -149,7 +149,7 @@ static BOOL infoViewIsOpen = NO;
         CGFloat velocityY = (0.2*[(UIPanGestureRecognizer*)sender velocityInView:self.PhotoCard].y);
         
         if (velocityY>0 && infoViewIsOpen == YES) {
-            // NSLog(@"Вниз");
+            // log([NSString stringWithFormat:@"Вниз");
             
             [UIView animateWithDuration:0.6 animations:^{
                 if ([AppDelegate isiPhone5]){
@@ -195,7 +195,7 @@ static BOOL infoViewIsOpen = NO;
     
     _scroll.delegate=self;
         photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
-//    NSLog(@"photos count = %d",[photos count]);
+//    log([NSString stringWithFormat:@"photos count = %d",[photos count]);
     CGFloat xOrigin = 0 * self.view.frame.size.width;
     UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
     awesomeView.backgroundColor = [UIColor colorWithRed:0.5/1 green:0.5 blue:0.5 alpha:1];
@@ -333,7 +333,7 @@ static BOOL infoViewIsOpen = NO;
     [self.MKMap regionThatFits:region];
     
     for (int i=0; i<[coord count]; i++) {
-        NSLog(@"%d",[coord count]);
+        log([NSString stringWithFormat:@"%d",[coord count]);
         CLLocation *tmp = [[coord objectAtIndex:i] objectForKey:@"Location"];
         
         MapViewAnnotation *Annotation1 = [[MapViewAnnotation alloc] initWithTitle:[[coord objectAtIndex:i] objectForKey:@"Name"] andCoordinate:tmp.coordinate andUserinfo:[coord objectAtIndex:i] andSubtitle:[NSString stringWithFormat:@"%d",i] AndTag:[[NSString alloc] initWithFormat:@"%d",i]];
@@ -382,7 +382,7 @@ static BOOL infoViewIsOpen = NO;
 #else
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(MapViewAnnotation *)annotation {
     static NSString *identifier = @"MyLocation";
-    //NSLog(@"%@",identifier);
+    //log([NSString stringWithFormat:@"%@",identifier);
     if ([annotation isKindOfClass:[MapViewAnnotation class]]) {
         
         MKPinAnnotationView *annotationView =
@@ -422,7 +422,7 @@ static BOOL infoViewIsOpen = NO;
 -(void)map_tu:(UIButton *)sender{
     
     [self ShowMap:self];
-    NSLog(@"sender.tag = %d",sender.tag);
+    log([NSString stringWithFormat:@"sender.tag = %d",sender.tag);
     [self MKMapPageControl:sender.tag];
     
 }
@@ -451,11 +451,11 @@ static BOOL infoViewIsOpen = NO;
     if ([[[CLLocation alloc] initWithLatitude:self.MapPhoto.userLocation.coordinate.latitude longitude:self.MapPhoto.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
         self.MapPhoto.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
         self.locationButton.enabled = NO;
-        // NSLog(@"Взяли центер города");
+        // log([NSString stringWithFormat:@"Взяли центер города");
     }
     else{
         self.MapPhoto.centerCoordinate = self.MapPhoto.userLocation.coordinate;
-        //  NSLog(@"Взяли локацию пользователя");
+        //  log([NSString stringWithFormat:@"Взяли локацию пользователя");
         self.locationButton.enabled = YES;
     }
 #warning выпало после закачки сразу
@@ -585,7 +585,7 @@ static BOOL infoViewIsOpen = NO;
 
 - (IBAction)tapDetected:(UIGestureRecognizer *)sender {
     
-    //    NSLog(@"333");
+    //    log([NSString stringWithFormat:@"333");
     if (infoViewIsOpen == NO) {
         [UIView animateWithDuration:0.6 animations:^{
             CGRect Frame = self.PhotoCard.frame;

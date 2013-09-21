@@ -144,7 +144,7 @@ static BOOL foreignversion = NO;
 }
 
 -(void)check_Open:(id)sender{
-   // NSLog(@"check_Open");
+   // log([NSString stringWithFormat:@"check_Open");
         self.Label.font = [AppDelegate OpenSansRegular:40];
         self.TextCheck.font = [AppDelegate OpenSansRegular:28];
     self.Label.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
@@ -190,7 +190,7 @@ static BOOL foreignversion = NO;
 }
 
 -(IBAction)tap:(id)sender{
-    //    nslog(@"%@",sender);
+    //    log([NSString stringWithFormat:@"%@",sender);
 }
 - (void)didReceiveMemoryWarning
 {
@@ -199,7 +199,7 @@ static BOOL foreignversion = NO;
 }
 
 -(IBAction)showQR:(id)sender{
-    //    nslog(@"Show");
+    //    log([NSString stringWithFormat:@"Show");
    // self.Offer.hidden = YES;
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
     reader.readerDelegate = self;
@@ -234,7 +234,7 @@ static BOOL foreignversion = NO;
 }
 
 -(IBAction)foreignLanguage:(id)sender{
-    //    nslog(@"Okay");
+    //    log([NSString stringWithFormat:@"Okay");
     if (foreignversion == NO) {
       self.TextCheck.text = [dictforCheck objectForKey:@"secondary"];
     }
@@ -276,7 +276,7 @@ static BOOL foreignversion = NO;
 }
 
 -(void)UnlockwithText:(NSString *)string{
-    //    nslog(@"string = %@  placename = %@",string, PlaceName);
+    //    log([NSString stringWithFormat:@"string = %@  placename = %@",string, PlaceName);
     
     
     

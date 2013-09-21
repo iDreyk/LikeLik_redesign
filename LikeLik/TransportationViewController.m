@@ -35,7 +35,7 @@
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Metro", nil) AndColor:[InterfaceFunctions corporateIdentity]];
-    //    nslog(@"TransportationViewController City Name = %@",self.CityName);
+    //    log([NSString stringWithFormat:@"TransportationViewController City Name = %@",self.CityName);
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     NSArray *photos = [ExternalFunctions getMetroMapInCity:self.CityName];

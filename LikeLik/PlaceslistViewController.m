@@ -178,7 +178,7 @@ static BOOL NEED_TO_RELOAD = NO;
     [self.mapView setRegion:region animated:YES];
     
 
-    NSLog(@"%f",[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate.latitude);
+    [AppDelegate LLLog:[NSString stringWithFormat:@"%f",[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate.latitude);
     for (int i=0; i<[AroundArray count]; i++) {
         CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
         MapViewAnnotation *Annotation = [[MapViewAnnotation alloc] initWithTitle:[[AroundArray objectAtIndex:i] objectForKey:@"Name"] andCoordinate:tmp.coordinate andUserinfo:[AroundArray objectAtIndex:i] andSubtitle:[[AroundArray objectAtIndex:i] objectForKey:@"Category"] AndTag:[[NSString alloc] initWithFormat:@"%d",i]];
@@ -345,7 +345,7 @@ static BOOL NEED_TO_RELOAD = NO;
             annotationView.annotation = annotation;
         }
         
-        //  NSLog(@"%@",annotation.userinfo);
+        //  [AppDelegate LLLog:[NSString stringWithFormat:@"%@",annotation.userinfo);
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         annotationView.image = [InterfaceFunctions MapPin:AMLocalizedString(annotation.subtitle, nil)].image;
@@ -361,7 +361,7 @@ static BOOL NEED_TO_RELOAD = NO;
     return nil;
 }
 -(void)map_tu:(UIButton *)sender{
-   // NSLog(@"123 %d",sender.tag);
+   // [AppDelegate LLLog:[NSString stringWithFormat:@"123 %d",sender.tag);
     
     
     PlaceName = [[AroundArray objectAtIndex:sender.tag] objectForKey:@"Name"];
@@ -370,7 +370,7 @@ static BOOL NEED_TO_RELOAD = NO;
     //[self performSegueWithIdentifier:@"" sender:]
     [self performSegueWithIdentifier:@"MapSegue" sender:self];
     
-   // NSLog(@"%@",[AroundArray objectAtIndex:sender.tag]);
+   // [AppDelegate LLLog:[NSString stringWithFormat:@"%@",[AroundArray objectAtIndex:sender.tag]);
 }
 #endif
 
@@ -451,7 +451,7 @@ static BOOL NEED_TO_RELOAD = NO;
     
     JUST_APPEAR = YES;
     if(NEED_TO_RELOAD){
-        NSLog(@"Reloading table");
+        [AppDelegate LLLog:[NSString stringWithFormat:@"Reloading table"]];
         [self.PlacesTable reloadData];
         NEED_TO_RELOAD = NO;
     }
@@ -617,7 +617,7 @@ static BOOL NEED_TO_RELOAD = NO;
 - (void)tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath{
-    //    nslog(@"Hello!");
+    //    [AppDelegate LLLog:[NSString stringWithFormat:@"Hello!");
     NSString *Place = [[AroundArray objectAtIndex:[indexPath row]] objectForKey:@"Name"];
     NSString *Category = [[AroundArray objectAtIndex:[indexPath row]] objectForKey:@"Category"];
     [ExternalFunctions removeFromFavoritesPlace:Place InCategory:Category InCity:self.CityNameText];
@@ -644,11 +644,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     UIImage* backupImg = [self.imageCache objectForKey:backup];
     
     if ((nil != theImage) && [theImage isKindOfClass:[UIImage class]]) {
-//        NSLog(@"img loaded from cache!");
+//        [AppDelegate LLLog:[NSString stringWithFormat:@"img loaded from cache!");
         completionBlock(YES, theImage);
     }
     else if((nil != backupImg) && [backupImg isKindOfClass:[UIImage class]]){
-//        NSLog(@"img loaded from cache!");
+//        [AppDelegate LLLog:[NSString stringWithFormat:@"img loaded from cache!");
         completionBlock(YES, backupImg);
     }
     else{
@@ -661,14 +661,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
                 cropedImage = [UIImage imageWithCGImage:imgRef];
                 CGImageRelease(imgRef);
                 [self.imageCache setObject:cropedImage forKey:backup];
-            //    NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:backup]);
+            //    [AppDelegate LLLog:[NSString stringWithFormat:@"img saved to cache! (%@)", [self.imageCache objectForKey:backup]);
             }
             else{
                 cropedImage = image;
                 [self.imageCache setObject:cropedImage forKey:url];
-           //     NSLog(@"img saved to cache! (%@)", [self.imageCache objectForKey:url]);
+           //     [AppDelegate LLLog:[NSString stringWithFormat:@"img saved to cache! (%@)", [self.imageCache objectForKey:url]);
             }
-       //     NSLog(@"Images in cache: %d", [self.imageCache count]);
+       //     [AppDelegate LLLog:[NSString stringWithFormat:@"Images in cache: %d", [self.imageCache count]);
             dispatch_async(dispatch_get_main_queue(), ^ {
                 completionBlock(YES,cropedImage);
             });
@@ -726,7 +726,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *category = [[AroundArray objectAtIndex:row] objectForKey:@"Category"];
     
     if (cell == nil) { // init the cell
-      //  NSLog(@"Created! %@",indexPath);
+      //  [AppDelegate LLLog:[NSString stringWithFormat:@"Created! %@",indexPath);
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
         //202,148,78
@@ -900,16 +900,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     
   //  NSDictionary *temp = [AroundArray objectAtIndex:row];
 
-  //  NSLog(@"Name = %@ Category = %@ City = %@ row = %d",[temp objectForKey:@"Name"],[temp objectForKey:@"Category"],self.CityNameText,row);
+  //  [AppDelegate LLLog:[NSString stringWithFormat:@"Name = %@ Category = %@ City = %@ row = %d",[temp objectForKey:@"Name"],[temp objectForKey:@"Category"],self.CityNameText,row);
 
     if ([ExternalFunctions isCheckUsedInPlace:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] InCategory:category InCity:self.CityNameText]){
     
-   //     NSLog(@"isUsed = %d row = %d",[ExternalFunctions isCheckUsedInPlace:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] InCategory:category InCity:self.CityNameText],row);
+   //     [AppDelegate LLLog:[NSString stringWithFormat:@"isUsed = %d row = %d",[ExternalFunctions isCheckUsedInPlace:[[AroundArray objectAtIndex:row] objectForKey:@"Name"] InCategory:category InCity:self.CityNameText],row);
         check.alpha = 0.5;
     }
     else{
         check.alpha = 1.0;
-     //   NSLog(@"NOOOOOO %@",[temp objectForKey:@"Name"]);
+     //   [AppDelegate LLLog:[NSString stringWithFormat:@"NOOOOOO %@",[temp objectForKey:@"Name"]);
     }
     
     
@@ -986,18 +986,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 -(void)check:(UIButtonWithAditionalNum *)sender{
     
     NSDictionary *temp = [AroundArray objectAtIndex:sender.tagForCheck];
-  //  NSLog(@"TagforCheck = %d",sender.tagForCheck);
+  //  [AppDelegate LLLog:[NSString stringWithFormat:@"TagforCheck = %d",sender.tagForCheck);
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Name"] forKey:@"PlaceTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Category"] forKey:@"CategoryTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"City"] forKey:@"CityTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",sender.tagForCheck] forKey:@"RowTemp"];
-  //  NSLog(@"Check: %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"]);
+  //  [AppDelegate LLLog:[NSString stringWithFormat:@"Check: %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"]);
     
     if ([ExternalFunctions isCheckUsedInPlace:[temp objectForKey:@"Name"] InCategory:[temp objectForKey:@"Category"] InCity:self.CityNameText]){
- //       NSLog(@"Уже использован");
+ //       [AppDelegate LLLog:[NSString stringWithFormat:@"Уже использован");
     }
     else{
- //       NSLog(@"Еще не использован");
+ //       [AppDelegate LLLog:[NSString stringWithFormat:@"Еще не использован");
         if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:checkOpen
                                                                 object:self];
@@ -1030,7 +1030,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 //        [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
 //        self.navigationController.navigationBar.hidden = YES;
         if ([ExternalFunctions isCheckUsedInPlace:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"] InCategory:[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"] InCity:[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"]]){
-   //         NSLog(@"HAAAAALO!!!");
+   //         [AppDelegate LLLog:[NSString stringWithFormat:@"HAAAAALO!!!");
             NSIndexPath *durPath = [NSIndexPath indexPathForRow:[[[NSUserDefaults standardUserDefaults] objectForKey:@"RowTemp"] integerValue] inSection:0];
             NSArray *paths = [NSArray arrayWithObject:durPath];
             [self.PlacesTable reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationRight];

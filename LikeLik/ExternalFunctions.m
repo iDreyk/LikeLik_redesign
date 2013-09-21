@@ -9,6 +9,7 @@
 #import "ExternalFunctions.h"
 #import "SSZipArchive.h"
 #import "AFNetworking.h"
+#import "AppDelegate.h"
 
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
 #define closestPlacesCount 8
@@ -157,7 +158,7 @@ static CLLocation *Me;
 
 
 + (void) getReady {
-    NSLog(@"get Ready");
+    [AppDelegate LLLog:@"get Ready"];
     NSString *cataloguesPath = [[self docDir]stringByAppendingPathComponent:@"catalogue.plist"];
     [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"catalogue" ofType:@"plist"] toPath:cataloguesPath error:nil];
     
@@ -363,11 +364,11 @@ static CLLocation *Me;
 
 + (void) unzipFileAt:(NSString *)filePath ToDestination:(NSString *)fileDestination{
     // Unzipping
-    NSLog(@"Unzipping");
+    [AppDelegate LLLog:@"Unzipping"];
     NSString *zipPath = filePath;
     NSString *destinationPath = fileDestination;
     [SSZipArchive unzipFileAtPath:zipPath toDestination:destinationPath];
-    NSLog(@"Unzipped");
+    [AppDelegate LLLog:@"Unzipped"];
 }
 
 //
@@ -977,7 +978,7 @@ static CLLocation *Me;
     BOOL success = [URL setResourceValue: [NSNumber numberWithBool: YES]
                                   forKey: NSURLIsExcludedFromBackupKey error: &error];
     if(!success){
-        NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
+        [AppDelegate LLLog:[NSString stringWithFormat:@"Error excluding %@ from backup %@", [URL lastPathComponent], error]];
     }
     return success;
 }

@@ -162,7 +162,7 @@
 }
 +(UIColor *)colorTextCategory:(NSString *)Category{
     UIColor *color;
-//    NSLog(@"Category: %@", Category);
+//    [AppDelegate LLLog:[NSString stringWithFormat:@"Category: %@", Category);
     if ([Category isEqualToString:@"Restaurants"]) {
         color = [self mainTextColor:2];
     }
@@ -399,7 +399,7 @@
     }
 
 
-    // NSLog(@"%@",name);
+    // [AppDelegate LLLog:[NSString stringWithFormat:@"%@",name);
     return  [[UIImageView alloc] initWithImage:[UIImage imageNamed:name]];
 }
 +(UIImageView *)Ribbon:(NSString *)Category{

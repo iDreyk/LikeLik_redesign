@@ -47,7 +47,7 @@ static BOOL getLocation = NO;
 
 
 -(NSDictionary *)makeAccount{
-    NSLog(@"%@",[NSDictionary dictionaryWithObjects:@[self.Name,self.Email,self.Password,self.BDate,self.latitude,self.longitude] forKeys:[self makeAccountKeyArray]]);
+    [AppDelegate LLLog:[NSString stringWithFormat:@"%@",[NSDictionary dictionaryWithObjects:@[self.Name,self.Email,self.Password,self.BDate,self.latitude,self.longitude] forKeys:[self makeAccountKeyArray]]]];
     return [NSDictionary dictionaryWithObjects:@[self.Name,self.Email,self.Password,self.BDate,self.latitude,self.longitude] forKeys:[self makeAccountKeyArray]];
 }
 
@@ -59,7 +59,7 @@ static BOOL getLocation = NO;
     One.BDate = [NSString stringWithFormat:@"%@.%@.%@",bday,bmonth,byear];
     One.latitude = lat;
     One.longitude = lon;
-    NSLog(@"%@ %@",One.latitude,One.longitude);
+    [AppDelegate LLLog:[NSString stringWithFormat:@"%@ %@",One.latitude,One.longitude]];
     return One;
 }
 
@@ -119,7 +119,7 @@ static BOOL getLocation = NO;
 }
 
 -(NSDictionary *)LoginmakeVKAccount{
-    NSLog(@"%@",[NSDictionary dictionaryWithObjects:@[self.UID,[self makePassword],self.latitude,self.longitude] forKeys:[self LoginmakeVKAccountKeyArray]]);
+    [AppDelegate LLLog:[NSString stringWithFormat:@"%@",[NSDictionary dictionaryWithObjects:@[self.UID,[self makePassword],self.latitude,self.longitude] forKeys:[self LoginmakeVKAccountKeyArray]]]];
     return [NSDictionary dictionaryWithObjects:@[self.UID,[self makePassword],self.latitude,self.longitude] forKeys:[self LoginmakeVKAccountKeyArray]];
 }
 
@@ -261,7 +261,7 @@ static BOOL getLocation = NO;
 -(IBAction)SocialClicked:(UIButton *)sender{
      // [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     if (sender.tag == 0) {
-        // NSLog(@"Fb");
+        // [AppDelegate LLLog:[NSString stringWithFormat:@"Fb");
         [self.HUDfade show:YES];
         [self.HUDfade hide:YES afterDelay:5];
 
@@ -302,7 +302,7 @@ static BOOL getLocation = NO;
             if ([accountsArray count] > 0) {
                 ACAccount *twitterAccount = [accountsArray objectAtIndex:0];
                 NSString *userID = [[twitterAccount valueForKey:@"properties"] valueForKey:@"user_id"];
-                NSLog(@"%@",userID);
+                [AppDelegate LLLog:[NSString stringWithFormat:@"%@",userID]];
             }
         }
         else{
@@ -338,7 +338,7 @@ static BOOL getLocation = NO;
 //        [self presentViewController:tweetSheet animated:YES completion:nil];
 //    }
 //    else{
-//        NSLog(@":(");
+//        [AppDelegate LLLog:[NSString stringWithFormat:@":(");
 //    }
 //    
 }
@@ -767,7 +767,7 @@ static BOOL getLocation = NO;
 {
 //    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     self.VkontakteUserInfo = info;
-    NSLog(@"%@",self.VkontakteUserInfo);
+    [AppDelegate LLLog:[NSString stringWithFormat:@"%@",self.VkontakteUserInfo]];
     NSArray *components = [[info objectForKey:@"bdate"] componentsSeparatedByString:@"."];
     if ([components count] == 1)
     day = [components objectAtIndex:0];
@@ -794,13 +794,13 @@ static BOOL getLocation = NO;
             month = [components objectAtIndex:1];
             year = [components objectAtIndex:2];
             
-            NSLog(@"%@ %@ %@",day,month,year);
+            [AppDelegate LLLog:[NSString stringWithFormat:@"%@ %@ %@",day,month,year]];
             [self SendRegistration:@"FB"];
             
         }
         else{
             loadingView.hidden = YES;
-            NSLog(@"123not success");
+            [AppDelegate LLLog:[NSString stringWithFormat:@"123not success"]];
             [self.HUDfade hide:YES afterDelay:0];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         }

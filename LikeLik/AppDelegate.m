@@ -19,8 +19,14 @@ NSString *localReceived = @"localReceived";
 
 #import "SCFacebook.h"
 NSInteger wasinactive = NO;
+
+//Enable for logging on
+//#define LOGGING
+
+
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 #define afterCall             @"l27h7RU2dzVfPoQQQQ"
 #define afterFB             @"l27h7RU2dadsdafszVfPoQQQQ"
 #define afternotification             @"l27h7RU2dzVfPoQssda"
@@ -44,7 +50,7 @@ static NSString *const kAllowTracking = @"allowTracking";
 }
 +(UIFont *)OpenSansSemiBold:(CGFloat)size{
     UIFont* font = [UIFont fontWithName:@"OpenSans-Semibold" size:size/2];
-    // //    nslog(@"%@",font);
+    // //    log([NSString stringWithFormat:@"%@",font);
     return font;
     
 }
@@ -56,7 +62,7 @@ static NSString *const kAllowTracking = @"allowTracking";
 
 +(UIFont *)OpenSansLight:(CGFloat)size{
     UIFont *font = [UIFont fontWithName:@"OpenSans" size:size/2];
-    // //    nslog(@"Light 26 = %@",font);
+    // //    log([NSString stringWithFormat:@"Light 26 = %@",font);
     return font;
 }
 
@@ -146,6 +152,11 @@ static NSString *const kAllowTracking = @"allowTracking";
 
 }
 
++(void)LLLog:(NSString *)string{
+#ifdef LOGGING
+    NSLog(@"%@", string);
+#endif
+}
 
 - (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
 {
@@ -194,19 +205,19 @@ static NSString *const kAllowTracking = @"allowTracking";
 #if MOSCOW
     self.tracker = [[GAI sharedInstance] trackerWithName:@"Likelik Moscow"
                                               trackingId:@"UA-44026994-2"];
-    NSLog(@"LikeLik MOSCOW onboard");
+    log([NSString stringWithFormat:@"LikeLik MOSCOW onboard");
 #endif
     
 #if VIENNA
     self.tracker = [[GAI sharedInstance] trackerWithName:@"Likelik Vienna"
                                               trackingId:@"UA-44026994-3"];
-    NSLog(@"LikeLik Vienna onboard");
+    log([NSString stringWithFormat:@"LikeLik Vienna onboard");
 #endif
     
 #if LIKELIK
     self.tracker = [[GAI sharedInstance] trackerWithName:@"Likelik"
                                               trackingId:kTrackingId];
-    NSLog(@"LikeLik onboard");
+    log([NSString stringWithFormat:@"LikeLik onboard"]);
 #endif
     
     [AppDelegate segmentControlMapList];
@@ -321,7 +332,7 @@ static NSString *const kAllowTracking = @"allowTracking";
 {
     
     if (wasinactive){
-        NSLog(@"was inactive");
+        log([NSString stringWithFormat:@"was inactive"]);
         PlaceViewController *view;
         UINavigationController * myStoryBoardInitialViewController;
         if ([AppDelegate isiPhone5]) {
@@ -359,7 +370,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         
         
         
-  //      NSLog(@"userinfo = %@",notification.userInfo);
+  //      log([NSString stringWithFormat:@"userinfo = %@",notification.userInfo);
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view];
         [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
         [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
@@ -379,7 +390,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         //
     }
     else{
-        //      NSLog(@"another situation");
+        //      log([NSString stringWithFormat:@"another situation");
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         [[NSNotificationCenter defaultCenter] postNotificationName:afterCall
                                                             object:self];

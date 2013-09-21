@@ -133,7 +133,7 @@ static NSString *city = @"";
     self.CityName.textColor = [UIColor whiteColor];
 //    self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
     self.CityImage.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]] withFloat:15.0f];
-//    NSLog(@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
+//    log([NSString stringWithFormat:@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"VisualtourSegue",@"TransportationSegue",@"SearchSegue",@"FavoritesSegue",@"PracticalinfoSegue"];
@@ -216,12 +216,12 @@ static NSString *city = @"";
             }
             
             dispatch_async(dispatch_get_main_queue(), ^ {
-                NSLog(@"Back on main thread");
+                log([NSString stringWithFormat:@"Back on main thread"]);
                 IS_LOADING = NO;
                 [self getSoonLabels];
                 [self removeKnuckleHUD];
                 
-              //  NSLog(@"remove knuckle animation");
+              //  log([NSString stringWithFormat:@"remove knuckle animation");
             });
             // post an NSNotification that loading is finished
         });
@@ -256,7 +256,7 @@ static NSString *city = @"";
     self.frameArray = @[self.frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, frame11, frame12];
     
     int i = 0;
-//    NSLog(@"cellArray = %@",self.CellArray);
+//    log([NSString stringWithFormat:@"cellArray = %@",self.CellArray);
     for (UIView *frame in self.frameArray){
         frame.tag = i;
         frame.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", i+1]] scaledToSize:CGSizeMake(frameSize, frameSize)]];
@@ -299,7 +299,7 @@ static NSString *city = @"";
             animation.repeatCount = HUGE_VAL;
             [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
             [coolEf addSubview:spin];
-          //  NSLog(@"start knuckle animation in viewDidLoad");
+          //  log([NSString stringWithFormat:@"start knuckle animation in viewDidLoad");
         }];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];
@@ -311,16 +311,15 @@ static NSString *city = @"";
     
     if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
         self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text].coordinate;
-        //    NSLog(@"Взяли центр города");
+        //    log([NSString stringWithFormat:@"Взяли центр города");
         //        [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         //        self.locationButton.enabled = NO;
     }
     else{
         self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
         //   self.locationButton.enabled = YES;
-        //   NSLog(@"Взяли локацию пользователя");
+        //   log([NSString stringWithFormat:@"Взяли локацию пользователя");
     }
-    
 #if VIENNA
     city = @"Vienna";
 #endif
@@ -381,12 +380,12 @@ static NSString *city = @"";
 }
 
 - (void)appToBackground{
-    NSLog(@"LOG: app to background");
+    log([NSString stringWithFormat:@"LOG: app to background"]);
     IN_BG = YES;
     [self removeKnuckleHUD];
 }
 - (void)appReturnsActive{
-    NSLog(@"LOG: app returns active");
+    log([NSString stringWithFormat:@"LOG: app returns active"]);
 }
 
 - (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
@@ -481,11 +480,11 @@ static NSString *city = @"";
         }
         
         dispatch_async(dispatch_get_main_queue(), ^ {
-            NSLog(@"Back on main thread");
+            log([NSString stringWithFormat:@"Back on main thread"]);
             IS_LOADING = NO;
             [self getSoonLabels];
             [self removeKnuckleHUD];
-            //   NSLog(@"remove knuckle animation in reload");
+            //   log([NSString stringWithFormat:@"remove knuckle animation in reload");
             //            [self.Table reloadData];
         });
         // post an NSNotification that loading is finished
@@ -510,7 +509,7 @@ static NSString *city = @"";
         animation.repeatCount = HUGE_VAL;
         [spin.layer addAnimation:animation forKey:@"knuckleAnimation"];
         [coolEf addSubview:spin];
-        //      NSLog(@"start knuckle animation in reload");
+        //      log([NSString stringWithFormat:@"start knuckle animation in reload");
     }];
     
 }
@@ -564,18 +563,18 @@ static NSString *city = @"";
 }
 
 -(void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-    //  NSLog(@"123");
+    //  log([NSString stringWithFormat:@"123");
     //[map selectAll:map];
     //    [map selectAnnotation:annotation animated:YES];
 }
 
 
 -(void)tapOnLabelForAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-    // NSLog(@"123");
+    // log([NSString stringWithFormat:@"123");
 }
 - (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
 {
-    // NSLog(@"tap");
+    // log([NSString stringWithFormat:@"tap");
     PlaceName = annotation.title;
     PlaceCategory = [annotation.userInfo objectForKey:@"Category"];
     Place = annotation.userInfo;
@@ -637,7 +636,7 @@ static NSString *city = @"";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIView *)sender{
     
     NSInteger row =[(UIGestureRecognizer *)sender view].tag;
-  //  NSLog(@"In segue! Number is: %d", row);
+  //  log([NSString stringWithFormat:@"In segue! Number is: %d", row);
     if ([[segue identifier] isEqualToString:@"AroundmeSegue"]) {
         PlaceslistViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;
@@ -714,7 +713,7 @@ static NSString *city = @"";
 - (void)updateOffsets {
     
     CGFloat yOffset   = self.categoryView.contentOffset.y;
-  //  NSLog(@"yofs: %f", yOffset);
+  //  log([NSString stringWithFormat:@"yofs: %f", yOffset);
     AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
     UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
     if(yOffset < 0){

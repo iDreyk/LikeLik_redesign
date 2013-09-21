@@ -51,8 +51,8 @@ CGRect oldRect;
     
     [super viewDidLoad];
     
-    //    nslog(@"Hello!");
-    //    nslog(@"CityName = %@",self.CityName);
+    //    log([NSString stringWithFormat:@"Hello!");
+    //    log([NSString stringWithFormat:@"CityName = %@",self.CityName);
     [TestFlight passCheckpoint:@"Search view"];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SearchBar setShowsCancelButton:NO];
@@ -282,14 +282,14 @@ CGRect oldRect;
     //    NSArray *tmp;
     if (searchBar.text.length>0){//.text.length>0) {
         NSString *strSearchText =searchBar.text;
-    //    NSLog(@"strSearchText = %@",strSearchText);
+    //    log([NSString stringWithFormat:@"strSearchText = %@",strSearchText);
         //#warning надо переделать под новый каталог
         //       tmp = [ExternalFunctions getAllPlacesInCity:self.CityName];
         //#warning backspace неправильно работает
         NSMutableArray *ar = [NSMutableArray array];
         for (int i=0;i<[tmp count];i++) {
             NSString *strData = [[tmp objectAtIndex:i] objectForKey:@"Name"];
-            //          NSLog(@"strData = %@ strSearchText = %@",strData, strSearchText);
+            //          log([NSString stringWithFormat:@"strData = %@ strSearchText = %@",strData, strSearchText);
             if ([[strData lowercaseString] rangeOfString:[strSearchText lowercaseString]].length>0)
                 [ar addObject:[tmp objectAtIndex:i]];
         }
@@ -297,10 +297,10 @@ CGRect oldRect;
         [self.SearchTable reloadData];
     }
     else{
-        //    NSLog(@"Hello");
+        //    log([NSString stringWithFormat:@"Hello");
         //#warning надо переделать под новый каталог
         //self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
-        //NSLog(@"tmp = %@", tmp);
+        //log([NSString stringWithFormat:@"tmp = %@", tmp);
         self.PlacesArray = tmp;
         [self.SearchTable reloadData];
     }
@@ -320,7 +320,7 @@ CGRect oldRect;
 
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    //    nslog(@"SearchClicked");
+    //    log([NSString stringWithFormat:@"SearchClicked");
     [self.SearchBar setShowsCancelButton:NO];
     [self.SearchBar resignFirstResponder];
     

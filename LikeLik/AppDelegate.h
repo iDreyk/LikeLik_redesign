@@ -13,6 +13,7 @@
 #import "GAITracker.h"
 #import "GAIDictionaryBuilder.h"
 
+#define log(string) [AppDelegate LLLog:string];
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{
     
@@ -27,6 +28,7 @@
 +(UIFont *)OpenSansRegular:(CGFloat)size;
 +(UIFont *)OpenSansSemiBold:(CGFloat)size;
 +(UIFont *)OpenSansBoldwithSize:(CGFloat)size;
++(void)LLLog:(NSString *)string;
 
 
 +(void)segmentControlMapList;

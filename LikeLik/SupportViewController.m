@@ -30,7 +30,7 @@
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Support Screen"];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     self.lang = [[NSString alloc] init];
-    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"]);
+    log([[NSUserDefaults standardUserDefaults] objectForKey:@"Language"]);
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"Русский"])
         self.lang = @"ru";
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Language"] isEqualToString:@"English"])
@@ -71,16 +71,16 @@
     [locationManager setDelegate:self];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     CLLocation *Me = [locationManager location];
-  //  NSLog(@"Me = %@", Me);
+  //  log([NSString stringWithFormat:@"Me = %@", Me);
     NSString *lat = [NSString stringWithFormat:@"%f",Me.coordinate.latitude];
     NSString *lon = [NSString stringWithFormat:@"%f",Me.coordinate.longitude];
-  //  NSLog(@"%@ %@",lat,lon);
+  //  log([NSString stringWithFormat:@"%@ %@",lat,lon);
     
     
     
     if (([self.Email.text length] > 0 || [self.FeedBack.text length] > 0) && (![self.FeedBack.text isEqualToString:AMLocalizedString(@"Leave a feedback for us", nil)] || [self.Email.text length]>0)) {
         NSDictionary *JsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys: self.Email.text,@"name",self.FeedBack.text,@"note",lat,@"lat",lon,@"lon",nil];
-    //    NSLog(@"%@",JsonDictionary);
+    //    log([NSString stringWithFormat:@"%@",JsonDictionary);
     
     NSURL *baseURL = [NSURL URLWithString:@"http://www.likelik.net"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
@@ -88,7 +88,7 @@
     
     
         NSString *params = [NSString stringWithFormat:@"/api/v1/support/LeaveComment?lang=%@",_lang];
-     //   NSLog(@"%@",params);
+     //   log([NSString stringWithFormat:@"%@",params);
         NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:params parameters:JsonDictionary];
         
     
@@ -99,7 +99,7 @@
      ^(AFHTTPRequestOperation *operation,
        id responseObject) {
       //   NSString *response = [operation responseString];
-        // NSLog(@"response: [%@]",response);
+        // log([NSString stringWithFormat:@"response: [%@]",response);
 
          HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
          [self.navigationController.view addSubview:HUD];
@@ -115,7 +115,7 @@
          [[UIApplication sharedApplication] endIgnoringInteractionEvents];
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-       //  NSLog(@"error: %@", [operation error]);
+       //  log([NSString stringWithFormat:@"error: %@", [operation error]);
          
          MBProgressHUD *HUDerror = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
          [self.navigationController.view addSubview:HUDerror];
@@ -141,7 +141,7 @@
 
 
 -(void)textviewBeginEditing:(NSNotification *)notification{
-    // NSLog(@"123");
+    // log([NSString stringWithFormat:@"123");
 
     if ([self.FeedBack.text isEqualToString:AMLocalizedString(@"Leave a feedback for us", nil)]) {
         self.FeedBack.text = @"";
@@ -165,7 +165,7 @@
         self.FeedBack.text = @"";
         
     }
-    // NSLog(@"%@",textField);
+    // log([NSString stringWithFormat:@"%@",textField);
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{

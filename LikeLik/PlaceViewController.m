@@ -98,7 +98,7 @@ static NSString *LorR = nil;
         CGFloat velocityY = (0.2*[(UIPanGestureRecognizer*)sender velocityInView:self.PlaceView].y);
         
         if (velocityY>0 && infoViewIsOpen == YES) {
-            // NSLog(@"Вниз");
+            // [AppDelegate LLLog:[NSString stringWithFormat:@"Вниз");
             [UIView transitionWithView:self.PlaceView
                               duration:0.4
                                options:UIViewAnimationOptionCurveLinear
@@ -191,7 +191,7 @@ static NSString *LorR = nil;
         tmp = @"jp";
     }
     if (![[[NSUserDefaults standardUserDefaults ] objectForKey:@"hint"] isEqualToString:@"YES"]) {
-        NSLog(@"%@",LocalizationGetLanguage);
+        [AppDelegate LLLog:[NSString stringWithFormat:@"%@",LocalizationGetLanguage]];
         if ([AppDelegate isiPhone5]) {
             [self.hint setImage:[UIImage imageNamed:[NSString stringWithFormat:@"5-%@.png",tmp]]];
         }
@@ -243,7 +243,7 @@ static NSString *LorR = nil;
     
 //    if ([AppDelegate isiPhone5])
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
-    NSLog(@"Hello = %@",VC.nibName);
+    [AppDelegate LLLog:[NSString stringWithFormat:@"Hello = %@",VC.nibName]];
 //    else
 //        VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
     
@@ -404,13 +404,13 @@ static NSString *LorR = nil;
     Red_line.numberOfLines = 0;
    // Red_line.backgroundColor =  [UIColor clearColor];
     [Red_line sizeToFit];
-    ////    nslog(@"%f %f",Red_line.frame.size.width,Red_line.frame.size.height);
+    ////    [AppDelegate LLLog:[NSString stringWithFormat:@"%f %f",Red_line.frame.size.width,Red_line.frame.size.height);
     CGSize size1 =Red_line.frame.size;
     size1.width=292.0;
-     //   //    nslog(@"%f %f",size1.width, size1.height);
+     //   //    [AppDelegate LLLog:[NSString stringWithFormat:@"%f %f",size1.width, size1.height);
     Red_line.frame = CGRectMake(Red_line.frame.origin.x, Red_line.frame.origin.y, size1.width, size1.height);
     [Red_line sizeThatFits:size1];
-     //   //    nslog(@"%f %f",Red_line.frame.size.width,Red_line.frame.size.height);
+     //   //    [AppDelegate LLLog:[NSString stringWithFormat:@"%f %f",Red_line.frame.size.width,Red_line.frame.size.height);
     
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
     label.text = self.PlaceAbout;
@@ -612,7 +612,7 @@ static NSString *LorR = nil;
     [self.MapPlace addSubview:button];
     
     CLLocation *placecoord = self.PlaceLocation;
-    //    nslog(@"%f %f",placecoord.coordinate.latitude,placecoord.coordinate.longitude);
+    //    [AppDelegate LLLog:[NSString stringWithFormat:@"%f %f",placecoord.coordinate.latitude,placecoord.coordinate.longitude);
     self.MapPlace.centerCoordinate =  placecoord.coordinate;
     CLLocationCoordinate2D coord = placecoord.coordinate;
  
@@ -751,8 +751,8 @@ static NSString *LorR = nil;
 }
 
 -(void)backgroundgo{
-  //  NSLog(@"backgroundgo");
-   // NSLog(@"Hello!");
+  //  [AppDelegate LLLog:[NSString stringWithFormat:@"backgroundgo");
+   // [AppDelegate LLLog:[NSString stringWithFormat:@"Hello!");
     if (infoViewIsOpen == YES) {
         [self tapDetected:nil];
         self.placeViewMap.hidden = YES;
@@ -762,7 +762,7 @@ static NSString *LorR = nil;
 }
 
 -(IBAction)showLocation:(id)sender{
-  //  NSLog(@"showlocation");
+  //  [AppDelegate LLLog:[NSString stringWithFormat:@"showlocation");
    
     if (self.navigationController.navigationBar.frame.origin.y !=20) {
         infoViewIsOpen = !infoViewIsOpen;
@@ -808,7 +808,7 @@ static NSString *LorR = nil;
 }
 
 -(void)afterreg{
-  //   NSLog(@"Hello after reg");
+  //   [AppDelegate LLLog:[NSString stringWithFormat:@"Hello after reg");
     self.labelonPhoto.hidden = NO;
     self.background.hidden = NO;
     self.navigationController.navigationBar.hidden = YES;
@@ -852,7 +852,7 @@ static NSString *LorR = nil;
 }
 
 -(void)gesture:(UIGestureRecognizer *)gestureRecognizer{
-    //    nslog(@"like!");
+    //    [AppDelegate LLLog:[NSString stringWithFormat:@"like!");
     [self tapDetected:gestureRecognizer];
 }
 
@@ -907,7 +907,7 @@ static NSString *LorR = nil;
 }
 
 -(void)aftercall:(NSNotification *)notification{
-  //  NSLog(@"some thing");
+  //  [AppDelegate LLLog:[NSString stringWithFormat:@"some thing");
     if (self.navigationController.navigationBar.frame.origin.y ==20) {
         infoViewIsOpen = !infoViewIsOpen;
         _labelonPhoto.hidden = NO;
@@ -924,7 +924,7 @@ static NSString *LorR = nil;
         [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
         
     }
-  //  NSLog(@"aftercall");
+  //  [AppDelegate LLLog:[NSString stringWithFormat:@"aftercall");
     if (self.placeViewMap.hidden == NO){
         _background.hidden = NO;
         _labelonPhoto.hidden = NO;
@@ -955,13 +955,13 @@ static NSString *LorR = nil;
 
 -(void)viewWillDisappear:(BOOL)animated{
     infoViewIsOpen = NO;
- //   NSLog(@"Cammon");
+ //   [AppDelegate LLLog:[NSString stringWithFormat:@"Cammon");
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     if ([self.fromNotification isEqualToString:@"YES"]) {
-      //  NSLog(@"disappear");
-     //   NSLog(@"Ку-ку");
+      //  [AppDelegate LLLog:[NSString stringWithFormat:@"disappear");
+     //   [AppDelegate LLLog:[NSString stringWithFormat:@"Ку-ку");
         self.navigationController.navigationBar.hidden = NO;
     }
 }
@@ -1237,7 +1237,7 @@ region.center = start;
         else
         {
             [_vkontakte postMessageToWall:self.PlaceAbout link:[[NSURL alloc] initWithString:@"http://likelik.com"]];
-           // NSLog(@"%@",[[NSURL alloc] initWithString:@"http://likelik.com"]);
+           // [AppDelegate LLLog:[NSString stringWithFormat:@"%@",[[NSURL alloc] initWithString:@"http://likelik.com"]);
         }
         
         
@@ -1251,7 +1251,7 @@ region.center = start;
                                                                                              label:[NSString stringWithFormat:@"%@ %@ @ Is Going to share on Twitter",currentCity,self.PlaceNameEn]  // Event label
                                                                                              value:nil] build]];
         if (_engine){
-         //   NSLog(@"123");
+         //   [AppDelegate LLLog:[NSString stringWithFormat:@"123");
             [_engine sendUpdate: self.PlaceAbout];
             return;
         }
@@ -1265,7 +1265,7 @@ region.center = start;
             [self presentViewController:controller animated:YES completion:^{}];//presentModalViewController: controller animated: YES];
         else {
 
-        //    NSLog(@"321");
+        //    [AppDelegate LLLog:[NSString stringWithFormat:@"321");
             [_engine sendUpdate: self.PlaceAbout];
         }
     }
@@ -1403,7 +1403,7 @@ region.center = start;
         [self tapDetected:nil];
     }];
    
-   // NSLog(@"123");
+   // [AppDelegate LLLog:[NSString stringWithFormat:@"123");
 }
 
 - (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte{
@@ -1442,14 +1442,14 @@ region.center = start;
 }
 
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller {
-	// NSLog(@"Authentication Failed!");
+	// [AppDelegate LLLog:[NSString stringWithFormat:@"Authentication Failed!");
 }
 
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller {
     [self.navigationController.navigationBar setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x, -26.0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     self.navigationController.navigationBar.hidden = YES;
     [self tapDetected:nil];
-	// NSLog(@"Authentication Canceled.");
+	// [AppDelegate LLLog:[NSString stringWithFormat:@"Authentication Canceled.");
 }
 
 #pragma mark TwitterEngineDelegate
@@ -1513,19 +1513,19 @@ region.center = start;
     switch (result)
     {
         case MFMailComposeResultCancelled:
-            // NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+            // [AppDelegate LLLog:[NSString stringWithFormat:@"Mail cancelled: you cancelled the operation and no email message was queued.");
             break;
         case MFMailComposeResultSaved:
-            // NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+            // [AppDelegate LLLog:[NSString stringWithFormat:@"Mail saved: you saved the email message in the drafts folder.");
             break;
         case MFMailComposeResultSent:
-            // NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            // [AppDelegate LLLog:[NSString stringWithFormat:@"Mail send: the email message is queued in the outbox. It is ready to send.");
             break;
         case MFMailComposeResultFailed:
-            // NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+            // [AppDelegate LLLog:[NSString stringWithFormat:@"Mail failed: the email message was not saved or queued, possibly due to an error.");
             break;
         default:
-            // NSLog(@"Mail not sent.");
+            // [AppDelegate LLLog:[NSString stringWithFormat:@"Mail not sent.");
             break;
     }
     // Remove the mail view
@@ -1551,7 +1551,7 @@ region.center = start;
 -(IBAction)hide_hint:(id)sender{
     self.hint.hidden = YES;
     self.hide_button.hidden = YES;
-  //  NSLog(@"123123");
+  //  [AppDelegate LLLog:[NSString stringWithFormat:@"123123");
 }
 
 @end

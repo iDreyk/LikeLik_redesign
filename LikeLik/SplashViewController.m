@@ -51,7 +51,7 @@ static NSInteger j=0;
 
 -(void) stopUpdating{
     [locationManager stopUpdatingLocation];
- //   NSLog(@"Notification сработал");
+ //   log([NSString stringWithFormat:@"Notification сработал");
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
@@ -61,8 +61,8 @@ static NSInteger j=0;
     dispatch_async(backGroundQueue, ^{
         [ExternalFunctions getReady];
         // post an NSNotification that loading has started
-        NSLog(@"start background queue");
-  //      NSLog(@"j=%d",j);
+        log([NSString stringWithFormat:@"start background queue"]);
+  //      log([NSString stringWithFormat:@"j=%d",j);
         if (j==0) {
             j++;
             Me = newLocation;
@@ -70,12 +70,12 @@ static NSInteger j=0;
             NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
             
             
-       //     NSLog(@"Зашел в счетчик");
+       //     log([NSString stringWithFormat:@"Зашел в счетчик");
             for (int i = 0; i<[Region count]; i++) {
                 [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
             }
         }
-      //  NSLog(@"after j = %d",j);
+      //  log([NSString stringWithFormat:@"after j = %d",j);
         // post an NSNotification that loading is finished
         [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"stopUpdating" object:nil]];
     });
@@ -202,7 +202,7 @@ static NSInteger j=0;
         [locationManager startUpdatingLocation];
         
         dispatch_async(dispatch_get_main_queue(), ^ {
-            NSLog(@"Back on main thread");
+            log([NSString stringWithFormat:@"Back on main thread"]);
         });
     });
 
@@ -212,7 +212,7 @@ static NSInteger j=0;
     //[self.navigationController.navigationBar setTranslucent:YES];
     [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
     
-    //NSLog(@"%@",[ExternalFunctions getPlacesAroundMyLocation:Me InCity:@"Moscow"]);
+    //log([NSString stringWithFormat:@"%@",[ExternalFunctions getPlacesAroundMyLocation:Me InCity:@"Moscow"]);
     
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
@@ -308,7 +308,7 @@ static NSInteger j=0;
 
 
 - (void)viewDidUnload {
-    NSLog(@"Unload");
+    log([NSString stringWithFormat:@"Unload"]);
     [self setMaintitle:nil];
     [super viewDidUnload];
 }
@@ -328,7 +328,7 @@ static NSInteger j=0;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     NSString *url = [[NSString alloc] initWithFormat:@"%@%@.zip",likelikUrl,filename];
-  //  NSLog(@"%@",url);
+  //  log([NSString stringWithFormat:@"%@",url);
     NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",filename];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
@@ -400,7 +400,7 @@ static NSInteger j=0;
         }
         else
             self.HUDfade.labelText = [NSString stringWithFormat:@"%.1f %%",progress];
-        //NSLog(@"Time left: %@ \n Speed: %f",text,speed);
+        //log([NSString stringWithFormat:@"Time left: %@ \n Speed: %f",text,speed);
         currentTime = currentTime2;
     }];
     
@@ -453,8 +453,8 @@ static NSInteger j=0;
 }
 
 - (NSError *) DownloadError:(NSError *) error{
-   // NSLog(@"error = %d",error.code);
-   // NSLog(@"error description = %@",error.description);
+   // log([NSString stringWithFormat:@"error = %d",error.code);
+   // log([NSString stringWithFormat:@"error description = %@",error.description);
     return error;
 }
 
@@ -463,7 +463,7 @@ static NSInteger j=0;
 }
 
 - (void) startDownloading {
-//    NSLog(@"Согласился на покупку");
+//    log([NSString stringWithFormat:@"Согласился на покупку");
     
     Reachability *reach = [Reachability reachabilityWithHostname:@"google.com"];
     
@@ -476,7 +476,7 @@ static NSInteger j=0;
             else
                 [self AFdownload:city fromURL:likelikurlwifi_4];
             
-        //    NSLog(@"Downloading via Wi-Fi");
+        //    log([NSString stringWithFormat:@"Downloading via Wi-Fi");
         }
         else {
             // On Cell
@@ -489,7 +489,7 @@ static NSInteger j=0;
                 [self AFdownload:city fromURL:likelikurlcell_4];
             
             
-        //    NSLog(@"Downloading via cell network");
+        //    log([NSString stringWithFormat:@"Downloading via cell network");
         }
         
     } else {

@@ -216,7 +216,7 @@ static NSString *LorR=nil;
 #warning фон для регистрации
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    nslog(@"%d %d",[indexPath section],[indexPath row]);
+    //    [AppDelegate LLLog:[NSString stringWithFormat:@"%d %d",[indexPath section],[indexPath row]);
     if ([indexPath section] == 0 && [indexPath row] == 0) {
         LorR = @"Registration";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
@@ -244,7 +244,7 @@ static NSString *LorR=nil;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             if ([indexPath section] == 1){
             [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:1] forKey:@"langChanged"];
-            NSLog(@"lngChanged - %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"]);
+            [AppDelegate LLLog:[NSString stringWithFormat:@"lngChanged - %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"langChanged"]]];
             for (int i=0; i<[Language count]; i++)
                 [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:1]].accessoryType = UITableViewCellAccessoryNone;
             [defaults setObject:[Language objectAtIndex:[indexPath row]] forKey:@"Language"];
