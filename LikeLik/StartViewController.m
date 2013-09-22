@@ -186,7 +186,7 @@ static BOOL JUST_APPEAR = YES;
 
 
 -(void)viewDidAppear:(BOOL)animated{
-    
+    self.CityTable.hidden = NO;
     
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -339,17 +339,18 @@ static BOOL JUST_APPEAR = YES;
 {
 
     if (![[segue identifier] isEqualToString:@"PrefSegue"]) {
+        self.CityTable.hidden = YES;
         NSIndexPath *indexPath = [self.CityTable indexPathForSelectedRow];
         CategoryViewController *destination = [segue destinationViewController];
         StartTableCell *cell = (StartTableCell *)[self.CityTable cellForRowAtIndexPath:indexPath];
         destination.Label = cell.CityLabel.text;
         
-        AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
-        UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
-    
-        imback.image = [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:destination.Label]];
-        UIImageView *imback2 = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag2];
-        imback2.image = [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:destination.Label]];
+//        AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
+//        UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
+//    
+//        imback.image = [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:destination.Label]];
+//        UIImageView *imback2 = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag2];
+//        imback2.image = [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:destination.Label]];
         
     }
 }

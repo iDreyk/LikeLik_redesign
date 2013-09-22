@@ -740,7 +740,7 @@ static NSString *city = @"";
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 #warning добавить гуглоэвент
-    [self updateOffsets];
+   // [self updateOffsets];
 }
 
 @end
