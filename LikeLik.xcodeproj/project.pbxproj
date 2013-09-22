@@ -277,6 +277,9 @@
 		9197A2CC17B4B00F00306C41 /* 5-jp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9197A2C417B4B00F00306C41 /* 5-jp.png */; };
 		9197A2CD17B4B00F00306C41 /* 5-ru.png in Resources */ = {isa = PBXBuildFile; fileRef = 9197A2C517B4B00F00306C41 /* 5-ru.png */; };
 		919D331E17ECA3C500FE60FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 919D331D17ECA3C500FE60FB /* Images.xcassets */; };
+		919D332117ECADB300FE60FB /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919D332017ECADB300FE60FB /* InitViewController.m */; };
+		919D332317ECBE4900FE60FB /* InitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 919D332217ECBE4900FE60FB /* InitCell.xib */; };
+		919D332617ECBEDE00FE60FB /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919D332517ECBEDE00FE60FB /* Cell.m */; };
 		919E8700173A58E700A25E07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E86FF173A58E700A25E07 /* UIKit.framework */; };
 		919E8702173A58E700A25E07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8701173A58E700A25E07 /* Foundation.framework */; };
 		919E8704173A58E700A25E07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8703173A58E700A25E07 /* CoreGraphics.framework */; };
@@ -721,6 +724,11 @@
 		9197A2C417B4B00F00306C41 /* 5-jp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-jp.png"; sourceTree = "<group>"; };
 		9197A2C517B4B00F00306C41 /* 5-ru.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-ru.png"; sourceTree = "<group>"; };
 		919D331D17ECA3C500FE60FB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		919D331F17ECADB300FE60FB /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitViewController.h; sourceTree = "<group>"; };
+		919D332017ECADB300FE60FB /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitViewController.m; sourceTree = "<group>"; };
+		919D332217ECBE4900FE60FB /* InitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitCell.xib; sourceTree = "<group>"; };
+		919D332417ECBEDE00FE60FB /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		919D332517ECBEDE00FE60FB /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		919E86FC173A58E700A25E07 /* LikeLik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LikeLik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		919E86FF173A58E700A25E07 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		919E8701173A58E700A25E07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1381,6 +1389,11 @@
 				919E8ABA173A5F6D00A25E07 /* SplashViewController.m */,
 				919E8ABB173A5F6D00A25E07 /* StartViewController.h */,
 				91C08F3717771336007B98D3 /* StartViewController.m */,
+				919D331F17ECADB300FE60FB /* InitViewController.h */,
+				919D332017ECADB300FE60FB /* InitViewController.m */,
+				919D332217ECBE4900FE60FB /* InitCell.xib */,
+				919D332417ECBEDE00FE60FB /* Cell.h */,
+				919D332517ECBEDE00FE60FB /* Cell.m */,
 				919E8ABD173A5F6D00A25E07 /* StartTabBarViewController.h */,
 				919E8ABE173A5F6D00A25E07 /* StartTabBarViewController.m */,
 				FA34882F17DDF9E90090DC7C /* CoreTextLabel.h */,
@@ -1741,6 +1754,7 @@
 				916589071794409C00F13BF2 /* 212_100 Tabitem_place_12_2use_selected@2x.png in Resources */,
 				916589081794409C00F13BF2 /* 212_100 Tabitem_place_13_2use_normal@2x.png in Resources */,
 				916589091794409C00F13BF2 /* 212_100 Tabitem_place_13_2use_selected@2x.png in Resources */,
+				919D332317ECBE4900FE60FB /* InitCell.xib in Resources */,
 				9165890A1794409C00F13BF2 /* 212_100 Tabitem_place_14_2use_normal@2x.png in Resources */,
 				9165890B1794409C00F13BF2 /* 212_100 Tabitem_place_14_2use_selected@2x.png in Resources */,
 				9165890C1794409C00F13BF2 /* 212_100 Tabitem_place_15_2use_normal@2x.png in Resources */,
@@ -2008,6 +2022,7 @@
 				919E8710173A58E700A25E07 /* AppDelegate.m in Sources */,
 				919E89DC173A5E3A00A25E07 /* InterfaceFunctions.m in Sources */,
 				919E8AA5173A5EAE00A25E07 /* AFHTTPClient.m in Sources */,
+				919D332617ECBEDE00FE60FB /* Cell.m in Sources */,
 				919E8AA6173A5EAE00A25E07 /* AFHTTPRequestOperation.m in Sources */,
 				919E8AA7173A5EAE00A25E07 /* AFImageRequestOperation.m in Sources */,
 				919E8AA8173A5EAE00A25E07 /* AFJSONRequestOperation.m in Sources */,
@@ -2015,6 +2030,7 @@
 				919E8AAA173A5EAE00A25E07 /* AFPropertyListRequestOperation.m in Sources */,
 				919E8AAB173A5EAE00A25E07 /* AFURLConnectionOperation.m in Sources */,
 				919E8AAC173A5EAE00A25E07 /* AFXMLRequestOperation.m in Sources */,
+				919D332117ECADB300FE60FB /* InitViewController.m in Sources */,
 				919E8AAD173A5EAE00A25E07 /* UIImageView+AFNetworking.m in Sources */,
 				919E8AF3173A5F6F00A25E07 /* SplashViewController.m in Sources */,
 				919E8AF5173A5F6F00A25E07 /* StartTabBarViewController.m in Sources */,
