@@ -132,8 +132,7 @@ static NSString *city = @"";
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
     self.CityName.textColor = [UIColor whiteColor];
 //    self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
-    self.CityImage.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]] withFloat:15.0f];
-//    log([NSString stringWithFormat:@"City in viewDidLoad: %@",[ExternalFunctions larkePictureOfCity:self.Label]);
+    self.CityImage.image =  [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:self.Label]];
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
     
     self.SegueArray = @[@"AroundmeSegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"CategorySegue",@"VisualtourSegue",@"TransportationSegue",@"SearchSegue",@"FavoritesSegue",@"PracticalinfoSegue"];

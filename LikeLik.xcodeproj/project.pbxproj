@@ -1375,8 +1375,6 @@
 				919E8ABA173A5F6D00A25E07 /* SplashViewController.m */,
 				919E8ABB173A5F6D00A25E07 /* StartViewController.h */,
 				91C08F3717771336007B98D3 /* StartViewController.m */,
-				FA34882F17DDF9E90090DC7C /* CoreTextLabel.h */,
-				FA34883017DDF9E90090DC7C /* CoreTextLabel.m */,
 				919E8AC1173A5F6D00A25E07 /* CategoryViewController.h */,
 				919E8AC2173A5F6D00A25E07 /* CategoryViewController.m */,
 				919E8AC3173A5F6D00A25E07 /* PlaceslistViewController.h */,
@@ -1555,6 +1553,8 @@
 		91A8029B17953851007EC5B6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FA34882F17DDF9E90090DC7C /* CoreTextLabel.h */,
+				FA34883017DDF9E90090DC7C /* CoreTextLabel.m */,
 				55A80F2317747F5200089216 /* SSZipArchive.h */,
 				55A80F2417747F5200089216 /* SSZipArchive.m */,
 				916589DD1794420500F13BF2 /* Reachability.h */,
@@ -1681,7 +1681,7 @@
 				ORGANIZATIONNAME = LikeLik;
 				TargetAttributes = {
 					919E86FB173A58E700A25E07 = {
-						DevelopmentTeam = 74M478V89Q;
+						DevelopmentTeam = R76V9HX83S;
 					};
 				};
 			};

@@ -224,52 +224,7 @@ static NSString *const kAllowTracking = @"allowTracking";
     [AppDelegate lang];
     
     [ExternalFunctions getReady];
-    
-//CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
-    
-//    if (iOSDeviceScreenSize.height == 480)
-//    {
-//        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-//            UIStoryboard *ios5iphone35Storyboard = [UIStoryboard storyboardWithName:@"ios5" bundle:nil];
-//            UIViewController *initialViewController = [ios5iphone35Storyboard instantiateInitialViewController];
-//            self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//            self.window.rootViewController  = initialViewController;
-//
-//            [self.window makeKeyAndVisible];
-//        }
-//        else{
-//            UIStoryboard *iphone35Storyboard = [UIStoryboard storyboardWithName:@"iPhone351" bundle:nil];
-//            UIViewController *initialViewController = [iphone35Storyboard instantiateInitialViewController];
-//            self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//            self.window.rootViewController  = initialViewController;
-//            [self.window makeKeyAndVisible];
-//            UIImageView *image =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//            image.backgroundColor = [UIColor blackColor];
-//#if VIENNA
-//    image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:15.0f];
-//    image.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:15.0f]];
-//
-//#else
-//    image.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f]];
-//    image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f];
-//#endif
-//            image.tag = backgroundTag;
-//            [self.window.rootViewController.view insertSubview:image atIndex:0];
-//            UIImageView *image2 =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//            image2.backgroundColor = [UIColor blackColor];
-//#if VIENNA
-//            image2.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:0.0f];
-//#else
-//            image2.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:0.0f];
-//#endif
-//            image2.tag = backgroundTag2;
-//            [self.window.rootViewController.view insertSubview:image2 atIndex:0];
-//
-//        }
-//    }
-    
-//    if (iOSDeviceScreenSize.height == 568)
-//    {   
+
         UIStoryboard *iPhone40Storyboard = [UIStoryboard storyboardWithName:@"iPhone5" bundle:nil];
         UIViewController *initialViewController = [iPhone40Storyboard instantiateInitialViewController];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -277,11 +232,11 @@ static NSString *const kAllowTracking = @"allowTracking";
         [self.window makeKeyAndVisible];
         UIImageView *image =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 #if VIENNA
-        image.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:15.0f]];
-        image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:15.0f];
+        image.backgroundColor = [UIColor colorWithPatternImage:UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]]];
+        image.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]];
 #else
-        image.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f]];
-        image.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:15.0f];
+        image.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
+        image.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]];
 #endif
         image.tag = backgroundTag;
         [self.window.rootViewController.view insertSubview:image atIndex:0];
@@ -290,9 +245,9 @@ static NSString *const kAllowTracking = @"allowTracking";
         image2.backgroundColor = [UIColor blackColor];
     
 #if VIENNA
-        image2.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]] withFloat:0.0f];
+        image2.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]];
 #else
-        image2.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] withFloat:0.0f];
+        image2.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]];
 #endif
         image2.tag = backgroundTag2;
         [self.window.rootViewController.view insertSubview:image2 atIndex:0];

@@ -249,8 +249,6 @@ static BOOL NEED_TO_RELOAD = NO;
     locationManager = nil;
     self.CityName.text = self.CityNameString;
     self.CityName.font = [AppDelegate OpenSansSemiBold:60];
-    //self.CityImage.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.CityNameText]];
-    self.CityImage.image =  [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.CityNameText]] withFloat:15.0f];
     
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     

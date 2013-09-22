@@ -76,6 +76,8 @@ static BOOL JUST_APPEAR = YES;
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     JUST_APPEAR = YES;
     
+    [self.navigationItem setTitleView:[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", Nil) AndColor:[InterfaceFunctions corporateIdentity]]];
+    
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     self.CityTable.backgroundView = [InterfaceFunctions backgroundView];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
@@ -89,14 +91,11 @@ static BOOL JUST_APPEAR = YES;
 
     [special_series setAlpha:0.7];
     special_series.hidden = YES;
-    if (self.tabBarController.selectedIndex == 1){
-        [label setText:AMLocalizedString(@"Download Annotation", nil)];
-        [special_series setImage:[UIImage imageNamed:@"512x512 download"]];
-    }
-    if (self.tabBarController.selectedIndex == 3){
-        [label setText:AMLocalizedString(@"Special Annotation", nil)];
-        [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
-    }
+    
+//    if (self.tabBarController.selectedIndex == 3){
+//        [label setText:AMLocalizedString(@"Special Annotation", nil)];
+//        [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
+//    }
     label.numberOfLines = 0;
     [label sizeToFit];
     [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
@@ -115,7 +114,10 @@ static BOOL JUST_APPEAR = YES;
     [self.Special setTitle:AMLocalizedString(@"Special Series", nil)];
     [self.TabBar setSelectedItem:self.Downloaded];
     
-    
+    if ([self.TabBar.selectedItem isEqual:self.Downloaded]){
+        [label setText:AMLocalizedString(@"Download Annotation", nil)];
+        [special_series setImage:[UIImage imageNamed:@"512x512 download"]];
+    }
     _CityLabels = [ExternalFunctions getCities:self.Downloaded andTag:1];
     _backCityImages = [ExternalFunctions getCities:self.Downloaded andTag:0];
     
@@ -143,40 +145,34 @@ static BOOL JUST_APPEAR = YES;
     _backCityImages = [ExternalFunctions getCities:item andTag:0];
     [self.CityTable reloadData];
     
+    if ([self.TabBar.selectedItem isEqual:self.Downloaded]){
+        [label setText:AMLocalizedString(@"Download Annotation", nil)];
+        [special_series setImage:[UIImage imageNamed:@"617x617 Download"]];
+    }
+    if ([self.TabBar.selectedItem isEqual:self.Special]){
+        [label setText:AMLocalizedString(@"Special Annotation", nil)];
+        [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
+    }
+    
+    
 }
 
 
 -(void)pref_dismiss{
 
-    [self viewDidAppear:YES];
-
-}
-
-
--(void)viewDidAppear:(BOOL)animated{
-    //  log([NSString stringWithFormat:@"loglog");
-   
-    [self.navigationItem setTitleView:[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", Nil) AndColor:[InterfaceFunctions corporateIdentity]]];
     [self.Featured setTitle:AMLocalizedString(@"Featured", nil)];
-    
     [self.Downloaded setTitle:AMLocalizedString(@"Downloaded", nil)];
-    
     [self.All setTitle:AMLocalizedString(@"All Guides", nil)];
-    
     [self.Special setTitle:AMLocalizedString(@"Special Series", nil)];
-  //  [self.TabBar setSelectedItem:self.Downloaded];
-    _CityLabels = [ExternalFunctions getCities:self.Downloaded andTag:1];
-    _backCityImages = [ExternalFunctions getCities:self.Downloaded andTag:0];
+ 
+    [self.navigationItem setTitleView:[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", Nil) AndColor:[InterfaceFunctions corporateIdentity]]];
+    
+    
+    _CityLabels = [ExternalFunctions getCities:self.TabBar.selectedItem andTag:1];
+    _backCityImages = [ExternalFunctions getCities:self.TabBar.selectedItem andTag:0];
     [self.CityTable reloadData];
     
-    if (self.tabBarController.selectedIndex == 1){
-        [label setText:AMLocalizedString(@"Download Annotation", nil)];
-        [special_series setImage:[UIImage imageNamed:@"617x617 Download"]];
-    }
-    if (self.tabBarController.selectedIndex == 3){
-        [label setText:AMLocalizedString(@"Special Annotation", nil)];
-        [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
-    }
+    
     label.numberOfLines = 0;
     [label sizeToFit];
 #warning начинает "скукоживаться" при смене языков много раз
@@ -185,7 +181,13 @@ static BOOL JUST_APPEAR = YES;
     CGPoint temp = self.view.center;
     temp.y -= 80;
     [special_series setCenter:temp];
-   
+    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
@@ -222,25 +224,18 @@ static BOOL JUST_APPEAR = YES;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
     int row = [indexPath row];
     static NSString *CellIdentifier = @"StartTableCell";
+    
     StartTableCell *cell;
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    }
-    else
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.CityLabel.font = [AppDelegate OpenSansSemiBold:60];
     cell.CityLabel.text  = _CityLabels[row];
     cell.CityLabel.textColor = [UIColor whiteColor];
     cell.BackCityImage.image = _backCityImages[row];
     [cell.contentView addSubview:[InterfaceFunctions standartAccessorView]];
     //http://stackoverflow.com/questions/13148091/uitableview-scrolling-slowly-with-uiimage
+    
     if(PREV_ROW > row)
         REVERSE_ANIM = true;
     else
@@ -286,6 +281,8 @@ static BOOL JUST_APPEAR = YES;
         return nil;
     }
     
+    
+    
     return indexPath;
 }
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
@@ -293,17 +290,11 @@ static BOOL JUST_APPEAR = YES;
         JUST_APPEAR = NO;
 }
 
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    if(!JUST_APPEAR)
-//        JUST_APPEAR = NO;
-//}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
    // log([NSString stringWithFormat:@"TOUCHED!");
-    NSInteger tabIndex = self.tabBarController.selectedIndex;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if(tabIndex != 1 && ![ExternalFunctions isDownloaded:_CityLabels[[indexPath row]]]){
+    if(![self.TabBar.selectedItem isEqual:self.Downloaded] && ![ExternalFunctions isDownloaded:_CityLabels[[indexPath row]]]){
         [defaults setValue:[NSNumber numberWithInt:[indexPath row]] forKey:@"row"];
         [self ShowAlertView];
     }
@@ -335,7 +326,6 @@ static BOOL JUST_APPEAR = YES;
     // if you need scaling
     return [[self class] scaleIfNeeded:cgImage];
 }
-
 +(UIImage*) scaleIfNeeded:(CGImageRef)cgimg {
     bool isRetina = [[[UIDevice currentDevice] systemVersion] intValue] >= 4 && [[UIScreen mainScreen] scale] == 2.0;
     if (isRetina) {
@@ -350,29 +340,18 @@ static BOOL JUST_APPEAR = YES;
 
     if (![[segue identifier] isEqualToString:@"PrefSegue"]) {
         NSIndexPath *indexPath = [self.CityTable indexPathForSelectedRow];
-        NSInteger row = [indexPath row];
-        //  log([NSString stringWithFormat:@"перешёл на экран");
-        
-        
-        CategoryViewController *destination =
-        [segue destinationViewController];
-        
-        destination.Label = _CityLabels[row];
-        destination.Image = _backCityImages[row];
+        CategoryViewController *destination = [segue destinationViewController];
+        StartTableCell *cell = (StartTableCell *)[self.CityTable cellForRowAtIndexPath:indexPath];
+        destination.Label = cell.CityLabel.text;
         
         AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
         UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
-        //imback.backgroundColor = [UIColor blackColor];
-        imback.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f];
-        imback.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f]];
+    
+        imback.image = [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:destination.Label]];
         UIImageView *imback2 = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag2];
-        imback2.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:0.0f];
+        imback2.image = [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:destination.Label]];
         
     }
-//    log([NSString stringWithFormat:@"%@",imback);
-    
-
-    //// [testflight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
 }
 
 -(NSString *)getContentLenght:(NSURLResponse *)response {
@@ -463,7 +442,6 @@ static BOOL JUST_APPEAR = YES;
 }
 
 -(void)ShowAlertView{
-    //NSString *str = [NSString stringWithFormat:@"%@ %@ Mb",AMLocalizedString(@"You are up to download LikeLik Catalogue", nil),[self retrieveFileSizeFromServer]];
     NSString *str = AMLocalizedString(@"You are up to download LikeLik Catalogue", nil);
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Download", nil)
                                                       message:str
@@ -473,7 +451,6 @@ static BOOL JUST_APPEAR = YES;
     [message show];
     
 }
-
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0){
@@ -540,30 +517,25 @@ static BOOL JUST_APPEAR = YES;
             }
             
         } else {
-            // Isn't reachable
-    //        log([NSString stringWithFormat:@"Isn't reachable");
             self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
             [self.navigationController.view addSubview:self.HUDfade];
-          //  [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
             self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross2@2x"]];
             self.HUDfade.mode = MBProgressHUDModeCustomView;
             self.HUDfade.labelText = AMLocalizedString(@"Download error", nil);
             [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds) onTarget:self withObject:nil animated:YES];
             [self.navigationController popViewControllerAnimated:YES];
-//            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+
         }
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.tabBarController.selectedIndex == 1)
+    if ([self.TabBar.selectedItem isEqual:self.Downloaded])
         return YES;
     else
         return NO;
 }
-
-
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     [ExternalFunctions deleteCityCatalogue:[_CityLabels objectAtIndex:[indexPath row]]];
@@ -672,7 +644,6 @@ static BOOL JUST_APPEAR = YES;
     
     
 }
-
 - (void) DownloadSucceeded:(NSString *)fileName {
     NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",fileName];
     NSString *newCataloguePath = [[NSString alloc]initWithFormat:@"%@/%@/catalogue.plist",[ExternalFunctions docDir],fileName];
@@ -714,14 +685,13 @@ static BOOL JUST_APPEAR = YES;
     [ExternalFunctions addCityToDownloaded:fileName];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAllCatalogues" object:nil];
 }
-
 - (NSError *) DownloadError:(NSError *) error{
  //   log([NSString stringWithFormat:@"error = %d",error.code);
  //   log([NSString stringWithFormat:@"error description = %@",error.description);
     return error;
 }
-
 - (void)waitForTwoSeconds {
     sleep(3);
 }
+
 @end
