@@ -354,7 +354,7 @@ static BOOL JUST_APPEAR = YES;
 //    log([NSString stringWithFormat:@"%@",imback);
     
 
-    //[TestFlight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
+    //// [testflight passCheckpoint:[NSString stringWithFormat:@"Select %@",_CityLabels[row]]];
 }
 
 -(NSString *)getContentLenght:(NSURLResponse *)response {
@@ -464,7 +464,7 @@ static BOOL JUST_APPEAR = YES;
             if(subViews.tag == FADE_TAG)
                 [subViews removeFromSuperview];
         }
-        //[TestFlight passCheckpoint:@"buying"];
+        //// [testflight passCheckpoint:@"buying"];
     }
     else{
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];

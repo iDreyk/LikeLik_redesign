@@ -386,7 +386,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         //        [self.window makeKeyAndVisible];
         //      //  [[NSNotificationCenter defaultCenter] postNotificationName:afternotification object:self];
         //
-        [TestFlight passCheckpoint:[notification.userInfo objectForKey:@"Place"]];
+        // [testflight passCheckpoint:[notification.userInfo objectForKey:@"Place"]];
         //
     }
     else{

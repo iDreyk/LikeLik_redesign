@@ -36,7 +36,7 @@ static NSString *LorR=nil;
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"Settings Screen"]];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     
-    [TestFlight passCheckpoint:@"Открыл stng"];
+    // [testflight passCheckpoint:@"Открыл stng"];
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.navigationController setNavigationBarHidden:NO animated:NO];

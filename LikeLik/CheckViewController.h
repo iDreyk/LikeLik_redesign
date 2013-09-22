@@ -36,6 +36,8 @@
 @property (nonatomic, retain) IBOutlet UITextView *resultText;
 @property (nonatomic, retain) IBOutlet UIImageView *resultImage;
 @property (nonatomic, retain)NSString *PlaceName;
+@property (nonatomic, retain)NSString *PlaceNameEN;
+@property (nonatomic, retain)NSString *PlaceCityEN;
 @property (nonatomic, retain)NSString *PlaceCategory;
 @property (nonatomic, retain)NSString *PlaceCity;
 @property (nonatomic, retain)NSString *QRString;

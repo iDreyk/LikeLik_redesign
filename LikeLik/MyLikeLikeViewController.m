@@ -33,7 +33,7 @@
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"My LikeLik Screen"];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     
-    //[TestFlight passCheckpoint:@"MyLikeLik Open"];
+    //// [testflight passCheckpoint:@"MyLikeLik Open"];
     LikeLikString = @[@"Moscow LikeLik",@"Vienna LikeLik"];
     LikeLikImage = @[@"Fist_animated_1",@"Fist_animated_2",@"Fist_animated_3",@"Fist_animated_4"];
     urls = @[@"https://itunes.apple.com/ru/app/likelik-moscow/id675597201?mt=8",@"https://itunes.apple.com/ru/app/vienna-likelik/id675607865?mt=8"];

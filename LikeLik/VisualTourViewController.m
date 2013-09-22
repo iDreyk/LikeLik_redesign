@@ -444,7 +444,7 @@ static BOOL infoViewIsOpen = NO;
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    [TestFlight passCheckpoint:@"VisualTour"];
+    // [testflight passCheckpoint:@"VisualTour"];
    
     
 #if LIKELIK

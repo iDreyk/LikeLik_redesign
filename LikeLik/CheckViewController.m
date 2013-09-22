@@ -151,6 +151,8 @@ static BOOL foreignversion = NO;
     self.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
     self.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
     self.PlaceCity = [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
+    self.PlaceNameEN = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTempEN"];
+    self.PlaceCityEN = [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTempEN"];
     self.ribbonimage.image = [InterfaceFunctions Ribbon:self.PlaceCategory].image;
     dictforCheck = [ExternalFunctions getCheckDictionariesOfPlace:self.PlaceName InCategory:self.PlaceCategory InCity:self.PlaceCity];
     [self.activate setBackgroundImage:[InterfaceFunctions usecheckbutton:self.PlaceCategory andTag:@""].image forState:UIControlStateNormal];
@@ -164,7 +166,6 @@ static BOOL foreignversion = NO;
 
     [self check_Open:self];
     
-
    // self.Label.text = self.PlaceName;
     self.Label.hidden = NO;
     self.Label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
@@ -194,11 +195,15 @@ static BOOL foreignversion = NO;
 }
 - (void)didReceiveMemoryWarning
 {
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Memory warning" action:@"Catch warning"                                                                                          label:@"Check view" value:nil] build]];
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 -(IBAction)showQR:(id)sender{
+    
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"QR" action:@"Open Camera"                                                                                          label:[NSString stringWithFormat:@"%@ %@",self.PlaceCityEN,self.PlaceNameEN] value:nil] build]];
+    
     //    log([NSString stringWithFormat:@"Show");
    // self.Offer.hidden = YES;
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
@@ -213,7 +218,7 @@ static BOOL foreignversion = NO;
     [scanner setSymbology: ZBAR_I25
                    config: ZBAR_CFG_ENABLE
                        to: 0];
-        [TestFlight passCheckpoint:@"Open Camera"];
+        // [testflight passCheckpoint:@"Open Camera"];
     [self presentViewController:reader animated:YES completion:^{}];
 }
 
@@ -250,8 +255,9 @@ static BOOL foreignversion = NO;
 {
     
 
-    [TestFlight passCheckpoint:@"Recognize QR"];
-
+    // [testflight passCheckpoint:@"Recognize QR"];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"QR" action:@"Captured"                                                                                          label:[NSString stringWithFormat:@"%@ %@",self.PlaceCityEN,self.PlaceNameEN] value:nil] build]];
+    
     id<NSFastEnumeration> results =
     [info objectForKey: ZBarReaderControllerResults];
     ZBarSymbol *symbol = nil;
@@ -281,7 +287,8 @@ static BOOL foreignversion = NO;
     
     
     if ([ExternalFunctions isTheRightQRCodeOfPlace:PlaceName InCategory:PlaceCategory InCity:PlaceCity WithCode:string]) {
-
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Check" action:@"Used"                                                                                          label:[NSString stringWithFormat:@"%@ %@",self.PlaceCityEN,self.PlaceNameEN] value:nil] build]];
+        
         self.activate.hidden = YES;
         [self.cancel setTitle:AMLocalizedString(@"Back", nil) forState:UIControlStateNormal];
         [self.cancel.titleLabel sizeToFit];
@@ -301,6 +308,7 @@ static BOOL foreignversion = NO;
         
     }
     else{
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"QR" action:@"Invalid QR"                                                                                          label:[NSString stringWithFormat:@"%@ %@",self.PlaceCityEN,self.PlaceNameEN] value:nil] build]];
         MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
         [self.navigationController.view addSubview:HUD];
         HUD.userInteractionEnabled = NO;

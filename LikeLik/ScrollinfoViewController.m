@@ -83,7 +83,7 @@
     }
     if ([self.Parent isEqualToString:@"Terms"]){
         label.text = [NSString stringWithFormat:@"\n %@", [ExternalFunctions getAboutText]];
-        [TestFlight passCheckpoint:@"TermsOfUse"];
+        // [testflight passCheckpoint:@"TermsOfUse"];
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Terms of use Screen"];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];        
          self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Terms of use", nil) AndColor:[InterfaceFunctions corporateIdentity]];

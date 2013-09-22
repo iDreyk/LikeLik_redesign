@@ -53,7 +53,7 @@ CGRect oldRect;
     
     //    log([NSString stringWithFormat:@"Hello!");
     //    log([NSString stringWithFormat:@"CityName = %@",self.CityName);
-    [TestFlight passCheckpoint:@"Search view"];
+    // [testflight passCheckpoint:@"Search view"];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SearchBar setShowsCancelButton:NO];
     //#warning надо переделать под новый каталог
