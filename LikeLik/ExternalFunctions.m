@@ -10,7 +10,7 @@
 #import "SSZipArchive.h"
 #import "AFNetworking.h"
 #import "AppDelegate.h"
-
+#import "LocalizationSystem.h"
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
 #define closestPlacesCount 8
 #define regionsCount 8
@@ -773,6 +773,22 @@ static CLLocation *Me;
     else
         return tmp2;
 }
+
+
++ (NSArray*)getCities:(UITabBarItem *)item andTag:(int)presise{
+    
+    if ([item.title isEqualToString:AMLocalizedString(@"Featured", nil)])
+        return [self getFeaturedCities:presise];
+    
+    if ([item.title isEqualToString:AMLocalizedString(@"Downloaded", nil)])
+        return [self getDownloadedCities:presise];
+    if ([item.title isEqualToString:AMLocalizedString(@"All Guides", nil)])
+        return [self getAllCities:presise];
+    if ([item.title isEqualToString:AMLocalizedString(@"Special Series", nil)])
+        return [self getSpecialCities:presise];
+    return nil;
+}
+
 //Catalogs_1 - Все каталоги
 + (NSArray *) getAllCities:(int)presise{
     NSMutableArray *tmp1 = [[NSMutableArray alloc]init];

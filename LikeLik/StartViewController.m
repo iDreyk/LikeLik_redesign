@@ -7,7 +7,7 @@
 //
 
 #import "StartViewController.h"
-#import "StartTableCell.h"
+//#import "StartTableCell.h"
 #import "AFNetworking.h"
 #import "AFHTTPClient.h"
 #import "AppDelegate.h"
@@ -44,16 +44,29 @@ static BOOL JUST_APPEAR = YES;
 
 @end
 
-@implementation StartViewController
-@synthesize label,special_series;
-- (id)initWithStyle:(UITableViewStyle)style
+
+@implementation StartTableCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:style];
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Custom initialization
+        // Initialization code
     }
     return self;
 }
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    
+    // Configure the view for the selected state
+}
+
+@end
+
+@implementation StartViewController
+@synthesize label,special_series;
 
 - (void)viewDidLoad
 {
@@ -64,21 +77,10 @@ static BOOL JUST_APPEAR = YES;
     JUST_APPEAR = YES;
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    
-    
-    _CityLabels = [ExternalFunctions getAllCities:1];
-    _backCityImages = [ExternalFunctions getAllCities:0];
-    
-    self.tableView.backgroundView = [InterfaceFunctions backgroundView];
-    
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.CityTable.backgroundView = [InterfaceFunctions backgroundView];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
     label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height/4, 0.0, 0.0)];
     special_series = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128.0, 128.0)];
-//    [label setText:AMLocalizedString(@"Special Annotation", nil)];
-//    label.numberOfLines = 0;
-//    [label sizeToFit]; 
-//    [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
-//    label.tag = LABELTAG; //
     label.textAlignment = NSTextAlignmentCenter;
     [label setFont:[AppDelegate OpenSansRegular:32]];
     [label setBackgroundColor:[UIColor clearColor]];
@@ -104,6 +106,27 @@ static BOOL JUST_APPEAR = YES;
     [self.view addSubview:label];
     
     
+    [self.Featured setTitle:AMLocalizedString(@"Featured", nil)];
+    
+    [self.Downloaded setTitle:AMLocalizedString(@"Downloaded", nil)];
+    
+    [self.All setTitle:AMLocalizedString(@"All Guides", nil)];
+    
+    [self.Special setTitle:AMLocalizedString(@"Special Series", nil)];
+    [self.TabBar setSelectedItem:self.Downloaded];
+    
+    
+    _CityLabels = [ExternalFunctions getCities:self.Downloaded andTag:1];
+    _backCityImages = [ExternalFunctions getCities:self.Downloaded andTag:0];
+    
+    [self.navigationItem setHidesBackButton:YES];
+    
+    
+    UIButton *btn = [InterfaceFunctions Pref_button];
+    [btn addTarget:self action:@selector(Pref) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(pref_dismiss)
                                                  name: dismiss
@@ -111,6 +134,16 @@ static BOOL JUST_APPEAR = YES;
     
 }
 
+-(void)Pref{
+    [self performSegueWithIdentifier:@"PrefSegue" sender:self];
+}
+
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    _CityLabels = [ExternalFunctions getCities:item andTag:1];
+    _backCityImages = [ExternalFunctions getCities:item andTag:0];
+    [self.CityTable reloadData];
+    
+}
 
 
 -(void)pref_dismiss{
@@ -123,7 +156,18 @@ static BOOL JUST_APPEAR = YES;
 -(void)viewDidAppear:(BOOL)animated{
     //  log([NSString stringWithFormat:@"loglog");
    
+    [self.navigationItem setTitleView:[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", Nil) AndColor:[InterfaceFunctions corporateIdentity]]];
+    [self.Featured setTitle:AMLocalizedString(@"Featured", nil)];
     
+    [self.Downloaded setTitle:AMLocalizedString(@"Downloaded", nil)];
+    
+    [self.All setTitle:AMLocalizedString(@"All Guides", nil)];
+    
+    [self.Special setTitle:AMLocalizedString(@"Special Series", nil)];
+  //  [self.TabBar setSelectedItem:self.Downloaded];
+    _CityLabels = [ExternalFunctions getCities:self.Downloaded andTag:1];
+    _backCityImages = [ExternalFunctions getCities:self.Downloaded andTag:0];
+    [self.CityTable reloadData];
     
     if (self.tabBarController.selectedIndex == 1){
         [label setText:AMLocalizedString(@"Download Annotation", nil)];
@@ -141,35 +185,7 @@ static BOOL JUST_APPEAR = YES;
     CGPoint temp = self.view.center;
     temp.y -= 80;
     [special_series setCenter:temp];
-    
-    NSInteger tabindex = self.tabBarController.selectedIndex;
-    //    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
-    
-    if (tabindex == 0) { //выбраны featured
-        _CityLabels = [ExternalFunctions getAllCities:1];
-        _backCityImages = [ExternalFunctions getAllCities:0];
-    }
-    
-    
-    if (tabindex == 1) { //выбраны downloaded
-        _CityLabels = [ExternalFunctions getDownloadedCities:1];
-        _backCityImages = [ExternalFunctions getDownloadedCities:0];
-        
-    }
-    
-    if (tabindex == 2) { //выбраны все гайды
-        _CityLabels = [ExternalFunctions getAllCities:1];
-        _backCityImages = [ExternalFunctions getAllCities:0];
-    }
-    
-    if (tabindex == 3) {//Специальная серия
-        _CityLabels = [ExternalFunctions getSpecialCities:1];
-        _backCityImages = [ExternalFunctions getSpecialCities:0];
-    }
-    JUST_APPEAR = YES;
-    
-    
-    [self.tableView reloadData];
+   
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
@@ -224,7 +240,7 @@ static BOOL JUST_APPEAR = YES;
     cell.CityLabel.textColor = [UIColor whiteColor];
     cell.BackCityImage.image = _backCityImages[row];
     [cell.contentView addSubview:[InterfaceFunctions standartAccessorView]];
-    
+    //http://stackoverflow.com/questions/13148091/uitableview-scrolling-slowly-with-uiimage
     if(PREV_ROW > row)
         REVERSE_ANIM = true;
     else
@@ -295,7 +311,7 @@ static BOOL JUST_APPEAR = YES;
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 152;
+    return 151;
 }
 
 - (UIImage*) blur:(UIImage*)theImage withFloat:(float)blurSize
@@ -332,25 +348,27 @@ static BOOL JUST_APPEAR = YES;
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 
-    
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    NSInteger row = [indexPath row];
-    //  log([NSString stringWithFormat:@"перешёл на экран");
-    
-    
-    CategoryViewController *destination =
-    [segue destinationViewController];
-    
-    destination.Label = _CityLabels[row];
-    destination.Image = _backCityImages[row];
-    
-    AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
-    UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
-    //imback.backgroundColor = [UIColor blackColor];
-    imback.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f];
-    imback.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f]];
-    UIImageView *imback2 = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag2];
-    imback2.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:0.0f];
+    if (![[segue identifier] isEqualToString:@"PrefSegue"]) {
+        NSIndexPath *indexPath = [self.CityTable indexPathForSelectedRow];
+        NSInteger row = [indexPath row];
+        //  log([NSString stringWithFormat:@"перешёл на экран");
+        
+        
+        CategoryViewController *destination =
+        [segue destinationViewController];
+        
+        destination.Label = _CityLabels[row];
+        destination.Image = _backCityImages[row];
+        
+        AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
+        UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
+        //imback.backgroundColor = [UIColor blackColor];
+        imback.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f];
+        imback.backgroundColor = [UIColor colorWithPatternImage:[self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:15.0f]];
+        UIImageView *imback2 = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag2];
+        imback2.image = [self blur:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:destination.Label]] withFloat:0.0f];
+        
+    }
 //    log([NSString stringWithFormat:@"%@",imback);
     
 

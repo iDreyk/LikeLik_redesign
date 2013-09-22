@@ -333,7 +333,7 @@ static BOOL infoViewIsOpen = NO;
     [self.MKMap regionThatFits:region];
     
     for (int i=0; i<[coord count]; i++) {
-        log([NSString stringWithFormat:@"%d",[coord count]);
+        [AppDelegate LLLog:[NSString stringWithFormat:@"%d",[coord count]]];
         CLLocation *tmp = [[coord objectAtIndex:i] objectForKey:@"Location"];
         
         MapViewAnnotation *Annotation1 = [[MapViewAnnotation alloc] initWithTitle:[[coord objectAtIndex:i] objectForKey:@"Name"] andCoordinate:tmp.coordinate andUserinfo:[coord objectAtIndex:i] andSubtitle:[NSString stringWithFormat:@"%d",i] AndTag:[[NSString alloc] initWithFormat:@"%d",i]];
@@ -422,7 +422,7 @@ static BOOL infoViewIsOpen = NO;
 -(void)map_tu:(UIButton *)sender{
     
     [self ShowMap:self];
-    log([NSString stringWithFormat:@"sender.tag = %d",sender.tag);
+    [AppDelegate LLLog:[NSString stringWithFormat:@"sender.tag = %d",sender.tag]];
     [self MKMapPageControl:sender.tag];
     
 }

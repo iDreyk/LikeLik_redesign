@@ -205,19 +205,19 @@ static NSString *const kAllowTracking = @"allowTracking";
 #if MOSCOW
     self.tracker = [[GAI sharedInstance] trackerWithName:@"Likelik Moscow"
                                               trackingId:@"UA-44026994-2"];
-    log([NSString stringWithFormat:@"LikeLik MOSCOW onboard");
+    [AppDelegate LLLog:[NSString stringWithFormat:@"LikeLik MOSCOW onboard"]];
 #endif
     
 #if VIENNA
     self.tracker = [[GAI sharedInstance] trackerWithName:@"Likelik Vienna"
                                               trackingId:@"UA-44026994-3"];
-    log([NSString stringWithFormat:@"LikeLik Vienna onboard");
+    [AppDelegate LLLog:[NSString stringWithFormat:@"LikeLik Vienna onboard"];
 #endif
     
 #if LIKELIK
     self.tracker = [[GAI sharedInstance] trackerWithName:@"Likelik"
                                               trackingId:kTrackingId];
-    log([NSString stringWithFormat:@"LikeLik onboard"]);
+    [AppDelegate LLLog:[NSString stringWithFormat:@"LikeLik onboard"]];
 #endif
     
     [AppDelegate segmentControlMapList];

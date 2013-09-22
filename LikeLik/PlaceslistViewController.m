@@ -178,7 +178,7 @@ static BOOL NEED_TO_RELOAD = NO;
     [self.mapView setRegion:region animated:YES];
     
 
-    [AppDelegate LLLog:[NSString stringWithFormat:@"%f",[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate.latitude);
+    [AppDelegate LLLog:[NSString stringWithFormat:@"%f",[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate.latitude]];
     for (int i=0; i<[AroundArray count]; i++) {
         CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
         MapViewAnnotation *Annotation = [[MapViewAnnotation alloc] initWithTitle:[[AroundArray objectAtIndex:i] objectForKey:@"Name"] andCoordinate:tmp.coordinate andUserinfo:[AroundArray objectAtIndex:i] andSubtitle:[[AroundArray objectAtIndex:i] objectForKey:@"Category"] AndTag:[[NSString alloc] initWithFormat:@"%d",i]];

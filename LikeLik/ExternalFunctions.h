@@ -133,6 +133,8 @@
 //
 //  CATALOGS_1
 //
++ (NSArray*)getCities:(UITabBarItem *)item andTag:(int)presise;
+
 + (NSArray *) getFeaturedCities: (int) presise;
 
 + (NSArray *) getDownloadedCities: (int) presise;
