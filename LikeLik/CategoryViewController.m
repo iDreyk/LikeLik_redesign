@@ -445,9 +445,9 @@ static NSString *city = @"";
     self.MapPlace.delegate = self;
     
     if ([AppDelegate isiPhone5])
-        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
+        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, self.view.frame.size.height);
     else
-        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 450.0);
+        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, self.view.frame.size.height);
     
     
     self.MapPlace.minZoom = 10;
