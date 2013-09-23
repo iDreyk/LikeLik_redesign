@@ -143,6 +143,7 @@ static BOOL JUST_APPEAR = YES;
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     _CityLabels = [ExternalFunctions getCities:item andTag:1];
     _backCityImages = [ExternalFunctions getCities:item andTag:0];
+    JUST_APPEAR = YES;
     [self.CityTable reloadData];
     
     if ([self.TabBar.selectedItem isEqual:self.Downloaded]){
