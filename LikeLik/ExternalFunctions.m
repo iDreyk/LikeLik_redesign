@@ -842,29 +842,30 @@ static CLLocation *Me;
 }
 //Catalogs_1 - Подборка
 + (NSArray *) getFeaturedCities : (int) presise{
-    NSMutableArray *tmp1 = [[NSMutableArray alloc]init];
-    NSMutableArray *tmp2 = [[NSMutableArray alloc]init];
-    NSLocale *locale = [NSLocale currentLocale];
-    NSString *country = [locale localeIdentifier];
-    NSString *cityLanguage;
-    
-    cityLanguage = [self getLocalizedString:@"city"];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *catalogues = [defaults objectForKey:catalogue];
-    
-    for (int i = 0; i < [catalogues count]; i++) {
-        if ([[[catalogues objectAtIndex:i]objectForKey:@"country"] isEqualToString:country]) {
-            [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
-            [tmp2 addObject:[UIImage imageWithContentsOfFile: [[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"small"]]]];
-        }
-    }
-    
-    if (presise == 1) {
-        return tmp1;
-    }
-    else
-        return tmp2;
+//    NSMutableArray *tmp1 = [[NSMutableArray alloc]init];
+//    NSMutableArray *tmp2 = [[NSMutableArray alloc]init];
+//    NSLocale *locale = [NSLocale currentLocale];
+//    NSString *country = [locale localeIdentifier];
+//    NSString *cityLanguage;
+//    
+//    cityLanguage = [self getLocalizedString:@"city"];
+//    
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSMutableArray *catalogues = [defaults objectForKey:catalogue];
+//    
+//    for (int i = 0; i < [catalogues count]; i++) {
+//        if ([[[catalogues objectAtIndex:i]objectForKey:@"country"] isEqualToString:country]) {
+//            [tmp1 addObject:[[catalogues objectAtIndex:i]objectForKey:cityLanguage]];
+//            [tmp2 addObject:[UIImage imageWithContentsOfFile: [[NSString alloc]initWithFormat:@"%@/%@",[[NSBundle mainBundle] pathForResource:[[catalogues objectAtIndex:i] objectForKey:@"city_EN"] ofType:@""],[[[catalogues objectAtIndex:i] objectForKey:@"photos"] objectForKey:@"small"]]]];
+//        }
+//    }
+//    
+//    if (presise == 1) {
+//        return tmp1;
+//    }
+//    else
+//        return tmp2;
+    return [self getAllCities:presise];
 }
 //  soon cities array
 + (NSArray *) getSoonCitiesArray : (int) presise {
