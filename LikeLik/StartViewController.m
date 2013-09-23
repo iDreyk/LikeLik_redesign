@@ -187,7 +187,7 @@ static BOOL JUST_APPEAR = YES;
 
 
 -(void)viewDidAppear:(BOOL)animated{
-    self.CityTable.hidden = NO;
+    //self.CityTable.hidden = NO;
     
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -340,7 +340,7 @@ static BOOL JUST_APPEAR = YES;
 {
 
     if (![[segue identifier] isEqualToString:@"PrefSegue"]) {
-        self.CityTable.hidden = YES;
+        //self.CityTable.hidden = YES;
         NSIndexPath *indexPath = [self.CityTable indexPathForSelectedRow];
         CategoryViewController *destination = [segue destinationViewController];
         StartTableCell *cell = (StartTableCell *)[self.CityTable cellForRowAtIndexPath:indexPath];

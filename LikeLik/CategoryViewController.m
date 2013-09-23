@@ -88,11 +88,9 @@ static NSString *city = @"";
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@" %@ Category Screen",currentCity]];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     
-    [self.view setBackgroundColor:[UIColor clearColor]];
     [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    self.categoryView.backgroundColor = [UIColor clearColor];
     IN_BG = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appReturnsActive) name:UIApplicationDidBecomeActiveNotification object:nil];
@@ -114,7 +112,9 @@ static NSString *city = @"";
     [self.categoryView addSubview:background];
     
     //    self.Table.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
+
+    //self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
     //Overlay_Long@2x.png
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
     
