@@ -325,7 +325,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         
         
         
-  //      log([NSString stringWithFormat:@"userinfo = %@",notification.userInfo);
+        //      log([NSString stringWithFormat:@"userinfo = %@",notification.userInfo);
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view];
         [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
         [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];

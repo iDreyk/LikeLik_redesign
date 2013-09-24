@@ -19,6 +19,18 @@
 #import "MLPAccessoryBadge.h"
 #import <QuartzCore/QuartzCore.h>
 
+
+#import "AFDownloadRequestOperation.h"
+#import "Reachability.h"
+
+#define catalogue @"Catalogues"
+#define likelikurlwifi_4        @"http://likelik.net/ios/online/4/"
+#define likelikurlwifi_5        @"http://likelik.net/ios/online/5/"
+#define likelikurlcell_4        @"http://likelik.net/ios/online/4/"
+#define likelikurlcell_5        @"http://likelik.net/ios/online/5/"
+#define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
+
+
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
@@ -79,10 +91,12 @@ static NSString *city = @"";
     
 #warning need a better way to do it
     if ([AMLocalizedString(@"Moscow", nil) isEqualToString:self.Label]) {
-       currentCity = @"Moscow";
+        currentCity = @"Moscow";
+        city = currentCity;
     }
     else{
-      currentCity = @"Vienna";
+        currentCity = @"Vienna";
+        city = currentCity;
     }
     
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@" %@ Category Screen",currentCity]];
@@ -125,6 +139,28 @@ static NSString *city = @"";
 #if VIENNA
     self.Label = @"Vienna";
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
+#endif
+    
+#if VIENNA
+    city = @"Vienna";
+#endif
+    
+#if MOSCOW
+    city = @"Moscow";
+#endif
+    
+#if LIKELIK
+    if (![ExternalFunctions isDownloaded:currentCity]) {
+        
+        [self ShowAlertView];
+    }
+#else
+    if (![ExternalFunctions isDownloaded:city]) {
+        
+        [self ShowAlertView];
+    }
+    //    else
+    //        [self prepareAroundMe];
 #endif
 
 
@@ -739,5 +775,236 @@ static NSString *city = @"";
 #warning добавить гуглоэвент
    // [self updateOffsets];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-(void)ShowAlertView{
+    //NSString *str = [NSString stringWithFormat:@"%@ %@ Mb",AMLocalizedString(@"You are up to download LikeLik Catalogue", nil),[self retrieveFileSizeFromServer]];
+    NSString *str = AMLocalizedString(@"You are up to download LikeLik Catalogue", nil);
+    UIAlertView *message1 = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Download", nil)
+                                                       message:str
+                                                      delegate:self
+                                             cancelButtonTitle:AMLocalizedString(@"Next time", nil)
+                                             otherButtonTitles:@"Ok",nil];
+    [message1 show];
+    
+}
+
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0){
+    }
+    else{
+        [self startDownloading];
+    }
+}
+
+- (void) AFdownload : (NSString *) filename fromURL : (NSString *) likelikUrl{
+    
+    
+    self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:self.HUDfade];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    self.HUDfade.mode = MBProgressHUDAnimationFade;
+    self.HUDfade.removeFromSuperViewOnHide = YES;
+    self.HUDfade.delegate = self;
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
+        [self.HUDfade show:YES];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    NSString *url = [[NSString alloc] initWithFormat:@"%@%@.zip",likelikUrl,filename];
+    //  log([NSString stringWithFormat:@"%@",url);
+    NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",filename];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    AFDownloadRequestOperation *operation = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:path shouldResume:YES];
+    
+    [operation setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [self DownloadSucceeded:filename];
+        
+        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x"]];
+        self.HUDfade.mode = MBProgressHUDModeCustomView;
+        self.HUDfade.labelText = AMLocalizedString(@"Ready!", nil);
+        [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
+                                onTarget:self withObject:nil animated:YES];
+        
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross2@2x"]];
+        self.HUDfade.mode = MBProgressHUDModeCustomView;
+        self.HUDfade.labelText = AMLocalizedString(@"Download error", nil);
+        [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
+                                onTarget:self withObject:nil animated:YES];
+        
+        [self DownloadError:error];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    [operation start];
+    double CurrentTime1 = CACurrentMediaTime();
+    
+    //Setup Upload block to return progress of file upload
+    [operation setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+        BOOL i = YES;
+        double currentTime = 0.0;
+        if (i) {
+            currentTime = CurrentTime1;
+            i = NO;
+        }
+        
+        double currentTime2 = CACurrentMediaTime();
+        
+        float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile * 100;
+        //
+        //        int result = (int)floorf(progress*100);
+        double speed = (totalBytesRead / (currentTime2 - currentTime));
+        double bytes_left = totalBytesExpected - totalBytesRead;
+        double time_left = bytes_left / speed;
+        
+        int secs = time_left;
+        //int h = secs / 3600;
+        int m = secs / 60 % 60;
+        int s = secs % 60;
+        
+        //        NSString *text = [NSString stringWithFormat:@"%02d:%02d", m, s];
+        if (m == 0 && s==0) {
+            
+            self.HUDfade.labelText = AMLocalizedString(@"Data processing", nil);
+        }
+        else
+            self.HUDfade.labelText = [NSString stringWithFormat:@"%.1f %%",progress];
+        //log([NSString stringWithFormat:@"Time left: %@ \n Speed: %f",text,speed);
+        currentTime = currentTime2;
+    }];
+    
+    
+    
+}
+
+- (void) DownloadSucceeded:(NSString *)fileName {
+    NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",fileName];
+    NSString *newCataloguePath = [[NSString alloc]initWithFormat:@"%@/%@/catalogue.plist",[ExternalFunctions docDir],fileName];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path1 = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
+    [[NSFileManager defaultManager] removeItemAtPath:path1 error:nil];
+    [ExternalFunctions unzipFileAt:path ToDestination:[paths objectAtIndex:0]];
+    NSString *crapPath = [[ExternalFunctions docDir]stringByAppendingPathComponent:@"__MACOSX"];
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:crapPath error:nil];
+    
+    NSString *cataloguesPath = [[ExternalFunctions docDir]stringByAppendingPathComponent:@"catalogue.plist"];
+    
+    NSMutableArray *catalogueArray = [[NSMutableArray alloc] initWithContentsOfFile:cataloguesPath];
+    NSArray *newCatalogues = [[NSArray alloc] initWithContentsOfFile:newCataloguePath];
+    NSDictionary *temp;
+    
+    for (int i = 0; i < [newCatalogues count]; i++) {
+        if ([[[newCatalogues objectAtIndex:i] objectForKey:@"city_EN"] isEqualToString:fileName]) {
+            temp = [newCatalogues objectAtIndex:i];
+        }
+    }
+    for (int i = 0; i < [catalogueArray count]; i++) {
+        if ([[[catalogueArray objectAtIndex:i] objectForKey:@"city_EN"] isEqualToString:fileName]) {
+            [catalogueArray removeObjectAtIndex:i];
+        }
+    }
+    
+    //#warning один раз тут вылетело, но приложение было свернуто [catalogueArray addObject:temp];
+    [catalogueArray addObject:temp];
+    
+    [[NSFileManager defaultManager] removeItemAtPath:cataloguesPath error:nil];
+    
+    [catalogueArray writeToFile:cataloguesPath atomically:YES];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:catalogueArray forKey:catalogue];
+    
+    [ExternalFunctions addCityToDownloaded:fileName];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAllCatalogues" object:nil];
+}
+
+- (NSError *) DownloadError:(NSError *) error{
+    // log([NSString stringWithFormat:@"error = %d",error.code);
+    // log([NSString stringWithFormat:@"error description = %@",error.description);
+    return error;
+}
+
+- (void)waitForTwoSeconds {
+    sleep(3);
+}
+
+- (void) startDownloading {
+    //    log([NSString stringWithFormat:@"Согласился на покупку");
+    
+    Reachability *reach = [Reachability reachabilityWithHostname:@"google.com"];
+    
+    if ([reach isReachable]) {
+        if ([reach isReachableViaWiFi]) {
+            // On WiFi
+            
+            if(IS_IPHONE_5 == 1)
+                [self AFdownload:city fromURL:likelikurlwifi_5];
+            else
+                [self AFdownload:city fromURL:likelikurlwifi_4];
+            
+            //    log([NSString stringWithFormat:@"Downloading via Wi-Fi");
+        }
+        else {
+            // On Cell
+            
+            
+            
+            if(IS_IPHONE_5 == 1)
+                [self AFdownload:city fromURL:likelikurlcell_5];
+            else
+                [self AFdownload:city fromURL:likelikurlcell_4];
+            
+            
+            //    log([NSString stringWithFormat:@"Downloading via cell network");
+        }
+        
+    } else {
+        // Isn't reachable
+        self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:self.HUDfade];
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross2@2x"]];
+        self.HUDfade.mode = MBProgressHUDModeCustomView;
+        self.HUDfade.labelText = AMLocalizedString(@"Download error", nil);
+        [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds) onTarget:self withObject:nil animated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 
 @end
