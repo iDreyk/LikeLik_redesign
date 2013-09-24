@@ -257,11 +257,7 @@ static BOOL NEED_TO_RELOAD = NO;
     if(!self.imageCache)
         self.imageCache = [[NSMutableDictionary alloc] init];
     
-    if ([AppDelegate isiPhone5])
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
-    else
-        VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
-    
     
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(test:)

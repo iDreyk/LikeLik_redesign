@@ -750,13 +750,12 @@ static NSString *city = @"";
 
 
 
-
-
-
-
-
-
-
+#warning popviewcontroller
+#warning регионы
+#warning тайлы
+#warning уведомления
+#warning город
+#warning current location на старте
 -(void)ShowAlertView{
     //NSString *str = [NSString stringWithFormat:@"%@ %@ Mb",AMLocalizedString(@"You are up to download LikeLik Catalogue", nil),[self retrieveFileSizeFromServer]];
     NSString *str = AMLocalizedString(@"You are up to download LikeLik Catalogue", nil);

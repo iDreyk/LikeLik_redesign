@@ -293,7 +293,7 @@ static NSString *LorR=nil;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-#warning открывать чек
+
     if ([[segue identifier] isEqualToString:@"LoginSegue"]) {
         RegistrationViewController *destination = [segue destinationViewController];
         destination.LorR = LorR;

@@ -26,6 +26,9 @@ static BOOL getLocation = NO;
  lon lat передаю, но не появляются в базе
  
  */
+
+
+#warning открывать чек
 -(NSString *)makePassword{
     return [NSString stringWithFormat:@"%@password",self.Password];
 }

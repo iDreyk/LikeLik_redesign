@@ -39,7 +39,6 @@
                                 </state>
                                 <connections>
                                     <action selector="showMessage:" destination="JIy-iL-DUY" eventType="touchUpInside" id="85M-0y-myC"/>
-                                    <segue destination="9As-sn-Nda" kind="push" identifier="CitySegue" id="NuU-1J-Ecu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -57,12 +56,11 @@
                     <connections>
                         <outlet property="Shade" destination="Nnh-UM-e35" id="Os8-KU-0fN"/>
                         <outlet property="fist" destination="jDm-SC-S0C" id="pAN-rW-TrN"/>
-                        <segue destination="AbN-Ke-u38" kind="push" identifier="fistSegue" id="HGA-hb-IJv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WXP-U9-jPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2657" y="875"/>
+            <point key="canvasLocation" x="-2237" y="415"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dVZ-f5-tO7">
@@ -125,12 +123,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="JIy-iL-DUY" kind="relationship" relationship="rootViewController" id="OOH-Zm-Cb3"/>
+                        <segue destination="AbN-Ke-u38" kind="relationship" relationship="rootViewController" id="vim-AA-94f"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1KO-aZ-Q5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3261" y="875"/>
+            <point key="canvasLocation" x="-2457" y="1297"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="2PX-zI-SL8">
@@ -1193,12 +1191,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="mgC-16-kZj"/>
         <segue reference="9er-Oy-Z8P"/>
-        <segue reference="Cw4-hf-G0e"/>
         <segue reference="tB3-mu-76X"/>
-        <segue reference="mIE-ck-FCQ"/>
-        <segue reference="b4H-ap-9IP"/>
+        <segue reference="Cw4-hf-G0e"/>
         <segue reference="CID-7V-uDc"/>
+        <segue reference="b4H-ap-9IP"/>
+        <segue reference="mIE-ck-FCQ"/>
     </inferredMetricsTieBreakers>
 </document>
