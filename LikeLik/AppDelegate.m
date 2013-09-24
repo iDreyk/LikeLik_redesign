@@ -211,7 +211,7 @@ static NSString *const kAllowTracking = @"allowTracking";
 #if VIENNA
     self.tracker = [[GAI sharedInstance] trackerWithName:@"Likelik Vienna"
                                               trackingId:@"UA-44026994-3"];
-    [AppDelegate LLLog:[NSString stringWithFormat:@"LikeLik Vienna onboard"];
+    [AppDelegate LLLog:[NSString stringWithFormat:@"LikeLik Vienna onboard"]];
 #endif
     
 #if LIKELIK
@@ -232,7 +232,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         [self.window makeKeyAndVisible];
         UIImageView *image =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 #if VIENNA
-        image.backgroundColor = [UIColor colorWithPatternImage:UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]]];
+        image.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]]];
         image.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]];
 #else
         image.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
