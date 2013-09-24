@@ -10,11 +10,10 @@
 #import <MapBox/MapBox.h>
 #import "MBProgressHUD.h"
 
-@interface CategoryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,RMMapViewDelegate,UIScrollViewDelegate>{
+@interface CategoryViewController : UIViewController <RMMapViewDelegate,UIScrollViewDelegate>{
         NSArray *AroundArray;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *CityImage;
-@property (nonatomic,retain)IBOutlet UILabel *CityName;
 @property (nonatomic,retain)IBOutlet UIImageView *GradientUnderLabel;
 @property (weak, nonatomic) IBOutlet NSString *Image;
 @property (weak, nonatomic) IBOutlet NSString *Label;

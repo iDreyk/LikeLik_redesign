@@ -128,10 +128,6 @@ static NSString *city = @"";
 #endif
 
 
-    self.CityName.text = self.Label;
-    self.CityName.font = [AppDelegate OpenSansSemiBold:60];
-    self.CityName.textColor = [UIColor whiteColor];
-//    self.CityImage.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:self.Label]];
     self.CityImage.image =  [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:self.Label]];
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
     
@@ -145,10 +141,10 @@ static NSString *city = @"";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     NSURL *url;
-    if ([self.CityName.text isEqualToString:@"Moscow"] || [self.CityName.text isEqualToString:@"Москва"] || [self.CityName.text isEqualToString:@"Moskau"]){
+    if ([self.Label isEqualToString:@"Moscow"] || [self.Label isEqualToString:@"Москва"] || [self.Label isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
     }
-    if ([self.CityName.text isEqualToString:@"Vienna"] || [self.CityName.text isEqualToString:@"Вена"] || [self.CityName.text isEqualToString:@"Wien"]){
+    if ([self.Label isEqualToString:@"Vienna"] || [self.Label isEqualToString:@"Вена"] || [self.Label isEqualToString:@"Wien"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
     }
     
@@ -188,12 +184,12 @@ static NSString *city = @"";
                                                object: nil];
 #endif
     
-    if([ExternalFunctions isDownloaded:self.CityName.text]){
+    if([ExternalFunctions isDownloaded:self.Label]){
         
         [self.placeViewMap addSubview:self.MapPlace];
     }
     IS_LOADING = YES;
-    if([ExternalFunctions isDownloaded:self.CityName.text]){
+    if([ExternalFunctions isDownloaded:self.Label]){
         UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
         fade.tag = FADE_TAG;
         fade.backgroundColor = [UIColor clearColor];
@@ -201,7 +197,7 @@ static NSString *city = @"";
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // post an NSNotification that loading has started
             
-            AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
+            AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.Label];
             RMAnnotation *marker1;
             
             for (int i=0; i<[AroundArray count]; i++) {
@@ -229,11 +225,11 @@ static NSString *city = @"";
     self.categoryView.contentSize = CGSizeMake(320, 560);
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;
-    CGFloat yOrigin = 104; // 20 + 44
+    CGFloat yOrigin = 60; // 20 (без + 44)
     CGFloat yOffset = 10;
     
     if(self.view.bounds.size.height == 460.0){
-        yOrigin = 74;
+        yOrigin = 0;
         self.categoryView.contentSize = CGSizeMake(320, 500);
     }
     
@@ -277,7 +273,7 @@ static NSString *city = @"";
         ++i;
     }
     
-    if([ExternalFunctions isDownloaded:self.CityName.text]){
+    if([ExternalFunctions isDownloaded:self.Label]){
         UIView *coolEf = [[UIView alloc] initWithFrame:self.view.frame];
         coolEf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         coolEf.tag = EF_TAG;
@@ -308,8 +304,8 @@ static NSString *city = @"";
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text]] > 50000.0) {
-        self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName.text].coordinate;
+    if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.Label]] > 50000.0) {
+        self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.Label].coordinate;
         //    log([NSString stringWithFormat:@"Взяли центр города");
         //        [self.locationButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         //        self.locationButton.enabled = NO;
@@ -331,7 +327,7 @@ static NSString *city = @"";
     self.navigationItem.leftBarButtonItem.enabled = YES;
     self.Label = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
-    self.CityName.text = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
+    self.Label = [[ExternalFunctions cityCatalogueForCity:city] objectForKey:[ExternalFunctions getLocalizedString:@"city"]];
     for (int i = 0; i < 12; ++i){
         UILabel *label = (UILabel *)[[self.frameArray objectAtIndex:i] viewWithTag:textinFrame];
         label.text = AMLocalizedString([self.CellArray objectAtIndex:i], nil);
@@ -431,10 +427,10 @@ static NSString *city = @"";
 
 -(void)reloadCatalogue{
     NSURL *url;
-    if ([self.CityName.text isEqualToString:@"Moscow"] || [self.CityName.text isEqualToString:@"Москва"] || [self.CityName.text isEqualToString:@"Moskau"]){
+    if ([self.Label isEqualToString:@"Moscow"] || [self.Label isEqualToString:@"Москва"] || [self.Label isEqualToString:@"Moskau"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
     }
-    if ([self.CityName.text isEqualToString:@"Vienna"] || [self.CityName.text isEqualToString:@"Вена"] || [self.CityName.text isEqualToString:@"Wien"]){
+    if ([self.Label isEqualToString:@"Vienna"] || [self.Label isEqualToString:@"Вена"] || [self.Label isEqualToString:@"Wien"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
     }
     RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
@@ -466,7 +462,7 @@ static NSString *city = @"";
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // post an NSNotification that loading has started
-        AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.CityName.text];
+        AroundArray = [ExternalFunctions getPlacesAroundMyLocationInCity:self.Label];
         RMAnnotation *marker1;
         for (int i=0; i<[AroundArray count]; i++) {
             CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
@@ -658,7 +654,7 @@ static NSString *city = @"";
         PlaceslistViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;//[self.CellArray objectAtIndex:row];
         destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
-        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.CityName.text];//[self favoritePlaces];//[self placesInCategory:[self.CellArray objectAtIndex:row]];
+        destination.readyArray = [ExternalFunctions getAllFavouritePlacesInCity:self.Label];//[self favoritePlaces];//[self placesInCategory:[self.CellArray objectAtIndex:row]];
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Favorites Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
@@ -722,14 +718,14 @@ static NSString *city = @"";
     if (yOffset > 0) {
         //self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
         imback.alpha = 1.0 - yOffset/300;
-        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-6-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
+      //  self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-6-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
        // self.categoryView.frame = CGRectMake(0, 44-(yOffset), 320, self.categoryView.frame.size.height);
         //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
         //self.categoryView.frame = CGRectMake(self.categoryView.frame.origin.x,self.categoryView.frame.origin.y-yOffset,self.categoryView.frame.size.width,self.categoryView.frame.size.height);
     }
     else{
         //self.CityImage.frame = CGRectMake(0, 0.0, 320, self.CityImage.frame.size.height);
-        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-6,self.CityName.frame.size.width,self.CityName.frame.size.height);
+      //  self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-6,self.CityName.frame.size.width,self.CityName.frame.size.height);
        // self.categoryView.frame = CGRectMake(0, 44.0, 320, self.categoryView.frame.size.height);
 
         //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,0.0,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
