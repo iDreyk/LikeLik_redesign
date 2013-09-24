@@ -644,9 +644,10 @@ static NSString *city = @"";
     if ([[segue identifier] isEqualToString:@"CategorySegue"]) {
         PlaceslistViewController *destination = [segue destinationViewController];
         destination.CityNameText = self.Label;
-        destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
+      //  destination.Image = [ExternalFunctions larkePictureOfCity:self.Label];
         destination.readyArray = [self placesInCategory:[self.CellArray objectAtIndex:row]];
         destination.CityNameString = AMLocalizedString([self.CellArray objectAtIndex:row], nil);
+        
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Screen",currentCity,[self.CellArray objectAtIndex:row]]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     }

@@ -115,8 +115,8 @@ static BOOL NEED_TO_RELOAD = NO;
     
     
     JUST_APPEAR = YES;
-    AroundArray = [[NSArray alloc] initWithArray:self.readyArray];
     
+    AroundArray = [[NSArray alloc] initWithArray:self.readyArray];    
 #if LIKELIK
     self.mapView.hidden = YES;
     self.ViewforMap.hidden = YES;
@@ -873,12 +873,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         distance.textColor = [UIColor grayColor];
         distance.backgroundColor = [UIColor clearColor];
         [back addSubview:distance];
-        
-        //        UILabel *goLabel = [InterfaceFunctions goLabelCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
-        //        [back addSubview:goLabel];
-        //        UIImageView *arrow = [InterfaceFunctions actbwithCategory:[[CategoryPlaces objectAtIndex:row] objectForKey:@"Category"]];
-        //        [back addSubview:arrow];
-        
     }
 
     NSNumber *distance = [[AroundArray objectAtIndex:row] objectForKey:@"Distance"];
