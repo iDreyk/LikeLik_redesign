@@ -119,7 +119,6 @@ static BOOL NEED_TO_RELOAD = NO;
     AroundArray = [[NSArray alloc] initWithArray:self.readyArray];    
 #if LIKELIK
     self.mapView.hidden = YES;
-    self.ViewforMap.hidden = YES;
     self.Map.hidden = YES;
     NSURL *url;
     if ([self.CityNameText isEqualToString:@"Moscow"] || [self.CityNameText isEqualToString:@"Москва"] || [self.CityNameText isEqualToString:@"Moskau"]){
@@ -130,21 +129,13 @@ static BOOL NEED_TO_RELOAD = NO;
     }
     
     RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
-    self.Map = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
-    self.Map.delegate = self;
-    // self.Map.hideAttribution = YES;
+    [self.Map setTileSource:offlineSource];
     self.Map.showsUserLocation = YES;
-    if ([AppDelegate isiPhone5])
-        self.Map.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
-    else
-        self.Map.frame = CGRectMake(0.0, 0.0, 320.0, 416.0);
     self.Map.minZoom = 13;
     self.Map.zoom = 13;
-    //self.Map.maxzoom = 17;
-    CLLocation *coord =[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText];
-    self.Map.centerCoordinate = coord.coordinate;
+
+    self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate;
     [self.Map setAdjustTilesForRetinaDisplay:YES];
-    [self.ViewforMap addSubview:self.Map];
     RMAnnotation *marker1;
     for (int i=0; i<[AroundArray count]; i++) {
         CLLocation *tmp = [[AroundArray objectAtIndex:i] objectForKey:@"Location"];
@@ -208,7 +199,7 @@ static BOOL NEED_TO_RELOAD = NO;
    // self.CityImage.hidden = NO;
     self.CityName.hidden = NO;
     self.PlacesTable.hidden =NO;
-    self.ViewforMap.hidden = YES;
+    self.Map.hidden = YES;
     self.locationButton.hidden = YES;
     
     
@@ -494,8 +485,8 @@ static BOOL NEED_TO_RELOAD = NO;
     self.CityName.hidden=!self.CityName.hidden;
     self.PlacesTable.hidden=!self.PlacesTable.hidden;
 #if LIKELIK
-    self.ViewforMap.hidden=!self.ViewforMap.hidden;
-    if (!self.ViewforMap.hidden) {
+    self.Map.hidden=!self.Map.hidden;
+    if (!self.Map.hidden) {
           [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Map Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
           [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     }
@@ -1180,7 +1171,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 
 
 - (void)viewDidUnload {
-    [self setViewforMap:nil];
-    [super viewDidUnload];
+   [super viewDidUnload];
 }
 @end

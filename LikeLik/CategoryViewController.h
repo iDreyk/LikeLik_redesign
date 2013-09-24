@@ -27,9 +27,8 @@
 
 
 @property (retain, nonatomic) IBOutlet RMMapView *MapPlace;
-@property (weak, nonatomic) IBOutlet UIView *PlaceView;
+@property (nonatomic,retain) IBOutlet NSURL *MapURL;
 @property (strong, nonatomic) IBOutlet UIView *frame1;
-@property (nonatomic,retain) IBOutlet UIView *placeViewMap;
 -(void)search:(id)sender;
 - (void)updateOffsets;
 -(IBAction)ShowMap:(id)sender;

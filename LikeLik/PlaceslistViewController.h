@@ -45,7 +45,6 @@
 @property (retain, nonatomic) IBOutlet RMMapView *Map;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *SegmentedMapandTable;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SearchButton;
-@property (weak, nonatomic) IBOutlet UIView *ViewforMap;
 @property (nonatomic,retain)        MBProgressHUD  *HUD;
 @property (nonatomic,retain) UIButtonWithAditionalNum *knuck;
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;

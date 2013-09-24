@@ -259,9 +259,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Va-kC-PQQ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Va-kC-PQQ" customClass="RMMapView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1FC-V3-3wh" id="r3p-Zw-Epc"/>
+                                </connections>
                             </view>
                             <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teU-sI-kfT">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
@@ -353,10 +356,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="Map" destination="2Va-kC-PQQ" id="JHG-CE-et4"/>
                         <outlet property="PlacesTable" destination="rOd-xd-e34" id="S7u-F6-Ejj"/>
                         <outlet property="SearchButton" destination="zzm-Cp-rtB" id="mU0-Rx-nyb"/>
                         <outlet property="SegmentedMapandTable" destination="KdP-xq-s9v" id="nvH-0Y-jqf"/>
-                        <outlet property="ViewforMap" destination="2Va-kC-PQQ" id="87H-Iw-276"/>
                         <outlet property="locationButton" destination="xP9-xf-rsy" id="jid-tn-dgZ"/>
                         <outlet property="mapView" destination="teU-sI-kfT" id="QcM-ym-gRu"/>
                         <segue destination="Raj-iV-euz" kind="push" identifier="MapSegue" id="Tjm-t9-blW"/>
@@ -444,9 +447,12 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veT-Xa-uYa">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                             </scrollView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aua-JJ-4wB">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aua-JJ-4wB" customClass="RMMapView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9As-sn-Nda" id="BnU-6K-BMH"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -471,8 +477,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="MapPlace" destination="aua-JJ-4wB" id="gDi-Nj-G1V"/>
                         <outlet property="categoryView" destination="veT-Xa-uYa" id="H1G-b2-4jV"/>
-                        <outlet property="placeViewMap" destination="aua-JJ-4wB" id="aaE-BO-1RX"/>
                         <segue destination="1FC-V3-3wh" kind="push" identifier="AroundmeSegue" id="NbR-YX-niO"/>
                         <segue destination="kAC-G7-7GR" kind="push" identifier="VisualtourSegue" id="K8P-hg-1dP"/>
                         <segue destination="pV2-Ha-ulb" kind="push" identifier="PracticalinfoSegue" id="Cw4-hf-G0e"/>
@@ -1191,8 +1197,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <segue reference="9er-Oy-Z8P"/>
         <segue reference="Cw4-hf-G0e"/>
         <segue reference="tB3-mu-76X"/>
-        <segue reference="lP0-Ve-8FZ"/>
-        <segue reference="Ewz-Pd-opy"/>
+        <segue reference="mIE-ck-FCQ"/>
         <segue reference="b4H-ap-9IP"/>
+        <segue reference="CID-7V-uDc"/>
     </inferredMetricsTieBreakers>
 </document>

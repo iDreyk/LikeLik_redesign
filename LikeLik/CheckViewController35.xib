@@ -184,6 +184,7 @@
         <image name="592_159 Ribbon_2.png" width="296" height="79"/>
         <image name="background_with_watermark_check-568h.png" width="276" height="438"/>
         <image name="button_cancel_check_tapped.png" width="263" height="45"/>
+        <image name="button_cancel_check_tapped.png" width="263" height="45"/>
         <image name="check_background_1-568h.png" width="640" height="1136"/>
         <image name="gradient_check.png" width="280" height="35"/>
     </resources>

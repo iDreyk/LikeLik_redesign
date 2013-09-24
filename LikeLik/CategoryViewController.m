@@ -183,27 +183,19 @@ static NSString *city = @"";
     if ([self.Label isEqualToString:@"Vienna"] || [self.Label isEqualToString:@"Вена"] || [self.Label isEqualToString:@"Wien"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
     }
-    
     RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
-    self.MapPlace.showsUserLocation = YES;
-    self.MapPlace = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
+    [self.MapPlace setTileSource:offlineSource];
     self.MapPlace.hidden = NO;
     self.MapPlace.hideAttribution = YES;
     self.MapPlace.delegate = self;
-    
-    if ([AppDelegate isiPhone5])
-        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 504.0);
-    else
-        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, 450.0);
-    
     
     self.MapPlace.minZoom = 10;
     self.MapPlace.zoom = 13;
     self.MapPlace.maxZoom = 17;
     
     [self.MapPlace setAdjustTilesForRetinaDisplay:YES];
-    self.MapPlace.showsUserLocation = YES;
-    [self.placeViewMap setHidden:YES];
+  //  self.MapPlace.showsUserLocation = YES;
+    [self.MapPlace setHidden:YES];
 
 #else
     [self.placeViewMap setHidden:YES];
@@ -220,10 +212,7 @@ static NSString *city = @"";
                                                object: nil];
 #endif
     
-    if([ExternalFunctions isDownloaded:self.Label]){
-        
-        [self.placeViewMap addSubview:self.MapPlace];
-    }
+    
     IS_LOADING = YES;
     if([ExternalFunctions isDownloaded:self.Label]){
         UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
@@ -267,6 +256,7 @@ static NSString *city = @"";
     if(self.view.bounds.size.height == 460.0){
         yOrigin = 0;
         self.categoryView.contentSize = CGSizeMake(320, 500);
+#warning поправить contentSize чтобы плитки не провисали на виде, а всегда были под пружиной на 4.0 и 3.5
     }
     
     self.frame1 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, yOrigin + yOffset, frameSize, frameSize)];
@@ -377,7 +367,7 @@ static NSString *city = @"";
 {
     [super viewWillAppear:animated];
     self.categoryView.contentOffset = CGPointMake(self.categoryView.contentOffset.x, 0);
-    if (self.placeViewMap.hidden){
+    if (self.MapPlace.hidden){
         [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     }
     else{
@@ -462,34 +452,7 @@ static NSString *city = @"";
 }
 
 -(void)reloadCatalogue{
-    NSURL *url;
-    if ([self.Label isEqualToString:@"Moscow"] || [self.Label isEqualToString:@"Москва"] || [self.Label isEqualToString:@"Moskau"]){
-        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
-    }
-    if ([self.Label isEqualToString:@"Vienna"] || [self.Label isEqualToString:@"Вена"] || [self.Label isEqualToString:@"Wien"]){
-        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
-    }
-    RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
-    self.MapPlace.showsUserLocation = YES;
-    self.MapPlace = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:offlineSource];
-    self.MapPlace.hidden = NO;
-    self.MapPlace.hideAttribution = YES;
-    self.MapPlace.delegate = self;
-    
-    if ([AppDelegate isiPhone5])
-        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, self.view.frame.size.height);
-    else
-        self.MapPlace.frame = CGRectMake(0.0, 0.0, 320.0, self.view.frame.size.height);
-    
-    
-    self.MapPlace.minZoom = 10;
-    self.MapPlace.zoom = 13;
-    self.MapPlace.maxZoom = 17;
-    
-    [self.MapPlace setAdjustTilesForRetinaDisplay:YES];
-    self.MapPlace.showsUserLocation = YES;
-    [self.placeViewMap setHidden:YES];
-    [self.placeViewMap addSubview:self.MapPlace];
+    //[self.placeViewMap addSubview:self.MapPlace];
     
     UIView *fade = [[UIView alloc] initWithFrame:self.navigationController.navigationBar.frame];
     fade.tag = FADE_TAG;
@@ -615,8 +578,8 @@ static NSString *city = @"";
 
 -(IBAction)ShowMap:(id)sender{
     
-    self.placeViewMap.hidden = !self.placeViewMap.hidden;
-    if (self.placeViewMap.hidden){
+    self.MapPlace.hidden = !self.MapPlace.hidden;
+    if (self.MapPlace.hidden){
         
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Category Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
