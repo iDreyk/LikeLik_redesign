@@ -113,6 +113,7 @@ static NSString *city = @"";
     [_locationManager startUpdatingLocation];
     
     self.categoryView.backgroundColor = [UIColor clearColor];
+    
     [self.categoryView setScrollEnabled:YES];
     self.categoryView.showsHorizontalScrollIndicator = NO;
     self.categoryView.showsVerticalScrollIndicator = NO;
@@ -120,11 +121,12 @@ static NSString *city = @"";
     [self.categoryView setContentSize:CGSizeMake(320, 480)];
     [self.categoryView flashScrollIndicators];
     self.categoryView.delegate = self;
-    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
     
-    background.backgroundColor = [UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
-    [self.categoryView addSubview:background];
-    
+    background.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] scaledToSize:CGSizeMake(320, 568)]];//[UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
+    [self.view addSubview:background];
+    [self.view bringSubviewToFront:self.categoryView];
+    [self.view bringSubviewToFront:self.MapPlace];
     //    self.Table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
 

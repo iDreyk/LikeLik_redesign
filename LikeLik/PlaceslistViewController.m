@@ -183,6 +183,13 @@ static BOOL NEED_TO_RELOAD = NO;
     
     self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
     self.backgroundView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
+    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    
+    background.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] scaledToSize:CGSizeMake(320, 568)]];//[UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
+    [self.view addSubview:background];
+    [self.view bringSubviewToFront:self.PlacesTable];
+    [self.view bringSubviewToFront:self.mapView];
+    [self.view bringSubviewToFront:self.Map];
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
