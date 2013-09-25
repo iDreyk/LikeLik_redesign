@@ -773,6 +773,9 @@ static NSString *city = @"";
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0){
+#if LIKELIK
+        [self.navigationController popViewControllerAnimated:YES];
+#endif
     }
     else{
         [self startDownloading];
