@@ -65,6 +65,7 @@ static BOOL JUST_APPEAR = YES;
     
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Start Screen"];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
     JUST_APPEAR = YES;
     
     [self.navigationItem setTitleView:[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", Nil) AndColor:[InterfaceFunctions corporateIdentity]]];
