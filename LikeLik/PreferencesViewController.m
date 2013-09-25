@@ -47,7 +47,7 @@ static NSString *LorR=nil;
         RegisterAndLogin = @[];
     Language = @[@"English",@"Русский",@"Deutsch",@"Japanese"];
     Measures = @[@"Miles",@"Kilometers"];
-    Information = @[AMLocalizedString(@"Terms of use", nil),AMLocalizedString(@"About", nil),AMLocalizedString(@"Support", nil),AMLocalizedString(@"More LikeLik Apps", nil)];
+    Information = @[AMLocalizedString(@"About", nil),AMLocalizedString(@"Support", nil),AMLocalizedString(@"More LikeLik Apps", nil)];
     
     self.tableView.backgroundView = [InterfaceFunctions backgroundView];//[[UIImageView alloc] initWithImage: [UIImage imageNamed:@"bg.png"]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -225,16 +225,16 @@ static NSString *LorR=nil;
         LorR = @"Login";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
+//    if ([indexPath section] == 3 && [indexPath row] == 0) {
+//        [self performSegueWithIdentifier:@"TermsofUse" sender:self];
+//    }
     if ([indexPath section] == 3 && [indexPath row] == 0) {
-        [self performSegueWithIdentifier:@"TermsofUse" sender:self];
-    }
-    if ([indexPath section] == 3 && [indexPath row] == 1) {
         [self performSegueWithIdentifier:@"About" sender:self];
     }
-    if ([indexPath section] == 3 && [indexPath row] == 2) {
+    if ([indexPath section] == 3 && [indexPath row] == 1) {
         [self performSegueWithIdentifier:@"Support" sender:self];
     }
-    if ([indexPath section] == 3 && [indexPath row] == 3) {
+    if ([indexPath section] == 3 && [indexPath row] == 2) {
         [self performSegueWithIdentifier:@"MoreLikeLik" sender:self];
     }
     
@@ -287,7 +287,7 @@ static NSString *LorR=nil;
     
     Language = @[@"English",@"Русский",@"Deutsch",@"Japanese"];
     Measures = @[@"Miles",@"Kilometers"];
-    Information = @[AMLocalizedString(@"Terms of use", nil),AMLocalizedString(@"About", nil),AMLocalizedString(@"Support", nil),AMLocalizedString(@"More LikeLik Apps", nil)];
+    Information = @[AMLocalizedString(@"About", nil),AMLocalizedString(@"Support", nil),AMLocalizedString(@"More LikeLik Apps", nil)];
     
     
 }
@@ -302,11 +302,11 @@ static NSString *LorR=nil;
         ScrollinfoViewController *destination = [segue destinationViewController];
         destination.Parent = @"About";
     }
-    if ([[segue identifier] isEqualToString:@"TermsofUse"]) {
-        ScrollinfoViewController *destination = [segue destinationViewController];
-        destination.Parent = @"Terms";
-    }
-    
+//    if ([[segue identifier] isEqualToString:@"TermsofUse"]) {
+//        ScrollinfoViewController *destination = [segue destinationViewController];
+//        destination.Parent = @"Terms";
+//    }
+//    
     //TermsofUse
 }
 @end

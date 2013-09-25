@@ -12,14 +12,11 @@
 @end
 
 @interface ScrollinfoViewController : UIViewController {
-    NSString *cataloguesPath;
-    NSMutableArray *catalogues;
     
 }
-@property (nonatomic,retain) NSString *CityName;
-@property (nonatomic,retain) UIWebView *webView;
-@property (weak, nonatomic) IBOutlet UILabel *CityLabel;
-@property (weak, nonatomic) IBOutlet UIScrollView *InfoScroll;
-@property (nonatomic,retain)SubText1 *label;
+#warning добавить крутилки на webview
 @property (nonatomic,retain) NSString *Parent;
+@property (nonatomic,retain) NSString *CityName;
+@property (nonatomic,retain) IBOutlet UIWebView *Likelikcom;
+@property (nonatomic,retain) IBOutlet SubText1 *Text;
 @end
