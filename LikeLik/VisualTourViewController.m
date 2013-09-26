@@ -195,7 +195,6 @@ static BOOL infoViewIsOpen = NO;
     
     _scroll.delegate=self;
         photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
-//    log([NSString stringWithFormat:@"photos count = %d",[photos count]);
     CGFloat xOrigin = 0 * self.view.frame.size.width;
     UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
     awesomeView.backgroundColor = [UIColor colorWithRed:0.5/1 green:0.5 blue:0.5 alpha:1];
@@ -206,17 +205,13 @@ static BOOL infoViewIsOpen = NO;
     [_scroll addSubview:awesomeView];
     
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
-    
     self.navigationItem.titleView =[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Visual Tour", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     
     UIButton *btn = [InterfaceFunctions map_button:1];
     [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    
- 
-    
-        NSArray *coord = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
-     
+
+    NSArray *coord = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
     Red_line = [[UILabel alloc] initWithFrame:CGRectMake(14.0, 10.0, 250.0, 50.0)];
     Red_line.text =  [[coord objectAtIndex:0] objectForKey:@"Name"];
     Red_line.font =[AppDelegate OpenSansSemiBold:28];

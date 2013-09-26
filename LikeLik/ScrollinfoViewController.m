@@ -69,12 +69,12 @@
         
     }
     if ([self.Parent isEqualToString:@"Practical"]){
-        self.Text.text = [NSString stringWithFormat:@"%@ \n%@",self.CityName,[ExternalFunctions getPracticalInfoForCity:self.CityName]];
+        self.Text.text = [NSString stringWithFormat:@"%@",[ExternalFunctions getPracticalInfoForCity:self.CityName]];
         self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions corporateIdentity]];
         self.Text.hidden = NO;
         self.Text.font = [AppDelegate OpenSansRegular:28];
         self.Text.textColor = [UIColor whiteColor];
-        self.Text.backgroundColor =  [UIColor grayColor];
+        self.Text.backgroundColor =  [UIColor clearColor];
         self.Text.editable = NO;
 
 

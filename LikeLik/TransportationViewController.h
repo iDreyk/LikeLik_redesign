@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TransportationViewController : UIViewController<UIScrollViewDelegate>
+@interface TransportationViewController : UIViewController<UIScrollViewDelegate>{
+    NSString *cataloguesPath;
+    NSMutableArray *catalogues;
+}
 @property (nonatomic,retain) NSString *CityName;
-
-
 #warning метро отваливается
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 @property (nonatomic, retain) UIImageView *awesomeview;
