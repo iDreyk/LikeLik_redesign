@@ -664,9 +664,6 @@ static NSString *LorR = nil;
     
    // [self.mapView addSubview:self.locationButton];
 #endif
-    
-    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@" %@ %@ %@",currentCity,self.PlaceCategory,self.PlaceNameEn ]];
-    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
 
 }
 
@@ -828,6 +825,8 @@ static NSString *LorR = nil;
         [[NSUserDefaults standardUserDefaults] setObject:self.PlaceName forKey:@"PlaceTemp"];
         [[NSUserDefaults standardUserDefaults] setObject:self.PlaceCategory forKey:@"CategoryTemp"];
         [[NSUserDefaults standardUserDefaults] setObject:self.PlaceCityName forKey:@"CityTemp"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.PlaceNameEn forKey:@"PlaceTempEN"];
+        [[NSUserDefaults standardUserDefaults] setObject:currentCity forKey:@"CityTempEN"];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:checkOpen
                                                             object:self];
@@ -974,6 +973,9 @@ static NSString *LorR = nil;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@" %@ %@ %@",currentCity,self.PlaceCategory,self.PlaceNameEn ]];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
             [self tapDetected:nil];
     // [testflight passCheckpoint:self.PlaceName];
     if ([self.fromNotification isEqualToString:@"YES"]){
@@ -1127,8 +1129,7 @@ region.center = start;
             [[NSNotificationCenter defaultCenter] postNotificationName:checkOpen
                                                                 object:self];
             
-            [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Check Screen",currentCity,self.PlaceNameEn]];
-            [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+            
              [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Use Check" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
             [self presentSemiViewController:VC withOptions:@{
              KNSemiModalOptionKeys.pushParentBack    : @(YES),

@@ -198,7 +198,7 @@ static NSString *const kAllowTracking = @"allowTracking";
     ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
     // Initialize Google Analytics with a 120-second dispatch interval. There is a
     // tradeoff between battery usage and timely dispatch.
-    [GAI sharedInstance].dispatchInterval = 5;
+    [GAI sharedInstance].dispatchInterval = 120;
     [GAI sharedInstance].trackUncaughtExceptions = YES;
    
     

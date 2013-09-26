@@ -377,6 +377,8 @@ static BOOL NEED_TO_RELOAD = NO;
         VC.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
         VC.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
         VC.PlaceCity =  [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
+        VC.PlaceNameEN = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTempEN"];
+        VC.PlaceCityEN = [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTempEN"];
         VC.color = [InterfaceFunctions colorTextCategory:@"Category"];
         
         [self presentSemiViewController:VC withOptions:@{
@@ -976,6 +978,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Name"] forKey:@"PlaceTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Category"] forKey:@"CategoryTemp"];
     [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"City"] forKey:@"CityTemp"];
+    [[NSUserDefaults standardUserDefaults] setObject:[temp objectForKey:@"Name_EN"] forKey:@"PlaceTempEN"];
+    [[NSUserDefaults standardUserDefaults] setObject:currentCity forKey:@"CityTempEN"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",sender.tagForCheck] forKey:@"RowTemp"];
   //  [AppDelegate LLLog:[NSString stringWithFormat:@"Check: %@ %@ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"],[[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"]);
     
@@ -992,6 +996,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
             VC.PlaceName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTemp"];
             VC.PlaceCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"];
             VC.PlaceCity =  [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTemp"];
+            VC.PlaceNameEN = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlaceTempEN"];
+            VC.PlaceCityEN = [[NSUserDefaults standardUserDefaults] objectForKey:@"CityTempEN"];
             VC.color = [InterfaceFunctions colorTextCategory:@"Category"];
             
             [self presentSemiViewController:VC withOptions:@{

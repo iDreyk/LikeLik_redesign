@@ -163,7 +163,7 @@ static BOOL foreignversion = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-
+    
     [self check_Open:self];
     
    // self.Label.text = self.PlaceName;
@@ -175,7 +175,8 @@ static BOOL foreignversion = NO;
     self.check_background.image = [InterfaceFunctions check_background];
 
     
-    
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Check Screen",self.PlaceCityEN,self.PlaceNameEN]];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     
 
     self.TextCheck.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:100];
