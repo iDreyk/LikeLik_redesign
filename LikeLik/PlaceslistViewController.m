@@ -554,34 +554,34 @@ static BOOL NEED_TO_RELOAD = NO;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-//    if ([AroundArray count] == 0) {
-//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height/4, 0.0, 0.0)];
-//        [label setText:AMLocalizedString(@"Add to Favorites best places", nil)];
-//        label.numberOfLines = 0;
-//        label.textAlignment = NSTextAlignmentCenter;
-//        [label sizeToFit];
-//        [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
-//        [label setFont:[AppDelegate OpenSansRegular:32]];
-//        [label setBackgroundColor:[UIColor clearColor]];
-//        [label setTextColor:[UIColor whiteColor]];
-//        
-//        UILabel *sublabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0,label.frame.origin.y +label.frame.size.height +40.0,0.0,0.0)];
-//        [sublabel setText:AMLocalizedString(@"To do this, just click on a star when you look interesting place ", nil)];
-//        sublabel.numberOfLines = 0;
-//        sublabel.textAlignment = NSTextAlignmentCenter;
-//        [sublabel sizeToFit];
-//        [sublabel setFrame:CGRectMake((320.0-sublabel.frame.size.width)/2, label.frame.origin.y + label.frame.size.height + 40.0, sublabel.frame.size.width, sublabel.frame.size.height+30)];
-//        [sublabel setFont:[AppDelegate OpenSansRegular:32]];
-//        [sublabel setBackgroundColor:[UIColor clearColor]];
-//        [sublabel setTextColor:[UIColor whiteColor]];
-//        self.gradient_under_cityname.hidden = YES;
-//        self.CityName.hidden = YES;
-//        self.PlacesTable.hidden = YES;
-//        [self.view addSubview:[InterfaceFunctions favourite_star_empty]];
-//        [self.view addSubview:label];
-//        [self.view addSubview:sublabel];
-//
-//    }
+    if ([AroundArray count] == 0) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height/4, 0.0, 0.0)];
+        [label setText:AMLocalizedString(@"Add to Favorites best places", nil)];
+        label.numberOfLines = 0;
+        label.textAlignment = NSTextAlignmentCenter;
+        [label sizeToFit];
+        [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
+        [label setFont:[AppDelegate OpenSansRegular:32]];
+        [label setBackgroundColor:[UIColor clearColor]];
+        [label setTextColor:[UIColor whiteColor]];
+        
+        UILabel *sublabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0,label.frame.origin.y +label.frame.size.height +40.0,0.0,0.0)];
+        [sublabel setText:AMLocalizedString(@"To do this, just click on a star when you look interesting place ", nil)];
+        sublabel.numberOfLines = 0;
+        sublabel.textAlignment = NSTextAlignmentCenter;
+        [sublabel sizeToFit];
+        [sublabel setFrame:CGRectMake((320.0-sublabel.frame.size.width)/2, label.frame.origin.y + label.frame.size.height + 40.0, sublabel.frame.size.width, sublabel.frame.size.height+30)];
+        [sublabel setFont:[AppDelegate OpenSansRegular:32]];
+        [sublabel setBackgroundColor:[UIColor clearColor]];
+        [sublabel setTextColor:[UIColor whiteColor]];
+        self.gradient_under_cityname.hidden = YES;
+        self.CityName.hidden = YES;
+        self.PlacesTable.hidden = YES;
+        [self.view addSubview:[InterfaceFunctions favourite_star_empty]];
+        [self.view addSubview:label];
+        [self.view addSubview:sublabel];
+
+    }
     
     
     return [AroundArray count];
