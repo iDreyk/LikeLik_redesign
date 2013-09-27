@@ -331,6 +331,10 @@
 		91A802AC179558F8007EC5B6 /* cross2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A7179558F8007EC5B6 /* cross2@2x.png */; };
 		91A802AD179558F8007EC5B6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A8179558F8007EC5B6 /* Icon.png */; };
 		91A802AE179558F8007EC5B6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A802A9179558F8007EC5B6 /* Icon@2x.png */; };
+		91BFC4E917F5A3E7009F8D4E /* Moscow_Parallax_Blur.png in Resources */ = {isa = PBXBuildFile; fileRef = 91BFC4E817F5A3E7009F8D4E /* Moscow_Parallax_Blur.png */; };
+		91BFC4EB17F5A6C2009F8D4E /* Moscow_blur.png in Resources */ = {isa = PBXBuildFile; fileRef = 91BFC4EA17F5A6C2009F8D4E /* Moscow_blur.png */; };
+		91BFC4ED17F5AC18009F8D4E /* Vienna_blur.png in Resources */ = {isa = PBXBuildFile; fileRef = 91BFC4EC17F5AC18009F8D4E /* Vienna_blur.png */; };
+		91BFC4EE17F5BC0E009F8D4E /* 512x512 special Series.png in Resources */ = {isa = PBXBuildFile; fileRef = 91B831AD17D8B01C008E6750 /* 512x512 special Series.png */; };
 		91C08F3817771336007B98D3 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C08F3717771336007B98D3 /* StartViewController.m */; };
 		91FE3A091796C387000304D4 /* Moscow in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A071796C387000304D4 /* Moscow */; };
 		91FE3A0A1796C387000304D4 /* Vienna in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A081796C387000304D4 /* Vienna */; };
@@ -812,6 +816,9 @@
 		91A802A8179558F8007EC5B6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		91A802A9179558F8007EC5B6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		91B831AD17D8B01C008E6750 /* 512x512 special Series.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "512x512 special Series.png"; sourceTree = "<group>"; };
+		91BFC4E817F5A3E7009F8D4E /* Moscow_Parallax_Blur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moscow_Parallax_Blur.png; sourceTree = "<group>"; };
+		91BFC4EA17F5A6C2009F8D4E /* Moscow_blur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moscow_blur.png; sourceTree = "<group>"; };
+		91BFC4EC17F5AC18009F8D4E /* Vienna_blur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vienna_blur.png; sourceTree = "<group>"; };
 		91C08F3717771336007B98D3 /* StartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		91FE3A071796C387000304D4 /* Moscow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Moscow; sourceTree = "<group>"; };
 		91FE3A081796C387000304D4 /* Vienna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Vienna; sourceTree = "<group>"; };
@@ -1374,6 +1381,9 @@
 		919E8706173A58E700A25E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				91BFC4EA17F5A6C2009F8D4E /* Moscow_blur.png */,
+				91BFC4EC17F5AC18009F8D4E /* Vienna_blur.png */,
+				91BFC4E817F5A3E7009F8D4E /* Moscow_Parallax_Blur.png */,
 				D05D7BED17BE7EFF00003A16 /* icons */,
 				559AA1C217D9EDDB005362CC /* appData.plist */,
 				91FE3A1F1796C5A2000304D4 /* SoonCities.plist */,
@@ -1639,7 +1649,7 @@
 		919E86F4173A58E700A25E07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = LikeLik;
 				TargetAttributes = {
 					919E86FB173A58E700A25E07 = {
@@ -1761,6 +1771,7 @@
 				9165894B1794409C00F13BF2 /* 44_48 actb_1@2x.png in Resources */,
 				9165894C1794409C00F13BF2 /* 44_48 actb_2@2x.png in Resources */,
 				9165894D1794409C00F13BF2 /* 44_48 actb_3@2x.png in Resources */,
+				91BFC4E917F5A3E7009F8D4E /* Moscow_Parallax_Blur.png in Resources */,
 				9165894E1794409C00F13BF2 /* 44_48 actb_4@2x.png in Resources */,
 				9165894F1794409C00F13BF2 /* 44_48 actb_5@2x.png in Resources */,
 				916589501794409C00F13BF2 /* 44_48 actb_6@2x.png in Resources */,
@@ -1781,6 +1792,7 @@
 				919D332817F1EEEE00FE60FB /* check_background_568h@2x.png in Resources */,
 				9165895F1794409C00F13BF2 /* 526_90 button_use_check_5@2x.png in Resources */,
 				916589601794409C00F13BF2 /* 526_90 button_use_check_5_selected@2x.png in Resources */,
+				91BFC4EB17F5A6C2009F8D4E /* Moscow_blur.png in Resources */,
 				916589611794409C00F13BF2 /* 526_90 button_use_check_6@2x.png in Resources */,
 				916589621794409C00F13BF2 /* 526_90 button_use_check_6_selected@2x.png in Resources */,
 				916589631794409C00F13BF2 /* 526_90 button_use_check_7@2x.png in Resources */,
@@ -1829,6 +1841,7 @@
 				9165898E1794409C00F13BF2 /* 78_59 button_info@2x.png in Resources */,
 				9165898F1794409C00F13BF2 /* 80_67 button_settings_navbar@2x.png in Resources */,
 				916589901794409C00F13BF2 /* 80_67 icon_home_place@2x.png in Resources */,
+				91BFC4EE17F5BC0E009F8D4E /* 512x512 special Series.png in Resources */,
 				916589911794409C00F13BF2 /* 80_67 icon_inform_bar@2x.png in Resources */,
 				916589921794409C00F13BF2 /* 80_67 pin_navBar@2x.png in Resources */,
 				916589931794409C00F13BF2 /* actb_white.png in Resources */,
@@ -1902,6 +1915,7 @@
 				9197A2C817B4B00F00306C41 /* 4-jp.png in Resources */,
 				9197A2C917B4B00F00306C41 /* 4-ru.png in Resources */,
 				9197A2CA17B4B00F00306C41 /* 5-de.png in Resources */,
+				91BFC4ED17F5AC18009F8D4E /* Vienna_blur.png in Resources */,
 				9197A2CB17B4B00F00306C41 /* 5-en.png in Resources */,
 				9197A2CC17B4B00F00306C41 /* 5-jp.png in Resources */,
 				9197A2CD17B4B00F00306C41 /* 5-ru.png in Resources */,
@@ -2072,7 +2086,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 			};
 			name = LikeLik;
 		};
@@ -2081,8 +2095,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2109,7 +2123,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2145,7 +2159,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -2172,7 +2186,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2182,8 +2196,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2210,7 +2224,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2221,8 +2235,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2249,7 +2263,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2285,7 +2299,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 			};
 			name = Vienna;
 		};
@@ -2294,8 +2308,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2322,7 +2336,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2358,7 +2372,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 			};
 			name = Moscow;
 		};
@@ -2367,8 +2381,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2395,7 +2409,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

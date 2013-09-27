@@ -472,7 +472,7 @@
     UIImageView *star = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 133, 140.5)];
     [star setCenter:CGPointMake(160.0, 108.0)];
     [star setImage:[UIImage imageNamed:@"266_281 star_favourites_empty"]];
-    [star setAlpha:0.2];
+    [star setAlpha:0.8];
 
     return star;
 }

@@ -57,42 +57,22 @@ static BOOL JUST_APPEAR = YES;
 @end
 
 @implementation StartViewController
-@synthesize label,special_series;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     JUST_APPEAR = YES;
-    
+
     [self.navigationItem setTitleView:[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", Nil) AndColor:[InterfaceFunctions corporateIdentity]]];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
     self.CityTable.backgroundView = [InterfaceFunctions backgroundView];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
-    label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height/4, 0.0, 0.0)];
-    special_series = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128.0, 128.0)];
-    label.textAlignment = NSTextAlignmentCenter;
-    [label setFont:[AppDelegate OpenSansRegular:32]];
-    [label setBackgroundColor:[UIColor clearColor]];
-    label.hidden = YES;
-   special_series.tag = THUNDER_TAG;
+    
+    [self.Label_Empty setFont:[AppDelegate OpenSansRegular:32]];
+    [self.Label_Empty setTextColor:[UIColor blackColor]];
+    [self.Label_Empty setBackgroundColor:[UIColor clearColor]];
+    [self.Image_Empty setAlpha:0.7];
 
-    [special_series setAlpha:0.7];
-    special_series.hidden = YES;
-    
-//    if (self.tabBarController.selectedIndex == 3){
-//        [label setText:AMLocalizedString(@"Special Annotation", nil)];
-//        [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
-//    }
-    label.numberOfLines = 0;
-    [label sizeToFit];
-    [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
-    
-    
-    [self.view addSubview:special_series];
-    [self.view addSubview:label];
-    
     
     [self.Featured setTitle:AMLocalizedString(@"Featured", nil)];
     
@@ -104,11 +84,19 @@ static BOOL JUST_APPEAR = YES;
     [self.TabBar setSelectedItem:self.Downloaded];
     
     if ([self.TabBar.selectedItem isEqual:self.Downloaded]){
-        [label setText:AMLocalizedString(@"Download Annotation", nil)];
-        [special_series setImage:[UIImage imageNamed:@"512x512 download"]];
+        [self.Label_Empty setText:AMLocalizedString(@"Download Annotation", nil)];
+        [self.Image_Empty setImage:[UIImage imageNamed:@"617x617 Download"]];
     }
     _CityLabels = [ExternalFunctions getCities:self.Downloaded andTag:1];
     _backCityImages = [ExternalFunctions getCities:self.Downloaded andTag:0];
+    
+    
+    if([_CityLabels count] == 0){
+        _CityLabels = [ExternalFunctions getCities:self.All andTag:1];
+        _backCityImages = [ExternalFunctions getCities:self.All andTag:0];
+        [self.TabBar setSelectedItem:self.All];
+    }
+
     
     [self.navigationItem setHidesBackButton:YES];
     
@@ -136,14 +124,14 @@ static BOOL JUST_APPEAR = YES;
     [self.CityTable reloadData];
     
     if ([self.TabBar.selectedItem isEqual:self.Downloaded]){
-        [label setText:AMLocalizedString(@"Download Annotation", nil)];
-        [special_series setImage:[UIImage imageNamed:@"617x617 Download"]];
+        [self.Label_Empty setText:AMLocalizedString(@"Download Annotation", nil)];
+        
+        [self.Image_Empty setImage:[UIImage imageNamed:@"617x617 Download"]];
     }
     if ([self.TabBar.selectedItem isEqual:self.Special]){
-        [label setText:AMLocalizedString(@"Special Annotation", nil)];
-        [special_series setImage:[UIImage imageNamed:@"512x512 special Series"]];
+        [self.Label_Empty setText:AMLocalizedString(@"Special Annotation", nil)];
+        [self.Image_Empty setImage:[UIImage imageNamed:@"512x512 special Series"]];
     }
-    
     
 }
 
@@ -163,28 +151,35 @@ static BOOL JUST_APPEAR = YES;
     [self.CityTable reloadData];
     
     
-    label.numberOfLines = 0;
-    [label sizeToFit];
-#warning начинает "скукоживаться" при смене языков много раз
-    [label setFrame:CGRectMake((320.0-label.frame.size.width)/2, self.view.frame.size.height/2, label.frame.size.width, label.frame.size.height)];
-    
-    CGPoint temp = self.view.center;
-    temp.y -= 80;
-    [special_series setCenter:temp];
-    
+    if ([self.TabBar.selectedItem isEqual:self.Downloaded])
+        [self.Label_Empty setText:AMLocalizedString(@"Download Annotation", nil)];
+    if ([self.TabBar.selectedItem isEqual:self.Special])
+        [self.Label_Empty setText:AMLocalizedString(@"Special Annotation", nil)];
+ 
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
+    
     //self.CityTable.hidden = NO;
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Start Screen"];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    self.view.hidden = NO;
 }
+
+
+
 -(void)viewWillAppear:(BOOL)animated{
+    self.view.hidden = NO;
     //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    self.view.hidden = YES;
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+        self.view.hidden = NO;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -203,13 +198,14 @@ static BOOL JUST_APPEAR = YES;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ( [self.CityLabels count] == 0) {
-        label.hidden= NO;
-        special_series.hidden=NO;
+        self.Label_Empty.hidden= NO;
+        self.Image_Empty.hidden=NO;
     }
     else{
-        label.hidden = YES;
-        special_series.hidden = YES;
+        self.Label_Empty.hidden = YES;
+        self.Image_Empty.hidden = YES;
     }
+
     return [_CityLabels count];
 }
 
@@ -329,6 +325,7 @@ static BOOL JUST_APPEAR = YES;
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 
+    
     if (![[segue identifier] isEqualToString:@"PrefSegue"]) {
         //self.CityTable.hidden = YES;
         NSIndexPath *indexPath = [self.CityTable indexPathForSelectedRow];
@@ -336,13 +333,9 @@ static BOOL JUST_APPEAR = YES;
         StartTableCell *cell = (StartTableCell *)[self.CityTable cellForRowAtIndexPath:indexPath];
         destination.Label = cell.CityLabel.text;
         
-//        AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
-//        UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
-//    
-//        imback.image = [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:destination.Label]];
-//        UIImageView *imback2 = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag2];
-//        imback2.image = [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:destination.Label]];
-        
+        AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
+        UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
+        imback.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:cell.CityLabel.text] objectForKey:@"city_EN"]]];
     }
 }
 
@@ -359,5 +352,6 @@ static BOOL JUST_APPEAR = YES;
     _backCityImages = [ExternalFunctions getDownloadedCities:0];
     [tableView reloadData];
 }
+
 
 @end

@@ -230,28 +230,38 @@ static NSString *const kAllowTracking = @"allowTracking";
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController  = initialViewController;
         [self.window makeKeyAndVisible];
-        UIImageView *image =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-#if VIENNA
-        image.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]]];
-        image.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]];
-#else
-        image.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
-        image.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]];
-#endif
-        image.tag = backgroundTag;
-        [self.window.rootViewController.view insertSubview:image atIndex:0];
-        
-        UIImageView *image2 =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        image2.backgroundColor = [UIColor blackColor];
     
-#if VIENNA
-        image2.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]];
-#else
-        image2.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]];
-#endif
-        image2.tag = backgroundTag2;
-        [self.window.rootViewController.view insertSubview:image2 atIndex:0];
-        
+    
+    
+    
+    UIImageView *image =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    image.image = [UIImage imageNamed:@"Moscow_blur.png"];
+    image.contentMode = UIViewContentModeScaleAspectFill;
+    image.tag = backgroundTag;
+    [self.window.rootViewController.view insertSubview:image atIndex:0];
+
+//    image.contentMode = UIViewContentModeScaleAspectFill;
+//#if VIENNA
+//        image.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]]];
+//        image.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]];
+//#else
+//        image.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
+//        image.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]];
+//#endif
+//        image.tag = backgroundTag;
+//        [self.window.rootViewController.view insertSubview:image atIndex:0];
+    
+//        UIImageView *image2 =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//        image2.backgroundColor = [UIColor blackColor];
+//    
+//#if VIENNA
+//        image2.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]];
+//#else
+//        image2.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]];
+//#endif
+//        image2.tag = backgroundTag2;
+//        [self.window.rootViewController.view insertSubview:image2 atIndex:0];
+    
 //    }
     
     
@@ -321,7 +331,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         view.Photos = [notification.userInfo objectForKey:@"Photo"];
         view.fromNotification = @"YES";
       
-#warning Не передаются фотки
+#warning Не передаются фотки через регион
         
         
         

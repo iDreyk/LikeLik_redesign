@@ -453,9 +453,8 @@ static BOOL infoViewIsOpen = NO;
         //  log([NSString stringWithFormat:@"Взяли локацию пользователя");
         self.locationButton.enabled = YES;
     }
-#warning выпало после закачки сразу
 #else
-#warning Фон под навбаром
+#warning заезжает за край описание
 #warning  обновлять пин на карте при пролистывании
     MKCoordinateSpan span;
     span.latitudeDelta = 0.2;
