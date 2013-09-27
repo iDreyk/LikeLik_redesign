@@ -619,10 +619,16 @@
     
     
     [backButton setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,nil] forState:UIControlStateNormal];
-    
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,[UIColor whiteColor],UITextAttributeTextColor,nil ] forState:UIControlStateNormal];
     [backButton setBackgroundVerticalPositionAdjustment:-20.0f forBarMetrics:UIBarMetricsDefault];
-    [backButton setBackButtonTitlePositionAdjustment:UIOffsetMake(3.0, 0.0) forBarMetrics:UIBarMetricsDefault];
+    
+    float offsetForiOS7 = -2.5;
+    float offset;
+    if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending)) {
+        offset = 0;
+    }
+    else offset = offsetForiOS7;
+    [backButton setBackButtonTitlePositionAdjustment:UIOffsetMake(3.0, offset) forBarMetrics:UIBarMetricsDefault];
     return backButton;
 }
 
