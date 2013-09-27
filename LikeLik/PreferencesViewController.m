@@ -213,7 +213,6 @@ static NSString *LorR=nil;
 }
 
 #pragma mark - Table view delegate
-#warning фон для регистрации
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //    [AppDelegate LLLog:[NSString stringWithFormat:@"%d %d",[indexPath section],[indexPath row]);

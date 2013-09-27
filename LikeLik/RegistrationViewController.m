@@ -162,7 +162,6 @@ static BOOL getLocation = NO;
 
 - (void)viewDidLoad
 {
-#warning проверить коннекты
     [super viewDidLoad];
     if ([self.LorR isEqualToString:@"Login"]){
         array = @[@"E-mail",@"Password"];
@@ -181,8 +180,7 @@ static BOOL getLocation = NO;
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.RegistrationTable setBackgroundColor:[UIColor clearColor]];
     self.RegistrationTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.view.backgroundColor = [UIColor clearColor];
-    
+    self.view.backgroundColor = [InterfaceFunctions BackgroundColor];
     
     [self.SurpriseText setText: AMLocalizedString(@"I want to receive gifts on my birthday", nil)];
     

@@ -101,6 +101,17 @@ static BOOL NEED_TO_RELOAD = NO;
     }
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated{
+    self.view.hidden = YES;
+     BACK_PRESSED = YES;
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    self.view.hidden = NO;
+    [HUD setHidden:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -147,7 +158,6 @@ static BOOL NEED_TO_RELOAD = NO;
         [self.Map addAnnotation:marker1];
     }
     
-#warning fav проваливается nav от segment
 #else
     self.mapView.hidden = YES;
     self.ViewforMap.hidden = YES;
@@ -186,7 +196,7 @@ static BOOL NEED_TO_RELOAD = NO;
     UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
     
     background.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] scaledToSize:CGSizeMake(320, 568)]];//[UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
-    [self.view addSubview:background];
+   // [self.view addSubview:background];
     [self.view bringSubviewToFront:self.PlacesTable];
     [self.view bringSubviewToFront:self.mapView];
     [self.view bringSubviewToFront:self.Map];
@@ -407,6 +417,7 @@ static BOOL NEED_TO_RELOAD = NO;
 
 -(void)viewDidAppear:(BOOL)animated{
     // [testflight passCheckpoint:@"Around Me"];
+    self.view.hidden = NO;
 #if LIKELIK
     if ([[[CLLocation alloc] initWithLatitude:self.Map.userLocation.coordinate.latitude longitude:self.Map.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText]] > 50000.0) {
         self.Map.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityNameText].coordinate;
@@ -450,13 +461,6 @@ static BOOL NEED_TO_RELOAD = NO;
         NEED_TO_RELOAD = NO;
     }
     //[self.PlacesTable reloadData];
-}
--(void)viewWillDisappear:(BOOL)animated{
-    BACK_PRESSED = YES;
-}
-
--(void)viewDidDisappear:(BOOL)animated{
-    [HUD setHidden:YES];
 }
 
 
@@ -528,6 +532,7 @@ static BOOL NEED_TO_RELOAD = NO;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.view.hidden = NO;
     BACK_PRESSED = NO;
     [self.PlacesTable deselectRowAtIndexPath:[self.PlacesTable indexPathForSelectedRow] animated:YES];
     if (self.mapView.hidden){
@@ -557,6 +562,11 @@ static BOOL NEED_TO_RELOAD = NO;
 {
     
     if ([AroundArray count] == 0) {
+        
+        UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
+        view.backgroundColor = [UIColor blackColor];
+        view.alpha = 0.2;
+        
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height/4, 0.0, 0.0)];
         [label setText:AMLocalizedString(@"Add to Favorites best places", nil)];
         label.numberOfLines = 0;
@@ -576,13 +586,21 @@ static BOOL NEED_TO_RELOAD = NO;
         [sublabel setFont:[AppDelegate OpenSansRegular:32]];
         [sublabel setBackgroundColor:[UIColor clearColor]];
         [sublabel setTextColor:[UIColor whiteColor]];
+//        [self.view setBackgroundColor:[UIColor blackColor]];
+//        [self.view setAlpha:0.2];
+//        [self.view bringSubviewToFront:label];
+//        
+        
+
         self.gradient_under_cityname.hidden = YES;
         self.CityName.hidden = YES;
         self.PlacesTable.hidden = YES;
+        [self.view addSubview:view];
         [self.view addSubview:[InterfaceFunctions favourite_star_empty]];
         [self.view addSubview:label];
         [self.view addSubview:sublabel];
-
+        self.navigationItem.titleView = nil;
+       
     }
     
     
@@ -710,6 +728,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 //    return group;
 //}
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor clearColor]];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

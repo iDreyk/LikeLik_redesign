@@ -42,16 +42,35 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
+}
+
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    self.view.hidden = YES;
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    self.view.hidden = NO;
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.view.hidden = NO;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    self.view.hidden = NO;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor clearColor]];
-#warning слетают фоны
+
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     if ([self.Parent  isEqualToString:@"About"]){
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"About Screen"];
@@ -69,12 +88,16 @@
         
     }
     if ([self.Parent isEqualToString:@"Practical"]){
-        self.view.backgroundColor = [UIColor whiteColor];
+        UIView *view =[[UIView alloc] initWithFrame:self.view.frame];
+        view.backgroundColor = [UIColor blackColor];
+        view.alpha = 0.4;
+        [self.view addSubview:view];
+        [self.view bringSubviewToFront:self.Text];
         self.Text.text = [NSString stringWithFormat:@"%@",[ExternalFunctions getPracticalInfoForCity:self.CityName]];
         self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions corporateIdentity]];
         self.Text.hidden = NO;
         self.Text.font = [AppDelegate OpenSansRegular:28];
-        self.Text.textColor = [UIColor blackColor];
+        self.Text.textColor = [UIColor whiteColor];
         self.Text.backgroundColor =  [UIColor clearColor];
         self.Text.editable = NO;
 

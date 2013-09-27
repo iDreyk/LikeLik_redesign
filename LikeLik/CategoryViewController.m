@@ -84,9 +84,16 @@ static NSString *city = @"";
 }
 
 
+-(void)viewWillDisappear:(BOOL)animated{
+    self.view.hidden = YES;
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    self.view.hidden = NO;
+}
+
 - (void)viewDidLoad
 {
-#warning about и termsofuse
     
     
 #warning need a better way to do it
@@ -118,15 +125,17 @@ static NSString *city = @"";
     [self.categoryView setContentSize:CGSizeMake(320, 480)];
     [self.categoryView flashScrollIndicators];
     self.categoryView.delegate = self;
-    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
-    
-    background.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] scaledToSize:CGSizeMake(320, 568)]];//[UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
-    [self.view addSubview:background];
+//    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+//    
+//    background.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Moscow_blur.png"]];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] scaledToSize:CGSizeMake(320, 568)]];//[UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
+//    [self.view addSubview:background];
     [self.view bringSubviewToFront:self.categoryView];
     [self.view bringSubviewToFront:self.MapPlace];
     //    self.Table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
-
+    
+    self.blur.image = [UIImage imageNamed:@"Moscow_blur.png"];
+    
     //self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
     //Overlay_Long@2x.png
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
@@ -246,7 +255,7 @@ static NSString *city = @"";
         });
     }
     
-    self.categoryView.contentSize = CGSizeMake(320, 560);
+    self.categoryView.contentSize = CGSizeMake(320, 505);
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;
     CGFloat yOrigin = 60; // 20 (без + 44)
@@ -254,8 +263,7 @@ static NSString *city = @"";
     
     if(self.view.bounds.size.height == 460.0){
         yOrigin = 0;
-        self.categoryView.contentSize = CGSizeMake(320, 500);
-#warning поправить contentSize чтобы плитки не провисали на виде, а всегда были под пружиной на 4.0 и 3.5
+        self.categoryView.contentSize = CGSizeMake(320.0, 421.0);
     }
     
     self.frame1 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, yOrigin + yOffset, frameSize, frameSize)];
@@ -276,7 +284,6 @@ static NSString *city = @"";
     self.frameArray = @[self.frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, frame11, frame12];
     
     int i = 0;
-//    log([NSString stringWithFormat:@"cellArray = %@",self.CellArray);
     for (UIView *frame in self.frameArray){
         frame.tag = i;
         frame.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", i+1]] scaledToSize:CGSizeMake(frameSize, frameSize)]];
@@ -329,7 +336,7 @@ static NSString *city = @"";
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    
+    self.view.hidden = NO;
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@" %@ Category Screen",currentCity]];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     
@@ -369,6 +376,7 @@ static NSString *city = @"";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.view.hidden = NO;
     self.categoryView.contentOffset = CGPointMake(self.categoryView.contentOffset.x, 0);
     if (self.MapPlace.hidden){
 //        [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
