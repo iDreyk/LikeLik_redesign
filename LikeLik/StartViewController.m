@@ -213,15 +213,21 @@ static BOOL JUST_APPEAR = YES;
 {
     int row = [indexPath row];
     static NSString *CellIdentifier = @"StartTableCell";
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
     
     StartTableCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.CityLabel.font = [AppDelegate OpenSansSemiBold:60];
-    cell.CityLabel.text  = _CityLabels[row];
-    cell.CityLabel.textColor = [UIColor whiteColor];
-    cell.BackCityImage.image = _backCityImages[row];
-    [cell.contentView addSubview:[InterfaceFunctions standartAccessorView]];
-    //http://stackoverflow.com/questions/13148091/uitableview-scrolling-slowly-with-uiimage
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    [operationQueue addOperationWithBlock:^{
+        UIImage *image = _backCityImages[row];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            StartTableCell *cell = (StartTableCell *)[tableView cellForRowAtIndexPath:indexPath];
+            cell.CityLabel.font = [AppDelegate OpenSansSemiBold:60];
+            cell.CityLabel.text  = _CityLabels[row];
+            cell.CityLabel.textColor = [UIColor whiteColor];
+            cell.BackCityImage.image = image;
+            [cell.contentView addSubview:[InterfaceFunctions standartAccessorView]];
+        }];
+    }];
     
     if(PREV_ROW > row)
         REVERSE_ANIM = true;
