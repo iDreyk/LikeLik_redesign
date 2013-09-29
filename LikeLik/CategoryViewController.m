@@ -105,7 +105,7 @@ static NSString *city = @"";
         currentCity = @"Vienna";
         city = currentCity;
     }
-    
+
  //   [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
@@ -254,7 +254,7 @@ static NSString *city = @"";
             // post an NSNotification that loading is finished
         });
     }
-    
+    #warning сыпется скролл на 6
     self.categoryView.contentSize = CGSizeMake(320, 505);
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;

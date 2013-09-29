@@ -1017,30 +1017,40 @@
                                     <outlet property="delegate" destination="pV2-Ha-ulb" id="kiF-0Q-lQr"/>
                                 </connections>
                             </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsB-tE-byf">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZF3-yc-JkM" customClass="SubText1">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hsB-tE-byf" secondAttribute="trailing" id="0rO-eQ-fzn"/>
                             <constraint firstAttribute="trailing" secondItem="uap-Ss-5KB" secondAttribute="trailing" id="4Co-0h-e34"/>
+                            <constraint firstItem="hsB-tE-byf" firstAttribute="top" secondItem="0eT-Ty-YI1" secondAttribute="bottom" id="6Kt-v5-H5m"/>
                             <constraint firstItem="ZF3-yc-JkM" firstAttribute="top" secondItem="0eT-Ty-YI1" secondAttribute="bottom" id="9wd-uw-ZzI"/>
                             <constraint firstItem="uap-Ss-5KB" firstAttribute="leading" secondItem="Zbr-gh-ODc" secondAttribute="leading" id="HGP-SC-icK"/>
                             <constraint firstItem="ZF3-yc-JkM" firstAttribute="leading" secondItem="Zbr-gh-ODc" secondAttribute="leading" id="cXY-gJ-2o8"/>
                             <constraint firstItem="uap-Ss-5KB" firstAttribute="top" secondItem="0eT-Ty-YI1" secondAttribute="bottom" id="gtJ-dP-dKT"/>
                             <constraint firstItem="XQ8-9C-um3" firstAttribute="top" secondItem="ZF3-yc-JkM" secondAttribute="bottom" id="kOg-qM-GZc"/>
+                            <constraint firstItem="XQ8-9C-um3" firstAttribute="top" secondItem="hsB-tE-byf" secondAttribute="bottom" id="ndl-dN-ZZq"/>
                             <constraint firstItem="XQ8-9C-um3" firstAttribute="top" secondItem="uap-Ss-5KB" secondAttribute="bottom" id="q26-OC-m0b"/>
+                            <constraint firstItem="hsB-tE-byf" firstAttribute="leading" secondItem="Zbr-gh-ODc" secondAttribute="leading" id="r9s-Jv-QR7"/>
                             <constraint firstAttribute="trailing" secondItem="ZF3-yc-JkM" secondAttribute="trailing" id="zCb-bu-erL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SP6-pp-oJY"/>
                     <connections>
                         <outlet property="Likelikcom" destination="uap-Ss-5KB" id="uQ5-AP-ItC"/>
+                        <outlet property="ShadowView" destination="hsB-tE-byf" id="fgM-e1-jed"/>
                         <outlet property="Text" destination="ZF3-yc-JkM" id="HlD-7Y-3bF"/>
                     </connections>
                 </viewController>
@@ -1211,8 +1221,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="512x512 special Series.png" width="617" height="617"/>
         <image name="58_82 info_flag_1.png" width="29" height="41"/>
         <image name="58_82 info_flag_8.png" width="29" height="41"/>
-        <image name="62_62 arrow_pressed.png" width="31" height="31"/>
-        <image name="62_62 arrow_pressed.png" width="31" height="31"/>
         <image name="62_62 arrow_pressed.png" width="31" height="31"/>
         <image name="Bg_gradient.png" width="640" height="108"/>
         <image name="Overlay_Long.png" width="320" height="1000"/>

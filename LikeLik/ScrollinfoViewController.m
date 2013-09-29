@@ -88,11 +88,8 @@
         
     }
     if ([self.Parent isEqualToString:@"Practical"]){
-        UIView *view =[[UIView alloc] initWithFrame:self.view.frame];
-        view.backgroundColor = [UIColor blackColor];
-        view.alpha = 0.4;
-        [self.view addSubview:view];
-        [self.view bringSubviewToFront:self.Text];
+        self.ShadowView.backgroundColor = [UIColor blackColor];
+        self.ShadowView.alpha = 0.4;
         self.Text.text = [NSString stringWithFormat:@"%@",[ExternalFunctions getPracticalInfoForCity:self.CityName]];
         self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Practical Info", nil) AndColor:[InterfaceFunctions corporateIdentity]];
         self.Text.hidden = NO;
