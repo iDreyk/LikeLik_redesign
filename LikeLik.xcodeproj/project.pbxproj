@@ -357,6 +357,8 @@
 		FA3892CB17E4CD1100B1D169 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3892C117E4CD1100B1D169 /* libGoogleAnalyticsServices.a */; };
 		FA3892CC17E4CD1100B1D169 /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA3892C917E4CD1100B1D169 /* Readme.txt */; };
 		FA3892CE17E4CD8600B1D169 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3892CD17E4CD8600B1D169 /* CoreData.framework */; };
+		FA48929617F61FB900F21079 /* icon_moscow_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA48929417F61FB900F21079 /* icon_moscow_@2x.png */; };
+		FA48929717F61FB900F21079 /* icon_vienna_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA48929517F61FB900F21079 /* icon_vienna_@2x.png */; };
 		FA6D979317CDCFFC000F07E4 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6D978717CDCFFC000F07E4 /* 1.png */; };
 		FA6D979417CDCFFC000F07E4 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6D978817CDCFFC000F07E4 /* 2.png */; };
 		FA6D979517CDCFFC000F07E4 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6D978917CDCFFC000F07E4 /* 3.png */; };
@@ -848,6 +850,8 @@
 		FA3892C817E4CD1100B1D169 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		FA3892C917E4CD1100B1D169 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		FA3892CD17E4CD8600B1D169 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FA48929417F61FB900F21079 /* icon_moscow_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_moscow_@2x.png"; sourceTree = "<group>"; };
+		FA48929517F61FB900F21079 /* icon_vienna_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_vienna_@2x.png"; sourceTree = "<group>"; };
 		FA6D978717CDCFFC000F07E4 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		FA6D978817CDCFFC000F07E4 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		FA6D978917CDCFFC000F07E4 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -963,6 +967,8 @@
 			children = (
 				9111163817DDD00F00474B13 /* icon_Vienna.png */,
 				9111163917DDD00F00474B13 /* icon_Moscow.png */,
+				FA48929417F61FB900F21079 /* icon_moscow_@2x.png */,
+				FA48929517F61FB900F21079 /* icon_vienna_@2x.png */,
 				D0BC8E1417C4BB840048659E /* kul_90@2x.png */,
 				9111164617E0A4F100474B13 /* 617x617 Download.png */,
 				91B831AD17D8B01C008E6750 /* 512x512 special Series.png */,
@@ -1842,6 +1848,7 @@
 				9165898F1794409C00F13BF2 /* 80_67 button_settings_navbar@2x.png in Resources */,
 				916589901794409C00F13BF2 /* 80_67 icon_home_place@2x.png in Resources */,
 				91BFC4EE17F5BC0E009F8D4E /* 512x512 special Series.png in Resources */,
+				FA48929717F61FB900F21079 /* icon_vienna_@2x.png in Resources */,
 				916589911794409C00F13BF2 /* 80_67 icon_inform_bar@2x.png in Resources */,
 				916589921794409C00F13BF2 /* 80_67 pin_navBar@2x.png in Resources */,
 				916589931794409C00F13BF2 /* actb_white.png in Resources */,
@@ -1918,6 +1925,7 @@
 				91BFC4ED17F5AC18009F8D4E /* Vienna_blur.png in Resources */,
 				9197A2CB17B4B00F00306C41 /* 5-en.png in Resources */,
 				9197A2CC17B4B00F00306C41 /* 5-jp.png in Resources */,
+				FA48929617F61FB900F21079 /* icon_moscow_@2x.png in Resources */,
 				9197A2CD17B4B00F00306C41 /* 5-ru.png in Resources */,
 				D0BC8E1517C4BB840048659E /* kul_90@2x.png in Resources */,
 				D0BC8E1917C4F7B10048659E /* catalogue.plist in Resources */,
