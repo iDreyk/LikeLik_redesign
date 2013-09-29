@@ -19,4 +19,5 @@
 @property (nonatomic,retain) NSString *CityName;
 @property (nonatomic,retain) IBOutlet UIWebView *Likelikcom;
 @property (nonatomic,retain) IBOutlet SubText1 *Text;
+@property (weak, nonatomic) IBOutlet UIView *ShadowView;
 @end
