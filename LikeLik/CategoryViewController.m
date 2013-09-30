@@ -18,7 +18,7 @@
 #import "PlaceViewController.h"
 #import "MLPAccessoryBadge.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "TransportationViewController.h"
 
 #import "AFDownloadRequestOperation.h"
 #import "Reachability.h"
@@ -96,9 +96,6 @@ static NSString *city = @"";
 
 - (void)viewDidLoad
 {
-    
-    
-#warning need a better way to do it
     if ([AMLocalizedString(@"Moscow", nil) isEqualToString:self.Label]) {
         currentCity = @"Moscow";
         city = currentCity;
@@ -695,6 +692,12 @@ static NSString *city = @"";
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     }
     
+    
+    if ([[segue identifier] isEqualToString:@"TransportationSegue"]) {
+        TransportationViewController *destination = [segue destinationViewController];
+        destination.CityName = self.Label;
+    }
+    
     if ([[segue identifier] isEqualToString:@"MapSegue"]) {
         PlaceViewController *PlaceView = [segue destinationViewController];
         PlaceView.PlaceName = PlaceName;
@@ -753,24 +756,10 @@ static NSString *city = @"";
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-#warning добавить гуглоэвент
     [self updateOffsets];
 }
 
-
-
-
-
-
-
-
-
-
-
-
-#warning popviewcontroller
 #warning регионы
-#warning тайлы
 #warning уведомления
 #warning город
 #warning current location на старте

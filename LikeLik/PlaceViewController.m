@@ -148,7 +148,6 @@ static NSString *LorR = nil;
 - (void)viewDidLoad{
     [super viewDidLoad];
 
-#warning need a better way to do it
     if ([AMLocalizedString(@"Moscow", nil) isEqualToString:self.PlaceCityName]) {
         currentCity = @"Moscow";
     }
@@ -163,7 +162,6 @@ static NSString *LorR = nil;
     
 
     [self.info_button setImage:[InterfaceFunctions Info_buttonwithCategory:self.PlaceCategory].image forState:UIControlStateNormal];
-#warning навбар прыгает
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     for (UIView * view in self.view.subviews) {
         UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gesture:)];
@@ -1528,8 +1526,6 @@ region.center = start;
         destination.LorR = LorR;
     }
 }
-#warning нотификейшн для навбара
-#warning после твиттера и вк авторизации сползает фото
 -(IBAction)hide_hint:(id)sender{
     self.hint.hidden = YES;
     self.hide_button.hidden = YES;

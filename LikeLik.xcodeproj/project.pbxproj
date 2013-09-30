@@ -1665,7 +1665,7 @@
 				ORGANIZATIONNAME = LikeLik;
 				TargetAttributes = {
 					919E86FB173A58E700A25E07 = {
-						DevelopmentTeam = JPXHBUZBNM;
+						DevelopmentTeam = R76V9HX83S;
 					};
 				};
 			};
@@ -2117,7 +2117,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/LikeLik\"",
-					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LikeLik/LikeLik-Prefix.pch";
@@ -2218,7 +2217,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/LikeLik\"",
-					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LikeLik/LikeLik-Prefix.pch";
@@ -2257,7 +2255,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/LikeLik\"",
-					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LikeLik/LikeLik-Prefix.pch";
@@ -2330,7 +2327,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/LikeLik\"",
-					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LikeLik/LikeLik-Prefix.pch";
@@ -2403,7 +2399,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/LikeLik\"",
-					"\"$(SRCROOT)/../../Documents/Likelik Xcode\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LikeLik/LikeLik-Prefix.pch";

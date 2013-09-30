@@ -13,7 +13,6 @@
     NSMutableArray *catalogues;
 }
 @property (nonatomic,retain) NSString *CityName;
-#warning метро отваливается
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 @property (nonatomic, retain) UIImageView *awesomeview;
 @end
