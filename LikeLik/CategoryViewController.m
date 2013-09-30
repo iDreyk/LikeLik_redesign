@@ -132,12 +132,7 @@ static NSString *city = @"";
     
     
         //    self.Table.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
-    
-    //self.blur.image = [UIImage imageNamed:@"Moscow_blur.png"];
-    
-    //self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
-    //Overlay_Long@2x.png
+    self.view.backgroundColor = [UIColor clearColor];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
     
 #if MOSCOW
@@ -268,14 +263,13 @@ static NSString *city = @"";
             // post an NSNotification that loading is finished
         });
     }
-    #warning сыпется скролл на 6
     self.categoryView.contentSize = CGSizeMake(320, 505);
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;
-    CGFloat yOrigin = 60; // 20 (без + 44)
+    CGFloat yOrigin = 40; // 20 (без + 44)
     CGFloat yOffset = 10;
     
-    if(self.view.bounds.size.height == 460.0){
+    if(self.view.bounds.size.height == 460.0 || self.view.bounds.size.height == 480.0){
         yOrigin = 0;
         self.categoryView.contentSize = CGSizeMake(320.0, 421.0);
     }
