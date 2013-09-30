@@ -342,6 +342,8 @@
 		91FE3A1C1796C581000304D4 /* soonCities_DE in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1B1796C581000304D4 /* soonCities_DE */; };
 		91FE3A1E1796C591000304D4 /* soonCities_EN in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1D1796C591000304D4 /* soonCities_EN */; };
 		91FE3A201796C5A2000304D4 /* SoonCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1F1796C5A2000304D4 /* SoonCities.plist */; };
+		D0310ADA17F960FB00A11BB0 /* moscow_paralax.png in Resources */ = {isa = PBXBuildFile; fileRef = D0310AD917F960FB00A11BB0 /* moscow_paralax.png */; };
+		D0310ADC17F9610B00A11BB0 /* vienna_paralax.png in Resources */ = {isa = PBXBuildFile; fileRef = D0310ADB17F9610B00A11BB0 /* vienna_paralax.png */; };
 		D0B430F117C74B2C005BF369 /* knuck_pin_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B430EA17C74B2A005BF369 /* knuck_pin_2@2x.png */; };
 		D0B430F217C74B2C005BF369 /* knuck_pin_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B430EB17C74B2B005BF369 /* knuck_pin_3@2x.png */; };
 		D0B430F317C74B2C005BF369 /* knuck_pin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B430EC17C74B2B005BF369 /* knuck_pin_4@2x.png */; };
@@ -828,6 +830,8 @@
 		91FE3A1B1796C581000304D4 /* soonCities_DE */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_DE; sourceTree = "<group>"; };
 		91FE3A1D1796C591000304D4 /* soonCities_EN */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_EN; sourceTree = "<group>"; };
 		91FE3A1F1796C5A2000304D4 /* SoonCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SoonCities.plist; sourceTree = "<group>"; };
+		D0310AD917F960FB00A11BB0 /* moscow_paralax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moscow_paralax.png; path = Moscow/moscow_paralax.png; sourceTree = "<group>"; };
+		D0310ADB17F9610B00A11BB0 /* vienna_paralax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vienna_paralax.png; path = Vienna/vienna_paralax.png; sourceTree = "<group>"; };
 		D0B430EA17C74B2A005BF369 /* knuck_pin_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuck_pin_2@2x.png"; sourceTree = "<group>"; };
 		D0B430EB17C74B2B005BF369 /* knuck_pin_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuck_pin_3@2x.png"; sourceTree = "<group>"; };
 		D0B430EC17C74B2B005BF369 /* knuck_pin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuck_pin_4@2x.png"; sourceTree = "<group>"; };
@@ -1390,6 +1394,8 @@
 				91BFC4EA17F5A6C2009F8D4E /* Moscow_blur.png */,
 				91BFC4EC17F5AC18009F8D4E /* Vienna_blur.png */,
 				91BFC4E817F5A3E7009F8D4E /* Moscow_Parallax_Blur.png */,
+				D0310AD917F960FB00A11BB0 /* moscow_paralax.png */,
+				D0310ADB17F9610B00A11BB0 /* vienna_paralax.png */,
 				D05D7BED17BE7EFF00003A16 /* icons */,
 				559AA1C217D9EDDB005362CC /* appData.plist */,
 				91FE3A1F1796C5A2000304D4 /* SoonCities.plist */,
@@ -1846,6 +1852,7 @@
 				9165898D1794409C00F13BF2 /* 74_74 Fist_for_HUD_colored@2x.png in Resources */,
 				9165898E1794409C00F13BF2 /* 78_59 button_info@2x.png in Resources */,
 				9165898F1794409C00F13BF2 /* 80_67 button_settings_navbar@2x.png in Resources */,
+				D0310ADC17F9610B00A11BB0 /* vienna_paralax.png in Resources */,
 				916589901794409C00F13BF2 /* 80_67 icon_home_place@2x.png in Resources */,
 				91BFC4EE17F5BC0E009F8D4E /* 512x512 special Series.png in Resources */,
 				FA48929717F61FB900F21079 /* icon_vienna_@2x.png in Resources */,
@@ -1867,6 +1874,7 @@
 				916589AD1794409C00F13BF2 /* Fist_animated_5@2x.png in Resources */,
 				916589AE1794409C00F13BF2 /* Fist_animated_6@2x.png in Resources */,
 				916589AF1794409C00F13BF2 /* Fist_animated_7@2x.png in Resources */,
+				D0310ADA17F960FB00A11BB0 /* moscow_paralax.png in Resources */,
 				916589B01794409C00F13BF2 /* gradient_check@2x.png in Resources */,
 				916589B11794409C00F13BF2 /* ico_earth.png in Resources */,
 				916589B21794409C00F13BF2 /* ico_point.png in Resources */,

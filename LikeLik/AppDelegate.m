@@ -239,6 +239,12 @@ static NSString *const kAllowTracking = @"allowTracking";
     image.contentMode = UIViewContentModeScaleAspectFill;
     image.tag = backgroundTag;
     [self.window.rootViewController.view insertSubview:image atIndex:0];
+    
+    UIImageView *image2 =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    image2.image = [UIImage imageNamed:@"Moscow_blur.png"];
+    image2.contentMode = UIViewContentModeScaleAspectFill;
+    image2.tag = backgroundTag2;
+    [self.window.rootViewController.view insertSubview:image2 atIndex:0];
 
 //    image.contentMode = UIViewContentModeScaleAspectFill;
 //#if VIENNA

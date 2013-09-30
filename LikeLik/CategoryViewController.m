@@ -134,7 +134,7 @@ static NSString *city = @"";
     //    self.Table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
     
-    self.blur.image = [UIImage imageNamed:@"Moscow_blur.png"];
+    //self.blur.image = [UIImage imageNamed:@"Moscow_blur.png"];
     
     //self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
     //Overlay_Long@2x.png
@@ -747,7 +747,7 @@ static NSString *city = @"";
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 #warning добавить гуглоэвент
-   // [self updateOffsets];
+    [self updateOffsets];
 }
 
 

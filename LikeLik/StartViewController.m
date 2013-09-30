@@ -342,6 +342,8 @@ static BOOL JUST_APPEAR = YES;
         AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
         UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
         imback.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:cell.CityLabel.text] objectForKey:@"city_EN"]]];
+        UIImageView *imback2 = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag2];
+        imback2.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_paralax",[[[ExternalFunctions cityCatalogueForCity:cell.CityLabel.text] objectForKey:@"city_EN"] lowercaseString]]];
     }
 }
 
