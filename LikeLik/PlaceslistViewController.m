@@ -290,11 +290,11 @@ static BOOL NEED_TO_RELOAD = NO;
                                              selector: @selector(tableNeedsToReload:)
                                                  name: @"ReloadTableInPlaces"
                                                object: nil];
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    self.PlacesTable.contentOffset = CGPointMake(0, -40);
-    [UIView commitAnimations];
-
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.3];
+//    self.PlacesTable.contentOffset = CGPointMake(0, -40);
+//    [UIView commitAnimations];
+    
 }
 
 - (void)tableNeedsToReload:(NSNotification *) notification {
