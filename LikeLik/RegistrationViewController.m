@@ -863,7 +863,7 @@ static BOOL getLocation = NO;
     else{
         params = [NSString stringWithFormat:@"/LikeLikWebAPI/api/v1/users?lang=%@",_lang];
     }
-        
+    
     return [httpClient requestWithMethod:@"POST" path:params parameters:[self POSTRequestRegistration:RegistrationWay]];
     
 }
@@ -872,14 +872,16 @@ static BOOL getLocation = NO;
 -(void)SendRegistration:(NSString *)RegistrationWay{
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self address:RegistrationWay] success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"ID = %@",JSON[@"id"]);
         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"Registered"];
+        [[NSUserDefaults standardUserDefaults] setObject:JSON[@"id"] forKey:@"user_id"];
         [[NSUserDefaults standardUserDefaults] setObject:RegistrationWay forKey:@"RegistrationWay"];
         [self.HUDfade hide:YES];
         [self.HUDdone show:YES];
         [self.HUDdone hide:YES afterDelay:1];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];        
         [self.navigationController popViewControllerAnimated:YES];
-
+        
         
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
