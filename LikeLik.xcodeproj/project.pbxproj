@@ -1665,7 +1665,7 @@
 				ORGANIZATIONNAME = LikeLik;
 				TargetAttributes = {
 					919E86FB173A58E700A25E07 = {
-						DevelopmentTeam = R76V9HX83S;
+						DevelopmentTeam = JPXHBUZBNM;
 					};
 				};
 			};
