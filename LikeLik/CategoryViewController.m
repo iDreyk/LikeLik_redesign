@@ -44,6 +44,7 @@ static NSString *currentCity = @"";
 #define EF_TAG 66483
 #define FADE_TAG 66484
 #define backgroundTag 2442441
+#define backgroundTag2 2442442
 
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
 static NSString *city = @"";
@@ -87,11 +88,10 @@ static NSString *city = @"";
 
 
 -(void)viewWillDisappear:(BOOL)animated{
-    self.view.hidden = YES;
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-    self.view.hidden = NO;
+
 }
 
 - (void)viewDidLoad
@@ -127,19 +127,12 @@ static NSString *city = @"";
     [self.categoryView setContentSize:CGSizeMake(320, 480)];
     [self.categoryView flashScrollIndicators];
     self.categoryView.delegate = self;
-//    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
-//    
-//    background.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Moscow_blur.png"]];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] scaledToSize:CGSizeMake(320, 568)]];//[UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
-//    [self.view addSubview:background];
-    [self.view bringSubviewToFront:self.categoryView];
-    [self.view bringSubviewToFront:self.MapPlace];
-    //    self.Table.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
     
-    //self.blur.image = [UIImage imageNamed:@"Moscow_blur.png"];
     
-    //self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
-    //Overlay_Long@2x.png
+    
+    
+        //    self.Table.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor clearColor];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:[[NSString alloc] initWithFormat:@"Go&Use %@",self.Label] AndColor:[InterfaceFunctions corporateIdentity]];
     
 #if MOSCOW
@@ -173,6 +166,20 @@ static NSString *city = @"";
     //        [self prepareAroundMe];
 #endif
 
+
+    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    background.tag = backgroundTag;
+    UIImageView *background2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    background2.tag = backgroundTag2;
+    
+    background.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:self.Label] objectForKey:@"city_EN"]]];
+    background2.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_paralax",[[[ExternalFunctions cityCatalogueForCity:self.Label] objectForKey:@"city_EN"] lowercaseString]]];
+    
+    [self.view addSubview:background2];
+    [self.view addSubview:background];
+    
+    [self.view bringSubviewToFront:self.categoryView];
+    [self.view bringSubviewToFront:self.MapPlace];
 
     self.CityImage.image =  [UIImage imageNamed:[ExternalFunctions larkePictureOfCity:self.Label]];
     self.CellArray = @[@"Around Me", @"Restaurants",@"Night life",@"Shopping",@"Culture",@"Leisure", @"Beauty",@"Visual Tour", @"Metro",@"Search",@"Favorites",  @"Practical Info"];
@@ -256,14 +263,13 @@ static NSString *city = @"";
             // post an NSNotification that loading is finished
         });
     }
-    #warning сыпется скролл на 6
     self.categoryView.contentSize = CGSizeMake(320, 505);
     CGFloat frameSize = 93.0;
     CGFloat xOrigin = 10;
-    CGFloat yOrigin = 60; // 20 (без + 44)
+    CGFloat yOrigin = 40; // 20 (без + 44)
     CGFloat yOffset = 10;
     
-    if(self.view.bounds.size.height == 460.0){
+    if(self.view.bounds.size.height == 460.0 || self.view.bounds.size.height == 480.0){
         yOrigin = 0;
         self.categoryView.contentSize = CGSizeMake(320.0, 421.0);
     }
@@ -728,8 +734,7 @@ static NSString *city = @"";
     
     CGFloat yOffset   = self.categoryView.contentOffset.y;
   //  log([NSString stringWithFormat:@"yofs: %f", yOffset);
-    AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
-    UIImageView *imback = (UIImageView *)[myDelegate.window viewWithTag:backgroundTag];
+    UIImageView *imback = (UIImageView *)[self.view viewWithTag:backgroundTag];
     if(yOffset < 0){
         imback.alpha = 1.0 + yOffset/200;
     }
