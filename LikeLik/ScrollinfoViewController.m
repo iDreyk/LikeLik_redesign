@@ -50,11 +50,11 @@
 
 
 -(void)viewWillDisappear:(BOOL)animated{
-    self.view.hidden = YES;
+    //self.view.hidden = YES;
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-    self.view.hidden = NO;
+    //self.view.hidden = NO;
 }
 
 
@@ -98,6 +98,16 @@
         self.Text.backgroundColor =  [UIColor clearColor];
         self.Text.editable = NO;
 
+        UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+        UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+        
+        bg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:self.CityName] objectForKey:@"city_EN"]]];
+        bg2.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_paralax",[[[ExternalFunctions cityCatalogueForCity:self.CityName] objectForKey:@"city_EN"] lowercaseString]]];
+        
+        [self.view addSubview:bg2];
+        [self.view addSubview:bg];
+        [self.view bringSubviewToFront:self.ShadowView];
+        [self.view bringSubviewToFront:self.Text];
 
     }
 

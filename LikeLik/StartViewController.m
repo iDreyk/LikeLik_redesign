@@ -175,11 +175,11 @@ static BOOL JUST_APPEAR = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    self.view.hidden = YES;
+    //self.view.hidden = YES;
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-        self.view.hidden = NO;
+      //  self.view.hidden = NO;
 }
 - (void)didReceiveMemoryWarning
 {

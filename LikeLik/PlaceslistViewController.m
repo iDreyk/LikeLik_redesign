@@ -29,6 +29,10 @@
 #define labelColorTag 87008
 #define buttonlabel1Tag 87009
 #define checkTag 87010
+
+#define backgroundTag 2442441
+#define backgroundTag2 2442442
+
 #define afterregister             @"l27h7RU2dzVfP12aoQssda"
 static NSString *LorR = nil;
 static NSString *PlaceName = @"";
@@ -103,12 +107,12 @@ static BOOL NEED_TO_RELOAD = NO;
 
 
 -(void)viewWillDisappear:(BOOL)animated{
-    self.view.hidden = YES;
+    //self.view.hidden = YES;
      BACK_PRESSED = YES;
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-    self.view.hidden = NO;
+    //self.view.hidden = NO;
     [HUD setHidden:YES];
 }
 
@@ -295,6 +299,19 @@ static BOOL NEED_TO_RELOAD = NO;
 //    self.PlacesTable.contentOffset = CGPointMake(0, -40);
 //    [UIView commitAnimations];
     
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    bg.tag = backgroundTag;
+    UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    bg2.tag = backgroundTag2;
+    
+    bg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:self.CityNameText] objectForKey:@"city_EN"]]];
+    bg2.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_paralax",[[[ExternalFunctions cityCatalogueForCity:self.CityNameText] objectForKey:@"city_EN"] lowercaseString]]];
+    
+    [self.view addSubview:bg2];
+    [self.view addSubview:bg];
+    [self.view bringSubviewToFront:self.PlacesTable];
+    [self.view bringSubviewToFront:self.Map];
+    [self.view bringSubviewToFront:self.mapView];
 }
 
 - (void)tableNeedsToReload:(NSNotification *) notification {
