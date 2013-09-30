@@ -24,10 +24,12 @@
 #import "Reachability.h"
 
 #define catalogue @"Catalogues"
-#define likelikurlwifi_4        @"http://likelik.net/ios/online/4/"
-#define likelikurlwifi_5        @"http://likelik.net/ios/online/5/"
-#define likelikurlcell_4        @"http://likelik.net/ios/online/4/"
-#define likelikurlcell_5        @"http://likelik.net/ios/online/5/"
+#define likelikurlwifi_4        @"http://likelik.net/ios/docs/4/"
+#define likelikurlwifi_5        @"http://likelik.net/ios/docs/5/"
+#define likelikurlcell_4        @"http://likelik.net/ios/cell/4/"
+#define likelikurlcell_5        @"http://likelik.net/ios/cell/5/"
+#define likelikurlonline_4      @"http://likelik.net/ios/online/4/"
+#define likelikurlonline_5      @"http://likelik.net/ios/online/5/"
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
 
 
@@ -927,6 +929,27 @@ static NSString *city = @"";
     
     [ExternalFunctions addCityToDownloaded:fileName];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAllCatalogues" object:nil];
+    
+    NSURL *url;
+    if ([fileName isEqualToString:@"Moscow"] || [fileName isEqualToString:@"Москва"] || [fileName isEqualToString:@"Moskau"]){
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Moscow/2.mbtiles",[ExternalFunctions docDir]]];
+    }
+    if ([fileName isEqualToString:@"Vienna"] || [fileName isEqualToString:@"Вена"] || [fileName isEqualToString:@"Wien"]){
+        url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
+    }
+    RMMBTilesSource *offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:url];
+    [self.MapPlace setTileSource:offlineSource];
+    self.MapPlace.hidden = NO;
+    self.MapPlace.hideAttribution = YES;
+    self.MapPlace.delegate = self;
+    
+    self.MapPlace.minZoom = 10;
+    self.MapPlace.zoom = 13;
+    self.MapPlace.maxZoom = 17;
+    
+    [self.MapPlace setAdjustTilesForRetinaDisplay:YES];
+    //  self.MapPlace.showsUserLocation = YES;
+    [self.MapPlace setHidden:YES];
 }
 
 - (NSError *) DownloadError:(NSError *) error{
@@ -945,6 +968,7 @@ static NSString *city = @"";
     Reachability *reach = [Reachability reachabilityWithHostname:@"google.com"];
     
     if ([reach isReachable]) {
+#if LIKELIK
         if ([reach isReachableViaWiFi]) {
             // On WiFi
             
@@ -957,7 +981,7 @@ static NSString *city = @"";
         }
         else {
             // On Cell
-            
+            NSLog(@"on cell");
             
             
             if(IS_IPHONE_5 == 1)
@@ -968,6 +992,12 @@ static NSString *city = @"";
             
             //    log([NSString stringWithFormat:@"Downloading via cell network");
         }
+#else
+        if(IS_IPHONE_5 == 1)
+            [self AFdownload:city fromURL:likelikurlonline_5];
+        else
+            [self AFdownload:city fromURL:likelikurlonline_4];
+#endif
         
     } else {
         // Isn't reachable
