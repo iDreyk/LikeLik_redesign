@@ -117,7 +117,6 @@ static BOOL NEED_TO_RELOAD = NO;
 {
     [super viewDidLoad];
     
-#warning need a better way to do it
     if ([AMLocalizedString(@"Moscow", nil) isEqualToString:self.CityName.text]) {
         currentCity = @"Moscow";
     }
@@ -261,9 +260,6 @@ static BOOL NEED_TO_RELOAD = NO;
     
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    
-    NSLog(@"%@",self.CityNameString);
-  
     UIButton *btn = [InterfaceFunctions search_button];
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];

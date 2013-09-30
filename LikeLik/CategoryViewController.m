@@ -96,9 +96,6 @@ static NSString *city = @"";
 
 - (void)viewDidLoad
 {
-    
-    
-#warning need a better way to do it
     if ([AMLocalizedString(@"Moscow", nil) isEqualToString:self.Label]) {
         currentCity = @"Moscow";
         city = currentCity;
@@ -759,24 +756,10 @@ static NSString *city = @"";
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-#warning добавить гуглоэвент
     [self updateOffsets];
 }
 
-
-
-
-
-
-
-
-
-
-
-
-#warning popviewcontroller
 #warning регионы
-#warning тайлы
 #warning уведомления
 #warning город
 #warning current location на старте
