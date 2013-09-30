@@ -29,6 +29,10 @@
 #define labelColorTag 87008
 #define buttonlabel1Tag 87009
 #define checkTag 87010
+
+#define backgroundTag 2442441
+#define backgroundTag2 2442442
+
 #define afterregister             @"l27h7RU2dzVfP12aoQssda"
 static NSString *LorR = nil;
 static NSString *PlaceName = @"";
@@ -86,9 +90,6 @@ static BOOL NEED_TO_RELOAD = NO;
     // this ensures it matches up exactly to the bounds of our original image
     CGImageRef cgImage = [context createCGImage:result fromRect:CGRectMake(blurSize, 0, [inputImage extent].size.width - 2*blurSize, [inputImage extent].size.height)];
     
-    //return [UIImage imageWithCGImage:cgImage];
-    
-    // if you need scaling
     return [[self class] scaleIfNeeded:cgImage];
 }
 
@@ -103,12 +104,12 @@ static BOOL NEED_TO_RELOAD = NO;
 
 
 -(void)viewWillDisappear:(BOOL)animated{
-    self.view.hidden = YES;
+    //self.view.hidden = YES;
      BACK_PRESSED = YES;
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-    self.view.hidden = NO;
+    //self.view.hidden = NO;
     [HUD setHidden:YES];
 }
 
@@ -116,7 +117,6 @@ static BOOL NEED_TO_RELOAD = NO;
 {
     [super viewDidLoad];
     
-#warning need a better way to do it
     if ([AMLocalizedString(@"Moscow", nil) isEqualToString:self.CityName.text]) {
         currentCity = @"Moscow";
     }
@@ -264,6 +264,10 @@ static BOOL NEED_TO_RELOAD = NO;
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
+    if ([self.CityNameString isEqualToString:AMLocalizedString(@"Favorites", Nil)])
+        self.navigationItem.rightBarButtonItem = nil;
+    
+    
     UIButton *titleview = [InterfaceFunctions segmentbar_map_list:1];
     [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
     
@@ -295,6 +299,19 @@ static BOOL NEED_TO_RELOAD = NO;
 //    self.PlacesTable.contentOffset = CGPointMake(0, -40);
 //    [UIView commitAnimations];
     
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    bg.tag = backgroundTag;
+    UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    bg2.tag = backgroundTag2;
+    
+    bg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:self.CityNameText] objectForKey:@"city_EN"]]];
+    bg2.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_paralax",[[[ExternalFunctions cityCatalogueForCity:self.CityNameText] objectForKey:@"city_EN"] lowercaseString]]];
+    
+    [self.view addSubview:bg2];
+    [self.view addSubview:bg];
+    [self.view bringSubviewToFront:self.PlacesTable];
+    [self.view bringSubviewToFront:self.Map];
+    [self.view bringSubviewToFront:self.mapView];
 }
 
 - (void)tableNeedsToReload:(NSNotification *) notification {
@@ -779,13 +796,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         [imgLayer1 setShadowOpacity:0.9f];
         [imgLayer1 setShadowOffset: CGSizeMake(0, 1)];
         [imgLayer1 setShadowRadius:3.0];
-        // [imgLayer setCornerRadius:4];
         imgLayer1.shouldRasterize = YES;
         
-        // This tell QuartzCore where to draw the shadow so it doesn't have to work it out each time
         [imgLayer1 setShadowPath:[UIBezierPath bezierPathWithRect:imgLayer1.bounds].CGPath];
-        
-        // This tells QuartzCore to render it as a bitmap
         [imgLayer1 setRasterizationScale:[UIScreen mainScreen].scale];
         
         CALayer * imgLayer = back.layer;

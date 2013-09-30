@@ -78,7 +78,7 @@ static BOOL foreignversion = NO;
                                                object: nil];
     [self check_Open:self];
     
-    
+
     UIGestureRecognizer *tap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     tap.delegate = self;
     
@@ -174,7 +174,9 @@ static BOOL foreignversion = NO;
     self.ribbonimage.hidden = NO;
     self.check_background.image = [InterfaceFunctions check_background];
 
-    
+    //disable backNav on check
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Check Screen",self.PlaceCityEN,self.PlaceNameEN]];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
     
@@ -236,6 +238,8 @@ static BOOL foreignversion = NO;
     if ([parent respondsToSelector:@selector(dismissSemiModalView)])
     {
         [self dismissSemiModalView];
+        //disable backNav
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     }
 }
 

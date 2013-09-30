@@ -14,7 +14,6 @@
 @interface ScrollinfoViewController : UIViewController {
     
 }
-#warning добавить крутилки на webview
 @property (nonatomic,retain) NSString *Parent;
 @property (nonatomic,retain) NSString *CityName;
 @property (nonatomic,retain) IBOutlet UIWebView *Likelikcom;

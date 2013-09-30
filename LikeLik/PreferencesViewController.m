@@ -164,7 +164,7 @@ static NSString *LorR=nil;
     
     
     UIView* myBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    myBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
+    //myBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table_grad.png"]];
     cell.backgroundView = myBackgroundView;
     
     
