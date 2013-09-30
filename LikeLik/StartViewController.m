@@ -63,7 +63,9 @@ static BOOL JUST_APPEAR = YES;
     [super viewDidLoad];
     
     JUST_APPEAR = YES;
-
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
+    
     [self.navigationItem setTitleView:[InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Guides", Nil) AndColor:[InterfaceFunctions corporateIdentity]]];
     self.CityTable.backgroundView = [InterfaceFunctions backgroundView];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
