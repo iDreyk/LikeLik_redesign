@@ -1160,13 +1160,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 
 
 - (void)updateOffsets {
-    CGFloat yOffset   = self.PlacesTable.contentOffset.y;
-    if(yOffset == 0){
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.3];
-        self.PlacesTable.contentOffset = CGPointMake(0, -40);
-        [UIView commitAnimations];
-    }
+//    CGFloat yOffset   = self.PlacesTable.contentOffset.y;
+//    if(yOffset == 0){
+//        [UIView beginAnimations:nil context:NULL];
+//        [UIView setAnimationDuration:0.3];
+//        self.PlacesTable.contentOffset = CGPointMake(0, -40);
+//        [UIView commitAnimations];
+//    }
+
+    
+    
 //    CGFloat threshold = self.PlacesTable.frame.size.height - self.PlacesTable.frame.size.height;
 //    if (yOffset > -threshold && yOffset < 0) {
 //        self.CityImage.frame = CGRectMake(0,-yOffset,320.0,self.CityImage.frame.size.height);
