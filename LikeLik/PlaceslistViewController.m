@@ -86,9 +86,6 @@ static BOOL NEED_TO_RELOAD = NO;
     // this ensures it matches up exactly to the bounds of our original image
     CGImageRef cgImage = [context createCGImage:result fromRect:CGRectMake(blurSize, 0, [inputImage extent].size.width - 2*blurSize, [inputImage extent].size.height)];
     
-    //return [UIImage imageWithCGImage:cgImage];
-    
-    // if you need scaling
     return [[self class] scaleIfNeeded:cgImage];
 }
 
@@ -260,9 +257,16 @@ static BOOL NEED_TO_RELOAD = NO;
     
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    
+    NSLog(@"%@",self.CityNameString);
+  
     UIButton *btn = [InterfaceFunctions search_button];
     [btn addTarget:self action:@selector(Search) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    if ([self.CityNameString isEqualToString:AMLocalizedString(@"Favorites", Nil)])
+        self.navigationItem.rightBarButtonItem = nil;
+    
     
     UIButton *titleview = [InterfaceFunctions segmentbar_map_list:1];
     [titleview addTarget:self action:@selector(segmentedControlIndexChanged) forControlEvents:UIControlEventTouchUpInside];
@@ -779,13 +783,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         [imgLayer1 setShadowOpacity:0.9f];
         [imgLayer1 setShadowOffset: CGSizeMake(0, 1)];
         [imgLayer1 setShadowRadius:3.0];
-        // [imgLayer setCornerRadius:4];
         imgLayer1.shouldRasterize = YES;
         
-        // This tell QuartzCore where to draw the shadow so it doesn't have to work it out each time
         [imgLayer1 setShadowPath:[UIBezierPath bezierPathWithRect:imgLayer1.bounds].CGPath];
-        
-        // This tells QuartzCore to render it as a bitmap
         [imgLayer1 setRasterizationScale:[UIScreen mainScreen].scale];
         
         CALayer * imgLayer = back.layer;

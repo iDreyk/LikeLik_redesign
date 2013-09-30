@@ -18,7 +18,7 @@
 #import "PlaceViewController.h"
 #import "MLPAccessoryBadge.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "TransportationViewController.h"
 
 #import "AFDownloadRequestOperation.h"
 #import "Reachability.h"
@@ -687,6 +687,12 @@ static NSString *city = @"";
         destination.Parent = @"Practical";
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ Practical Info Screen",currentCity]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    }
+    
+    
+    if ([[segue identifier] isEqualToString:@"TransportationSegue"]) {
+        TransportationViewController *destination = [segue destinationViewController];
+        destination.CityName = self.Label;
     }
     
     if ([[segue identifier] isEqualToString:@"MapSegue"]) {
