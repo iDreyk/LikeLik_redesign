@@ -50,30 +50,21 @@ CGRect oldRect;
 
 - (void)viewDidLoad
 {
-    //1
-    //23
-    
     [super viewDidLoad];
-    
-    //    log([NSString stringWithFormat:@"Hello!");
-    //    log([NSString stringWithFormat:@"CityName = %@",self.CityName);
-    // [testflight passCheckpoint:@"Search view"];
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.SearchBar setShowsCancelButton:NO];
-    //#warning надо переделать под новый каталог
     self.PlacesArray = [NSArray arrayWithArray:self.readyArray];//[ExternalFunctions getAllPlacesInCity:self.CityName];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Search", nil)  AndColor:[InterfaceFunctions corporateIdentity]];
     
     [self.SearchBar setTranslucent:YES];
     self.SearchTable.separatorStyle = UITableViewCellSelectionStyleNone;
     
-    //self.SearchTable.backgroundView = [InterfaceFunctions backgroundView];
     self.SearchTable.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor clearColor];
 
     Array = [NSArray arrayWithArray:self.PlacesArray];
     
-    tmp = [NSArray arrayWithArray:self.readyArray];//[ExternalFunctions getAllPlacesInCity:self.CityName];
+    tmp = [NSArray arrayWithArray:self.readyArray];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardWillHideNotification object:nil];

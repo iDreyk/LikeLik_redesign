@@ -580,7 +580,7 @@ static BOOL NEED_TO_RELOAD = NO;
     
     if ([AroundArray count] == 0) {
         
-        UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
+        UIView *view = [[UIView alloc] initWithFrame:self.PlacesTable.frame];
         view.backgroundColor = [UIColor blackColor];
         view.alpha = 0.2;
         
@@ -603,10 +603,6 @@ static BOOL NEED_TO_RELOAD = NO;
         [sublabel setFont:[AppDelegate OpenSansRegular:32]];
         [sublabel setBackgroundColor:[UIColor clearColor]];
         [sublabel setTextColor:[UIColor whiteColor]];
-//        [self.view setBackgroundColor:[UIColor blackColor]];
-//        [self.view setAlpha:0.2];
-//        [self.view bringSubviewToFront:label];
-//        
         
 
         self.gradient_under_cityname.hidden = YES;

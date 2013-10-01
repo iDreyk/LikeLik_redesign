@@ -759,12 +759,7 @@ static NSString *city = @"";
     [self updateOffsets];
 }
 
-#warning регионы
-#warning уведомления
-#warning город
-#warning current location на старте
 -(void)ShowAlertView{
-    //NSString *str = [NSString stringWithFormat:@"%@ %@ Mb",AMLocalizedString(@"You are up to download LikeLik Catalogue", nil),[self retrieveFileSizeFromServer]];
     NSString *str = AMLocalizedString(@"You are up to download LikeLik Catalogue", nil);
     UIAlertView *message1 = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Download", nil)
                                                        message:str

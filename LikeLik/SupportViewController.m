@@ -8,7 +8,7 @@
 
 #import "SupportViewController.h"
 #import "AppDelegate.h"
-
+CGRect oldFrame;
 @interface SupportViewController ()
 
 @end
@@ -59,10 +59,29 @@
     self.Email.backgroundColor = [UIColor clearColor];
     self.FeedBack.backgroundColor = [UIColor clearColor];
     
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textviewBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:nil];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rr:) name:UITextViewTextDidBeginEditingNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textviewEndEditing:) name:UITextViewTextDidEndEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ee:) name:UITextViewTextDidEndEditingNotification object:nil];
 }
+
+-(void)rr:(NSNotification *)note{
+#warning ДОДЕЛАТЬ
+    self.FeedBack.frame = oldFrame;
+    NSLog(@"123");
+}
+
+-(void)ee:(NSNotification *)note{
+    NSLog(@"321");
+    oldFrame = self.FeedBack.frame;
+    CGRect keyboardFrame;
+    [[[note userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
+    NSLog(@"%@",keyboardFrame);
+    CGRect ViewFrame = self.FeedBack.frame;
+    ViewFrame.size.height -= keyboardFrame.size.height;
+    self.FeedBack.frame = ViewFrame;
+    
+}
+
 
 
 -(void)Done{
@@ -140,16 +159,37 @@
 }
 
 
--(void)textviewBeginEditing:(NSNotification *)notification{
-    // log([NSString stringWithFormat:@"123");
+/*    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
+ [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardWillHideNotification object:nil];
+ // Do any additional setup after loading the view.
+ }
+ 
+ 
+ -(void)keyboardHidden:(NSNotification *)note{
+ self.SearchTable.frame = oldRect;
+ }
+ 
+ -(void)keyboardShown:(NSNotification *)note{
+ oldRect = self.SearchTable.frame;
+ CGRect keyboardFrame;
+ [[[note userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
+ CGRect ViewFrame = self.SearchTable.frame;
+ ViewFrame.size.height -= keyboardFrame.size.height;
+ self.SearchTable.frame = ViewFrame;
+ 
+ }*/
 
+-(void)textviewBeginEditing:(NSNotification *)notification{
+    
     if ([self.FeedBack.text isEqualToString:AMLocalizedString(@"Leave a feedback for us", nil)]) {
         self.FeedBack.text = @"";
     }
+    
 }
 
 
 -(void)textviewEndEditing:(NSNotification *)notification{
+    
     if ([self.FeedBack.text isEqualToString:@""]) {
         self.FeedBack.text = AMLocalizedString(@"Leave a feedback for us", nil);
     }
@@ -161,16 +201,19 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
+    NSLog(@"123");
     if ([textField isEqual:self.FeedBack]) {
         self.FeedBack.text = @"";
-        
+         oldFrame = self.FeedBack.frame;
     }
     // log([NSString stringWithFormat:@"%@",textField);
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
+
     if ([textField isEqual:self.FeedBack] && [self.FeedBack.text length]==0) {
         self.FeedBack.text = AMLocalizedString(@"Leave a feedback for us", nil);
+       self.FeedBack.frame = oldFrame;
     }
 }
 

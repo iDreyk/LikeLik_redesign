@@ -337,7 +337,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         view.Photos = [notification.userInfo objectForKey:@"Photo"];
         view.fromNotification = @"YES";
       
-#warning Не передаются фотки через регион
+
         
         
         

@@ -8,6 +8,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dVZ-f5-tO7">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f7M-Hg-Tb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="ci4-5S-MPr" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="rAb-ST-eCE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iru-it-tiG">
@@ -17,13 +18,13 @@
                         <segue destination="Eba-4i-Aoi" kind="relationship" relationship="rootViewController" id="DSY-f5-X7O"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f7M-Hg-Tb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="478" y="2854"/>
         </scene>
         <!--Preferences View Controller-->
         <scene sceneID="WUQ-O3-bu2">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yD2-Gy-aik" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Eba-4i-Aoi" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cJs-AW-h9X">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -54,13 +55,13 @@
                         <segue destination="pV2-Ha-ulb" kind="push" identifier="About" id="BZR-Fd-0rN"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yD2-Gy-aik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="985" y="2854"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Vy-3x-Y4a">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1KO-aZ-Q5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="JjV-AE-1Tg" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="b0T-sz-3S9">
                         <autoresizingMask key="autoresizingMask"/>
@@ -69,13 +70,13 @@
                         <segue destination="AbN-Ke-u38" kind="relationship" relationship="rootViewController" id="vim-AA-94f"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1KO-aZ-Q5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1273" y="1693"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="2PX-zI-SL8">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EfB-QV-Ke4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="AbN-Ke-u38" customClass="StartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q7k-5w-ei3"/>
@@ -185,7 +186,6 @@
                         <segue destination="ci4-5S-MPr" kind="modal" identifier="PrefSegue" id="xwJ-5c-egi"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EfB-QV-Ke4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-812" y="1693"/>
         </scene>
@@ -820,6 +820,7 @@
         <!--Support View Controller-->
         <scene sceneID="RG5-af-AH0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6T-NA-kOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="KQ1-8M-8yf" customClass="SupportViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="17C-nl-ZbZ"/>
@@ -854,27 +855,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="separator_line.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQ4-YM-pRn">
-                                <rect key="frame" x="0.0" y="99" width="325" height="1"/>
+                                <rect key="frame" x="0.0" y="99" width="320" height="1"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="325" id="k1z-FN-vsn"/>
+                                    <constraint firstAttribute="width" constant="320" id="k1z-FN-vsn"/>
                                     <constraint firstAttribute="height" constant="1" id="mEw-cZ-7jd"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ObZ-Qn-Tu9" firstAttribute="top" secondItem="4Q4-ft-Qxj" secondAttribute="top" constant="69" id="6ea-hG-FZH"/>
-                            <constraint firstItem="ObZ-Qn-Tu9" firstAttribute="top" secondItem="17C-nl-ZbZ" secondAttribute="bottom" constant="5" id="7Pt-vG-PqO"/>
-                            <constraint firstItem="t5b-4p-8ba" firstAttribute="top" secondItem="4Q4-ft-Qxj" secondAttribute="top" constant="65" id="Dhm-H2-L9a"/>
-                            <constraint firstItem="wvV-3k-GNy" firstAttribute="trailing" secondItem="4Q4-ft-Qxj" secondAttribute="trailing" id="Ozd-XW-sGt"/>
-                            <constraint firstItem="ObZ-Qn-Tu9" firstAttribute="leading" secondItem="4Q4-ft-Qxj" secondAttribute="leading" constant="7" id="Pdz-rj-aBE"/>
-                            <constraint firstItem="t5b-4p-8ba" firstAttribute="top" secondItem="17C-nl-ZbZ" secondAttribute="bottom" constant="1" id="f5b-hf-5h9"/>
-                            <constraint firstItem="wvV-3k-GNy" firstAttribute="bottom" secondItem="4Q4-ft-Qxj" secondAttribute="bottom" id="hHW-gW-U1I"/>
-                            <constraint firstItem="vQ4-YM-pRn" firstAttribute="leading" secondItem="4Q4-ft-Qxj" secondAttribute="leading" id="oH9-hR-MMH"/>
-                            <constraint firstItem="wvV-3k-GNy" firstAttribute="leading" secondItem="4Q4-ft-Qxj" secondAttribute="leading" id="pIB-gO-SDT"/>
-                            <constraint firstItem="t5b-4p-8ba" firstAttribute="leading" secondItem="4Q4-ft-Qxj" secondAttribute="leading" constant="115" id="spg-1V-eyw"/>
-                            <constraint firstItem="wvV-3k-GNy" firstAttribute="top" secondItem="t5b-4p-8ba" secondAttribute="bottom" constant="13" id="w7C-1x-o7y"/>
-                            <constraint firstItem="vQ4-YM-pRn" firstAttribute="top" secondItem="ObZ-Qn-Tu9" secondAttribute="bottom" constant="9" id="wWZ-0g-F9q"/>
+                            <constraint firstItem="t5b-4p-8ba" firstAttribute="top" secondItem="17C-nl-ZbZ" secondAttribute="bottom" constant="1" id="1Ej-wv-ViX"/>
+                            <constraint firstItem="t5b-4p-8ba" firstAttribute="leading" secondItem="4Q4-ft-Qxj" secondAttribute="leading" constant="115" id="5Wk-g7-2oU"/>
+                            <constraint firstItem="ObZ-Qn-Tu9" firstAttribute="leading" secondItem="4Q4-ft-Qxj" secondAttribute="leading" constant="7" id="6T3-o7-jlE"/>
+                            <constraint firstItem="f8I-mW-XCt" firstAttribute="top" secondItem="wvV-3k-GNy" secondAttribute="bottom" id="M9k-dC-hYB"/>
+                            <constraint firstItem="vQ4-YM-pRn" firstAttribute="top" secondItem="t5b-4p-8ba" secondAttribute="bottom" constant="4" id="PiN-Lr-xHi"/>
+                            <constraint firstItem="wvV-3k-GNy" firstAttribute="leading" secondItem="4Q4-ft-Qxj" secondAttribute="leading" id="U2V-H2-VtN"/>
+                            <constraint firstItem="vQ4-YM-pRn" firstAttribute="leading" secondItem="4Q4-ft-Qxj" secondAttribute="leading" id="YPO-iQ-cdM"/>
+                            <constraint firstItem="wvV-3k-GNy" firstAttribute="top" secondItem="vQ4-YM-pRn" secondAttribute="bottom" constant="8" id="c7C-A0-rda"/>
+                            <constraint firstAttribute="trailing" secondItem="ObZ-Qn-Tu9" secondAttribute="trailing" constant="161" id="c8S-8U-Fkq"/>
+                            <constraint firstItem="vQ4-YM-pRn" firstAttribute="top" secondItem="ObZ-Qn-Tu9" secondAttribute="bottom" constant="9" id="dbO-Ke-dfo"/>
+                            <constraint firstItem="vQ4-YM-pRn" firstAttribute="top" secondItem="t5b-4p-8ba" secondAttribute="bottom" constant="4" id="kYe-Pg-zpd"/>
+                            <constraint firstItem="ObZ-Qn-Tu9" firstAttribute="top" secondItem="17C-nl-ZbZ" secondAttribute="bottom" constant="5" id="mc8-Wv-S3W"/>
+                            <constraint firstAttribute="trailing" secondItem="vQ4-YM-pRn" secondAttribute="trailing" id="ocI-5J-Djt"/>
+                            <constraint firstAttribute="trailing" secondItem="t5b-4p-8ba" secondAttribute="trailing" constant="6" id="s8T-Dv-AKE"/>
+                            <constraint firstItem="wvV-3k-GNy" firstAttribute="top" secondItem="vQ4-YM-pRn" secondAttribute="bottom" constant="8" id="vU1-dJ-IoZ"/>
+                            <constraint firstAttribute="trailing" secondItem="wvV-3k-GNy" secondAttribute="trailing" id="wtf-8z-Kc9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8xy-ce-MAd"/>
@@ -884,7 +889,6 @@
                         <outlet property="FeedBack" destination="wvV-3k-GNy" id="hj6-Ji-t2q"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t6T-NA-kOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1745" y="3141"/>
         </scene>

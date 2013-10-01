@@ -28,7 +28,6 @@ static BOOL getLocation = NO;
  */
 
 
-#warning открывать чек
 -(NSString *)makePassword{
     return [NSString stringWithFormat:@"%@password",self.Password];
 }
