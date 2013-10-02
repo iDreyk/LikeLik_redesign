@@ -31,6 +31,7 @@
 #define likelikurlonline_4      @"http://likelik.net/ios/online/4/"
 #define likelikurlonline_5      @"http://likelik.net/ios/online/5/"
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 
 static NSString *PlaceName = @"";
@@ -104,6 +105,9 @@ static NSString *city = @"";
         currentCity = @"Vienna";
         city = currentCity;
     }
+    
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
 
  //   [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController setNavigationBarHidden:NO animated:NO];

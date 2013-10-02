@@ -11,6 +11,9 @@
 
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
+
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 @interface MyLikeLikeViewController ()
 
 @end
@@ -91,10 +94,10 @@
     
     
     //[cell addSubview:[InterfaceFunctions corporateIdentity_actb]];//actbwithColor:[indexPath row]+1]];
-    
-    cell.backgroundView = [InterfaceFunctions CellBG];
-    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
-    
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0")){
+        cell.backgroundView = [InterfaceFunctions CellBG];
+        cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
+    }
     
     //UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[LikeLikImage objectAtIndex:[indexPath row]]]];
     //[imageview setFrame:CGRectMake(15.0, 4.0, imageview.image.size.width, imageview.image.size.height)];

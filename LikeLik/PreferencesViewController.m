@@ -51,6 +51,8 @@ static NSString *LorR=nil;
     
     self.tableView.backgroundView = [InterfaceFunctions backgroundView];//[[UIImageView alloc] initWithImage: [UIImage imageNamed:@"bg.png"]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
   //  [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
     
     UIButton *back = [InterfaceFunctions done_button];
