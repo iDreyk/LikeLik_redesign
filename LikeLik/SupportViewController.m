@@ -8,7 +8,8 @@
 
 #import "SupportViewController.h"
 #import "AppDelegate.h"
-CGRect oldFrame;
+#import "AFHTTPRequestOperation.h"
+#import "AFHTTPClient.h"
 @interface SupportViewController ()
 
 @end
@@ -59,28 +60,8 @@ CGRect oldFrame;
     self.Email.backgroundColor = [UIColor clearColor];
     self.FeedBack.backgroundColor = [UIColor clearColor];
     
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rr:) name:UITextViewTextDidBeginEditingNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ee:) name:UITextViewTextDidEndEditingNotification object:nil];
 }
 
--(void)rr:(NSNotification *)note{
-#warning ДОДЕЛАТЬ
-    self.FeedBack.frame = oldFrame;
-    NSLog(@"123");
-}
-
--(void)ee:(NSNotification *)note{
-    NSLog(@"321");
-    oldFrame = self.FeedBack.frame;
-    CGRect keyboardFrame;
-    [[[note userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
-    NSLog(@"%@",keyboardFrame);
-    CGRect ViewFrame = self.FeedBack.frame;
-    ViewFrame.size.height -= keyboardFrame.size.height;
-    self.FeedBack.frame = ViewFrame;
-    
-}
 
 
 
@@ -204,7 +185,7 @@ CGRect oldFrame;
     NSLog(@"123");
     if ([textField isEqual:self.FeedBack]) {
         self.FeedBack.text = @"";
-         oldFrame = self.FeedBack.frame;
+
     }
     // log([NSString stringWithFormat:@"%@",textField);
 }
@@ -213,7 +194,6 @@ CGRect oldFrame;
 
     if ([textField isEqual:self.FeedBack] && [self.FeedBack.text length]==0) {
         self.FeedBack.text = AMLocalizedString(@"Leave a feedback for us", nil);
-       self.FeedBack.frame = oldFrame;
     }
 }
 

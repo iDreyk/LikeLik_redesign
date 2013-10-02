@@ -234,7 +234,7 @@ static BOOL infoViewIsOpen = NO;
     label.backgroundColor =  [UIColor clearColor];
     label.editable = NO;
     
-    label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
+   // label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
     if ([AppDelegate isiPhone5])
         label.frame = CGRectMake(14.0,label.frame.origin.y, 292.0, 260.0);//textViewSize.height+35);
     else
@@ -311,7 +311,7 @@ static BOOL infoViewIsOpen = NO;
         [self.Annotation addObject:marker1];
     }
     [self.MapPhoto selectAnnotation:[self.Annotation objectAtIndex:0] animated:YES];
-    [self.visualMap setHidden:YES];
+    [self.MapPhoto setHidden:YES];
     [self.view addSubview:self.MapPhoto];
 #else
     self.MKMap.hidden = YES;
@@ -438,10 +438,6 @@ static BOOL infoViewIsOpen = NO;
 
 
 -(void)viewDidAppear:(BOOL)animated{
-    
-    // [testflight passCheckpoint:@"VisualTour"];
-   
-    
 #if LIKELIK
     if ([[[CLLocation alloc] initWithLatitude:self.MapPhoto.userLocation.coordinate.latitude longitude:self.MapPhoto.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.CityName]] > 50000.0) {
         self.MapPhoto.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.CityName].coordinate;
@@ -454,7 +450,6 @@ static BOOL infoViewIsOpen = NO;
         self.locationButton.enabled = YES;
     }
 #else
-#warning заезжает за край описание
 #warning  обновлять пин на карте при пролистывании
     MKCoordinateSpan span;
     span.latitudeDelta = 0.2;
@@ -492,13 +487,7 @@ static BOOL infoViewIsOpen = NO;
         }
         
     }
-    
-    
-   
-    
-   // photos = [ExternalFunctions getVisualTourImagesFromCity:self.CityName];
-    
-    
+
     self.pageControl.numberOfPages=[photos count];
     self.pageControl.currentPage=0;
     
@@ -520,11 +509,6 @@ static BOOL infoViewIsOpen = NO;
         [_scroll addSubview:awesomeView];
     }
     _scroll.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, 400.0);
-    //#warning visual tour подготовить материалы
-    
-    
-   
-    
 }
 
 - (void)didReceiveMemoryWarning

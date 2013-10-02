@@ -21,12 +21,11 @@
 @property (nonatomic,retain)IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 @property (nonatomic,retain) NSString *CityName;
-@property (nonatomic,retain) RMMapView *MapPhoto;
+@property (nonatomic,retain)IBOutlet RMMapView *MapPhoto;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *PlaceonMap;
 @property (weak, nonatomic) IBOutlet UIView *PhotoCard;
 @property (weak, nonatomic) IBOutlet UIButton *info_button;
 @property (weak, nonatomic) IBOutlet UIScrollView *infoScroll;
-@property (nonatomic,retain)IBOutlet UIView *visualMap;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @property (nonatomic,retain)IBOutlet UILabel *Red_line;
 @property (nonatomic, retain)IBOutlet SubText2 *label;
