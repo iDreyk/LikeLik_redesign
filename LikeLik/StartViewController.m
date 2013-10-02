@@ -215,21 +215,37 @@ static BOOL JUST_APPEAR = YES;
 {
     int row = [indexPath row];
     static NSString *CellIdentifier = @"StartTableCell";
-    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
     
+    
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
     StartTableCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [operationQueue addOperationWithBlock:^{
         UIImage *image = _backCityImages[row];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             StartTableCell *cell = (StartTableCell *)[tableView cellForRowAtIndexPath:indexPath];
+            cell.BackCityImage.image = image;
             cell.CityLabel.font = [AppDelegate OpenSansSemiBold:60];
             cell.CityLabel.text  = _CityLabels[row];
             cell.CityLabel.textColor = [UIColor whiteColor];
-            cell.BackCityImage.image = image;
             [cell.contentView addSubview:[InterfaceFunctions standartAccessorView]];
         }];
     }];
+   //Этот метод хуже
+//        UIImage *image = [_imageCache objectForKey:[NSNumber numberWithInteger:row]];
+//        if (image == nil) {
+//            image = [_backCityImages objectAtIndex:row];
+//            [_imageCache setObject:image forKey:[NSNumber numberWithInteger:row]];
+//        }
+//
+//    
+//    StartTableCell *cell;
+//    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+//    cell.CityLabel.font = [AppDelegate OpenSansSemiBold:60];
+//    cell.CityLabel.text  = _CityLabels[row];
+//    cell.CityLabel.textColor = [UIColor whiteColor];
+//    cell.BackCityImage.image = image;//_backCityImages[row];
+//    [cell.contentView addSubview:[InterfaceFunctions standartAccessorView]];
     
     if(PREV_ROW > row)
         REVERSE_ANIM = true;

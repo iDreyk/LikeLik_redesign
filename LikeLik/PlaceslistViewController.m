@@ -29,6 +29,7 @@
 #define labelColorTag 87008
 #define buttonlabel1Tag 87009
 #define checkTag 87010
+#define smallIconTag 87011
 
 #define backgroundTag 2442441
 #define backgroundTag2 2442442
@@ -833,7 +834,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         CALayer *layer2 = nameLabel.layer;
         layer2.cornerRadius = 5;
         nameLabel.clipsToBounds = YES;
-        
+        nameLabel.tag = labelColorTag;
+        [back addSubview:nameLabel];
+
         // первая кнопка
 //        UILabel * buttonlabel1 = [[UILabel alloc] initWithFrame:CGRectMake(width + 2*img_x_dist - 2 + img_x_dist + 5, img_y_dist + width/1.852 - 24 -2 , 26, 26)];
 //        CALayer *layer1 = buttonlabel1.layer;
@@ -863,16 +866,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         
         
         
-        nameLabel.tag = labelColorTag;
         
 //        [back addSubview:buttonlabel1];
-        [back addSubview:nameLabel];
         [back addSubview:knuck];
 
+        UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(268.0, 0.0, 42.0, 42.0)];
+        iconView.tag = smallIconTag;
+        [back addSubview:iconView];
         
-        
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0,280, cell.center.y*2)];
+                                                                            //280
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0,265, cell.center.y*2)];
         
         //        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
         //        line.backgroundColor = [[InterfaceFunctions colorTextCategory:category] colorWithAlphaComponent:0.3];
@@ -949,6 +952,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UILabel *label = (UILabel *)[cell viewWithTag:labelColorTag];
     label.backgroundColor = [InterfaceFunctions colorTextCategory:category];
+    
+    UIView *iconView = (UIView *)[cell viewWithTag:smallIconTag];
+    iconView.backgroundColor = [InterfaceFunctions iconColorWithCategory:category];
     
     Place1 = [AroundArray objectAtIndex:row];
     NSArray *photos = [Place1 objectForKey:@"Photo"];

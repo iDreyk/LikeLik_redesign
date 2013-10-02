@@ -26,6 +26,8 @@
 +(UIColor *)taxiColor;
 +(UIColor *)ShadowColor;
 +(UIColor *)BackgroundColor;
++(UIColor *)iconColorWithCategory:(NSString *)Category;
+
 
 #pragma mark UILabel
 +(UILabel *)NavLabelwithTitle:(NSString *)string AndColor:(UIColor *)Color;

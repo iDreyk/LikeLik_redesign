@@ -202,6 +202,41 @@
     return [UIColor colorWithPatternImage:img];
 }
 
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
++(UIColor *)iconColorWithCategory:(NSString *)Category{
+    UIColor *color;
+    
+    //    [AppDelegate LLLog:[NSString stringWithFormat:@"Category: %@", Category);
+    if ([Category isEqualToString:@"Restaurants"]) {
+        color = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"2.png"] scaledToSize:CGSizeMake(42.0, 42.0)]];
+    }
+    if ([Category isEqualToString:@"Night life"]) {
+        color = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"3.png"] scaledToSize:CGSizeMake(42.0, 42.0)]];
+    }
+    if ([Category isEqualToString:@"Shopping"]) {
+        color = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"4.png"] scaledToSize:CGSizeMake(42.0, 42.0)]];
+    }
+    if ([Category isEqualToString:@"Culture"]) {
+        color = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"5.png"] scaledToSize:CGSizeMake(42.0, 42.0)]];
+    }
+    if ([Category isEqualToString:@"Leisure"]) {
+        color = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"6.png"] scaledToSize:CGSizeMake(42.0, 42.0)]];
+    }
+    if ([Category isEqualToString:@"Beauty"]) {
+        color = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"7.png"] scaledToSize:CGSizeMake(42.0, 42.0)]];
+    }
+    return color;
+}
+
+
 #pragma mark UILabel
 +(UILabel *)NavLabelwithTitle:(NSString *)string AndColor:(UIColor *)Color{
     UIFont* font = [AppDelegate OpenSansSemiBold:32];

@@ -29,6 +29,7 @@ CGRect oldRect;
 #define labelColorTag 87008
 #define buttonlabel1Tag 87009
 #define checkTag 87010
+#define smallIconTag 87011
 
 #define backgroundTag 2442441
 #define backgroundTag2 2442442
@@ -206,7 +207,11 @@ CGRect oldRect;
         nameLabel.clipsToBounds = YES;
         nameLabel.tag = labelColorTag;
         [back addSubview:nameLabel];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0,280, cell.center.y*2)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0,263, cell.center.y*2)];
+        
+        UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(268.0, 0.0, 42.0, 42.0)];
+        iconView.tag = smallIconTag;
+        [back addSubview:iconView];
         
         label.tag = tableLabelWithTextTag;
         label.font = [AppDelegate OpenSansSemiBold:35];
@@ -221,6 +226,9 @@ CGRect oldRect;
     }
     UILabel * buttonlabel = (UILabel *)[cell viewWithTag:cellColorTag];
     buttonlabel.backgroundColor =[InterfaceFunctions colorTextCategory:category];
+    
+    UIView *iconView = (UIView *)[cell viewWithTag:smallIconTag];
+    iconView.backgroundColor = [InterfaceFunctions iconColorWithCategory:category];
     
     UILabel *tableLabelWithText  = (UILabel *)[cell viewWithTag:tableLabelWithTextTag];
     tableLabelWithText.text = [[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Name"];

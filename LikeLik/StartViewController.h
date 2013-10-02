@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) NSArray *backCityImages;
 @property (nonatomic, strong) NSArray *CityLabels;
+@property (nonatomic, strong) NSCache *imageCache;
 @property (nonatomic,retain)MBProgressHUD *HUDfade;
 
 
