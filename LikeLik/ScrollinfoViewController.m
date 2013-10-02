@@ -73,6 +73,13 @@
 
     self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     if ([self.Parent  isEqualToString:@"About"]){
+
+        self.webHUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:self.webHUD];
+        _webHUD.mode = MBProgressHUDAnimationFade;
+        self.webHUD.removeFromSuperViewOnHide = YES;
+        self.webHUD.delegate = self;
+        
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"About Screen"];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
         self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"About", nil) AndColor:[InterfaceFunctions corporateIdentity]];
@@ -111,6 +118,14 @@
 
     }
 
+}
+
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [self.webHUD show:YES];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    [self.webHUD hide:YES];
 }
 
 - (void)didReceiveMemoryWarning

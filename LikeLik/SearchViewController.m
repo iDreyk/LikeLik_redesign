@@ -129,25 +129,6 @@ CGRect oldRect;
 {
     return [self.PlacesArray count];
 }
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = nil;
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
-//    
-//    [cell addSubview: [InterfaceFunctions TableLabelwithText:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Name"] AndColor:[InterfaceFunctions colorTextCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Category"]] AndFrame:CGRectMake(14.0, 0.0, 260, cell.center.y*2)]];
-//    
-//    cell.backgroundView = [InterfaceFunctions CellBG];
-//    cell.selectedBackgroundView = [InterfaceFunctions SelectedCellBG];
-//    
-//    [cell addSubview:[InterfaceFunctions goLabelCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Category"]]];
-//    [cell addSubview:[InterfaceFunctions actbwithCategory:[[self.PlacesArray objectAtIndex:[indexPath row]] objectForKey:@"Category"]]];
-//    
-//    return cell;
-//}
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [cell setBackgroundColor:[UIColor clearColor]];
@@ -290,21 +271,14 @@ CGRect oldRect;
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
-        [self.SearchTable setFrame:CGRectMake(self.SearchTable.frame.origin.x, self.SearchTable.frame.origin.y-44.0, 320.0, self.SearchTable.frame.size.height+44.0)];
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self.SearchBar setShowsCancelButton:YES];
     searchBar.text = nil;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    //    NSArray *tmp;
-    if (searchBar.text.length>0){//.text.length>0) {
+    if (searchBar.text.length>0){
         NSString *strSearchText =searchBar.text;
-    //    log([NSString stringWithFormat:@"strSearchText = %@",strSearchText);
-        //#warning надо переделать под новый каталог
-        //       tmp = [ExternalFunctions getAllPlacesInCity:self.CityName];
-        //#warning backspace неправильно работает
         NSMutableArray *ar = [NSMutableArray array];
         for (int i=0;i<[tmp count];i++) {
             NSString *strData = [[tmp objectAtIndex:i] objectForKey:@"Name"];
@@ -315,20 +289,11 @@ CGRect oldRect;
         self.PlacesArray = ar;
         [self.SearchTable reloadData];
     }
-    else{
-        //    log([NSString stringWithFormat:@"Hello");
-        //#warning надо переделать под новый каталог
-        //self.PlacesArray = [ExternalFunctions getAllPlacesInCity:self.CityName];
-        //log([NSString stringWithFormat:@"tmp = %@", tmp);
-        self.PlacesArray = tmp;
+    else{self.PlacesArray = tmp;
         [self.SearchTable reloadData];
     }
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar{
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
-        [self.SearchTable setFrame:CGRectMake(self.SearchTable.frame.origin.x, self.SearchTable.frame.origin.y+44.0, 320.0, self.SearchTable.frame.size.height-44.0)];
-    
     self.PlacesArray = Array;
     [self.SearchTable reloadData];
     [self.SearchBar setShowsCancelButton:NO];
