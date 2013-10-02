@@ -317,6 +317,64 @@
     label.shadowOffset = [InterfaceFunctions ShadowSize];
     return label;
 }
++(void)UseLabelPlaceView:(UIButton *)button{
+    UILabel *favText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+    favText.numberOfLines = 0;
+    [favText setText:AMLocalizedString(@"Use", nil)];
+    favText.font = [AppDelegate OpenSansBoldwithSize:18];
+    favText.textColor  = [UIColor whiteColor];
+    favText.backgroundColor = [UIColor clearColor];
+    [favText setCenter:CGPointMake(button.center.x, button.center.y)];
+    [favText sizeToFit];
+    [favText setFrame:CGRectMake((106.0-favText.frame.size.width)/2, 50-20.0, favText.frame.size.width, favText.frame.size.height)];
+    [button addSubview:favText];
+    
+}
+
+
++(void)ShareLabelPlaceView:(UIButton *)button{
+    UILabel *favText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+    favText.numberOfLines = 0;
+    [favText setText:AMLocalizedString(@"Share", nil)];
+    favText.font = [AppDelegate OpenSansBoldwithSize:18];
+    favText.textColor  = [UIColor whiteColor];
+    favText.backgroundColor = [UIColor clearColor];
+    [favText setCenter:CGPointMake(button.center.x, button.center.y)];
+    [favText sizeToFit];
+    [favText setFrame:CGRectMake((107.0-favText.frame.size.width)/2, 50-20.0, favText.frame.size.width, favText.frame.size.height)];
+    [button addSubview:favText];
+    
+}
+
++(void)FavouriteLabelPlaceView:(UIButton *)button{
+      UILabel *favText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+        favText.numberOfLines = 0;
+        [favText setText:AMLocalizedString(@"Add to Favourites", nil)];
+        favText.font = [AppDelegate OpenSansBoldwithSize:18];
+    favText.textColor  = [UIColor whiteColor];
+    favText.backgroundColor = [UIColor clearColor];
+        [favText setCenter:CGPointMake(button.center.x, button.center.y)];
+        [favText sizeToFit];
+        [favText setFrame:CGRectMake((107.0-favText.frame.size.width)/2, 50-20.0, favText.frame.size.width, favText.frame.size.height)];
+        [button addSubview:favText];
+    
+//        if ([ExternalFunctions isFavorite:self.PlaceName InCity:self.PlaceCityName InCategory:self.PlaceCategory]) {
+//            favorites.enabled = NO;
+//            favImage.alpha = alpha;
+//            [favText removeFromSuperview];
+//            favText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+//            favText.numberOfLines = 0;
+//            [favText setText:AMLocalizedString(@"Favorited", nil)];
+//            favText.font = [AppDelegate OpenSansBoldwithSize:18];
+//            favText.textColor  = [UIColor whiteColor];
+//            favText.backgroundColor = [UIColor clearColor];
+//            [favText setCenter:CGPointMake(favorites.center.x, favorites.center.y)];
+//            [favText sizeToFit];
+//        [favText setFrame:CGRectMake((107.0-favText.frame.size.width)/2, 50-20.0, favText.frame.size.width, favText.frame.size.height)];
+//            [favorites addSubview:favText];
+//            favText.alpha = alpha;
+//        }
+}
 
 #pragma mark UIImageView
 +(UIImageView *)actbwithCategory:(NSString *)Category{
@@ -569,6 +627,34 @@
     fav.frame = CGRectMake(45.0, 10.0, fav.frame.size.width, fav.frame.size.height);
     [fav setCenter:CGPointMake(53, fav.center.y)];
     return fav;
+}
+
+
++(UIImageView *)UsePlaceViewInPlace:(NSString *)PlaceName InCategory:(NSString *)PlaceCategory InCity:(NSString *)PlaceCityName{
+   UIImageView *Use = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2use.png"]];
+    Use.frame = CGRectMake(45.0, 10.0, Use.frame.size.width, Use.frame.size.height);
+        NSMutableArray *animation = [[NSMutableArray alloc] initWithCapacity:8];
+        for (int i = 1; i<8; i++) {
+            NSString *image = [[NSString alloc] initWithFormat:@"Fist_animated_%d.png",i];
+            [animation addObject:[UIImage imageNamed:image]];
+        }
+    Use.animationImages = animation;
+    Use.animationDuration = 1.0;
+        [Use startAnimating];
+
+        if ([ExternalFunctions isCheckUsedInPlace:PlaceName InCategory:PlaceCategory InCity:PlaceCityName]){
+            [Use stopAnimating];
+        }
+    return Use;
+
+}
+
++(UIImageView *)SharePlaceView{
+        UIImageView *share = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"3share.png"]];
+        share.frame = CGRectMake(45.0, 10.0, share.frame.size.width, share.frame.size.height);
+        [share setCenter:CGPointMake(54, [self favouritestarPlaceView].center.y)];
+    return share;
+
 }
 
 #pragma mark UIView

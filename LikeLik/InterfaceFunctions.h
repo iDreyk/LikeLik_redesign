@@ -36,6 +36,9 @@
 +(UILabel *)mainTextLabelwithText:(NSString *)String AndColor:(UIColor *)Color;
 +(UILabel *)TableLabelwithText:(NSString *)String AndColor:(UIColor *)Color AndFrame:(CGRect)Frame;
 
++(void)UseLabelPlaceView:(UIButton *)button;
++(void)ShareLabelPlaceView:(UIButton *)button;
++(void)FavouriteLabelPlaceView:(UIButton *)button;
 #pragma mark UIImageView
 +(UIImageView *)actbwithCategory:(NSString *)Category;
 +(UIImageView *)actbwithColor:(NSInteger)value;
@@ -52,6 +55,8 @@
 +(UIImageView *)backgroundView;
 +(UIImageView *)standartAccessorView;
 +(UIImageView *)favouritestarPlaceView;
++(UIImageView *)UsePlaceViewInPlace:(NSString *)PlaceName InCategory:(NSString *)PlaceCategory InCity:(NSString *)PlaceCityName;
++(UIImageView *)SharePlaceView;
 #pragma mark UIView
 +(UIView *)headerwithCategory:(NSString *)Category;
 +(UIView *)HeaderwithDistrict:(NSString *)String;
