@@ -304,9 +304,9 @@ static NSString *city = @"";
         [text setFont:[AppDelegate OpenSansSemiBold:22]];
         text.textAlignment = NSTextAlignmentCenter;
         [frame addSubview:text];
-        //CALayer *layer = frame.layer;
-        //layer.cornerRadius = 5;
-        //frame.clipsToBounds = YES;
+        CALayer *layer = frame.layer;
+        layer.cornerRadius = 5;
+        frame.clipsToBounds = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
         [frame addGestureRecognizer:tap];
         [frame setUserInteractionEnabled:YES];
@@ -561,7 +561,7 @@ static NSString *city = @"";
 
 -(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
 {
-#warning проверить карту после загрузки
+    
     if ([annotation.annotationType isEqualToString:@"marker"]) {
         RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
                                                           tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
