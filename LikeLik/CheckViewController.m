@@ -14,9 +14,6 @@
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
 #import <mach/mach_time.h>
-
-#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-#define SYSTEM_VERSION_MORE_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
 mach_timebase_info_data_t info1;
 
 NSDictionary *dictforCheck;
@@ -178,8 +175,8 @@ static BOOL foreignversion = NO;
     self.check_background.image = [InterfaceFunctions check_background];
 
     //disable backNav on check
-    if(SYSTEM_VERSION_MORE_THAN(@"6.5"))
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+#warning падает
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Check Screen",self.PlaceCityEN,self.PlaceNameEN]];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
@@ -239,11 +236,11 @@ static BOOL foreignversion = NO;
     self.fistbackground.hidden = YES;
     self.alreadyuse.hidden = YES;
     UIViewController *parent = [self.view containingViewController];
-    if ([parent respondsToSelector:@selector(dismissSemiModalView)]){
+    if ([parent respondsToSelector:@selector(dismissSemiModalView)])
+    {
         [self dismissSemiModalView];
         //disable backNav
-        if(SYSTEM_VERSION_MORE_THAN(@"6.5"))
-            self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     }
 }
 
