@@ -76,14 +76,14 @@ CGRect PlaceCardRectClose;
             [self.PlaceView setFrame:PlaceCardRectClose];
         }
         infoViewIsOpen =!infoViewIsOpen;
-
+        
     } completion:NULL];
 }
 
 
 //-(void)move:(id)sender {
 //       CGFloat velocityY = (0.2*[(UIPanGestureRecognizer*)sender velocityInView:self.PlaceView].y);
-//        
+//
 //        if (velocityY>0 && infoViewIsOpen == YES) {
 //            // [AppDelegate LLLog:[NSString stringWithFormat:@"Вниз");
 //            [UIView transitionWithView:self.PlaceView
@@ -91,20 +91,20 @@ CGRect PlaceCardRectClose;
 //                               options:UIViewAnimationOptionCurveLinear
 //                            animations:^
 //             {
-//                 
+//
 //                 if ([AppDelegate isiPhone5]){
 //                     [self.PlaceView setFrame:CGRectMake(0.0, 496.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
 //                 }
 //                 else{
 //                     [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-//                     
+//
 //                 }
 //             }
 //                            completion:NULL];
 //            infoViewIsOpen = NO;
-//        
+//
 //        }
-//        
+//
 //        if (velocityY<0 && infoViewIsOpen == NO) {
 //            [UIView transitionWithView:self.PlaceView
 //                              duration:0.4
@@ -112,9 +112,9 @@ CGRect PlaceCardRectClose;
 //                            animations:^
 //             {
 //                 if ([AppDelegate isiPhone5]) {
-//                     
+//
 //                     [self.PlaceView setFrame:CGRectMake(0.0, 152.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-//                     
+//
 //                 }
 //                 else{
 //                     [self.PlaceView setFrame:CGRectMake(0.0, 170.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
@@ -128,7 +128,7 @@ CGRect PlaceCardRectClose;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-
+    
 #warning HARD CODING
 #warning маленький дрыг
     PlaceCardRectOpen = CGRectMake(0.0,  self.view.frame.size.height-self.self.PlaceView.frame.size.height-40.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height);
@@ -179,11 +179,11 @@ CGRect PlaceCardRectClose;
                                                  name:kSemiModalDidHideNotification
                                                object:nil];
     
-//    if ([self.fromNotification isEqualToString:@"NO"])
-//    [[NSNotificationCenter defaultCenter] addObserver: self
-//                                             selector: @selector(aftercall:)
-//                                                 name: afterCall
-//                                               object: nil];
+    //    if ([self.fromNotification isEqualToString:@"NO"])
+    //    [[NSNotificationCenter defaultCenter] addObserver: self
+    //                                             selector: @selector(aftercall:)
+    //                                                 name: afterCall
+    //                                               object: nil];
     
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(afterreg)
@@ -196,13 +196,13 @@ CGRect PlaceCardRectClose;
                                                object: nil];
     
     
-
+    
     self.PlaceView.backgroundColor =  [UIColor clearColor];
     self.ScrollView.backgroundColor = self.Color;
     _ScrollView.contentSize = CGSizeMake(320.0, 400.0);
     
     self.navigationItem.title = @"";
-//    [self.scroll addGestureRecognizer:singleTap];
+    //    [self.scroll addGestureRecognizer:singleTap];
     NSArray *photos = self.Photos;
     
     if ([AppDelegate isiPhone5])
@@ -233,12 +233,12 @@ CGRect PlaceCardRectClose;
     UIView *awesomeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 512.0)];
     awesomeView.backgroundColor = [UIColor colorWithRed:0.5/2 green:0.5 blue:0.5 alpha:1];
     
-        
+    
     
     _scroll.delegate=self;
     pageControl.numberOfPages=[photos count];
     pageControl.currentPage=0;
-
+    
     
     
     _Separator.image = [UIImage imageNamed:@"separator_line.png"];
@@ -256,7 +256,7 @@ CGRect PlaceCardRectClose;
     _TextPlace.editable = NO;
     _infoScroll.contentSize = CGSizeMake(320.0, 512.0);
     
-
+    
     [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_normal"].image forState:UIControlStateNormal];
     [self.Favorites setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"1fav_selected"].image forState:UIControlStateHighlighted];
     [self.GOUSE setBackgroundImage:[InterfaceFunctions TabitemwithCategory:self.PlaceCategory andtag:@"2use_normal"].image forState:UIControlStateNormal];
@@ -270,8 +270,8 @@ CGRect PlaceCardRectClose;
     
     self.Use = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2use.png"]];
     self.Use.frame = CGRectMake(45.0, 10.0, self.Use.frame.size.width, self.Use.frame.size.height);
-
-
+    
+    
     
     NSMutableArray *animation = [[NSMutableArray alloc] initWithCapacity:8];
     for (int i = 1; i<8; i++) {
@@ -353,7 +353,7 @@ CGRect PlaceCardRectClose;
     _TextPlace.text = self.PlaceAbout;
     _Teltext.text = self.PlaceTelephone;
     _webtext.text = self.PlaceWeb;
-   
+    
     
     [_ScrollView setBackgroundColor:self.Color];
     
@@ -364,15 +364,15 @@ CGRect PlaceCardRectClose;
     Red_line.numberOfLines = 10;
     Red_line.backgroundColor =  [UIColor clearColor];
     Red_line.numberOfLines = 0;
-   // Red_line.backgroundColor =  [UIColor clearColor];
+    // Red_line.backgroundColor =  [UIColor clearColor];
     [Red_line sizeToFit];
     ////    [AppDelegate LLLog:[NSString stringWithFormat:@"%f %f",Red_line.frame.size.width,Red_line.frame.size.height);
     CGSize size1 =Red_line.frame.size;
     size1.width=292.0;
-     //   //    [AppDelegate LLLog:[NSString stringWithFormat:@"%f %f",size1.width, size1.height);
+    //   //    [AppDelegate LLLog:[NSString stringWithFormat:@"%f %f",size1.width, size1.height);
     Red_line.frame = CGRectMake(Red_line.frame.origin.x, Red_line.frame.origin.y, size1.width, size1.height);
     [Red_line sizeThatFits:size1];
-     //   //    [AppDelegate LLLog:[NSString stringWithFormat:@"%f %f",Red_line.frame.size.width,Red_line.frame.size.height);
+    //   //    [AppDelegate LLLog:[NSString stringWithFormat:@"%f %f",Red_line.frame.size.width,Red_line.frame.size.height);
     
     SubText *label = [[SubText alloc] initWithFrame:CGRectMake(14.0, Red_line.frame.origin.y+Red_line.frame.size.height, 292.0, 50.0)];
     label.text = self.PlaceAbout;
@@ -382,7 +382,7 @@ CGRect PlaceCardRectClose;
     label.backgroundColor =  [UIColor clearColor];
     label.editable = NO;
     CGSize textViewSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, 500.0) lineBreakMode:NSLineBreakByWordWrapping];
-   // label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
+    // label.contentInset = UIEdgeInsetsMake(-6, -8, 0, 0);
     if ([AppDelegate isiPhone5]) {
         label.frame = CGRectMake(6.0,label.frame.origin.y, 320.0, textViewSize.height+70);
     }
@@ -390,11 +390,11 @@ CGRect PlaceCardRectClose;
         label.frame = CGRectMake(6.0,label.frame.origin.y, 320.0, textViewSize.height+70);
     }
     [label sizeToFit];
-
+    
     [label setScrollEnabled:NO];
     
     
-
+    
     UILabel *address = [[UILabel alloc] init];//[UIButton buttonWithType:UIButtonTypeCustom];
     [address setFrame:CGRectMake(35.0, label.frame.origin.y+label.frame.size.height, 262.0, 32.0)];
     //[address setTitle:self.PlaceAddress forState:UIControlStateNormal];
@@ -412,7 +412,7 @@ CGRect PlaceCardRectClose;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowMap:)];
     [address addGestureRecognizer:tap];
     [address setUserInteractionEnabled:YES];
-
+    
     UIImageView *Point =  [[UIImageView alloc] initWithFrame:CGRectMake(14.0, label.frame.origin.y+label.frame.size.height+10, 14.0, 16.0)];
     Point.backgroundColor =  [UIColor clearColor];
     Point.image = [UIImage imageNamed:@"ico_point.png"];
@@ -436,10 +436,10 @@ CGRect PlaceCardRectClose;
     frame = tel.frame;
     frame.size.height*=2;
     tel.frame = frame;
-   // [tel setBackgroundColor:[UIColor blackColor]];
+    // [tel setBackgroundColor:[UIColor blackColor]];
     [tel.titleLabel setFont:[AppDelegate OpenSansRegular:28]];//[UIFont boldSystemFontOfSize:20]];
     [tel addTarget:self action:@selector(launchPhoneWithNumber:) forControlEvents:UIControlEventTouchUpInside];
- 
+    
     
     UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(250,16, 9, 14)];
     _actb.image=[UIImage imageNamed:@"actb_white"];
@@ -448,12 +448,12 @@ CGRect PlaceCardRectClose;
     size1 =tel.frame.size;
     size1.width=271.0;
     tel.frame = CGRectMake(tel.frame.origin.x,tel.frame.origin.y, size1.width, size1.height);
-
-//#warning renren
+    
+    //#warning renren
     UIImageView *Phone = [[UIImageView alloc] initWithFrame:CGRectMake(14.0, address.frame.origin.y+address.frame.size.height+20.0, 12.0, 18.0)];
     Phone.backgroundColor =  [UIColor clearColor];
     Phone.image = [UIImage imageNamed:@"ico_tel.png"];
-   
+    
     center = tel.center;
     center.x = Phone.center.x;
     Phone.center = center;//tel.center;
@@ -461,11 +461,11 @@ CGRect PlaceCardRectClose;
     //center.y = tel.center.y;
     //Phone.center = center;
     
-   UIImageView * line2 = [[UIImageView alloc] initWithFrame:CGRectMake(14.0, tel.frame.origin.y+tel.frame.size.height, 292.0, 1.0)];
+    UIImageView * line2 = [[UIImageView alloc] initWithFrame:CGRectMake(14.0, tel.frame.origin.y+tel.frame.size.height, 292.0, 1.0)];
     line2.backgroundColor =  [UIColor clearColor];
     line2.image = [UIImage imageNamed:@"separator_line.png"];
     
-
+    
     UIButton *web = [UIButton buttonWithType:UIButtonTypeCustom];
     [web setFrame:CGRectMake(35.0,tel.frame.origin.y+tel.frame.size.height, 250.0, 32.0)];
     [web setTitle: self.PlaceWeb forState:UIControlStateNormal];
@@ -479,11 +479,11 @@ CGRect PlaceCardRectClose;
     
     [web.titleLabel setFont:[AppDelegate OpenSansRegular:28]];
     [web addTarget:self action:@selector(webPressed:) forControlEvents:UIControlEventTouchUpInside];
- 
+    
     size1 =web.frame.size;
     size1.width=271.0;
     web.frame = CGRectMake(web.frame.origin.x,web.frame.origin.y, size1.width, size1.height);
-
+    
     _actb = [[UIImageView alloc] initWithFrame:CGRectMake(250,16, 9, 14)];
     _actb.image=[UIImage imageNamed:@"actb_white"];
     [web addSubview:_actb];
@@ -519,7 +519,7 @@ CGRect PlaceCardRectClose;
     
     [_ScrollView addSubview:web];
     [_ScrollView addSubview:earth];
-
+    
     
     
     UIButton *btn = [InterfaceFunctions map_button:1];
@@ -534,7 +534,7 @@ CGRect PlaceCardRectClose;
     if ([self.PlaceCityName isEqualToString:@"Vienna"] || [self.PlaceCityName isEqualToString:@"Вена"] || [self.PlaceCityName isEqualToString:@"Wien"]){
         url = [NSURL fileURLWithPath:[[NSString alloc] initWithFormat:@"%@/Vienna/vienna.mbtiles",[ExternalFunctions docDir]]];
     }
-
+    
     
     [self.MapPlace setShowsUserLocation:YES];
     [self.MapPlace setTileSource:[[RMMBTilesSource alloc] initWithTileSetURL:url]];
@@ -551,29 +551,29 @@ CGRect PlaceCardRectClose;
     //    [AppDelegate LLLog:[NSString stringWithFormat:@"%f %f",placecoord.coordinate.latitude,placecoord.coordinate.longitude);
     self.MapPlace.centerCoordinate =  placecoord.coordinate;
     CLLocationCoordinate2D coord = placecoord.coordinate;
- 
+    
     NSInteger numberofpins = 1;
     for (int i = 0; i<numberofpins; i++) {
- 
+        
         RMAnnotation *marker1 = [[RMAnnotation alloc]initWithMapView:self.MapPlace coordinate:CLLocationCoordinate2DMake(coord.latitude, coord.longitude) andTitle:@"Pin"];
         marker1.annotationType = @"marker";
         
         marker1.title = self.PlaceName;
-       marker1.subtitle = AMLocalizedString(self.PlaceCategory, nil);
+        marker1.subtitle = AMLocalizedString(self.PlaceCategory, nil);
         marker1.userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blueColor],@"foregroundColor", nil];
         
         [self.MapPlace addAnnotation:marker1];
     }
     [self refreshButtonState];
-  //  [self.locationButton setHidden:YES];
-
-//    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
-//    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
-//    [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.MapPlace addSubview:self.locationButton];
+    //  [self.locationButton setHidden:YES];
+    
+    //    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
+    //    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
+    //    [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
+    //    [self.MapPlace addSubview:self.locationButton];
 #else
     self.mapView.hidden = YES;
-
+    
     MKCoordinateRegion region;
     MKCoordinateSpan span;
     span.latitudeDelta=0.2;
@@ -597,9 +597,9 @@ CGRect PlaceCardRectClose;
     [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
     [self.locationButton setHidden:YES];
     
-   // [self.mapView addSubview:self.locationButton];
+    // [self.mapView addSubview:self.locationButton];
 #endif
-
+    
 }
 
 #if  LIKELIK
@@ -683,27 +683,27 @@ CGRect PlaceCardRectClose;
 }
 
 -(void)backgroundgo{
-//  //  [AppDelegate LLLog:[NSString stringWithFormat:@"backgroundgo");
-//   // [AppDelegate LLLog:[NSString stringWithFormat:@"Hello!");
-//    if (infoViewIsOpen == YES) {
-//        [self tapDetected:nil];
-//        self.MapPlace.hidden = YES;
-//        self.mapView.hidden = YES;
-//        [self hide_hint:self];
-//    }
+    //  //  [AppDelegate LLLog:[NSString stringWithFormat:@"backgroundgo");
+    //   // [AppDelegate LLLog:[NSString stringWithFormat:@"Hello!");
+    //    if (infoViewIsOpen == YES) {
+    //        [self tapDetected:nil];
+    //        self.MapPlace.hidden = YES;
+    //        self.mapView.hidden = YES;
+    //        [self hide_hint:self];
+    //    }
 }
 
 -(IBAction)showLocation:(id)sender{
     
 #if LIKELIK
-        [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate];
+    [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate];
 #else
-        [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
+    [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
 #endif
 }
 
 - (void)refreshButtonState{
-
+    
     if (![_vkontakte isAuthorized])
     {
         [_loginB setTitle:@"Login"
@@ -722,12 +722,12 @@ CGRect PlaceCardRectClose;
 -(void)afterreg{
     UIButton *tmp = [[UIButton alloc] init];
     tmp.tag = 1;
-//    [UIView animateWithDuration:1.0 animations:^{
-//        if ([AppDelegate isiPhone5])
-//            [self.PlaceView setFrame:CGRectMake(0.0, 496.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-//        else
-//            [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-//    }];
+    //    [UIView animateWithDuration:1.0 animations:^{
+    //        if ([AppDelegate isiPhone5])
+    //            [self.PlaceView setFrame:CGRectMake(0.0, 496.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
+    //        else
+    //            [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
+    //    }];
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"])
     {
         [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Done"                                                       action:@"Register" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
@@ -742,26 +742,26 @@ CGRect PlaceCardRectClose;
                                                             object:self];
         
         infoViewIsOpen = !infoViewIsOpen;
-//        [self presentSemiViewController:VC withOptions:@{
-//         KNSemiModalOptionKeys.pushParentBack    : @(YES),
-//         KNSemiModalOptionKeys.animationDuration : @(0.5),
-//         KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
-//         }];
+        //        [self presentSemiViewController:VC withOptions:@{
+        //         KNSemiModalOptionKeys.pushParentBack    : @(YES),
+        //         KNSemiModalOptionKeys.animationDuration : @(0.5),
+        //         KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+        //         }];
         
         VC.view.backgroundColor = [UIColor clearColor];
         
-
         
-//        VC.PlaceName = self.PlaceName;
-//        VC.PlaceCategory = self.PlaceCategory;
-//        VC.PlaceCity = self.PlaceCityName;
+        
+        //        VC.PlaceName = self.PlaceName;
+        //        VC.PlaceCategory = self.PlaceCategory;
+        //        VC.PlaceCity = self.PlaceCityName;
         VC.color = self.Color;
-
+        
     }
 }
 
 -(BOOL)launchPhoneWithNumber:(UIButton *)sender {
-
+    
     [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Call" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
     
     
@@ -781,7 +781,7 @@ CGRect PlaceCardRectClose;
 
 -(void)webPressed:(UIButton *)sender{
     
-     [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Web" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Web" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
     
     
     
@@ -789,7 +789,7 @@ CGRect PlaceCardRectClose;
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:AMLocalizedString(@"Web", nil)
                                                              delegate:self
-                                                    cancelButtonTitle :AMLocalizedString(@"Close",nil)
+                                                   cancelButtonTitle :AMLocalizedString(@"Close",nil)
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles: url, nil];
     
@@ -800,21 +800,21 @@ CGRect PlaceCardRectClose;
 }
 
 -(void)aftercall:(NSNotification *)notification{
-//    if ([AppDelegate isiPhone5]){
-//        [self.PlaceView setFrame:CGRectMake(0.0, 496.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-//        
-//        
-//    }
-//    else{
-//        [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
-//        
-//    }
-//  //  [AppDelegate LLLog:[NSString stringWithFormat:@"aftercall");
-//    if (self.placeViewMap.hidden == NO){
-//        _background.hidden = NO;
-//        _labelonPhoto.hidden = NO;
-//        [self ShowMap:self];
-//    }
+    //    if ([AppDelegate isiPhone5]){
+    //        [self.PlaceView setFrame:CGRectMake(0.0, 496.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
+    //
+    //
+    //    }
+    //    else{
+    //        [self.PlaceView setFrame:CGRectMake(0.0, 406.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height)];
+    //
+    //    }
+    //  //  [AppDelegate LLLog:[NSString stringWithFormat:@"aftercall");
+    //    if (self.placeViewMap.hidden == NO){
+    //        _background.hidden = NO;
+    //        _labelonPhoto.hidden = NO;
+    //        [self ShowMap:self];
+    //    }
 }
 
 - (void)semiModalDismissed:(NSNotification *) notification {
@@ -823,7 +823,7 @@ CGRect PlaceCardRectClose;
             self.GOUSE.enabled = NO;
             [self.Use stopAnimating];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadTableInPlaces" object:nil];
-        }        
+        }
     }
 }
 
@@ -838,7 +838,7 @@ CGRect PlaceCardRectClose;
 
 -(void)viewWillDisappear:(BOOL)animated{
     infoViewIsOpen = NO;
- //   [AppDelegate LLLog:[NSString stringWithFormat:@"Cammon");
+    //   [AppDelegate LLLog:[NSString stringWithFormat:@"Cammon");
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -852,70 +852,70 @@ CGRect PlaceCardRectClose;
     
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@" %@ %@ %@",currentCity,self.PlaceCategory,self.PlaceNameEn ]];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-          //  [self tapDetected:nil];
+    //  [self tapDetected:nil];
     // [testflight passCheckpoint:self.PlaceName];
-//    if ([self.fromNotification isEqualToString:@"YES"]){
-//        UIButton *btn = [InterfaceFunctions home_button];
-//        [btn addTarget:self action:@selector(testmethod) forControlEvents:UIControlEventTouchUpInside];
-//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-//        self.ScrollView.backgroundColor = [InterfaceFunctions colorTextCategory:self.PlaceCategory];        
-//    }
-//    
+    //    if ([self.fromNotification isEqualToString:@"YES"]){
+    //        UIButton *btn = [InterfaceFunctions home_button];
+    //        [btn addTarget:self action:@selector(testmethod) forControlEvents:UIControlEventTouchUpInside];
+    //        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    //        self.ScrollView.backgroundColor = [InterfaceFunctions colorTextCategory:self.PlaceCategory];
+    //    }
+    //
 #if LIKELIK
-if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0) {
-    self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName].coordinate;
-    //self.locationButton.enabled = NO;
-    
-}
-else{
-    self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
-   // self.locationButton.enabled = YES;
-}
+    if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0) {
+        self.MapPlace.centerCoordinate = [ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName].coordinate;
+        //self.locationButton.enabled = NO;
+        
+    }
+    else{
+        self.MapPlace.centerCoordinate = self.MapPlace.userLocation.coordinate;
+        // self.locationButton.enabled = YES;
+    }
 #else
-MKCoordinateSpan span;
-span.latitudeDelta = 0.2;
-span.longitudeDelta = 0.2;
-// define starting point for map
-CLLocationCoordinate2D start;
-if ([[[CLLocation alloc] initWithLatitude:self.mapView.userLocation.coordinate.latitude longitude:self.mapView.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0){
-    start = [ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName].coordinate;
-    self.locationButton.enabled = NO;
-}
-else{
-    start = self.mapView.userLocation.coordinate;
-    self.locationButton.enabled = YES;
-}
-MKCoordinateRegion region;
-region.span = span;
-region.center = start;
-
-[self.mapView setRegion:region animated:YES];
-
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.2;
+    span.longitudeDelta = 0.2;
+    // define starting point for map
+    CLLocationCoordinate2D start;
+    if ([[[CLLocation alloc] initWithLatitude:self.mapView.userLocation.coordinate.latitude longitude:self.mapView.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0){
+        start = [ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName].coordinate;
+        self.locationButton.enabled = NO;
+    }
+    else{
+        start = self.mapView.userLocation.coordinate;
+        self.locationButton.enabled = YES;
+    }
+    MKCoordinateRegion region;
+    region.span = span;
+    region.center = start;
+    
+    [self.mapView setRegion:region animated:YES];
+    
 #endif
-
+    
 }
 
 -(void)testmethod{
-//    SplashViewController *view1 = [[UIStoryboard storyboardWithName:@"iPhone5" bundle:nil] instantiateViewControllerWithIdentifier:@"Splash"];
-//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view1];
-////    [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
-////    [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
-//    navController.navigationBarHidden = YES;
-//    [self.navigationController pushViewController:view1 animated:YES];
+    //    SplashViewController *view1 = [[UIStoryboard storyboardWithName:@"iPhone5" bundle:nil] instantiateViewControllerWithIdentifier:@"Splash"];
+    //    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view1];
+    ////    [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
+    ////    [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
+    //    navController.navigationBarHidden = YES;
+    //    [self.navigationController pushViewController:view1 animated:YES];
 }
 
- 
+
 -(IBAction)buttonPressed:(UIButton*)sender{
     
     if (sender.tag == 2) {
         [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
         infoViewIsOpen = !infoViewIsOpen;
-            
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                  delegate:self
-                                         cancelButtonTitle:AMLocalizedString(@"Close",nil)
-                                    destructiveButtonTitle:nil
-                                                    otherButtonTitles: AMLocalizedString(@"Share on facebook", nil),AMLocalizedString(@"Share on twitter", nil),AMLocalizedString(@"Share on VK", nil),/*AMLocalizedString(@"Share on Jen Jen", nil),*/AMLocalizedString(@"Send Email",nil),nil];
+        
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                 delegate:self
+                                                        cancelButtonTitle:AMLocalizedString(@"Close",nil)
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles: AMLocalizedString(@"Share on facebook", nil),AMLocalizedString(@"Share on twitter", nil),AMLocalizedString(@"Share on VK", nil),/*AMLocalizedString(@"Share on Jen Jen", nil),*/AMLocalizedString(@"Send Email",nil),nil];
         
         [actionSheet showFromRect:CGRectMake(0.0, 0.0, 320.0, 300.) inView:[[self navigationController] navigationBar] animated:YES];//showInView: [[self navigationController] navigationBar]];
         actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
@@ -937,60 +937,60 @@ region.center = start;
                                                                 object:self];
             
             
-             [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Use Check" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Use Check" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
             [self presentSemiViewController:VC withOptions:@{
-             KNSemiModalOptionKeys.pushParentBack    : @(YES),
-             KNSemiModalOptionKeys.animationDuration : @(0.5),
-             KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
-             }];
+                                                             KNSemiModalOptionKeys.pushParentBack    : @(YES),
+                                                             KNSemiModalOptionKeys.animationDuration : @(0.5),
+                                                             KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+                                                             }];
             
             VC.view.backgroundColor = [UIColor clearColor];
-//            VC.PlaceName = self.PlaceName;
-//            VC.PlaceCategory = self.PlaceCategory;
-//            VC.PlaceCity = self.PlaceCityName;
+            //            VC.PlaceName = self.PlaceName;
+            //            VC.PlaceCategory = self.PlaceCategory;
+            //            VC.PlaceCity = self.PlaceCityName;
             VC.color = self.Color;
-
+            
             
         }
         else{
-        [self showRegistrationMessage:self];
+            [self showRegistrationMessage:self];
         }
         
     }
     
     if (sender.tag == 0) {
-         [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Favorited" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Favorited" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
         HUD = [MBProgressHUD showHUDAddedTo:self.PlaceView animated:YES];
         HUD.mode = MBProgressHUDModeCustomView;
         HUD.margin = 10.f;
         HUD.yOffset = -100.f;
         HUD.removeFromSuperViewOnHide = YES;
         
-
+        
         HUD.customView = [InterfaceFunctions LabelHUDwithString:AMLocalizedString(@"Object added to favourites", nil)];
         
         HUD.mode = MBProgressHUDModeCustomView;
-       
+        
         HUD.delegate = self;
         [ExternalFunctions addToFavouritesPlace:self.PlaceName InCategory:self.PlaceCategory InCity:self.PlaceCityName];
-
+        
         [HUD show:YES];
         [HUD hide:YES afterDelay:2];
-            self.Favorites.enabled = NO;
-            
-            self.favImage.alpha = alpha;
-            
-            [self.favText removeFromSuperview];
-            self.favText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
-            self.favText.numberOfLines = 0;
-            [self.favText setText:AMLocalizedString(@"Favorited", nil)];
-            self.favText.font = [AppDelegate OpenSansBoldwithSize:18];
-            self.favText.textColor  = [UIColor whiteColor];
-            self.favText.backgroundColor = [UIColor clearColor];
-            [self.favText setCenter:CGPointMake(self.Favorites.center.x, self.Favorites.center.y)];
-            [self.favText sizeToFit];
-            [self.favText setFrame:CGRectMake((107.0-self.favText.frame.size.width)/2, 50-20.0, self.favText.frame.size.width, self.favText.frame.size.height)];
-            [self.Favorites addSubview:self.favText];
+        self.Favorites.enabled = NO;
+        
+        self.favImage.alpha = alpha;
+        
+        [self.favText removeFromSuperview];
+        self.favText = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+        self.favText.numberOfLines = 0;
+        [self.favText setText:AMLocalizedString(@"Favorited", nil)];
+        self.favText.font = [AppDelegate OpenSansBoldwithSize:18];
+        self.favText.textColor  = [UIColor whiteColor];
+        self.favText.backgroundColor = [UIColor clearColor];
+        [self.favText setCenter:CGPointMake(self.Favorites.center.x, self.Favorites.center.y)];
+        [self.favText sizeToFit];
+        [self.favText setFrame:CGRectMake((107.0-self.favText.frame.size.width)/2, 50-20.0, self.favText.frame.size.width, self.favText.frame.size.height)];
+        [self.Favorites addSubview:self.favText];
         self.favText.alpha = alpha;
     }
 }
@@ -998,7 +998,7 @@ region.center = start;
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([actionSheet.title isEqualToString:AMLocalizedString(@"Call", nil)]) {
         if (buttonIndex == 0){
-             [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Call" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Call" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
             
             NSString *tel =[actionSheet buttonTitleAtIndex:0];
             NSString* launchUrl = [NSString stringWithFormat:@"tel:%@",tel];
@@ -1017,20 +1017,20 @@ region.center = start;
     
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString: AMLocalizedString(@"Share on VK", nil)]) {
-         [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share VK" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share VK" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
         _vkontakte = [Vkontakte sharedInstance];
         _vkontakte.delegate = self;
-
+        
         if (![_vkontakte isAuthorized])
         {
             [_vkontakte authenticate];
             
-
+            
         }
         else
         {
             [_vkontakte postMessageToWall:self.PlaceAbout link:[[NSURL alloc] initWithString:@"http://likelik.com"]];
-           // [AppDelegate LLLog:[NSString stringWithFormat:@"%@",[[NSURL alloc] initWithString:@"http://likelik.com"]);
+            // [AppDelegate LLLog:[NSString stringWithFormat:@"%@",[[NSURL alloc] initWithString:@"http://likelik.com"]);
         }
         
         
@@ -1039,9 +1039,9 @@ region.center = start;
     
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString: AMLocalizedString(@"Share on twitter", nil)]) {
-         [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share Twitter" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share Twitter" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
         if (_engine){
-         //   [AppDelegate LLLog:[NSString stringWithFormat:@"123");
+            //   [AppDelegate LLLog:[NSString stringWithFormat:@"123");
             [_engine sendUpdate: self.PlaceAbout];
             return;
         }
@@ -1054,15 +1054,15 @@ region.center = start;
         if (controller)
             [self presentViewController:controller animated:YES completion:^{}];//presentModalViewController: controller animated: YES];
         else {
-
-        //    [AppDelegate LLLog:[NSString stringWithFormat:@"321");
+            
+            //    [AppDelegate LLLog:[NSString stringWithFormat:@"321");
             [_engine sendUpdate: self.PlaceAbout];
         }
     }
     
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:AMLocalizedString(@"Share on facebook", nil)]) {
-         [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share FB" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share FB" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
         loadingView.hidden = NO;
         [SCFacebook loginCallBack:^(BOOL success, id result) {
             loadingView.hidden = YES;
@@ -1083,18 +1083,18 @@ region.center = start;
                     [HUD hide:YES afterDelay:1];
                 }];
             }
-        }];       
+        }];
     }
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:AMLocalizedString(@"Send Email", nil)]) {
-         [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share e-mail" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share e-mail" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
         [self openMail:self];
     }
 }
 
-- (void) finish{ 
+- (void) finish{
     [alertView dismissWithClickedButtonIndex:0 animated:YES];
-     self.Favorites.enabled = YES;
+    self.Favorites.enabled = YES;
 }
 
 - (UIImage *)imageByApplyingAlpha:(CGFloat) alpha andPict:(UIImage *)pic{
@@ -1134,9 +1134,9 @@ region.center = start;
         UIButton *btn = [InterfaceFunctions map_button:0];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-
+        
     }
-
+    
 #else
     self.mapView.hidden = !self.mapView.hidden;
     if (self.mapView.hidden){
@@ -1144,8 +1144,8 @@ region.center = start;
         UIButton *btn = [InterfaceFunctions map_button:1];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-     //   [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
-
+        //   [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
+        
     }
     else{
         [self.locationButton setHidden:NO];
@@ -1153,12 +1153,12 @@ region.center = start;
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn]; 
     }
-
+    
 #endif
 }
 
 - (void)viewDidUnload {
-
+    
     [self setScrollView:nil];
     [self setTextPlace:nil];
     [super viewDidUnload];
@@ -1181,19 +1181,19 @@ region.center = start;
 
 - (void)vkontakteAuthControllerDidCancelled{
     [self dismissViewControllerAnimated:YES completion:^{
-       // [self tapDetected:nil];
+        // [self tapDetected:nil];
     }];
-   
-   // [AppDelegate LLLog:[NSString stringWithFormat:@"123");
+    
+    // [AppDelegate LLLog:[NSString stringWithFormat:@"123");
 }
 
 - (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte{
-     [_vkontakte postMessageToWall:self.PlaceAbout link:[[NSURL alloc] initWithString:@"http://likelik.com"]];
+    [_vkontakte postMessageToWall:self.PlaceAbout link:[[NSURL alloc] initWithString:@"http://likelik.com"]];
     [self dismissViewControllerAnimated:YES completion:^{}];//
 }
 
 - (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce{
-     [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Posted on the wall" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Posted on the wall" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:HUD];
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
@@ -1219,7 +1219,7 @@ region.center = start;
 
 #pragma mark SA_OAuthTwitterControllerDelegate
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username {
-
+    
 	[_engine sendUpdate: self.PlaceAbout];
 }
 
@@ -1228,14 +1228,14 @@ region.center = start;
 }
 
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller {
-   
-   // [self tapDetected:nil];
+    
+    // [self tapDetected:nil];
 	// [AppDelegate LLLog:[NSString stringWithFormat:@"Authentication Canceled.");
 }
 
 #pragma mark TwitterEngineDelegate
 - (void) requestSucceeded: (NSString *) requestIdentifier {
-     [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Authorised Twitter" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Authorised Twitter" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
 	HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:HUD];
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
@@ -1251,24 +1251,24 @@ region.center = start;
 }
 
 -(IBAction)showRegistrationMessage:(id)sender{
-
-  UIAlertView  *message = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Registration", nil)
-                                     message:AMLocalizedString(@"To use all the features of the world LikeLik, please register", nil)
-                                    delegate:nil
-                           cancelButtonTitle:AMLocalizedString(@"Cancel", nil)
-                           otherButtonTitles:AMLocalizedString(@"Registration", nil),AMLocalizedString(@"Login", nil), nil];
+    
+    UIAlertView  *message = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"Registration", nil)
+                                                       message:AMLocalizedString(@"To use all the features of the world LikeLik, please register", nil)
+                                                      delegate:nil
+                                             cancelButtonTitle:AMLocalizedString(@"Cancel", nil)
+                                             otherButtonTitles:AMLocalizedString(@"Registration", nil),AMLocalizedString(@"Login", nil), nil];
     message.delegate = self;
     [message show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
-         [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Login" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Login" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
         LorR = @"Login";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
     if (buttonIndex == 2){
-         [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Register" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Register" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
         LorR = @"Login";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
@@ -1318,7 +1318,7 @@ region.center = start;
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-
+    
     infoViewIsOpen = !infoViewIsOpen;
     if ([[segue identifier] isEqualToString:@"LoginSegue"]) {
         RegistrationViewController *destination = [segue destinationViewController];
@@ -1332,7 +1332,7 @@ region.center = start;
 
 - (IBAction)InfoTouch:(UIButton *)sender {
     [UIView transitionWithView:self.PlaceView duration:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
-            [self.PlaceView setFrame:PlaceCardRectOpen];
+        [self.PlaceView setFrame:PlaceCardRectOpen];
     } completion:^(BOOL finished){
         infoViewIsOpen =!infoViewIsOpen;
     }];

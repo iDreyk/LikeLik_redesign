@@ -335,7 +335,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         view.PlaceLocation = loc;
         view.Color = [InterfaceFunctions colorTextCategory:[notification.userInfo objectForKey:@"Category"]];
         view.Photos = [notification.userInfo objectForKey:@"Photo"];
-      //  view.fromNotification = @"YES";
+        //view.fromNotification = @"YES";
       
 
         

@@ -48,7 +48,7 @@ static NSString *LorR=nil;
     Measures = @[@"Miles",@"Kilometers"];
     Information = @[AMLocalizedString(@"About", nil),AMLocalizedString(@"Support", nil),AMLocalizedString(@"More LikeLik Apps", nil)];
     
-    self.tableView.backgroundView = [InterfaceFunctions backgroundView];
+    self.tableView.backgroundView = [InterfaceFunctions backgroundView];//[[UIImageView alloc] initWithImage: [UIImage imageNamed:@"bg.png"]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
@@ -219,7 +219,7 @@ static NSString *LorR=nil;
 {
     //    [AppDelegate LLLog:[NSString stringWithFormat:@"%d %d",[indexPath section],[indexPath row]);
     if ([indexPath section] == 0 && [indexPath row] == 0) {
-        LorR = @"Login";
+        LorR = @"Registration";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
     if ([indexPath section] == 0 && [indexPath row] == 1) {
