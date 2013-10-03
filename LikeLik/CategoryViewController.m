@@ -327,7 +327,7 @@ static NSString *city = @"";
             //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
             CALayer *layer = spin.layer;
             layer.cornerRadius = 8;
-            spin.clipsToBounds = YES;
+            //spin.clipsToBounds = YES;
             CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
             animation.fromValue = [NSNumber numberWithFloat:0.0f];
             animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
@@ -561,7 +561,7 @@ static NSString *city = @"";
 
 -(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
 {
-#warning проверить карту после загрузки
+    
     if ([annotation.annotationType isEqualToString:@"marker"]) {
         RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
                                                           tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]

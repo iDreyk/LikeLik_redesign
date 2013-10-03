@@ -26,16 +26,16 @@
     MBProgressHUD *HUD;
 }
 @property (nonatomic,retain) UIImageView *Use;
-//@property (nonatomic,retain) NSString *fromNotification;
+@property (nonatomic,retain) NSString *fromNotification;
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 
-//@property (weak, nonatomic) IBOutlet UILabel *LabelOnScroll;
-//@property (retain, nonatomic) IBOutlet UILabel *labelonPhoto;
-//@property (nonatomic,retain) IBOutlet UIImageView *background;
+@property (weak, nonatomic) IBOutlet UILabel *LabelOnScroll;
+@property (retain, nonatomic) IBOutlet UILabel *labelonPhoto;
+@property (nonatomic,retain) IBOutlet UIImageView *background;
 @property (weak, nonatomic) IBOutlet UIButton *Favorites;
 @property (weak, nonatomic) IBOutlet UIButton *GOUSE;
 @property (weak, nonatomic) IBOutlet UIButton *Share;
-//@property (weak, nonatomic) IBOutlet UIView *InfoPlaceTable;
+@property (weak, nonatomic) IBOutlet UIView *InfoPlaceTable;
 @property (weak, nonatomic) IBOutlet UIScrollView *infoScroll;
 
 @property (weak, nonatomic) IBOutlet UIImageView *PlacePinimage;
@@ -49,11 +49,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *Separator3;
 @property (weak, nonatomic) IBOutlet UITextView *TextPlace;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *PlaceonMap;
-
-@property (nonatomic,retain) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet RMMapView *MapPlace;
+@property (retain, nonatomic) IBOutlet RMMapView *MapPlace;
 @property (weak, nonatomic) IBOutlet UIView *PlaceView;
-
 @property (nonatomic,retain) NSString *PlaceName;
 @property (nonatomic,retain) NSString *PlaceNameEn;
 @property (nonatomic,retain) NSString *PlaceCityName;
@@ -65,11 +62,10 @@
 @property (nonatomic,retain) CLLocation *PlaceLocation;
 @property (nonatomic,retain) NSArray *Photos;
 @property (nonatomic, retain) UIColor *Color;
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *hint;
 @property (weak, nonatomic) IBOutlet UIButton *hide_button;
 
+@property (nonatomic,retain) IBOutlet MKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 @property (nonatomic,retain)IBOutlet UIPageControl *pageControl;
@@ -78,16 +74,13 @@
 @property (nonatomic, retain)IBOutlet UILabel *favText;
 @property (nonatomic, retain)IBOutlet UIImageView *favImage;
 
-//@property (weak, nonatomic) IBOutlet UIButton *locationButton;
+@property (nonatomic,retain) IBOutlet UIView *placeViewMap;
+@property (weak, nonatomic) IBOutlet UIButton *locationButton;
 
 -(IBAction)showLocation:(id)sender;
 -(IBAction)openMail:(id)sender;
+-(IBAction)infotap:(id)sender;
+- (IBAction)tapDetected:(UIGestureRecognizer *)sender;
 -(IBAction)ShowMap:(id)sender;
 -(IBAction)hide_hint:(id)sender;
-
-
-
-- (IBAction)InfoTouch:(UIButton *)sender;
-- (IBAction)MovePlaceCard:(UISwipeGestureRecognizer *)sender;
-
 @end

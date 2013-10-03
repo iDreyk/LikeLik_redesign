@@ -205,6 +205,9 @@ static BOOL NEED_TO_RELOAD = NO;
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"Map", nil) forSegmentAtIndex:1];
     
+      
+    
+       
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.PlacesTable.showsHorizontalScrollIndicator = NO;
@@ -216,15 +219,21 @@ static BOOL NEED_TO_RELOAD = NO;
     self.Map.hidden = YES;
     self.locationButton.hidden = YES;
     
+    
+    
     locationManager = [[CLLocationManager alloc] init];
     [locationManager setDelegate:self];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     Me = [locationManager location];
     
+    
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
     [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
     if ([CLLocationManager authorizationStatus] == 2) {
+        
+        
+        
         HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
         [self.navigationController.view addSubview:HUD];
         HUD.userInteractionEnabled = NO;
@@ -239,7 +248,11 @@ static BOOL NEED_TO_RELOAD = NO;
         [HUD show:YES];
         [HUD hide:YES afterDelay:2];
     }
+    
 
+    
+    
+    
     [locationManager stopUpdatingLocation];
     locationManager = nil;
     self.CityName.text = self.CityNameString;
@@ -281,6 +294,10 @@ static BOOL NEED_TO_RELOAD = NO;
                                              selector: @selector(tableNeedsToReload:)
                                                  name: @"ReloadTableInPlaces"
                                                object: nil];
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.3];
+//    self.PlacesTable.contentOffset = CGPointMake(0, -40);
+//    [UIView commitAnimations];
     
     UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
     bg.tag = backgroundTag;
@@ -832,7 +849,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         knuck.tag = checkTag;
         knuck.backgroundColor = [InterfaceFunctions corporateIdentity];
         knuck.layer.cornerRadius = 3;
-        UIImageView *knPict = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"new_knuck"]];
+        UIImageView *knPict = [[UIImageView alloc] initWithImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]];
         knPict.frame = CGRectMake(0, 3, 24, 24);
         [knuck addSubview:knPict];
         //[knuck addSubview:[[UIImageView alloc]initWithImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]]];
@@ -1065,7 +1082,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
-        LorR = @"Login";
+        LorR = @"Registration";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Register Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
