@@ -192,12 +192,11 @@ static BOOL NEED_TO_RELOAD = NO;
 #endif
     
     
-    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
-    self.backgroundView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
+    self.view.backgroundColor = [UIColor clearColor];
+    self.backgroundView.backgroundColor = [UIColor clearColor];
     UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
-    
-    background.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] scaledToSize:CGSizeMake(320, 568)]];//[UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
-   // [self.view addSubview:background];
+//    background.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] scaledToSize:CGSizeMake(320, 568)]];
+    background.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
     [self.view bringSubviewToFront:self.PlacesTable];
     [self.view bringSubviewToFront:self.mapView];
     [self.view bringSubviewToFront:self.Map];
@@ -206,9 +205,6 @@ static BOOL NEED_TO_RELOAD = NO;
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"List", nil) forSegmentAtIndex:0];
     [self.SegmentedMapandTable setTitle:AMLocalizedString(@"Map", nil) forSegmentAtIndex:1];
     
-      
-    
-       
     self.PlacesTable.backgroundColor = [UIColor clearColor];
     self.PlacesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.PlacesTable.showsHorizontalScrollIndicator = NO;
@@ -220,21 +216,15 @@ static BOOL NEED_TO_RELOAD = NO;
     self.Map.hidden = YES;
     self.locationButton.hidden = YES;
     
-    
-    
     locationManager = [[CLLocationManager alloc] init];
     [locationManager setDelegate:self];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     Me = [locationManager location];
     
-    
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
     [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
     [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
     if ([CLLocationManager authorizationStatus] == 2) {
-        
-        
-        
         HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
         [self.navigationController.view addSubview:HUD];
         HUD.userInteractionEnabled = NO;
@@ -249,11 +239,7 @@ static BOOL NEED_TO_RELOAD = NO;
         [HUD show:YES];
         [HUD hide:YES afterDelay:2];
     }
-    
 
-    
-    
-    
     [locationManager stopUpdatingLocation];
     locationManager = nil;
     self.CityName.text = self.CityNameString;
@@ -295,10 +281,6 @@ static BOOL NEED_TO_RELOAD = NO;
                                              selector: @selector(tableNeedsToReload:)
                                                  name: @"ReloadTableInPlaces"
                                                object: nil];
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.3];
-//    self.PlacesTable.contentOffset = CGPointMake(0, -40);
-//    [UIView commitAnimations];
     
     UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
     bg.tag = backgroundTag;
@@ -850,7 +832,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         knuck.tag = checkTag;
         knuck.backgroundColor = [InterfaceFunctions corporateIdentity];
         knuck.layer.cornerRadius = 3;
-        UIImageView *knPict = [[UIImageView alloc] initWithImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]];
+        UIImageView *knPict = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"new_knuck"]];
         knPict.frame = CGRectMake(0, 3, 24, 24);
         [knuck addSubview:knPict];
         //[knuck addSubview:[[UIImageView alloc]initWithImage:[self imageWithImage:[UIImage imageNamed:@"kul_90"] scaledToSize:CGSizeMake(24,24)]]];
