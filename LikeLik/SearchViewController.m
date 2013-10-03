@@ -70,9 +70,9 @@ CGRect oldRect;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardWillHideNotification object:nil];
     
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
     bg.tag = backgroundTag;
-    UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
     bg2.tag = backgroundTag2;
     
     bg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:self.CityName] objectForKey:@"city_EN"]]];
@@ -309,4 +309,17 @@ CGRect oldRect;
     [self.SearchBar resignFirstResponder];
     
 }
+- (void)updateOffsets {
+    CGFloat yOffset   = self.SearchTable.contentOffset.y;
+    UIImageView *imback = (UIImageView *)[self.view viewWithTag:backgroundTag];
+    if(yOffset < 0)
+        imback.alpha = 1.0 + yOffset / 600;
+    //    if (yOffset > 0)
+    //        imback.alpha = 1.0 - yOffset/300;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self updateOffsets];
+}
+
 @end

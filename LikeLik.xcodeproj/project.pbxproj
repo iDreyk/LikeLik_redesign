@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5200ECC117FDBCFB0075DC8E /* new_knuck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5200ECC017FDBCFB0075DC8E /* new_knuck@2x.png */; };
 		5594162D17957CA500828B47 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 919E8722173A5A9400A25E07 /* libxml2.dylib */; };
 		559AA1C317D9EDDB005362CC /* appData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 559AA1C217D9EDDB005362CC /* appData.plist */; };
 		55A80F0C17747C6400089216 /* ExternalFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A80F0B17747C6400089216 /* ExternalFunctions.m */; };
@@ -311,8 +310,8 @@
 		91FE3A1C1796C581000304D4 /* soonCities_DE in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1B1796C581000304D4 /* soonCities_DE */; };
 		91FE3A1E1796C591000304D4 /* soonCities_EN in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1D1796C591000304D4 /* soonCities_EN */; };
 		91FE3A201796C5A2000304D4 /* SoonCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91FE3A1F1796C5A2000304D4 /* SoonCities.plist */; };
-		D0310ADA17F960FB00A11BB0 /* moscow_paralax@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0310AD917F960FB00A11BB0 /* moscow_paralax@2x.png */; };
-		D0310ADC17F9610B00A11BB0 /* vienna_paralax@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0310ADB17F9610B00A11BB0 /* vienna_paralax@2x.png */; };
+		D0310ADA17F960FB00A11BB0 /* moscow_paralax.png in Resources */ = {isa = PBXBuildFile; fileRef = D0310AD917F960FB00A11BB0 /* moscow_paralax.png */; };
+		D0310ADC17F9610B00A11BB0 /* vienna_paralax.png in Resources */ = {isa = PBXBuildFile; fileRef = D0310ADB17F9610B00A11BB0 /* vienna_paralax.png */; };
 		D0B430F117C74B2C005BF369 /* knuck_pin_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B430EA17C74B2A005BF369 /* knuck_pin_2@2x.png */; };
 		D0B430F217C74B2C005BF369 /* knuck_pin_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B430EB17C74B2B005BF369 /* knuck_pin_3@2x.png */; };
 		D0B430F317C74B2C005BF369 /* knuck_pin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B430EC17C74B2B005BF369 /* knuck_pin_4@2x.png */; };
@@ -348,7 +347,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5200ECC017FDBCFB0075DC8E /* new_knuck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_knuck@2x.png"; sourceTree = "<group>"; };
 		559AA1C217D9EDDB005362CC /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = appData.plist; sourceTree = "<group>"; };
 		55A80F0A17747C6400089216 /* ExternalFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExternalFunctions.h; path = LikeLik/ExternalFunctions.h; sourceTree = SOURCE_ROOT; };
 		55A80F0B17747C6400089216 /* ExternalFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExternalFunctions.m; path = LikeLik/ExternalFunctions.m; sourceTree = SOURCE_ROOT; };
@@ -770,8 +768,8 @@
 		91FE3A1B1796C581000304D4 /* soonCities_DE */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_DE; sourceTree = "<group>"; };
 		91FE3A1D1796C591000304D4 /* soonCities_EN */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soonCities_EN; sourceTree = "<group>"; };
 		91FE3A1F1796C5A2000304D4 /* SoonCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SoonCities.plist; sourceTree = "<group>"; };
-		D0310AD917F960FB00A11BB0 /* moscow_paralax@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moscow_paralax@2x.png"; path = "Moscow/moscow_paralax@2x.png"; sourceTree = "<group>"; };
-		D0310ADB17F9610B00A11BB0 /* vienna_paralax@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "vienna_paralax@2x.png"; path = "Vienna/vienna_paralax@2x.png"; sourceTree = "<group>"; };
+		D0310AD917F960FB00A11BB0 /* moscow_paralax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moscow_paralax.png; path = Moscow/moscow_paralax.png; sourceTree = "<group>"; };
+		D0310ADB17F9610B00A11BB0 /* vienna_paralax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vienna_paralax.png; path = Vienna/vienna_paralax.png; sourceTree = "<group>"; };
 		D0B430EA17C74B2A005BF369 /* knuck_pin_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuck_pin_2@2x.png"; sourceTree = "<group>"; };
 		D0B430EB17C74B2B005BF369 /* knuck_pin_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuck_pin_3@2x.png"; sourceTree = "<group>"; };
 		D0B430EC17C74B2B005BF369 /* knuck_pin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knuck_pin_4@2x.png"; sourceTree = "<group>"; };
@@ -928,7 +926,6 @@
 				9165887B1794409B00F13BF2 /* 266_281 star_favourites_empty@2x.png */,
 				9165887C1794409B00F13BF2 /* 2use@2x.png */,
 				9165887D1794409B00F13BF2 /* 3share@2x.png */,
-				5200ECC017FDBCFB0075DC8E /* new_knuck@2x.png */,
 				9162A8D817FD856900D4B09A /* 212_100 Tabitem_place_2_2use_normal@2x.png */,
 				9162A8D917FD856900D4B09A /* 212_100 Tabitem_place_2_2use_selected@2x.png */,
 				9162A8DA17FD856900D4B09A /* 212_100 Tabitem_place_3_2use_normal@2x.png */,
@@ -1307,8 +1304,8 @@
 				91BFC4E817F5A3E7009F8D4E /* Moscow_Parallax_Blur.png */,
 				D0D7537B17F9D9DA0057A648 /* Vienna_blur.png */,
 				D0D7537C17F9D9DA0057A648 /* Moscow_blur.png */,
-				D0310AD917F960FB00A11BB0 /* moscow_paralax@2x.png */,
-				D0310ADB17F9610B00A11BB0 /* vienna_paralax@2x.png */,
+				D0310AD917F960FB00A11BB0 /* moscow_paralax.png */,
+				D0310ADB17F9610B00A11BB0 /* vienna_paralax.png */,
 				D05D7BED17BE7EFF00003A16 /* icons */,
 				559AA1C217D9EDDB005362CC /* appData.plist */,
 				91FE3A1F1796C5A2000304D4 /* SoonCities.plist */,
@@ -1698,7 +1695,6 @@
 				9165897D1794409C00F13BF2 /* 62_62 arrow_normal@2x.png in Resources */,
 				9162A91A17FD856900D4B09A /* 214_100 Tabitem_place_6_3share_normal@2x.png in Resources */,
 				9162A91D17FD856900D4B09A /* 214_100 Tabitem_place_7_1fav_selected@2x.png in Resources */,
-				5200ECC117FDBCFB0075DC8E /* new_knuck@2x.png in Resources */,
 				9162A90217FD856900D4B09A /* 212_100 Tabitem_place_5_2use_normal@2x.png in Resources */,
 				9165897E1794409C00F13BF2 /* 62_62 arrow_pressed@2x.png in Resources */,
 				9165897F1794409C00F13BF2 /* 63_76 MapPin_1@2x.png in Resources */,
@@ -1720,7 +1716,7 @@
 				9162A90A17FD856900D4B09A /* 214_100 Tabitem_place_2_3share_normal@2x.png in Resources */,
 				9165898E1794409C00F13BF2 /* 78_59 button_info@2x.png in Resources */,
 				9165898F1794409C00F13BF2 /* 80_67 button_settings_navbar@2x.png in Resources */,
-				D0310ADC17F9610B00A11BB0 /* vienna_paralax@2x.png in Resources */,
+				D0310ADC17F9610B00A11BB0 /* vienna_paralax.png in Resources */,
 				916589901794409C00F13BF2 /* 80_67 icon_home_place@2x.png in Resources */,
 				91BFC4EE17F5BC0E009F8D4E /* 512x512 special Series.png in Resources */,
 				FA48929717F61FB900F21079 /* icon_vienna_@2x.png in Resources */,
@@ -1745,7 +1741,7 @@
 				9162A90D17FD856900D4B09A /* 214_100 Tabitem_place_3_1fav_selected@2x.png in Resources */,
 				916589AE1794409C00F13BF2 /* Fist_animated_6@2x.png in Resources */,
 				916589AF1794409C00F13BF2 /* Fist_animated_7@2x.png in Resources */,
-				D0310ADA17F960FB00A11BB0 /* moscow_paralax@2x.png in Resources */,
+				D0310ADA17F960FB00A11BB0 /* moscow_paralax.png in Resources */,
 				916589B01794409C00F13BF2 /* gradient_check@2x.png in Resources */,
 				916589B11794409C00F13BF2 /* ico_earth.png in Resources */,
 				9162A90717FD856900D4B09A /* 212_100 Tabitem_place_7_2use_selected@2x.png in Resources */,
@@ -1995,8 +1991,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2095,8 +2091,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2133,8 +2129,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2205,8 +2201,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2277,8 +2273,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilya Tsarev (AWRCKD8DGF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

@@ -168,9 +168,9 @@ static NSString *city = @"";
 #endif
 
 
-    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
     background.tag = backgroundTag;
-    UIImageView *background2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    UIImageView *background2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
     background2.tag = backgroundTag2;
     
     background.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:self.Label] objectForKey:@"city_EN"]]];
@@ -306,7 +306,7 @@ static NSString *city = @"";
         [frame addSubview:text];
         CALayer *layer = frame.layer;
         layer.cornerRadius = 5;
-        frame.clipsToBounds = YES;
+        //frame.clipsToBounds = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customPush:)];
         [frame addGestureRecognizer:tap];
         [frame setUserInteractionEnabled:YES];
@@ -327,7 +327,7 @@ static NSString *city = @"";
             //spin.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
             CALayer *layer = spin.layer;
             layer.cornerRadius = 8;
-            spin.clipsToBounds = YES;
+            //spin.clipsToBounds = YES;
             CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
             animation.fromValue = [NSNumber numberWithFloat:0.0f];
             animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
@@ -732,31 +732,12 @@ static NSString *city = @"";
 
 
 - (void)updateOffsets {
-    
     CGFloat yOffset   = self.categoryView.contentOffset.y;
-  //  log([NSString stringWithFormat:@"yofs: %f", yOffset);
     UIImageView *imback = (UIImageView *)[self.view viewWithTag:backgroundTag];
-    if(yOffset < 0){
+    if(yOffset < 0)
         imback.alpha = 1.0 + yOffset/200;
-    }
-    
-    if (yOffset > 0) {
-        //self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
+    if (yOffset > 0)
         imback.alpha = 1.0 - yOffset/300;
-      //  self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-6-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
-       // self.categoryView.frame = CGRectMake(0, 44-(yOffset), 320, self.categoryView.frame.size.height);
-        //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,-yOffset,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
-        //self.categoryView.frame = CGRectMake(self.categoryView.frame.origin.x,self.categoryView.frame.origin.y-yOffset,self.categoryView.frame.size.width,self.categoryView.frame.size.height);
-    }
-    else{
-        //self.CityImage.frame = CGRectMake(0, 0.0, 320, self.CityImage.frame.size.height);
-      //  self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-6,self.CityName.frame.size.width,self.CityName.frame.size.height);
-       // self.categoryView.frame = CGRectMake(0, 44.0, 320, self.categoryView.frame.size.height);
-
-        //self.GradientUnderLabel.frame = CGRectMake(self.GradientUnderLabel.frame.origin.x,0.0,self.GradientUnderLabel.frame.size.width,self.GradientUnderLabel.frame.size.height);
-        
-    }
-    //self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
