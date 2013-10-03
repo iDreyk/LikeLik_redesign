@@ -212,6 +212,8 @@ CGRect PlaceCardRectClose;
     
 
     
+    
+    
     self.view.backgroundColor = [UIColor redColor];
     _scroll.pagingEnabled = YES;
     _scroll.showsHorizontalScrollIndicator = NO;

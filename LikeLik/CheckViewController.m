@@ -181,7 +181,8 @@ static BOOL foreignversion = NO;
 
     
     //disable backNav on check
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    if(SYSTEM_VERSION_MORE_THAN(@"6.5"))
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Check Screen",self.PlaceCityEN,self.PlaceNameEN]];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
