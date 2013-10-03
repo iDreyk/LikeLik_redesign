@@ -212,7 +212,7 @@ static BOOL foreignversion = NO;
 
 -(IBAction)showQR:(id)sender{
     
-    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"QR" action:@"Open Camera"                                                                                          label:[NSString stringWithFormat:@"%@ %@",self.PlaceCityEN,self.PlaceNameEN] value:nil] build]];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"QR" action:@"Open Camera"                                                                                          label:[NSString stringWithFormat:@"%@ %@ %@",self.PlaceCityEN,self.PlaceNameEN,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
     
     //    log([NSString stringWithFormat:@"Show");
    // self.Offer.hidden = YES;
@@ -268,7 +268,7 @@ static BOOL foreignversion = NO;
     
 
     // [testflight passCheckpoint:@"Recognize QR"];
-    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"QR" action:@"Captured"                                                                                          label:[NSString stringWithFormat:@"%@ %@",self.PlaceCityEN,self.PlaceNameEN] value:nil] build]];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"QR" action:@"Captured"                                                                                          label:[NSString stringWithFormat:@"%@ %@ %@",self.PlaceCityEN,self.PlaceNameEN,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
     
     id<NSFastEnumeration> results =
     [info objectForKey: ZBarReaderControllerResults];
@@ -299,7 +299,7 @@ static BOOL foreignversion = NO;
     
     
     if ([ExternalFunctions isTheRightQRCodeOfPlace:PlaceName InCategory:PlaceCategory InCity:PlaceCity WithCode:string]) {
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Check" action:@"Used"                                                                                          label:[NSString stringWithFormat:@"%@ %@",self.PlaceCityEN,self.PlaceNameEN] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Check" action:@"Used"                                                                                          label:[NSString stringWithFormat:@"%@ %@ %@",self.PlaceCityEN,self.PlaceNameEN,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         
         self.activate.hidden = YES;
         [self.cancel setTitle:AMLocalizedString(@"Back", nil) forState:UIControlStateNormal];
@@ -320,7 +320,7 @@ static BOOL foreignversion = NO;
         
     }
     else{
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"QR" action:@"Invalid QR"                                                                                          label:[NSString stringWithFormat:@"%@ %@",self.PlaceCityEN,self.PlaceNameEN] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"QR" action:@"Invalid QR"                                                                                          label:[NSString stringWithFormat:@"%@ %@ %@",self.PlaceCityEN,self.PlaceNameEN,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
         [self.navigationController.view addSubview:HUD];
         HUD.userInteractionEnabled = NO;

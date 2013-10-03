@@ -732,7 +732,7 @@ CGRect PlaceCardRectClose;
     //    }];
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Registered"] isEqualToString:@"YES"])
     {
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Done"                                                       action:@"Register" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Done"                                                       action:@"Register" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         
         [[NSUserDefaults standardUserDefaults] setObject:self.PlaceName forKey:@"PlaceTemp"];
         [[NSUserDefaults standardUserDefaults] setObject:self.PlaceCategory forKey:@"CategoryTemp"];
@@ -764,7 +764,7 @@ CGRect PlaceCardRectClose;
 
 -(BOOL)launchPhoneWithNumber:(UIButton *)sender {
     
-    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Call" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Call" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
     
     
     
@@ -783,7 +783,7 @@ CGRect PlaceCardRectClose;
 
 -(void)webPressed:(UIButton *)sender{
     
-    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Web" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Web" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
     
     
     
@@ -910,7 +910,7 @@ CGRect PlaceCardRectClose;
 -(IBAction)buttonPressed:(UIButton*)sender{
     
     if (sender.tag == 2) {
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         infoViewIsOpen = !infoViewIsOpen;
         
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
@@ -939,7 +939,7 @@ CGRect PlaceCardRectClose;
                                                                 object:self];
             
             
-            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Use Check" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Use Check" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
             [self presentSemiViewController:VC withOptions:@{
                                                              KNSemiModalOptionKeys.pushParentBack    : @(YES),
                                                              KNSemiModalOptionKeys.animationDuration : @(0.5),
@@ -961,7 +961,7 @@ CGRect PlaceCardRectClose;
     }
     
     if (sender.tag == 0) {
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Favorited" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Favorited" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         HUD = [MBProgressHUD showHUDAddedTo:self.PlaceView animated:YES];
         HUD.mode = MBProgressHUDModeCustomView;
         HUD.margin = 10.f;
@@ -1000,7 +1000,7 @@ CGRect PlaceCardRectClose;
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([actionSheet.title isEqualToString:AMLocalizedString(@"Call", nil)]) {
         if (buttonIndex == 0){
-            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Call" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Call" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
             
             NSString *tel =[actionSheet buttonTitleAtIndex:0];
             NSString* launchUrl = [NSString stringWithFormat:@"tel:%@",tel];
@@ -1010,7 +1010,7 @@ CGRect PlaceCardRectClose;
     
     if ([actionSheet.title isEqualToString:AMLocalizedString(@"Web", nil)]) {
         if (buttonIndex == 0){
-            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Site" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Site" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
             NSURL *address =[[NSURL alloc] initWithString:[actionSheet buttonTitleAtIndex:0]];
             [[UIApplication sharedApplication] openURL:address];
             
@@ -1019,7 +1019,7 @@ CGRect PlaceCardRectClose;
     
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString: AMLocalizedString(@"Share on VK", nil)]) {
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share VK" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share VK" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         _vkontakte = [Vkontakte sharedInstance];
         _vkontakte.delegate = self;
         
@@ -1041,7 +1041,7 @@ CGRect PlaceCardRectClose;
     
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString: AMLocalizedString(@"Share on twitter", nil)]) {
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share Twitter" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share Twitter" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         if (_engine){
             //   [AppDelegate LLLog:[NSString stringWithFormat:@"123");
             [_engine sendUpdate: self.PlaceAbout];
@@ -1064,7 +1064,7 @@ CGRect PlaceCardRectClose;
     
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:AMLocalizedString(@"Share on facebook", nil)]) {
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share FB" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share FB" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         loadingView.hidden = NO;
         [SCFacebook loginCallBack:^(BOOL success, id result) {
             loadingView.hidden = YES;
@@ -1089,7 +1089,7 @@ CGRect PlaceCardRectClose;
     }
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:AMLocalizedString(@"Send Email", nil)]) {
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share e-mail" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Share e-mail" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         [self openMail:self];
     }
 }
@@ -1195,7 +1195,7 @@ CGRect PlaceCardRectClose;
 }
 
 - (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce{
-    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Posted on the wall" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Posted on the wall" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:HUD];
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
@@ -1237,7 +1237,7 @@ CGRect PlaceCardRectClose;
 
 #pragma mark TwitterEngineDelegate
 - (void) requestSucceeded: (NSString *) requestIdentifier {
-    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Authorised Twitter" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is"                                                       action:@"Authorised Twitter" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
 	HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:HUD];
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"74_74 Fist_for_HUD_colored"]];
@@ -1265,12 +1265,12 @@ CGRect PlaceCardRectClose;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Login" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Login" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         LorR = @"Login";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
     if (buttonIndex == 2){
-        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Register" label:[NSString stringWithFormat:@"%@ %@",currentCity,self.PlaceNameEn] value:nil] build]];
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Register" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
         LorR = @"Login";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
