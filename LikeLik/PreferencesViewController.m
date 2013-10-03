@@ -38,7 +38,7 @@ static NSString *LorR=nil;
     
     // [testflight passCheckpoint:@"Открыл stng"];
     
-    //self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     self.navigationItem.titleView = [InterfaceFunctions NavLabelwithTitle:AMLocalizedString(@"Settings", nil) AndColor:[InterfaceFunctions corporateIdentity]];
     
     RegisterAndLogin = @[AMLocalizedString(@"Registration", nil),AMLocalizedString(@"Login", nil)];

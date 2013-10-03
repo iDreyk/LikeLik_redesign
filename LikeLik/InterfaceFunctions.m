@@ -67,6 +67,17 @@
     
     return aButton;
 }
++(UIButton *)back_button_1{
+    UIImage *buttonImage = [UIImage imageNamed:@"backbutton.png"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
+    [aButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    
+    
+    return aButton;
+}
+
 +(UIButton *)search_button{
     UIImage *buttonImage = [UIImage imageNamed:@"search_butt.png"];
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -14,6 +14,7 @@
 +(UIButton *)Info_button;
 +(UIButton *)map_button:(NSInteger)flag;
 +(UIButton *)home_button;
++(UIButton *)back_button_1;
 +(UIButton *)search_button;
 +(UIButton *)segmentbar_map_list:(NSInteger)flag;
 +(UIButton *)done_button;

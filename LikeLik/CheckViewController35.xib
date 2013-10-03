@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckViewController">
+            <connections>
+                <outlet property="CheckView" destination="10" id="130"/>
+                <outlet property="ExclusiveOffer" destination="11" id="138"/>
+                <outlet property="Label" destination="8" id="134"/>
+                <outlet property="TextCheck" destination="182" id="222"/>
+                <outlet property="activate" destination="13" id="136"/>
+                <outlet property="cancel" destination="12" id="135"/>
+                <outlet property="check_background" destination="7" id="168"/>
+                <outlet property="fistbackground" destination="6" id="133"/>
+                <outlet property="foreignLanguage" destination="14" id="137"/>
+                <outlet property="gradientunderbutton" destination="153" id="167"/>
+                <outlet property="ribbonimage" destination="9" id="166"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10">
+                    <rect key="frame" x="20" y="10" width="280" height="443"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="182">
+                    <rect key="frame" x="34" y="160" width="251" height="133"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="133" id="207"/>
+                        <constraint firstAttribute="width" constant="251" id="213"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="gradient_check.png" translatesAutoresizingMaskIntoConstraints="NO" id="153">
+                    <rect key="frame" x="20" y="349" width="280" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="164"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background_with_watermark_check-568h.png" translatesAutoresizingMaskIntoConstraints="NO" id="6">
+                    <rect key="frame" x="91" y="111" width="138" height="219"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="138" id="54"/>
+                        <constraint firstAttribute="height" constant="219" id="55"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="check_background_1-568h.png" translatesAutoresizingMaskIntoConstraints="NO" id="7">
+                    <rect key="frame" x="20" y="20" width="280" height="423"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="423" id="129"/>
+                    </constraints>
+                </imageView>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="592_159 Ribbon_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="9">
+                    <rect key="frame" x="12" y="24" width="296" height="80"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="296" id="48"/>
+                        <constraint firstAttribute="height" constant="80" id="49"/>
+                    </constraints>
+                </imageView>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="8">
+                    <rect key="frame" x="20" y="24" width="280" height="70"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="44"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="252" translatesAutoresizingMaskIntoConstraints="NO" id="11">
+                    <rect key="frame" x="34" y="117" width="252" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="46"/>
+                        <constraint firstAttribute="width" constant="252" id="214"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.28627452250000002" green="0.28627452250000002" blue="0.28627452250000002" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12">
+                    <rect key="frame" x="30" y="402" width="260" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="173"/>
+                        <constraint firstAttribute="width" constant="260" id="174"/>
+                    </constraints>
+                    <state key="normal" title="Отменить" backgroundImage="button_cancel_check_tapped.png">
+                        <color key="titleColor" red="0.28627452250000002" green="0.28627452250000002" blue="0.28627452250000002" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="button_cancel_check_tapped.png"/>
+                    <connections>
+                        <action selector="CloseCheck:" destination="-1" eventType="touchUpInside" id="139"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13">
+                    <rect key="frame" x="27" y="352" width="263" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="263" id="50"/>
+                        <constraint firstAttribute="height" constant="44" id="51"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Использовать чек" backgroundImage="526_90 button_use_check_12.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="526_90 button_use_check_2.png"/>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="showQR:" destination="-1" eventType="touchUpInside" id="140"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14">
+                    <rect key="frame" x="34" y="286" width="238" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="238" id="56"/>
+                        <constraint firstAttribute="height" constant="44" id="57"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="foreignLanguage:" destination="-1" eventType="touchUpInside" id="141"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="12" firstAttribute="trailing" secondItem="13" secondAttribute="trailing" id="20"/>
+                <constraint firstItem="6" firstAttribute="bottom" secondItem="14" secondAttribute="bottom" id="40"/>
+                <constraint firstItem="10" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="60"/>
+                <constraint firstItem="6" firstAttribute="top" secondItem="1" secondAttribute="top" constant="111" id="64"/>
+                <constraint firstAttribute="trailing" secondItem="7" secondAttribute="trailing" constant="20" symbolic="YES" id="65"/>
+                <constraint firstItem="8" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="66"/>
+                <constraint firstAttribute="trailing" secondItem="8" secondAttribute="trailing" constant="20" symbolic="YES" id="67"/>
+                <constraint firstItem="7" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="70"/>
+                <constraint firstAttribute="trailing" secondItem="10" secondAttribute="trailing" constant="20" symbolic="YES" id="74"/>
+                <constraint firstItem="10" firstAttribute="top" secondItem="1" secondAttribute="top" constant="10" id="76"/>
+                <constraint firstItem="9" firstAttribute="top" secondItem="8" secondAttribute="top" id="85"/>
+                <constraint firstItem="11" firstAttribute="centerX" secondItem="9" secondAttribute="centerX" id="89"/>
+                <constraint firstItem="11" firstAttribute="top" secondItem="1" secondAttribute="top" constant="117" id="90"/>
+                <constraint firstAttribute="bottom" secondItem="13" secondAttribute="bottom" constant="84" id="122"/>
+                <constraint firstAttribute="bottom" secondItem="12" secondAttribute="bottom" constant="34" id="123"/>
+                <constraint firstItem="7" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" symbolic="YES" id="127"/>
+                <constraint firstAttribute="bottom" secondItem="10" secondAttribute="bottom" constant="27" id="128"/>
+                <constraint firstItem="153" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="158"/>
+                <constraint firstItem="153" firstAttribute="centerX" secondItem="12" secondAttribute="centerX" id="161"/>
+                <constraint firstAttribute="trailing" secondItem="153" secondAttribute="trailing" constant="20" symbolic="YES" id="162"/>
+                <constraint firstAttribute="bottom" secondItem="153" secondAttribute="bottom" constant="96" id="163"/>
+                <constraint firstItem="8" firstAttribute="top" secondItem="1" secondAttribute="top" constant="24" id="210"/>
+                <constraint firstItem="11" firstAttribute="centerX" secondItem="8" secondAttribute="centerX" id="215"/>
+                <constraint firstItem="11" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="217"/>
+                <constraint firstItem="182" firstAttribute="top" secondItem="1" secondAttribute="top" constant="160" id="219"/>
+                <constraint firstItem="14" firstAttribute="leading" secondItem="182" secondAttribute="leading" id="220"/>
+                <constraint firstItem="182" firstAttribute="leading" secondItem="11" secondAttribute="leading" id="221"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="526_90 button_use_check_12.png" width="526" height="90"/>
+        <image name="526_90 button_use_check_2.png" width="263" height="45"/>
+        <image name="592_159 Ribbon_2.png" width="296" height="79"/>
+        <image name="background_with_watermark_check-568h.png" width="276" height="438"/>
+        <image name="button_cancel_check_tapped.png" width="263" height="45"/>
+        <image name="check_background_1-568h.png" width="640" height="1136"/>
+        <image name="gradient_check.png" width="280" height="35"/>
+    </resources>
+</document>

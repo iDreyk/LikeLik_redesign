@@ -205,9 +205,11 @@ CGRect PlaceCardRectClose;
 //    [self.scroll addGestureRecognizer:singleTap];
     NSArray *photos = self.Photos;
     
-    VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
-    [AppDelegate LLLog:[NSString stringWithFormat:@"Hello = %@",VC.nibName]];
-
+    if ([AppDelegate isiPhone5])
+        VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
+    else
+        VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
+    
 
     
     self.view.backgroundColor = [UIColor redColor];
@@ -1149,9 +1151,7 @@ region.center = start;
         [self.locationButton setHidden:NO];
         UIButton *btn = [InterfaceFunctions map_button:0];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
-
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn]; 
     }
 
 #endif
