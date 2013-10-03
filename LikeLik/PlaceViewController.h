@@ -89,5 +89,6 @@
 
 - (IBAction)InfoTouch:(UIButton *)sender;
 - (IBAction)MovePlaceCard:(UISwipeGestureRecognizer *)sender;
+- (IBAction)ScrollTap:(UITapGestureRecognizer *)sender;
 
 @end
