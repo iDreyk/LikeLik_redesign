@@ -14,6 +14,9 @@
 #import "LocalizationSystem.h"
 #import "MBProgressHUD.h"
 #import <mach/mach_time.h>
+
+#define SYSTEM_VERSION_MORE_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+
 mach_timebase_info_data_t info1;
 
 NSDictionary *dictforCheck;
@@ -172,8 +175,11 @@ static BOOL foreignversion = NO;
     self.Label.shadowOffset = CGSizeMake(0.0, -0.5);
 
     self.ribbonimage.hidden = NO;
-    self.check_background.image = [InterfaceFunctions check_background];
+    //self.check_background.image = [InterfaceFunctions check_background];
+    if(SYSTEM_VERSION_MORE_THAN(@"6.5"))
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
+    
     //disable backNav on check
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
@@ -235,11 +241,11 @@ static BOOL foreignversion = NO;
     self.fistbackground.hidden = YES;
     self.alreadyuse.hidden = YES;
     UIViewController *parent = [self.view containingViewController];
-    if ([parent respondsToSelector:@selector(dismissSemiModalView)])
-    {
+    if ([parent respondsToSelector:@selector(dismissSemiModalView)]){
         [self dismissSemiModalView];
         //disable backNav
-        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        if(SYSTEM_VERSION_MORE_THAN(@"6.5"))
+            self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     }
 }
 
