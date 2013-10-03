@@ -61,7 +61,14 @@ CGRect PlaceCardRectClose;
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     int page = scrollView.contentOffset.x/scrollView.frame.size.width;
     pageControl.currentPage=page;
-    
+    [UIView transitionWithView:self.PlaceView duration:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
+            [self.PlaceView setFrame:PlaceCardRectClose];
+        
+        
+        
+    }  completion:^(BOOL finished){
+        infoViewIsOpen =!infoViewIsOpen;
+    }];
 }
 
 
@@ -75,9 +82,11 @@ CGRect PlaceCardRectClose;
             
             [self.PlaceView setFrame:PlaceCardRectClose];
         }
-        infoViewIsOpen =!infoViewIsOpen;
+//        infoViewIsOpen =!infoViewIsOpen;
         
-    } completion:NULL];
+    } completion:^(BOOL finished){
+        infoViewIsOpen =!infoViewIsOpen;
+    }];
 }
 
 - (IBAction)ScrollTap:(UITapGestureRecognizer *)sender {
