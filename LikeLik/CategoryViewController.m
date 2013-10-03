@@ -774,7 +774,7 @@ static NSString *city = @"";
     
 }
 
-#warning проверить прогрузку карты
+
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0){
 #if LIKELIK
