@@ -192,11 +192,12 @@ static BOOL NEED_TO_RELOAD = NO;
 #endif
     
     
-    self.view.backgroundColor = [UIColor clearColor];
-    self.backgroundView.backgroundColor = [UIColor clearColor];
-    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
-//    background.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] scaledToSize:CGSizeMake(320, 568)]];
-    background.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
+    self.view.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];
+    self.backgroundView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:216/255.0 green:219/255.0 blue:220/255.0 alpha:1];//[InterfaceFunctions colorTextCategory:self.Category];
+    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
+    
+    background.backgroundColor = [UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]] scaledToSize:CGSizeMake(320, 568)]];//[UIColor clearColor];  //[UIColor colorWithPatternImage:[self imageWithImage:[UIImage imageNamed:@"Overlay_Long@2x.png"] scaledToSize:CGSizeMake(320, 568)]];//[UIColor //[UIColor whiteColor];//[InterfaceFunctions BackgroundColor];
+   // [self.view addSubview:background];
     [self.view bringSubviewToFront:self.PlacesTable];
     [self.view bringSubviewToFront:self.mapView];
     [self.view bringSubviewToFront:self.Map];
@@ -299,9 +300,9 @@ static BOOL NEED_TO_RELOAD = NO;
 //    self.PlacesTable.contentOffset = CGPointMake(0, -40);
 //    [UIView commitAnimations];
     
-    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
+    UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
     bg.tag = backgroundTag;
-    UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
+    UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66, 320, 568)];
     bg2.tag = backgroundTag2;
     
     bg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:self.CityNameText] objectForKey:@"city_EN"]]];
@@ -768,7 +769,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         UIView *back = [[UIView alloc] initWithFrame:CGRectMake(x_dist, y_dist, cellWidth, cellHeight)];
         CALayer * back_layer = back.layer;
         back_layer.cornerRadius = 5;
-        //back.clipsToBounds = YES;
+        back.clipsToBounds = YES;
         back.tag = cellColorTag;
         back.backgroundColor = [UIColor whiteColor];
         [cell.contentView addSubview:back]; // добавили на cell
@@ -783,7 +784,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(img_x_dist, img_y_dist, width, width / 1.852)];
         preview.tag = backgroundViewTag;
         preview.backgroundColor =  [UIColor whiteColor];
-        //preview.clipsToBounds = NO;
+        preview.clipsToBounds = NO;
         
         CALayer * imgLayer1 = preview.layer;
         [imgLayer1 setBorderColor: [[UIColor blackColor] CGColor]];
@@ -832,7 +833,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
         UILabel * nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 , cellWidth, 42)];
         CALayer *layer2 = nameLabel.layer;
         layer2.cornerRadius = 5;
-        //nameLabel.clipsToBounds = YES;
+        nameLabel.clipsToBounds = YES;
         nameLabel.tag = labelColorTag;
         [back addSubview:nameLabel];
 
@@ -1174,12 +1175,42 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 
 
 - (void)updateOffsets {
-    CGFloat yOffset   = self.PlacesTable.contentOffset.y;
-    UIImageView *imback = (UIImageView *)[self.view viewWithTag:backgroundTag];
-    if(yOffset < 0)
-        imback.alpha = 1.0 + yOffset / 600;
-//    if (yOffset > 0)
-//        imback.alpha = 1.0 - yOffset/300;
+//    CGFloat yOffset   = self.PlacesTable.contentOffset.y;
+//    if(yOffset == 0){
+//        [UIView beginAnimations:nil context:NULL];
+//        [UIView setAnimationDuration:0.3];
+//        self.PlacesTable.contentOffset = CGPointMake(0, -40);
+//        [UIView commitAnimations];
+//    }
+
+    
+    
+//    CGFloat threshold = self.PlacesTable.frame.size.height - self.PlacesTable.frame.size.height;
+//    if (yOffset > -threshold && yOffset < 0) {
+//        self.CityImage.frame = CGRectMake(0,-yOffset,320.0,self.CityImage.frame.size.height);
+//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,-yOffset,self.CityName.frame.size.width,self.CityName.frame.size.height);
+//        self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
+//        
+//        
+//    } else if (yOffset < 0) {
+//        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, 568.0 - yOffset);
+//        
+//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5-(yOffset),self.CityName.frame.size.width,self.CityName.frame.size.height);
+//        
+//        self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,-yOffset,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
+//        
+//    } else {
+//        self.CityImage.frame = CGRectMake(0, -280.0, 320.0, self.CityImage.frame.size.height);
+//        
+//        
+//        self.CityName.frame = CGRectMake(self.CityName.frame.origin.x,5,self.CityName.frame.size.width,self.CityName.frame.size.height);
+//        
+//        
+//        self.gradient_under_cityname.frame = CGRectMake(self.gradient_under_cityname.frame.origin.x,0,self.gradient_under_cityname.frame.size.width,self.gradient_under_cityname.frame.size.height);
+//        
+//    }
+//    self.CityImage.contentMode = UIViewContentModeScaleAspectFit;
+    //    self.CityImage.contentScaleFactor = 2.0;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

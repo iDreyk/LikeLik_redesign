@@ -185,7 +185,7 @@ static BOOL JUST_APPEAR = YES;
 }
 - (void)didReceiveMemoryWarning
 {
-    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Memory warning" action:@"Catch warning"                                                                                          label:@"Start view" value:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] build]];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Memory warning" action:@"Catch warning"                                                                                          label:@"Start view" value:nil] build]];
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
