@@ -80,6 +80,19 @@ CGRect PlaceCardRectClose;
     } completion:NULL];
 }
 
+- (IBAction)ScrollTap:(UITapGestureRecognizer *)sender {
+    [UIView transitionWithView:self.PlaceView duration:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
+        if (infoViewIsOpen)
+            [self.PlaceView setFrame:PlaceCardRectClose];
+        else
+            [self.PlaceView setFrame:PlaceCardRectOpen];
+
+
+    } completion:^(BOOL finished){
+        infoViewIsOpen =!infoViewIsOpen;
+    }];
+}
+
 
 //-(void)move:(id)sender {
 //       CGFloat velocityY = (0.2*[(UIPanGestureRecognizer*)sender velocityInView:self.PlaceView].y);

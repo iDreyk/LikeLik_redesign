@@ -448,6 +448,7 @@
                                     <outlet property="delegate" destination="HyD-Um-b1k" id="y6D-RA-boy"/>
                                     <outletCollection property="gestureRecognizers" destination="5vE-Jn-Qe3" appends="YES" id="XPz-Ua-Mfg"/>
                                     <outletCollection property="gestureRecognizers" destination="HyD-Um-b1k" appends="YES" id="7FZ-xD-gTD"/>
+                                    <outletCollection property="gestureRecognizers" destination="Q0G-OT-b1b" appends="YES" id="Sxl-D2-lQY"/>
                                 </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5c-W8-RBh">
@@ -631,6 +632,12 @@
                         <outlet property="delegate" destination="3zb-fZ-Bb4" id="4Wn-hp-6BJ"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="Q0G-OT-b1b">
+                    <connections>
+                        <action selector="ScrollTap:" destination="Raj-iV-euz" id="fnA-Ge-EWO"/>
+                        <outlet property="delegate" destination="3zb-fZ-Bb4" id="ofS-RO-adi"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="up" id="HyD-Um-b1k">
                     <connections>
                         <action selector="MovePlaceCard:" destination="Raj-iV-euz" id="47P-49-Rl9"/>
@@ -1079,7 +1086,7 @@
         <segue reference="tB3-mu-76X"/>
         <segue reference="CID-7V-uDc"/>
         <segue reference="yj1-51-g2w"/>
+        <segue reference="asu-UQ-2oN"/>
         <segue reference="BZR-Fd-0rN"/>
-        <segue reference="CcH-gL-bZM"/>
     </inferredMetricsTieBreakers>
 </document>
