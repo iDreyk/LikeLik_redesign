@@ -156,7 +156,7 @@ CGRect oldRect;
         UIView *back = [[UIView alloc] initWithFrame:CGRectMake(x_dist, y_dist, cellWidth, cellHeight)];
         CALayer * back_layer = back.layer;
         back_layer.cornerRadius = 5;
-        back.clipsToBounds = YES;
+        //back.clipsToBounds = YES;
         back.tag = cellColorTag;
         back.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:back]; // добавили на cell
@@ -185,7 +185,7 @@ CGRect oldRect;
         UILabel * nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 , cellWidth, 42)];
         CALayer *layer2 = nameLabel.layer;
         layer2.cornerRadius = 5;
-        nameLabel.clipsToBounds = YES;
+        //nameLabel.clipsToBounds = YES;
         nameLabel.tag = labelColorTag;
         [back addSubview:nameLabel];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0,263, cell.center.y*2)];
