@@ -1073,7 +1073,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
-        LorR = @"Registration";
+        LorR = @"Login";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Register Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];

@@ -219,7 +219,7 @@ static NSString *LorR=nil;
 {
     //    [AppDelegate LLLog:[NSString stringWithFormat:@"%d %d",[indexPath section],[indexPath row]);
     if ([indexPath section] == 0 && [indexPath row] == 0) {
-        LorR = @"Registration";
+        LorR = @"Login";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
     if ([indexPath section] == 0 && [indexPath row] == 1) {

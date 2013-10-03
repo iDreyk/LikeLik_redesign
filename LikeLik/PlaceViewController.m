@@ -209,7 +209,7 @@ CGRect PlaceCardRectClose;
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
     else
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
-    
+#warning картинка верхняя
 
     
     
