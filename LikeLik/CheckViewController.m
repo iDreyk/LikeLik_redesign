@@ -175,6 +175,7 @@ static BOOL foreignversion = NO;
     self.check_background.image = [InterfaceFunctions check_background];
 
     //disable backNav on check
+#warning падает
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Check Screen",self.PlaceCityEN,self.PlaceNameEN]];

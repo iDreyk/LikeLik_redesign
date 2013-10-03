@@ -561,7 +561,7 @@ static NSString *city = @"";
 
 -(RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
 {
-    
+#warning проверить карту после загрузки
     if ([annotation.annotationType isEqualToString:@"marker"]) {
         RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:[annotation.userInfo objectForKey:@"marker-symbol"]
                                                           tintColorHex:[annotation.userInfo objectForKey:@"marker-color"]
