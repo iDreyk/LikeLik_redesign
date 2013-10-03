@@ -627,7 +627,6 @@
         <!--Visual Tour View Controller-->
         <scene sceneID="gpN-eK-g6x">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LYG-iH-oxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="kAC-G7-7GR" customClass="VisualTourViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="usp-Tk-WtY"/>
@@ -716,13 +715,13 @@
                         <outlet property="scroll" destination="vJm-qd-lFs" id="mXj-2C-ghG"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LYG-iH-oxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1745" y="805"/>
         </scene>
         <!--Transportation View Controller-->
         <scene sceneID="1ub-4X-fbU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qgW-23-0PC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="N3A-Wm-so7" customClass="TransportationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nvo-Ch-524"/>
@@ -752,6 +751,7 @@
                         <outlet property="scroll" destination="9ua-kr-JR1" id="fag-Wh-5cZ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qgW-23-0PC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1736" y="1493"/>
         </scene>
