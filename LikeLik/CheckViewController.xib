@@ -112,7 +112,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
@@ -121,6 +121,7 @@
         <image name="526_90 button_use_check_12_selected.png" width="263" height="45"/>
         <image name="526_90 button_use_check_2.png" width="263" height="45"/>
         <image name="592_159 Ribbon_2.png" width="296" height="79"/>
+        <image name="button_cancel_check_tapped.png" width="263" height="45"/>
         <image name="button_cancel_check_tapped.png" width="263" height="45"/>
         <image name="check_background_568h.png" width="320" height="568"/>
         <image name="gradient_check.png" width="280" height="35"/>
