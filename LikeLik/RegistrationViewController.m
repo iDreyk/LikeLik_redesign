@@ -17,6 +17,8 @@
 static BOOL getLocation = NO;
 #warning кнопка бек
 #warning загаловок
+#warning поля на одном уровне
+#warning заглавную убрать
 #define RemoveNull(field) ([[self.FacebookUserInfo objectForKey:field] isKindOfClass:[NSNull class]]) ? @"" : [self.FacebookUserInfo objectForKey:field];
 
 

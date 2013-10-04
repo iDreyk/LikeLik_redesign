@@ -166,7 +166,7 @@ static BOOL foreignversion = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    
+#warning съезжает фон
     [self check_Open:self];
     
    // self.Label.text = self.PlaceName;

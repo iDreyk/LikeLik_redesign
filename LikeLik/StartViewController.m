@@ -57,7 +57,7 @@ static BOOL JUST_APPEAR = YES;
 @end
 
 @implementation StartViewController
-
+#warning таббар синий
 - (void)viewDidLoad
 {
     [super viewDidLoad];

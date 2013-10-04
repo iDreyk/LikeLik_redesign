@@ -37,6 +37,20 @@
       "filename" : "640_1136-LaunchScreen-568h@2x-1.png",
       "subtype" : "retina4",
       "scale" : "2x"
+    },
+    {
+      "orientation" : "portrait",
+      "idiom" : "ipad",
+      "extent" : "full-screen",
+      "filename" : "768_1024-LaunchScreen@2x.png",
+      "scale" : "1x"
+    },
+    {
+      "orientation" : "portrait",
+      "idiom" : "ipad",
+      "extent" : "full-screen",
+      "filename" : "1536_2048-LaunchScreen@2x.png",
+      "scale" : "2x"
     }
   ],
   "info" : {

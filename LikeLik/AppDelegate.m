@@ -42,7 +42,7 @@ static NSString *const kAllowTracking = @"allowTracking";
 @implementation AppDelegate
 
 //#warning воронка пользования
-@synthesize alertLabel;
+@synthesize alertLabel,locationManager,locationManagerRegion,localNotification;
 
 +(UIFont *)OpenSansRegular:(CGFloat)size{
     UIFont* font = [UIFont fontWithName:@"OpenSans" size:size/2];
@@ -189,6 +189,7 @@ static NSString *const kAllowTracking = @"allowTracking";
     }
 }
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSDictionary *appDefaults = @{kAllowTracking: @(YES)};
@@ -245,38 +246,12 @@ static NSString *const kAllowTracking = @"allowTracking";
     image2.contentMode = UIViewContentModeScaleAspectFill;
     image2.tag = backgroundTag2;
     [self.window.rootViewController.view insertSubview:image2 atIndex:0];
-
-//    image.contentMode = UIViewContentModeScaleAspectFill;
-//#if VIENNA
-//        image.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]]];
-//        image.image = [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]];
-//#else
-//        image.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]]];
-//        image.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]];
-//#endif
-//        image.tag = backgroundTag;
-//        [self.window.rootViewController.view insertSubview:image atIndex:0];
-    
-//        UIImageView *image2 =[[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//        image2.backgroundColor = [UIColor blackColor];
-//    
-//#if VIENNA
-//        image2.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Vienna"]];
-//#else
-//        image2.image =  [UIImage imageWithContentsOfFile:[ExternalFunctions larkePictureOfCity:@"Moscow"]];
-//#endif
-//        image2.tag = backgroundTag2;
-//        [self.window.rootViewController.view insertSubview:image2 atIndex:0];
-    
-//    }
     
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[AppDelegate OpenSansBoldwithSize:20], UITextAttributeFont,nil] forState:UIControlStateNormal];
     
     [SCFacebook initWithAppId:@"465683146835593"];
     
-    
-    // start of your application:didFinishLaunchingWithOptions
     
     // !!!: Use the next line only during beta
     // [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];

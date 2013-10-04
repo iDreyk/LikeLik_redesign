@@ -14,17 +14,20 @@
 #import "GAIDictionaryBuilder.h"
 
 #define log(string) [AppDelegate LLLog:string];
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>{
-    
+#define glossy
+@interface AppDelegate : UIResponder <UIApplicationDelegate,CLLocationManagerDelegate>{
+    CLLocationManager *locationManager;
+    CLLocation *Me;
 }
+@property(nonatomic, retain) CLLocationManager *locationManager;
+@property(nonatomic, retain) CLLocationManager *locationManagerRegion;
+@property (nonatomic,retain) IBOutlet UILocalNotification *localNotification;
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet UILabel  *alertLabel;
 @property (nonatomic, assign) UIViewController *currentController;
 @property(nonatomic, strong) id<GAITracker> tracker;
-
 +(UIFont *)OpenSansRegular:(CGFloat)size;
 +(UIFont *)OpenSansSemiBold:(CGFloat)size;
 +(UIFont *)OpenSansBoldwithSize:(CGFloat)size;

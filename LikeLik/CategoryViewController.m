@@ -33,7 +33,6 @@
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
-
 static NSString *PlaceName = @"";
 static NSString *PlaceCategory = @"";
 static NSDictionary *Place;
@@ -49,12 +48,13 @@ static NSString *currentCity = @"";
 
 #define dismiss             @"l27h7RU2dzVaQsadaQeSFfPoQQQQ"
 static NSString *city = @"";
+static NSInteger j=0;
 @interface CategoryViewController ()
 
 @end
 
 @implementation CategoryViewController
-
+@synthesize locationManager2,locationManagerRegion,localNotification;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -115,9 +115,9 @@ static NSString *city = @"";
     IN_BG = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appReturnsActive) name:UIApplicationDidBecomeActiveNotification object:nil];
-    _locationManager = [[CLLocationManager alloc] init];
-    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    [_locationManager startUpdatingLocation];
+    _locationManager1 = [[CLLocationManager alloc] init];
+    [_locationManager1 setDesiredAccuracy:kCLLocationAccuracyBest];
+    [_locationManager1 startUpdatingLocation];
     
     self.categoryView.backgroundColor = [UIColor clearColor];
     
@@ -379,6 +379,39 @@ static NSString *city = @"";
     }
     // [self getSoonLabels];
 #endif
+    
+#if VIENNA
+    city = @"Vienna";
+#endif
+    
+#if MOSCOW
+    city = @"Moscow";
+#endif
+    
+    
+    locationManager2 = [[CLLocationManager alloc] init];
+    [locationManager2 setDelegate:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopUpdating) name:@"stopUpdating" object:nil];
+    
+    locationManagerRegion = [[CLLocationManager alloc] init];
+    [locationManagerRegion setDelegate:self];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^ {
+        
+        [locationManager2 startUpdatingLocation];
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [NSString stringWithFormat:@"Back on main thread"];
+        });
+    });
+    
+    
+    
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    
 }
 
 
@@ -756,6 +789,78 @@ static NSString *city = @"";
 }
 
 
+
+-(void)startTracking{
+}
+
+-(void) stopUpdating{
+    [locationManager2 stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    dispatch_queue_t backGroundQueue;
+    
+    backGroundQueue = dispatch_queue_create("backGroundQueueForRegions", NULL);
+    dispatch_async(backGroundQueue, ^{
+        [ExternalFunctions getReady];
+      //  log([NSString stringWithFormat:@"start background queue"]);
+        if (j==0) {
+            j++;
+            Me = newLocation;
+            
+            NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
+            for (int i = 0; i<[Region count]; i++) {
+                [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
+             //   NSLog(@"%@",[locationManagerRegion monitoredRegions]);
+            }
+        }
+        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"stopUpdating" object:nil]];
+    });
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
+    NSDictionary *Place = [NSDictionary dictionaryWithDictionary:[ExternalFunctions getPlaceByCLRegion:region]];
+    localNotification = [[UILocalNotification alloc] init];
+    [localNotification setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
+    
+    [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
+    [localNotification setAlertBody:[NSString stringWithFormat:@"%@ %@", AMLocalizedString(@"You are next to", nil),[Place objectForKey:@"Name"]]];
+    [localNotification setHasAction: YES];
+    [localNotification setApplicationIconBadgeNumber:1];
+    
+    
+    CLLocation *loc = [Place objectForKey:@"Location"];
+    NSString *lat = [NSString stringWithFormat:@"%f",loc.coordinate.latitude];
+    NSString *lon = [NSString stringWithFormat:@"%f",loc.coordinate.longitude];
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    [dictionary setObject:[Place objectForKey:@"Name"] forKey:@"Place"];
+    [dictionary setObject:[Place objectForKey:@"Category"] forKey:@"Category"];
+    [dictionary setObject:[Place objectForKey:@"City"] forKey:@"City"];
+    [dictionary setObject:[Place objectForKey:@"Address"] forKey:@"Address"];
+    [dictionary setObject:[Place objectForKey:@"About"] forKey:@"About"];
+    [dictionary setObject:[Place objectForKey:@"Telephone"] forKey:@"Telephone"];
+    [dictionary setObject:[Place objectForKey:@"Web"] forKey:@"Web"];
+    [dictionary setObject:lat forKey:@"lat"];
+    [dictionary setObject:lon forKey:@"lon"];
+    [dictionary setObject:[Place objectForKey:@"Photo"] forKey:@"Photo"];
+    
+    [localNotification setUserInfo:dictionary];
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+}
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
+    
+}
+
+
+
+
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0){
 #if LIKELIK
@@ -766,6 +871,7 @@ static NSString *city = @"";
         [self startDownloading];
     }
 }
+
 
 - (void) AFdownload : (NSString *) filename fromURL : (NSString *) likelikUrl{
     
@@ -803,8 +909,8 @@ static NSString *city = @"";
         [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
                                 onTarget:self withObject:nil animated:YES];
         
-        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -973,7 +1079,8 @@ static NSString *city = @"";
             [self AFdownload:city fromURL:likelikurlonline_4];
 #endif
         
-    } else {
+    }
+    else {
         // Isn't reachable
         self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
         [self.navigationController.view addSubview:self.HUDfade];

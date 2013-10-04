@@ -44,7 +44,6 @@ static NSInteger j=0;
 
 -(void) stopUpdating{
     [locationManager stopUpdatingLocation];
- //   log([NSString stringWithFormat:@"Notification сработал");
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
@@ -53,26 +52,19 @@ static NSInteger j=0;
     backGroundQueue = dispatch_queue_create("backGroundQueueForRegions", NULL);
     dispatch_async(backGroundQueue, ^{
         [ExternalFunctions getReady];
-        // post an NSNotification that loading has started
         log([NSString stringWithFormat:@"start background queue"]);
-  //      log([NSString stringWithFormat:@"j=%d",j);
         if (j==0) {
             j++;
             Me = newLocation;
             
             NSArray *Region =  [ExternalFunctions getAllRegionsAroundMyLocation:Me];
-            
-            
-       //     log([NSString stringWithFormat:@"Зашел в счетчик");
             for (int i = 0; i<[Region count]; i++) {
                 [locationManagerRegion startMonitoringForRegion:[Region objectAtIndex:i]];
             }
         }
-      //  log([NSString stringWithFormat:@"after j = %d",j);
-        // post an NSNotification that loading is finished
         [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"stopUpdating" object:nil]];
     });
-    
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -142,7 +134,7 @@ static NSInteger j=0;
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Splash Screen"];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
 
-    // Send the screen view.
+
 #if VIENNA
     city = @"Vienna";
 #endif
@@ -168,98 +160,11 @@ static NSInteger j=0;
             log([NSString stringWithFormat:@"Back on main thread"]);
         });
     });
-
-    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
-    //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setBackgroundImage:[self imageByApplyingAlpha:0.0 andPict:[UIImage imageNamed:@"navigationbar.png"]] forBarMetrics:UIBarMetricsDefault];
-    //[self.navigationController.navigationBar setTranslucent:YES];
-    [localNotification setAlertAction:AMLocalizedString(@"Launch", nil)];
-    
-    //log([NSString stringWithFormat:@"%@",[ExternalFunctions getPlacesAroundMyLocation:Me InCity:@"Moscow"]);
-    
-    
-    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button_house];
-    
-    
-    
-    //    self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    //    [self.navigationController.view addSubview:self.HUDfade];
-    //    self.HUDfade.userInteractionEnabled = NO;
-    //    self.HUDfade.mode = MBProgressHUDAnimationFade;
-    //    self.HUDfade.removeFromSuperViewOnHide = YES;
-    //    self.HUDfade.delegate = self;
-    //    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
-    //        [self.HUDfade show:YES];
-    //
-    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //
-    //    if ([[defaults objectForKey:@"Language"] length] == 0) {
-    //        [defaults setObject:@"English" forKey:@"Language"];
-    //    }
-    //
-    //
-    //    if ([[defaults objectForKey:@"Measure"] length] == 0) {
-    //        [defaults setObject:@"Miles" forKey:@"Measure"];
-    //    }
-    //    [defaults synchronize];
-    //
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    if ([[defaults objectForKey:@"Language"] length] == 0) {
-        [defaults setObject:@"English" forKey:@"Language"];
-    }
-    
-    
-    if ([[defaults objectForKey:@"Measure"] length] == 0) {
-        [defaults setObject:@"Miles" forKey:@"Measure"];
-    }
-    [defaults synchronize];
-    
-    CGRect Shadeframe = self.Shade.frame;
-    CGRect Fistframe = self.fist.frame;
-    
-    if ([AppDelegate isiPhone5]) {
-        
-        Shadeframe.origin.y-=340.0;
-        Fistframe.origin.y-=340.0;
-    }
-    else{
-        
-        Shadeframe.origin.y-=270.0;
-        Fistframe.origin.y-=270.0;
-        
-    }
-
-    
-    [UIView animateWithDuration:1.2 animations:^{
-        self.Shade.frame = Shadeframe;
-        self.fist.frame = Fistframe;
-    }
-                     completion:^(BOOL finished){
-                         self.Firsttitle.hidden = NO;
-                         self.subtitle.hidden = NO;
-                         self.Firsttitle.alpha = 1;
-                         self.subtitle.alpha = 1;
-                         //     [self.HUDfade hide:YES];
-#if LIKELIK
-                         [self performSegueWithIdentifier:@"fistSegue" sender:self];
-                         
-#endif
-#if VIENNA
-                         [self performSegueWithIdentifier:@"CitySegue" sender:self];
-#endif
-#if MOSCOW
-                         [self performSegueWithIdentifier:@"CitySegue" sender:self];
-#endif
-                     }];
-    
 }
-
 - (void)viewDidDisappear:(BOOL)animated{
     //  [locationManagerRegion stopUpdatingLocation];
 }
