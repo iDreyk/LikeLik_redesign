@@ -909,8 +909,8 @@ static NSInteger j=0;
         [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
                                 onTarget:self withObject:nil animated:YES];
         
-        
-
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
