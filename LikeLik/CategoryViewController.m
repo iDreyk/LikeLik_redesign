@@ -767,10 +767,27 @@ static NSInteger j=0;
 - (void)updateOffsets {
     CGFloat yOffset   = self.categoryView.contentOffset.y;
     UIImageView *imback = (UIImageView *)[self.view viewWithTag:backgroundTag];
-    if(yOffset < 0)
+    UIImageView *clearBack = (UIImageView *)[self.view viewWithTag:backgroundTag2];
+    double startFrom = -170.0;
+    double navBarOffset = 66;
+    if(yOffset < 0){
         imback.alpha = 1.0 + yOffset/200;
-    if (yOffset > 0)
+        if(yOffset < startFrom){
+            CGRect frame = clearBack.frame;
+            frame.origin.y = -yOffset + startFrom - navBarOffset;
+            clearBack.frame = frame;
+            imback.frame = frame;
+        }
+        else{
+            CGRect frame = clearBack.frame;
+            frame.origin.y = -66.0;
+            clearBack.frame = frame;
+            imback.frame = frame;
+        }
+    }
+    if (yOffset > 0){
         imback.alpha = 1.0 - yOffset/300;
+    }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

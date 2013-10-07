@@ -45,6 +45,9 @@ CGRect PlaceCardRectClose;
 
 @end
 
+
+#warning ХУЙНАЯ С PageControl (Вова (с))
+
 @implementation PlaceViewController
 @synthesize pageControl;
 
