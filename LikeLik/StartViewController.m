@@ -305,6 +305,7 @@ static BOOL JUST_APPEAR = YES;
 {
    // log([NSString stringWithFormat:@"TOUCHED!");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     if(![self.TabBar.selectedItem isEqual:self.Downloaded] && ![ExternalFunctions isDownloaded:_CityLabels[[indexPath row]]]){
         [defaults setValue:[NSNumber numberWithInt:[indexPath row]] forKey:@"row"];
         //[self ShowAlertView];
