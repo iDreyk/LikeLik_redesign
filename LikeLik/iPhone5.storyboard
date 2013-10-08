@@ -966,10 +966,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="IK9-nN-bHI">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="231"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="303"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="231" id="6Bi-zg-Siw"/>
+                                    <constraint firstAttribute="height" constant="303" id="6Bi-zg-Siw"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="231" id="och-Ap-UE5"/>
                                 </constraints>
                                 <connections>

@@ -619,10 +619,10 @@ CGRect PlaceCardRectClose;
     [rightButton setTitle:Annotation.title forState:UIControlStateNormal];
     
     
-    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
-    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
-    [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
-    [self.locationButton setHidden:YES];
+//    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_normal"].image forState:UIControlStateNormal];
+//    [self.locationButton setImage:[InterfaceFunctions UserLocationButton:@"_pressed"].image forState:UIControlStateHighlighted];
+//    [self.locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.locationButton setHidden:YES];
     
     // [self.mapView addSubview:self.locationButton];
 #endif
@@ -701,7 +701,7 @@ CGRect PlaceCardRectClose;
 
 -(void)map_tu:(UIButton *)sender{
     self.mapView.hidden= !self.mapView.hidden;
-    self.locationButton.hidden =! self.locationButton.hidden;
+   // self.locationButton.hidden =! self.locationButton.hidden;
 }
 #endif
 
@@ -906,11 +906,11 @@ CGRect PlaceCardRectClose;
     CLLocationCoordinate2D start;
     if ([[[CLLocation alloc] initWithLatitude:self.mapView.userLocation.coordinate.latitude longitude:self.mapView.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0){
         start = [ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName].coordinate;
-        self.locationButton.enabled = NO;
+  //      self.locationButton.enabled = NO;
     }
     else{
         start = self.mapView.userLocation.coordinate;
-        self.locationButton.enabled = YES;
+     //   self.locationButton.enabled = YES;
     }
     MKCoordinateRegion region;
     region.span = span;
@@ -1167,7 +1167,7 @@ CGRect PlaceCardRectClose;
 #else
     self.mapView.hidden = !self.mapView.hidden;
     if (self.mapView.hidden){
-        [self.locationButton setHidden:YES];
+     //   [self.locationButton setHidden:YES];
         UIButton *btn = [InterfaceFunctions map_button:1];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
@@ -1175,7 +1175,7 @@ CGRect PlaceCardRectClose;
         
     }
     else{
-        [self.locationButton setHidden:NO];
+     //   [self.locationButton setHidden:NO];
         UIButton *btn = [InterfaceFunctions map_button:0];
         [btn addTarget:self action:@selector(ShowMap:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn]; 
@@ -1291,7 +1291,7 @@ CGRect PlaceCardRectClose;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
         [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Is going"                                                       action:@"Login" label:[NSString stringWithFormat:@"%@ %@ %@",currentCity,self.PlaceNameEn,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
-        LorR = @"Login";
+        LorR = @"Registration";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     }
     if (buttonIndex == 2){

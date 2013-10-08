@@ -161,7 +161,7 @@ static BOOL NEED_TO_RELOAD = NO;
     
 #else
     self.mapView.hidden = YES;
-    self.ViewforMap.hidden = YES;
+ //   self.ViewforMap.hidden = YES;
     self.Map.hidden = YES;
 
     MKCoordinateSpan span;
@@ -1073,7 +1073,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
-        LorR = @"Login";
+        LorR = @"Registration";
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
         [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@"%@ %@ Register Screen",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"CategoryTemp"]]];
         [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
