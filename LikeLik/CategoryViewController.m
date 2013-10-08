@@ -216,7 +216,7 @@ static NSInteger j=0;
     [self.MapPlace setHidden:YES];
 
 #else
-    [self.placeViewMap setHidden:YES];
+ //   [self.placeViewMap setHidden:YES];
 //    UIButton *btn_left = [InterfaceFunctions Info_button];
 //    [btn_left addTarget:self action:@selector(Info) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.hidesBackButton = YES;//[[UIBarButtonItem alloc] initWithCustomView:btn_left];

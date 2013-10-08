@@ -16,9 +16,7 @@
 #define kOAuthConsumerSecret			@"IbUE5lud22evmrtxjtU1vKvh6VDqRMSHHFJ73rtHI"
 static BOOL getLocation = NO;
 #warning кнопка бек
-#warning загаловок
-#warning поля на одном уровне
-#warning заглавную убрать
+
 #define RemoveNull(field) ([[self.FacebookUserInfo objectForKey:field] isKindOfClass:[NSNull class]]) ? @"" : [self.FacebookUserInfo objectForKey:field];
 
 
@@ -414,19 +412,28 @@ static BOOL getLocation = NO;
         if ([indexPath row] == 0) {
             [self LoginTextField];
             [cell.contentView addSubview:Login];
+            Login.center = CGPointMake(Login.center.x, cell.center.y);
+            Login.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            
         }
         if ([indexPath row] == 1) {
             [self EmailTextField];
             [cell.contentView addSubview:Email];
+            Email.center = CGPointMake(Email.center.x, cell.center.y);
+            Email.autocapitalizationType = UITextAutocapitalizationTypeNone;
         }
         if ([indexPath row] == 2) {
             [self PasswordTextField];
             [cell.contentView addSubview:Password];
+            Password.center = CGPointMake(Password.center.x, cell.center.y);
+            Password.autocapitalizationType = UITextAutocapitalizationTypeNone;
         }
         
         if ([indexPath row] == 3) {
             [self ConfirmTextField];
             [cell.contentView addSubview:Confirm];
+            Confirm.center = CGPointMake(Confirm.center.x, cell.center.y);
+            Confirm.autocapitalizationType = UITextAutocapitalizationTypeNone;
         }
         
     }
@@ -434,10 +441,14 @@ static BOOL getLocation = NO;
         if ([indexPath row] == 0) {
             [self EmailTextField];
             [cell.contentView addSubview:Email];
+            Email.center = CGPointMake(Email.center.x, cell.center.y);
+            Email.autocapitalizationType = UITextAutocapitalizationTypeNone;
         }
         if ([indexPath row] == 1) {
             [self PasswordTextField];
             [cell.contentView addSubview:Password];
+            Password.center = CGPointMake(Password.center.x, cell.center.y);
+            Password.autocapitalizationType = UITextAutocapitalizationTypeNone;
         }
         
     }
