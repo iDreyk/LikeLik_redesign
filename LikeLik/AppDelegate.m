@@ -113,7 +113,8 @@ static NSString *const kAllowTracking = @"allowTracking";
                                  forLeftSegmentState:UIControlStateNormal
                                    rightSegmentState:UIControlStateSelected
                                           barMetrics:UIBarMetricsDefault];
-    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,[UIColor whiteColor],UITextAttributeTextColor,nil] forState:UIControlStateNormal];
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,[InterfaceFunctions corporateIdentity],UITextAttributeTextColor,[NSValue valueWithCGSize:CGSizeMake(0.0,0.0)],UITextAttributeTextShadowOffset,nil] forState:UIControlStateNormal];
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,[UIColor whiteColor],UITextAttributeTextColor,nil] forState:UIControlStateSelected];
     
     
 }

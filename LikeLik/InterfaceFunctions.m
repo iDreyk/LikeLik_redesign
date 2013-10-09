@@ -115,7 +115,8 @@
     [aButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [aButton.titleLabel  setFont:[AppDelegate OpenSansRegular:24]];
     [aButton setTitle:AMLocalizedString(@"Done", nil) forState:UIControlStateNormal];
-    
+    [aButton setTitleColor:[InterfaceFunctions corporateIdentity] forState:UIControlStateNormal];
+
     [aButton sizeToFit];
     CGRect newFrame = aButton.frame;
     newFrame.origin.x = 2;
@@ -127,7 +128,7 @@
 
 #pragma mark UIColor
 +(UIColor *)corporateIdentity{
-  return [UIColor colorWithRed:169.0/255.0 green:79.0/255.0 blue:190.0/255.0 alpha:1];
+  return [UIColor colorWithRed:188/255.0 green:104/255.0 blue:222/255.0 alpha:1];
 }
 
 +(UIColor *)mainTextColor:(NSInteger)flag{
@@ -665,7 +666,8 @@
     
     
     [backButton setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,[UIColor whiteColor],UITextAttributeTextColor,nil ] forState:UIControlStateNormal];
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,[InterfaceFunctions corporateIdentity],UITextAttributeTextColor, [NSValue valueWithCGSize:CGSizeMake(0.0,0.0)]  ,UITextAttributeTextShadowOffset, nil ] forState:UIControlStateNormal];
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,[UIColor grayColor],UITextAttributeTextColor, [NSValue valueWithCGSize:CGSizeMake(0.0,0.0)]  ,UITextAttributeTextShadowOffset, nil ] forState:UIControlStateSelected];
     [backButton setBackgroundVerticalPositionAdjustment:-20.0f forBarMetrics:UIBarMetricsDefault];
     
     float offsetForiOS7 = -2.5;
