@@ -11,6 +11,18 @@
 #import "AFNetworking.h"
 #import "AppDelegate.h"
 #import "LocalizationSystem.h"
+
+#import "AFDownloadRequestOperation.h"
+#import "Reachability.h"
+
+#define catalogue @"Catalogues"
+#define likelikurlwifi_4        @"http://likelik.net/ios/docs/4/"
+#define likelikurlwifi_5        @"http://likelik.net/ios/docs/5/"
+#define likelikurlcell_4        @"http://likelik.net/ios/cell/4/"
+#define likelikurlcell_5        @"http://likelik.net/ios/cell/5/"
+#define likelikurlonline_4      @"http://likelik.net/ios/online/4/"
+#define likelikurlonline_5      @"http://likelik.net/ios/online/5/"
+
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
 #define closestPlacesCount 8
 #define regionsCount 8
@@ -1000,5 +1012,181 @@ static CLLocation *Me;
     return success;
 }
 
+//
+//  Downloading
+//
+
+
++ (void) AFdownload : (NSString *) filename fromURL : (NSString *) likelikUrl{
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"startHUD" object:nil];
+    
+    NSString *url = [[NSString alloc] initWithFormat:@"%@%@.zip",likelikUrl,filename];
+    //  log([NSString stringWithFormat:@"%@",url);
+    NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",filename];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    AFDownloadRequestOperation *operation = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:path shouldResume:YES];
+    
+    [operation setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"popViewController" object:nil];
+    }];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [self DownloadSucceeded:filename];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"stopHUDWithSuccess" object:nil];
+        
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"stopHUDWithFailure" object:nil];
+        
+        [self DownloadError:error];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"popViewController" object:nil];
+    }];
+    
+    [operation start];
+    double CurrentTime1 = CACurrentMediaTime();
+    
+    //Setup Upload block to return progress of file upload
+    [operation setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+        BOOL i = YES;
+        double currentTime = 0.0;
+        if (i) {
+            currentTime = CurrentTime1;
+            i = NO;
+        }
+        
+        double currentTime2 = CACurrentMediaTime();
+        
+        float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile * 100;
+        //
+        //        int result = (int)floorf(progress*100);
+        double speed = (totalBytesRead / (currentTime2 - currentTime));
+        double bytes_left = totalBytesExpected - totalBytesRead;
+        double time_left = bytes_left / speed;
+        
+        int secs = time_left;
+        //int h = secs / 3600;
+        int m = secs / 60 % 60;
+        int s = secs % 60;
+        
+        //        NSString *text = [NSString stringWithFormat:@"%02d:%02d", m, s];
+        if (m == 0 && s==0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"dataProcessingHUD" object:nil];
+        }
+        else {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%.1f %%",progress] forKey:@"progress"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"showDownloadProgressHUD" object:nil];
+            //log([NSString stringWithFormat:@"Time left: %@ \n Speed: %f",text,speed);
+        }
+        
+        currentTime = currentTime2;
+    }];
+    
+    
+    
+}
+
++ (void) DownloadSucceeded:(NSString *)fileName {
+    NSString *zipFile = [[NSString alloc] initWithFormat:@"%@.zip",fileName];
+    NSString *newCataloguePath = [[NSString alloc]initWithFormat:@"%@/%@/catalogue.plist",[ExternalFunctions docDir],fileName];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path1 = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:zipFile];
+    [[NSFileManager defaultManager] removeItemAtPath:path1 error:nil];
+    [ExternalFunctions unzipFileAt:path ToDestination:[paths objectAtIndex:0]];
+    NSString *crapPath = [[ExternalFunctions docDir]stringByAppendingPathComponent:@"__MACOSX"];
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:crapPath error:nil];
+    
+    NSString *cataloguesPath = [[ExternalFunctions docDir]stringByAppendingPathComponent:@"catalogue.plist"];
+    
+    NSMutableArray *catalogueArray = [[NSMutableArray alloc] initWithContentsOfFile:cataloguesPath];
+    NSArray *newCatalogues = [[NSArray alloc] initWithContentsOfFile:newCataloguePath];
+    NSDictionary *temp;
+    
+    for (int i = 0; i < [newCatalogues count]; i++) {
+        if ([[[newCatalogues objectAtIndex:i] objectForKey:@"city_EN"] isEqualToString:fileName]) {
+            temp = [newCatalogues objectAtIndex:i];
+        }
+    }
+    for (int i = 0; i < [catalogueArray count]; i++) {
+        if ([[[catalogueArray objectAtIndex:i] objectForKey:@"city_EN"] isEqualToString:fileName]) {
+            [catalogueArray removeObjectAtIndex:i];
+        }
+    }
+    
+    //#warning один раз тут вылетело, но приложение было свернуто [catalogueArray addObject:temp];
+    [catalogueArray addObject:temp];
+    
+    [[NSFileManager defaultManager] removeItemAtPath:cataloguesPath error:nil];
+    
+    [catalogueArray writeToFile:cataloguesPath atomically:YES];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:catalogueArray forKey:catalogue];
+    
+    [ExternalFunctions addCityToDownloaded:fileName];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAllCatalogues" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadMapView" object:nil];
+}
+
++ (NSError *) DownloadError:(NSError *) error{
+    return error;
+}
+
++ (void)waitForTwoSeconds {
+    sleep(2);
+}
+
++ (void) startDownloadingCatalogueOfCity : (NSString *) cityName {
+    
+    Reachability *reach = [Reachability reachabilityWithHostname:@"google.com"];
+    
+    if ([reach isReachable]) {
+#if LIKELIK
+        if ([reach isReachableViaWiFi]) {
+            // On WiFi
+            
+            if(IS_IPHONE_5 == 1)
+                [self AFdownload:cityName fromURL:likelikurlwifi_5];
+            else
+                [self AFdownload:cityName fromURL:likelikurlwifi_4];
+        }
+        else {
+            // On Cell
+            NSLog(@"on cell");
+            
+            
+            if(IS_IPHONE_5 == 1)
+                [self AFdownload:cityName fromURL:likelikurlcell_5];
+            else
+                [self AFdownload:cityName fromURL:likelikurlcell_4];
+        }
+#else
+        if(IS_IPHONE_5 == 1)
+            [self AFdownload:cityName fromURL:likelikurlonline_5];
+        else
+            [self AFdownload:cityName fromURL:likelikurlonline_4];
+#endif
+        
+    }
+    else {
+        // Isn't reachable
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"showNoInternetConnectionHUD" object:nil];
+    }
+}
 
 @end

@@ -159,5 +159,11 @@
 
 
 
-+ (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
++ (BOOL) addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
+
+//
+//  Downloading
+//
+
++ (void) startDownloadingCatalogueOfCity : (NSString *) cityName;
 @end
