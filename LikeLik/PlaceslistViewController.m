@@ -1164,13 +1164,44 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 
 
+//- (void)updateOffsets {
+//    CGFloat yOffset   = self.PlacesTable.contentOffset.y;
+//    UIImageView *imback = (UIImageView *)[self.view viewWithTag:backgroundTag];
+//    if(yOffset < 0)
+//        imback.alpha = 1.0 + yOffset / 600;
+//}
 - (void)updateOffsets {
     CGFloat yOffset   = self.PlacesTable.contentOffset.y;
     UIImageView *imback = (UIImageView *)[self.view viewWithTag:backgroundTag];
-    if(yOffset < 0)
-        imback.alpha = 1.0 + yOffset / 600;
+    UIImageView *clearBack = (UIImageView *)[self.view viewWithTag:backgroundTag2];
+    double startFrom = -170.0;
+    double navBarOffset = 66;
+    double angelOffset = 150;
+    if(yOffset < 0){
+        imback.alpha = 1.0 + yOffset/200;
+        if(yOffset < startFrom && yOffset > startFrom - navBarOffset - angelOffset){
+            CGRect frame = clearBack.frame;
+            frame.origin.y = -yOffset + startFrom - navBarOffset - angelOffset;
+            clearBack.frame = frame;
+            
+            CGRect frameBlured = imback.frame;
+            frameBlured.origin.y = -yOffset + startFrom - navBarOffset;
+            imback.frame = frameBlured;
+        }
+        else if(yOffset > startFrom - navBarOffset - angelOffset){
+            CGRect frame = clearBack.frame;
+            frame.origin.y = -navBarOffset - angelOffset;
+            clearBack.frame = frame;
+            
+            CGRect frameBlured = imback.frame;
+            frameBlured.origin.y = -navBarOffset;
+            imback.frame = frameBlured;
+        }
+    }
+    if (yOffset > 0){
+        imback.alpha = 1.0 - yOffset/300;
+    }
 }
-
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(!BACK_PRESSED)

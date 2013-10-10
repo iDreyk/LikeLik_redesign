@@ -930,8 +930,8 @@ CGRect PlaceCardRectClose;
 #warning Илья, здесь тоже что-то связано с навбаром :)
     if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
         [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
-        navController.navigationBarHidden = YES;
-        [self.navigationController pushViewController:view1 animated:YES];
+    navController.navigationBarHidden = YES;
+    [self.navigationController pushViewController:view1 animated:YES];
 }
 
 
