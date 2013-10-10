@@ -76,7 +76,7 @@
         <!--Start View Controller-->
         <scene sceneID="2PX-zI-SL8">
             <objects>
-                <viewController id="AbN-Ke-u38" customClass="StartViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartView" id="AbN-Ke-u38" customClass="StartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q7k-5w-ei3"/>
                         <viewControllerLayoutGuide type="bottom" id="mOk-qk-vjG"/>
@@ -154,6 +154,7 @@
                                     <tabBarItem title="" image="tabicon_AllGuides.png" id="A4q-Xy-qO6"/>
                                     <tabBarItem image="tabicon_SpecialSeries.png" id="8tU-Eo-DOP"/>
                                 </items>
+                                <color key="selectedImageTintColor" red="0.73725490199999999" green="0.40784313729999999" blue="0.87058823529999996" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="AbN-Ke-u38" id="Vp6-I3-Nwa"/>
                                 </connections>

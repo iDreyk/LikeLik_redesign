@@ -282,23 +282,9 @@ static NSString *const kAllowTracking = @"allowTracking";
         log([NSString stringWithFormat:@"was inactive"]);
         PlaceViewController *view;
         UINavigationController * myStoryBoardInitialViewController;
-        if ([AppDelegate isiPhone5]) {
-            view = [[UIStoryboard storyboardWithName:@"iPhone5" bundle:nil] instantiateViewControllerWithIdentifier:@"321"];
+        view = [[UIStoryboard storyboardWithName:@"iPhone5" bundle:nil] instantiateViewControllerWithIdentifier:@"321"];
             myStoryBoardInitialViewController = [[UIStoryboard storyboardWithName:@"iPhone5" bundle:nil]instantiateInitialViewController];
-        }
-        else{
-            
-            view = [[UIStoryboard storyboardWithName:@"iPhone351" bundle:nil] instantiateViewControllerWithIdentifier:@"321"];
-            myStoryBoardInitialViewController = [[UIStoryboard storyboardWithName:@"iPhone351" bundle:nil] instantiateInitialViewController];
-        }
-        view.navigationController.navigationBarHidden = NO;
-//        view.PlaceCategory = [notification.userInfo objectForKey:@"Category"];
-//        view.PlaceName = [notification.userInfo objectForKey:@"Place"];
-//        view.PlaceCityName = [notification.userInfo objectForKey:@"City"];
-//        view. = [notification.userInfo objectForKey:@"Photos"];
-//        view.Color = [InterfaceFunctions colorTextCategory:@"Category"];
-//
-        
+//        view.navigationController.navigationBarHidden = NO;
 
         CLLocation *loc = [[CLLocation alloc] initWithLatitude:[[notification.userInfo objectForKey:@"lat"] doubleValue] longitude:[[notification.userInfo objectForKey:@"lon"] doubleValue]];
         view.PlaceName = [notification.userInfo objectForKey:@"Place"];
@@ -311,7 +297,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         view.PlaceLocation = loc;
         view.Color = [InterfaceFunctions colorTextCategory:[notification.userInfo objectForKey:@"Category"]];
         view.Photos = [notification.userInfo objectForKey:@"Photo"];
-        //view.fromNotification = @"YES";
+        view.fromNotification = @"YES";
       
 
         
@@ -319,6 +305,7 @@ static NSString *const kAllowTracking = @"allowTracking";
         
         //      log([NSString stringWithFormat:@"userinfo = %@",notification.userInfo);
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view];
+#warning Илья, здесь навбар нужно прикручивать на уведомление(вроде)
 //        [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
 //        [navController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 //        navController.navigationBar.shadowImage = [UIImage new];

@@ -216,10 +216,8 @@ static NSInteger j=0;
     [self.MapPlace setHidden:YES];
 
 #else
- //   [self.placeViewMap setHidden:YES];
-//    UIButton *btn_left = [InterfaceFunctions Info_button];
-//    [btn_left addTarget:self action:@selector(Info) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.hidesBackButton = YES;//[[UIBarButtonItem alloc] initWithCustomView:btn_left];
+
+    self.navigationItem.hidesBackButton = YES;
     
     UIButton *btn = [InterfaceFunctions Pref_button];
     [btn addTarget:self action:@selector(Pref) forControlEvents:UIControlEventTouchUpInside];
@@ -1101,7 +1099,8 @@ static NSInteger j=0;
         // Isn't reachable
         self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
         [self.navigationController.view addSubview:self.HUDfade];
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+#warning Андрей, здесь раньше стоял beginignoring. Разве это было норм?
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross2@2x"]];
         self.HUDfade.mode = MBProgressHUDModeCustomView;
         self.HUDfade.labelText = AMLocalizedString(@"Download error", nil);

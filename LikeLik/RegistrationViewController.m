@@ -15,7 +15,6 @@
 #define kOAuthConsumerKey				@"XGaxa31EoympFhxLZooQ"
 #define kOAuthConsumerSecret			@"IbUE5lud22evmrtxjtU1vKvh6VDqRMSHHFJ73rtHI"
 static BOOL getLocation = NO;
-#warning кнопка бек
 
 #define RemoveNull(field) ([[self.FacebookUserInfo objectForKey:field] isKindOfClass:[NSNull class]]) ? @"" : [self.FacebookUserInfo objectForKey:field];
 
@@ -176,8 +175,6 @@ static BOOL getLocation = NO;
     }
     [self setlocale];
     
-
-    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
     [self.RegistrationTable setBackgroundColor:[UIColor clearColor]];
     self.RegistrationTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.view.backgroundColor = [InterfaceFunctions BackgroundColor];

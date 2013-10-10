@@ -26,7 +26,7 @@
     MBProgressHUD *HUD;
 }
 @property (nonatomic,retain) UIImageView *Use;
-//@property (nonatomic,retain) NSString *fromNotification;
+@property (nonatomic,retain) NSString *fromNotification;
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 
 //@property (weak, nonatomic) IBOutlet UILabel *LabelOnScroll;

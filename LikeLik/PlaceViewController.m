@@ -13,7 +13,7 @@
 #import <MapBox/MapBox.h>
 #import "CheckViewController.h"
 
-#import "SplashViewController.h"
+#import "StartViewController.h"
 #import "SA_OAuthTwitterEngine.h"
 #import "SCFacebook.h"
 #import "MBProgressHUD.h"
@@ -45,23 +45,19 @@ CGRect PlaceCardRectClose;
 
 @end
 
-
-#warning ХУЙНАЯ С PageControl (Вова (с))
-
 @implementation PlaceViewController
 @synthesize pageControl;
 
 
--(IBAction)clickPageControl:(id)sender
+-(IBAction)clickPageControl:(UIPageControl *)sender
 {
-    int page=pageControl.currentPage;
     CGRect frame=_scroll.frame;
-    frame.origin.x=frame.size.width=page;
+    frame.origin.x=frame.size.width*pageControl.currentPage;
     frame.origin.y=0;
     [_scroll scrollRectToVisible:frame animated:YES];
 }
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+-(IBAction)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     int page = scrollView.contentOffset.x/scrollView.frame.size.width;
     pageControl.currentPage=page;
     [UIView transitionWithView:self.PlaceView duration:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -154,6 +150,10 @@ CGRect PlaceCardRectClose;
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    
+    self.navigationItem.backBarButtonItem = [InterfaceFunctions back_button];
+    
+    
 #warning HARD CODING
 #warning маленький дрыг
     PlaceCardRectOpen = CGRectMake(0.0,  self.view.frame.size.height-self.self.PlaceView.frame.size.height-40.0, self.PlaceView.frame.size.width, self.PlaceView.frame.size.height);
@@ -234,7 +234,6 @@ CGRect PlaceCardRectClose;
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController" bundle:nil];
     else
         VC = [[CheckViewController alloc] initWithNibName:@"CheckViewController35" bundle:nil];
-#warning картинка верхняя
 
     
     
@@ -879,14 +878,13 @@ CGRect PlaceCardRectClose;
     
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@" %@ %@ %@",currentCity,self.PlaceCategory,self.PlaceNameEn ]];
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
-    //  [self tapDetected:nil];
-    // [testflight passCheckpoint:self.PlaceName];
-    //    if ([self.fromNotification isEqualToString:@"YES"]){
-    //        UIButton *btn = [InterfaceFunctions home_button];
-    //        [btn addTarget:self action:@selector(testmethod) forControlEvents:UIControlEventTouchUpInside];
-    //        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    //        self.ScrollView.backgroundColor = [InterfaceFunctions colorTextCategory:self.PlaceCategory];
-    //    }
+        if ([self.fromNotification isEqualToString:@"YES"]){
+#warning Саша, домик прикручивается здесь после нотификейшна, если тебе нужно прикрутить другую кнопку
+            UIButton *btn = [InterfaceFunctions home_button];
+            [btn addTarget:self action:@selector(testmethod) forControlEvents:UIControlEventTouchUpInside];
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+            self.ScrollView.backgroundColor = [InterfaceFunctions colorTextCategory:self.PlaceCategory];
+        }
     //
 #if LIKELIK
     if ([[[CLLocation alloc] initWithLatitude:self.MapPlace.userLocation.coordinate.latitude longitude:self.MapPlace.userLocation.coordinate.longitude] distanceFromLocation:[ExternalFunctions getCenterCoordinatesOfCity:self.PlaceCityName]] > 50000.0) {
@@ -923,12 +921,13 @@ CGRect PlaceCardRectClose;
 }
 
 -(void)testmethod{
-    //    SplashViewController *view1 = [[UIStoryboard storyboardWithName:@"iPhone5" bundle:nil] instantiateViewControllerWithIdentifier:@"Splash"];
-    //    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view1];
-    ////    [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
-    ////    [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
-    //    navController.navigationBarHidden = YES;
-    //    [self.navigationController pushViewController:view1 animated:YES];
+    StartViewController *view1 = [[UIStoryboard storyboardWithName:@"iPhone5" bundle:nil] instantiateViewControllerWithIdentifier:@"StartView"];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view1];
+    [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
+#warning Илья, здесь тоже что-то связано с навбаром :)
+    [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
+        navController.navigationBarHidden = YES;
+        [self.navigationController pushViewController:view1 animated:YES];
 }
 
 

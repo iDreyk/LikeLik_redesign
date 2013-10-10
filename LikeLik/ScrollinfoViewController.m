@@ -124,6 +124,10 @@
     [self.webHUD show:YES];
 }
 
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    [self.webHUD hide:YES];
+}
+
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     [self.webHUD hide:YES];
 }
