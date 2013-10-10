@@ -305,7 +305,9 @@ static NSString *const kAllowTracking = @"allowTracking";
         
         //      log([NSString stringWithFormat:@"userinfo = %@",notification.userInfo);
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view];
-#warning Илья, здесь навбар нужно прикручивать на уведомление(вроде)
+#warning Прикрутил вроде, Илья, здесь навбар нужно прикручивать на уведомление(вроде)
+        if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+            [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
 //        [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
 //        [navController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 //        navController.navigationBar.shadowImage = [UIImage new];
