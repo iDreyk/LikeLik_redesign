@@ -337,7 +337,19 @@ static NSInteger j=0;
         }];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(reloadCatalogue) name:@"reloadAllCatalogues" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(startHUD)
+                                                 name: @"startHUD"
+                                               object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(stopHUDWithSuccess)
+                                                 name: @"stopHUDWithSuccess"
+                                               object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(stopHUDWithFailure)
+                                                 name: @"stopHUDWithFailure"
+                                               object: nil];
 }
 
 
@@ -888,9 +900,7 @@ static NSInteger j=0;
 }
 
 
-- (void) AFdownload : (NSString *) filename fromURL : (NSString *) likelikUrl{
-    
-    
+- (void) startHUD {
     self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:self.HUDfade];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -900,6 +910,29 @@ static NSInteger j=0;
     if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Download"] isEqualToString:@"1"])
         [self.HUDfade show:YES];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+}
+
+- (void) stopHUDWithSuccess {
+    self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x"]];
+    self.HUDfade.mode = MBProgressHUDModeCustomView;
+    self.HUDfade.labelText = AMLocalizedString(@"Ready!", nil);
+    [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
+                            onTarget:self withObject:nil animated:YES];
+}
+
+- (void) stopHUDWithFailure {
+    self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross2@2x"]];
+    self.HUDfade.mode = MBProgressHUDModeCustomView;
+    self.HUDfade.labelText = AMLocalizedString(@"Download error", nil);
+    [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
+                            onTarget:self withObject:nil animated:YES];
+}
+
+
+- (void) AFdownload : (NSString *) filename fromURL : (NSString *) likelikUrl{
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"startHUD" object:nil];
     
     NSString *url = [[NSString alloc] initWithFormat:@"%@%@.zip",likelikUrl,filename];
     //  log([NSString stringWithFormat:@"%@",url);
@@ -918,22 +951,14 @@ static NSInteger j=0;
         
         [self DownloadSucceeded:filename];
         
-        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark@2x"]];
-        self.HUDfade.mode = MBProgressHUDModeCustomView;
-        self.HUDfade.labelText = AMLocalizedString(@"Ready!", nil);
-        [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
-                                onTarget:self withObject:nil animated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"stopHUDWithSuccess" object:nil];
         
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross2@2x"]];
-        self.HUDfade.mode = MBProgressHUDModeCustomView;
-        self.HUDfade.labelText = AMLocalizedString(@"Download error", nil);
-        [self.HUDfade showWhileExecuting:@selector(waitForTwoSeconds)
-                                onTarget:self withObject:nil animated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"stopHUDWithFailure" object:nil];
         
         [self DownloadError:error];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
@@ -1060,7 +1085,7 @@ static NSInteger j=0;
 - (void) startDownloading {
     //    log([NSString stringWithFormat:@"Согласился на покупку");
     
-    Reachability *reach = [Reachability reachabilityWithHostname:@"likelik.net"];
+    Reachability *reach = [Reachability reachabilityWithHostname:@"google.com"];
     
     if ([reach isReachable]) {
 #if LIKELIK
@@ -1099,8 +1124,7 @@ static NSInteger j=0;
         // Isn't reachable
         self.HUDfade = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
         [self.navigationController.view addSubview:self.HUDfade];
-#warning Андрей, здесь раньше стоял beginignoring. Разве это было норм?
-        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         self.HUDfade.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross2@2x"]];
         self.HUDfade.mode = MBProgressHUDModeCustomView;
         self.HUDfade.labelText = AMLocalizedString(@"Download error", nil);
