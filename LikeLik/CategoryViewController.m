@@ -810,6 +810,8 @@ static NSInteger j=0;
             CGRect frameBlured = imback.frame;
             frameBlured.origin.y = -yOffset + startFrom - navBarOffset;
             imback.frame = frameBlured;
+            //[[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"Angel" action:@"Got"                                                                                          label:[NSString stringWithFormat:@"%@ %@",currentCity,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]] value:nil] build]];
+
         }
         else if(yOffset > startFrom - navBarOffset - angelOffset){
             CGRect frame = clearBack.frame;
