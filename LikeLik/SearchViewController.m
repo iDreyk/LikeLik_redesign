@@ -168,10 +168,10 @@ CGRect oldRect;
         CALayer * imgLayer = back.layer;
         [imgLayer setBorderColor: [[UIColor whiteColor] CGColor]];
         [imgLayer setBorderWidth:0.5f];
-        [imgLayer setShadowColor: [[UIColor blackColor] CGColor]];
-        [imgLayer setShadowOpacity:0.9f];
-        [imgLayer setShadowOffset: CGSizeMake(0, 1)];
-        [imgLayer setShadowRadius:3.0];
+//        [imgLayer setShadowColor: [[UIColor blackColor] CGColor]];
+//        [imgLayer setShadowOpacity:0.9f];
+//        [imgLayer setShadowOffset: CGSizeMake(0, 1)];
+//        [imgLayer setShadowRadius:3.0];
         // [imgLayer setCornerRadius:4];
         imgLayer.shouldRasterize = YES;
         
