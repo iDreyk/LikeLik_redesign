@@ -1011,4 +1011,8 @@ static NSInteger j=0;
     self.HUDfade.labelText = progress;
 }
 
+- (void) waitForTwoSeconds {
+    sleep(2);
+}
+
 @end

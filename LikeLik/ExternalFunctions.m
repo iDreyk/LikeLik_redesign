@@ -1147,9 +1147,7 @@ static CLLocation *Me;
     return error;
 }
 
-+ (void)waitForTwoSeconds {
-    sleep(2);
-}
+
 
 + (void) startDownloadingCatalogueOfCity : (NSString *) cityName {
     
