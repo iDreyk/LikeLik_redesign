@@ -72,7 +72,7 @@ CGRect oldRect;
     
     UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
     bg.tag = backgroundTag;
-    UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
+    UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66 - 150, 320, 718)];
     bg2.tag = backgroundTag2;
     
     bg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:self.CityName] objectForKey:@"city_EN"]]];
@@ -168,10 +168,10 @@ CGRect oldRect;
         CALayer * imgLayer = back.layer;
         [imgLayer setBorderColor: [[UIColor whiteColor] CGColor]];
         [imgLayer setBorderWidth:0.5f];
-        [imgLayer setShadowColor: [[UIColor blackColor] CGColor]];
-        [imgLayer setShadowOpacity:0.9f];
-        [imgLayer setShadowOffset: CGSizeMake(0, 1)];
-        [imgLayer setShadowRadius:3.0];
+//        [imgLayer setShadowColor: [[UIColor blackColor] CGColor]];
+//        [imgLayer setShadowOpacity:0.9f];
+//        [imgLayer setShadowOffset: CGSizeMake(0, 1)];
+//        [imgLayer setShadowRadius:3.0];
         // [imgLayer setCornerRadius:4];
         imgLayer.shouldRasterize = YES;
         

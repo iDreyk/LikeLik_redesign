@@ -41,7 +41,7 @@
         [aButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
         [aButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
         aButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
-            return aButton;
+        return aButton;
     }
     if (flag == 1) {
         UIImage *buttonImage = [UIImage imageNamed:@"60_61 map"];
@@ -51,7 +51,7 @@
         [aButton setImageEdgeInsets:UIEdgeInsetsMake(-5, 0, 0, 0)];
         aButton.frame = CGRectMake(0.0, 0.0, aButton.imageView.frame.size.width, aButton.imageView.frame.size.height);
         [aButton sizeToFit];
-            return aButton;
+        return aButton;
     }
     
     return 0;
@@ -116,7 +116,7 @@
     [aButton.titleLabel  setFont:[AppDelegate OpenSansRegular:24]];
     [aButton setTitle:AMLocalizedString(@"Done", nil) forState:UIControlStateNormal];
     [aButton setTitleColor:[InterfaceFunctions corporateIdentity] forState:UIControlStateNormal];
-
+    
     [aButton sizeToFit];
     CGRect newFrame = aButton.frame;
     newFrame.origin.x = 2;
@@ -128,13 +128,13 @@
 
 #pragma mark UIColor
 +(UIColor *)corporateIdentity{
-  return [UIColor colorWithRed:188/255.0 green:104/255.0 blue:222/255.0 alpha:1];
+    return [UIColor colorWithRed:188/255.0 green:104/255.0 blue:222/255.0 alpha:1];
 }
 
 +(UIColor *)mainTextColor:(NSInteger)flag{
     UIColor *color;
     
-
+    
     switch (flag) {
         case 1:
             color = [self corporateIdentity];
@@ -168,13 +168,13 @@
         default:
             break;
     }
-
+    
     
     return color;
 }
 +(UIColor *)colorTextCategory:(NSString *)Category{
     UIColor *color;
-//    [AppDelegate LLLog:[NSString stringWithFormat:@"Category: %@", Category);
+    //    [AppDelegate LLLog:[NSString stringWithFormat:@"Category: %@", Category);
     if ([Category isEqualToString:@"Restaurants"]) {
         color = [self mainTextColor:2];
     }
@@ -205,11 +205,11 @@
     return  [UIColor colorWithRed:253.0/255.0 green:179.0/255.0 blue:66.0/255.0 alpha:1.000];
 }
 +(UIColor *)ShadowColor{
-   return  [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
+    return  [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
 }
 +(UIColor*)BackgroundColor{
-
-
+    
+    
     UIImage *img = [InterfaceFunctions backgroundView].image;
     return [UIColor colorWithPatternImage:img];
 }
@@ -263,8 +263,8 @@
     label.text = string;
     label.shadowColor = [InterfaceFunctions ShadowColor];
     label.shadowOffset = [InterfaceFunctions ShadowSize];
-//    label.highlightedTextColor = [UIColor whiteColor];
-//    [label setHighlighted:YES];
+    //    label.highlightedTextColor = [UIColor whiteColor];
+    //    [label setHighlighted:YES];
     CALayer *layer = label.layer;
     UIColor *color = [UIColor whiteColor];
     layer.shadowColor = [color CGColor];
@@ -276,7 +276,7 @@
     
 }
 +(UILabel *)goLabelCategory:(NSString *)Category{
-
+    
     UILabel *_go = [[UILabel alloc] initWithFrame:CGRectMake(275, 15, 30, 14)];
     _go.font = [AppDelegate OpenSansRegular:28];
     _go.textColor = [self colorTextPlaceBackground:Category];
@@ -308,7 +308,7 @@
     text.textColor = Color;
     text.shadowColor = [InterfaceFunctions ShadowColor];
     text.shadowOffset = [InterfaceFunctions ShadowSize];
-   return text;
+    return text;
 }
 +(UILabel *)TableLabelwithText:(NSString *)String AndColor:(UIColor *)Color AndFrame:(CGRect)Frame{
     
@@ -316,7 +316,7 @@
     
     if (Frame.size.width == 0.0)
         [label setFrame:CGRectMake(14.0, 0.0, 260, 15.0)];
-
+    
     
     label.font = [AppDelegate OpenSansRegular:28];
     label.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
@@ -377,7 +377,7 @@
 
 +(UIImageView *)MapPin:(NSString *)Category{
     UIImageView *Pin=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MapPin_12"]];
-
+    
     if ([Category isEqualToString:AMLocalizedString(@"Restaurants", nil)]) {
         //Pin.image = [UIImage imageNamed:@"63_76 MapPin_2"];
         Pin.image = [UIImage imageNamed:@"knuck_pin_2"];
@@ -385,7 +385,7 @@
     }
     if ([Category isEqualToString:AMLocalizedString(@"Night life", nil)]) {
         //Pin.image=[UIImage imageNamed:@"63_76 MapPin_3"];
-            Pin.image = [UIImage imageNamed:@"knuck_pin_3"];
+        Pin.image = [UIImage imageNamed:@"knuck_pin_3"];
     }
     if ([Category isEqualToString:AMLocalizedString(@"Shopping", nil)]) {
         Pin.image = [UIImage imageNamed:@"knuck_pin_4"];
@@ -408,7 +408,7 @@
         Pin.image = [UIImage imageNamed:@"knuck_pin_8"];
     }
     return Pin;
-
+    
     
     
 }
@@ -439,13 +439,13 @@
     NSString *name;
     if ([tag isEqualToString:@"1fav_normal"] ||[tag isEqualToString:@"3share_normal"] || [tag isEqualToString:@"1fav_selected"] ||[tag isEqualToString:@"3share_selected"]) {
         name = [NSString stringWithFormat:@"214_100 Tabitem_place_%d_%@",Color,tag];
-       
+        
     }
     else{
         name = [NSString stringWithFormat:@"212_100 Tabitem_place_%d_%@",Color,tag];
     }
-
-
+    
+    
     // [AppDelegate LLLog:[NSString stringWithFormat:@"%@",name);
     return  [[UIImageView alloc] initWithImage:[UIImage imageNamed:name]];
 }
@@ -472,7 +472,7 @@
     if ([Category isEqualToString:@"Hotels"]) {
         ribbon.image=[UIImage imageNamed:@"592_159 Ribbon_8"];
     }
-
+    
     return ribbon;
 }
 +(UIImageView *)usecheckbutton:(NSString *)Category andTag:(NSString *)tag{
@@ -499,12 +499,12 @@
     if ([Category isEqualToString:@"Hotels"]) {
         Color = 8;
     }
-
+    
     NSString *name = [NSString stringWithFormat:@"526_90 button_use_check_%d%@",Color,tag];
     return  [[UIImageView alloc] initWithImage: [UIImage imageNamed:name]];
 }
 +(UIImageView *)actbTaxi{
-
+    
     UIImageView *_actb = [[UIImageView alloc] initWithFrame:CGRectMake(300,15, 9, 14)];
     _actb.image=[UIImage imageNamed:@"44_48 actbtaxi"];
     return _actb;
@@ -520,7 +520,7 @@
     [star setCenter:CGPointMake(160.0, 108.0)];
     [star setImage:[UIImage imageNamed:@"266_281 star_favourites_empty"]];
     [star setAlpha:0.8];
-
+    
     return star;
 }
 +(UIImageView *)MapPinVisualTour{
@@ -667,7 +667,7 @@
     
     [backButton setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,[InterfaceFunctions corporateIdentity],UITextAttributeTextColor, [NSValue valueWithCGSize:CGSizeMake(0.0,0.0)]  ,UITextAttributeTextShadowOffset, nil ] forState:UIControlStateNormal];
-    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,[UIColor grayColor],UITextAttributeTextColor, [NSValue valueWithCGSize:CGSizeMake(0.0,0.0)]  ,UITextAttributeTextShadowOffset, nil ] forState:UIControlStateSelected];
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [AppDelegate OpenSansSemiBold:24], UITextAttributeFont,[UIColor grayColor],UITextAttributeTextColor, [NSValue valueWithCGSize:CGSizeMake(0.0,0.0)]  ,UITextAttributeTextShadowOffset, nil ] forState:UIControlStateHighlighted];
     [backButton setBackgroundVerticalPositionAdjustment:-20.0f forBarMetrics:UIBarMetricsDefault];
     
     float offsetForiOS7 = -2.5;

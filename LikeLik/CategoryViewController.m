@@ -170,7 +170,7 @@ static NSInteger j=0;
 
     UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
     background.tag = backgroundTag;
-    UIImageView *background2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
+    UIImageView *background2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66 - 150, 320, 718)];
     background2.tag = backgroundTag2;
     
     background.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:self.Label] objectForKey:@"city_EN"]]];
@@ -799,19 +799,26 @@ static NSInteger j=0;
     UIImageView *clearBack = (UIImageView *)[self.view viewWithTag:backgroundTag2];
     double startFrom = -170.0;
     double navBarOffset = 66;
+    double angelOffset = 150;
     if(yOffset < 0){
         imback.alpha = 1.0 + yOffset/200;
-        if(yOffset < startFrom){
+        if(yOffset < startFrom && yOffset > startFrom - navBarOffset - angelOffset){
             CGRect frame = clearBack.frame;
-            frame.origin.y = -yOffset + startFrom - navBarOffset;
+            frame.origin.y = -yOffset + startFrom - navBarOffset - angelOffset;
             clearBack.frame = frame;
-            imback.frame = frame;
+            
+            CGRect frameBlured = imback.frame;
+            frameBlured.origin.y = -yOffset + startFrom - navBarOffset;
+            imback.frame = frameBlured;
         }
-        else{
+        else if(yOffset > startFrom - navBarOffset - angelOffset){
             CGRect frame = clearBack.frame;
-            frame.origin.y = -66.0;
+            frame.origin.y = -navBarOffset - angelOffset;
             clearBack.frame = frame;
-            imback.frame = frame;
+            
+            CGRect frameBlured = imback.frame;
+            frameBlured.origin.y = -navBarOffset;
+            imback.frame = frameBlured;
         }
     }
     if (yOffset > 0){
