@@ -29,6 +29,9 @@
 #define afterregister             @"l27h7RU2dzVfP12aoQssda"
 #define backgroundg @"l27h7RU2123123132dzVfPoQssda"
 #define checkOpen                 @"l27h7RU2dzVfP12aoQssdasasa"
+
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 static BOOL infoViewIsOpen = YES;
 static UIAlertView *alertView = nil;
 static NSString * currentCity = @"";
@@ -925,7 +928,8 @@ CGRect PlaceCardRectClose;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view1];
     [navController.navigationBar setTintColor:[UIColor colorWithRed:150.0/255.0 green:100.0/255.0 blue:170.0/255.0 alpha:1]];
 #warning Илья, здесь тоже что-то связано с навбаром :)
-    [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar.png"] forBarMetrics:UIBarMetricsDefault];
         navController.navigationBarHidden = YES;
         [self.navigationController pushViewController:view1 animated:YES];
 }
