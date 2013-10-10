@@ -405,7 +405,7 @@ static NSInteger j=0;
     });
     
     
-    
+#warning лишний end?
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
@@ -1060,7 +1060,7 @@ static NSInteger j=0;
 - (void) startDownloading {
     //    log([NSString stringWithFormat:@"Согласился на покупку");
     
-    Reachability *reach = [Reachability reachabilityWithHostname:@"google.com"];
+    Reachability *reach = [Reachability reachabilityWithHostname:@"likelik.net"];
     
     if ([reach isReachable]) {
 #if LIKELIK
