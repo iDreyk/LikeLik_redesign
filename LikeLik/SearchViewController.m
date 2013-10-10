@@ -72,7 +72,7 @@ CGRect oldRect;
     
     UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
     bg.tag = backgroundTag;
-    UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, 320, 568)];
+    UIImageView *bg2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, -66 - 150, 320, 718)];
     bg2.tag = backgroundTag2;
     
     bg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blur",[[ExternalFunctions cityCatalogueForCity:self.CityName] objectForKey:@"city_EN"]]];
