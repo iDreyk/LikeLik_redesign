@@ -336,6 +336,9 @@ static BOOL NEED_TO_RELOAD = NO;
     PlaceName = annotation.title;
     PlaceCategory = [annotation.userInfo objectForKey:@"Category"];
     Place = annotation.userInfo;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[annotation.userInfo objectForKey:@"Name_EN"] forKey:@"PlaceTempEN"];
+    
     [self performSegueWithIdentifier:@"MapSegue" sender:self];
 }
 #else

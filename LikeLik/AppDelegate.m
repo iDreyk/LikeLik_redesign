@@ -35,7 +35,7 @@ NSInteger wasinactive = NO;
 #define backgroundTag2 2442442
 
 
-static NSString *const kTrackingId = @"UA-44026994-1";
+static NSString *const kTrackingId = @"UA-44026994-4"; // Dev Tracking ID
 static NSString *const kAllowTracking = @"allowTracking";
 
 
