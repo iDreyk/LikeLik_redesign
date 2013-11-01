@@ -887,6 +887,9 @@ CGRect PlaceCardRectClose;
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:[NSString stringWithFormat:@" %@ %@ %@",currentCity,self.PlaceCategory,self.PlaceNameEn ]];
      
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
+    infoViewIsOpen = YES;
+    
         if ([self.fromNotification isEqualToString:@"YES"]){
 #warning Саша, домик прикручивается здесь после нотификейшна, если тебе нужно прикрутить другую кнопку
             UIButton *btn = [InterfaceFunctions home_button];
