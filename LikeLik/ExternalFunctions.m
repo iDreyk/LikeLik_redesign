@@ -241,6 +241,7 @@ static CLLocation *Me;
         photos = [[NSMutableArray alloc] init];
         for (int j = 0; j < [[[placeAtIndexi objectForKey:@"Photo"] objectForKey:version] count]; j++) {
             [photos addObject:[[NSString alloc] initWithFormat:@"%@/%@/%@",docDirectory,cityNameInEnglish,[photoNamesOfIPlace objectAtIndex:j]]];
+            //[photos addObject:[[NSString alloc] initWithFormat:@"%@%@/%@",likelikurlonline_5,cityNameInEnglish,[photoNamesOfIPlace objectAtIndex:j]]];
         }
         
         double distance = [location distanceFromLocation:currentPlace];
@@ -275,7 +276,7 @@ static CLLocation *Me;
         
         [returnArray addObject:placeDict];
     }
-    
+    NSLog(@"%@",placeDict);
     return returnArray;
 }
 

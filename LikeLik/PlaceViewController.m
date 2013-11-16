@@ -252,9 +252,25 @@ CGRect PlaceCardRectClose;
         UIImageView *awesomeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
         awesomeView.backgroundColor = [UIColor colorWithRed:0.5/i green:0.5 blue:0.5 alpha:1];
         awesomeView.image = [UIImage imageWithContentsOfFile:[photos objectAtIndex:i]];
+        
         if ([UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height == 640.0) {
             awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [UIImage imageWithContentsOfFile:[[NSString alloc] initWithFormat:@"%@",[photos objectAtIndex:i]]].size.height/4);
         }
+        
+/////////////
+//        online загрузка картинок
+//
+//        NSURL *url = [NSURL URLWithString:[photos objectAtIndex:i]];
+//        NSData *data = [NSData dataWithContentsOfURL:url];
+//        
+//        awesomeView.image = [[UIImage alloc] initWithData:data];
+//        NSLog(@"%@",url);
+//        if ([[UIImage alloc] initWithData:data].size.height == 640.0)
+//        {
+//            awesomeView.frame = CGRectMake(xOrigin, self.view.center.y/2, self.view.frame.size.width, [[UIImage alloc] initWithData:data].size.height/4);
+//        }
+/////////////
+        
         [_scroll addSubview:awesomeView];
     }
     _scroll.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, 400.0);
